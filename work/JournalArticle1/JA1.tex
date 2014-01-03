@@ -1,0 +1,132 @@
+%------------------------------------------------------------------------------
+% $Id: easychair.tex,v 1.23 2008/06/22 17:55:18 mokhov Exp $
+%
+
+% Select appropriate paper format in your document class as
+% instructed by your conference organizers.
+%
+% The available formats are 'letterpaper' and 'a4paper' with
+% the former being the default if omitted as in the example
+% below.
+%
+\documentclass{easychair}
+%\documentclass[a4paper]{easychair}
+
+% In order to save space or manage large tables or figures in a
+% landcape-like text, you can use the rotating and pdflscape
+% packages. Uncomment the desired from the below.
+%
+% \usepackage{rotating}
+% \usepackage{pdflscape}
+%
+\usepackage{import}
+\usepackage{epstopdf}
+\usepackage{bsymb}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multicol}
+% If you plan on including some algorithm specification, we recommend
+% the below package. Read more details on the custom options of the
+% package documentation.
+%
+% \usepackage{algorithm2e}
+
+% Some of our commands for this guide.
+%
+\newcommand{\easychair}{\sf{easychair}}
+\newcommand{\miktex}{MiK{\TeX}}
+\newcommand{\texniccenter}{{\TeX}nicCenter}
+\newcommand{\makefile}{\texttt{Makefile}}
+
+
+\makeatletter
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+  {}
+
+\newenvironment{figurehere}
+  {\def\@captype{figure}}
+  {}
+\makeatother
+
+
+%% Document
+%%
+\begin{document}
+
+%% Front Matter
+%%
+% Regular title as in the article class.
+%
+\title{From Event-B Models to Code}
+
+% \titlerunning{} has to be set to either the main title or its shorter
+% version for the running heads. Use {\sf} for highliting your system
+% name, application, or a tool.
+%
+\titlerunning{Event-B Code Generation}
+
+% For only the editors. Authors, please keep this commented out
+%\volumeinfo
+%	{} % editors
+%	{}                         % number of editors
+%	{}    % event
+%	{}                         % volume
+%	{}                         % issue
+%	{}                         % starting page number
+
+% Authors are joined by \and and their affiliations are on the
+% subsequent lines separated by \\ just like the article class
+% allows.
+%
+
+\author{Andrew Edmunds\\
+School of Electronics and Computer Science,\\
+University of Southampton, UK\\
+\url{ae2@ecs.soton.ac.uk}\\
+\and
+Michael Butler\\
+School of Electronics and Computer Science,\\
+University of Southampton, UK\\
+\url{mjb@ecs.soton.ac.uk}\\
+}
+
+% \authorrunning{} has to be set for the shorter version of the authors' names;
+% otherwise a warning will be rendered in the running heads.
+%
+
+\authorrunning{Edmunds and Butler.}
+
+\maketitle
+
+%------------------------------------------------------------------------------
+% Abstract
+%
+\begin{abstract}
+Event-B is a formal approach to modelling systems, based on set theory, predicate logic and arithmetic. To make developments tractable, various techniques are used, including refinement, and decomposition. This article describes an extension to the Event-B approach, which we call Tasking Event-B, that facilitates automatic generation of source code from annotated Event-B models. We believe that automatic code generation makes a useful contribution to the Rodin tool-set; by contributing a link in a coherent tool-chain. To validate the approach we have undertaken case studies and taken part in an industrial collaboration. We present a number of case-studies to illustrate our work, in this article.
+\end{abstract}
+
+\include{Intro}
+
+\include{Event-B}
+
+\include{taskingEB}
+
+\include{tooling}
+
+\include{conc}
+
+%------------------------------------------------------------------------------
+% Refs:
+%
+\label{sect:bib}
+\bibliographystyle{plain}
+%\bibliographystyle{alpha}
+%\bibliographystyle{unsrt}
+%\bibliographystyle{abbrv}
+\bibliography{MyBibTex}
+
+\end{document}
+
+% EOF
