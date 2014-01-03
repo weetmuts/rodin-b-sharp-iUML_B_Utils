@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="1">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/NewProject2/cmp1.bpo|org.eventb.core.poFile#cmp1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="aa" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poPredicate name="ab" org.eventb.core.predicate="aa∈ℤ" org.eventb.core.source="/NewProject2/m00.bum|org.eventb.core.machineFile#m00|org.eventb.core.invariant#)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTIDENTm00_internal_element2_(" org.eventb.core.parentSet="/NewProject2/cmp1.bpo|org.eventb.core.poFile#cmp1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="aa'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTALLHYPm00_internal_element2_(" org.eventb.core.parentSet="/NewProject2/cmp1.bpo|org.eventb.core.poFile#cmp1|org.eventb.core.poPredicateSet#CMPEVTIDENTm00_internal_element2_(" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="CMPEVTIDENTm00_internal_element2_)" org.eventb.core.parentSet="/NewProject2/cmp1.bpo|org.eventb.core.poFile#cmp1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="pa" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="aa'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTALLHYPm00_internal_element2_)" org.eventb.core.parentSet="/NewProject2/cmp1.bpo|org.eventb.core.poFile#cmp1|org.eventb.core.poPredicateSet#CMPEVTIDENTm00_internal_element2_)" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="pa∈0 ‥ 10" org.eventb.core.source="/NewProject2/m00.bum|org.eventb.core.machineFile#m00|org.eventb.core.event#*|org.eventb.core.guard#("/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/NewProject2/cmp1.bpo|org.eventb.core.poFile#cmp1|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0"/>
+</org.eventb.core.poFile>

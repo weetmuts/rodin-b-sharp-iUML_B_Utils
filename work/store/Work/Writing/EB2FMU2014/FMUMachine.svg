@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="FMUMachine.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.7981587"
+     inkscape:cx="357.41275"
+     inkscape:cy="659.44517"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1615"
+     inkscape:window-height="1026"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="155.41214"
+       y="351.59473"
+       id="text2985"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="155.41214"
+         y="351.59473" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="140.34187"
+       y="329.93121"
+       id="text2989"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2991"
+         x="140.34187"
+         y="329.93121" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="118.03939"
+       y="421.44284"
+       id="text2997"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2999"
+         x="118.03939"
+         y="421.44284">Task Body</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="121.46141"
+       y="345.55884"
+       id="text3001"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3003"
+         x="121.46141"
+         y="345.55884">evt1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="121.46141"
+       y="361.19226"
+       id="text3005"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3007"
+         x="121.46141"
+         y="361.19226">evt2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="261.33789"
+       y="346.05884"
+       id="text3009"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3011"
+         x="261.33789"
+         y="346.05884">evt1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="261.33789"
+       y="362.19226"
+       id="text3013"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3015"
+         x="261.33789"
+         y="362.19226">evt2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="260.73926"
+       y="296.69226"
+       id="text3017"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3019"
+         x="260.73926"
+         y="296.69226">Shared Machine</tspan><tspan
+         sodipodi:role="line"
+         x="260.73926"
+         y="311.69226"
+         id="tspan4109"
+         style="font-weight:bold;-inkscape-font-specification:Sans Bold">S1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="120.04491"
+       y="296.86218"
+       id="text3021"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3023"
+         x="120.04491"
+         y="296.86218">Tasking Machine</tspan><tspan
+         sodipodi:role="line"
+         x="120.04491"
+         y="311.86218"
+         id="tspan4107"
+         style="font-weight:bold;-inkscape-font-specification:Sans Bold">T1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.99093723px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="239.50954"
+       y="476.50601"
+       id="text3025"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99924478,1.0007558)"><tspan
+         sodipodi:role="line"
+         x="239.50954"
+         y="476.50601"
+         id="tspan4158"><tspan
+           id="tspan4156"
+           style="text-align:center;text-anchor:middle">synchronizations</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="239.50954"
+         y="491.49469"
+         id="tspan4165"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3075">T1</tspan>.evt1 || <tspan
+   style="font-weight:bold;text-align:center;text-anchor:middle;-inkscape-font-specification:Sans Bold"
+   id="tspan4154">S</tspan><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3079">1</tspan>.evt1</tspan><tspan
+         sodipodi:role="line"
+         x="239.50954"
+         y="506.48337"
+         id="tspan4148"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3077">T1</tspan>.evt2 || <tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3081">S1</tspan>.evt2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.5098038;stroke:none;font-family:Sans"
+       x="439.18652"
+       y="297.93121"
+       id="text3029"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3031"
+         x="439.18652"
+         y="297.93121"
+         style="font-weight:normal;-inkscape-font-specification:Sans">MASTER</tspan><tspan
+         sodipodi:role="line"
+         x="439.18652"
+         y="312.93121"
+         id="tspan3080"
+         style="font-weight:bold;-inkscape-font-specification:Sans Bold">M1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="583.65234"
+       y="296.48135"
+       id="text3037"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3039"
+         x="583.65234"
+         y="296.48135">Tasking Machine</tspan><tspan
+         sodipodi:role="line"
+         x="583.65234"
+         y="311.48135"
+         id="tspan4111"
+         style="font-weight:bold;-inkscape-font-specification:Sans Bold">F1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="584.16339"
+       y="345.97427"
+       id="text3045-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3047-4"
+         x="584.16339"
+         y="345.97427">fmiGetXXX</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="584.16339"
+       y="362.1012"
+       id="text3049-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3051-4"
+         x="584.16339"
+         y="362.1012">fmiSetXXX</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="580.16339"
+       y="421.44284"
+       id="text3084"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3086"
+         x="580.16339"
+         y="421.44284">Task Body</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="579.77667"
+       y="437.2861"
+       id="text3088"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3090"
+         x="579.77667"
+         y="437.2861">evt3; evt4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="583.77667"
+       y="378.12268"
+       id="text3096"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3098"
+         x="583.77667"
+         y="378.12268">evt3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="583.77667"
+       y="394.17047"
+       id="text3100"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3102"
+         x="583.77667"
+         y="394.17047">evt4</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.52881515;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3123"
+       width="116.47118"
+       height="165.47119"
+       x="573.7644"
+       y="284.12665" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="583.26105"
+       y="329.66278"
+       id="text3125"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3127"
+         x="583.26105"
+         y="329.66278">Events</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.9901396;stroke-opacity:1"
+       id="rect3129"
+       width="109.3148"
+       height="84.009857"
+       x="577.36896"
+       y="316.8573" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.66109633;stroke-opacity:1"
+       id="rect3129-8"
+       width="109.64382"
+       height="37.338905"
+       x="577.20459"
+       y="406.84164" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.54174125000000006;stroke-miterlimit:4;stroke-opacity:0.4520548;stroke-dasharray:none"
+       id="rect3123-3"
+       width="118.45826"
+       height="165.45834"
+       x="430.77087"
+       y="284.1333" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:0.65296805;stroke:none;font-family:Sans"
+       x="440.82202"
+       y="330.00449"
+       id="text3125-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3127-4"
+         x="440.82202"
+         y="330.00449">Events</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.50980395;stroke:none;font-family:Sans"
+       x="441.72437"
+       y="345.48157"
+       id="text3045-6-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3047-4-7"
+         x="441.72437"
+         y="345.48157">fmiGetXXX</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.50980395;stroke:none;font-family:Sans"
+       x="441.72437"
+       y="361.60849"
+       id="text3049-0-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3051-4-9"
+         x="441.72437"
+         y="361.60849">fmiSetXXX</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.52881515;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3123-3-7"
+       width="116.47118"
+       height="165.47119"
+       x="110.7644"
+       y="284.12659" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.99013966;stroke-opacity:1"
+       id="rect3129-5-8"
+       width="109.31479"
+       height="84.009857"
+       x="114.36912"
+       y="316.85727" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.66109627;stroke-opacity:1"
+       id="rect3129-8-7-5"
+       width="109.64384"
+       height="37.338905"
+       x="114.20436"
+       y="408.84158" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="120.94576"
+       y="330.00449"
+       id="text3125-7-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3127-4-0"
+         x="120.94576"
+         y="330.00449">Events</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.52881515;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3123-3-3"
+       width="116.47118"
+       height="165.47119"
+       x="250.7644"
+       y="284.12659" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.99013966;stroke-opacity:1"
+       id="rect3129-5-1"
+       width="109.31479"
+       height="84.009857"
+       x="254.24556"
+       y="316.85727" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="260.82227"
+       y="330.00452"
+       id="text3125-7-02"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3127-4-1"
+         x="260.82227"
+         y="330.00452">Events</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="120.18082"
+       y="437.98865"
+       id="text3001-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3003-3"
+         x="120.18082"
+         y="437.98865">evt1; evt2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.99093723px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="563.31293"
+       y="476.50598"
+       id="text3025-3"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99924478,1.0007558)"><tspan
+         sodipodi:role="line"
+         id="tspan3027-1"
+         x="563.31293"
+         y="476.50598">synchronizations</tspan><tspan
+         sodipodi:role="line"
+         x="563.31293"
+         y="491.49466"
+         id="tspan4150"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3083">M1</tspan>.fmiGetXXX || <tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3087">F1</tspan>.fmiGetXXX</tspan><tspan
+         sodipodi:role="line"
+         x="563.31293"
+         y="506.48334"
+         id="tspan4152"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3085">M1</tspan>.fmiSetXXX || <tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3089">F1</tspan>.fmiSetXXX</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="109.32617"
+       y="275.86609"
+       id="text3839"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3841"
+         x="109.32617"
+         y="275.86609">Composed Machine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="429.32617"
+       y="275.86609"
+       id="text3839-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3841-5"
+         x="429.32617"
+         y="275.86609">Composed Machine</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.98227429;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.96454792, 0.98227394;stroke-dashoffset:0"
+       id="rect3864"
+       width="276.01785"
+       height="200.01773"
+       x="102.49108"
+       y="261.85327" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.98227388;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.96454782, 0.98227391;stroke-dashoffset:0"
+       id="rect3864-3"
+       width="276.01773"
+       height="200.01773"
+       x="422.49112"
+       y="261.85333" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+Introduction of an FMU machine type.
+
+An FMU machine has a DoStep Sequence where a Task has a task body. The body describes ordering of events that occur in the simulation step.
+
+An autotask machine can model the simulation master, it has fmiGetXXX and fmiSetXXX events. This describes the communication between FMUs and the masters. In the future it should be possible to derive this information from the FMU Component Diagram.
+
+Open-issue, Do we model multiple instances of FMUs? For FMU_C code generation it is easier to ignore instantiations; we do not cross the FMU-API boundary, into the master's territory.
+
+The simulation is cycle-based. The master calls fmiGetXXX, then fmiSetXXX, then the fmiDoStep function. After a specified time the simulation repeats; until termination time.
+
+We re-used as much code as possible. We have new translators for the FMU_Machine type and FMU_C subroutines. We also have a new FMU_C theory (but, it is the same as the default_C theory, so we could try to use the C specialisation option).
+
+Still not sure how you move from a system model to a model that incorporates a master and slave components.
+
+ModelDescription meta-model editor, translator.
+
+
+
+
+

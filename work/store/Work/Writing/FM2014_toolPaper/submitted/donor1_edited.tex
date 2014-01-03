@@ -1,0 +1,140 @@
+% This file was converted to LaTeX by Writer2LaTeX ver. 1.0.2
+% see http://writer2latex.sourceforge.net for more info
+\documentclass[a4paper]{article}
+\usepackage[ascii]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{color}
+\usepackage{array}
+\usepackage{hhline}
+\usepackage{hyperref}
+\hypersetup{pdftex, colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue, pdftitle=, pdfauthor=Andy , pdfsubject=, pdfkeywords=}
+% Page layout (geometry)
+\setlength\voffset{-1in}
+\setlength\hoffset{-1in}
+\setlength\topmargin{2cm}
+\setlength\oddsidemargin{2cm}
+\setlength\textheight{25.7cm}
+\setlength\textwidth{17.001cm}
+\setlength\footskip{0.0cm}
+\setlength\headheight{0cm}
+\setlength\headsep{0cm}
+% Footnote rule
+\setlength{\skip\footins}{0.119cm}
+\renewcommand\footnoterule{\vspace*{-0.018cm}\setlength\leftskip{0pt}\setlength\rightskip{0pt plus 1fil}\noindent\textcolor{black}{\rule{0.25\columnwidth}{0.018cm}}\vspace*{0.101cm}}
+% Pages styles
+\makeatletter
+\newcommand\ps@Standard{
+  \renewcommand\@oddhead{}
+  \renewcommand\@evenhead{}
+  \renewcommand\@oddfoot{}
+  \renewcommand\@evenfoot{}
+  \renewcommand\thepage{\arabic{page}}
+}
+\makeatother
+\pagestyle{Standard}
+\title{}
+\author{Andy }
+\date{2013-08-06}
+\begin{document}
+MACHINE FanCtrlMachine 
+
+SEES FanCtrlMachine\_implicitContext, FanCtrlContext 
+
+VARIABLES Controller, C\_tempPSU, C\_tempAmbient, C\_fanSpeed, C\_fanOn,
+failureCount\ \  \ 
+
+INVARIANTS
+
+\ \ Controller ${\in}$ Controller\_STATES \ 
+
+\ \ C\_tempPSU ${\in}$ $\mathbb{Z}$ \ 
+
+\ \ C\_tempAmbient ${\in}$ $\mathbb{Z}$ \ 
+
+\ \ C\_fanSpeed ${\in}$ $\mathbb{Z}$ \ 
+
+\ \ C\_fanOn ${\in}$ BOOL \ 
+
+\ \ failureCount ${\in}$ $\mathbb{Z}$ \ 
+
+\ \ Controller = Normal $\Rightarrow $ 
+
+\ \  \ ((C\_tempPSU ${\geq}$ HWM\_PSU) ${\vee}$ (C\_tempAmbient ${\geq}$
+HWM\_AMBIENT) $\Rightarrow $ C\_fanOn = TRUE)\ \  \ 
+
+\ \ Controller = Normal $\Rightarrow $
+
+\ \  \ ((C\_tempPSU ${\leq}$ LWM\_PSU ${\wedge}$ C\_tempAmbient ${\leq}$
+LWM\_AMBIENT) $\Rightarrow $ C\_fanOn = FALSE) \ \ 
+
+EVENTS
+
+\ \ INITIALISATION:\ \ 
+
+\ \ THEN
+
+\ \ \ \ init\_tempPSU:\ \ C\_tempPSU :${\in}$ $\mathbb{Z}$ 
+
+\ \ \ \ init\_tempAmbient:\ \ C\_tempAmbient :${\in}$ $\mathbb{Z}$ 
+
+\ \ \ \ {\dots}
+
+
+\bigskip
+
+\ \ SENSE\_TEMPERATURES:\ \  \ 
+
+\ \ WHERE
+
+\ \ \ \ Controller = Step \ \ 
+
+\ \ THEN
+
+\ \ \ \ Controller $:=$ Control 
+
+\ \ END
+
+
+\bigskip
+
+\ \ DO\_NOTHING:\ \  \ 
+
+\ \ WHERE
+
+\ \ \ \ {\textlnot}((C\_tempPSU ${\geq}$ HWM\_PSU) ${\vee}$
+(C\_tempAmbient ${\geq}$ \ \ HWM\_AMBIENT)) \ \ 
+
+\ \ \ \ Controller = Control \ \ 
+
+\ \ \ \ {\textlnot}((C\_tempPSU ${\leq}$ LWM\_PSU) ${\wedge}$
+(C\_tempAmbient ${\leq}$ \ \ LWM\_AMBIENT)) \ \ 
+
+\ \ THEN
+
+\ \ \ \ Controller $:=$ Normal 
+
+\ \ END
+
+...
+
+\ \ read:\ \  \ 
+
+\ \ WHERE
+
+\ \ \ \ grd1:\ \ Controller ${\neq}$ Normal \ \ 
+
+\ \ THEN
+
+\ \ \ \ act3:\ \ C\_fanSpeed :${\in}$ $\mathbb{Z}$ 
+
+\ \ \ \ act2:\ \ C\_tempAmbient :${\in}$ $\mathbb{Z}$ 
+
+\ \ \ \ act1:\ \ C\_tempPSU :${\in}$ $\mathbb{Z}$ 
+
+\ \ END
+
+END
+\end{document}
