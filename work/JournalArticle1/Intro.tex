@@ -1,17 +1,76 @@
 \section{Introduction}
-This article is about generating code from Event-B.
+Event-B~\cite{ABR10} is one of a number of formal methods that may be used to model systems where a high degree of reliability is required. Event-B was inspired by its predecessor, \emph{Classical-B}~\cite{TheBBook}. It is a modelling language, used with a supporting tool platform, Rodin~\cite{abrial10rodin}; so named from the project in which it was developed~\cite{RodinTool}.  
 
-\subsection{Formal Methods}
+In this section we introduce Event-B to the reader, and compare Event-B with some other formal approaches. We discuss automatic code generation from formal models, and potential target programming languages.
 
-\subsection{Event-B Rationale}
+In Sect.~\ref{} we...
+In Sect.~\ref{} we...
 
-\subsection{Code Generation Rationale}
+\subsection{Event-B}
+The \emph{Classical B-method}~\cite{TheBBook,CNP,CNPInterface,B4Free} was developed by J.R. Abrial. It is a set theoretic approach to software systems development. In an effort to simplify the approach~\cite{Hallerstede07} Event-B was developed. Event-B is comprised of a notation, methodology and tool. The main modelling features, of Event-B, are contexts and machines. Contexts are used to model static features using sets, constants, and axioms. Machines are used to model variable state using \emph{variables}. The state updates are modelled using guarded events. 
+----
+Builders within the development tools generate proof obligations which must be discharged in order to show that the development is consistent. The proof obligations generated in classical-B are often very complex, the Event-B approach results in simpler proof obligations as described in~\cite{Hallerstede07}, since Event-B consists of a simplified action syntax which gives rise to simpler proof obligations. A further simplification was made by adopting an event-based approach, where each atomic event has a predicate guard and an action consisting only of assignment statements. Events correspond to operations in the B-method; operation specification was more complex and included constructs for specifying preconditions and return parameters; these constructs are not features of Event-B. Due to these simplifications (and more efficient proof tools) a large number of the proof obligations may be discharged automatically by the automatic provers. Where un-discharged proof obligations remain the user guides the interactive prover by suggesting strategies, and sub-goals in the form of hypotheses, in the endeavour to complete the proof. 
+
+Event-B supports refinement; a machine can be refined several times leading to a hierarchical structure. Refinements are related to their more abstract counterparts in such a way that a valid refinement always satisfies a specification higher in the refinement hierarchy. Event-B tools generate proof obligations relating to refinement, which must be discharged in a similar manner to those generated for proof of machine consistency. In some cases we may model entities in an abstraction that are defined in the event parameters; and in the refinement these entities may be modelled using machine variables. It is desirable to link the parameters of an abstract event (since they disappear in the refinement) with their more concrete representation. To do this we provide a witness, using the $WITNESS$ construct a predicate is used to describe the relationship between an event parameter of the abstraction and a corresponding variable in the refinement. This is then used to assist with discharging proof obligations. It is often necessary to specify a linking invariant to describe the relationship between the variables of the abstract and refinement machines. Inspection of the proof obligations can assist in this task since some of the un-discharged proof obligations provide information about this link. Another feature of Event-B is the ability to  refine one atomic event with a number of events, thus breaking the atomicity, as described in~\cite{Butler08}. 
+
+Event-B development begins with the abstraction of the observable events that `may' occur in a system, which leads to a specification describing the state and behaviour of the system at a high level of abstraction. Event based modelling uses the notion of guarded events to describe the observable events. An event is said to be enabled when the guard is true, otherwise it is disabled. Typically when an enabled event fires some state update occurs, which is described by the event's action. The high level abstraction can be refined, possibly a number of times. At each refinement step new events and state information are added. The purpose of refinement in the Event-B method is to introduce more detail into the model and at the same time maintain the model's consistency. Eventually the model should describe the behaviour of the system at such a level of detail that an OCB model can be defined. The OCB model is subsequently transformed to an Event-B model that can be shown to refine the abstract development, and the target source code. An example of textual Event-B is shown in Figure~\ref{fig:TextualEventB}.
+%
+\sffamily
+\begin{figure}
+\begin{center}
+\begin{tabular}{l}
+\textbf{CONTEXT} exampleContext\\
+\textbf{SETS} A\\
+\\
+\textbf{MACHINE} exampleMachine\\
+\textbf{SEES} exampleContext\\
+\textbf{VARIABLES} b, c\\
+\textbf{INVARIANT}\\
+\hspace*{0.5cm}b $\subseteq$ A $\land$ c $\in$ $0\upto 10$\\
+\textbf{EVENTS}\\
+\hspace*{0.5cm}INITIALISATION = \\
+\hspace*{1cm}b $\bcmeq$ $\emptyset$ $\pprod$ c $\bcmin$ $0\upto 10$\\
+\\
+\hspace*{0.5cm}inc =\\
+\hspace*{1cm}\textbf{WHEN} c+1 $\in$ $0\upto 10$\\
+\hspace*{1cm}\textbf{THEN} c $\bcmeq$ c+1 \\
+\hspace*{1cm}\textbf{END}\\
+\\
+\hspace*{0.5cm}new =\\
+\hspace*{1cm}\textbf{ANY} x\\
+\hspace*{1cm}\textbf{WHERE} x $\in$ A $\setminus$ b\\
+\hspace*{1cm}\textbf{THEN} b $\bcmeq$ b $\bunion$ \{x\}\\
+\hspace*{1cm}\textbf{END}
+\end{tabular}
+\end{center}
+	\caption{Example of Textual Event-B}
+	\label{fig:TextualEventB}
+\end{figure}
+\rmfamily
+%
+The context, named \emph{exampleContext} has a set, \emph{A}. Machine \emph{exampleMachine} sees \emph{exampleContext} to gain access to its contents. It has variables \emph{b} and \emph{c} which are typed in the invariant along with any additional constraints on the state. In this example \emph{b} is typed as a  powerset of \emph{A} and \emph{c} is an Integer. The example shows an event named \emph{inc} which increments the value of \emph{c}. The event named \emph{new} non-deterministically selects an element of set \emph{A$\setminus$b} and adds it to \emph{b}, using set union. Events consist of guards and actions, \emph{inc} has no non-deterministic parameters, so the guard is in the \emph{WHEN} clause, and the actions are in the \emph{THEN} clause. Where the event has non-deterministic parameters, as in \emph{new}, the guard is contained in the \emph{WHERE} clause. Guards are predicates which describe the conditions under which the event is enabled, actions are substitutions which describe the effects of the event. An event describes the transition from the `before' state to the `after' state which happens atomically; that is, there is no intermediate state visible. In a consistent model the guards of an event ensure that its actions do not violate the invariant. When developing a software system it can be useful to view the occurrence of state changes, in shared memory concurrent systems, as atomic events. We aim to relate the atomic state changes of such an implementation to atomic events described in an Event-B model, using OCB. This will simplify reasoning about the system under development since our abstraction does not include details of locking, unlocking and the implementation of conditional waiting. Event-B provides the formal semantics for the OCB notation which is introduced in subsequent chapters.
+
+One important aspect of the Event-B approach is that $any$ enabled event may occur, but only one of the enabled events may occur at any one moment. When modelling certain aspects of a system we may wish to impose an ordering of events. However, there is no sequence operator provided in the Event-B approach. It is therefore necessary to make appropriate use of guards and and state variables to model this aspect of a system. For example if we wish to impose an ordering on two events \emph{evt1} and \emph{evt2} so that $evt1$ occurs before $evt2$ we can use the following approach. Introduce an enumerated set $Grds = \{one,~ two,~ stop\}$ and a variable $step~\in~Grds$. Initially $step~\bcmeq~one$; and we make use of $step$ in the event guards as follows,
+\begin{equation}
+\begin{split}
+&evt1 = \textbf{WHEN}~ step = one~ \textbf{THEN}~\ldots\pprod step \bcmeq two~ \textbf{END}\\
+&evt2 = \textbf{WHEN}~ step = two~ \textbf{THEN}~\ldots\pprod step \bcmeq stop~ \textbf{END}\\
+\end{split}
+\notag
+\end{equation}
+This ensures that initially $evt1$ is enabled and $evt2$ is disabled since $step = one$; only after $evt1$ has updated the $step$ variable  to $two$ is $evt2$ enabled. At this time $evt1$ is no longer enabled since its guard is now false. Finally no events are enabled since $step = stop$ and all guards are false.
+
 
 \subsection{Related Approaches}
 
+
+
 -- VDM
 
+
 -- Z
+\subsection{Code Generation Rationale}
+
 
 \subsection{Targets for Code Generation}
 

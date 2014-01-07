@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{ABR10}
+J.~R. Abrial.
+\newblock {\em {Modeling in Event-B: System and Software Engineering}}.
+\newblock Cambridge University Press, 2010.
+
+\bibitem{TheBBook}
+J.R. Abrial.
+\newblock {\em {The B Book - Assigning Programs to Meanings}}.
+\newblock Cambridge University Press, 1996.
+
+\bibitem{abrial10rodin}
+J.R. Abrial, M.~Butler, S.~Hallerstede, T.S. Hoang, F.~Mehta, and L.~Voisin.
+\newblock {Rodin: An Open Toolset for Modelling and Reasoning in Event-B}.
+\newblock {\em Software Tools for Technology Transfer}, 12(6):447--466,
+  November 2010.
+\newblock \url{http://dx.doi.org/10.1007/s10009-010-0145-y}.
+
+\bibitem{RodinTool}
+{RODIN Project}.
+\newblock at \href{http://rodin.cs.ncl.ac.uk}{http://rodin.cs.ncl.ac.uk}.
+
+\end{thebibliography}
