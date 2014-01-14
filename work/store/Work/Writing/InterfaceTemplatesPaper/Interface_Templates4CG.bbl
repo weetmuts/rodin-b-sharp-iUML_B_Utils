@@ -128,4 +128,11 @@ R.~Silva, C.~Pascal, T.S. Hoang, and M.~Butler.
 \newblock {The OpenMP API specification for parallel programming}.
 \newblock Available at \href{http://openmp.org/wp/}{http://openmp.org/wp/}.
 
+\bibitem{akka}
+{TypeSafe}.
+\newblock {Akka: A Toolkit and Runtime for Building Highly Concurrent,
+  Distributed, and Fault Tolerant Event-driven Applications on the JVM}.
+\newblock Available at
+  \href{http://typesafe.com/platform/runtime/akka}{http://typesafe.com/platform/runtime/akka}.
+
 \end{thebibliography}

@@ -2358,15 +2358,6 @@
   howpublished = {Available at \href{http://www.eclipse.org/}{http://www.eclipse.org/}}
 }
 
-@MISC{JET,
-  author = {{The Eclipse Foundation}},
-  title = {{JET - Java Emitter Templates}},
-  howpublished = {Available at \href{http://www.eclipse.org/modeling/m2t/?project=jet\#jet}{http://www.eclipse.org/modeling/m2t/?project=jet\#jet}},
-  owner = {andy},
-  quality = {1},
-  timestamp = {2013.12.17}
-}
-
 @MISC{xpand,
   author = {{The Eclipse Foundation}},
   title = {{Xpand: A language specialized on code generation based on EMF models}},
@@ -2374,6 +2365,15 @@
   owner = {andy},
   quality = {1},
   timestamp = {2013.12.20}
+}
+
+@MISC{JET,
+  author = {{The Eclipse M2T Project}},
+  title = {{Java Emitter Templates}},
+  howpublished = {Available at \href{http://wiki.eclipse.org/M2T-JET}{http://wiki.eclipse.org/M2T-JET}},
+  owner = {andy},
+  quality = {1},
+  timestamp = {2013.12.17}
 }
 
 @MISC{POSIXStd,

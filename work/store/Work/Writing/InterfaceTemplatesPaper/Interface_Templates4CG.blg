@@ -4,45 +4,45 @@ The top-level auxiliary file: Interface_Templates4CG.aux
 The style file: plain.bst
 Database file #1: MyBibTex.bib
 Warning--can't use both volume and number fields in Butler09a
-You've used 22 entries,
+You've used 23 entries,
             2118 wiz_defined-function locations,
-            615 strings with 7531 characters,
-and the built_in function-call counts, 6283 in all, are:
-= -- 564
-> -- 343
+            619 strings with 7779 characters,
+and the built_in function-call counts, 6487 in all, are:
+= -- 583
+> -- 350
 < -- 2
-+ -- 138
-- -- 116
-* -- 364
-:= -- 1083
-add.period$ -- 69
-call.type$ -- 22
-change.case$ -- 117
++ -- 141
+- -- 118
+* -- 369
+:= -- 1117
+add.period$ -- 72
+call.type$ -- 23
+change.case$ -- 121
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 238
-empty$ -- 531
-format.name$ -- 116
-if$ -- 1307
+cite$ -- 24
+duplicate$ -- 245
+empty$ -- 553
+format.name$ -- 118
+if$ -- 1352
 int.to.chr$ -- 0
-int.to.str$ -- 22
+int.to.str$ -- 23
 missing$ -- 16
-newline$ -- 114
-num.names$ -- 44
-pop$ -- 182
+newline$ -- 119
+num.names$ -- 46
+pop$ -- 190
 preamble$ -- 1
-purify$ -- 100
+purify$ -- 103
 quote$ -- 0
-skip$ -- 172
+skip$ -- 180
 stack$ -- 0
-substring$ -- 178
-swap$ -- 38
+substring$ -- 183
+swap$ -- 39
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 82
+type$ -- 86
 warning$ -- 1
-while$ -- 51
-width$ -- 24
-write$ -- 223
+while$ -- 53
+width$ -- 25
+write$ -- 232
 (There was 1 warning)
