@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.6.4)  15 JAN 2014 15:51
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.6.4)  16 JAN 2014 07:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -873,7 +873,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 23--40
+Overfull \hbox (18.53482pt too wide) in paragraph at lines 23--40
 []\OT1/ptm/m/n/10.95 VARIABLES[] []
  []
 
@@ -922,15 +922,12 @@ Package rerunfilecheck Info: File `JA1.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 131.
  ) 
 Here is how much of TeX's memory you used:
  9420 strings out of 495059
  135476 string characters out of 3182031
- 244639 words of memory out of 3000000
+ 245633 words of memory out of 3000000
  12366 multiletter control sequences out of 15000+200000
  36397 words of font info for 85 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -943,7 +940,7 @@ type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on JA1.pdf (9 pages, 104526 bytes).
+Output written on JA1.pdf (9 pages, 104372 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  184 compressed objects within 2 object streams

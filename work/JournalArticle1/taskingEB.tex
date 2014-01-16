@@ -2,6 +2,19 @@
 
 \subsection{The Language and Semantics}
 
+
+When modelling certain aspects of a system we may wish to impose an ordering of events. However, there is no sequence operator provided in the Event-B approach. It is therefore necessary to make appropriate use of guards and and state variables to model this aspect of a system. For example if we wish to impose an ordering on two events \emph{evt1} and \emph{evt2} so that $evt1$ occurs before $evt2$ we can use the following approach. Introduce an enumerated set $Grds = \{one,~ two,~ stop\}$ and a variable $step~\in~Grds$. Initially $step~\bcmeq~one$; and we make use of $step$ in the event guards as follows,
+\begin{equation}
+\begin{split}
+&evt1 = \textbf{WHEN}~ step = one~ \textbf{THEN}~\ldots\pprod step \bcmeq two~ \textbf{END}\\
+&evt2 = \textbf{WHEN}~ step = two~ \textbf{THEN}~\ldots\pprod step \bcmeq stop~ \textbf{END}\\
+\end{split}
+\notag
+\end{equation}
+This ensures that initially $evt1$ is enabled and $evt2$ is disabled since $step = one$; only after $evt1$ has updated the $step$ variable  to $two$ is $evt2$ enabled. At this time $evt1$ is no longer enabled since its guard is now false. Finally no events are enabled since $step = stop$ and all guards are false.
+
+
+
 \subsection{Theories for TEB}
 
 \subsection{State-machines}
