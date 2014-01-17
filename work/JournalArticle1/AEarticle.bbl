@@ -1,0 +1,56 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{TheBBook}
+Abrial, J.: {The B Book - Assigning Programs to Meanings}.
+\newblock Cambridge University Press (1996)
+
+\bibitem{abrial10rodin}
+Abrial, J., Butler, M., Hallerstede, S., Hoang, T., Mehta, F., Voisin, L.:
+  {Rodin: An Open Toolset for Modelling and Reasoning in Event-B}.
+\newblock Software Tools for Technology Transfer \textbf{12}(6), 447--466
+  (2010).
+\newblock \url{http://dx.doi.org/10.1007/s10009-010-0145-y}
+
+\bibitem{CNP}
+Abrial, J., Cansell, D.: {Click'n Prove: Interactive Proofs within Set Theory.}
+\newblock In: TPHOLs (2003)
+
+\bibitem{ABR10}
+Abrial, J.R.: {Modeling in Event-B: System and Software Engineering}.
+\newblock Cambridge University Press (2010)
+
+\bibitem{Back1990133}
+Back, R., Sere, K.: {Stepwise Refinement of Parallel Algorithms}.
+\newblock Science of Computer Programming \textbf{13}(2-3), 133 -- 180 (1990).
+\newblock \doi{http://dx.doi.org/10.1016/0167-6423(90)90069-P}.
+\newblock
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/016764239090069P}
+
+\bibitem{Butler08}
+Butler, M.: {Incremental Design of Distributed Systems with Event-B} (2008).
+\newblock \urlprefix\url{http://eprints.ecs.soton.ac.uk/16910/}
+
+\bibitem{CNPInterface}
+Cansell, D.: {The Click\_n\_Prove interface}.
+\newblock from
+  \href{http://www.loria.fr/~cansell/cnp.html}{http://www.loria.fr/~cansell/cnp.html}
+
+\bibitem{B4Free}
+{ClearSy}: {B4Free}.
+\newblock from \href{http://www.b4free.com}{http://www.b4free.com}
+
+\bibitem{Hallerstede07}
+Hallerstede, S.: {Justifications for the Event-B Modelling Notation}.
+\newblock In: J.~Julliand, O.~Kouchnarenko (eds.) B, \emph{Lecture Notes in
+  Computer Science}, vol. 4355, pp. 49--63. Springer (2007)
+
+\bibitem{RodinTool}
+{RODIN Project}: at \href{http://rodin.cs.ncl.ac.uk}{http://rodin.cs.ncl.ac.uk}
+
+\end{thebibliography}
