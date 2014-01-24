@@ -6,6 +6,11 @@
   \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
+\bibitem{SPARKAda}
+{SPARKAda}.
+\newblock {Available at \href{http://www.praxis-his.com/sparkada/index.asp}
+  {http://www.praxis-his.com/sparkada/index.asp}}
+
 \bibitem{TheBBook}
 Abrial, J.: {The B Book - Assigning Programs to Meanings}.
 \newblock Cambridge University Press (1996)
@@ -32,6 +37,12 @@ Back, R., Sere, K.: {Stepwise Refinement of Parallel Algorithms}.
 \newblock
   \urlprefix\url{http://www.sciencedirect.com/science/article/pii/016764239090069P}
 
+\bibitem{ada2005}
+Barnes, J.: {Programming in Ada 2005}.
+\newblock International Computer Science Series. Addison Wesley (2006).
+\newblock
+  \urlprefix\url{http://www.amazon.com/Programming-2005-International-Computer-Science/dp/0321340787%3FSubscriptionId%3D13CT5CVB80YFWJEPWS02%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0321340787}
+
 \bibitem{Butler08}
 Butler, M.: {Incremental Design of Distributed Systems with Event-B} (2008).
 \newblock \urlprefix\url{http://eprints.ecs.soton.ac.uk/16910/}
@@ -45,12 +56,94 @@ Cansell, D.: {The Click\_n\_Prove interface}.
 {ClearSy}: {B4Free}.
 \newblock from \href{http://www.b4free.com}{http://www.b4free.com}
 
+\bibitem{B0RefMan}
+ClearSy System Engineering: {The B Language Reference Manual}, version 4.6 edn.
+
+\bibitem{PD}
+{Escher Technologies}: {PerfectDeveloper}.
+\newblock Available at
+  \href{http://www.eschertech.com}{http://www.eschertech.com}
+
+\bibitem{FreitasC06}
+Freitas, A., Cavalcanti, A.: {Automatic Translation from Circus to Java.}
+\newblock In: J.~Misra, T.~Nipkow, E.~Sekerinski (eds.) FM, \emph{Lecture Notes
+  in Computer Science}, vol. 4085, pp. 115--130. Springer (2006)
+
 \bibitem{Hallerstede07}
 Hallerstede, S.: {Justifications for the Event-B Modelling Notation}.
-\newblock In: J.~Julliand, O.~Kouchnarenko (eds.) B, \emph{Lecture Notes in
-  Computer Science}, vol. 4355, pp. 49--63. Springer (2007)
+\newblock In: Julliand and Kouchnarenko  \cite{DBLP:conf/b/2007}, pp. 49--63
+
+\bibitem{HO85CSP}
+Hoare, C.: Communicating Sequential Processes.
+\newblock Prentice Hall (1985)
+
+\bibitem{DBLP:conf/b/2007}
+Julliand, J., Kouchnarenko, O. (eds.): B 2007: Formal Specification and
+  Development in B, 7th International Conference of B Users, Besan\c{c}on,
+  France, January 17-19, 2007, Proceedings, \emph{Lecture Notes in Computer
+  Science}, vol. 4355. Springer (2006)
+
+\bibitem{KernighanR88}
+Kernighan, B., Ritchie, D.: The C Programming Language, Second Edition.
+\newblock Prentice-Hall (1988).
+\newblock \urlprefix\url{http://cm.bell-labs.com/cm/cs/cbook/}
+
+\bibitem{LeuschelB08}
+Leuschel, M., Butler, M.: {ProB: an automated analysis toolset for the B
+  method.}
+\newblock STTT \textbf{10}(2), 185--203 (2008).
+\newblock
+  \urlprefix\url{http://dblp.uni-trier.de/db/journals/sttt/sttt10.html#LeuschelB08}
 
 \bibitem{RodinTool}
 {RODIN Project}: at \href{http://rodin.cs.ncl.ac.uk}{http://rodin.cs.ncl.ac.uk}
+
+\bibitem{Roscoe1997}
+Roscoe, A.W., Hoare, C.A.R., Bird, R.: The Theory and Practice of Concurrency.
+\newblock Prentice Hall PTR, Upper Saddle River, NJ, USA (1997)
+
+\bibitem{SchneiderT02}
+Schneider, S., Treharne, H.: {Communicating B Machines}.
+\newblock In: D.~Bert, J.P. Bowen, M.C. Henson, K.~Robinson (eds.) ZB,
+  \emph{Lecture Notes in Computer Science}, vol. 2272, pp. 416--435. Springer
+  (2002)
+
+\bibitem{GSmith2000}
+Smith, G.: The Object-Z specification language.
+\newblock Kluwer Academic Publishers, Norwell, MA, USA (2000)
+
+\bibitem{Spivey89}
+Spivey, J.M.: The Z notation: A Reference Manual.
+\newblock Prentice-Hall, Inc., Upper Saddle River, NJ, USA (1989)
+
+\bibitem{Stevens06}
+Stevens, B.: {Implementing Object-Z with Perfect Developer}.
+\newblock Journal of Object Technology \textbf{5}(2), 189--202 (2006)
+
+\bibitem{advance}
+{The Advance Project Team}: {Advanced Design and Verification Environment for
+  Cyber-physical System Engineering}.
+\newblock {Available at \href{http://www.advance-ict.eu}
+  {http://www.advance-ict.eu}}
+
+\bibitem{DEPLOY}
+{The DEPLOY Project Team}: {Project Website}.
+\newblock at \href{http://www.deploy-project.eu/}
+  {http://www.deploy-project.eu/}.
+\newblock \urlprefix\url{http://www.deploy-project.eu/}
+
+\bibitem{JCSPMulti}
+Welch, P., Martin, J.: {A CSP Model for Java Multithreading}.
+\newblock In: Software Engineering for Parallel and Distributed Systems (2000)
+
+\bibitem{WoodcockC01}
+Woodcock, J., Cavalcanti, A.: {A Concurrent Language for Refinement}.
+\newblock In: A.~Butterfield, G.~Strong, C.~Pahl (eds.) IWFM, Workshops in
+  Computing. BCS (2001)
+
+\bibitem{YangPop2007}
+Yang, L., Poppleton, M.: {Automatic Translation from Combined B and CSP
+  Specification to Java Programs}.
+\newblock In: Julliand and Kouchnarenko  \cite{DBLP:conf/b/2007}, pp. 64--78
 
 \end{thebibliography}

@@ -6,46 +6,56 @@ A level-1 auxiliary file: Event-B.aux
 A level-1 auxiliary file: taskingEB.aux
 A level-1 auxiliary file: tooling.aux
 A level-1 auxiliary file: conc.aux
+White space in argument---line 10 of file conc.aux
+ : \citation{JCSPMulti,
+ :                      JCSPNet}
+I'm skipping whatever remains of this command
+White space in argument---line 11 of file conc.aux
+ : \citation{SchneiderT02,
+ :                         SchneiderT05}
+I'm skipping whatever remains of this command
 The style file: spmpsci.bst
 Database file #1: MyBibTex.bib.bib
-You've used 10 entries,
+Warning--to sort, need author or key in SPARKAda
+You've used 29 entries,
             2946 wiz_defined-function locations,
-            677 strings with 6291 characters,
-and the built_in function-call counts, 5222 in all, are:
-= -- 529
-> -- 112
-< -- 2
-+ -- 62
-- -- 36
-* -- 223
-:= -- 575
-add.period$ -- 13
-call.type$ -- 10
-change.case$ -- 49
+            799 strings with 9347 characters,
+and the built_in function-call counts, 14444 in all, are:
+= -- 1433
+> -- 312
+< -- 9
++ -- 175
+- -- 98
+* -- 639
+:= -- 1586
+add.period$ -- 38
+call.type$ -- 29
+change.case$ -- 137
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 554
-empty$ -- 428
-format.name$ -- 40
-if$ -- 1107
+cite$ -- 30
+duplicate$ -- 1533
+empty$ -- 1214
+format.name$ -- 119
+if$ -- 3100
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 80
-newline$ -- 50
-num.names$ -- 22
-pop$ -- 242
+int.to.str$ -- 29
+missing$ -- 234
+newline$ -- 128
+num.names$ -- 63
+pop$ -- 660
 preamble$ -- 1
-purify$ -- 37
+purify$ -- 103
 quote$ -- 0
-skip$ -- 261
+skip$ -- 711
 stack$ -- 0
-substring$ -- 190
-swap$ -- 398
-text.length$ -- 2
+substring$ -- 507
+swap$ -- 1059
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
-warning$ -- 0
-while$ -- 29
-width$ -- 12
-write$ -- 102
+type$ -- 99
+warning$ -- 1
+while$ -- 78
+width$ -- 31
+write$ -- 281
+(There were 2 error messages)
