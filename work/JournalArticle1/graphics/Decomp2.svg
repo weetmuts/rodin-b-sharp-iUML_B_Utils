@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="385.85251"
+   height="345.03159"
+   sodipodi:docname="Decomp2.svg">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path3945"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path3948"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1301"
+     inkscape:window-height="744"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="false"
+     inkscape:zoom="1.7302764"
+     inkscape:cx="192.92626"
+     inkscape:cy="172.51579"
+     inkscape:window-x="1345"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+     x="12.031069"
+     y="101.40404"
+     id="text2985"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan2987"
+       x="12.031069"
+       y="101.40404"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3775">machine</tspan> m</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="118.90404"
+       id="tspan2991"><tspan
+   id="tspan5314"
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">variables</tspan> v1 v2</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="136.40404"
+       id="tspan2993"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">events</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="153.90404"
+       id="tspan2995"> e =</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="171.40404"
+       id="tspan2997"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3777">   any</tspan> p, q</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="188.90404"
+       id="tspan2999"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3779">   where</tspan> g(v1, v2, p, q)</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="206.40404"
+       id="tspan3001"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3781">   then</tspan> a(v1, v2, p, q)</tspan><tspan
+       sodipodi:role="line"
+       x="12.031069"
+       y="223.90402"
+       id="tspan3003"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">   end</tspan></text>
+  <rect
+     style="fill:none;stroke:#000000;stroke-width:0.94244409;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+     id="rect3005"
+     width="149.50511"
+     height="152.77591"
+     x="0.47122204"
+     y="87.071075" />
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+     x="264.24664"
+     y="28.226885"
+     id="text2985-8"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan2987-9"
+       x="264.24664"
+       y="28.226885"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3775-4">machine</tspan> m<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3861">a</tspan></tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="45.726879"
+       id="tspan2991-9"><tspan
+   id="tspan5316"
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">variables </tspan>v1 </tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="63.226879"
+       id="tspan2993-9"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">events</tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="80.726883"
+       id="tspan2995-6"> e<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3863">a</tspan> =</tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="98.226883"
+       id="tspan2997-8"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3777-3">   any</tspan> p</tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="115.72688"
+       id="tspan2999-6"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3779-4">   where</tspan> g(v1, p)</tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="133.22688"
+       id="tspan3001-9"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3781-4">   then</tspan> a(v1, p)</tspan><tspan
+       sodipodi:role="line"
+       x="264.24664"
+       y="150.72688"
+       id="tspan3003-0"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">   end</tspan></text>
+  <rect
+     style="fill:none;stroke:#000000;stroke-width:0.84549278;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+     id="rect3005-2"
+     width="125.47395"
+     height="146.50957"
+     x="252.63832"
+     y="11.669068" />
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+     x="265.54816"
+     y="183.88319"
+     id="text2985-8-3"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan2987-9-0"
+       x="265.54816"
+       y="183.88319"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3775-4-0">machine</tspan> m<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3861-8">b</tspan></tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="201.38319"
+       id="tspan2991-9-7"><tspan
+   id="tspan5318"
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">variables</tspan> v2 </tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="218.88319"
+       id="tspan2993-9-9"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">events</tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="236.38321"
+       id="tspan2995-6-8"> e<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3863-5">b</tspan> =</tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="253.88321"
+       id="tspan2997-8-3"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">   any <tspan
+   style="font-weight:normal;fill:#000000;-inkscape-font-specification:'Times New Roman,'"
+   id="tspan5311">q</tspan></tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="271.38321"
+       id="tspan2999-6-6"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3779-4-5">   where</tspan> g(v2, q)</tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="288.88321"
+       id="tspan3001-9-3"><tspan
+   style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
+   id="tspan3781-4-1">   then</tspan> a(v2, q)</tspan><tspan
+       sodipodi:role="line"
+       x="265.54816"
+       y="306.38321"
+       id="tspan3003-0-3"
+       style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">   end</tspan></text>
+  <rect
+     style="fill:none;stroke:#000000;stroke-width:0.84953791;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+     id="rect3005-2-2"
+     width="125.4699"
+     height="147.91959"
+     x="253.94186"
+     y="167.32738" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:none"
+     d="M 150.41157,167.92743 252.42688,80.607699"
+     id="path3931"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:none"
+     d="m 151.01324,169.23609 102.76888,71.04672"
+     id="path3933"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <rect
+     style="fill:none;stroke:#000000;stroke-width:0.99996448;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:0.99996451, 2.99989353;stroke-dashoffset:0"
+     id="rect4563"
+     width="139.00961"
+     height="344.03162"
+     x="246.34293"
+     y="0.49998224" />
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+     x="158.58734"
+     y="273.36111"
+     id="text5303"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan5305"
+       x="158.58734"
+       y="273.36111">Decomposes</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+     x="260.91302"
+     y="333.65793"
+     id="text5307"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan5309"
+       x="260.91302"
+       y="333.65793">Composed Machine</tspan></text>
+</svg>

@@ -6,10 +6,12 @@
   \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
+\bibitem{pthreads}
+{POSIX.1c, Threads extensions, IEEE Std 1003.1, 2004 Edition}
+
 \bibitem{SPARKAda}
 {SPARKAda}.
-\newblock {Available at \href{http://www.praxis-his.com/sparkada/index.asp}
-  {http://www.praxis-his.com/sparkada/index.asp}}
+\newblock \urlprefix\url{http://www.adacore.com/sparkpro/}
 
 \bibitem{TheBBook}
 Abrial, J.: {The B Book - Assigning Programs to Meanings}.
@@ -20,15 +22,24 @@ Abrial, J., Butler, M., Hallerstede, S., Hoang, T., Mehta, F., Voisin, L.:
   {Rodin: An Open Toolset for Modelling and Reasoning in Event-B}.
 \newblock Software Tools for Technology Transfer \textbf{12}(6), 447--466
   (2010).
-\newblock \url{http://dx.doi.org/10.1007/s10009-010-0145-y}
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/s10009-010-0145-y}
 
-\bibitem{CNP}
-Abrial, J., Cansell, D.: {Click'n Prove: Interactive Proofs within Set Theory.}
-\newblock In: TPHOLs (2003)
+\bibitem{AbrialH07}
+Abrial, J., Hallerstede, S.: {Refinement, Decomposition, and Instantiation of
+  Discrete Models: Application to Event-B}.
+\newblock Fundam. Inform. \textbf{77}(1-2), 1--28 (2007)
 
 \bibitem{ABR10}
 Abrial, J.R.: {Modeling in Event-B: System and Software Engineering}.
 \newblock Cambridge University Press (2010)
+
+\bibitem{CNP}
+Abrial, J.R., Cansell, D.: Click’n prove: Interactive proofs within set theory.
+\newblock In: D.~Basin, B.~Wolff (eds.) Theorem Proving in Higher Order Logics,
+  \emph{Lecture Notes in Computer Science}, vol. 2758, pp. 1--24. Springer
+  Berlin Heidelberg (2003).
+\newblock \doi{10.1007/10930755_1}.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/10930755_1}
 
 \bibitem{Back1990133}
 Back, R., Sere, K.: {Stepwise Refinement of Parallel Algorithms}.
@@ -40,24 +51,34 @@ Back, R., Sere, K.: {Stepwise Refinement of Parallel Algorithms}.
 \bibitem{ada2005}
 Barnes, J.: {Programming in Ada 2005}.
 \newblock International Computer Science Series. Addison Wesley (2006).
-\newblock
-  \urlprefix\url{http://www.amazon.com/Programming-2005-International-Computer-Science/dp/0321340787%3FSubscriptionId%3D13CT5CVB80YFWJEPWS02%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0321340787}
+\newblock ISBN-10: 0321340787 / ISBN-13: 9780321340788
 
 \bibitem{Butler08}
 Butler, M.: {Incremental Design of Distributed Systems with Event-B} (2008).
 \newblock \urlprefix\url{http://eprints.ecs.soton.ac.uk/16910/}
 
-\bibitem{CNPInterface}
-Cansell, D.: {The Click\_n\_Prove interface}.
-\newblock from
-  \href{http://www.loria.fr/~cansell/cnp.html}{http://www.loria.fr/~cansell/cnp.html}
-
 \bibitem{B4Free}
 {ClearSy}: {B4Free}.
 \newblock from \href{http://www.b4free.com}{http://www.b4free.com}
 
+\bibitem{atelierB}
+{Clearsy System Engineering}: {The Atelier B Tool}.
+\newblock \urlprefix\url{http://www.atelierb.eu/en/}
+
 \bibitem{B0RefMan}
 ClearSy System Engineering: {The B Language Reference Manual}, version 4.6 edn.
+
+\bibitem{Edmunds2009}
+Edmunds, A.: Providing concurrent implementations for event-b developments.
+\newblock Ph.D. thesis, University of Southampton (2010).
+\newblock \urlprefix\url{http://eprints.soton.ac.uk/141688/}
+
+\bibitem{Edmunds2012a}
+Edmunds, A., Rezazadeh, A., Butler, M.: {Formal Modelling for Ada
+  Implementations: Tasking Event-B}.
+\newblock In: {Ada-Europe 2012: 17th International Conference on Reliable
+  Software Technologies} (2012).
+\newblock \urlprefix\url{http://eprints.soton.ac.uk/335400/}
 
 \bibitem{PD}
 {Escher Technologies}: {PerfectDeveloper}.
@@ -68,6 +89,11 @@ ClearSy System Engineering: {The B Language Reference Manual}, version 4.6 edn.
 Freitas, A., Cavalcanti, A.: {Automatic Translation from Circus to Java.}
 \newblock In: J.~Misra, T.~Nipkow, E.~Sekerinski (eds.) FM, \emph{Lecture Notes
   in Computer Science}, vol. 4085, pp. 115--130. Springer (2006)
+
+\bibitem{JavaSpec}
+Gosling, J., Joy, B., Steele, G., Bracha, G.: {Java Language Specification -
+  Third Edition}.
+\newblock Addison-Wesley (2004)
 
 \bibitem{Hallerstede07}
 Hallerstede, S.: {Justifications for the Event-B Modelling Notation}.
@@ -95,6 +121,11 @@ Leuschel, M., Butler, M.: {ProB: an automated analysis toolset for the B
 \newblock
   \urlprefix\url{http://dblp.uni-trier.de/db/journals/sttt/sttt10.html#LeuschelB08}
 
+\bibitem{JCSPNet}
+P.H.Welch, Aldous, J., Foster, J.: {CSP Networking for Java (JCSP.net)}.
+\newblock In: Computational Science - ICCS 2002: International Conference
+  (2002)
+
 \bibitem{RodinTool}
 {RODIN Project}: at \href{http://rodin.cs.ncl.ac.uk}{http://rodin.cs.ncl.ac.uk}
 
@@ -107,6 +138,21 @@ Schneider, S., Treharne, H.: {Communicating B Machines}.
 \newblock In: D.~Bert, J.P. Bowen, M.C. Henson, K.~Robinson (eds.) ZB,
   \emph{Lecture Notes in Computer Science}, vol. 2272, pp. 416--435. Springer
   (2002)
+
+\bibitem{SchneiderT05}
+Schneider, S., Treharne, H.: {CSP Theorems for Communicating B Machines}.
+\newblock Formal Asp. Comput. \textbf{17}(4), 390--422 (2005)
+
+\bibitem{decomp2010c}
+Silva, R., Butler, M.: {Shared Event Composition/Decomposition in Event-B}.
+\newblock In: FMCO Formal Methods for Components and Objects (2010).
+\newblock \urlprefix\url{http://eprints.soton.ac.uk/272178/}.
+\newblock Event Dates: 29 November - 1 December 2010
+
+\bibitem{decomp2010b}
+Silva, R., Pascal, C., Hoang, T., Butler, M.: {Decomposition Tool for Event-B}.
+\newblock Software: Practice and Experience  (2010).
+\newblock \urlprefix\url{http://eprints.ecs.soton.ac.uk/21714/}
 
 \bibitem{GSmith2000}
 Smith, G.: The Object-Z specification language.
@@ -131,6 +177,16 @@ Stevens, B.: {Implementing Object-Z with Perfect Developer}.
 \newblock at \href{http://www.deploy-project.eu/}
   {http://www.deploy-project.eu/}.
 \newblock \urlprefix\url{http://www.deploy-project.eu/}
+
+\bibitem{FMISTD}
+{The Modelica Association Project}: {The Functional Mock-up Interface}.
+\newblock Available at
+  \href{https://www.fmi-standard.org/}{https://www.fmi-standard.org/}
+
+\bibitem{openmp}
+{The OpenMP Architecture Review Board}: {The OpenMP API specification for
+  parallel programming}.
+\newblock Available at \href{http://openmp.org/wp/}{http://openmp.org/wp/}
 
 \bibitem{JCSPMulti}
 Welch, P., Martin, J.: {A CSP Model for Java Multithreading}.
