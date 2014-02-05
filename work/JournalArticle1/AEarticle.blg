@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: AEarticle.aux
 A level-1 auxiliary file: Intro.aux
@@ -9,48 +9,49 @@ A level-1 auxiliary file: conc.aux
 The style file: spmpsci.bst
 Database file #1: MyBibTex.bib.bib
 Warning--entry type for "pthreads" isn't style-file defined
---line 2943 of file MyBibTex.bib.bib
+--line 2894 of file MyBibTex.bib.bib
 Warning--to sort, need author or key in pthreads
 Warning--to sort, need author or key in SPARKAda
-You've used 40 entries,
+Warning--empty note in issam2013
+You've used 41 entries,
             2946 wiz_defined-function locations,
-            870 strings with 10964 characters,
-and the built_in function-call counts, 19718 in all, are:
-= -- 1922
-> -- 455
+            876 strings with 11083 characters,
+and the built_in function-call counts, 19972 in all, are:
+= -- 1943
+> -- 462
 < -- 11
-+ -- 246
-- -- 146
-* -- 897
-:= -- 2206
-add.period$ -- 56
-call.type$ -- 40
-change.case$ -- 199
++ -- 249
+- -- 148
+* -- 912
+:= -- 2248
+add.period$ -- 57
+call.type$ -- 41
+change.case$ -- 203
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 2077
-empty$ -- 1658
-format.name$ -- 175
-if$ -- 4214
+cite$ -- 44
+duplicate$ -- 2100
+empty$ -- 1680
+format.name$ -- 177
+if$ -- 4264
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 326
-newline$ -- 178
-num.names$ -- 85
-pop$ -- 894
+int.to.str$ -- 41
+missing$ -- 330
+newline$ -- 182
+num.names$ -- 87
+pop$ -- 901
 preamble$ -- 1
-purify$ -- 148
+purify$ -- 151
 quote$ -- 0
-skip$ -- 945
+skip$ -- 952
 stack$ -- 0
-substring$ -- 657
-swap$ -- 1407
+substring$ -- 662
+swap$ -- 1416
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 141
-warning$ -- 2
-while$ -- 106
-width$ -- 42
-write$ -- 393
-(There were 3 warnings)
+type$ -- 145
+warning$ -- 3
+while$ -- 108
+width$ -- 43
+write$ -- 402
+(There were 4 warnings)

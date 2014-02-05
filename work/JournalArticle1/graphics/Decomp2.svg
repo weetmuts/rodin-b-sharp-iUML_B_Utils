@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -158,13 +158,13 @@
    id="tspan3861">a</tspan></tspan><tspan
        sodipodi:role="line"
        x="264.24664"
-       y="45.726879"
+       y="45.726883"
        id="tspan2991-9"><tspan
    id="tspan5316"
    style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">variables </tspan>v1 </tspan><tspan
        sodipodi:role="line"
        x="264.24664"
-       y="63.226879"
+       y="63.226883"
        id="tspan2993-9"
        style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">events</tspan><tspan
        sodipodi:role="line"
@@ -184,13 +184,17 @@
        y="115.72688"
        id="tspan2999-6"><tspan
    style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
-   id="tspan3779-4">   where</tspan> g(v1, p)</tspan><tspan
+   id="tspan3779-4">   where</tspan> g<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3041">a</tspan>(v1, p)</tspan><tspan
        sodipodi:role="line"
        x="264.24664"
        y="133.22688"
        id="tspan3001-9"><tspan
    style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
-   id="tspan3781-4">   then</tspan> a(v1, p)</tspan><tspan
+   id="tspan3781-4">   then</tspan> a<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3043">a</tspan>(v1, p)</tspan><tspan
        sodipodi:role="line"
        x="264.24664"
        y="150.72688"
@@ -231,32 +235,36 @@
        style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">events</tspan><tspan
        sodipodi:role="line"
        x="265.54816"
-       y="236.38321"
+       y="236.38319"
        id="tspan2995-6-8"> e<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
    id="tspan3863-5">b</tspan> =</tspan><tspan
        sodipodi:role="line"
        x="265.54816"
-       y="253.88321"
+       y="253.88319"
        id="tspan2997-8-3"
        style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">   any <tspan
    style="font-weight:normal;fill:#000000;-inkscape-font-specification:'Times New Roman,'"
    id="tspan5311">q</tspan></tspan><tspan
        sodipodi:role="line"
        x="265.54816"
-       y="271.38321"
+       y="271.38318"
        id="tspan2999-6-6"><tspan
    style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
-   id="tspan3779-4-5">   where</tspan> g(v2, q)</tspan><tspan
+   id="tspan3779-4-5">   where</tspan> g<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3045">b</tspan>(v2, q)</tspan><tspan
        sodipodi:role="line"
        x="265.54816"
-       y="288.88321"
+       y="288.88318"
        id="tspan3001-9-3"><tspan
    style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'"
-   id="tspan3781-4-1">   then</tspan> a(v2, q)</tspan><tspan
+   id="tspan3781-4-1">   then</tspan> a<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3047">b</tspan>(v2, q)</tspan><tspan
        sodipodi:role="line"
        x="265.54816"
-       y="306.38321"
+       y="306.38318"
        id="tspan3003-0-3"
        style="font-weight:bold;fill:#0000ff;-inkscape-font-specification:'Times New Roman, Bold'">   end</tspan></text>
   <rect
