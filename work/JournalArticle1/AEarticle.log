@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  7 FEB 2014 12:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  7 FEB 2014 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -454,32 +454,37 @@ Package pdftex.def Info: graphics/B_IL1_others.png used on input line 38.
 ) [9 <./graphics/Decomp2.png>] [10 <./graphics/B_IL1_others.png>]
 \openout2 = `taskingEB.aux'.
 
- (./taskingEB.tex) [11
+ (./taskingEB.tex
+Underfull \hbox (badness 10000) in paragraph at lines 12--18
+
+ []
+
+[11
 
 
-]
+]) [12]
 \openout2 = `tooling.aux'.
 
- (./tooling.tex) [12
+ (./tooling.tex) [13
 
 
 ]
 \openout2 = `conc.aux'.
 
- (./conc.tex
-[13
+ (./conc.tex [14
 
 
-]) [14] (./AEarticle.bbl
+]) [15] (./AEarticle.bbl
 Missing character: There is no ’ in font cmr8!
- [15
+
+[16
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
- [16]
+ [17]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
- (./AEarticle.aux (./Intro.aux)
-(./Event-B.aux) (./taskingEB.aux) (./tooling.aux) (./conc.aux))
+ (./AEarticle.aux (./Intro.aux) (./Event-B.aux) (./taskingEB.aux)
+(./tooling.aux) (./conc.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
 Package rerunfilecheck Info: File `AEarticle.out' has not changed.
@@ -491,13 +496,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 6943 strings out of 495031
- 100165 string characters out of 6181531
- 187865 words of memory out of 5000000
- 9930 multiletter control sequences out of 15000+600000
+ 6945 strings out of 495031
+ 100177 string characters out of 6181531
+ 187896 words of memory out of 5000000
+ 9931 multiletter control sequences out of 15000+600000
  12976 words of font info for 49 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 32i,17n,30p,2798b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,9n,30p,2798b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
@@ -506,16 +511,18 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on AEarticle.pdf (16 pages, 269632 bytes).
+/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on AEarticle.pdf (17 pages, 285669 bytes).
 PDF statistics:
- 408 PDF objects out of 1000 (max. 8388607)
- 311 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
+ 421 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 96 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

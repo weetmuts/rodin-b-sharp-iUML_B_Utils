@@ -1,21 +1,38 @@
 \section{Tasking Event-B}\label{TEB}
-In this section we begin our discussion about Tasking Event-B. We begin by describing the Event-B semantics of the notation. 
-\subsection{The Language and Semantics}
-An Event-B model is an abstraction of a system, the evolution of the state is described using events. The guard of an event describes the conditions which must hold prior to an event being enabled. The actions describe the values of the state variables after the event has occurred. Proof obligations are generated, to ensure that the actions update the state with values that satisfy invariant. As a result, a system that is consistent, can be described using events that do not impose an ordering. Since, in Event-B, any enabled event can occur. Now as we approach the implementation-level specification, we will consider how the behaviour of a task-like implementation construct can be modelled in Event-B, and this will include the notion of ordering of events. In the discussion, we distinguish between the behaviour of a task, such as it's life-cycle (an implementation-level issue) and the behaviour relating to the state updates above the implementation-level. Therefore an implementation-level development can be seen as a refinement of the abstract development.
+In this section we begin our discussion about Tasking Event-B. We begin by describing the Event-B semantics of the notation. An Event-B model is an abstraction of a system, the evolution of the state is described using events. The guard of an event describes the conditions which must hold prior to an event being enabled. The actions describe the values of the state variables after the event has occurred. Proof obligations are generated, to ensure that the actions update the state with values that satisfy invariant. As a result, a system that is consistent, can be described using events that do not impose an ordering. Since, in Event-B, any enabled event can occur. Now, as we approach the implementation-level specification, we will consider how the behaviour of a task-like implementation construct can be modelled in Event-B, and we will introduce a notation for the purpose of ordering of events. In the following discussion, we distinguish between the behaviour of a task, such as it's life-cycle (which is not modelled formally) and the updates to state (which are modelled formally). In our approach we intend that the implementation-level development be a refinement of the abstract development. We will therefore introduce notations that assist with the formal and non-formal aspects of the specification. The non-formal aspects of the notation are required in the case that we want to generate code for periodic tasks, for instance. 
 
-To enable us to impose sequential order on events we introduce two notions. The first is the \emph{TaskBody}. The task body is an extension to standard Event-B, that allows an implementation-level specification that includes an event ordering notation. The second notion is that of a sequential operator.
+\subsection{Flow Control for Events}
+To enable us to impose sequential order on events we introduce two notions. The first is the \emph{task body}. The task body is an extension to the standard Event-B constructs of variables, events and so on. The task body is a place to specify implementation-level detail using an event ordering notation. The second notion is that of a sequential operator; this is one one the operators that can be used in the task body.
+
+In a model with two events \emph{evt1} and \emph{evt2}, if we wish to order them sequentially, we can write \emph{evt1;evt2} where we use the semi-colon as the sequence operator. To impose an ordering we introduce a Boolean flow control variable for each event. When set to TRUE the event of that name can occur. We see this is Fig.~\ref{fig:seq}. 
+%
+\begin{figure}
+\centering
+\begin{minipage}{0.7\textwidth}
+Variables evt1, evt2\\
+Invariant evt1 $\in \Bool \land$ evt2 $\in \Bool$  \\
+Initialisation = evt1 $\bcmeq$ TRUE $\pprod$ evt2 $\bcmeq$ FALSE\\
+evt1 = \textbf{WHEN}~ evt1 = TRUE~ \textbf{THEN}~$A_1~ \pprod$ evt1 = FALSE $\\
+\hspace*{1.0cm} \pprod$ evt2 = TRUE \textbf{END}\\
+evt2 = \textbf{WHEN}~ evt2 = TRUE~ \textbf{THEN}~$A_2~ \pprod$ evt2 = FALSE  \textbf{END}\\
+\end{minipage}
+\caption{Sequence}
+\label{fig:seq}
+\end{figure}
+Initially $evt1$ is enabled and $evt2$ is disabled, since $evt1 = TRUE$ and $evt2 = FALSE$. The update action $A_1$ occurs, with the control variable updates setting \emph{evt1} to $FALSE$ and $evt2$ to $TRUE$. Therefore the next step is for the event $evt2$ to be enabled, and so on.
+
+T(e_1 ; e_2) =
+T(e_1, e_2);T(e_2, _)
+
+e_1 = g_1 \rightarrow a_1
 
 
 
-When modelling certain aspects of a system we may wish to impose an ordering of events. However, there is no sequence operator provided in the Event-B approach. It is therefore necessary to make appropriate use of guards and and state variables to model this aspect of a system. For example if we wish to impose an ordering on two events \emph{evt1} and \emph{evt2} so that $evt1$ occurs before $evt2$ we can use the following approach. Introduce an enumerated set $Grds = \{one,~ two,~ stop\}$ and a variable $step~\in~Grds$. Initially $step~\bcmeq~one$; and we make use of $step$ in the event guards as follows,
-\begin{equation}
-\begin{split}
-&evt1 = \textbf{WHEN}~ step = one~ \textbf{THEN}~\ldots\pprod step \bcmeq two~ \textbf{END}\\
-&evt2 = \textbf{WHEN}~ step = two~ \textbf{THEN}~\ldots\pprod step \bcmeq stop~ \textbf{END}\\
-\end{split}
-\notag
-\end{equation}
-This ensures that initially $evt1$ is enabled and $evt2$ is disabled since $step = one$; only after $evt1$ has updated the $step$ variable  to $two$ is $evt2$ enabled. At this time $evt1$ is no longer enabled since its guard is now false. Finally no events are enabled since $step = stop$ and all guards are false.
+For branching
+
+
+To the CLM:
+In many programming languages we see the semi-colon `;' used as a delimiter, to terminate a program statement. A sequence of program statements is constructed by appending semi-colon delimited statements. In formal languages we often use the semi-colon as an operator. When thinking about a sequence of events we need to consider the relationship between our notion of sequence, and the delimiter used in these languages. An event is an atomic update; so, in a multi-tasking environment, it should be implemented with the necessary protection mechanisms. The CLM isolates us from this.   
 
 
 
