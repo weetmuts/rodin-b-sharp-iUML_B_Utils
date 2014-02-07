@@ -1,6 +1,10 @@
 \section{Tasking Event-B}\label{TEB}
-
+In this section we begin our discussion about Tasking Event-B. We begin by describing the Event-B semantics of the notation. 
 \subsection{The Language and Semantics}
+An Event-B model is an abstraction of a system, the evolution of the state is described using events. The guard of an event describes the conditions which must hold prior to an event being enabled. The actions describe the values of the state variables after the event has occurred. Proof obligations are generated, to ensure that the actions update the state with values that satisfy invariant. As a result, a system that is consistent, can be described using events that do not impose an ordering. Since, in Event-B, any enabled event can occur. Now as we approach the implementation-level specification, we will consider how the behaviour of a task-like implementation construct can be modelled in Event-B, and this will include the notion of ordering of events. In the discussion, we distinguish between the behaviour of a task, such as it's life-cycle (an implementation-level issue) and the behaviour relating to the state updates above the implementation-level. Therefore an implementation-level development can be seen as a refinement of the abstract development.
+
+To enable us to impose sequential order on events we introduce two notions. The first is the \emph{TaskBody}. The task body is an extension to standard Event-B, that allows an implementation-level specification that includes an event ordering notation. The second notion is that of a sequential operator.
+
 
 
 When modelling certain aspects of a system we may wish to impose an ordering of events. However, there is no sequence operator provided in the Event-B approach. It is therefore necessary to make appropriate use of guards and and state variables to model this aspect of a system. For example if we wish to impose an ordering on two events \emph{evt1} and \emph{evt2} so that $evt1$ occurs before $evt2$ we can use the following approach. Introduce an enumerated set $Grds = \{one,~ two,~ stop\}$ and a variable $step~\in~Grds$. Initially $step~\bcmeq~one$; and we make use of $step$ in the event guards as follows,
