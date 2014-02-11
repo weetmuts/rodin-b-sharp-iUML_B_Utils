@@ -1,0 +1,23 @@
+(d)SparkAda is a subset of the Ada programming language, used in
+critical systems. Describe how its language features make it suitable
+for use in critical systems.
+(4 marks)
+(e) For the e-mail system, identify and distinguish between
+the tasks and shared components.
+(1 marks)
+(f) In a situation where message sending is performed in a safety
+critical system, What are the safety requirements relating to the
+sending of messages? (Think about what could go wrong and cause
+damage or injury, and what you need, to ensure safe operation).
+(3 marks)
+(g) Write down an event that increments a counter, recording the
+count of characters sent. Define and explain any variables you use.
+(4 marks)
+(h) Write down an event that models sending a character in a
+message. Define and explain any variables you use in the guard
+and the action.
+(2 marks)
+(i) Write down the event of part (h) above, prepared for decomposition.
+It should be refined by adding a parameter to the event. Explain
+briefly why you need to do this.
+(4 marks)
