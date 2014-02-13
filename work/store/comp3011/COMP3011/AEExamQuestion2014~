@@ -29,15 +29,50 @@ The message content should not be tampered with (Use hashing).
 When a message is sent, the sender should recieve an acknowledgement of reciept within a certain time.
 
 (g) Write down an event that increments a counter, recording the
-count of characters sent. Define and explain any variables you use.
+count of characters sent. It is conditional on an acknowledgement
+being received. Define and explain any variables you use.
+(3 marks)
+
+ANSWER
+increment =
+WHEN 
+ received = TRUE
+THEN 
+ count = count + 1
+ received = FALSE
+END
+
+(h) Write down an event without a parameter that models sending a 
+character to a buffer. Use an assignment in the form  array(i) := x.
+Increment the index i;
+Define and explain any variables you use in the guard
+and the action.
 (4 marks)
 
-(h) Write down an event that models sending a character in a
-message. Define and explain any variables you use in the guard
-and the action.
-(2 marks)
+ANSWER
+send =
+WHEN
+ outBufferCount < MAX
+THEN
+ array(outBuffercount) := char
+ outBuffercount := outBufferCount + 1
+END
 
 (i) Write down the event of part (h) above, prepared for decomposition.
-It should be refined by adding a parameter to the event. Explain
+It should be refined by adding an INTEGER parameter to the event. Explain
 briefly why you need to do this.
 (4 marks)
+
+send =
+REFINES send
+ANY param
+WHERE 
+ param : INT && 
+ outBufferCount < MAX
+THEN 
+ array(outBuffercount) := param
+ outBuffercount := outBufferCount + 1
+END
+
+
+
