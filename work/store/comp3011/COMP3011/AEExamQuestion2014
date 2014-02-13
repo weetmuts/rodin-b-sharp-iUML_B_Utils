@@ -2,21 +2,44 @@
 critical systems. Describe how its language features make it suitable
 for use in critical systems.
 (4 marks)
+
+ANSWER
+It is a safe subset of the language which is amenable to formal verification. It is
+an established technology. Different levels of analysis can be used, data flow,
+information flow, and formal proof. Ada is strongly typed
+
+
 (e) For the e-mail system, identify and distinguish between
 the tasks and shared components.
 (1 marks)
+
+ANSWER
+Tasks = message servers, reader process, writer process
+Shared = message send buffer, message recieve buffer
+
 (f) In a situation where message sending is performed in a safety
-critical system, What are the safety requirements relating to the
-sending of messages? (Think about what could go wrong and cause
-damage or injury, and what you need, to ensure safe operation).
+critical/secure system, What are the considerations relating to the
+sending/receipt of messages? (Think about what could go wrong when sending/receiving
+message, and what you need, to ensure safe/secure operation).
 (3 marks)
+
+ANSWER
+Parts of the message content should be not be missing (Use hashing).
+The message content should not be tampered with (Use hashing).
+When a message is sent, the sender should recieve an acknowledgement of reciept within a certain time.
+
 (g) Write down an event that increments a counter, recording the
 count of characters sent. Define and explain any variables you use.
 (4 marks)
+
+ANSWER
+.....
+
 (h) Write down an event that models sending a character in a
 message. Define and explain any variables you use in the guard
 and the action.
 (2 marks)
+
 (i) Write down the event of part (h) above, prepared for decomposition.
 It should be refined by adding a parameter to the event. Explain
 briefly why you need to do this.
