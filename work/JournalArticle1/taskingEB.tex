@@ -2,33 +2,82 @@
 In this section we begin our discussion about Tasking Event-B. We begin by describing the Event-B semantics of the notation. An Event-B model is an abstraction of a system, the evolution of the state is described using events. The guard of an event describes the conditions which must hold prior to an event being enabled. The actions describe the values of the state variables after the event has occurred. Proof obligations are generated, to ensure that the actions update the state with values that satisfy invariant. As a result, a system that is consistent, can be described using events that do not impose an ordering. Since, in Event-B, any enabled event can occur. Now, as we approach the implementation-level specification, we will consider how the behaviour of a task-like implementation construct can be modelled in Event-B, and we will introduce a notation for the purpose of ordering of events. In the following discussion, we distinguish between the behaviour of a task, such as it's life-cycle (which is not modelled formally) and the updates to state (which are modelled formally). In our approach we intend that the implementation-level development be a refinement of the abstract development. We will therefore introduce notations that assist with the formal and non-formal aspects of the specification. The non-formal aspects of the notation are required in the case that we want to generate code for periodic tasks, for instance. 
 
 \subsection{Flow Control for Events}
-To enable us to impose sequential order on events we introduce two notions. The first is the \emph{task body}. The task body is an extension to the standard Event-B constructs of variables, events and so on. The task body is a place to specify implementation-level detail using an event ordering notation. The second notion is that of a sequential operator; this is one one the operators that can be used in the task body.
-
-In a model with two events \emph{evt1} and \emph{evt2}, if we wish to order them sequentially, we can write \emph{evt1;evt2} where we use the semi-colon as the sequence operator. To impose an ordering we introduce a Boolean flow control variable for each event. When set to TRUE the event of that name can occur. We see this is Fig.~\ref{fig:seq}. 
+To enable us to impose an order on events we introduce the \emph{task body}, a textual extension to standard Event-B. The first notion we will look at is sequential ordering, for which we introduce a semi-colon `;' sequence operator. In a model with two events \emph{evt1} and \emph{evt2}, we can write \emph{evt1;evt2} to specify a sequential ordering. We can provide Event-B semantics for the ordering, by introducing an abstract program counter to the model. An enumeration of constants models the abstract program counter values; one per event. An abstract program counter variable models the currently enabled event. Guards enforce the ordering, and actions update the abstract program counter. An example can be seen in Fig.~\ref{fig:seq}, where the program counter constants are \emph{evt1} and \emph{evt2}, \emph{pc} has type \emph{pcValues}, and the program counter enumeration is defined by a partition, using the Event-B partition operator, so $partition(pcValues, \{evt1\}, \{evt2\},\{term\})$. The partition means that the values of the enumeration are distinct, i.e. $evt1 \neq evt2$ and so on. \emph{term} is label indicating a final state where no event is enabled.
 %
 \begin{figure}
 \centering
 \begin{minipage}{0.7\textwidth}
 Variables evt1, evt2\\
-Invariant evt1 $\in \Bool \land$ evt2 $\in \Bool$  \\
-Initialisation = evt1 $\bcmeq$ TRUE $\pprod$ evt2 $\bcmeq$ FALSE\\
-evt1 = \textbf{WHEN}~ evt1 = TRUE~ \textbf{THEN}~$A_1~ \pprod$ evt1 = FALSE $\\
-\hspace*{1.0cm} \pprod$ evt2 = TRUE \textbf{END}\\
-evt2 = \textbf{WHEN}~ evt2 = TRUE~ \textbf{THEN}~$A_2~ \pprod$ evt2 = FALSE  \textbf{END}\\
+Invariant pc $\in pcValue$ \\
+Initialisation = pc $\bcmeq$ evt1 \\
+evt1 = \textbf{WHEN}~ pc = evt1~ \textbf{THEN}~$A_1~ \pprod$ pc = evt2 \textbf{END}\\
+evt2 = \textbf{WHEN}~ pc = evt2~ \textbf{THEN}~$A_2~ \pprod$ pc = term \textbf{END}\\
 \end{minipage}
 \caption{Sequence}
 \label{fig:seq}
 \end{figure}
-Initially $evt1$ is enabled and $evt2$ is disabled, since $evt1 = TRUE$ and $evt2 = FALSE$. The update action $A_1$ occurs, with the control variable updates setting \emph{evt1} to $FALSE$ and $evt2$ to $TRUE$. Therefore the next step is for the event $evt2$ to be enabled, and so on.
+Initially $evt1$ is enabled and $evt2$ is disabled, since $pc = evt1$. The update action $A_1$ occurs, with the program counter being set \emph{evt2}. This, in turn, enables $evt2$, and so on.
+\subsection{Introducing sequences}
+We will now define some translation functions for translating Tasking Event-B to Event-B.  To add the guards and actions modelling a program step, seen in Fig.~\ref{fig:seq}, we define a translation $TEB\_{step}$. It takes, as parameters, a TEB construct (at this stage, either an event or sequence operator) and the next program counter name. It returns a set of events. In the first instance, the syntax of TEB ::= EVENT $|$ SEQ, where the concrete syntax of SEQ is the semi-colon `;'. We assume that events have no guards other than the program counter guards.
+%
+\begin{equation}
+TEB_{step} \in  TEB \cprod Name \rightarrow POW(EVENT)
+\notag
+\end{equation}
+%
+We use a function \emph{pcName} to extract an event name from an event, for use as a program counter variable. When applied to a sequence it returns two events. 
+%
+\begin{equation}
+\begin{split}
+&TEB_{step}(e_1 ; e_2, x) = \{\\
+&TEB_{step}(e_1, pcName(e_2)),\\
+&TEB_{step}(e_2, x)\}
+\end{split}
+\notag
+\end{equation}
+%
+The $TEB_{step}$ function is applied to each event in the returned set. In the following discussion we represent an event, with guards and actions, using the notation $g \rightarrow a$; where $g$ is the guard, and $a$ is the action. 
+\begin{equation}
+\begin{split}
+&TEB_{step}(e_1, x) = \\
+&e_1 \triangleq pc = pcName(e_1) \rightarrow a_1 \pprod pc = x
+\end{split}
+\notag
+\end{equation}
+This returns an updated event, with the additional guards and actions modelling a program step.
 
-T(e_1 ; e_2) =
-T(e_1, e_2);T(e_2, _)
+The translation to code for sequence is relatively straightforward. We simply maps the concrete sequence operator to a statement delimiter, expand the event actions, and add a terminating delimiter in the appropriate place. One further consideration is the translation of parallel assignments to sequential, where care must be taken to translate variables on the right hand side of assignments to a local variable representing the initial values of those variables. First we define a translation function that maps from Tasking Event-B to program statements in our common language abstraction.   
+\begin{equation}
+TEB_{clm} \in  TEB \rightarrow ProgramStatements
+\notag
+\end{equation}
+To resolve the mapping from parallel to sequential we define a function which generates program statements from the event $ACTIONS$. 
+\begin{equation}
+TEB_{iniValSubs} \in  ACTIONS \rightarrow ProgramStatements
+\notag
+\end{equation}
+In the $TEB_{iniValSubs}$, function we translate assignments of the form $l \bcmeq E(V)$ to program assignments. Here, $l$ is a single variable identifier on the lhs of the assignment, and  E(V) represents expressions involving a set of variables $V$ on the right hand side. For each variable $v \in V$ we insert in the translated statements, a local variable of the same type as v.It is initialised so that $v_{ini} \bcmeq v$. We replace occurrences of $v$ in E(V) with $v_{ini}$. The translation function applied to the an event is therefore defined as a further translation,
+%
+\begin{equation}
+\begin{split}
+&TEB_{clm}(e_1) = \\
+&TEB_{iniValSubs}(a_1)
+\end{split}
+\notag
+\end{equation}
+%
+As an example, $a_1$ may be a parallel assignment, where $x \bcmeq y \pprod y \bcmeq x$. To translate this we have,
+%
+\begin{equation}
+\begin{split}
+&TEB_{iniValSubs}(x \bcmeq y \pprod y \bcmeq x) =\\
+&y_{ini} \bcmeq y;~ x_{ini} \bcmeq x;~ x \bcmeq y_{ini};~ y \bcmeq x_{ini}  
+\end{split}
+\notag
+\end{equation}
+%  
 
-e_1 = g_1 \rightarrow a_1
-
-
-
-For branching
+\subsection{Introducing branching}
 
 
 To the CLM:
