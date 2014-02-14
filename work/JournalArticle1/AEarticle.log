@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  14 FEB 2014 11:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  14 FEB 2014 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -478,12 +478,6 @@ l.58 \end{equation}
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.58 \end{equation}
-                   pdfTeX warning (ext4): destination with the same identifier 
-(name{equation.4.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.58 \end{equation}
                    ]pdfTeX warning (ext4): destination with the same identifier
  (name{equation.4.1}) has been already used, duplicate ignored
 <to be read again> 
@@ -524,32 +518,78 @@ r (name{equation.4.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.71 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.82 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.82 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.82 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.82 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.94 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.94 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.94 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.94 \begin{equation}
                      ) [13pdfTeX warning (ext4): destination with the same iden
 tifier (name{equation.4.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.103 \include{taskingEB}
-                         ]
+                         pdfTeX warning (ext4): destination with the same ident
+ifier (name{equation.4.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.103 \include{taskingEB}
+                         ] [14]
 \openout2 = `tooling.aux'.
 
- (./tooling.tex) [14
+ (./tooling.tex) [15
 
 
 ]
 \openout2 = `conc.aux'.
 
- (./conc.tex [15
+ (./conc.tex [16
 
 
-]) [16]
+]) [17]
 (./AEarticle.bbl
 Missing character: There is no ’ in font cmr8!
- [17
+ [18
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
- [18]
+ [19]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
  (./AEarticle.aux (./Intro.aux) (./Event-B.aux)
 (./taskingEB.aux) (./tooling.aux) (./conc.aux))
@@ -564,8 +604,8 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 6949 strings out of 495031
- 100224 string characters out of 6181531
+ 6950 strings out of 495031
+ 100231 string characters out of 6181531
  187897 words of memory out of 5000000
  9931 multiletter control sequences out of 15000+600000
  12976 words of font info for 49 fonts, out of 8000000 for 9000
@@ -588,10 +628,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on AEarticle.pdf (18 pages, 302477 bytes).
+Output written on AEarticle.pdf (19 pages, 304596 bytes).
 PDF statistics:
- 434 PDF objects out of 1000 (max. 8388607)
- 332 compressed objects within 4 object streams
- 100 named destinations out of 1000 (max. 500000)
+ 439 PDF objects out of 1000 (max. 8388607)
+ 336 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
