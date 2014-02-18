@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" version="5">
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="a :∈ newSetImpl(ℤ)∖∅" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="a"/>
+<org.eventb.core.invariant name=")" org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="inv1" org.eventb.core.predicate="a ∈ newSetImpl(ℙ(ℤ))"/>
+<org.eventb.core.refinesMachine name="*" org.eventb.core.target="myMachine"/>
+<org.eventb.core.event name="+" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="testUnion">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="testUnion"/>
+<org.eventb.core.parameter name="'" org.eventb.codegen.ui.parameterTypeAttribute="--unset--" org.eventb.core.identifier="b"/>
+<org.eventb.core.parameter name="(" org.eventb.codegen.ui.parameterTypeAttribute="--unset--" org.eventb.core.identifier="c"/>
+<org.eventb.core.guard name=")" org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="grd1" org.eventb.core.predicate="b ∈ ℙ(ℤ)"/>
+<org.eventb.core.guard name="*" org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="grd2" org.eventb.core.predicate="c ∈ ℙ(ℤ)"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="a ≔ setImplUnion(b,c)" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>
