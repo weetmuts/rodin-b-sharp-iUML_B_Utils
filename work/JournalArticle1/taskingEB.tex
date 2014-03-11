@@ -1,7 +1,7 @@
 \section{Tasking Event-B}\label{TEB}
-In this section we begin our discussion about Tasking Event-B. We begin by describing the Event-B semantics of the notation. An Event-B model is an abstraction of a system, the evolution of the state is described using events. The guard of an event describes the conditions which must hold prior to an event being enabled. The actions describe the values of the state variables after the event has occurred. Proof obligations are generated, to ensure that the actions update the state with values that satisfy invariant. As a result, a system that is consistent, can be described using events that do not impose an ordering. Since, in Event-B, any enabled event can occur. Now, as we approach the implementation-level specification, we will consider how the behaviour of a task-like implementation construct can be modelled in Event-B, and we will introduce a notation for the purpose of ordering of events. In the following discussion, we distinguish between the behaviour of a task, such as it's life-cycle (which is not modelled formally) and the updates to state (which are modelled formally). In our approach we intend that the implementation-level development be a refinement of the abstract development. We will therefore introduce notations that assist with the formal and non-formal aspects of the specification. The non-formal aspects of the notation are required in the case that we want to generate code for periodic tasks, for instance. 
+In this section we begin our presentation of Tasking Event-B. We begin by describing the Event-B semantics of the notation. An Event-B model is an abstraction of a system, the evolution of the state is described using events. The guard of an event describes the conditions which must hold prior to an event being enabled. The actions describe the values of the state variables after the event has occurred. Proof obligations are generated, to ensure that the actions update the state with values that satisfy invariant. As a result, a system that is consistent, can be described using events that do not impose an ordering: since in Event-B any enabled event can occur. Now, in an implementation-level specification wish to reason about task-like behaviour, with implementation constructs, such as sequencing. So we introduce a notation for the purpose of ordering of events. The notation can be used to assist with code generation, since it allows the developer to introduce an ordering where none might exist. In the case that such an ordering does exist in the abstraction, the developer can generate a new Event-B model from the notation, and show that it a refinement of the more abstract one. In the following discussion we distinguish between a task's behaviour, such as it's life-cycle (which is not modelled formally) and the updates to state (which are modelled formally). To accommodate both, our notation handles both formal and non-formal aspects of a specification. An example of a non-formal aspect, is the task type which might be periodic or one-shot.  In Subsect.~\ref{flow} we introduce the notation for specifying control flow, and in Subsect.~\ref{tasks} we discuss the notion of tasks and protected objects more fully.
 
-\subsection{Flow Control for Events}
+\subsection{Flow Control for Events}\label{flow}
 To enable us to impose an order on events we introduce \emph{Tasking Event-B}, a textual extension to standard Event-B. The first notion we will look at is sequential ordering, for which we introduce a semi-colon `;' sequence operator. In a model with two events \emph{evt1} and \emph{evt2}, we can write \emph{evt1;evt2} to specify a sequential ordering. We can provide Event-B semantics for the ordering, by introducing an abstract program counter to the model. An enumeration of constants models the abstract program counter values; one per event. An abstract program counter variable models the currently enabled event. Guards enforce the ordering, and actions update the abstract program counter. An example can be seen in Fig.~\ref{fig:seq}, where the program counter constants are \emph{evt1} and \emph{evt2}, \emph{pc} has type \emph{pcValues}, and the program counter enumeration is defined by a partition, using the Event-B partition operator, so $partition(pcValues, \{evt1\}, \{evt2\},\{term\})$. The partition means that the values of the enumeration are distinct, i.e. $evt1 \neq evt2$ and so on. \emph{term} is label indicating a final state where no event is enabled.
 %
 \begin{figure}
@@ -100,9 +100,31 @@ The translation to the common language model, is as follows.
 \notag
 \end{equation}
 
+\subsection{Looping}
+The Tasking Event-B while loop is written \emph{WHILE e1 END}. This simple loop repeats \emph{e1} while the guard is true. It has the following Event-B semantics for which we provide the translation,
 
+\begin{equation}
+\begin{split}
+&TEB_{pc}(WHILE~ e_1,~  x) \leadsto\\
+& \{~ e_1 \triangleq (g_1 \land pc = pcName(e_1)) \rightarrow (a_1 ),\\
+&\hspace*{0.3cm}e_2 \triangleq (\lnot g_1 \land pc = pcName(e_1)) \rightarrow (pc \bcmeq x) \}
+\end{split}
+\notag
+\end{equation}
 
+The translation to the common language model, is as follows.
+\begin{equation}
+\begin{split}
+&TEB_{clm}(WHILE~ e_1 ) \leadsto\\
+& while(g_1)\{ TEB_{iniValSubs}(a_1) \}
+\end{split}
+\notag
+\end{equation}
 
+We will not explicitly give details of the translation of Tasking Event-B constructs from the CLM to the implementations in target languages, since we anticipate that the CLM constructs represent implementation constructs in an `obvious' way. 
+
+\subsection{Tasking and Shared Machines}\label{tasks}
+In our implementations we wish to describe two kinds of behaviour. The first is the behaviour of the task-like scheduling of activities (described by the ordering of events) specified in the Task Body, using the Tasking Event-B constructs introduced earlier in the section. The second is the behaviour of shared objects, which provide a means to share information between the tasks. Shared objects have no actual behavioural specification of their own (i.e. no event ordering). They instead rely on the synchronization of events, with the corresponding events in tasks, to completely describe the implementation. 
 
 \subsection{Theories for TEB}
 
