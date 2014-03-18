@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.29)  18 MAR 2014 14:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.29)  18 MAR 2014 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -552,124 +552,80 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Package hyperref Warning: bookmark level for unknown title defaults to 0.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 27.
-
-
 Package hyperref Warning: bookmark level for unknown author defaults to 0.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (16.42885pt too wide) in paragraph at lines 57--74
-[]\OT1/cmr/m/n/9 VARIABLES[] []
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (12.48712pt too wide) in paragraph at lines 43--44
+[]\OT1/cmr/m/n/10 Tasking Event-B [[]] is an ex-ten-sion to the Event-B lan-gua
+ge; an implementation-
  []
 
-[3]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
- [4] <Decomp2.png, id=110, 819.06pt x 697.60625pt>
-File: Decomp2.png Graphic file (type png)
- <use Decomp2.png>
-Package pdftex.def Info: Decomp2.png used on input line 90.
-(pdftex.def)             Requested size: 208.27623pt x 177.39226pt.
-
-Overfull \hbox (2.48714pt too wide) in paragraph at lines 103--104
-\OT1/cmr/m/n/10 Tasking Event-B [[]] is an ex-ten-sion to the Event-B lan-guage
-; an implementation-
- []
-
-[5 <./Decomp2.png>]
-Overfull \hbox (2.48814pt too wide) in paragraph at lines 105--106
-[]\OT1/cmr/m/n/10 Machines can be im-ple-mented as task/thread-like con-structs
-; shared, monitor-
- []
-
-
-Overfull \hbox (11.15796pt too wide) in paragraph at lines 112--115
-| $\OMS/cmsy/m/n/10 k$ \OT1/cmr/bx/n/10 IF  \OT1/cmr/m/n/10 Event  [\OT1/cmr/bx
-/n/10 ELSEIF  \OT1/cmr/m/n/10 Event ]$[]$  \OT1/cmr/bx/n/10 ELSE  \OT1/cmr/m/n/
-10 Event \OT1/cmr/bx/n/10 END 
- []
-
-[6] <devel.png, id=144, 465.74pt x 387.4475pt>
+[2] <devel.png, id=75, 465.74pt x 387.4475pt>
 File: devel.png Graphic file (type png)
  <use devel.png>
-Package pdftex.def Info: devel.png used on input line 124.
-(pdftex.def)             Requested size: 312.40906pt x 259.90181pt.
- [7 <./devel.png>] <templateOverview.png, id=163, 435.6275pt x 187.70125pt>
+Package pdftex.def Info: devel.png used on input line 62.
+(pdftex.def)             Requested size: 242.98541pt x 202.13599pt.
+
+<templateOverview.png, id=82, 435.6275pt x 187.70125pt>
 File: templateOverview.png Graphic file (type png)
 
 <use templateOverview.png>
-Package pdftex.def Info: templateOverview.png used on input line 138.
-(pdftex.def)             Requested size: 277.69987pt x 119.65294pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 152.
-
+Package pdftex.def Info: templateOverview.png used on input line 74.
+(pdftex.def)             Requested size: 242.98541pt x 104.69669pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 152.
- [8] [9 <./templateOverview.png>] <templateStructure.png, id=184, 682.55pt x 34
-0.27126pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+
+<templateStructure.png, id=86, 682.55pt x 340.27126pt>
 File: templateStructure.png Graphic file (type png)
 
 <use templateStructure.png>
-Package pdftex.def Info: templateStructure.png used on input line 176.
-(pdftex.def)             Requested size: 312.40906pt x 155.74785pt.
- [10] [11 <./templateStructure.png>] [12]
-(./Interface_Templates4CG.bbl
-Underfull \hbox (badness 1430) in paragraph at lines 21--26
-[]\OT1/cmr/m/n/9 T. Blochwitz, M. Ot-ter, J. Akesson, M. Arnold, C. Clau^^Y, H.
- Elmqvist,
- []
+Package pdftex.def Info: templateStructure.png used on input line 106.
+(pdftex.def)             Requested size: 277.69987pt x 138.44254pt.
+ [3 <./devel.png>] [4 <./templateOverview.png>]
+[5 <./templateStructure.png>] (./Interface_Templates4CG.bbl [6])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
 
-[13]
-Underfull \hbox (badness 4967) in paragraph at lines 115--119
-[]\OT1/cmr/m/n/9 The Eclipse M2T Project.  Java Emit-ter Tem-plates.  Avail-abl
-e at
- []
-
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 258.
- [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 258.
- (./Interface_Templates4CG.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 258.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 258.
+(./Interface_Templates4CG.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 155.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
 Package rerunfilecheck Info: File `Interface_Templates4CG.out' has not changed.
 
-(rerunfilecheck)             Checksum: 890888825FC2E34AE7048F6D6279818F;143.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 258.
+(rerunfilecheck)             Checksum: 2093022F3CAFA16EDF825FC9EB9076A8;117.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 155.
  ) 
 Here is how much of TeX's memory you used:
- 7221 strings out of 495031
- 103749 string characters out of 6181531
- 192820 words of memory out of 5000000
- 10254 multiletter control sequences out of 15000+600000
- 11125 words of font info for 43 fonts, out of 8000000 for 9000
+ 7165 strings out of 495031
+ 103136 string characters out of 6181531
+ 198057 words of memory out of 5000000
+ 10229 multiletter control sequences out of 15000+600000
+ 10958 words of font info for 42 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,8n,28p,2177b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,28p,1702b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Interface_Templates4CG.pdf (14 pages, 385483 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
+>
+Output written on Interface_Templates4CG.pdf (7 pages, 243774 bytes).
 PDF statistics:
- 310 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 32 words of extra memory for PDF output out of 10000 (max. 10000000)
 
