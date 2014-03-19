@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage{amssymb,amsfonts,textcomp}
 \usepackage{color}
+\usepackage{setspace}
 %-------------------------------------------
 \begin{document}
 %
@@ -31,18 +32,16 @@ The Event-B method, and  its tools, provide a way to formally model systems; Tas
 %
 \section{Introduction}
 %
-Rodin is a  tool platform~\cite{abrial10rodin} for the rigorous specification of critical systems, using the Event-B approach~\cite{ABR10}. Tasking Event-B~\cite{Edmunds2009,Edmunds2008,ae2011a,ae2012b} is an extension to Event-B that facilitates generation of source code. We can generate Java~\cite{JavaSpec}, Ada~\cite{ada2005}, C for OpenMP~\cite{openmp}, and C for the Functional Mock-up Interface~\cite{FMISTD} standard. The work reported in this paper has been undertaken during the ADVANCE project~\cite{advance}; a continuation of the Event-B research effort, this time focussing on co-simulation of Cyber-Physical Systems. This paper introduces an approach that allows use of boilerplate code, in the form of templates with code injection. 
+Rodin is a platform~\cite{abrial10rodin} for the rigorous specification of critical systems with Event-B~\cite{ABR10}. Tasking Event-B~\cite{Edmunds2009,Edmunds2008,ae2011a,ae2012b} is an extension to Event-B that facilitates generation of source code. We can generate Java, Ada, C for OpenMP~\cite{openmp}, and C for the Functional Mock-up Interface~\cite{FMISTD} standard. The work reported in this paper has been undertaken during the ADVANCE project~\cite{advance}, focussing on co-simulation of Cyber-Physical Systems. This paper introduces an approach that uses templates, with code injection, to facilitate the re-use of boilerplate code.
 
-Often, when a software system is being implemented, there is a large amount of code that is common to the particular target implementation. Examples of this might be code for system life-cycle management, system health monitoring, or task scheduling. But, this code is independent of the actual state and behaviour of the part of the system being formally modelled. We provide a simple Eclipse extension to facilate the use of templates with tagged mark-up; we can then insert  code, generated from the formal model,  into boilerplate templates. The use of templates should facilitate re-use of existing code, and importantly, avoid having to hard-code such details. The template creator will need to apply annotations to the boiler-plate code by adding annotations in the form of tags. The tags can define locations where other templates should be expanded. They also define code insertion points, and meta-data generators, linked to pre-configured code fragment-generators. This extension is suitable for use with any text-based source and target. To validate the approach we provided a C code generator for use with the Functional Interface Standard (FMI)~\cite{FMISTD}. We provide an overview of FMI and code generation with Tasking Event-B in Sect.~\ref{Background}. We introduce templates, and show an example of their use, in Sect.~\ref{templates}, and conclude in Sect.~\ref{conc}.
+Often, when a software system is being implemented, there is a large amount of code that is common to the particular target implementation. Examples of this might be code for system life-cycle management, system health monitoring, or task scheduling. This code is independent of the state and behaviour of the part of the system being formally modelled. We introduce a simple Eclipse extension, to facilitate the use of templates with tagged mark-up. We can then insert  code, generated from the formal model,  into the templates. Templates facilitate re-use of existing code, and most importantly, avoid the need to hard-code such details. The template creator can add annotations to the boiler-plate code, by adding tags. The tags define locations where other templates are expanded; or define code insertion points, and meta-data generators. The tags are associated with pre-defined code fragment-generators. The approach is suitable for use with any text-based source and target. To validate it, we used templates and code injection in a C code generator, to generate code for the Functional Interface Standard (FMI)~\cite{FMISTD}. We provide a brief overview of FMI, and code generation with Tasking Event-B, in Sect.~\ref{Background}. We introduce templates, and show an example of their use, in Sect.~\ref{templates}, and conclude in Sect.~\ref{conc}.
 %
 %
 \section{Background}\label{Background}
 %
-In order to provide a context for the use of templates, we base the discussion around the work undertaken on the Event-B-to-FMI translator. It is therefore necessary to provide some background on the Functional Mock-Up Interface (FMI) standard~\cite{FMISTD}; a tool-independent standard, developed to facilitate the exchange, and re-use, of modelling components in the automotive industry. It is a C-based standard, defining an interface for re-usable components, known as Functional Mock-up Units (FMUs). FMUs play the role of slave simulators in simulations that are coordinated by a simulation master. The master simulator is not defined in the FMI standard, but its job is to coordinate the simulation e.g. by stopping and starting slaves. It also manages the communication; where all the slaves' input and output values are communicated via the master, never directly between slaves. To target the FMI co-simulation framework, we generate code for an FMU from the Event-B model. An FMU is a compressed file containing an XML description of the model being simulated, and the shared libraries required to run the simulation. The shared libraries are compiled from the C code that we generate from Event-B. To conform to the FMI standard, FMU implementers must implement API functions for simulation life-cycle management, such as instantiating a slave, initialising a slave's variables, and terminating the slave. Many of the functions defined in the API are not dependent on the particular model being simulated, the code is the same for all models. We wish to avoid hard-coding the translation where possible; so, templates provide a good solution.    
+We illustrate the approach using the example of our Event-B-to-FMI translator. So we provide some background on the Functional Mock-Up Interface (FMI) standard~\cite{FMISTD}. It is a tool-independent standard, developed to facilitate the exchange, and re-use, of modelling components in the automotive industry. It is a C-based standard, defining an interface for re-usable components, known as Functional Mock-up Units (FMUs). FMUs play the role of slave simulators in simulations that are coordinated by a simulation master. The master simulator is not defined in the FMI standard, but its job is to coordinate the simulation e.g. by stopping and starting slaves. It also manages the communication; where all the slaves' input and output values are communicated via the master, never directly between slaves. To target the FMI co-simulation framework, we generate code for an FMU from the Event-B model. An FMU is a compressed file containing an XML description of the model being simulated, and the shared libraries required to run the simulation. In our work the shared libraries, and model description, are generated from the Event-B model. To conform to the FMI standard, FMU implementers must provide API functions for simulation life-cycle management, such as instantiating a slave, initialising a slave's variables, and terminating the slave. Many of these functions are not dependent on the particular model being simulated; the code is the same for all models. We wish to avoid hard-coding the translation where possible; so, templates provide a place to define the boilerplate code, and code injection can be used for the model specific parts.    
 
-Tasking Event-B~\cite{ae2011a} is an extension to the Event-B language; an implementation-level, specification language. When annotations are added to a machine, it provides additional information which is used to assist in code generation. When translating to code, it is usually necessary to work with a subset of implementable Event-B constructs.  Machines can be implemented as task/thread-like constructs; shared, monitor-like constructs; or provide simulations of the environment.  The machine \emph{Types} are \emph{Autotask}, \emph{Shared} and \emph{Environ} respectively.  In embedded systems, \emph{autotask} Machines typically model \emph{controller} tasks (of the implementation). 
-
-We now describe some of the Tasking Event-B constructs. The main behaviour of a system's  long-running task-like (or thread-like) processes are modelled by \emph{autotasks}. An \emph{autotask} machine has a task body which contains flow control (algorithmic) constructs. The syntax of the \emph{Task body} follows,
+Tasking Event-B~\cite{ae2011a} is an extension to the Event-B language; an implementation-level, specification language. When annotations are added to a machine, it provides additional information to assist with code generation. When generating code, it is usually necessary to work with a subset of implementable Event-B constructs.  Machines can be implemented as task/thread-like constructs; shared, monitor-like constructs; or provide simulations of the environment.  The machine \emph{Types} are \emph{Autotask}, \emph{Shared} and \emph{Environ} respectively.  In embedded systems, \emph{autotask} Machines typically model \emph{controller} tasks (of the implementation). An \emph{autotask} machine has a task body which contains flow control (algorithmic) constructs. The syntax of the \emph{Task body} follows,
 %
 %
 \begin{center}
@@ -53,7 +52,7 @@ Task Body ::= TaskBody~ \textbf{;}~ TaskBody\\
 \end{minipage}
 \end{center}
 %
-\noindent These elements have program-related Event-B semantics. The \emph{Sequence} (\textbf{;}) construct is used for imposing an order on events, and maps to a sequence operator in programming languages. \textbf{IF} provides a choice, with optional sub-branches, between a number of events (it can only be used with events with disjoint guards, and where completeness must be shown). It maps to branching program statements, where guards are mapped to conditions and actions map to assignments. \textbf{DO} specifies event repetition while its guard remains true. It maps to a looping statement, with the loop condition derived from the event guard. \emph{Event} is a single event, where just its action is mapped to a program statement (assignment), and guards are not permitted. \emph{EventSynch} describes synchronization (as previously introduced) between an event in an \emph{autotask} machine and an event in a \emph{shared} machine. Synchronization must be implemented as an atomic subroutine call. The \emph{EventSync} construct facilitates subroutine parameter declarations, and substitution in calls, by pairing ordered Event-B parameter declarations. 
+\noindent These elements have program-related Event-B semantics. The \emph{Sequence} (\textbf{;}) construct is used for imposing an order on events, and maps to a sequence operator in programming languages. \textbf{IF} provides a choice, with optional sub-branches, between a number of events (it can only be used with events with disjoint guards, and where completeness must be shown). It maps to branching program statements, where guards are mapped to conditions and actions map to assignments. \textbf{DO} specifies event repetition while its guard remains true. It maps to a looping statement, with the loop condition derived from the event guard. \emph{Event} is a single event, where just its action is mapped to a program statement (assignment), and guards are not permitted. \emph{EventSynch} describes synchronization between an event in an \emph{autotask} machine and an event in a \emph{shared} machine. Synchronization must be implemented as an atomic subroutine call. The \emph{EventSync} construct facilitates subroutine parameter declarations, and substitution in calls, by pairing ordered Event-B parameter declarations. 
 
 Fig.~\ref{fig:CGProcess} shows how an abstract model may be refined, decomposed, and then refined again to the implementation-level (i.e. above the horizontal line annotated with \emph{Event-B} ).
 %
@@ -62,18 +61,20 @@ Fig.~\ref{fig:CGProcess} shows how an abstract model may be refined, decomposed,
 \includegraphics[width=0.7\textwidth]{devel.png}
 \caption{The Code Generation Process}
 \label{fig:CGProcess}
+\vspace*{-12pt}
 \end{figure}
 The code generation phase (below this line) is a two-step process; although only a single step is visible to the user. The first step is to translate the Event-B machine to a language-neutral model, the Common Language Model (CLM). During this second step, when the source code is being generated, the templates contribute to the generated code. 
 
 \section{Using Templates}\label{templates}
-%
-The ADVANCE project~\cite{advance} is providing a way to co-simulate discrete Event-B models with continuous models of the environment; using the Functional Mock-Up Interface~\cite{FMISTD}. Discrete Event-B controller models can be translated into C code, for use in FMU simulation of discrete implementations. The FMUs can then be used for simulation and testing, with models of its continuous environment. When generating code from Tasking Event-B, we found that there was a large amount of boiler-plate code, from the FMI API, that we did not want to hard-code. Templates provide a way to re-use this `boiler-plate' code. An architectural overview of our template-driven approach can be seen in the diagram of Fig.~\ref{fig:templates}.
+An architectural overview of our template-driven approach can be seen in the diagram of Fig.~\ref{fig:templates}.
 %
 \begin{figure}
+\vspace*{-12pt}
 \centering
-\includegraphics[width=0.7\textwidth]{templateOverview.png}
+\includegraphics[width=0.6\textwidth]{templateOverview.png}
 \caption{The Template Processor and Artefacts}
 \label{fig:templates}
+\vspace*{-5pt}
 \end{figure}
 %
 We see the artefacts involved in template processing; namely text-based templates, code-fragment generators, text output, meta-data output and a template-processor that does the work. The templates may contain plain-text (which is copied verbatim to the target during processing) and tags. The tags may refer to other templates, or code-fragment generators. The code-fragment generators are hard-coded generators that relate to certain aspects of the final output; for instance, a fragment generator inserts the variable initialisations as specified in a template. We can see an example of this in Fig.~\ref{fig:templateExample}. 
@@ -81,6 +82,9 @@ We see the artefacts involved in template processing; namely text-based template
 \begin{figure}
 \begin{center}
 \begin{minipage}{0.6\textwidth}
+\vspace*{-5pt}
+\begin{spacing}{0.8}
+\small
 //\#\# $<$addToHeader$>$\\
 fmiStatus fmiInitializeSlave(fmiComponent c,\\
 \hspace*{0.2cm}fmiReal relativeTolerance, fmiReal tStart,\\
@@ -90,8 +94,11 @@ fmiStatus fmiInitializeSlave(fmiComponent c,\\
 \hspace*{0.4cm}//\#\# $<$stateMachineProgramCounterIni$>$\\
 \hspace*{0.4cm}return fmiOK;\\
 \}
+\normalsize
+\end{spacing}
 \caption{An Example Template}
 \label{fig:templateExample}
+\vspace*{-5pt}
 \end{minipage}
 \end{center}
 \end{figure}
@@ -101,19 +108,23 @@ The template shows part of an implementation of the FMI API's \emph{fmiInitializ
 In the template, we insert a place-holder (which we call a \emph{tag}), where we want variable initialisation to occur. The tags in our example begin with the character string, //\#\#.  The line continues with an \emph{identifier}, $<$\emph{identifier}$>$. A tag is usually (but not always) used as an insertion point; its \emph{identifier} can relate to another template (to be expanded and processed in-line); or the name of a fragment-generator. The fragment-generator is a Java class that can be used to generate code; or meta-data that is stored for later use, in the code generation process  (see Fig.~\ref{fig:templates}). In the example we have three tags. The first tag \emph{addToHeader} identifies a generator that creates meta-data, which are used at a later stage, for generation of a header file. It is possible to categorize the users of Rodin into several types of users. One such type are the `ordinary' modellers, using Event-B in smaller organisations. But for large scale use, one may have meta-modellers (to develop product lines for instance), and another level of user may instantiate models (of the product line). There may also be platform developers, that provide platform tools for use by meta-modellers, modellers and product-line implementers. The extension points allow the platform developer to provide template utilities for the other users. They can define new tags and fragment-generators.
 An overview of the  templates and generators used in the FMI translation, can be seen in Fig.~\ref{fig:templateStructure} (much of the detail is omitted for brevity). The \emph{root} template is \emph{fmuTemplate.c}, from this we can navigate to all of the other templates, and generators. The root template generates variable declarations and the subroutines, and expands the main boilerplate functions in \emph{fmuOthers.c}. The \emph{fmuInstantiate} and \emph{fmuInitialise} templates generate the corresponding FMI API function implementations. From the diagram we can see that these rely on generators to do some of the translation.
 %
-\begin{figure}
+\begin{figure}[t]
+\vspace*{-12pt}
 \centering
 \includegraphics[width=0.8\textwidth]{templateStructure.png}
 \caption{The Templates and Generators in the FMI Code Generator}
 \label{fig:templateStructure}
+\vspace*{-12pt}
 \end{figure}
 %
 The template-processor scans each line, and copies the output; or inserts new text, or meta-data as required, until we reach a generator tag. The class's \emph{generate} method is invoked, to begin the process of text insertion. A fragment of the \emph{InitialisationListGenerator} class can be seen in Fig.~\ref{fig:genCode}. 
 %
 %
-\begin{figure}
+\begin{figure}[t]
 \centering
-\begin{minipage}{0.85\textwidth}
+\begin{minipage}{0.95\textwidth}
+\begin{spacing}{0.8}
+\small
 \textbf{public class} InitialisationsListGenerator \textbf{implements} IGenerator \{\\
 \hspace*{0.2cm}\textbf{public} List$<$String$>$ generate(IGeneratorData data)\{\\
 \hspace*{0.4cm}List$<$String$>$ outCode = \textbf{new} ArrayList$<$String$>$();\\
@@ -136,6 +147,8 @@ The template-processor scans each line, and copies the output; or inserts new te
 \hspace*{0.2cm}\}\\
 \hspace*{0.2cm}\emph{// (4) return the new fragment}\\
 \hspace*{0.2cm}\textbf{return} outCode;\}\}
+\normalsize
+\end{spacing}
 \end{minipage}
 \caption{An Example Fragment-Generator}
 \label{fig:genCode}

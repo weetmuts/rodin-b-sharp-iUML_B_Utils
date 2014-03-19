@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.29)  18 MAR 2014 18:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  19 MAR 2014 07:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -384,7 +384,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip48
 )
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+(/home/andy/texmf/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip49
 \enit@outerparindent=\dimen139
@@ -481,30 +481,33 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 (./Interface_Templates4CG.aux)
 \openout1 = `Interface_Templates4CG.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    ... okay on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -521,7 +524,7 @@ LaTeX Font Info:    ... okay on input line 15.
 \everyMPtoPDFconversion=\toks27
 )
 \AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 16.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -530,20 +533,20 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 15.
-LaTeX Info: Redefining \pageref on input line 15.
-LaTeX Info: Redefining \nameref on input line 15.
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
 
 (./Interface_Templates4CG.out) (./Interface_Templates4CG.out)
 \@outlinefile=\write3
 \openout3 = `Interface_Templates4CG.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+LaTeX Font Info:    Try loading font information for U+msa on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+LaTeX Font Info:    Try loading font information for U+msb on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -557,59 +560,59 @@ Package hyperref Warning: bookmark level for unknown author defaults to 0.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (12.48712pt too wide) in paragraph at lines 43--44
+Overfull \hbox (12.48712pt too wide) in paragraph at lines 44--47
 []\OT1/cmr/m/n/10 Tasking Event-B [[]] is an ex-ten-sion to the Event-B lan-gua
 ge; an implementation-
  []
 
-[2] <devel.png, id=75, 465.74pt x 387.4475pt>
+[2] <devel.png, id=69, 465.74pt x 387.4475pt>
 File: devel.png Graphic file (type png)
  <use devel.png>
-Package pdftex.def Info: devel.png used on input line 62.
+Package pdftex.def Info: devel.png used on input line 61.
 (pdftex.def)             Requested size: 242.98541pt x 202.13599pt.
 
-<templateOverview.png, id=82, 435.6275pt x 187.70125pt>
+<templateOverview.png, id=72, 435.6275pt x 187.70125pt>
 File: templateOverview.png Graphic file (type png)
 
 <use templateOverview.png>
 Package pdftex.def Info: templateOverview.png used on input line 74.
-(pdftex.def)             Requested size: 242.98541pt x 104.69669pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
+(pdftex.def)             Requested size: 208.27623pt x 89.74042pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
 
-<templateStructure.png, id=86, 682.55pt x 340.27126pt>
+<templateStructure.png, id=76, 682.55pt x 340.27126pt>
 File: templateStructure.png Graphic file (type png)
 
 <use templateStructure.png>
-Package pdftex.def Info: templateStructure.png used on input line 106.
+Package pdftex.def Info: templateStructure.png used on input line 114.
 (pdftex.def)             Requested size: 277.69987pt x 138.44254pt.
  [3 <./devel.png>] [4 <./templateOverview.png>]
-[5 <./templateStructure.png>] (./Interface_Templates4CG.bbl [6])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
+(./Interface_Templates4CG.bbl [5 <./templateStructure.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
 
 (./Interface_Templates4CG.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 155.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 168.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
 Package rerunfilecheck Info: File `Interface_Templates4CG.out' has not changed.
 
 (rerunfilecheck)             Checksum: 2093022F3CAFA16EDF825FC9EB9076A8;117.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 155.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
  ) 
 Here is how much of TeX's memory you used:
- 7165 strings out of 495031
- 103136 string characters out of 6181531
- 198057 words of memory out of 5000000
- 10229 multiletter control sequences out of 15000+600000
+ 7192 strings out of 495031
+ 103626 string characters out of 6181531
+ 197273 words of memory out of 5000000
+ 10255 multiletter control sequences out of 15000+600000
  10958 words of font info for 42 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,8n,28p,1702b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,28p,1703b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -622,10 +625,10 @@ msfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
 >
-Output written on Interface_Templates4CG.pdf (7 pages, 243774 bytes).
+Output written on Interface_Templates4CG.pdf (6 pages, 241312 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
  32 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
 \bibitem{ABR10}
 J.~R. Abrial.
@@ -10,12 +10,6 @@ J.R. Abrial, M.~Butler, S.~Hallerstede, T.S. Hoang, F.~Mehta, and L.~Voisin.
 \newblock {Rodin: An Open Toolset for Modelling and Reasoning in Event-B}.
 \newblock {\em Software Tools for Technology Transfer}, 12(6):447--466,
   November 2010.
-
-\bibitem{ada2005}
-J.~Barnes.
-\newblock {\em {Programming in Ada 2005}}.
-\newblock International Computer Science Series. Addison Wesley, 2006.
-\newblock ISBN-10: 0321340787 / ISBN-13: 9780321340788.
 
 \bibitem{Edmunds2009}
 A.~Edmunds.
@@ -38,11 +32,6 @@ A.~Edmunds, J.~Colley, and M.~Butler.
 \newblock {Building on the DEPLOY Legacy: Code Generation and Simulation}.
 \newblock In {\em {DS-Event-B-2012: Workshop on the experience of and advances
   in developing dependable systems in Event-B}}, 2012.
-
-\bibitem{JavaSpec}
-J.~Gosling, B.~Joy, G.~Steele, and G.~Bracha.
-\newblock {\em {Java Language Specification - Third Edition}}.
-\newblock Addison-Wesley, 2004.
 
 \bibitem{advance}
 {The Advance Project Team}.
