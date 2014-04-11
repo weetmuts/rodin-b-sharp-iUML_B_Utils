@@ -29,6 +29,11 @@ I.~Dinca, F.~Ipate, L.~Mierla, and A.~Stefanescu.
 \newblock {Available at \href{http://www.ecspartners.ecs.soton.ac.uk/}
   {http://www.ecspartners.ecs.soton.ac.uk/}}.
 
+\bibitem{ae2014a}
+A.~Edmunds.
+\newblock {Templates for Event-B Code Generation}.
+\newblock In {\em 4th International ABZ 2014 Conference}, 2014.
+
 \bibitem{ae2011a}
 A.~Edmunds and M.~Butler.
 \newblock {Tasking Event-B: An Extension to Event-B for Generating Concurrent
@@ -70,7 +75,8 @@ C.~Snook.
 
 \bibitem{advance}
 {The Advance Project Team}.
-\newblock {The Advance Project}.
+\newblock {Advanced Design and Verification Environment for Cyber-physical
+  System Engineering}.
 \newblock {Available at \href{http://www.advance-ict.eu}
   {http://www.advance-ict.eu}}.
 
@@ -81,7 +87,7 @@ C.~Snook.
   {http://www.deploy-project.eu/}.
 
 \bibitem{EclipseOrg}
-{The Eclipse Project}.
+{The Eclipse Foundation}.
 \newblock {Eclipse - an Open Development Platform}.
 \newblock Available at \href{http://www.eclipse.org/}{http://www.eclipse.org/}.
 
