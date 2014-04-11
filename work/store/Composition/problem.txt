@@ -1,1 +1,0 @@
-It would appear that the user interface for adding combined events is not working properly. The events are added to the combines events part, using the green-'plus' button. When making 'any' change to the newly added event-selector, then all fields revert to --undef--. This is not set in the composed machine code, but somewhere in the rodin code I think.
