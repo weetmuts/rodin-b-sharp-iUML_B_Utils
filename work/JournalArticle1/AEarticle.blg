@@ -9,49 +9,49 @@ A level-1 auxiliary file: conc.aux
 The style file: spmpsci.bst
 Database file #1: MyBibTex.bib.bib
 Warning--entry type for "pthreads" isn't style-file defined
---line 2894 of file MyBibTex.bib.bib
+--line 2891 of file MyBibTex.bib.bib
+Warning--I didn't find a database entry for "issam2013"
 Warning--to sort, need author or key in pthreads
 Warning--to sort, need author or key in SPARKAda
-Warning--empty note in issam2013
 You've used 41 entries,
             2946 wiz_defined-function locations,
-            876 strings with 11083 characters,
-and the built_in function-call counts, 19972 in all, are:
-= -- 1943
-> -- 462
-< -- 11
-+ -- 249
-- -- 148
-* -- 912
-:= -- 2248
-add.period$ -- 57
+            884 strings with 11322 characters,
+and the built_in function-call counts, 20783 in all, are:
+= -- 2049
+> -- 469
+< -- 13
++ -- 257
+- -- 150
+* -- 945
+:= -- 2297
+add.period$ -- 58
 call.type$ -- 41
-change.case$ -- 203
+change.case$ -- 205
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 2100
-empty$ -- 1680
-format.name$ -- 177
-if$ -- 4264
+cite$ -- 43
+duplicate$ -- 2202
+empty$ -- 1728
+format.name$ -- 180
+if$ -- 4445
 int.to.chr$ -- 0
 int.to.str$ -- 41
-missing$ -- 330
+missing$ -- 339
 newline$ -- 182
-num.names$ -- 87
-pop$ -- 901
+num.names$ -- 89
+pop$ -- 926
 preamble$ -- 1
 purify$ -- 151
 quote$ -- 0
-skip$ -- 952
+skip$ -- 1026
 stack$ -- 0
-substring$ -- 662
-swap$ -- 1416
-text.length$ -- 9
+substring$ -- 711
+swap$ -- 1518
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 145
-warning$ -- 3
-while$ -- 108
+warning$ -- 2
+while$ -- 112
 width$ -- 43
-write$ -- 402
+write$ -- 404
 (There were 4 warnings)

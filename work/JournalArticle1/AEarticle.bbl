@@ -68,6 +68,13 @@ Butler, M.: {Incremental Design of Distributed Systems with Event-B} (2008).
 \bibitem{B0RefMan}
 ClearSy System Engineering: {The B Language Reference Manual}, version 4.6 edn.
 
+\bibitem{Dijkstra75a}
+Dijkstra, E.: {Guarded Commands, Non-determinancy and a Calculus for the
+  Derivation of Programs}.
+\newblock In: F.~Bauer, K.~Samelson (eds.) Language Hierarchies and Interfaces,
+  \emph{Lecture Notes in Computer Science}, vol.~46, pp. 111--124. Springer
+  (1975)
+
 \bibitem{Edmunds2009}
 Edmunds, A.: Providing concurrent implementations for event-b developments.
 \newblock Ph.D. thesis, University of Southampton (2010).
@@ -120,10 +127,6 @@ Leuschel, M., Butler, M.: {ProB: an automated analysis toolset for the B
 \newblock STTT \textbf{10}(2), 185--203 (2008).
 \newblock
   \urlprefix\url{http://dblp.uni-trier.de/db/journals/sttt/sttt10.html#LeuschelB08}
-
-\bibitem{issam2013}
-Maamria, I.: Towards a practically extensible event-b methodology (2013).
-\newblock \urlprefix\url{http://eprints.soton.ac.uk/347887/}
 
 \bibitem{JCSPNet}
 P.H.Welch, Aldous, J., Foster, J.: {CSP Networking for Java (JCSP.net)}.

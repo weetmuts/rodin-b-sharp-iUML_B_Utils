@@ -135,6 +135,18 @@ In our implementations we wish to describe two kinds of behaviour. The first beh
 
 There are two types of tasking machines, one describing the controller tasks in the system; the other describing the environment. These are known as \emph{Autotask} and \emph{Environ} machines respectively. The main difference between a model of a controller, and a model of the environment, is that it is intended that a controller task is refined down to an implementation which can be deployed on the target system. The environment model is usually an abstract model of the environment. The generated code can be discarded if required, although it is possible to generate a Java-style interface, or re-use the generated Ada procedures. The interface (or modified Ada procedures) can be implemented with calls to software driver APIs allowing the controller to interact with the real environment. The following table relates the Tasking Event-B constructs to their implementable types.
 %
+
+
+We now consider how communication between machines, with event synchronization, is translated. In a synchronization there is a ‘local’ event and a ‘remote’ event, with respect to a task. We say that a local event is the one belonging to the task; a remote event is the event belonging to the shared machine. Synchronization occurs between a pair of events; one from a Tasking Machine, and one from a Shared Machine or Environ Machine. The synchronization of the two events is equivalent to a single atomic event, with the guards and actions of the individual events merged. We can write the guards and actions of the events as guarded commands~\cite{Dijkstra75a}. The general case of event synchronization is shown in Equation~\ref{kjh} where a local event $e_l$ is written as $g_l \rightarrow a_l$ , and $g_l$ and $a_l$ are local guards and actions. The remote event $e_r$ is written $g_r \rightarrow a_r$ , where $g_r$ and
+$a_r$ are remote guards and actions. The synchronization of one local and one
+remote event uses the event composition operator $e$ . The actions describing
+state updates are composed with the parallel update operator .
+
+\begin{equation}\label{kjh}
+abc
+\end{equation}
+
+
 \begin{center}
 \begin{tabular}{l|l}
 Tasking Event-B & Implementation \\ 
@@ -154,10 +166,23 @@ In the same way as autotasks are related to Ada tasks, Shared Machines are relat
 Environ Machines model the environment, and their implementation is similar to an autotask's, with the exception that we allow direct communication between autotasks, and environ tasks. Ordinarily we prohibit inter-task communication, but here it is possible because we use Ada tasks for simulation; the environment tasks can have Ada entries. These are used in the rendezvous communication style. This allows controller implementations to poll, and set, environment values using an entry call. Ada is unusual in that it has this mechanism as a language construct. Similar implementations should be achievable in other languages.
 
 Translations of Tasking Machine to CLM  Task
+Invariants are not used.
 
-Main
-Machines
+\begin{tabular}{l|l}
+Machine Element & Common Language Element \\
+\hline
+Variables + Typing Invariants  &	Variable Declaration\\
+\hline
+task body & task body\\
+Local Events & Expand actions in-line \\
+Synchronizing Events & Procedure + Call
+
+\end{tabular}
+
+
 Contexts
+Constants	  Constants
+partition		 enumeration
 
 Machine
 as in eventB +
