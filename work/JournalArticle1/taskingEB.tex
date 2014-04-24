@@ -145,13 +145,42 @@ Environ Machine &	Simulation Task and Interface
 \end{tabular}
 \end{center}
 %
-In the CLM we have a `generic' autoTask element, generated from the Tasking Event-B \emph{autotask}. The actual implementation depends on the target language, but we define the semantics in terms of Ada's task construct. An Ada program has a main procedure body. Ada tasks defined here, start as soon as possible, near the beginning of a program execution. But no explicit ordering is imposed on their start-up, and  the number of tasks is fixed, determined by the number of machines in the development. The autotask might also be implemented as a Java thread, or a POSIX pthread in C; in this case the implementation should reflect that of the Ada implementation as far as possible.
+In the CLM we have a `generic' autoTask element, generated from the Tasking Event-B \emph{autotask}. The final implementation depends on the selected target language. To define the semantics of the CLM artefacts we use Ada programming semantics, since it is well defined~\cite{ada2005}. The \emph{main} Ada program may contain static task definitions in it declarative part. The tasks defined here, start after elaboration of the declarative part. This behaviour is modelled by the Event-B model, where each static task is modelled by an \emph{autotask} machine. There is no explicit ordering imposed on their start-up, and  the number of tasks is fixed, since it is determined by the number of machines in the development. The autotask can also be implemented as a Java thread, or a POSIX pthread in C; in this case the implementation should implement the Ada semantics.
 
- The autoTask construct, in the CLM, has a task-body containing an expansion of the tasking constructs, obtained from the application the previously introduced translation rules. The task body may contain sequences, and branches, etc. but will still contain the original Event-B predicates and expressions. Translation of these will take place in the second step, which involves the use of the theory plug-in. Ultimately autotasks are used to model a system's controllers, and translations from them will be deployed on the target system.
+ The autoTask construct, in the CLM, has a task-body containing an representation of the tasking constructs, obtained from the application the previously introduced translation rules. The task body may contain sequences, and branches, etc. but still contains Event-B predicates and expressions. Translation of these will take place in the second step, which involves the use of the theory plug-in. Autotasks are used to model a system's controllers, and it is intended that their translations will be deployed on the target system.
 
-In the same way as autotasks are related to Ada tasks, Shared Machines are related to Ada protected objects. The protected objects provide mutually exclusive access to private data. In our translation all machine variables are translated to private variables, so it is necessary to use the object's procedures to access the data. Protected objects are owned by a task, and used to share information between tasks. Implementations in other languages may need to provide thier own mutual exclusion mechanisms, such as using Java's synchronized constructs. 
+In the same way as autotasks are related to Ada tasks, Shared Machines are related to Ada protected objects. The protected objects provide mutually exclusive access to private data. In our translation all machine variables are translated to private variables, so it is necessary to use the object's procedures to access the data. Protected objects are owned by a task, and used to share information between tasks. Implementations in other languages may need to provide their own mutual exclusion mechanisms, such as using Java's synchronized constructs. 
 
-As we have already stated, Environ Machines model the environment, and their implementation is similar to an autotask's, with the exception that we allow direct communication between autotasks, and environ tasks. This is possible because we implement Ada tasks for the purposes of simulation; the environment tasks can have Ada entries. These are used in the rendezvous communication style. This allows controller implementations to poll, and set, environment values using an entry call. Ada is unusual in that it has this mechanism as a language construct. Similar implementations should be achievable in other languages.
+Environ Machines model the environment, and their implementation is similar to an autotask's, with the exception that we allow direct communication between autotasks, and environ tasks. Ordinarily we prohibit inter-task communication, but here it is possible because we use Ada tasks for simulation; the environment tasks can have Ada entries. These are used in the rendezvous communication style. This allows controller implementations to poll, and set, environment values using an entry call. Ada is unusual in that it has this mechanism as a language construct. Similar implementations should be achievable in other languages.
+
+Translations of Tasking Machine to CLM  Task
+
+Main
+Machines
+Contexts
+
+Machine
+as in eventB +
+Task 
+
+Task 
+task type
+priority
+task body
+
+task type
+simple
+periodic
+
+simple
+repeat
+one-shot
+
+simple
+
+
+
+tasking machine
 
 \subsection{Theories for TEB}
 
