@@ -2,5 +2,7 @@
 \BOOKMARK [1][-]{section.2}{Event-B Modelling}{}% 2
 \BOOKMARK [1][-]{section.3}{More Event-B Features}{}% 3
 \BOOKMARK [1][-]{section.4}{Tasking Event-B}{}% 4
-\BOOKMARK [1][-]{section.5}{Tooling}{}% 5
-\BOOKMARK [1][-]{section.6}{Conclusions}{}% 6
+\BOOKMARK [1][-]{section.5}{Translating to the CLM}{}% 5
+\BOOKMARK [1][-]{section.6}{Generating Tasks from Event-B Machines}{}% 6
+\BOOKMARK [1][-]{section.7}{Tooling}{}% 7
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 8
