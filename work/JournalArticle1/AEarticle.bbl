@@ -53,6 +53,19 @@ Barnes, J.: {Programming in Ada 2005}.
 \newblock International Computer Science Series. Addison Wesley (2006).
 \newblock ISBN-10: 0321340787 / ISBN-13: 9780321340788
 
+\bibitem{Burns1999}
+Burns, A.: {The Ravenscar Profile}.
+\newblock Ada Lett. \textbf{XIX}, 49--52 (1999).
+\newblock \doi{http://doi.acm.org/10.1145/340396.340450}.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/340396.340450}
+
+\bibitem{ravenspark}
+Burns, A., Dobbing, B., Vardanega, T.: {Guide for the use of the Ada Ravenscar
+  Profile in high integrity systems}.
+\newblock Ada Lett. \textbf{XXIV}, 1--74 (2004).
+\newblock \doi{http://doi.acm.org/10.1145/997119.997120}.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/997119.997120}
+
 \bibitem{Butler08}
 Butler, M.: {Incremental Design of Distributed Systems with Event-B} (2008).
 \newblock \urlprefix\url{http://eprints.ecs.soton.ac.uk/16910/}
