@@ -141,6 +141,11 @@ Leuschel, M., Butler, M.: {ProB: an automated analysis toolset for the B
 \newblock
   \urlprefix\url{http://dblp.uni-trier.de/db/journals/sttt/sttt10.html#LeuschelB08}
 
+\bibitem{issamThesis}
+Maamria, I.: Towards a practically extensible event-b methodology.
+\newblock Ph.D. thesis, University of Southampton (2013).
+\newblock \urlprefix\url{http://eprints.soton.ac.uk/347887/}
+
 \bibitem{JCSPNet}
 P.H.Welch, Aldous, J., Foster, J.: {CSP Networking for Java (JCSP.net)}.
 \newblock In: Computational Science - ICCS 2002: International Conference

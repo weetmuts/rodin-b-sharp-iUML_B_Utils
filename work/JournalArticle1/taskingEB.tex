@@ -9,9 +9,23 @@ In the following discussion, we distinguish between a task's behaviour, such as 
 
  
 \subsection{Flow Control for Events}\label{flow}
-To enable us to impose an order on events we introduce \emph{Tasking Event-B}, a textual extension to standard Event-B. The first notion we will look at is sequential ordering, for which we introduce a semi-colon `;' sequence operator. In a model with two events \emph{evt1} and \emph{evt2}, we can write \emph{evt1;evt2} to specify a sequential ordering. We can provide Event-B semantics for the ordering, by introducing an abstract program counter to the model. An enumeration of constants models the abstract program counter values; one per event. An abstract program counter variable models the currently enabled event. Guards enforce the ordering, and actions update the abstract program counter. An example can be seen in Fig.~\ref{fig:seq}, where the program counter constants are \emph{evt1} and \emph{evt2}, \emph{pc} has type \emph{pcValues}, and the program counter enumeration is defined by a partition, using the Event-B partition operator, so $partition(pcValues, \{evt1\}, \{evt2\},\{term\})$. The partition means that the values of the enumeration are distinct, i.e. $evt1 \neq evt2$ and so on. \emph{term} is label indicating a final state where no event is enabled.
+To enable us to impose an order on events we introduce \emph{Tasking Event-B}, a textual extension to standard Event-B, with the following syntax for a task body $t$,
 %
-\begin{figure}
+\begin{equation}
+\begin{split}
+t ::=&\\
+& event\\
+&\vert ~ t~;~t\\
+&\vert ~ IF~ event~ [ELSEIF~ event~]^*~ ELSE~ event~ END\\
+&\vert ~ WHILE~ event~ END
+\end{split}
+\end{equation}
+%
+To be well-formed, events may only be referred to once in a task body. The semi-colon performs the role of a sequence operator, and we have clauses for branch and loop respectively. The notation $[~]^*$ represents an option of zero or more; in this case referring to sub-branches.
+
+The first notion we will look at is sequential ordering using the semi-colon `;' sequence operator. In a model with two events \emph{evt1} and \emph{evt2}, we can write \emph{evt1;evt2} to specify a sequential ordering. We can provide Event-B semantics for the ordering, by introducing an abstract program counter to the model. An enumeration of constants models the abstract program counter values; one per event. An abstract program counter variable models the currently enabled event. Guards enforce the ordering, and actions update the abstract program counter. An example can be seen in Fig.~\ref{fig:seq}, where the program counter constants are \emph{evt1} and \emph{evt2}, \emph{pc} has type \emph{pcValues}, and the program counter enumeration is defined by a partition, using the Event-B partition operator, so $partition(pcValues, \{evt1\}, \{evt2\},\{term\})$. The partition means that the values of the enumeration are distinct, i.e. $evt1 \neq evt2$ and so on. \emph{term} is label indicating a final state where no event is enabled.
+%
+\begin{figure}[b]
 \centering
 \begin{minipage}{0.7\textwidth}
 Variables evt1, evt2\\
@@ -25,7 +39,7 @@ evt2 = \textbf{WHEN}~ pc = evt2~ \textbf{THEN}~$A_2~ \pprod$ pc $\bcmeq$ term \t
 \end{figure}
 Initially $evt1$ is enabled and $evt2$ is disabled, since $pc = evt1$. The update action $A_1$ occurs, with the program counter being set \emph{evt2}. This, in turn, enables $evt2$, and so on.
 \subsection{Translating Sequences of Events to Event B}
-We will now define some translation functions for translating Tasking Event-B to Event-B. These functions effectively add program counter guards, and actions to the event. In the first instance, the abstract syntax of TEB ::= EVENT $|$ SEQ, where the concrete syntax of a sequence \emph{SEQ} is a semi-colon `;'. When translating sequences of events, we assume that events have no guards other than the program counter guards. To add the guards and actions modelling a program step, seen in Fig.~\ref{fig:seq}, we define a translation $TEB\_{pc}$. It takes, as parameters, a Tasking Event-B construct, and the next program counter name. It returns a set of events. The $TEB_{pc}$ function is polymorphic on its inputs, with a different function application for each Tasking Event-B construct.
+We will now define some translation functions for translating Tasking Event-B to Event-B. These functions effectively add program counter guards, and actions to the event. When translating sequences of events, we assume that events have no guards other than the program counter guards. To add the guards and actions modelling a program step, seen in Fig.~\ref{fig:seq}, we define a translation $TEB\_{pc}$. It takes, as parameters, a Tasking Event-B construct, and the next program counter name. It returns a set of events. The $TEB_{pc}$ function is polymorphic on its inputs, with a different function application for each Tasking Event-B construct.
 %
 \begin{equation}
 TEB_{pc} \in  TEB \cprod Name \rightarrow POW(EVENT)
@@ -59,21 +73,33 @@ To introduce branching to Tasking Event-B we consider the simple case first, whe
 %
 \begin{equation}
 \begin{split}
-&TEB_{pc}(IF~ e_1~ ELSE~ e_2,~  x) \leadsto\\
+&TEB_{pc}(IF~ e_1~ ELSE~ e_2~ END,~  x) \leadsto\\
 & \{~ e_1 \triangleq (g_1 \land pc = pcName(e_1)) \rightarrow (a_1 \pprod pc \bcmeq x),\\
 &\hspace*{0.3cm}e_2 \triangleq (\lnot g_1 \land pc = pcName(e_1)) \rightarrow (a_2 \pprod pc \bcmeq x) \}
 \end{split}
 \notag
 \end{equation}
 %
-In the branching case, both events share the same enabling program counter. Instead the ordering is determined by the guard $g_1$ or $\lnot g_1$, and both branches take the same next program counter value. 
+In the branching case, both events share the same enabling program counter. Instead the ordering is determined by the guard $g_1$ or $\lnot g_1$, and both branches take the same next program counter value. In the case of additional sub-branches, we may have $i \in 2\ldots n$ sub-branches,
+%
+\begin{equation}
+\begin{split}
+&TEB_{pc}(IF~ e_1~ [ELSEIF~ e_{i}]^* ~ ELSE~ e_{n+1}~ END,~  x) \leadsto\\
+& \{~ e_1 \triangleq (g_1 \land pc = pcName(e_1)) \rightarrow (a_1 \pprod pc \bcmeq x),\\
+& \hspace*{0.3cm}[e_i \triangleq (\lnot (g_{1\ldots i-1}) \land g_i \land pc = pcName(e_1)) \rightarrow (a_i \pprod pc \bcmeq x),]^*\\
+&\hspace*{0.3cm}e_{n+1} \triangleq (\lnot( g_{1\ldots n}) \land pc = pcName(e_1)) \rightarrow (a_m \pprod pc \bcmeq x) \}
+\end{split}
+\notag
+\end{equation}
+%
+For each of the sub-branches containing an event $i$, we require that the preceding guards are negated, and only the guard of $g_i$ is true. We write $\lnot (g_{1\ldots i-1})$ to denote a conjunction of the preceding guards. The action $a_i$ can make state updates for this branch, and the program counter is set to the next value $x$.    
 
 \subsection{Looping}
 The Tasking Event-B while loop is written \emph{WHILE e1 END}. This simple loop repeats \emph{e1} while the guard is true. It has the following Event-B semantics for which we provide the translation,
 
 \begin{equation}
 \begin{split}
-&TEB_{pc}(WHILE~ e_1,~  x) \leadsto\\
+&TEB_{pc}(WHILE~ e_1~ END,~  x) \leadsto\\
 & \{~ e_1 \triangleq (g_1 \land pc = pcName(e_1)) \rightarrow (a_1 ),\\
 &\hspace*{0.3cm}e_2 \triangleq (\lnot g_1 \land pc = pcName(e_1)) \rightarrow (pc \bcmeq x) \}
 \end{split}
@@ -86,38 +112,45 @@ We will not explicitly give details of the translation of Tasking Event-B constr
 \subsection{Tasks and Shared Machines}\label{tasks}
 In our implementations we wish to describe two kinds of behaviour. The first behaviour is the task-like behaviour of the \emph{tasking machine} machine. We impose an ordering on the events of a machine, to describe the activities that take place when the task is active. We model this in an extension to Event-B, using a \emph{task-body} and the Tasking Event-B constructs introduced earlier in the section. The task-body, with its tasking notation, provides programming-style specification in Event-B. This is readily translated to the CLM and to Event-B. The second behaviour is that of the \emph{shared} machine type, which provides a means to share information between the tasks. \emph{Shared} machines have no flow control specification of their own (i.e. no event ordering). They rely on the task-body, and synchronization of events. The synchronizations arise from the decomposition process, and are recorded in the composed machine structure. The events in the \emph{shared} machine synchronize with the corresponding events in tasks; it is through this that we translate to a procedure, and its call, in the implementation. 
 
-There are two types of tasking machines, one describing the controller tasks in the system; the other describing the environment. These are known as \emph{autotask} and \emph{environ} machines respectively. The main difference between a model of a controller, and a model of the environment, is that the environment model need only provide sufficient detail to implement a simulation of the environment. Whereas, a controller model can be refined to a level of detail that makes it possible to generate code for an implementation which can be deployed on the target system. The environment model can also be used to generate a Java-style interface; or, with Ada, procedure bodies that can be modified, with calls to software driver APIs. This will allow a controller to interact with hardware in the real environment. The following table relates the Tasking Event-B constructs to their implementable types.
+There are two types of tasking machines, one describing the controller tasks in the system; the other describing the environment. These are known as \emph{autotask} and \emph{environ} machines respectively. The main difference between a model of a controller, and a model of the environment, is that the environment model need only provide sufficient detail to implement a simulation of the environment. Whereas, a controller model can be refined to a level of detail that makes it possible to generate code for an implementation which can be deployed on the target system. The environment model can also be used to generate a Java-style interface; or, with Ada, procedure bodies that can be modified, with calls to software driver APIs. This will allow a controller to interact with hardware in the real environment. The following table relates the Tasking Event-B machine constructs to their implementable types.
 %
+\begin{table}[h]
 \begin{center}
 \begin{tabular}{l|l}
-Tasking Event-B & Implementation \\ 
+Tasking Event-B & CLM Type \\ 
 \hline
-Autotask Machine & Deployable Task\\
 Shared Machine &	Protected Object\\
-Environ Machine &	Simulation Task and Interface
+Autotask Machine & Deployable Task\\
+Environ Machine &	Environ Simulation Task
 \end{tabular}
 \end{center}
+\caption{Mapping from Machines to CLM Types}\label{CLMTypes}
+\end{table}
 
-
-We now consider how communication between machines, with event synchronization, is translated. In a synchronization there is a ‘local’ event and a ‘remote’ event, with respect to a task. We say that a local event is the one belonging to the task; a remote event is the event belonging to the \emph{shared} machine. Synchronization occurs between a pair of events; one from a Tasking Machine, and one from a \emph{shared} Machine or \emph{environ} Machine. The synchronization of the two events is equivalent to a single atomic event, with the guards and actions of the individual events merged. We can write the guards and actions of the events as guarded commands~\cite{Dijkstra75a}. The general case of event synchronization is shown in Eq.~\ref{eqGuardAction} where a local event is $e_l \triangleq g_l \rightarrow a_l$ , where $g_l$ and $a_l$ are local guards and actions. The remote event $e_r \triangleq g_r \rightarrow a_r$ , where $g_r$ and
-$a_r$ are remote guards and actions. The synchronization of local and remote events $e_c$ can also be written in terms of the events, Eq.~\ref{eqCombEvts}, using the event composition operator $\pprod _e$.
+Now we will summarize the main constituents of the CLM representation of shared objects, and tasks, as attributes of their CLM types. 
 %
-\begin{equation}\label{eqGuardAction}
-g_l \rightarrow a_l \pprod_e g_r \rightarrow a_r \triangleq g_l \land g_r \rightarrow a_l \pprod a_r
-\end{equation}
-%
-\begin{equation}\label{eqCombEvts}
-e_c \triangleq e_l \pprod _e e_r
-\end{equation}
-
-\section{Translating to the CLM}
-The translation to code for a sequence is relatively straightforward. We simply map the concrete sequence operator to a statement delimiter, expand the event actions, and add a terminating delimiter in the appropriate place. One further consideration is the translation of parallel assignments to sequential, where care must be taken to translate variables on the right hand side of assignments to a local variable representing the initial values of those variables. First we define a translation function that maps from Tasking Event-B to program statements in our common language abstraction.   
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{l|l}
+CLM Type & Attributes \\ 
+\hline
+ProtectedObject 	& name, variableDecls,\\ 
+				& constantDecls, subroutines\\
+(Deployable) AutoTask 	& name, variableDecls, \\ 
+				& constantDecls, task-body\\
+(Simulation )EnvironTask & name, variableDecls, constantDecls, \\
+				& task-body, subroutines\\
+\end{tabular}
+\end{center}
+\caption{CLM Type Attributes}\label{CLMTypeAttributes}
+\end{table}
+ 
+\section{Translating to the CLM}\label{TEBCLM}
+The translation to code for a sequence is relatively straightforward. We simply map the concrete sequence operator to a statement delimiter, expand the event actions, and add a terminating delimiter in the appropriate place. First we define a polymorphic translation function that maps from Tasking Event-B to program statements in our common language abstraction.  $TEB$ can be any of the Tasking Event-B annotations that we have introduced.
 \begin{equation}
 TEB_{clm} \in  TEB \rightarrow ProgramStatements
 \notag
 \end{equation}
-
-We discuss the translation of synchroniizing events in Sect.~\ref{synching}
 
 \subsection{Branching}
 The translation to the common language model, is as follows.
@@ -146,72 +179,141 @@ The translation to the common language model, is as follows.
 \section{Generating Tasks from Event-B Machines}
 %
 %%% Why Ada semenatics for Tasks. How Ada tasks start
-In the CLM we have a `generic' \emph{autotask} element, generated from the Tasking Event-B \emph{autotask}. The final implementation depends on the selected target language. To define the semantics of the CLM artefacts we use Ada programming semantics, since it is well defined~\cite{ada2005}. The \emph{main} Ada program may contain static task definitions in it declarative part. The tasks defined here, start after elaboration of the declarative part. This behaviour is modelled by the Event-B model, where each static task is modelled by an \emph{autotask} machine. There is no explicit ordering imposed on their start-up, and  the number of tasks is fixed, since it is determined by the number of machines in the development. The \emph{autotask} can also be implemented as a Java thread, or a POSIX pthread in C; in this case the implementation should implement the Ada semantics.
+So far we have just dealt with the Tasking Event-B language that we introduced. We now discuss how we translate the machines map to protected objects and tasks. We begin with an overview of the issues involved. In the CLM we have a `generic' \emph{autotask} element, generated from the Tasking Event-B \emph{autotask}. The final implementation depends on the selected target language. To define the semantics of the CLM artefacts we use Ada programming semantics, since it is well defined~\cite{ada2005}. The \emph{main} Ada program may contain static task definitions in it declarative part. The tasks defined here, start after elaboration of the declarative part. This behaviour is modelled by the Event-B model, where each static task is modelled by an \emph{autotask} machine. There is no explicit ordering imposed on their start-up, and  the number of tasks is fixed, since it is determined by the number of machines in the development. The \emph{autotask} can also be implemented as a Java thread, or a POSIX pthread in C; in this case the implementation should implement the Ada semantics.
 
 %%% Task body descr. Translation is a two step process. EB to CLM
- The \emph{autotask} construct, in the CLM, has a task-body containing an representation of the tasking constructs, obtained from the application the previously introduced translation rules. The task body may contain sequences, and branches, etc. but still contains Event-B predicates and expressions. Translation of these will take place in the second step, which involves the use of the theory plug-in. Autotasks are used to model a system's controllers, and it is intended that their translations will be deployed on the target system.
+ The \emph{autotask} construct, in the CLM, has a task-body containing an representation of the tasking constructs, obtained from the application the previously introduced translation rules. The task body may contain sequences, and branches, etc. but still contains Event-B predicates and expressions. Translation of these will take place in the second step, which involves the use of the theory plug-in. $Autotasks$ are used to model a system's controllers, and it is intended that their translations will be deployed on the target system.
 
 %%% Shared Machine descr.
-In the same way as autotasks are related to Ada tasks, \emph{shared} Machines are related to Ada protected objects. The protected objects provide mutually exclusive access to private data. In our translation all machine variables are translated to private variables, so it is necessary to use the object's procedures to access the data. Protected objects are owned by a task, and used to share information between tasks. Implementations in other languages may need to provide their own mutual exclusion mechanisms, such as using Java's synchronized constructs. 
+In the same way as \emph{autotasks} are related to Ada tasks, \emph{shared} Machines are related to Ada protected objects. The protected objects provide mutually exclusive access to private data. In our translation all machine variables are translated to private variables, so it is necessary to use the object's procedures to access the data. Protected objects are owned by a task, and used to share information between tasks. Implementations in other languages may need to provide their own mutual exclusion mechanisms, such as using Java's synchronized constructs. 
 
 %%%Environ Machine descr.
 \emph{Environ} Machines model the environment, and their implementation is similar to an \emph{autotask}'s, with the exception that we allow direct communication between \emph{autotasks}, and \emph{environ} tasks. We prohibit inter-task communication between \emph{autotasks}, for reasons given in the Ravenscar profile~\cite{Burns1999,ravenspark}. But here it is possible; because we use the Ada tasks for simulating the environment. It is never intended that the code be deployed, so the \emph{environ} tasks can have Ada entries, for use with rendezvous style communication. Rendezvous allows two tasks to agree on a communication point in the code. The first task to reach that point will wait until the other is ready, and then proceed with the communication when both are ready. This allows controller implementations to poll, and set, environment values, using an entry call. Ada is unusual in that it has entries, for rendezvous, as a first class language construct. Similar implementations should be achievable in other languages, but have to be programmed explicitly.
 
 \subsection{Machine Translation}\label{MachineTrans}
-We summarize the remaining aspects of machine translation. Translation of task bodies has been described earlier in the section, with the exception of the implementation of communication between tasks and shared objects, and tasks and the environment. We look at communication between tasks in Subsect.~\ref{synching}.
+We summarize the remaining aspects of machine translation. Translation of task bodies has been described earlier in the section, with the exception of the implementation of communication between tasks and shared objects, and tasks and the environment. We look at communication between tasks in Sect.~\ref{synching}.
 
 \subsubsection{Translation of Variables, Constants, Invariants} 
-In this subsection we look at the translation of variables, constants and invariants. In general, invariants are ignored in the final translation to implementation. That is, unless they are required downstream for further verification. However, typing invariants are used in the translation of variable declarations. For each variable $V$ in a machine, typed in an invariant $I$, and initialised in an initialisation action $T$ we can translate to a variable declaration in the CLM. The variable declaration has three attributes, the variable name, type, and initial value, we can write,
+In this subsection we look at the translation of variables, constants and invariants. In general, invariants are ignored in the final translation to implementation. That is, unless they are required downstream for further verification. However, typing invariants are used in the translation of variable declarations. Each variable $v$ in a machine, is typed in an invariant $i$, and initialised in an initialisation action $t$. The function to translate the Event-B variable, type, and initial value, to a variable declaration is typed as follows.
 
 \begin{equation}
-TEB_{varDecl}(v, I, T) \leadsto VariableDeclaration
+TEB_{varDecl} \in Variable \cprod Invariant \cprod Action \tfun VariableDeclaration
+\notag
 \end{equation}
+%
+where Variable, Invariant and Action are types of Event-B Elements. The variable declaration, in the CLM, has three attributes; the variable name, its type, and its initial value. We describe the translation from Event-B to a variable declaration, as follows,
 
-Where variable $v$ is typed in the invariant $I$ = $v\in t$, with the initialisation action $T$ = $v\bcmeq x$; the translation rule maps to a variable declaration, with $name=w$, $type=t$ and $initial~value=x $. A similar rule exists to translate constants into a constant declarations with typing and initialisation derived from axioms. 
+\begin{equation}
+\begin{split}
+&TEB_{varDecl}(v,~ v\in t,~ v\bcmeq x) \leadsto\\ 
+&\hspace*{0.3cm}VariableDeclaration:~ name = v,~ type = t,~ initialValue = x
+\end{split}
+\notag
+\end{equation}
+%
+A similar rule exists to translate constants into a constant declarations with typing and initialisation derived from axioms. 
 
-It is also possible to map the partition operation to an enumeration declaration. In an Event-B context, a partition is written as 
+It is also possible that the constants are used in a partition, using the Event-B partition operator. This can be mapped to an enumeration declaration, a special kind of $constantDecl$. In an Event-B context, a partition is written as 
 %
 \begin{equation}
 partition(S,\{a\},\{b\},\ldots)
 \notag
 \end{equation}
 
-where $S$ is the set to be partitioned, and $a$, $b$, \ldots are distinct elements of the partition (constants). We can apply the translation rule,
+We define the following translation rule for translating the constants involved in a partition, we need only pass the axiom to the translator. 
 
 \begin{equation}
-TEB_{partition}(S,\{a\},\{b\},\ldots) = EnumDeclaration
+TEB_{partition} \in Axiom \tfun EnumDeclaration
+\notag
 \end{equation}
 
-where the EnumDeclaration has $name=S$ and $elements=[a,b,\ldots]$, the list of values.
+The axiom describes the Set to be partitioned, and the elements, which are constants in singleton sets. We define the translation as follows, 
 
-\subsubsection{Translation of Task Types }
-When defining \emph{autotask} and \emph{environ} machines, it is possible to specify a number of additional implementation features. The \emph{task type} annotation allows a developer to specify which kind of task to 
+\begin{equation}
+\begin{split}
+&TEB_{partition}(partition(S,\{a\},\{b\},\ldots)) \leadsto\\
+&\hspace*{0.3cm}EnumDeclaration: name = S, elements = { a, b, \ldots }
+\end{split}
+\notag
+\end{equation}
 
- 
-task type
-priority
-task body
+where the EnumDeclaration has a $name$ attribute, and a list of unique $elements$ representing the enumerated values.
 
-task type
-simple
-periodic
+\subsubsection{Translation of Machines}
 
-simple
-repeat
-one-shot
+ For each of the machine types,  we translate to the CLM types, introduced in Table \ref{CLMTypeAttributes},
 
-simple
+The translation function to map a \emph{shared} machine to its CLM representation is typed as follows,
+\begin{equation}
+\begin{split}
+&TEB_{shared} \in Name \cprod \pow(Variables) \cprod \pow(Constants) \cprod\\
+& \hspace*{0.3cm}\pow(Invariants) \cprod \pow(Events) \tfun CLM
+\end{split}
+\notag
+\end{equation}
 
-tasking machine
+We translate a machine with name $n$, a set of variables $V$, a set of invariants $I$, a set of seen constants $C$, and $E$ is the set of events. In the functions we only pass the relevant data, i.e. in $TEB_{varDecls}$, for each of the variables in the set,  $i$ is the typing invariant involving $v$, and $t$ is the initialisation action. In $TEB_{constDecls}$, $x$ is the axiom that types $c$ 
 
 
-\subsection{From CLM to Implementation}
-During the final step, when guards and actions are being translated we must do the following. To resolve the mapping from parallel to sequential we define a function which generates program statements from the event $ACTIONS$. 
+\begin{equation}
+\begin{split}
+&TEB_{shared}(n, V, C, I, E) \leadsto\\
+& \hspace*{0.3cm}ProtectedObject: name = n, \\
+& \hspace*{0.3cm}variableDecls = \{ v\in V~ \vline~  TEB_{varDecl}(v, i, t) \},\\
+& \hspace*{0.3cm}constantDecls = \{ c\in C~ \vline~ TEB_{constDecl}(c, x)\},\\
+& \hspace*{0.3cm}subroutines = \{e\in E ~\vline~ TEB_{subroutine}(e)\} 
+\end{split}
+\notag
+\end{equation}
+
+Next we define a translation function to map an \emph{autotask} Event-B machine to its CLM representation. It is the same as a  \emph{shared} machine, but has the additional task body $T$ to translate. 
+\begin{equation}
+\begin{split}
+&TEB_{autotask} \in Name \cprod \pow(Variables) \cprod \pow(Constants) \cprod\\
+& \hspace*{0.3cm}\pow(Invariants) \cprod \pow(Events) \cprod TaskBody \tfun CLM
+\end{split}
+\notag
+\end{equation}
+%
+The \emph{autotask} machine  translates to an \emph{autotask} CLM construct. The task body $t$ is translated as described in Sect.~\ref{TEBCLM}. 
+%
+\begin{equation}
+\begin{split}
+&TEB_{autotask}(n, V, C, I, E, t) \leadsto\\
+& \hspace*{0.3cm}AutoTask: name = n, \\
+& \hspace*{0.3cm}variableDecls = \{ v\in V~ \vline~  TEB_{varDecl}(v, i, t) \},\\
+& \hspace*{0.3cm}constantDecls = \{ c\in C~ \vline~ TEB_{constDecl}(c, b)\},\\
+&\hspace*{0.3cm} taskBody = TEB_{clm}(t)
+\end{split}
+\notag
+\end{equation}
+%
+The translation of the \emph{environ} machine is similar to the \emph{autotask} machine, except that an \emph{environ} machine may have subroutines. These can be called by an \emph{autotask} to poll for information, or to set values in the environment.
+
+\subsubsection{Additional Information for Tasks}
+When defining \emph{autotask} and \emph{environ} machines, it is possible to specify two additional implementation features. The \emph{task type} annotation allows a developer to specify which kind of task to implement, that is one of \emph{periodic}, \emph{repeating}, or \emph{one-shot}. In the case of a periodic task, the period of the cycle may be specified in milliseconds. The second feature is the task priority, which should be set according to implementation needs. In typical use, safety related tasks can be given a higher priority than visual display related tasks. But we emphasize that its use is contingent on support in the underlying implementation. 
+
+\section{Communication between machines}\label{synching}
+We now consider how communication between machines, with event synchronization, is translated. In a synchronization there is a ‘local’ event $e_l$ and a ‘remote’ event $e_r$. Local and remote are with respect to a task. We say that a local event is the event in the synchronization that belongs to the task; the remote event belongs to the \emph{shared} machine. Synchronization occurs between a pair of events; one from a Tasking Machine, and one from a \emph{shared} Machine or \emph{environ} Machine. The synchronization of the two events is a single atomic event, with the guards conjoined,  and actions performed in parallel. We write the guards and actions of the events as guarded commands~\cite{Dijkstra75a}. The local event is defined as  $e_l \triangleq g_l \rightarrow a_l$ , where $g_l$ and $a_l$ are local guards and actions. The remote event $e_r$ is defined as $e_r \triangleq g_r \rightarrow a_r$ , where $g_r$ and $a_r$ are remote guards and actions. The synchronization operator $\pprod_e$ is defined as follows, 
+%
+\begin{equation}
+g_l \rightarrow a_l \pprod_e g_r \rightarrow a_r \triangleq g_l \land g_r \rightarrow a_l \pprod a_r
+\notag
+\end{equation}
+%
+The equation can be re-written written using events, $e_l \pprod_e e_r$.
+
+NOW DO THE TRANSLATION OF EVENTS PRODUCING A SUBROUTINE AND CALL
+
+
+%
+\section{From CLM to Implementation}
+One further consideration is the translation of parallel assignments to sequential, where care must be taken to translate variables on the right hand side of assignments to a local variable representing the initial values of those variables. During the final translation step from CLM to programming language, guards and actions are translated using the $TEB_{iniValSubs}$ function, typed as follows,
 \begin{equation}
 TEB_{iniValSubs} \in  ACTIONS \rightarrow ProgramStatements
 \notag
 \end{equation}
-In the $TEB_{iniValSubs}$, function we translate assignments of the form $l \bcmeq E(V)$ to program assignments. Here, $l$ is a single variable identifier on the lhs of the assignment, and  E(V) represents expressions involving a set of variables $V$ on the right hand side. For each variable $v \in V$ we insert in the translated statements, a local variable of the same type as v.It is initialised so that $v_{ini} \bcmeq v$. We replace occurrences of $v$ in E(V) with $v_{ini}$. The translation function applied to a local event (as defined in Eq.~\ref{eqCombEvts}) is translated as follows,
+In the $TEB_{iniValSubs}$, function we translate assignments of the form $l \bcmeq E(V)$ to program assignments. Here, $l$ is a single variable identifier on the lhs of the assignment, and  $E(V)$ represents an expression involving a set of variables $V$ on the right hand side. For each variable $v \in V$ we insert in the translated statements, a local variable of the same type as v.It is initialised so that $v_{ini} \bcmeq v$. We replace occurrences of $v$ in E(V) with $v_{ini}$. The translation function is applied to an event as follows,
 %
 \begin{equation}
 \begin{split}
@@ -233,7 +335,6 @@ As an example, $a_l$ may be a parallel assignment, where $x \bcmeq y \pprod y \b
 
 
 
-\subsubsection{Communication between machines}\label{synching}
 
 
 \subsection{Theories for TEB}

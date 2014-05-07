@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: AEarticle.aux
+A level-1 auxiliary file: Intro.aux
+A level-1 auxiliary file: Event-B.aux
+A level-1 auxiliary file: taskingEB.aux
+A level-1 auxiliary file: tooling.aux
+A level-1 auxiliary file: conc.aux
+The style file: spmpsci.bst
+Database file #1: MyBibTex.bib.bib
+Warning--entry type for "pthreads" isn't style-file defined
+--line 2903 of file MyBibTex.bib.bib
+Warning--I didn't find a database entry for "issam2013"
+Warning--to sort, need author or key in pthreads
+Warning--to sort, need author or key in SPARKAda
+You've used 44 entries,
+            2946 wiz_defined-function locations,
+            909 strings with 11766 characters,
+and the built_in function-call counts, 22669 in all, are:
+= -- 2278
+> -- 500
+< -- 13
++ -- 277
+- -- 160
+* -- 1029
+:= -- 2498
+add.period$ -- 66
+call.type$ -- 44
+change.case$ -- 219
+chr.to.int$ -- 0
+cite$ -- 46
+duplicate$ -- 2413
+empty$ -- 1850
+format.name$ -- 191
+if$ -- 4833
+int.to.chr$ -- 0
+int.to.str$ -- 44
+missing$ -- 365
+newline$ -- 199
+num.names$ -- 95
+pop$ -- 995
+preamble$ -- 1
+purify$ -- 162
+quote$ -- 0
+skip$ -- 1127
+stack$ -- 0
+substring$ -- 794
+swap$ -- 1686
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 157
+warning$ -- 2
+while$ -- 124
+width$ -- 46
+write$ -- 444
+(There were 4 warnings)
