@@ -11,7 +11,7 @@ In the following discussion, we distinguish between a task's behaviour, such as 
 \subsection{Flow Control for Events}\label{flow}
 To enable us to impose an order on events we introduce \emph{Tasking Event-B}, a textual extension to standard Event-B, with the following syntax for a task body $t$,
 %
-\begin{equation}
+\begin{equation}\label{eq:syntax}
 \begin{split}
 t ::=&\\
 & event\\
@@ -147,9 +147,8 @@ ProtectedObject 	& name, variableDecls,\\
  
 \section{Translating to the CLM}\label{TEBCLM}
 The translation to code for a sequence is relatively straightforward. We simply map the concrete sequence operator to a statement delimiter, expand the event actions, and add a terminating delimiter in the appropriate place. First we define a polymorphic translation function that maps from Tasking Event-B to program statements in our common language abstraction.  $TEB$ can be any of the Tasking Event-B annotations that we have introduced.
-\begin{equation}
+\begin{equation}\label{clmType}
 TEB_{clm} \in  TEB \rightarrow ProgramStatements
-\notag
 \end{equation}
 
 \subsection{Branching}
@@ -294,17 +293,158 @@ The translation of the \emph{environ} machine is similar to the \emph{autotask} 
 When defining \emph{autotask} and \emph{environ} machines, it is possible to specify two additional implementation features. The \emph{task type} annotation allows a developer to specify which kind of task to implement, that is one of \emph{periodic}, \emph{repeating}, or \emph{one-shot}. In the case of a periodic task, the period of the cycle may be specified in milliseconds. The second feature is the task priority, which should be set according to implementation needs. In typical use, safety related tasks can be given a higher priority than visual display related tasks. But we emphasize that its use is contingent on support in the underlying implementation. 
 
 \section{Communication between machines}\label{synching}
-We now consider how communication between machines, with event synchronization, is translated. In a synchronization there is a ‘local’ event $e_l$ and a ‘remote’ event $e_r$. Local and remote are with respect to a task. We say that a local event is the event in the synchronization that belongs to the task; the remote event belongs to the \emph{shared} machine. Synchronization occurs between a pair of events; one from a Tasking Machine, and one from a \emph{shared} Machine or \emph{environ} Machine. The synchronization of the two events is a single atomic event, with the guards conjoined,  and actions performed in parallel. We write the guards and actions of the events as guarded commands~\cite{Dijkstra75a}. The local event is defined as  $e_l \triangleq g_l \rightarrow a_l$ , where $g_l$ and $a_l$ are local guards and actions. The remote event $e_r$ is defined as $e_r \triangleq g_r \rightarrow a_r$ , where $g_r$ and $a_r$ are remote guards and actions. The synchronization operator $\pprod_e$ is defined as follows, 
+We now consider how communication between machines, with event synchronization, is translated. In a synchronization there is a ‘local’ event $e_l$ and a ‘remote’ event $e_r$. Local and remote are with respect to a task. We say that a local event is the event in the synchronization that belongs to the task; the remote event belongs to the \emph{shared} machine. Synchronization occurs between  \emph{composed} events. In our case we compose an event from a Tasking Machine with one from a \emph{shared} Machine, or an \emph{environ} Machine. The synchronization of the two composed events is equivalent to a single atomic event. We add a syntactic extension to the language defined in~\ref{eq:syntax}, so we now have $event~[\pprod_e~event]$: i.e. optional synchronization. 
+
+
+We describe the event composition operator $\pprod_e$ using the guarded command language~\cite{Dijkstra75a} to show the conjunction of local and remote guards, and parallel combination of local and remote actions. In the following, $p_{in}$ and $p_{out}$ are lists of input, and output, parameters respectively. These parameters embody the direction of the information flow, which is an extension to the standard Event-B interpretation; but as in Event-B, parameter visibility is limited to event scope. The local event is written,
 %
 \begin{equation}
-g_l \rightarrow a_l \pprod_e g_r \rightarrow a_r \triangleq g_l \land g_r \rightarrow a_l \pprod a_r
+e_l(p_{in}, p_{out}, \btrue \rightarrow a_l)
 \notag
 \end{equation}
 %
-The equation can be re-written written using events, $e_l \pprod_e e_r$.
+ where $\btrue$ is the true guard, and $a_l$ are local actions accessing the local machine variables, and parameters. The local guard must be true. In this interpretation, of synchronizing events, the blocking of the calling task by the event guard makes no sense. The remote event is, however allowed to block, and is written
+%
+\begin{equation}
+e_r(p_{in}, p_{out}, g_r \rightarrow a_r)
+\notag
+\end{equation}
+%
+ where $g_r$ and $a_r$ are remote guards and actions accessing only remote machine variables, and parameters.
 
-NOW DO THE TRANSLATION OF EVENTS PRODUCING A SUBROUTINE AND CALL
+We can describe the synchronization of two events in terms of its guards and actions,  
+%
+\begin{equation}
+a_l \pprod_e (g_r \rightarrow a_r) \triangleq g_r \rightarrow (a_l \pprod a_r)
+\notag
+\end{equation}
+%
 
+Since the Ada programming language contains the notion of the \emph{in} parameters and \emph{out}, and our common language abstraction is based on Ada, we can easily incorporate the direction information. But, we need to extract the information from the Event-B model. This is relatively straightforward, since during the decomposition process, \emph{in} parameters appear on the left hand side of assignments in an action (and are typed in the guard). \emph{out} parameters only appear in event guards; one for typing, the other as an equality with some machine variable.  Furthermore, an annotation is automatically added to the parameters in an Event-B model, to clarify the direction of the information flow.
+
+In order to define the translation more precisely we use a translation rule of the type defined in Eq.~\ref{clmType}. This rule translates an event synchronization to a call in an  \emph{autotask}, and a procedure in a \emph{shared} object. 
+%
+\begin{equation}
+\begin{split}
+&TEB_{clm}(e_l(p_{in}, p_{out}, a_l), e_r(p_{in}, p_{out}, g_r,a_r)) \leadsto\\
+&a_l ; TEB_{call}(e_l(p_{in}, p_{out}))
+\notag
+\end{split}
+\end{equation}
+%
+We do not translate $a_l$ at this stage, since translation of the mathematical language takes place in second stage. A procedure call is created by $TEB_{call}$. The name of the procedure call information is derived from the shared machine name, and event name. The parameters are derived from the equality in the guard, for outgoing parameters; and assignment for incoming parameters. It will be easier to illustrate translation of parameters using an example, which follows in the next subsection.
+
+\subsection{An Example of Parameter Translation}
+We describe the translation of Event-B parameters using an example shown in Fig.~\ref{fig:absMch} showing an abstract machine with variables $x$, $y$, $v$ and $w$. We decompose the abstract machine into two machines, to demonstrate translation of parameter passing.
+%
+\begin{figure}
+\centering
+\begin{minipage}{0.4\textwidth}
+\textcolor{blue}{MACHINE} $m1$  \\
+\textcolor{blue}{VARIABLES} \text{$x$, $y$, $v$, $w$}\\
+\textcolor{blue}{INVARIANTS}\\
+\hspace*{0.2cm}$x\in T \land y \in U$, \ldots\\
+\textcolor{blue}{EVENTS}\\
+\textcolor{blue}{EVENT} $e$\\
+\hspace*{0.2cm}\textcolor{blue}{THEN} $x \bcmeq v \pprod w\bcmeq y$\\
+\textcolor{blue}{END}\\
+\ldots
+\end{minipage}
+\caption{Parameters: The Abstraction}
+\label{fig:absMch}
+\end{figure}
+%
+In the decomposition, $x$ and $y$ will be local, $v$ and $w$ remote. In Fig.~\ref{fig:addParams} we take the necessary step of introducing parameters into the model, to facilitate information flow between the decomposed machines. The assignments now have parameters, instead of variables, on the right-hand side.  
+%
+\begin{figure}
+\centering
+\begin{minipage}{0.4\textwidth}
+\textcolor{blue}{MACHINE} $m2$ \textcolor{blue}{REFINES} $m1$  \\
+\textcolor{blue}{VARIABLES} \text{$x$, $y$, $v$, $w$}\\
+\textcolor{blue}{INVARIANTS}\\
+\hspace*{0.2cm}$x\in T \land y\in U$, \ldots\\
+\textcolor{blue}{EVENTS}\\
+\textcolor{blue}{EVENT} $e$ \textcolor{blue}{REFINES} $e$\\
+\hspace*{0.2cm}\textcolor{blue}{ANY} $p_v$, $p_y$ \\
+\hspace*{0.2cm}\textcolor{blue}{WHERE} $p_v = v  \land p_y = y$\\
+\hspace*{0.2cm}\textcolor{blue}{THEN} $x \bcmeq p_v \pprod  w \bcmeq p_y$\\
+\textcolor{blue}{END}
+\ldots
+\end{minipage}
+\caption{Parameters: The Refinement}
+\label{fig:addParams}
+\end{figure}
+%
+This model allows a decomposition where the value $v$ is sent to the local machine from the remote machine via parameter $p_v$, and the value $y$ is sent from the local machine to the remote machine via parameter $p_y$. During decomposition, the variables are distributed between machines, and some parameters are given typing guards. After decomposition we have two machines, and a composed machine which keeps track of the synchronizations. The events are shown in Fig.~\ref{fig:dec} where $e_l$ and $e_r$ are events of the local machine $m_l$ and remote machine $m_r$. We have also added the direction annotation, ? for input and ! for output.
+%
+\begin{figure}
+\centering
+\begin{minipage}{0.4\textwidth}
+\textcolor{blue}{MACHINE} $m_l$\\
+\textcolor{blue}{VARIABLES} $x$, $y$\\
+\ldots\\
+\textcolor{blue}{EVENT} $e_l$ \\
+\hspace*{0.2cm}\textcolor{blue}{ANY} $?p_v$, $!p_y$ \\
+\hspace*{0.2cm}\textcolor{blue}{WHERE} $p_v \in T \land p_y = y$\\
+\hspace*{0.2cm}\textcolor{blue}{THEN} $x \bcmeq p_v$\\
+\textcolor{blue}{END}\\
+\ldots\\
+\textcolor{blue}{MACHINE} $m_r$\\
+\textcolor{blue}{VARIABLES} $v$, $w$\\
+\textcolor{blue}{EVENT} $e_r$ \\
+\hspace*{0.2cm}\textcolor{blue}{ANY} $!p_v$, $?p_y$ \\
+\hspace*{0.2cm}\textcolor{blue}{WHERE} $p_v = v \land p_y \in U$\\
+\hspace*{0.2cm}\textcolor{blue}{THEN} $w \bcmeq p_y$\\
+\textcolor{blue}{END}
+\end{minipage}
+\caption{Parameters: The Decomposed Events}
+\label{fig:dec}
+\end{figure}
+%
+during translation there will be a subroutine generated,
+%
+\begin{figure}
+\centering
+\begin{minipage}{0.49\textwidth}
+\textcolor{blue}{TASK} $m_l$\\
+\textcolor{blue}{VARIABLES} $x$, $y$\\
+\textcolor{blue}{TASKBODY} $m_r.e_r(x,~y)$ \\
+ \\
+ \\
+\textcolor{blue}{SHARED\_OBJECT} $m_r$\\
+\textcolor{blue}{VARIABLES} $v$, $w$\\
+\textcolor{blue}{SUBROUTINE} $e_r ($out$~ p_v \in T,~  $in$~ p_y \in U)$ \\
+\hspace*{0.2cm}\textcolor{blue}{BODY} $p_v \bcmeq v~ ;~ w \bcmeq p_y$\\
+\textcolor{blue}{END}
+\end{minipage}
+\caption{Parameters: The Subroutine and Call}
+\label{fig:dec}
+\end{figure}
+%
+
+PERHAPS EXPLAIN WHAT HAPPENED IN THE TRANSLATION OF PARAMETERS HERE
+
+A further translation is used to create a subroutine definition from the remote event. The translation $TEB_{proc}$ is applied to events of shared machines, which are necessarily used as the remote events in a synchronization. 
+%
+\begin{equation}
+TEB_{proc} \in Event \tfun Subroutine
+\notag
+\end{equation}
+%
+Taking a shared machine event, as a parameter, the translation produces a subroutine in a shared object.
+%
+\begin{equation}
+\begin{split}
+&TEB_{proc}(e_r(p_{in}, p_{out}, g_r,a_r)) \leadsto\\
+&Subroutine:\\ 
+&name = name(e_r)\\
+&parameters = p_{in}, p_{out}\\
+&when= g_r\\
+&actions =  a_r
+\notag
+\end{split}
+\end{equation}
+%
 
 %
 \section{From CLM to Implementation}

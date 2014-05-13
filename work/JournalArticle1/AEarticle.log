@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  7 MAY 2014 17:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.31)  13 MAY 2014 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -315,8 +315,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip46
 )
-(./AEarticle.aux (./Intro.aux) (./Event-B.aux) (./taskingEB.aux) (./tooling.aux
-) (./conc.aux))
+(./AEarticle.aux (./Intro.aux) (./Event-B.aux) (./taskingEB.aux
+
+LaTeX Warning: Label `fig:dec' multiply defined.
+
+) (./tooling.aux) (./conc.aux))
 \openout1 = `AEarticle.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -387,11 +390,11 @@ LaTeX Info: Redefining \nameref on input line 62.
 
 
 SVJour3 warning: Missing \journalname
-LaTeX Font Info:    Try loading font information for U+msa on input line 91.
+LaTeX Font Info:    Try loading font information for U+msa on input line 92.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+LaTeX Font Info:    Try loading font information for U+msb on input line 92.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -399,28 +402,34 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout2 = `Intro.aux'.
 
  (./Intro.tex
-Overfull \hbox (2.44507pt too wide) in paragraph at lines 8--9
+Overfull \hbox (5.3061pt too wide) in paragraph at lines 6--7
+[]\OT1/cmr/m/n/10 We be-lieve that our code gen-er-a-tion ap-proach pro-vides a
+ lightweight/stream-
+ []
+
+
+Overfull \hbox (2.44507pt too wide) in paragraph at lines 9--10
 \OT1/cmr/m/n/10 oriented per-spec-tive, with an implementation-level no-ta-tion
  for object-oriented,
  []
 
-<graphics/B_Ada.png, id=81, 351.3125pt x 122.4575pt>
-File: graphics/B_Ada.png Graphic file (type png)
- <use graphics/B_Ada.png>
-Package pdftex.def Info: graphics/B_Ada.png used on input line 14.
-(pdftex.def)             Requested size: 169.0pt x 58.90971pt.
-
 [2
 
-]
+] <graphics/B_Ada.png, id=94, 351.3125pt x 122.4575pt>
+File: graphics/B_Ada.png Graphic file (type png)
 
-LaTeX Warning: Reference `' on page 3 undefined on input line 22.
+<use graphics/B_Ada.png>
+Package pdftex.def Info: graphics/B_Ada.png used on input line 15.
+(pdftex.def)             Requested size: 169.0pt x 58.90971pt.
 
 
 LaTeX Warning: Reference `' on page 3 undefined on input line 23.
 
+
+LaTeX Warning: Reference `' on page 3 undefined on input line 24.
+
 [3 <./graphics/B_Ada.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 38--56
+Underfull \hbox (badness 10000) in paragraph at lines 39--57
 []\OT1/cmr/m/n/8 VARIABLES[] []
  []
 
@@ -428,7 +437,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--56
 File: graphics/refinement.png Graphic file (type png)
 
 <use graphics/refinement.png>
-Package pdftex.def Info: graphics/refinement.png used on input line 83.
+Package pdftex.def Info: graphics/refinement.png used on input line 84.
 (pdftex.def)             Requested size: 169.0pt x 121.56703pt.
 ) [6 <./graphics/refinement.png>] [7]
 \openout2 = `Event-B.aux'.
@@ -512,180 +521,161 @@ er (name{equation.4.2}) has been already used, duplicate ignored
                    \relax 
 l.100 \begin{equation}
                        [14]
-Underfull \vbox (badness 3312) has occurred while \output is active []
+Underfull \vbox (badness 3250) has occurred while \output is active []
 
- [15]pdfTeX warning (ext4): destination with the same identifier (name{equation
-.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.171 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.171 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.171 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.171 \begin{equation}
-                       [16pdfTeX warning (ext4): destination with the same iden
-tifier (name{equation.5.2}) has been already used, duplicate ignored
+ [15]
+[16pdfTeX warning (ext4): destination with the same identifier (name{equation.5
+.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.189 
+l.188 
       ] [17]pdfTeX warning (ext4): destination with the same identifier (name{e
-quation.6.2}) has been already used, duplicate ignored
+quation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \begin{equation}
+l.217 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \begin{equation}
+l.217 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \begin{equation}
+l.217 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \begin{equation}
+l.217 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 \begin{equation}
+l.224 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 \begin{equation}
+l.224 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 \begin{equation}
+l.224 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 \begin{equation}
+l.224 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.232 \begin{equation}
+l.231 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.232 \begin{equation}
+l.231 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.232 \begin{equation}
+l.231 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.232 \begin{equation}
+l.231 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.247 \begin{equation}
+l.246 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.247 \begin{equation}
+l.246 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.247 \begin{equation}
+l.246 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.247 \begin{equation}
+l.246 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.258 \begin{equation}
+l.257 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.258 \begin{equation}
+l.257 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.258 \begin{equation}
+l.257 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.258 \begin{equation}
+l.257 \begin{equation}
                        [18pdfTeX warning (ext4): destination with the same iden
-tifier (name{equation.6.2}) has been already used, duplicate ignored
+tifier (name{equation.6.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.270 \begin{equation}
+l.269 \begin{equation}
                       ]pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.6.2}) has been already used, duplicate ignored
+ier (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 \begin{equation}
+l.269 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 \begin{equation}
+l.269 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 \begin{equation}
+l.269 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 \begin{equation}
+l.269 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.280 \begin{equation}
+l.279 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.280 \begin{equation}
+l.279 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.280 \begin{equation}
+l.279 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.6.2}) has been already used, duplicate ignored
+er (name{equation.6.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.280 \begin{equation}
+l.279 \begin{equation}
                       
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
@@ -699,56 +689,155 @@ Missing character: There is no ˜ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [19]) [20pdfTeX warning (ext4): destination with the same identifier (name{equ
-ation.8.2}) has been already used, duplicate ignored
+ [19]
+Underfull \hbox (badness 10000) in paragraph at lines 409--419
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--419
+
+ []
+
+[20pdfTeX warning (ext4): destination with the same identifier (name{equation.7
+.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.103 \include{taskingEB}
-                         pdfTeX warning (ext4): destination with the same ident
-ifier (name{equation.8.2}) has been already used, duplicate ignored
+l.424 
+      pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.7.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.103 \include{taskingEB}
-                         ]
+l.424 
+      pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.7.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.424 
+      ]pdfTeX warning (ext4): destination with the same identifier (name{equati
+on.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.429 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.429 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.429 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.429 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.436 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.436 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.436 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.7.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.436 \begin{equation}
+                       [21] [22]pdfTeX warning (ext4): destination with the sam
+e identifier (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.458 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.458 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.458 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.458 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.468 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.468 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.468 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.8.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.468 \begin{equation}
+                      ) [23]
 \openout2 = `tooling.aux'.
 
- (./tooling.tex) [21
+ (./tooling.tex) [24
 
 
 ]
 \openout2 = `conc.aux'.
 
- (./conc.tex [22
+ (./conc.tex [25
 
 
-]) [23]
+]) [26]
 (./AEarticle.bbl
 Missing character: There is no ’ in font cmr8!
- [24
+ [27
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
- [25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
+ [28]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
  (./AEarticle.aux (./Intro.aux) (./Event-B.aux)
 (./taskingEB.aux) (./tooling.aux) (./conc.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
 Package rerunfilecheck Info: File `AEarticle.out' has not changed.
 (rerunfilecheck)             Checksum: E5EDD546F268CB53A67FDCF1241C1DD1;551.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
  ) 
 Here is how much of TeX's memory you used:
- 6993 strings out of 495031
- 100723 string characters out of 6181531
- 189352 words of memory out of 5000000
- 9946 multiletter control sequences out of 15000+600000
+ 7007 strings out of 495031
+ 100860 string characters out of 6181531
+ 190653 words of memory out of 5000000
+ 9951 multiletter control sequences out of 15000+600000
  12976 words of font info for 49 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  32i,16n,30p,2798b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -757,23 +846,24 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on AEarticle.pdf (25 pages, 340277 bytes).
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm10.pfb>
+Output written on AEarticle.pdf (28 pages, 359269 bytes).
 PDF statistics:
- 523 PDF objects out of 1000 (max. 8388607)
- 408 compressed objects within 5 object streams
- 129 named destinations out of 1000 (max. 500000)
+ 551 PDF objects out of 1000 (max. 8388607)
+ 432 compressed objects within 5 object streams
+ 138 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

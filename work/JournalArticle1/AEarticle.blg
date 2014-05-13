@@ -10,12 +10,11 @@ The style file: spmpsci.bst
 Database file #1: MyBibTex.bib.bib
 Warning--entry type for "pthreads" isn't style-file defined
 --line 2903 of file MyBibTex.bib.bib
-Warning--I didn't find a database entry for "issam2013"
 Warning--to sort, need author or key in pthreads
 Warning--to sort, need author or key in SPARKAda
 You've used 44 entries,
             2946 wiz_defined-function locations,
-            909 strings with 11766 characters,
+            908 strings with 11757 characters,
 and the built_in function-call counts, 22669 in all, are:
 = -- 2278
 > -- 500
@@ -54,4 +53,4 @@ warning$ -- 2
 while$ -- 124
 width$ -- 46
 write$ -- 444
-(There were 4 warnings)
+(There were 3 warnings)
