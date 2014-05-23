@@ -13,14 +13,11 @@ how do we do it at the moment?
  shared mch to protected objects.
  CG set-up : theory for math-lang + hard-coded for 
  
-
+introduce code generation process
 
 introduce Co-simulation with FMI
  master - slaves - cycle
  the API
-
-introduce code generation process
-strike-through master, but else the same.
 
 
 the new approach:

@@ -8,10 +8,11 @@ why do we want templates?
  doesn't change between models, don't want to hard code. 
 
 how do we do it at the moment?
- CG set-up : theory for math-lang + hard-coded for 
  tasking mch to tasks.
  environ mch to tasks.
  shared mch to protected objects.
+ CG set-up : theory for math-lang + hard-coded for 
+ 
 
 
 introduce Co-simulation with FMI
