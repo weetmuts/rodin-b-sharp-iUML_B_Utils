@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="ac.soton.codin.codegen.contribution"
+            objectClass="ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart">
+         <menu
+               id="ac.soton.codin.codegen.menu"
+               label="Code Generation"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="ac.soton.codin.codegen.popup.actions.CodeGen"
+               enablesFor="1"
+               id="ac.soton.codin.codegen.newAction"
+               label="Generate VHDL"
+               menubarPath="ac.soton.codin.codegen.menu/group">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
