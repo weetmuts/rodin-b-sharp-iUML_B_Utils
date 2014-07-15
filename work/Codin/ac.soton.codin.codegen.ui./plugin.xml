@@ -15,7 +15,7 @@
             </separator>
          </menu>
          <action
-               class="ac.soton.codin.codegen.popup.actions.CodeGen"
+               class="ac.soton.codin.codegen.popup.actions.CodinCGAction"
                enablesFor="1"
                id="ac.soton.codin.codegen.newAction"
                label="Generate VHDL"

@@ -3,10 +3,19 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: ac.soton.codin.codegen.ui;singleton:=true
 Bundle-Version: 0.0.1.qualifier
-Bundle-Activator: ac.soton.codin.codegen.ui.Activator
+Bundle-Activator: ac.soton.codin.codegen.ui.CodinCGPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- ac.soton.eventb.emf.components.diagram;bundle-version="[4.0.0,5.0.0)"
+ ac.soton.eventb.emf.components.diagram;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.5.0",
+ org.rodinp.core;bundle-version="1.6.1",
+ org.eventb.codegen.IL1.translator;bundle-version="0.0.4",
+ org.eventb.codegen.IL1.core;bundle-version="0.0.3",
+ org.eventb.core;bundle-version="2.5.1",
+ org.eventb.codegen.tasking;bundle-version="0.0.4",
+ ac.soton.compositionmodel.core;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eventb.core,
+ org.eventb.emf.persistence.factory
