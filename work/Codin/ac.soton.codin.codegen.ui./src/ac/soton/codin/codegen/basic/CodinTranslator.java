@@ -3,7 +3,6 @@ package ac.soton.codin.codegen.basic;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -16,7 +15,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.il1.Protected;
@@ -31,7 +29,6 @@ import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.core.IEventBProject;
 import org.eventb.core.IMachineRoot;
-import org.eventb.core.basis.MachineRoot;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.factory.RodinResource;
@@ -46,11 +43,15 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 	private IMachineRoot machineRoot = null;
 	private static TaskingTranslationManager taskingTranslationManager = null;
 	private static TargetLanguage targetLanguage = null;
+	// the components that have been selected for translation
+	private IStructuredSelection selectedComponents = null;
+	private MachineImpl emfMachine = null;
 
 	public void translate(IStructuredSelection selection)
 			throws CodinTranslatorException, TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException {
-		Iterator<?> iter = selection.iterator();
 
+		// set the field
+		selectedComponents = selection;
 		// get the first (component) item.
 		Object item = selection.getFirstElement();
 
@@ -65,7 +66,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		// The translator works on the machineRoot, get this.
 		ComponentImpl eventBComponent = (ComponentImpl) selectedEditPart
 				.getNotationView().getElement();
-		MachineImpl emfMachine = (MachineImpl) eventBComponent
+		emfMachine = (MachineImpl) eventBComponent
 				.getContaining(MachinePackage.Literals.MACHINE);
 		if (emfMachine == null) {
 			throw new CodinTranslatorException(
@@ -73,7 +74,6 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 							+ eventBComponent.getName());
 		}
 		Resource resource = emfMachine.eResource();
-		StructuredSelection newSelection = null;
 		if (resource instanceof RodinResource) {
 			RodinResource rodinResource = (RodinResource) resource;
 			IRodinProject rodinProject = rodinResource.getRodinFile()
@@ -81,16 +81,17 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 			IEventBProject eventBProject = (IEventBProject) rodinProject
 					.getAdapter(IEventBProject.class);
 			machineRoot  = eventBProject.getMachineRoot(emfMachine.getName());
-			newSelection = new StructuredSelection(machineRoot);
+			if(machineRoot == null){
+				throw new CodinTranslatorException("MachineRoot not found for: " 
+						+ emfMachine.getName());
+			}
 		}
-		super.setSelection(newSelection);
-		
-		doTranslateToFMU(newSelection);
+//		super.setSelection(newSelection);
+		doTranslation(machineRoot);
 	}
 
-	private void doTranslateToFMU(StructuredSelection s) throws TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException, CodinTranslatorException {
+	private void doTranslation(IMachineRoot machineRoot) throws TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException, CodinTranslatorException {
 		// Initialisations
-		IMachineRoot machineRoot = (IMachineRoot) s.getFirstElement();
 		// Initialise the tasking translation manager
 		Il1PackageImpl.init();
 		Il1Factory factory = Il1Factory.eINSTANCE;
@@ -99,6 +100,19 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		TaskingTranslationManager.setTranslationType("non-tasking");
 		// Generate an IL1 program using existing stage 1 code generator.
 		Program program = translateEventBToIL1(machineRoot);
+		// create a protected
+		Protected prot = Il1Factory.eINSTANCE.createProtected();
+		// add it to the program
+		program.getProtected().add(prot);
+		//get the selected components state-machine diagrams
+		
+		
+		// run the state-machine processor on the state-machines
+		StateMachineProcessor stateMachineProcessor = StateMachineProcessor.getDefault();
+		stateMachineProcessor.run(emfMachine, prot, taskingTranslationManager);
+
+		// add variables and initialisations etc
+		
 		
 		System.out.println();
 		
