@@ -3,11 +3,14 @@ package ac.soton.codin.codegen.basic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.il1.Command;
 import org.eventb.codegen.il1.IL1Element;
@@ -26,11 +29,19 @@ import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 
+import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
+import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentStatemachinesEditPart;
+import ac.soton.eventb.emf.components.diagram.edit.parts.ProcessStatemachineEditPart;
+import ac.soton.eventb.emf.components.diagram.edit.parts.StatemachineEditPart;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.Initial;
 import ac.soton.eventb.statemachines.State;
+import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesFactory;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
 import ac.soton.eventb.statemachines.impl.StatemachineImpl;
+import ac.soton.eventb.statemachines.provider.StatemachineItemProvider;
 
 import compositeControl.Branch;
 import compositeControl.CompositeControl;
@@ -55,6 +66,18 @@ public class StateMachineProcessor {
 			TaskingTranslationManager translationManager)
 			throws TaskingTranslationException {
 
+		MachineImpl machine = (MachineImpl) source;
+		EList<EObject> tt = machine.getAllContained(StatemachinesPackage.Literals.STATEMACHINE, true);
+		
+		
+		
+		List<ComponentEditPart> selectedComponentList = CodinTranslator.selectedComponentList;
+		ComponentStatemachinesEditPart stateMachinePart = null;
+		// search for the statemachineEditPart
+
+		
+		
+		
 		StatemachineImpl statemachine = (StatemachineImpl) source;
 		MachineImpl parentMachine = TaskingTranslationManager
 				.getParentMachine(statemachine);

@@ -44,15 +44,22 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 	private static TaskingTranslationManager taskingTranslationManager = null;
 	private static TargetLanguage targetLanguage = null;
 	// the components that have been selected for translation
-	private IStructuredSelection selectedComponents = null;
+	public static List<ComponentEditPart> selectedComponentList = new ArrayList<>();
+	
 	private MachineImpl emfMachine = null;
 
 	public void translate(IStructuredSelection selection)
 			throws CodinTranslatorException, TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException {
 
-		// set the field
-		selectedComponents = selection;
-		// get the first (component) item.
+		// set the list of components to be translated
+		
+	for(Object s: selection.toList()){
+			if(s instanceof ComponentEditPart){
+				selectedComponentList.add((ComponentEditPart) s);
+			}
+		}
+		
+		// get the first (component) item.ollection.
 		Object item = selection.getFirstElement();
 
 		ComponentEditPart selectedEditPart = null;
@@ -86,6 +93,9 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 						+ emfMachine.getName());
 			}
 		}
+		
+		
+		
 //		super.setSelection(newSelection);
 		doTranslation(machineRoot);
 	}
@@ -128,7 +138,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		// an FMU translation.
 		// We need this since the FMU translation type is optional and may well
 		// be removed.;
-		taskingTranslationManager.setFMUTranslation(false);
+//		taskingTranslationManager.setFMUTranslation(false);
 		// load the EMF components
 		RMLDataStruct loadedEMFComponents = EMFLoader
 				.loadEMFMachinesContexts(machineRoot);
@@ -163,7 +173,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		}
 		saveBaseProgram(program, targetFile(target));
 		// We reset this flag, since we have finished.
-		taskingTranslationManager.setFMUTranslation(false);
+//		taskingTranslationManager.setFMUTranslation(false);
 		return program;
 	}
 
