@@ -10,6 +10,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.il1.Command;
@@ -29,7 +30,10 @@ import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 
+import ac.soton.eventb.emf.components.Component;
+import ac.soton.eventb.emf.components.ComponentsPackage;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
+import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentNameEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentStatemachinesEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ProcessStatemachineEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.StatemachineEditPart;
@@ -65,17 +69,45 @@ public class StateMachineProcessor {
 	public Call run(EventBElement source, IL1Element actualTarget,
 			TaskingTranslationManager translationManager)
 			throws TaskingTranslationException {
-
+		// The machine that we are working on.
 		MachineImpl machine = (MachineImpl) source;
-		EList<EObject> tt = machine.getAllContained(StatemachinesPackage.Literals.STATEMACHINE, true);
+		// selected components in the UI
+		List<ComponentEditPart> selectedComponentEditList = CodinTranslator.selectedComponentList;
+		// All statemachines in the machine
+		EList<EObject> stateMachineEList = machine.getAllContained(StatemachinesPackage.Literals.STATEMACHINE, true);
+		// All components in the machine
+		EList<EObject> componentEList = machine.getAllContained(ComponentsPackage.Literals.COMPONENT, true);
+		Component[] componentArray = (Component[]) componentEList.toArray();
+		// names of components (EMF) selected for code generation
+		List<String> selectedComponentNames = new ArrayList<>();
+		// components (EMF) selected for code generation
+		List<Component> selectedComponentList = new ArrayList<>();
+		
+		// foreach selected UI component, get the name, add to the list of selected component names
+		for(ComponentEditPart componentEditPart: selectedComponentEditList){
+			List<?> componentChildList = componentEditPart.getChildren();
+			for(Object componentChild : componentChildList){
+				if(componentChild instanceof ComponentNameEditPart){
+					ComponentNameEditPart nameEditPart = (ComponentNameEditPart) componentChild;
+					String selectedComponentName = nameEditPart.getFigure().toString();
+					selectedComponentNames.add(selectedComponentName);
+				}
+			}
+		}
+		// add the EMF component based on the name
+		for(Component component: componentArray){
+			if(selectedComponentNames.contains(component.getName())){
+				selectedComponentList.add(component);
+			}
+		}
+		
+		for(Component component: selectedComponentList){
+			component.getSynchronousStatemachines();
+			component.getProcessStatemachines();
+		}
 		
 		
-		
-		List<ComponentEditPart> selectedComponentList = CodinTranslator.selectedComponentList;
-		ComponentStatemachinesEditPart stateMachinePart = null;
-		// search for the statemachineEditPart
-
-		
+		System.out.println();		
 		
 		
 		StatemachineImpl statemachine = (StatemachineImpl) source;
