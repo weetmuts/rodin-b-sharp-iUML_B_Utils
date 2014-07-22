@@ -10,13 +10,17 @@ import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 
+import ac.soton.eventb.statemachines.AbstractNode;
+import ac.soton.eventb.statemachines.State;
+
 public class StateMachineTranslationManager {
 
-	 MachineImpl parentMachine;
-	 TaskingTranslationManager taskingTranslationManager;
-	 IL1Element actualTarget;
-	 List<String> stateNames = new ArrayList<String>();
-	 Map<String, List<Event>> stateEventMap = new HashMap<String, List<Event>>();
-	 Map<String,Integer> stateBranchCount = new HashMap<String, Integer>();
+	MachineImpl parentMachine;
+	TaskingTranslationManager taskingTranslationManager;
+	IL1Element actualTarget;
+	List<String> stateNames = new ArrayList<String>();
+	Map<AbstractNode, List<Event>> nodeEventMap = new HashMap<AbstractNode, List<Event>>();
+	Map<String, Integer> stateBranchCountMap = new HashMap<String, Integer>();
+	Map<State, List<Event>> stateEventMap = new HashMap<State, List<Event>>();;
 
 }
