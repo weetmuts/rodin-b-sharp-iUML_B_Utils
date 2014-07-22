@@ -19,6 +19,7 @@ import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.il1.Protected;
 import org.eventb.codegen.il1.Subroutine;
+import org.eventb.codegen.il1.Task;
 import org.eventb.codegen.il1.impl.Il1PackageImpl;
 import org.eventb.codegen.il1.translator.AbstractTranslateEventBToTarget;
 import org.eventb.codegen.il1.translator.ClassHeaderInformation;
@@ -111,15 +112,15 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		// Generate an IL1 program using existing stage 1 code generator.
 		Program program = translateEventBToIL1(machineRoot);
 		// create a protected
-		Protected prot = Il1Factory.eINSTANCE.createProtected();
+		Task task = Il1Factory.eINSTANCE.createTask();
 		// add it to the program
-		program.getProtected().add(prot);
+		program.getTaskTypeTasks().add(task);
 		//get the selected components state-machine diagrams
 		
 		
 		// run the state-machine processor on the state-machines
 		StateMachineProcessor stateMachineProcessor = StateMachineProcessor.getDefault();
-		stateMachineProcessor.run(emfMachine, prot, taskingTranslationManager);
+		stateMachineProcessor.run(emfMachine, task, taskingTranslationManager);
 
 		// add variables and initialisations etc
 		
