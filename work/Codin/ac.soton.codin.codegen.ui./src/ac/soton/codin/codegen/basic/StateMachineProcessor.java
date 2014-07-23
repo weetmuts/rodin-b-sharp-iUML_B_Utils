@@ -17,7 +17,6 @@ import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
@@ -27,13 +26,13 @@ import ac.soton.eventb.emf.components.ComponentsPackage;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentNameEditPart;
 import ac.soton.eventb.statemachines.AbstractNode;
-import ac.soton.eventb.statemachines.Final;
 import ac.soton.eventb.statemachines.Initial;
+import ac.soton.eventb.statemachines.Junction;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesFactory;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
-import ac.soton.eventb.statemachines.Junction;
 
 public class StateMachineProcessor {
 
@@ -127,103 +126,106 @@ public class StateMachineProcessor {
 					smTranslationMgr);
 		}
 
-		// Print out a list of
-		// states - events, in prep for translation
-		// remember to traverse joins!!!
+		// foreach node, we will first process the initial states
 
 		Set<AbstractNode> nodeSet = smTranslationMgr.nodeEventMap.keySet();
 		List<Object> nodeList = Arrays.asList(nodeSet.toArray());
-		for (Object obj : nodeList) {
-			if (obj instanceof Initial) {
-				Initial initialState = (Initial) obj;
-				EList<Transition> outgoingTList = initialState.getOutgoing();
-				List<Event> eventList = smTranslationMgr.nodeEventMap
-						.get(initialState);
 
-				for (Transition t : outgoingTList) {
-					if (t.getTarget() instanceof Junction) {
-						// we have found a Junction, so need to obtain its
-						// eventlist
-						List<Event> evList = smTranslationMgr.nodeEventMap
-								.get(t.getTarget());
-						eventList.addAll(evList);
-					}
-				}
+		for (Object node : nodeList) {
+			if (node instanceof Initial) {
+				Initial initialState = (Initial) node;
+				EList<Transition> outgoingTList = initialState.getOutgoing();
+				// Get the existing events associated with the inital state
 				State parentState = (State) initialState
 						.getContaining(StatemachinesPackage.Literals.STATE);
-				String parentStateName = "";
-				if (parentState != null) {
-					parentStateName = parentState.getName();
+				if (parentState == null) {
+					// we have the topmost initial node
+					parentState = StatemachinesFactory.eINSTANCE.createState();
+					parentState.setName("dummyTopState");
 				}
-				
-				
-				
-				
-				System.out.print(parentStateName + "->InitialState <-> ");
-				for (Event event : eventList) {
-					System.out.print(event.getName() + "; ");
-				}
-				System.out.print("\n");
-			}
-			
-			
-		}
 
-		// end of sorting the initial states
-		// Now look at proper states
-		Set<State> stateSet = smTranslationMgr.stateEventMap.keySet();
-		List<Object> stateList = Arrays.asList(stateSet.toArray());
-		// foreach state
-		for (Object obj : stateList) {
-			if (obj instanceof State) {
-				State state = (State) obj;
-				// get the outgoing transitions
-				EList<Transition> outgoingTList = state.getOutgoing();
-
-				// foreach outgoing transition
-				for (Transition stateTransition : outgoingTList) {
-					AbstractNode transitionTarget = stateTransition.getTarget();
-					// if the state transition target is a Junction we will need
-					// to
-					// build the event list here
-					if (transitionTarget instanceof Junction) {
-						List<Event> eventList = new ArrayList<Event>();
-						Junction junctionTarget = (Junction) transitionTarget;
-						// create the 'inner map'
+				for (Transition initialTransition : outgoingTList) {
+					AbstractNode initialTransitionTarget = initialTransition
+							.getTarget();
+					if (initialTransitionTarget instanceof Junction) {
+						// we have found a Junction, so need to obtain its
+						// eventlist
+						Junction initialJunction = (Junction) initialTransitionTarget;
 						Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
-						EList<Transition> junctionOutList = junctionTarget
+						EList<Transition> junctionOutList = initialJunction
 								.getOutgoing();
 						Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.current_NextStateMap
-								.get(state);
+								.get(parentState);
 						if (storedInnerMap != null) {
 							storedInnerMap.putAll(innerMap);
 						} else {
 							storedInnerMap = innerMap;
 						}
-
 						for (Transition junctionTransition : junctionOutList) {
 							for (Event junctionEvent : junctionTransition
 									.getElaborates()) {
 								storedInnerMap.put(junctionEvent,
 										junctionTransition.getTarget());
-								eventList.add(junctionEvent);
 							}
-
 						}
-						smTranslationMgr.current_NextStateMap.put(state,
+						smTranslationMgr.current_NextStateMap.put(parentState,
 								storedInnerMap);
 					}
-					// else if the outgoing transition is not a junction
-					// we can obtain the pre-constructed event list
+					// else we can get the events of the initial transition from
+					// the pre-constructed list.
 					else {
-						List<Event> eventList = smTranslationMgr.stateEventMap
-								.get(state);
-						// for each event related to the state
+						List<Event> eventList = smTranslationMgr.nodeEventMap
+								.get(initialState);
+						// for each event related to the initial state
 						for (Event event : eventList) {
 							// create the 'inner map'
 							Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 							// Add the event <-> nextState relation
-							innerMap.put(event, transitionTarget);
+							innerMap.put(event, initialTransitionTarget);
+							Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.current_NextStateMap
+									.get(initialState);
+							if (storedInnerMap != null) {
+								storedInnerMap.putAll(innerMap);
+							} else {
+								storedInnerMap = innerMap;
+							}
+							
+							// We store the parentState that contains the
+							// initialState, with the Event<-> TargetState map
+							smTranslationMgr.current_NextStateMap.put(
+									parentState, storedInnerMap);
+
+						}
+					}
+				}
+			}
+			// end of sorting the initial transitions
+
+			// Next process the States
+			Set<State> stateSet = smTranslationMgr.stateEventMap.keySet();
+			List<Object> stateList = Arrays.asList(stateSet.toArray());
+			// foreach state
+			for (Object state_ : stateList) {
+				if (state_ instanceof State) {
+					State state = (State) state_;
+					// get the outgoing transitions
+					EList<Transition> outgoingTList = state.getOutgoing();
+
+					// foreach outgoing transition
+					for (Transition stateTransition : outgoingTList) {
+						AbstractNode transitionTarget = stateTransition
+								.getTarget();
+						// if the state transition target is a Junction we will
+						// need
+						// to
+						// build the event list here
+						if (transitionTarget instanceof Junction) {
+							// List<Event> eventList = new ArrayList<Event>();
+							Junction junctionTarget = (Junction) transitionTarget;
+							// create the 'inner map'
+							Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
+							EList<Transition> junctionOutList = junctionTarget
+									.getOutgoing();
 							Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.current_NextStateMap
 									.get(state);
 							if (storedInnerMap != null) {
@@ -231,33 +233,47 @@ public class StateMachineProcessor {
 							} else {
 								storedInnerMap = innerMap;
 							}
+
+							for (Transition junctionTransition : junctionOutList) {
+								for (Event junctionEvent : junctionTransition
+										.getElaborates()) {
+									storedInnerMap.put(junctionEvent,
+											junctionTransition.getTarget());
+									// eventList.add(junctionEvent);
+								}
+							}
 							smTranslationMgr.current_NextStateMap.put(state,
 									storedInnerMap);
+						}
+						// else if the outgoing transition is not a junction
+						// we can obtain the pre-constructed event list
+						else {
+							List<Event> eventList = smTranslationMgr.stateEventMap
+									.get(state);
+							// for each event related to the state
+							for (Event event : eventList) {
+								// create the 'inner map'
+								Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
+								// Add the event <-> nextState relation
+								innerMap.put(event, transitionTarget);
+								Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.current_NextStateMap
+										.get(state);
+								if (storedInnerMap != null) {
+									storedInnerMap.putAll(innerMap);
+								} else {
+									storedInnerMap = innerMap;
+								}
+								smTranslationMgr.current_NextStateMap.put(
+										state, storedInnerMap);
+							}
 						}
 					}
 				}
 			}
 		}
-		
-		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.current_NextStateMap;
-		Set<State> oneKeys = oneMap.keySet();
-		List<State> oneKeyList = Arrays.asList(oneKeys.toArray(new State[oneKeys.size()]));
-		for(State s: oneKeyList){
-			Map<Event, AbstractNode> twoMap = oneMap.get(s);
-			Set<Event> twoKeys = twoMap.keySet();
-			List<Event> twoKeyList = Arrays.asList(twoKeys.toArray(new Event[twoKeys.size()]));
-			for(Event evt: twoKeyList){
-				AbstractNode nextNode = twoMap.get(evt);
-				if(nextNode instanceof State){
-					String nextStateName = ((State) nextNode).getName();
-					System.out.println(s.getName() +">>"+evt.getName()+">>"+nextStateName);
-				}
-				else{
-					System.out.println(s.getName() +">>"+evt.getName()+">>"+nextNode.getInternalId());
-				}
-			}
-		}
+
+		testPrint_State_Event_Target(smTranslationMgr);
+
 		return null;
 	}
 
@@ -388,4 +404,30 @@ public class StateMachineProcessor {
 		}
 	}
 
+	// test print the current_NextStateMap
+	private void testPrint_State_Event_Target(
+			StateMachineTranslationManager smTranslationMgr) {
+		// Test navigation through the map of state-event-next states
+		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.current_NextStateMap;
+		Set<State> oneKeys = oneMap.keySet();
+		List<State> oneKeyList = Arrays.asList(oneKeys
+				.toArray(new State[oneKeys.size()]));
+		for (State s : oneKeyList) {
+			Map<Event, AbstractNode> twoMap = oneMap.get(s);
+			Set<Event> twoKeys = twoMap.keySet();
+			List<Event> twoKeyList = Arrays.asList(twoKeys
+					.toArray(new Event[twoKeys.size()]));
+			for (Event evt : twoKeyList) {
+				AbstractNode nextNode = twoMap.get(evt);
+				if (nextNode instanceof State) {
+					String nextStateName = ((State) nextNode).getName();
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextStateName);
+				} else {
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextNode.getInternalId());
+				}
+			}
+		}
+	}
 }
