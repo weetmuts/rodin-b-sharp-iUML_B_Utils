@@ -9,10 +9,8 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.il1.IL1Element;
-import org.eventb.codegen.tasking.RodinToEMFConverter;
 import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
@@ -121,14 +119,15 @@ public class StateMachineProcessor {
 
 		// foreach component prepare for translation of its process
 		// state-machine;
-		// In the processing part we gather events and state-machine information
+		// In the pre-processing part we gather events and state-machine information
+		ComponentUtil componentUtil = new ComponentUtil();
 		for (Component component : selectedComponentList) {
-			translateProcStateMachine(procSMMap.get(component.getName()),
+			componentUtil.preProcessProcStateMachine(procSMMap.get(component.getName()),
 					smTranslationMgr);
 		}
 
-		// foreach node, we will first process the initial states
-
+		// foreach node, identify and process the initial states,
+		// followed by the remainder.
 		Set<AbstractNode> nodeSet = smTranslationMgr.nodeEventMap.keySet();
 		List<Object> nodeList = Arrays.asList(nodeSet.toArray());
 
@@ -278,94 +277,6 @@ public class StateMachineProcessor {
 		return null;
 	}
 
-	// Process state machines differ from synchronous state-machines. A process
-	// SM translates to a 'vhdl' process. A synchronous SM translates to a
-	// subroutine in the task, with a case statement in its body.
-	// In IL1 we generate a task for the process,
-	// the body contains branches and sequences, and calls to synchronous
-	// state-machine subroutines.
-	// First we generate state-'outgoing transition' info.
-	private Call translateProcStateMachine(Statemachine statemachine,
-			StateMachineTranslationManager smTranslationMgr)
-			throws TaskingTranslationException {
-		EList<AbstractNode> nodes = statemachine.getNodes();
-		// foreach state we gather info in processState
-		for (AbstractNode node : nodes) {
-			processNode(node, statemachine, smTranslationMgr);
-		}
-		return null;
-	}
-
-	// Gather events and state-machine information
-	// A list of events that are elaborated (in the TaskingTranslation Manager)
-	// Map of State <-> Events (in the TaskingTranslation Manager)
-	// A map of Event <-> StateMachineNames (in the TaskingTranslation Manager)
-	// A map of Event <-> TargetStates
-	// a list of events involved in the current translation.
-
-	private void processNode(AbstractNode node,
-			Statemachine statemachine, StateMachineTranslationManager smTranslationMgr)
-			throws TaskingTranslationException {
-		EList<Transition> outGoing = node.getOutgoing();
-
-		// add each event that elaborates a transition to the list
-		List<Event> eventList = new ArrayList<Event>();
-		for (Transition t : outGoing) {
-			EList<Event> events = t.getElaborates();
-			// sometimes we obtain a proxy which will need to be
-			// resolved
-			for (Event event : events) {
-				if (event.eIsProxy()) {
-					event = (Event) EcoreUtil.resolve(event,
-							RodinToEMFConverter.machineResSet);
-				}
-				// add this event to the list of transition elaborates
-				// events
-				// these events do not need to be constructed in
-				// machines
-				if (!TaskingTranslationManager.elaboratesNamesList
-						.contains(event.getName())) {
-					TaskingTranslationManager.elaboratesNamesList.add(event
-							.getName());
-				}
-				eventList.add(event);
-				smTranslationMgr.taskingTranslationManager.getEventTargMap()
-						.put(event, t.getTarget());
-
-				// store a link between the event and the state-machine
-				// that has a transition that elaborates it.
-				TaskingTranslationManager.getEvent_SM_Map().put(event,
-						statemachine.getName());
-
-			}
-		}
-
-		// add the eventList, associated with this state (and the node), to maps
-		List<Event> storedEventList = smTranslationMgr.nodeEventMap.get(node);
-		if (storedEventList == null) {
-			smTranslationMgr.nodeEventMap.put(node, eventList);
-			if (node instanceof State) {
-				smTranslationMgr.stateEventMap.put((State) node, eventList);
-			}
-		} else {
-			storedEventList.addAll(eventList);
-			smTranslationMgr.nodeEventMap.put(node, storedEventList);
-			if (node instanceof State) {
-				smTranslationMgr.stateEventMap.put((State) node,
-						storedEventList);
-			}
-		}
-
-		// process nested states.
-		// This adds internal transition info
-		if (node instanceof State) {
-			EList<Statemachine> containedSMList = ((State) node)
-					.getStatemachines();
-			for (Statemachine s : containedSMList) {
-				translateProcStateMachine(s, smTranslationMgr);
-			}
-		}
-	}
 
 	private void removeStateUpdateAction(String stateMachineName, Event event) {
 		// The code above removes the guard that appears in the 'case' statement
