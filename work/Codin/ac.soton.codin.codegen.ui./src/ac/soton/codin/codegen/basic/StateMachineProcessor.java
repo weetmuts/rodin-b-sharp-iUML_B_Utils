@@ -94,14 +94,15 @@ public class StateMachineProcessor {
 				selectedComponentList.add(component);
 			}
 		}
-
+		// Foreach component, 
+		//   add the synchronous state-machines to a map of
+		//   ComponentName <-> ListOfStatemachines
+		// There is just one process state-machine per component, 
+		// foreach component,
+		//   add the process state-machine to a map of 
+		//   ComponentName <-> ProcessStateMachine
 		Map<String, List<Statemachine>> synchSMMap = new HashMap<String, List<Statemachine>>();
 		Map<String, Statemachine> procSMMap = new HashMap<String, Statemachine>();
-		// Foreach component, add the synchronous state-machines to a map of
-		// NAME <-> ListOfState-machines
-		// There is just one process state-machine per component, foreach
-		// component add the process
-		// state-machine to a map of NAME <-> ProcessStateMachine
 		for (Component component : selectedComponentList) {
 			// There should be just one process state-machine in the a codin
 			// component.
@@ -290,7 +291,7 @@ public class StateMachineProcessor {
 		EList<AbstractNode> nodes = statemachine.getNodes();
 		// foreach state we gather info in processState
 		for (AbstractNode node : nodes) {
-			processNode(statemachine, smTranslationMgr, node);
+			processNode(node, statemachine, smTranslationMgr);
 		}
 		return null;
 	}
@@ -302,22 +303,11 @@ public class StateMachineProcessor {
 	// A map of Event <-> TargetStates
 	// a list of events involved in the current translation.
 
-	private void processNode(Statemachine statemachine,
-			StateMachineTranslationManager smTranslationMgr, AbstractNode node)
+	private void processNode(AbstractNode node,
+			Statemachine statemachine, StateMachineTranslationManager smTranslationMgr)
 			throws TaskingTranslationException {
-		String nodeName = "";
-		if (node instanceof State) {
-			nodeName = ((State) node).getName();
-			smTranslationMgr.stateNames.add(nodeName);
-		} else {
-			nodeName = node.getInternalId();
-		}
-
 		EList<Transition> outGoing = node.getOutgoing();
 
-		// record the number of outgoing transitions of
-		// the current state in the hashmap
-		smTranslationMgr.stateBranchCountMap.put(nodeName, outGoing.size());
 		// add each event that elaborates a transition to the list
 		List<Event> eventList = new ArrayList<Event>();
 		for (Transition t : outGoing) {
