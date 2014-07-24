@@ -302,12 +302,9 @@ public class StateMachineProcessor {
 		}
 
 		ComponentUtil.flattenStateMachine(smTranslationMgr);
-		System.out.println("");
-		testPrint_flattened_Event_Target(smTranslationMgr);
-		System.out.println("");
-		testPrint_initial_Event_Target(smTranslationMgr);
-		System.out.println("");
-		testPrint_current_Event_Target(smTranslationMgr);
+		ComponentUtil.testPrint_flattened_Event_Target(smTranslationMgr);
+		ComponentUtil.testPrint_initial_Event_Target(smTranslationMgr);
+		ComponentUtil.testPrint_current_Event_Target(smTranslationMgr);
 		return null;
 	}
 
@@ -336,103 +333,5 @@ public class StateMachineProcessor {
 		if (found2) {
 			actionList.remove(idx2);
 		}
-	}
-
-	// test print the flattened state machine targets
-	private void testPrint_initial_Event_Target(
-			StateMachineTranslationManager smTranslationMgr) {
-		System.out.println("BEGIN testPrint_initial_Event_Target");
-		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.initial_NextStateMap;
-		Set<State> oneKeys = oneMap.keySet();
-		List<State> oneKeyList = Arrays.asList(oneKeys
-				.toArray(new State[oneKeys.size()]));
-		for (State s : oneKeyList) {
-			Map<Event, AbstractNode> twoMap = oneMap.get(s);
-			Set<Event> twoKeys = twoMap.keySet();
-			List<Event> twoKeyList = Arrays.asList(twoKeys
-					.toArray(new Event[twoKeys.size()]));
-			for (Event evt : twoKeyList) {
-				AbstractNode nextNode = twoMap.get(evt);
-				if (nextNode instanceof State) {
-					String nextStateName = ((State) nextNode).getName();
-					System.out.println(s.getName() + ">>" + evt.getName()
-							+ ">>" + nextStateName);
-				} else {
-					System.out.println(s.getName() + ">>" + evt.getName()
-							+ ">>" + nextNode.getInternalId());
-				}
-			}
-		}
-		System.out.println("END testPrint_initial_Event_Target");
-	}
-
-	// test print the flattened state machine targets
-	private void testPrint_current_Event_Target(
-			StateMachineTranslationManager smTranslationMgr) {
-		System.out.println("BEGIN testPrint_current_Event_Target");
-		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.current_NextStateMap;
-		Set<State> oneKeys = oneMap.keySet();
-		List<State> oneKeyList = Arrays.asList(oneKeys
-				.toArray(new State[oneKeys.size()]));
-		for (State s : oneKeyList) {
-			Map<Event, AbstractNode> twoMap = oneMap.get(s);
-			Set<Event> twoKeys = twoMap.keySet();
-			List<Event> twoKeyList = Arrays.asList(twoKeys
-					.toArray(new Event[twoKeys.size()]));
-			for (Event evt : twoKeyList) {
-				AbstractNode nextNode = twoMap.get(evt);
-				if (nextNode instanceof State) {
-					String nextStateName = ((State) nextNode).getName();
-					System.out.println(s.getName() + ">>" + evt.getName()
-							+ ">>" + nextStateName);
-				} else {
-					System.out.println(s.getName() + ">>" + evt.getName()
-							+ ">>" + nextNode.getInternalId());
-				}
-			}
-		}
-		System.out.println("END testPrint_current_Event_Target");
-	}
-
-	// test print the flattened state machine targets
-	private void testPrint_flattened_Event_Target(
-			StateMachineTranslationManager smTranslationMgr) {
-		System.out.println("testPrint_flattened_Event_Target");
-		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.flattenedNextStateMap;
-		Set<State> oneKeys = oneMap.keySet();
-		List<State> oneKeyList = Arrays.asList(oneKeys
-				.toArray(new State[oneKeys.size()]));
-		for (State s : oneKeyList) {
-			Map<Event, AbstractNode> twoMap = oneMap.get(s);
-			Set<Event> twoKeys = twoMap.keySet();
-			List<Event> twoKeyList = Arrays.asList(twoKeys
-					.toArray(new Event[twoKeys.size()]));
-			for (Event evt : twoKeyList) {
-				// if the event is in the event state-machine user list call the sm routine
-				boolean isSynchSMEvent = smTranslationMgr.synchEventUser.keySet().contains(evt);
-				// The string to call the state machines
-				String smCallString = "";
-				if(isSynchSMEvent){
-					List<Statemachine> stateMachineUsers = smTranslationMgr.synchEventUser.get(evt);
-					for(Statemachine statemachine: stateMachineUsers){
-						smCallString = smCallString + ".Call("+statemachine.getName()+"); ";
-					}
-					
-				}
-				AbstractNode nextNode = twoMap.get(evt);
-				if (nextNode instanceof State) {
-					String nextStateName = ((State) nextNode).getName();
-					System.out.println(s.getName() + ">>" + evt.getName() + smCallString
-							+ ">>" + nextStateName);
-				} else {
-					System.out.println(s.getName() + ">>" + evt.getName() + smCallString
-							+ ">>" + nextNode.getInternalId());
-				}
-			}
-		}
-		System.out.println("END testPrint_flattened_Event_Target");
 	}
 }

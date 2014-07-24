@@ -1,9 +1,11 @@
 package ac.soton.codin.codegen.basic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -22,36 +24,36 @@ import ac.soton.eventb.statemachines.Transition;
 public class ComponentUtil {
 
 	public void preProcessSynchStateMachines(Statemachine statemachine,
-			StateMachineTranslationManager smTranslationMgr){
+			StateMachineTranslationManager smTranslationMgr) {
 		// Store a map of all the synchronous state machine events and which
 		// state-machines they play for!
 		// Event <-> List<state-machine>.
 		// If such an event appears in a process state-machine's stateEventMap
 		// the a call invoking the synch SM must occur.
-		EList<EObject> transitionList = statemachine.getAllContained(StatemachinesPackage.Literals.TRANSITION, true);
-		for(EObject eo: transitionList){
-			if(eo instanceof Transition){
+		EList<EObject> transitionList = statemachine.getAllContained(
+				StatemachinesPackage.Literals.TRANSITION, true);
+		for (EObject eo : transitionList) {
+			if (eo instanceof Transition) {
 				Transition transition = (Transition) eo;
 				EList<Event> elaboratesList = transition.getElaborates();
-				for(Event event: elaboratesList){
+				for (Event event : elaboratesList) {
 					// if the event has no state machines associated with it
-					List<Statemachine> stateMachineList = smTranslationMgr.synchEventUser.get(event);
-					if(stateMachineList == null){
+					List<Statemachine> stateMachineList = smTranslationMgr.synchEventUser
+							.get(event);
+					if (stateMachineList == null) {
 						List<Statemachine> newSMList_ = new ArrayList<Statemachine>();
 						newSMList_.add(statemachine);
 						smTranslationMgr.synchEventUser.put(event, newSMList_);
-					}
-					else{
+					} else {
 						stateMachineList.add(statemachine);
-						smTranslationMgr.synchEventUser.put(event, stateMachineList );
+						smTranslationMgr.synchEventUser.put(event,
+								stateMachineList);
 					}
 				}
 			}
 		}
 	}
-	
-	
-	
+
 	// Process state machines differ from synchronous state-machines. A process
 	// SM translates to a 'vhdl' process. A synchronous SM translates to a
 	// subroutine in the task, with a case statement in its body.
@@ -62,8 +64,7 @@ public class ComponentUtil {
 	public void preProcessProcStateMachine(Statemachine statemachine,
 			StateMachineTranslationManager smTranslationMgr)
 			throws TaskingTranslationException {
-		
-		
+
 		EList<AbstractNode> nodes = statemachine.getNodes();
 		// foreach state we gather info in processState
 		for (AbstractNode node : nodes) {
@@ -204,5 +205,110 @@ public class ComponentUtil {
 			}
 		}
 		smTranslationMgr.flattenedNextStateMap = updatedMap;
+	}
+
+	// test print the flattened state machine targets
+	public static void testPrint_initial_Event_Target(
+			StateMachineTranslationManager smTranslationMgr) {
+		System.out.println("BEGIN testPrint_initial_Event_Target");
+		// Test navigation through the map of state-event-next states
+		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.initial_NextStateMap;
+		Set<State> oneKeys = oneMap.keySet();
+		List<State> oneKeyList = Arrays.asList(oneKeys
+				.toArray(new State[oneKeys.size()]));
+		for (State s : oneKeyList) {
+			Map<Event, AbstractNode> twoMap = oneMap.get(s);
+			Set<Event> twoKeys = twoMap.keySet();
+			List<Event> twoKeyList = Arrays.asList(twoKeys
+					.toArray(new Event[twoKeys.size()]));
+			for (Event evt : twoKeyList) {
+				AbstractNode nextNode = twoMap.get(evt);
+				if (nextNode instanceof State) {
+					String nextStateName = ((State) nextNode).getName();
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextStateName);
+				} else {
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextNode.getInternalId());
+				}
+			}
+		}
+		System.out.println("END testPrint_initial_Event_Target");
+		System.out.println("");
+	}
+
+	// test print the flattened state machine targets
+	public static void testPrint_current_Event_Target(
+			StateMachineTranslationManager smTranslationMgr) {
+		System.out.println("BEGIN testPrint_current_Event_Target");
+		// Test navigation through the map of state-event-next states
+		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.current_NextStateMap;
+		Set<State> oneKeys = oneMap.keySet();
+		List<State> oneKeyList = Arrays.asList(oneKeys
+				.toArray(new State[oneKeys.size()]));
+		for (State s : oneKeyList) {
+			Map<Event, AbstractNode> twoMap = oneMap.get(s);
+			Set<Event> twoKeys = twoMap.keySet();
+			List<Event> twoKeyList = Arrays.asList(twoKeys
+					.toArray(new Event[twoKeys.size()]));
+			for (Event evt : twoKeyList) {
+				AbstractNode nextNode = twoMap.get(evt);
+				if (nextNode instanceof State) {
+					String nextStateName = ((State) nextNode).getName();
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextStateName);
+				} else {
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextNode.getInternalId());
+				}
+			}
+		}
+		System.out.println("END testPrint_current_Event_Target");
+		System.out.println("");
+	}
+
+	// test print the flattened state machine targets
+	public static void testPrint_flattened_Event_Target(
+			StateMachineTranslationManager smTranslationMgr) {
+		System.out.println("testPrint_flattened_Event_Target");
+		// Test navigation through the map of state-event-next states
+		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.flattenedNextStateMap;
+		Set<State> oneKeys = oneMap.keySet();
+		List<State> oneKeyList = Arrays.asList(oneKeys
+				.toArray(new State[oneKeys.size()]));
+		for (State s : oneKeyList) {
+			Map<Event, AbstractNode> twoMap = oneMap.get(s);
+			Set<Event> twoKeys = twoMap.keySet();
+			List<Event> twoKeyList = Arrays.asList(twoKeys
+					.toArray(new Event[twoKeys.size()]));
+			for (Event evt : twoKeyList) {
+				// if the event is in the event state-machine user list then
+				// call the sm routine
+				boolean isSynchSMEvent = smTranslationMgr.synchEventUser
+						.keySet().contains(evt);
+				// The string to call the state machines
+				String smCallString = "";
+				if (isSynchSMEvent) {
+					List<Statemachine> stateMachineUsers = smTranslationMgr.synchEventUser
+							.get(evt);
+					for (Statemachine statemachine : stateMachineUsers) {
+						smCallString = smCallString + ".Call("
+								+ statemachine.getName() + "); ";
+					}
+
+				}
+				AbstractNode nextNode = twoMap.get(evt);
+				if (nextNode instanceof State) {
+					String nextStateName = ((State) nextNode).getName();
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ smCallString + ">>" + nextStateName);
+				} else {
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ smCallString + ">>" + nextNode.getInternalId());
+				}
+			}
+		}
+		System.out.println("END testPrint_flattened_Event_Target");
+		System.out.println("");
 	}
 }
