@@ -92,13 +92,13 @@ public class StateMachineProcessor {
 				selectedComponentList.add(component);
 			}
 		}
-		// Foreach component, 
-		//   add the synchronous state-machines to a map of
-		//   ComponentName <-> ListOfStatemachines
-		// There is just one process state-machine per component, 
+		// Foreach component,
+		// add the synchronous state-machines to a map of
+		// ComponentName <-> ListOfStatemachines
+		// There is just one process state-machine per component,
 		// foreach component,
-		//   add the process state-machine to a map of 
-		//   ComponentName <-> ProcessStateMachine
+		// add the process state-machine to a map of
+		// ComponentName <-> ProcessStateMachine
 		Map<String, List<Statemachine>> synchSMMap = new HashMap<String, List<Statemachine>>();
 		Map<String, Statemachine> procSMMap = new HashMap<String, Statemachine>();
 		for (Component component : selectedComponentList) {
@@ -110,20 +110,24 @@ public class StateMachineProcessor {
 			if (procSMEList.size() > 1) {
 				throw new CodinTranslatorException(
 						"There is a limit of one process state-machine per component");
-			} else {
+			} else if (procSMEList.size() == 1) {
 				procSMMap.put(component.getName(), procSMEList.get(0));
+				synchSMMap.put(component.getName(),
+						component.getSynchronousStatemachines());
 			}
-			synchSMMap.put(component.getName(),
-					component.getSynchronousStatemachines());
 		}
 
 		// foreach component prepare for translation of its process
 		// state-machine;
-		// In the pre-processing part we gather events and state-machine information
+		// In the pre-processing part we gather events and state-machine
+		// information
 		ComponentUtil componentUtil = new ComponentUtil();
 		for (Component component : selectedComponentList) {
-			componentUtil.preProcessProcStateMachine(procSMMap.get(component.getName()),
-					smTranslationMgr);
+			Statemachine statemachine = procSMMap.get(component.getName());
+			// if the component has a statemachine
+			if(statemachine != null)
+			componentUtil.preProcessProcStateMachine(
+					statemachine, smTranslationMgr);
 		}
 
 		// foreach node, identify and process the initial states,
@@ -154,7 +158,7 @@ public class StateMachineProcessor {
 						Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 						EList<Transition> junctionOutList = initialJunction
 								.getOutgoing();
-						Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.current_NextStateMap
+						Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.initial_NextStateMap
 								.get(parentState);
 						if (storedInnerMap != null) {
 							storedInnerMap.putAll(innerMap);
@@ -168,7 +172,7 @@ public class StateMachineProcessor {
 										junctionTransition.getTarget());
 							}
 						}
-						smTranslationMgr.current_NextStateMap.put(parentState,
+						smTranslationMgr.initial_NextStateMap.put(parentState,
 								storedInnerMap);
 					}
 					// else we can get the events of the initial transition from
@@ -182,17 +186,17 @@ public class StateMachineProcessor {
 							Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 							// Add the event <-> nextState relation
 							innerMap.put(event, initialTransitionTarget);
-							Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.current_NextStateMap
+							Map<Event, AbstractNode> storedInnerMap = smTranslationMgr.initial_NextStateMap
 									.get(initialState);
 							if (storedInnerMap != null) {
 								storedInnerMap.putAll(innerMap);
 							} else {
 								storedInnerMap = innerMap;
 							}
-							
+
 							// We store the parentState that contains the
 							// initialState, with the Event<-> TargetState map
-							smTranslationMgr.current_NextStateMap.put(
+							smTranslationMgr.initial_NextStateMap.put(
 									parentState, storedInnerMap);
 
 						}
@@ -245,11 +249,11 @@ public class StateMachineProcessor {
 							smTranslationMgr.current_NextStateMap.put(state,
 									storedInnerMap);
 						}
-						// else if the outgoing transition is not a junction
-						// we can obtain the pre-constructed event list
+						// else if the outgoing transition target is not a junction
+						// we can obtain the events that it elaborates
 						else {
-							List<Event> eventList = smTranslationMgr.stateEventMap
-									.get(state);
+							List<Event> eventList = stateTransition.getElaborates();
+							
 							// for each event related to the state
 							for (Event event : eventList) {
 								// create the 'inner map'
@@ -272,11 +276,15 @@ public class StateMachineProcessor {
 			}
 		}
 
-		testPrint_State_Event_Target(smTranslationMgr);
-
+		ComponentUtil.flattenStateMachine(smTranslationMgr);
+		System.out.println("");
+		testPrint_flattened_Event_Target(smTranslationMgr);
+		System.out.println("");
+		testPrint_initial_Event_Target(smTranslationMgr);
+		System.out.println("");
+		testPrint_current_Event_Target(smTranslationMgr);
 		return null;
 	}
-
 
 	private void removeStateUpdateAction(String stateMachineName, Event event) {
 		// The code above removes the guard that appears in the 'case' statement
@@ -305,11 +313,67 @@ public class StateMachineProcessor {
 		}
 	}
 
-	// test print the current_NextStateMap
-	private void testPrint_State_Event_Target(
+	
+	// test print the flattened state machine targets
+	private void testPrint_initial_Event_Target(
+			StateMachineTranslationManager smTranslationMgr) {
+		// Test navigation through the map of state-event-next states
+		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.initial_NextStateMap;
+		Set<State> oneKeys = oneMap.keySet();
+		List<State> oneKeyList = Arrays.asList(oneKeys
+				.toArray(new State[oneKeys.size()]));
+		for (State s : oneKeyList) {
+			Map<Event, AbstractNode> twoMap = oneMap.get(s);
+			Set<Event> twoKeys = twoMap.keySet();
+			List<Event> twoKeyList = Arrays.asList(twoKeys
+					.toArray(new Event[twoKeys.size()]));
+			for (Event evt : twoKeyList) {
+				AbstractNode nextNode = twoMap.get(evt);
+				if (nextNode instanceof State) {
+					String nextStateName = ((State) nextNode).getName();
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextStateName);
+				} else {
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextNode.getInternalId());
+				}
+			}
+		}
+	}
+	
+	
+	// test print the flattened state machine targets
+	private void testPrint_current_Event_Target(
 			StateMachineTranslationManager smTranslationMgr) {
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.current_NextStateMap;
+		Set<State> oneKeys = oneMap.keySet();
+		List<State> oneKeyList = Arrays.asList(oneKeys
+				.toArray(new State[oneKeys.size()]));
+		for (State s : oneKeyList) {
+			Map<Event, AbstractNode> twoMap = oneMap.get(s);
+			Set<Event> twoKeys = twoMap.keySet();
+			List<Event> twoKeyList = Arrays.asList(twoKeys
+					.toArray(new Event[twoKeys.size()]));
+			for (Event evt : twoKeyList) {
+				AbstractNode nextNode = twoMap.get(evt);
+				if (nextNode instanceof State) {
+					String nextStateName = ((State) nextNode).getName();
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextStateName);
+				} else {
+					System.out.println(s.getName() + ">>" + evt.getName()
+							+ ">>" + nextNode.getInternalId());
+				}
+			}
+		}
+	}
+	
+	// test print the flattened state machine targets
+	private void testPrint_flattened_Event_Target(
+			StateMachineTranslationManager smTranslationMgr) {
+		// Test navigation through the map of state-event-next states
+		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationMgr.flattenedNextStateMap;
 		Set<State> oneKeys = oneMap.keySet();
 		List<State> oneKeyList = Arrays.asList(oneKeys
 				.toArray(new State[oneKeys.size()]));

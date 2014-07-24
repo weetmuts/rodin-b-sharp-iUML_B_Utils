@@ -1,7 +1,9 @@
 package ac.soton.codin.codegen.basic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -37,7 +39,8 @@ public class ComponentUtil {
 	}
 
 	private void preprocessNode(AbstractNode node, Statemachine statemachine,
-			StateMachineTranslationManager smTranslationMgr) throws TaskingTranslationException {
+			StateMachineTranslationManager smTranslationMgr)
+			throws TaskingTranslationException {
 
 		EList<Transition> outGoing = node.getOutgoing();
 
@@ -99,8 +102,74 @@ public class ComponentUtil {
 			}
 		}
 	}
-	
-	
-	
 
+	public static void flattenStateMachine(
+			StateMachineTranslationManager smTranslationMgr) {
+		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
+		unifiedMap.putAll(smTranslationMgr.current_NextStateMap);
+		unifiedMap.putAll(smTranslationMgr.initial_NextStateMap);
+
+		Map<State, Map<Event, AbstractNode>> updatedMap = new HashMap<State, Map<Event, AbstractNode>>();
+		updatedMap.putAll(smTranslationMgr.current_NextStateMap);
+		updatedMap.putAll(smTranslationMgr.initial_NextStateMap);
+
+		// iterate through each state in the unified map comparing as we go
+		for (State s1 : unifiedMap.keySet()) {
+			// set up a map to compare the current s1->e1->n1, with this element
+			// removed
+			Map<State, Map<Event, AbstractNode>> compareMap = new HashMap<State, Map<Event, AbstractNode>>();
+			compareMap.putAll(unifiedMap);
+			compareMap.remove(s1);
+			Map<Event, AbstractNode> eventStateMap = unifiedMap.get(s1);
+			for (Event e1 : eventStateMap.keySet()) {
+				AbstractNode n1 = eventStateMap.get(e1);
+				// compare the s1->e1-n1 states with those in the comparison map
+				for (State s2 : compareMap.keySet()) {
+					Map<Event, AbstractNode> compareInner = compareMap.get(s2);
+					for (Event e2 : compareInner.keySet()) {
+						AbstractNode n2 = compareInner.get(e2);
+						// Now we have found s2->e2->n2
+						if (e1 == e2 && n1 == s2) {
+
+							String n1Name = "";
+							if (n1 instanceof State) {
+								n1Name = ((State) n1).getName();
+							} else {
+								n1Name = n1.getInternalId();
+							}
+
+							String n2Name = "";
+							if (n2 instanceof State) {
+								n2Name = ((State) n2).getName();
+							} else {
+								n2Name = n2.getInternalId();
+							}
+
+							// replace as above
+
+							Map<Event, AbstractNode> newMap = updatedMap
+									.get(s1);
+							newMap.put(e1, n2);
+							smTranslationMgr.current_NextStateMap.put(s1,
+									newMap);
+							updatedMap.remove(s2);
+
+							System.out.println("We matched:    " + s1.getName()
+									+ "->" + e1.getName() + "->" + n1Name);
+							System.out.println("with:          " + s2.getName()
+									+ "->" + e2.getName() + "->" + n2Name);
+							System.out.println("and set:       " + s1.getName()
+									+ "->" + e1.getName() + "->" + n2Name);
+							System.out.println("to be removed: " + s2.getName()
+									+ "->" + e2.getName() + "->" + n2Name);
+
+							System.out.println();
+
+						}
+					}
+				}
+			}
+		}
+		smTranslationMgr.flattenedNextStateMap = updatedMap;
+	}
 }

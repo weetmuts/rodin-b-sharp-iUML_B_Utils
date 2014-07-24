@@ -33,4 +33,14 @@ public class StateMachineTranslationManager {
 	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
 	Map<State,Map<Event,AbstractNode>> current_NextStateMap = new HashMap<State,Map<Event,AbstractNode>>();
 
+	// Given an initial node: navigate to next state, via events/joins etc: 
+	// Descriptively: a map of type InitialState <-> (Event <-> NextState)
+	// Initial states have to be treated differently.
+	Map<State,Map<Event,AbstractNode>> initial_NextStateMap = new HashMap<State,Map<Event,AbstractNode>>();
+	
+	// Given a current state node: navigate to next state, via events/joins etc: 
+	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
+	// Represents a flattened state machine
+	public Map<State, Map<Event, AbstractNode>> flattenedNextStateMap;
+	
 }
