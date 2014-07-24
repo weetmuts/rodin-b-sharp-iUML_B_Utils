@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eventb.codegen.il1.IL1Element;
+import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
@@ -13,7 +14,7 @@ import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 
-public class StateMachineTranslationManager {
+public class StateMachineTranslationData {
 
 	MachineImpl parentMachine;
 	TaskingTranslationManager taskingTranslationManager;
@@ -51,6 +52,9 @@ public class StateMachineTranslationManager {
 	// If an event of a synchronous state-machine appears in a process state-machine then
 	// the synch state machine is invoked.
 	public Map<Event, List<Statemachine>> synchEventUser = new HashMap<Event, List<Statemachine>>();
+	
+	// The IL1 program that we will create.
+	public Program program;
 
 	// call reset for each new component
 	public void resetMaps() {

@@ -46,12 +46,10 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 	private static TargetLanguage targetLanguage = null;
 	// the components that have been selected for translation
 	public static List<ComponentEditPart> selectedComponentList = new ArrayList<>();
-	
 	private MachineImpl emfMachine = null;
 
 	public void translate(IStructuredSelection selection)
 			throws CodinTranslatorException, TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException {
-
 		// set the list of components to be translated
 		
 	for(Object s: selection.toList()){
@@ -59,10 +57,8 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 				selectedComponentList.add((ComponentEditPart) s);
 			}
 		}
-		
 		// get the first (component) item.ollection.
 		Object item = selection.getFirstElement();
-
 		ComponentEditPart selectedEditPart = null;
 		if (!(item instanceof ComponentEditPart)) {
 			throw new CodinTranslatorException(
@@ -70,7 +66,6 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		} else {
 			selectedEditPart = (ComponentEditPart) item;
 		}
-
 		// The translator works on the machineRoot, get this.
 		ComponentImpl eventBComponent = (ComponentImpl) selectedEditPart
 				.getNotationView().getElement();
@@ -94,10 +89,6 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 						+ emfMachine.getName());
 			}
 		}
-		
-		
-		
-//		super.setSelection(newSelection);
 		doTranslation(machineRoot);
 	}
 
@@ -107,6 +98,8 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		Il1PackageImpl.init();
 		Il1Factory factory = Il1Factory.eINSTANCE;
 		taskingTranslationManager  = new TaskingTranslationManager(factory);
+		// create a new class to store translation info
+		StateMachineTranslationData smTranslationMgr = new StateMachineTranslationData();
 		// prevent tasking static checks on Task Body and so on
 		TaskingTranslationManager.setTranslationType("non-tasking");
 		// Generate an IL1 program using existing stage 1 code generator.
@@ -115,12 +108,10 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		Task task = Il1Factory.eINSTANCE.createTask();
 		// add it to the program
 		program.getTaskTypeTasks().add(task);
-		//get the selected components state-machine diagrams
-		
-		
+		smTranslationMgr.program = program;
 		// run the state-machine processor on the state-machines
 		StateMachineProcessor stateMachineProcessor = StateMachineProcessor.getDefault();
-		stateMachineProcessor.run(emfMachine, task, taskingTranslationManager);
+		stateMachineProcessor.run(emfMachine, task, taskingTranslationManager, smTranslationMgr);
 
 		// add variables and initialisations etc
 		
