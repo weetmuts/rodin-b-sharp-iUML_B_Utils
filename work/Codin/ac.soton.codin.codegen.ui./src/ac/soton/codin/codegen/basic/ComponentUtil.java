@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.tasking.RodinToEMFConverter;
 import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
@@ -16,10 +16,42 @@ import org.eventb.emf.core.machine.Event;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
 
 public class ComponentUtil {
 
+	public void preProcessSynchStateMachines(Statemachine statemachine,
+			StateMachineTranslationManager smTranslationMgr){
+		// Store a map of all the synchronous state machine events and which
+		// state-machines they play for!
+		// Event <-> List<state-machine>.
+		// If such an event appears in a process state-machine's stateEventMap
+		// the a call invoking the synch SM must occur.
+		EList<EObject> transitionList = statemachine.getAllContained(StatemachinesPackage.Literals.TRANSITION, true);
+		for(EObject eo: transitionList){
+			if(eo instanceof Transition){
+				Transition transition = (Transition) eo;
+				EList<Event> elaboratesList = transition.getElaborates();
+				for(Event event: elaboratesList){
+					// if the event has no state machines associated with it
+					List<Statemachine> stateMachineList = smTranslationMgr.synchEventUser.get(event);
+					if(stateMachineList == null){
+						List<Statemachine> newSMList_ = new ArrayList<Statemachine>();
+						newSMList_.add(statemachine);
+						smTranslationMgr.synchEventUser.put(event, newSMList_);
+					}
+					else{
+						stateMachineList.add(statemachine);
+						smTranslationMgr.synchEventUser.put(event, stateMachineList );
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
 	// Process state machines differ from synchronous state-machines. A process
 	// SM translates to a 'vhdl' process. A synchronous SM translates to a
 	// subroutine in the task, with a case statement in its body.
@@ -27,15 +59,16 @@ public class ComponentUtil {
 	// the body contains branches and sequences, and calls to synchronous
 	// state-machine subroutines.
 	// First we generate state-'outgoing transition' info.
-	public Call preProcessProcStateMachine(Statemachine statemachine,
+	public void preProcessProcStateMachine(Statemachine statemachine,
 			StateMachineTranslationManager smTranslationMgr)
 			throws TaskingTranslationException {
+		
+		
 		EList<AbstractNode> nodes = statemachine.getNodes();
 		// foreach state we gather info in processState
 		for (AbstractNode node : nodes) {
 			preprocessNode(node, statemachine, smTranslationMgr);
 		}
-		return null;
 	}
 
 	private void preprocessNode(AbstractNode node, Statemachine statemachine,
