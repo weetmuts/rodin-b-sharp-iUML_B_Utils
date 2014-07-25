@@ -3,7 +3,7 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="/org.eclipse.gmf.runtime.diagram.ui/org.eclipse.gmf.runtime.diagram.ui_1.5.0.v20110309-2230.jar" sourcepath="/org.eclipse.gmf.runtime.diagram.ui/org.eclipse.gmf.runtime.diagram.ui.source_1.5.0.v20110309-2230.jar"/>
+	<classpathentry kind="lib" path="/home/andy/Desktop/apps/eclipse4.2/workspaceVHDL/org.eclipse.gmf.runtime.diagram.ui/org.eclipse.gmf.runtime.diagram.ui_1.6.0.201302122140.jar" sourcepath="/org.eclipse.gmf.runtime.diagram.ui/org.eclipse.gmf.runtime.diagram.ui.source_1.5.0.v20110309-2230.jar"/>
 	<classpathentry exported="true" kind="lib" path="/org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation_1.5.0.v20110309-2159.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
