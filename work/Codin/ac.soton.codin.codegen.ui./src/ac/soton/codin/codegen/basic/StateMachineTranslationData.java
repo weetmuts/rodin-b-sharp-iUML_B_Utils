@@ -33,7 +33,8 @@ public class StateMachineTranslationData {
 	// next state, via events/joins etc: Descriptively: a map of 
 	// type Statemachine <-> (CurrentState <-> (Event <-> NextState))
 	// Represention of flattened state machine
-	public Map<Statemachine,Map<State, Map<Event, AbstractNode>>> synchSM_flattened_nextStateMap;
+	public Map<Statemachine,Map<State, Map<Event, AbstractNode>>> synchSM_flattened_nextStateMap = 
+			new HashMap<Statemachine, Map<State,Map<Event,AbstractNode>>>();
 
 	// A map to store which state-machines use an event in synchronous
 	// state-machines.
@@ -65,36 +66,11 @@ public class StateMachineTranslationData {
 	// particular)
 	public Map<AbstractNode, List<Event>> component_nodeEventMap = new HashMap<AbstractNode, List<Event>>();
 
-	// In a processSM: Given a current state node: navigate to next state, via
-	// events/joins etc:
-	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
-	public Map<State, Map<Event, AbstractNode>> processSM_curr_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
-
-	// In a processSM: Given an initial node: navigate to next state, via
-	// events/joins etc:
-	// Descriptively: a map of type InitialState <-> (Event <-> NextState)
-	// Initial states have to be treated differently.
-	public Map<State, Map<Event, AbstractNode>> processSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
-
-	// In a synchSM: Given a current state node: navigate to next state, via
-	// events/joins etc. Descriptively: a map of type
-	// Statemachine <-> (CurrentState <-> (Event <-> NextState))
-	public Map<State, Map<Event, AbstractNode>> synchSM_curr_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
-
-	// In a synch SM: Given an initial node: navigate to next state, via
-	// events/joins etc:
-	// Descriptively: a map of type InitialState <-> (Event <-> NextState)
-	// Initial states have to be treated differently.
-	public Map<State, Map<Event, AbstractNode>> synchSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
 
 	// call reset for each new component
 	public void resetMaps() {
 		component_stateEventMap.clear();
 		component_nodeEventMap.clear();
-		processSM_curr_nextStateMap.clear();
-		processSM_ini_nextStateMap.clear();
-		synchSM_curr_nextStateMap.clear();
-		synchSM_ini_nextStateMap.clear();
 	}
 
 	// END: The following maps are refreshed (cleared) for each new component.

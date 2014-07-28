@@ -26,6 +26,19 @@ import ac.soton.eventb.statemachines.Transition;
 
 public class ProcessSMAssistant {
 
+	
+	// In a processSM: Given a current state node: navigate to next state, via
+	// events/joins etc:
+	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
+	private Map<State, Map<Event, AbstractNode>> processSM_curr_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
+
+	// In a processSM: Given an initial node: navigate to next state, via
+	// events/joins etc:
+	// Descriptively: a map of type InitialState <-> (Event <-> NextState)
+	// Initial states have to be treated differently.
+	private Map<State, Map<Event, AbstractNode>> processSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
+
+	
 	public void findProcessUsersOfSynchSM(Statemachine statemachine,
 			StateMachineTranslationData smTranslationData) {
 		// Store a map of all the synchronous state machine events and which
@@ -67,9 +80,6 @@ public class ProcessSMAssistant {
 	public void preProcessProcStateMachine(Statemachine statemachine,
 			StateMachineTranslationData smTranslationData)
 			throws TaskingTranslationException {
-		// Reset the maps (relating states-events-nextStates)
-		// for the process state-machine.
-		smTranslationData.resetMaps();
 		// Obtain the nodes in the state-machine.
 		EList<AbstractNode> nodes = statemachine.getNodes();
 		// for each node we gather info
@@ -176,7 +186,7 @@ public class ProcessSMAssistant {
 						Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 						EList<Transition> junctionOutList = initialJunction
 								.getOutgoing();
-						Map<Event, AbstractNode> storedInnerMap = smTranslationData.processSM_ini_nextStateMap
+						Map<Event, AbstractNode> storedInnerMap = processSM_ini_nextStateMap
 								.get(parentState);
 						if (storedInnerMap != null) {
 							storedInnerMap.putAll(innerMap);
@@ -190,7 +200,7 @@ public class ProcessSMAssistant {
 										junctionTransition.getTarget());
 							}
 						}
-						smTranslationData.processSM_ini_nextStateMap.put(parentState,
+						processSM_ini_nextStateMap.put(parentState,
 								storedInnerMap);
 					}
 					// else we can get the events of the initial transition from
@@ -204,7 +214,7 @@ public class ProcessSMAssistant {
 							Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 							// Add the event <-> nextState relation
 							innerMap.put(event, initialTransitionTarget);
-							Map<Event, AbstractNode> storedInnerMap = smTranslationData.processSM_ini_nextStateMap
+							Map<Event, AbstractNode> storedInnerMap = processSM_ini_nextStateMap
 									.get(initialState);
 							if (storedInnerMap != null) {
 								storedInnerMap.putAll(innerMap);
@@ -214,7 +224,7 @@ public class ProcessSMAssistant {
 
 							// We store the parentState that contains the
 							// initialState, with the Event<-> TargetState map
-							smTranslationData.processSM_ini_nextStateMap.put(
+							processSM_ini_nextStateMap.put(
 									parentState, storedInnerMap);
 
 						}
@@ -248,7 +258,7 @@ public class ProcessSMAssistant {
 							Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 							EList<Transition> junctionOutList = junctionTarget
 									.getOutgoing();
-							Map<Event, AbstractNode> storedInnerMap = smTranslationData.processSM_curr_nextStateMap
+							Map<Event, AbstractNode> storedInnerMap = processSM_curr_nextStateMap
 									.get(state);
 							if (storedInnerMap != null) {
 								storedInnerMap.putAll(innerMap);
@@ -264,7 +274,7 @@ public class ProcessSMAssistant {
 									// eventList.add(junctionEvent);
 								}
 							}
-							smTranslationData.processSM_curr_nextStateMap.put(state,
+							processSM_curr_nextStateMap.put(state,
 									storedInnerMap);
 						}
 						// else if the outgoing transition target is not a
@@ -280,14 +290,14 @@ public class ProcessSMAssistant {
 								Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 								// Add the event <-> nextState relation
 								innerMap.put(event, transitionTarget);
-								Map<Event, AbstractNode> storedInnerMap = smTranslationData.processSM_curr_nextStateMap
+								Map<Event, AbstractNode> storedInnerMap = processSM_curr_nextStateMap
 										.get(state);
 								if (storedInnerMap != null) {
 									storedInnerMap.putAll(innerMap);
 								} else {
 									storedInnerMap = innerMap;
 								}
-								smTranslationData.processSM_curr_nextStateMap.put(
+								processSM_curr_nextStateMap.put(
 										state, storedInnerMap);
 							}
 						}
@@ -304,12 +314,12 @@ public class ProcessSMAssistant {
 	private void flattenStateMachine(
 			StateMachineTranslationData smTranslationData) {
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
-		unifiedMap.putAll(smTranslationData.processSM_curr_nextStateMap);
-		unifiedMap.putAll(smTranslationData.processSM_ini_nextStateMap);
+		unifiedMap.putAll(processSM_curr_nextStateMap);
+		unifiedMap.putAll(processSM_ini_nextStateMap);
 
 		Map<State, Map<Event, AbstractNode>> updatedMap = new HashMap<State, Map<Event, AbstractNode>>();
-		updatedMap.putAll(smTranslationData.processSM_curr_nextStateMap);
-		updatedMap.putAll(smTranslationData.processSM_ini_nextStateMap);
+		updatedMap.putAll(processSM_curr_nextStateMap);
+		updatedMap.putAll(processSM_ini_nextStateMap);
 
 		// iterate through each state in the unified map comparing as we go
 		for (State s1 : unifiedMap.keySet()) {
@@ -348,7 +358,7 @@ public class ProcessSMAssistant {
 							Map<Event, AbstractNode> newMap = updatedMap
 									.get(s1);
 							newMap.put(e1, n2);
-							smTranslationData.processSM_curr_nextStateMap.put(s1,
+							processSM_curr_nextStateMap.put(s1,
 									newMap);
 							updatedMap.remove(s2);
 
@@ -376,7 +386,7 @@ public class ProcessSMAssistant {
 			StateMachineTranslationData smTranslationData) {
 		System.out.println("BEGIN testPrint_initial_Event_Target");
 		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationData.processSM_ini_nextStateMap;
+		Map<State, Map<Event, AbstractNode>> oneMap = processSM_ini_nextStateMap;
 		Set<State> oneKeys = oneMap.keySet();
 		List<State> oneKeyList = Arrays.asList(oneKeys
 				.toArray(new State[oneKeys.size()]));
@@ -406,7 +416,7 @@ public class ProcessSMAssistant {
 			StateMachineTranslationData smTranslationData) {
 		System.out.println("BEGIN testPrint_current_Event_Target");
 		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationData.processSM_curr_nextStateMap;
+		Map<State, Map<Event, AbstractNode>> oneMap = processSM_curr_nextStateMap;
 		Set<State> oneKeys = oneMap.keySet();
 		List<State> oneKeyList = Arrays.asList(oneKeys
 				.toArray(new State[oneKeys.size()]));
@@ -434,7 +444,7 @@ public class ProcessSMAssistant {
 	// test print the flattened state machine targets
 	public void testPrint_flattened_Event_Target(
 			StateMachineTranslationData smTranslationData) {
-		System.out.println("testPrint_flattened_Event_Target");
+		System.out.println("BEGIN ProcSM_testPrint_flattened_Event_Target");
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationData.processSM_flattenedNextStateMap;
 		Set<State> oneKeys = oneMap.keySet();
@@ -472,7 +482,7 @@ public class ProcessSMAssistant {
 				}
 			}
 		}
-		System.out.println("END testPrint_flattened_Event_Target");
+		System.out.println("END ProcSM_testPrint_flattened_Event_Target");
 		System.out.println("");
 	}
 }

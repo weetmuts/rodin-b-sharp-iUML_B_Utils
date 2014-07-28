@@ -140,15 +140,12 @@ public class StateMachineProcessor {
 		// starting state; elaborating events on transitions, and a target
 		// state. This gives us a map: State<->(Event<->Node)
 		processSMAssistant.buildNextStateMaps(smTranslationData);
+		synchSMAssistant.buildNextStateMaps(smTranslationData);
 
 		// do print-outs of process state machine
 		processSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
-		processSMAssistant.testPrint_initial_Event_Target(smTranslationData);
-		processSMAssistant.testPrint_current_Event_Target(smTranslationData);
+		synchSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
 		
-		synchSMAssistant.buildNextStateMaps(smTranslationData);
-		
-		System.out.println();
 	}
 
 	private void removeStateUpdateAction(String stateMachineName, Event event) {

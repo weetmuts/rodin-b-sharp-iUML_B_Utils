@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -19,13 +20,23 @@ import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
 
 public class SynchSMAssistant {
+	// In a synchSM: Given a current state node: navigate to next state, via
+	// events/joins etc. Descriptively: a map of type
+	// Statemachine <-> (CurrentState <-> (Event <-> NextState))
+	public Map<State, Map<Event, AbstractNode>> synchSM_curr_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
+
+	// In a synch SM: Given an initial node: navigate to next state, via
+	// events/joins etc:
+	// Descriptively: a map of type InitialState <-> (Event <-> NextState)
+	// Initial states have to be treated differently.
+	public Map<State, Map<Event, AbstractNode>> synchSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
 
 	public void buildNextStateMaps(StateMachineTranslationData smTranslationData) {
 		// For each component
 		for (String componentName : smTranslationData.synchronousSM_Map
 				.keySet()) {
-			// reset the data
-			smTranslationData.resetMaps();
+			// reset the nextState data for a new component
+			resetMaps();
 			// get this component's state-machines.
 			List<Statemachine> statemachineList = smTranslationData.synchronousSM_Map
 					.get(componentName);
@@ -59,7 +70,7 @@ public class SynchSMAssistant {
 								Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 								EList<Transition> junctionOutList = initialJunction
 										.getOutgoing();
-								Map<Event, AbstractNode> storedInnerMap = smTranslationData.synchSM_ini_nextStateMap
+								Map<Event, AbstractNode> storedInnerMap = synchSM_ini_nextStateMap
 										.get(parentState);
 								if (storedInnerMap != null) {
 									storedInnerMap.putAll(innerMap);
@@ -73,7 +84,7 @@ public class SynchSMAssistant {
 												junctionTransition.getTarget());
 									}
 								}
-								smTranslationData.synchSM_ini_nextStateMap.put(
+								synchSM_ini_nextStateMap.put(
 										parentState, storedInnerMap);
 							}
 							// else we can get the events of the initial
@@ -88,7 +99,7 @@ public class SynchSMAssistant {
 									Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 									// Add the event <-> nextState relation
 									innerMap.put(event, initialTransitionTarget);
-									Map<Event, AbstractNode> storedInnerMap = smTranslationData.synchSM_ini_nextStateMap
+									Map<Event, AbstractNode> storedInnerMap = synchSM_ini_nextStateMap
 											.get(initialState);
 									if (storedInnerMap != null) {
 										storedInnerMap.putAll(innerMap);
@@ -100,7 +111,7 @@ public class SynchSMAssistant {
 									// the
 									// initialState, with the Event<->
 									// TargetState map
-									smTranslationData.synchSM_ini_nextStateMap
+									synchSM_ini_nextStateMap
 											.put(parentState, storedInnerMap);
 
 								}
@@ -136,7 +147,7 @@ public class SynchSMAssistant {
 								Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 								EList<Transition> junctionOutList = junctionTarget
 										.getOutgoing();
-								Map<Event, AbstractNode> storedInnerMap = smTranslationData.synchSM_curr_nextStateMap
+								Map<Event, AbstractNode> storedInnerMap = synchSM_curr_nextStateMap
 										.get(state);
 								if (storedInnerMap != null) {
 									storedInnerMap.putAll(innerMap);
@@ -152,7 +163,7 @@ public class SynchSMAssistant {
 										// eventList.add(junctionEvent);
 									}
 								}
-								smTranslationData.synchSM_curr_nextStateMap
+								synchSM_curr_nextStateMap
 										.put(state, storedInnerMap);
 							}
 							// else if the outgoing transition target is not a
@@ -168,14 +179,14 @@ public class SynchSMAssistant {
 									Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
 									// Add the event <-> nextState relation
 									innerMap.put(event, transitionTarget);
-									Map<Event, AbstractNode> storedInnerMap = smTranslationData.synchSM_curr_nextStateMap
+									Map<Event, AbstractNode> storedInnerMap = synchSM_curr_nextStateMap
 											.get(state);
 									if (storedInnerMap != null) {
 										storedInnerMap.putAll(innerMap);
 									} else {
 										storedInnerMap = innerMap;
 									}
-									smTranslationData.synchSM_curr_nextStateMap
+									synchSM_curr_nextStateMap
 											.put(state, storedInnerMap);
 								}
 							}
@@ -190,16 +201,21 @@ public class SynchSMAssistant {
 		}
 	}
 
+	private void resetMaps() {
+		synchSM_curr_nextStateMap.clear();
+		synchSM_ini_nextStateMap.clear();	
+	}
+
 	private Map<State, Map<Event, AbstractNode>> flattenStateMachine(
 			StateMachineTranslationData smTranslationData) {
 
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
-		unifiedMap.putAll(smTranslationData.synchSM_curr_nextStateMap);
-		unifiedMap.putAll(smTranslationData.synchSM_ini_nextStateMap);
+		unifiedMap.putAll(synchSM_curr_nextStateMap);
+		unifiedMap.putAll(synchSM_ini_nextStateMap);
 
 		Map<State, Map<Event, AbstractNode>> updatedMap = new HashMap<State, Map<Event, AbstractNode>>();
-		updatedMap.putAll(smTranslationData.synchSM_curr_nextStateMap);
-		updatedMap.putAll(smTranslationData.synchSM_ini_nextStateMap);
+		updatedMap.putAll(synchSM_curr_nextStateMap);
+		updatedMap.putAll(synchSM_ini_nextStateMap);
 
 		// iterate through each state in the unified map comparing as we go
 		for (State s1 : unifiedMap.keySet()) {
@@ -238,7 +254,7 @@ public class SynchSMAssistant {
 							Map<Event, AbstractNode> newMap = updatedMap
 									.get(s1);
 							newMap.put(e1, n2);
-							smTranslationData.synchSM_curr_nextStateMap.put(s1,
+							synchSM_curr_nextStateMap.put(s1,
 									newMap);
 							updatedMap.remove(s2);
 
@@ -259,5 +275,38 @@ public class SynchSMAssistant {
 			}
 		}
 		return updatedMap;
+	}
+
+	public void testPrint_flattened_Event_Target(
+			StateMachineTranslationData smTranslationData) {
+
+		Map<Statemachine, Map<State, Map<Event, AbstractNode>>> zeroMap = smTranslationData.synchSM_flattened_nextStateMap;
+		for(Statemachine statemachine: zeroMap.keySet()){
+			Map<State, Map<Event, AbstractNode>> oneMap = zeroMap.get(statemachine);
+
+			System.out.println("BEGIN SynchSM_testPrint_flattened_Event_Target");
+			Set<State> oneKeys = oneMap.keySet();
+			List<State> oneKeyList = Arrays.asList(oneKeys
+					.toArray(new State[oneKeys.size()]));
+			for (State s : oneKeyList) {
+				Map<Event, AbstractNode> twoMap = oneMap.get(s);
+				Set<Event> twoKeys = twoMap.keySet();
+				List<Event> twoKeyList = Arrays.asList(twoKeys
+						.toArray(new Event[twoKeys.size()]));
+				for (Event evt : twoKeyList) {
+					AbstractNode nextNode = twoMap.get(evt);
+					if (nextNode instanceof State) {
+						String nextStateName = ((State) nextNode).getName();
+						System.out.println(s.getName() + ">>" + evt.getName()
+								+ ">>" + nextStateName);
+					} else {
+						System.out.println(s.getName() + ">>" + evt.getName()
+								+ ">>" + nextNode.getInternalId());
+					}
+				}
+			}
+			System.out.println("END SynchSM_testPrint_flattened_Event_Target");
+			System.out.println("");
+		}
 	}
 }
