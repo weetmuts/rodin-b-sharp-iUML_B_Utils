@@ -67,9 +67,12 @@ public class ProcessSMAssistant {
 	public void preProcessProcStateMachine(Statemachine statemachine,
 			StateMachineTranslationData smTranslationData)
 			throws TaskingTranslationException {
-
+		// Reset the maps (relating states-events-nextStates)
+		// for the process state-machine.
+		smTranslationData.resetMaps();
+		// Obtain the nodes in the state-machine.
 		EList<AbstractNode> nodes = statemachine.getNodes();
-		// foreach state we gather info in processState
+		// for each node we gather info
 		for (AbstractNode node : nodes) {
 			extractDataForNode(node, statemachine, smTranslationData);
 		}
@@ -292,9 +295,13 @@ public class ProcessSMAssistant {
 				}
 			}
 		}
+		flattenStateMachine(smTranslationData);
 	}
 
-	public void flattenStateMachine(
+	// Flattening removes nested initial transitions. It points
+	// the external transition target (i.e. the related event) at the
+	// internal transition target in our (flattened) map structure.
+	private void flattenStateMachine(
 			StateMachineTranslationData smTranslationData) {
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
 		unifiedMap.putAll(smTranslationData.processSM_curr_nextStateMap);

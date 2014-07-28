@@ -91,9 +91,6 @@ public class StateMachineProcessor {
 		// add the process state-machine to a map of
 		// ComponentName <-> ProcessStateMachine
 		for (Component component : selectedComponentList) {
-			// reset the maps (relating states-events-nextStates)
-			// for each component.
-			smTranslationData.resetMaps();
 			// There should be just one process state-machine in the a codin
 			// component. Lets get it, or throw an exception if there is more
 			// than one.
@@ -143,18 +140,15 @@ public class StateMachineProcessor {
 		// starting state; elaborating events on transitions, and a target
 		// state. This gives us a map: State<->(Event<->Node)
 		processSMAssistant.buildNextStateMaps(smTranslationData);
-		// Flattening removes nested initial transitions. It points
-		// the external transition target (i.e. the related event) at the
-		// internal
-		// transition target in our (flattened) map structure.
-		processSMAssistant.flattenStateMachine(smTranslationData);
+
 		// do print-outs of process state machine
 		processSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
 		processSMAssistant.testPrint_initial_Event_Target(smTranslationData);
 		processSMAssistant.testPrint_current_Event_Target(smTranslationData);
 		
 		synchSMAssistant.buildNextStateMaps(smTranslationData);
-		synchSMAssistant.flattenStateMachine(smTranslationData);
+		
+		System.out.println();
 	}
 
 	private void removeStateUpdateAction(String stateMachineName, Event event) {

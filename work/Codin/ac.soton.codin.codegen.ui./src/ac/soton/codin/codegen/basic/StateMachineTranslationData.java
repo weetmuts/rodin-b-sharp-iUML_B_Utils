@@ -28,7 +28,12 @@ public class StateMachineTranslationData {
 	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
 	// Represention of flattened state machine
 	public Map<State, Map<Event, AbstractNode>> processSM_flattenedNextStateMap;
-	public Map<State, Map<Event, AbstractNode>> synchSM_flattenedNextStateMap;
+
+	// Given a synchronous Statemachine and current state node: navigate to the
+	// next state, via events/joins etc: Descriptively: a map of 
+	// type Statemachine <-> (CurrentState <-> (Event <-> NextState))
+	// Represention of flattened state machine
+	public Map<Statemachine,Map<State, Map<Event, AbstractNode>>> synchSM_flattened_nextStateMap;
 
 	// A map to store which state-machines use an event in synchronous
 	// state-machines.

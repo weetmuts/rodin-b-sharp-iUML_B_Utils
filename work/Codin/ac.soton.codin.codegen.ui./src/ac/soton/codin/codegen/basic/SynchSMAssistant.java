@@ -180,20 +180,17 @@ public class SynchSMAssistant {
 								}
 							}
 						}
-
 					}
-
 				}
-				
-				System.out.println("we could keep track of the synchSMflattened in a map with a statemachine key");
-				
-				
+				// flatten the state-machine
+				Map<State, Map<Event, AbstractNode>> flattenedStatemachineData = flattenStateMachine(smTranslationData);
+				// store the flattened state-machine in a map with the state-machine key
+				smTranslationData.synchSM_flattened_nextStateMap.put(statemachine,flattenedStatemachineData);
 			}
 		}
-
 	}
 
-	public void flattenStateMachine(
+	private Map<State, Map<Event, AbstractNode>> flattenStateMachine(
 			StateMachineTranslationData smTranslationData) {
 
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
@@ -261,7 +258,6 @@ public class SynchSMAssistant {
 				}
 			}
 		}
-		smTranslationData.synchSM_flattenedNextStateMap = updatedMap;
-	
+		return updatedMap;
 	}
 }
