@@ -34,12 +34,13 @@ import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.factory.RodinResource;
 import org.osgi.service.prefs.BackingStoreException;
+import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.impl.ComponentImpl;
 
-public class CodinTranslator extends AbstractTranslateEventBToTarget{
+public class CodinTranslator extends AbstractTranslateEventBToTarget {
 
 	private IMachineRoot machineRoot = null;
 	private static TaskingTranslationManager taskingTranslationManager = null;
@@ -47,13 +48,16 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 	// the components that have been selected for translation
 	public static List<ComponentEditPart> selectedComponentList = new ArrayList<>();
 	private MachineImpl emfMachine = null;
+	private static IFile target;
 
 	public void translate(IStructuredSelection selection)
-			throws CodinTranslatorException, TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException {
+			throws CodinTranslatorException, TaskingTranslationException,
+			BackingStoreException, CoreException, IOException,
+			URISyntaxException {
 		// set the list of components to be translated
-		
-	for(Object s: selection.toList()){
-			if(s instanceof ComponentEditPart){
+
+		for (Object s : selection.toList()) {
+			if (s instanceof ComponentEditPart) {
 				selectedComponentList.add((ComponentEditPart) s);
 			}
 		}
@@ -83,23 +87,27 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 					.getRodinProject();
 			IEventBProject eventBProject = (IEventBProject) rodinProject
 					.getAdapter(IEventBProject.class);
-			machineRoot  = eventBProject.getMachineRoot(emfMachine.getName());
-			if(machineRoot == null){
-				throw new CodinTranslatorException("MachineRoot not found for: " 
-						+ emfMachine.getName());
+			machineRoot = eventBProject.getMachineRoot(emfMachine.getName());
+			if (machineRoot == null) {
+				throw new CodinTranslatorException(
+						"MachineRoot not found for: " + emfMachine.getName());
 			}
 		}
 		doTranslation(machineRoot);
 	}
 
-	private void doTranslation(IMachineRoot machineRoot) throws TaskingTranslationException, BackingStoreException, CoreException, IOException, URISyntaxException, CodinTranslatorException {
+	private void doTranslation(IMachineRoot machineRoot)
+			throws TaskingTranslationException, BackingStoreException,
+			CoreException, IOException, URISyntaxException,
+			CodinTranslatorException {
 		// Initialisations
 		// Initialise the tasking translation manager
 		Il1PackageImpl.init();
 		Il1Factory factory = Il1Factory.eINSTANCE;
-		taskingTranslationManager  = new TaskingTranslationManager(factory);
+		taskingTranslationManager = new TaskingTranslationManager(factory);
 		// create a new class to store translation info
 		StateMachineTranslationData smTranslationMgr = new StateMachineTranslationData();
+		smTranslationMgr.parentProject = machineRoot.getParent().getRodinProject();
 		// prevent tasking static checks on Task Body and so on
 		TaskingTranslationManager.setTranslationType("non-tasking");
 		// Generate an IL1 program using existing stage 1 code generator.
@@ -109,18 +117,20 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		// add it to the program
 		program.getTaskTypeTasks().add(task);
 		smTranslationMgr.program = program;
-		// run the state-machine processor on the state-machines
-		StateMachineProcessor stateMachineProcessor = StateMachineProcessor.getDefault();
-		stateMachineProcessor.run(emfMachine, task, taskingTranslationManager, smTranslationMgr);
-
+		// Run the state-machine processor on the state-machines.
+		// this should generate a map of states to events and next states.
+		StateMachinePreprocessor.getDefault().preProcess(emfMachine, 
+				taskingTranslationManager, smTranslationMgr);
+		// We can use the maps to generate the IL1. 
+		VHDL_IL1_Generator.getDefault().process(task, smTranslationMgr);
+		
 		// add variables and initialisations etc
-		
-		
+
+		saveBaseProgram(program, targetFile(target));
 		System.out.println();
-		
+
 	}
 
-	
 	// This method translates Event-B models into an IL1 program
 	private static Program translateEventBToIL1(IMachineRoot machineRoot)
 			throws TaskingTranslationException, BackingStoreException,
@@ -130,7 +140,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		// an FMU translation.
 		// We need this since the FMU translation type is optional and may well
 		// be removed.;
-//		taskingTranslationManager.setFMUTranslation(false);
+		// taskingTranslationManager.setFMUTranslation(false);
 		// load the EMF components
 		RMLDataStruct loadedEMFComponents = EMFLoader
 				.loadEMFMachinesContexts(machineRoot);
@@ -139,7 +149,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		componentList.add(machineRoot);
 		Object[] componentArrays = componentList.toArray();
 
-		IFile target = null;
+		target = null;
 		// Get target's location from the list which is derived from the
 		// structured selection.
 		target = machineRoot.getResource();
@@ -165,7 +175,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		}
 		saveBaseProgram(program, targetFile(target));
 		// We reset this flag, since we have finished.
-//		taskingTranslationManager.setFMUTranslation(false);
+		// taskingTranslationManager.setFMUTranslation(false);
 		return program;
 	}
 
@@ -186,7 +196,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		String path = newPath + ".il1";
 		return path;
 	}
-	
+
 	// save the program at the given location
 	protected static void saveBaseProgram(Program program, String filename)
 			throws IOException {
@@ -196,7 +206,6 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget{
 		outResource.save(null);
 	}
 
-	
 	@Override
 	protected TargetLanguage getTargetLanguage() {
 		return targetLanguage;

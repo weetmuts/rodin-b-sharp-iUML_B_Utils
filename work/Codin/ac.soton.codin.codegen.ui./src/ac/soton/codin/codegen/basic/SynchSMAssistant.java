@@ -277,6 +277,7 @@ public class SynchSMAssistant {
 		return updatedMap;
 	}
 
+	// test print the flattened state machine targets
 	public void testPrint_flattened_Event_Target(
 			StateMachineTranslationData smTranslationData) {
 

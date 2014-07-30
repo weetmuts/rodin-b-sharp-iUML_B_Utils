@@ -9,6 +9,7 @@ import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
+import org.rodinp.core.IRodinProject;
 
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
@@ -17,6 +18,8 @@ import ac.soton.eventb.statemachines.Statemachine;
 public class StateMachineTranslationData {
 
 	MachineImpl parentMachine;
+	public IRodinProject parentProject = null;
+
 	TaskingTranslationManager taskingTranslationManager;
 	IL1Element actualTarget;
 	// In our translation Events map to sequences, and branches in the process
@@ -29,10 +32,10 @@ public class StateMachineTranslationData {
 	// Represention of flattened state machine
 	public Map<State, Map<Event, AbstractNode>> processSM_flattenedNextStateMap;
 
-	// Given a synchronous Statemachine and current state node: navigate to the
+	// Given a synchronous State-machine and current state node: navigate to the
 	// next state, via events/joins etc: Descriptively: a map of 
-	// type Statemachine <-> (CurrentState <-> (Event <-> NextState))
-	// Represention of flattened state machine
+	// type State-machine <-> (CurrentState <-> (Event <-> NextState))
+	// Representation of flattened state machine
 	public Map<Statemachine,Map<State, Map<Event, AbstractNode>>> synchSM_flattened_nextStateMap = 
 			new HashMap<Statemachine, Map<State,Map<Event,AbstractNode>>>();
 
@@ -49,6 +52,7 @@ public class StateMachineTranslationData {
 	// Store the synchronous state-machines for each component
 	// in a map of ComponentName <-> ListOfStatemachines
 	public Map<String, List<Statemachine>> synchronousSM_Map = new HashMap<String, List<Statemachine>>();
+
 	// There is just one process state-machine per component,
 	// for each component, record the process state-machines
 	// in a map of ComponentName <-> ProcessStateMachine
@@ -73,6 +77,6 @@ public class StateMachineTranslationData {
 		component_nodeEventMap.clear();
 	}
 
-	// END: The following maps are refreshed (cleared) for each new component.
+	// END: of maps refreshed (cleared) for each new component.
 
 }

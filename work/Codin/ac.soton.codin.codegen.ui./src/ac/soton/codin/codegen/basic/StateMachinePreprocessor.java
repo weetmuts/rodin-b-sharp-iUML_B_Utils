@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eventb.codegen.il1.IL1Element;
 import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
@@ -20,21 +19,21 @@ import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentNameEditPart;
 import ac.soton.eventb.statemachines.Statemachine;
 
-public class StateMachineProcessor {
+public class StateMachinePreprocessor {
 
-	private static StateMachineProcessor singleton = null;
+	private static StateMachinePreprocessor singleton = null;
 	private MachineImpl parentMachine = null;
 
-	public static StateMachineProcessor getDefault() {
+	public static StateMachinePreprocessor getDefault() {
 		if (singleton == null) {
-			singleton = new StateMachineProcessor();
+			singleton = new StateMachinePreprocessor();
 			return singleton;
 		} else {
 			return singleton;
 		}
 	}
 
-	public void run(EventBElement source, IL1Element actualTarget,
+	public void preProcess(EventBElement source, 
 			TaskingTranslationManager translationManager,
 			StateMachineTranslationData smTranslationData)
 			throws TaskingTranslationException, CodinTranslatorException {
@@ -43,7 +42,6 @@ public class StateMachineProcessor {
 
 		smTranslationData.parentMachine = parentMachine;
 		smTranslationData.taskingTranslationManager = translationManager;
-		smTranslationData.actualTarget = actualTarget;
 		// selected components in the UI
 		List<ComponentEditPart> selectedComponentEditList = CodinTranslator.selectedComponentList;
 		// All components in the machine
