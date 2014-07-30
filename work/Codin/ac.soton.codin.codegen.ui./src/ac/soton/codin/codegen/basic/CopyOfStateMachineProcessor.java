@@ -186,13 +186,6 @@ public class CopyOfStateMachineProcessor {
 									+ event.getName());
 				}
 
-				// The code above removes the guard that appears in the 'case' statement
-				// of a state-machine implementation.
-				
-				// We also replace the state-update assignment with a call to the 
-				// next-state subroutine. We repeat the algorithm above for actions,
-				// then substitute in a call instead.
-				
 				// remove the state update action from the event actions
 				removeStateUpdateAction(stateMachineName, event);
 				
