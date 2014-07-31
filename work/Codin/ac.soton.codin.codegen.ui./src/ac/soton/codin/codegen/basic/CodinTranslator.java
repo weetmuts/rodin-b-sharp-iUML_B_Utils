@@ -122,7 +122,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		StateMachinePreprocessor.getDefault().preProcess(emfMachine, 
 				taskingTranslationManager, smTranslationMgr);
 		// We can use the maps to generate the IL1. 
-		VHDL_IL1_Generator.getDefault().process(task, smTranslationMgr);
+		VHDL_IL1_Generator.getDefault().makeStatemachineSubroutines(task, smTranslationMgr);
 		
 		// add variables and initialisations etc
 

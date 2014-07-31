@@ -1,17 +1,11 @@
 package ac.soton.codin.codegen.basic;
 
-import java.awt.PageAttributes.OriginType;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eventb.codegen.il1.Case;
 import org.eventb.codegen.il1.CaseStatement;
 import org.eventb.codegen.il1.Command;
@@ -30,12 +24,12 @@ import org.eventb.emf.core.machine.Guard;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
-import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
 
 public class VHDL_IL1_Generator {
 
 	private static VHDL_IL1_Generator singleton = null;
+	private boolean requiresNonProgress;
 
 	public static VHDL_IL1_Generator getDefault() {
 		if (singleton == null) {
@@ -46,7 +40,7 @@ public class VHDL_IL1_Generator {
 		}
 	}
 
-	public void process(Task task, StateMachineTranslationData smTranslationMgr)
+	public void makeStatemachineSubroutines(Task task, StateMachineTranslationData smTranslationMgr)
 			throws TaskingTranslationException {
 		// We can create a subroutine for each synchronous state-machine.
 		Map<String, List<Statemachine>> synchronousSM_Map = smTranslationMgr.synchronousSM_Map;
@@ -80,6 +74,12 @@ public class VHDL_IL1_Generator {
 				List<State> stateList = Arrays.asList(stateMap.keySet()
 						.toArray(new State[stateMap.size()]));
 				for (State currentState : stateList) {
+					// ignore the initialisation.
+					if(currentState.getName().equals("dummyTopState")) continue;
+					// reset the non-progress flag. This flag causes a
+					// "when => others" case to be generated in the case 
+					// of states with no outgoing transitions.
+					requiresNonProgress = false;
 					// create a new case-block for this state
 					CaseStatement caseStatement = Il1Factory.eINSTANCE
 							.createCaseStatement();
@@ -93,15 +93,24 @@ public class VHDL_IL1_Generator {
 					// There should be no guards on the event - we do not handle
 					// synchronising events with typed parameters.
 					if (transitionList.size() == 1) {
-						simpleCaseStatementBuilder(stateMachineName,
+						makeIL1CaseNonBranching(stateMachineName,
 								currentState, caseStatement);
 					}
 					// .. or multiple outgoing transitions for this state.
 					else if (transitionList.size() > 1) {
-						complexCaseStatementBuilder(stateMachineName,
+						makeIL1CaseBranch(stateMachineName,
 								currentState, caseStatement);
 					} else {
 						// Do nothing, this is an implicit final state
+					}
+					// We supply an others case, for non-progressing states
+					// i.e. states with no outgoing transitions.
+					if(requiresNonProgress){
+						CaseStatement othersStatement = Il1Factory.eINSTANCE
+								.createCaseStatement();
+						caseblock.getCaseStatement().add(othersStatement);
+						othersStatement.setCaseValue("others");
+						// There is no command for this case - it is null
 					}
 				}
 			}
@@ -110,7 +119,7 @@ public class VHDL_IL1_Generator {
 
 	// make the case body for the current state, where there are multiple
 	// transitions/events from the state.
-	private void complexCaseStatementBuilder(String stateMachineName,
+	private void makeIL1CaseBranch(String stateMachineName,
 			State currentState, CaseStatement caseStatement) {
 		EList<Transition> transitionEList = currentState.getOutgoing();
 		List<Transition> transitionList = new ArrayList<Transition>(transitionEList);
@@ -122,6 +131,12 @@ public class VHDL_IL1_Generator {
 			String targetName = null;
 			if (targetNode instanceof State) {
 				targetName = ((State) targetNode).getName();
+				if(targetNode.getOutgoing().size()==0){
+					// This is an implicit final state
+					if(requiresNonProgress == false){
+						requiresNonProgress = true;
+					}
+				}
 			}
 			// for the first transition
 			EList<Guard> guardEList = currentTransition.getGuards();
@@ -141,7 +156,7 @@ public class VHDL_IL1_Generator {
 			// First create a java list
 			List<Action> actionList = Arrays.asList(actionEList
 					.toArray(new Action[actionEList.size()]));
-			Command branchBody = completeCaseActionSequence(stateMachineName,
+			Command branchBody = completeIL1CaseActionSequence(stateMachineName,
 					currentState, targetName, actionList);
 			// Set the branch body for the first transition
 			branch.setBody(branchBody);
@@ -149,13 +164,10 @@ public class VHDL_IL1_Generator {
 			// there must be at least one or it would have been handled
 			// by the simple case-statement builder.
 			// Remove the current transition from the processing list
-			
-			transitionList.remove(currentTransition);
+			ArrayList<Transition> newTransitionList = new ArrayList<Transition>(transitionList);
+			newTransitionList.remove(currentTransition);
 			// and process the rest as a subBranch
-			ElseIf subBranch = makeSubBranch(transitionList, stateMachineName, currentState, branch);
-			if(subBranch!=null){
-				branch.setBranch(subBranch);
-			}
+			makeIL1SubBranch(newTransitionList, stateMachineName, currentState, branch, null);
 		}
 		// set the case-statement body
 		caseStatement.setCommand(branch);
@@ -164,11 +176,13 @@ public class VHDL_IL1_Generator {
 
 	// Make a new subBranch, or set the else branch if we have navigated to
 	// the final transition.
-	private ElseIf makeSubBranch(List<Transition> transitionList,
-			String stateMachineName, State currentState, If branch) {
-		ArrayList<Transition> newTransitionList = new ArrayList<>(
-				transitionList);
+	private void makeIL1SubBranch(List<Transition> transitionList,
+			String stateMachineName, State currentState, If topBranch, ElseIf parentElseif) {
+		// there will be a subBranch + an else. So create the subBranch
+		// and call this again with a reduced list
 		if (transitionList.size() > 1) {
+			ArrayList<Transition> newTransitionList = new ArrayList<>(
+					transitionList);
 			ElseIf subBranch = Il1Factory.eINSTANCE.createElseIf();
 			// create a subBranch from the removed transition
 			// pass the list on recursively
@@ -178,11 +192,17 @@ public class VHDL_IL1_Generator {
 			String targetName = null;
 			if (targetNode instanceof State) {
 				targetName = ((State) targetNode).getName();
+				if(targetNode.getOutgoing().size()==0){
+					// This is an implicit final state
+					if(requiresNonProgress == false){
+						requiresNonProgress = true;
+					}
+				}
 			}
 			EList<Guard> emfGuardList = currentTransition.getGuards();
 			// Obtain a list of predicate strings
 			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(emfGuardList);
-			// add the predicate string to the branch condition
+			// add the predicate string to the subbranch condition
 			subBranch.getCondition().addAll(predicateStringList);
 			// add any actions
 			EList<Action> actionEList = currentTransition.getActions();
@@ -191,11 +211,13 @@ public class VHDL_IL1_Generator {
 			// First create a java list
 			List<Action> actionList = Arrays.asList(actionEList
 					.toArray(new Action[actionEList.size()]));
-			Command subBranchBody = completeCaseActionSequence(stateMachineName, currentState,
+			Command subBranchBody = completeIL1CaseActionSequence(stateMachineName, currentState,
 					targetName, actionList);
 			subBranch.setAction(subBranchBody);
-			subBranch.setBranch(makeSubBranch(newTransitionList, targetName, currentState, branch));
-			return subBranch;
+			// parentElseIf is null if this is to be added at the top-level
+			if(parentElseif==null)	topBranch.setBranch(subBranch);
+			else parentElseif.setBranch(subBranch);
+			makeIL1SubBranch(newTransitionList, stateMachineName, currentState, topBranch, subBranch);
 		} else if (transitionList.size() == 1) {
 			// set the elseBranch of the original 'if'.
 			Transition lastTransition = transitionList.get(0);
@@ -204,6 +226,12 @@ public class VHDL_IL1_Generator {
 			String targetName = null;
 			if (targetNode instanceof State) {
 				targetName = ((State) targetNode).getName();
+				if(targetNode.getOutgoing().size()==0){
+					// This is an implicit final state
+					if(requiresNonProgress == false){
+						requiresNonProgress = true;
+					}
+				}
 			}
 			// Else will have no guards
 			// So just process the actions.
@@ -213,26 +241,15 @@ public class VHDL_IL1_Generator {
 			// First create a java list
 			List<Action> actionList = Arrays.asList(actionEList
 					.toArray(new Action[actionEList.size()]));
-			Command elseBranchBody = completeCaseActionSequence(stateMachineName, currentState,
+			Command elseBranchBody = completeIL1CaseActionSequence(stateMachineName, currentState,
 					targetName, actionList);
-			branch.setElse(elseBranchBody);
-			return null;
-		} else {
-			return null;
-		}
-	}
-
-	private List<String> makeIL1GuardsFromEMFGuardList(List<Guard> emfGuardEList) {
-		List<String> predicateStringList = new ArrayList<>();
-		for (Guard guard : emfGuardEList) {
-			predicateStringList.add(guard.getPredicate());
-		}
-		return predicateStringList;
+			topBranch.setElse(elseBranchBody);
+		} 
 	}
 
 	// make the case body for the current state, where there is just
 	// a single transition out from the state.
-	private void simpleCaseStatementBuilder(String stateMachineName,
+	private void makeIL1CaseNonBranching(String stateMachineName,
 			State currentState, CaseStatement caseStatement) {
 		EList<Transition> transitionList = currentState.getOutgoing();
 		for (Transition transition : transitionList) {
@@ -240,6 +257,12 @@ public class VHDL_IL1_Generator {
 			String targetName = null;
 			if (targetNode instanceof State) {
 				targetName = ((State) targetNode).getName();
+				if(targetNode.getOutgoing().size()==0){
+					// This is an implicit final state
+					if(requiresNonProgress == false){
+						requiresNonProgress = true;
+					}
+				}
 			}
 
 			EList<Action> actionEList = transition.getActions();
@@ -247,19 +270,47 @@ public class VHDL_IL1_Generator {
 			// to an il1.command for the caseStatement body.
 			List<Action> actionList = Arrays.asList(actionEList
 					.toArray(new Action[actionEList.size()]));
-			Command body = completeCaseActionSequence(stateMachineName,
+			Command body = completeIL1CaseActionSequence(stateMachineName,
 					currentState, targetName, actionList);
 			// in any case... set the caseStatement
 			caseStatement.setCommand(body);
 		}
 	}
 
+	// transform the list of EMFactions to an il1.command for use in the
+	// caseStatement body.
+	private Command makeIL1SeqFromActionList(List<Action> actionList) {
+		if (actionList.size() == 1) {
+			Action emfAction = actionList.get(0);
+			// create a new IL1Action
+			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
+					.createAction();
+			il1Action.setAction(emfAction.getAction());
+			return il1Action;
+		} else if (actionList.size() > 1) {
+			// Create a new seq. Add the removed action to the left branch
+			// and whatever is returned from a recursive call with the
+			// remaining actions, to the right branch.
+			ArrayList<Action> newActionList = new ArrayList<Action>(actionList);
+			Action emfAction = newActionList.remove(0);
+			Seq seq = Il1Factory.eINSTANCE.createSeq();
+			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
+					.createAction();
+			il1Action.setAction(emfAction.getAction());
+			seq.setLeftBranch(il1Action);
+			seq.setRightBranch(makeIL1SeqFromActionList(newActionList));
+			return seq;
+		} else {
+			return null;
+		}
+	}
+
 	// this method adds a state counter update assignment to a sequence
 	// of actions, the actions are generated from an actionList
-	private Command completeCaseActionSequence(String stateMachineName,
+	private Command completeIL1CaseActionSequence(String stateMachineName,
 			State currentState, String targetName, List<Action> actionList) {
-		// use this command to do the work
-		Command body = makeBodyFromActionList(actionList);
+		// use this command to make a sequence from the list of actions
+		Command body = makeIL1SeqFromActionList(actionList);
 		// if there is a new target state
 		if (targetName != null && !(targetName.equals(currentState.getName()))) {
 			// create a new state update action
@@ -283,32 +334,12 @@ public class VHDL_IL1_Generator {
 		return body;
 	}
 
-	// transform the list of EMFactions to an il1.command for use in the
-	// caseStatement body.
-	private Command makeBodyFromActionList(List<Action> actionList) {
-		if (actionList.size() == 1) {
-			Action emfAction = actionList.get(0);
-			// create a new IL1Action
-			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
-					.createAction();
-			il1Action.setAction(emfAction.getAction());
-			return il1Action;
-		} else if (actionList.size() > 1) {
-			// Create a new seq. Add the removed action to the left branch
-			// and whatever is returned from a recursive call with the
-			// remaining actions, to the right branch.
-			ArrayList<Action> newActionList = new ArrayList<Action>(actionList);
-			Action emfAction = newActionList.remove(0);
-			Seq seq = Il1Factory.eINSTANCE.createSeq();
-			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
-					.createAction();
-			il1Action.setAction(emfAction.getAction());
-			seq.setLeftBranch(il1Action);
-			seq.setRightBranch(makeBodyFromActionList(newActionList));
-			return seq;
-		} else {
-			return null;
+	private List<String> makeIL1GuardsFromEMFGuardList(List<Guard> emfGuardEList) {
+		List<String> predicateStringList = new ArrayList<>();
+		for (Guard guard : emfGuardEList) {
+			predicateStringList.add(guard.getPredicate());
 		}
+		return predicateStringList;
 	}
 
 	public String makeSingleSpaceBetweenElements(String actionString) {
