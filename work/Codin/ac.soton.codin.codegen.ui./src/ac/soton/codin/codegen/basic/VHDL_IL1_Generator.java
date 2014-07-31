@@ -124,9 +124,13 @@ public class VHDL_IL1_Generator {
 		EList<Transition> transitionEList = currentState.getOutgoing();
 		List<Transition> transitionList = new ArrayList<Transition>(transitionEList);
 		// Make a branch for this state's outgoing transitions.
-		If branch = Il1Factory.eINSTANCE.createIf();
-		// for each transition
-		for (Transition currentTransition : transitionList) {
+		If topBranch = Il1Factory.eINSTANCE.createIf();
+		// Remove the current transition from the processing list
+		ArrayList<Transition> newTransitionList = new ArrayList<Transition>(transitionList);
+		Transition currentTransition = newTransitionList.remove(0);
+		
+//		// for each transition
+//		for (Transition currentTransition : transitionList) {
 			AbstractNode targetNode = currentTransition.getTarget();
 			String targetName = null;
 			if (targetNode instanceof State) {
@@ -147,8 +151,9 @@ public class VHDL_IL1_Generator {
 					.toArray(new Guard[guardEList.size()]));
 			// Obtain a list of predicate strings
 			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(emfGuardList);
-			// add the predicate string to the branch condition
-			branch.getCondition().addAll(predicateStringList);
+			// add the predicate string to the branch condition for this
+			// state's top-level branch.
+			topBranch.getCondition().addAll(predicateStringList);
 			// add any actions
 			EList<Action> actionEList = currentTransition.getActions();
 			// transform the actions of this transition
@@ -159,18 +164,15 @@ public class VHDL_IL1_Generator {
 			Command branchBody = completeIL1CaseActionSequence(stateMachineName,
 					currentState, targetName, actionList);
 			// Set the branch body for the first transition
-			branch.setBody(branchBody);
+			topBranch.setBody(branchBody);
 			// add a sub-branch for each subsequent transition
 			// there must be at least one or it would have been handled
 			// by the simple case-statement builder.
-			// Remove the current transition from the processing list
-			ArrayList<Transition> newTransitionList = new ArrayList<Transition>(transitionList);
-			newTransitionList.remove(currentTransition);
 			// and process the rest as a subBranch
-			makeIL1SubBranch(newTransitionList, stateMachineName, currentState, branch, null);
-		}
+			makeIL1SubBranch(newTransitionList, stateMachineName, currentState, topBranch, null);
+//		}
 		// set the case-statement body
-		caseStatement.setCommand(branch);
+		caseStatement.setCommand(topBranch);
 
 	}
 
