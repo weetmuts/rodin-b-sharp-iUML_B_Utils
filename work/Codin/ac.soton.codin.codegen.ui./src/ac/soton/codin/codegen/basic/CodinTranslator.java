@@ -34,7 +34,6 @@ import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.factory.RodinResource;
 import org.osgi.service.prefs.BackingStoreException;
-import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
@@ -122,7 +121,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		StateMachinePreprocessor.getDefault().preProcess(emfMachine, 
 				taskingTranslationManager, smTranslationMgr);
 		// We can use the maps to generate the IL1. 
-		VHDL_IL1_Generator.getDefault().makeStatemachineSubroutines(task, smTranslationMgr);
+		VHDL_IL1_Generator.getDefault().doStatemachines(task, smTranslationMgr);
 		
 		// add variables and initialisations etc
 

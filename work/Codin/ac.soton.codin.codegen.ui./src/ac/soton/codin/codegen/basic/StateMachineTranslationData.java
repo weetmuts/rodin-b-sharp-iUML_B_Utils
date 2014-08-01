@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.eventb.codegen.il1.IL1Element;
 import org.eventb.codegen.il1.Program;
+import org.eventb.codegen.il1.Subroutine;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
@@ -31,6 +32,9 @@ public class StateMachineTranslationData {
 	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
 	// Represention of flattened state machine
 	public Map<State, Map<Event, AbstractNode>> processSM_flattenedNextStateMap;
+	
+	// Each state has a list of transit paths with their guards
+	public Map<State, List<TransitPath>> procSM_transitPaths =  new HashMap<State, List<TransitPath>>();
 
 	// Given a synchronous State-machine and current state node: navigate to the
 	// next state, via events/joins etc: Descriptively: a map of 
@@ -69,6 +73,7 @@ public class StateMachineTranslationData {
 	// Given a node, we can get the associated events. (Needed for Joins, in
 	// particular)
 	public Map<AbstractNode, List<Event>> component_nodeEventMap = new HashMap<AbstractNode, List<Event>>();
+	public Map<Statemachine, Subroutine> synchSM_subroutineMap = new HashMap<Statemachine, Subroutine>();
 
 
 	// call reset for each new component

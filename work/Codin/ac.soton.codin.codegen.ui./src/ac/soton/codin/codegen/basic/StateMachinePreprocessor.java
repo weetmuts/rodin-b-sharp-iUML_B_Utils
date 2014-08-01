@@ -143,7 +143,7 @@ public class StateMachinePreprocessor {
 		// do print-outs of process state machine
 		processSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
 		synchSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
-		
+		processSMAssistant.testPrint_transit_map(smTranslationData);
 	}
 
 	private void removeStateUpdateAction(String stateMachineName, Event event) {
