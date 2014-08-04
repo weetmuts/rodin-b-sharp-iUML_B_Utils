@@ -16,6 +16,7 @@ public class VHDL_IL1_Generator {
 		}
 	}
 
+	// Coordinator for the process.
 	public void doStatemachines(Task task,
 			StateMachineTranslationData smTranslationMgr)
 			throws TaskingTranslationException, CodinTranslatorException {

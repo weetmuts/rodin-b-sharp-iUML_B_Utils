@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.codegen.tasking.RodinToEMFConverter;
 import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
+import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 
@@ -24,7 +25,6 @@ import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.StatemachinesFactory;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
-import ac.soton.eventb.statemachines.impl.TransitionImpl;
 
 public class ProcessSMAssistant {
 
@@ -342,7 +342,7 @@ public class ProcessSMAssistant {
 			ArrayList<Guard> transitPathGuardList,
 			Map<Event, AbstractNode> storedInnerMap) {
 		// Set up a transitPath.
-		List<TransitPath> transitPathList = smTranslationData.procSM_transitPaths
+		List<TransitPath> transitPathList = smTranslationData.processSM_transitPaths
 				.get(parentState);
 		TransitPath transitPath = null;
 		if(transitPathList == null){
@@ -372,7 +372,7 @@ public class ProcessSMAssistant {
 			}
 			// add guards to existing list of guards
 		}
-		smTranslationData.procSM_transitPaths.put(parentState, transitPathList);
+		smTranslationData.processSM_transitPaths.put(parentState, transitPathList);
 	}
 
 	// Flattening removes nested initial transitions. It points
@@ -444,7 +444,7 @@ public class ProcessSMAssistant {
 							System.out.println("to be removed: " + s2.getName()
 									+ "->" + e2.getName() + "->" + n2Name);
 
-							Map<State, List<TransitPath>> transitPathMap = smTranslationData.procSM_transitPaths;
+							Map<State, List<TransitPath>> transitPathMap = smTranslationData.processSM_transitPaths;
 							// get all the paths from s1
 							List<TransitPath> s1_transitPathList = transitPathMap
 									.get(s1);
@@ -453,12 +453,14 @@ public class ProcessSMAssistant {
 									.get(s2);
 
 							List<Guard> moveGuards = null;
+							List<Action> moveActions = null;
 							TransitPath removePath = null;
 							AbstractNode replacementNode = null;
 							// remove s2->e2->n2 getting the s2->e2 guards
 							for (TransitPath tp : s2_transitPathList) {
 								if (tp.getEvent() == e2) {
 									moveGuards = tp.getGuardList();
+									moveActions = tp.getActionList();
 									replacementNode = tp.getTargetNode();
 									removePath = tp;
 									break;
@@ -469,6 +471,7 @@ public class ProcessSMAssistant {
 								if (tp.getEvent() == e1) {
 									tp.setTargetNode(replacementNode);
 									tp.getGuardList().addAll(moveGuards);
+									tp.getActionList().addAll(moveActions);
 									break;
 								}
 							}
@@ -477,7 +480,7 @@ public class ProcessSMAssistant {
 							ArrayList<TransitPath> new_s2_TransitPathList = new ArrayList<>(
 									s2_transitPathList);
 							new_s2_TransitPathList.remove(removePath);
-							smTranslationData.procSM_transitPaths.put(s2,
+							smTranslationData.processSM_transitPaths.put(s2,
 									new_s2_TransitPathList);
 
 						}
@@ -491,9 +494,9 @@ public class ProcessSMAssistant {
 	public void testPrint_transit_map(
 			StateMachineTranslationData smTranslationData) {
 		System.out.println("BEGIN: testPrint_transit_map");
-		for (State state : smTranslationData.procSM_transitPaths.keySet()) {
+		for (State state : smTranslationData.processSM_transitPaths.keySet()) {
 
-			List<TransitPath> tPathList = smTranslationData.procSM_transitPaths
+			List<TransitPath> tPathList = smTranslationData.processSM_transitPaths
 					.get(state);
 
 			for (TransitPath tPath : tPathList) {
@@ -505,6 +508,12 @@ public class ProcessSMAssistant {
 						separator = " & ";
 					first = false;
 					guardString = guardString + separator + g.getPredicate();
+				}
+				for (Action a : tPath.getActionList()) {
+					if (!first)
+						separator = " || ";
+					first = false;
+					guardString = guardString + separator + a.getAction();
 				}
 
 				Event evt = tPath.getEvent();

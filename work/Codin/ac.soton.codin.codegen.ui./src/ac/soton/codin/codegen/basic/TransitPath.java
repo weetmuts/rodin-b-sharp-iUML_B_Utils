@@ -3,6 +3,7 @@ package ac.soton.codin.codegen.basic;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 
@@ -10,6 +11,8 @@ import ac.soton.eventb.statemachines.AbstractNode;
 
 public class TransitPath {
 	private List<Guard> guardList = new ArrayList<Guard>();
+	private List<Action> actionList = new ArrayList<Action>();
+	
 	private Event event;
 	private AbstractNode targetNode;
 	
@@ -36,6 +39,15 @@ public class TransitPath {
 	public void setGuardList(List<Guard> guardList) {
 		this.guardList = guardList;
 	}
+
+	public List<Action> getActionList() {
+		return actionList;
+	}
+
+	public void setActionList(List<Action> actionList) {
+		this.actionList = actionList;
+	}
 		
+
 	
 }
