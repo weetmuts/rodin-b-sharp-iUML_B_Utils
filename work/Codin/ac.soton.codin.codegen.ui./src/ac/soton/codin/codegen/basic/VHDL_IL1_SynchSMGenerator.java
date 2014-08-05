@@ -28,6 +28,8 @@ import ac.soton.eventb.statemachines.Transition;
 public class VHDL_IL1_SynchSMGenerator {
 
 	private static VHDL_IL1_SynchSMGenerator singleton = null;
+	// flag indicating that we require case 'others' to 
+	// be added to a case statement 
 	private boolean requiresNonProgress;
 
 	public static VHDL_IL1_SynchSMGenerator getDefault() {

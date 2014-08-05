@@ -462,7 +462,15 @@ public class ProcessSMAssistant {
 									moveGuards = tp.getGuardList();
 									moveActions = tp.getActionList();
 									replacementNode = tp.getTargetNode();
-									removePath = tp;
+									// In s2 remove the transitPath with e2-n2 
+									// if it is empty just remove it
+									s2_transitPathList.remove(tp);
+									if(s2_transitPathList.size() == 0){
+										smTranslationData.processSM_transitPaths.remove(s2);
+									}
+									else{
+										smTranslationData.processSM_transitPaths.put(s2, s2_transitPathList);
+									}
 									break;
 								}
 							}
@@ -475,14 +483,6 @@ public class ProcessSMAssistant {
 									break;
 								}
 							}
-
-							// make new transitPathMap with e2-n2 removed
-							ArrayList<TransitPath> new_s2_TransitPathList = new ArrayList<>(
-									s2_transitPathList);
-							new_s2_TransitPathList.remove(removePath);
-							smTranslationData.processSM_transitPaths.put(s2,
-									new_s2_TransitPathList);
-
 						}
 					}
 				}
