@@ -12,10 +12,10 @@ import ac.soton.eventb.statemachines.AbstractNode;
 public class TransitPath {
 	private List<Guard> guardList = new ArrayList<Guard>();
 	private List<Action> actionList = new ArrayList<Action>();
-	
+
 	private Event event;
 	private AbstractNode targetNode;
-	
+
 	public AbstractNode getTargetNode() {
 		return targetNode;
 	}
@@ -35,19 +35,9 @@ public class TransitPath {
 	public List<Guard> getGuardList() {
 		return guardList;
 	}
-	
-	public void setGuardList(List<Guard> guardList) {
-		this.guardList = guardList;
-	}
 
 	public List<Action> getActionList() {
 		return actionList;
 	}
 
-	public void setActionList(List<Action> actionList) {
-		this.actionList = actionList;
-	}
-		
-
-	
 }

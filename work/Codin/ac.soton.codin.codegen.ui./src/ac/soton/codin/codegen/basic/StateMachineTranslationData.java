@@ -33,8 +33,8 @@ public class StateMachineTranslationData {
 	// Represention of flattened state machine
 	public Map<State, Map<Event, AbstractNode>> processSM_flattenedNextStateMap;
 	
-	// Each state has a list of transit paths with their guards
-	public Map<State, List<TransitPath>> processSM_transitPaths =  new HashMap<State, List<TransitPath>>();
+	// Each state has a list of transit paths; a transit path includes guards and actions.
+	public Map<State, List<TransitPath>> processSM_transitPathMap =  new HashMap<State, List<TransitPath>>();
 
 	// Given a synchronous State-machine and current state node: navigate to the
 	// next state, via events/joins etc: Descriptively: a map of 

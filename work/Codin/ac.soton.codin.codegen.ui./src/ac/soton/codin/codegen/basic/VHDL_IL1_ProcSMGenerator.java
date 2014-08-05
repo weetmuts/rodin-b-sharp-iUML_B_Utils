@@ -50,7 +50,6 @@ public class VHDL_IL1_ProcSMGenerator {
 		makeSubroutines(smTranslationMgr);
 		// in the second pass we provide the subroutine bodies
 		makeSubroutineBodies(smTranslationMgr);
-System.out.println();
 	}
 
 	// This method builds subroutines for the process state machine
@@ -58,7 +57,7 @@ System.out.println();
 			throws CodinTranslatorException {
 		stateSubroutine_Map.clear();
 		// each state has an associated subroutine
-		for (State state : smTranslationMgr.processSM_transitPaths.keySet()) {
+		for (State state : smTranslationMgr.processSM_transitPathMap.keySet()) {
 			Subroutine stateSubroutine = Il1Factory.eINSTANCE
 					.createSubroutine();
 			// get the one and only task model for the VHDL process
@@ -78,9 +77,9 @@ System.out.println();
 	private void makeSubroutineBodies(
 			StateMachineTranslationData smTranslationMgr) {
 
-		for (State currentState : smTranslationMgr.processSM_transitPaths.keySet()) {
+		for (State currentState : smTranslationMgr.processSM_transitPathMap.keySet()) {
 			// Get the transit paths for this state
-			List<TransitPath> transitPathList = smTranslationMgr.processSM_transitPaths
+			List<TransitPath> transitPathList = smTranslationMgr.processSM_transitPathMap
 					.get(currentState);
 			// get the subroutine for this state that was generated in the first
 			// pass.
@@ -227,7 +226,7 @@ System.out.println();
 			Call synchSMCall = Il1Factory.eINSTANCE.createCall();
 			callList.add(synchSMCall);
 			// set the called Synchronous subroutine
-			synchSMCall.setSubroutine(calledSynchSMSubroutine);
+			synchSMCall.setSubroutine(EcoreUtil.copy(calledSynchSMSubroutine));
 		}
 		// Get the subroutine associated with the target node
 		Subroutine targetSubroutine = stateSubroutine_Map

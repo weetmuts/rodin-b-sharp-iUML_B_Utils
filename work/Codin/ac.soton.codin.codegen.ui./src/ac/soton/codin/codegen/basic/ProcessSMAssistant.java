@@ -184,6 +184,8 @@ public class ProcessSMAssistant {
 							.getTarget();
 					ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 					transitPathGuardList.addAll(initialTransition.getGuards());
+					ArrayList<Action> transitPathActionList = new ArrayList<Action>();
+					transitPathActionList.addAll(initialTransition.getActions());
 					if (initialTransitionTarget instanceof Junction) {
 						// we have found a Junction, so need to obtain its
 						// eventlist
@@ -199,6 +201,8 @@ public class ProcessSMAssistant {
 							storedInnerMap = innerMap;
 						}
 						for (Transition junctionTransition : junctionOutList) {
+							transitPathActionList.addAll(junctionTransition
+									.getActions());
 							transitPathGuardList.addAll(junctionTransition
 									.getGuards());
 							for (Event junctionEvent : junctionTransition
@@ -207,7 +211,7 @@ public class ProcessSMAssistant {
 										junctionTransition.getTarget());
 								updateTransitionPath(junctionEvent,
 										smTranslationData, parentState,
-										transitPathGuardList, storedInnerMap);
+										transitPathGuardList, transitPathActionList, storedInnerMap);
 							}
 						}
 						processSM_ini_nextStateMap.put(parentState,
@@ -241,7 +245,7 @@ public class ProcessSMAssistant {
 
 							updateTransitionPath(event, smTranslationData,
 									parentState, transitPathGuardList,
-									storedInnerMap);
+									transitPathActionList, storedInnerMap);
 						}
 					}
 				}
@@ -264,6 +268,8 @@ public class ProcessSMAssistant {
 						ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 						AbstractNode transitionTarget = stateTransition
 								.getTarget();
+						ArrayList<Action> transitPathActionList = new ArrayList<Action>();
+						transitPathActionList.addAll(stateTransition.getActions());
 						// if the state transition target is a Junction we will
 						// need
 						// to
@@ -271,6 +277,8 @@ public class ProcessSMAssistant {
 						if (transitionTarget instanceof Junction) {
 							transitPathGuardList.addAll(stateTransition
 									.getGuards());
+							transitPathActionList.addAll(stateTransition
+									.getActions());
 							// List<Event> eventList = new ArrayList<Event>();
 							Junction junctionTarget = (Junction) transitionTarget;
 							// create the 'inner map'
@@ -294,7 +302,7 @@ public class ProcessSMAssistant {
 									updateTransitionPath(junctionEvent,
 											smTranslationData, state,
 											transitPathGuardList,
-											storedInnerMap);
+											transitPathActionList, storedInnerMap);
 								}
 							}
 							processSM_curr_nextStateMap.put(state,
@@ -327,7 +335,7 @@ public class ProcessSMAssistant {
 
 								updateTransitionPath(event, smTranslationData,
 										state, transitPathGuardList,
-										storedInnerMap);
+										transitPathActionList, storedInnerMap);
 							}
 						}
 					}
@@ -340,9 +348,9 @@ public class ProcessSMAssistant {
 	private void updateTransitionPath(Event event,
 			StateMachineTranslationData smTranslationData, State parentState,
 			ArrayList<Guard> transitPathGuardList,
-			Map<Event, AbstractNode> storedInnerMap) {
+			ArrayList<Action> transitPathActionList, Map<Event, AbstractNode> storedInnerMap) {
 		// Set up a transitPath.
-		List<TransitPath> transitPathList = smTranslationData.processSM_transitPaths
+		List<TransitPath> transitPathList = smTranslationData.processSM_transitPathMap
 				.get(parentState);
 		TransitPath transitPath = null;
 		if(transitPathList == null){
@@ -358,21 +366,28 @@ public class ProcessSMAssistant {
 			transitPath = new TransitPath();
 			transitPath.setEvent(event);
 			transitPath.setTargetNode(storedInnerMap.get(event));
-			transitPath.setGuardList(transitPathGuardList);
+			transitPath.getGuardList().addAll(transitPathGuardList);
+			transitPath.getActionList().addAll(transitPathActionList);
 			// finally add the transition path to the list of
 			// transition paths for this state
 			transitPathList.add(transitPath);
 
 		} else {
 			List<Guard> existingGuardList = transitPath.getGuardList();
+			List<Action> existingActionList = transitPath.getActionList();
+			// add guards and actions to existing the existing lists
 			for(Guard g: transitPathGuardList){
 				if(!existingGuardList.contains(g)){
 					transitPath.getGuardList().add(g);
 				}
 			}
-			// add guards to existing list of guards
+			for(Action a: transitPathActionList){
+				if(!existingActionList.contains(a)){
+					transitPath.getActionList().add(a);
+				}
+			}
 		}
-		smTranslationData.processSM_transitPaths.put(parentState, transitPathList);
+		smTranslationData.processSM_transitPathMap.put(parentState, transitPathList);
 	}
 
 	// Flattening removes nested initial transitions. It points
@@ -444,7 +459,7 @@ public class ProcessSMAssistant {
 							System.out.println("to be removed: " + s2.getName()
 									+ "->" + e2.getName() + "->" + n2Name);
 
-							Map<State, List<TransitPath>> transitPathMap = smTranslationData.processSM_transitPaths;
+							Map<State, List<TransitPath>> transitPathMap = smTranslationData.processSM_transitPathMap;
 							// get all the paths from s1
 							List<TransitPath> s1_transitPathList = transitPathMap
 									.get(s1);
@@ -454,7 +469,6 @@ public class ProcessSMAssistant {
 
 							List<Guard> moveGuards = null;
 							List<Action> moveActions = null;
-							TransitPath removePath = null;
 							AbstractNode replacementNode = null;
 							// remove s2->e2->n2 getting the s2->e2 guards
 							for (TransitPath tp : s2_transitPathList) {
@@ -466,10 +480,10 @@ public class ProcessSMAssistant {
 									// if it is empty just remove it
 									s2_transitPathList.remove(tp);
 									if(s2_transitPathList.size() == 0){
-										smTranslationData.processSM_transitPaths.remove(s2);
+										smTranslationData.processSM_transitPathMap.remove(s2);
 									}
 									else{
-										smTranslationData.processSM_transitPaths.put(s2, s2_transitPathList);
+										smTranslationData.processSM_transitPathMap.put(s2, s2_transitPathList);
 									}
 									break;
 								}
@@ -494,9 +508,9 @@ public class ProcessSMAssistant {
 	public void testPrint_transit_map(
 			StateMachineTranslationData smTranslationData) {
 		System.out.println("BEGIN: testPrint_transit_map");
-		for (State state : smTranslationData.processSM_transitPaths.keySet()) {
+		for (State state : smTranslationData.processSM_transitPathMap.keySet()) {
 
-			List<TransitPath> tPathList = smTranslationData.processSM_transitPaths
+			List<TransitPath> tPathList = smTranslationData.processSM_transitPathMap
 					.get(state);
 
 			for (TransitPath tPath : tPathList) {
