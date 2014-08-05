@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.il1.Command;
 import org.eventb.codegen.il1.ElseIf;
@@ -49,7 +50,29 @@ public class VHDL_IL1_ProcSMGenerator {
 		makeSubroutines(smTranslationMgr);
 		// in the second pass we provide the subroutine bodies
 		makeSubroutineBodies(smTranslationMgr);
+System.out.println();
+	}
 
+	// This method builds subroutines for the process state machine
+	private void makeSubroutines(StateMachineTranslationData smTranslationMgr)
+			throws CodinTranslatorException {
+		stateSubroutine_Map.clear();
+		// each state has an associated subroutine
+		for (State state : smTranslationMgr.processSM_transitPaths.keySet()) {
+			Subroutine stateSubroutine = Il1Factory.eINSTANCE
+					.createSubroutine();
+			// get the one and only task model for the VHDL process
+			Task theTask = program.getTaskTypeTasks().get(0);
+			theTask.getSubroutines().add(stateSubroutine);
+			// we'll keep a map of State<->state-subroutine for our own use
+			stateSubroutine_Map.put(state, stateSubroutine);
+			stateSubroutine.setName(state.getName());
+			stateSubroutine.setMachineName(smTranslationMgr.parentMachine
+					.getName());
+			stateSubroutine.setProjectName(smTranslationMgr.parentProject
+					.getProject().getName());
+			stateSubroutine.setTemporary(false);
+		}
 	}
 
 	private void makeSubroutineBodies(
@@ -124,7 +147,7 @@ public class VHDL_IL1_ProcSMGenerator {
 				// of the state, then finally add a call to the next stateSubroutine
 				// if one exists.
 				else{
-					makeTopBranch(currentState, transitPathList);
+					currentStateSubroutine.setBody(makeTopBranch(currentState, transitPathList));
 				}
 			}
 			// there are no transit paths, do nothing
@@ -191,27 +214,6 @@ public class VHDL_IL1_ProcSMGenerator {
 		}
 	}
 
-	// This method builds subroutines for the process state machine
-	private void makeSubroutines(StateMachineTranslationData smTranslationMgr)
-			throws CodinTranslatorException {
-		// each state has an associated subroutine
-		for (State state : smTranslationMgr.processSM_transitPaths.keySet()) {
-			Subroutine stateSubroutine = Il1Factory.eINSTANCE
-					.createSubroutine();
-			// get the one and only task model for the VHDL process
-			Task theTask = program.getTaskTypeTasks().get(0);
-			theTask.getSubroutines().add(stateSubroutine);
-			stateSubroutine.setName(state.getName());
-			stateSubroutine.setMachineName(smTranslationMgr.parentMachine
-					.getName());
-			stateSubroutine.setProjectName(smTranslationMgr.parentProject
-					.getProject().getName());
-			stateSubroutine.setTemporary(false);
-			// we'll keep a map of State<->state-subroutine for our own use
-			stateSubroutine_Map.put(state, stateSubroutine);
-		}
-	}
-
 	private void makeSynchSMCallSeq(
 			StateMachineTranslationData smTranslationMgr,
 			Subroutine currentStateSubroutine, AbstractNode targetNode,
@@ -237,7 +239,7 @@ public class VHDL_IL1_ProcSMGenerator {
 		callSeq.setLeftBranch(callCommands);
 		// the right branch calls the next-state subroutine
 		Call gotoNextstateCall = Il1Factory.eINSTANCE.createCall();
-		gotoNextstateCall.setSubroutine(targetSubroutine);
+		gotoNextstateCall.setSubroutine(EcoreUtil.copy(targetSubroutine));
 		callSeq.setRightBranch(gotoNextstateCall);
 		currentStateSubroutine.setBody(callSeq);
 	}
@@ -304,7 +306,13 @@ public class VHDL_IL1_ProcSMGenerator {
 			// set the subroutine associated with the call
 			Subroutine nextStateSubroutine = stateSubroutine_Map
 					.get(targetNode);
-			call.setSubroutine(nextStateSubroutine);
+			// if there is no next state, then we do nothing.
+			if(nextStateSubroutine == null){
+				return null;
+			}
+			// We seem to need to copy this, since the subroutine
+			// disappears from the task otherwise.
+			call.setSubroutine(EcoreUtil.copy(nextStateSubroutine));
 
 			// if the body is null just return the call
 			// since we have no actions.
