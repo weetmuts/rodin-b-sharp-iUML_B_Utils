@@ -5,23 +5,15 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eventb.codegen.il1.Command;
-import org.eventb.codegen.il1.Il1Factory;
-import org.eventb.codegen.il1.Seq;
 import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
-import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.machine.Action;
-import org.eventb.emf.core.machine.Event;
-import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentsPackage;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentNameEditPart;
-import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 
 public class StateMachinePreprocessor {
@@ -149,105 +141,5 @@ public class StateMachinePreprocessor {
 		processSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
 		synchSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
 		processSMAssistant.testPrint_transit_map(smTranslationData);
-	}
-
-	
-	
-	// transform the list of EMFactions to an il1.command for use in the
-	// caseStatement body.
-	private Command makeIL1SeqFromActionList(List<Action> actionList) {
-		if (actionList.size() == 1) {
-			Action emfAction = actionList.get(0);
-			// create a new IL1Action
-			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
-					.createAction();
-			il1Action.setAction(emfAction.getAction());
-			return il1Action;
-		} else if (actionList.size() > 1) {
-			// Create a new seq. Add the removed action to the left branch
-			// and whatever is returned from a recursive call with the
-			// remaining actions, to the right branch.
-			ArrayList<Action> newActionList = new ArrayList<Action>(actionList);
-			Action emfAction = newActionList.remove(0);
-			Seq seq = Il1Factory.eINSTANCE.createSeq();
-			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
-					.createAction();
-			il1Action.setAction(emfAction.getAction());
-			seq.setLeftBranch(il1Action);
-			seq.setRightBranch(makeIL1SeqFromActionList(newActionList));
-			return seq;
-		} else {
-			return null;
-		}
-	}
-
-	// this method adds a state counter update assignment to a sequence
-	// of actions, the actions are generated from an actionList
-	private Command completeIL1CaseActionSequence(String stateMachineName,
-			State currentState, String targetName, List<Action> actionList) {
-		// use this command to make a sequence from the list of actions
-		Command body = makeIL1SeqFromActionList(actionList);
-		// if there is a new target state
-		if (targetName != null && !(targetName.equals(currentState.getName()))) {
-			// create a new state update action
-			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
-					.createAction();
-			il1Action.setAction(stateMachineName
-					+ CodeGenTaskingUtils.ASSIGNMENT_SYMBOL + targetName);
-			// if the body is null
-			if (body == null) {
-				// Set the new state update action as the body.
-				body = il1Action;
-			}
-			// else add it to an existing body.
-			else {
-				Seq seq = Il1Factory.eINSTANCE.createSeq();
-				seq.setRightBranch(il1Action);
-				seq.setLeftBranch(body);
-				body = seq;
-			}
-		}
-		return body;
-	}
-
-	private List<String> makeIL1GuardsFromEMFGuardList(List<Guard> emfGuardEList) {
-		List<String> predicateStringList = new ArrayList<>();
-		for (Guard guard : emfGuardEList) {
-			predicateStringList.add(guard.getPredicate());
-		}
-		return predicateStringList;
-	}
-
-	
-	
-	
-	
-	
-	
-	private void removeStateUpdateAction(String stateMachineName, Event event) {
-		// The code above removes the guard that appears in the 'case' statement
-		// of a state-machine implementation.
-
-		// We also replace the state-update assignment with a call to the
-		// next-state subroutine. We repeat the algorithm above for actions,
-		// then substitute in a call instead.
-
-		EList<Action> actionList = event.getActions();
-		int idx2 = -1;
-		boolean found2 = false;
-		for (Action action : actionList) {
-			idx2++;
-			String actionString = CodeGenTaskingUtils
-					.makeSingleSpaceBetweenElements(action.getAction());
-			String nextStateAssignment = stateMachineName + " "
-					+ CodeGenTaskingUtils.ASSIGNMENT_SYMBOL + " ";
-			if (actionString.startsWith(nextStateAssignment)) {
-				found2 = true;
-				break;
-			}
-		}
-		if (found2) {
-			actionList.remove(idx2);
-		}
 	}
 }

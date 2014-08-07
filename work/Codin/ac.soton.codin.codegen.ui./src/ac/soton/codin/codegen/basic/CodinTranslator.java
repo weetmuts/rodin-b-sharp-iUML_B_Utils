@@ -116,15 +116,10 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		// add it to the program
 		program.getTaskTypeTasks().add(task);
 		smTranslationMgr.program = program;
-		// Run the state-machine processor on the state-machines.
-		// this should generate a map of states to events and next states.
-		StateMachinePreprocessor.getDefault().preProcess(emfMachine, 
-				taskingTranslationManager, smTranslationMgr);
-		// We can use the maps to generate the IL1. 
-		VHDL_IL1_Generator.getDefault().doStatemachines(task, smTranslationMgr);
-		
-		// add variables and initialisations etc
-
+		// do the translation of the state machines
+		VHDL_IL1_Generator.getDefault().run(task, smTranslationMgr, emfMachine);
+		// IL1 to Code goes here.
+		//>>
 		saveBaseProgram(program, targetFile(target));
 		System.out.println();
 
