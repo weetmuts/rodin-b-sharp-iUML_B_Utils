@@ -14,6 +14,7 @@ import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.rodinp.core.IRodinProject;
 
 import ac.soton.eventb.emf.components.Component;
+import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -79,6 +80,8 @@ public class StateMachineTranslationData {
 	
 	// Keep track of the components to be translated
 	public List<Component> componentList = new ArrayList<>();
+	// Keep track of the connectors
+	public List<Connector> connectorList = new ArrayList<>();
 
 
 	// call reset for each new component
