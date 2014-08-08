@@ -55,7 +55,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 				selectedComponentList.add((ComponentEditPart) s);
 			}
 		}
-		// get the first (component) item.ollection.
+		// get the first (component) item.collection.
 		Object item = selection.getFirstElement();
 		ComponentEditPart selectedEditPart = null;
 		if (!(item instanceof ComponentEditPart)) {
@@ -64,6 +64,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		} else {
 			selectedEditPart = (ComponentEditPart) item;
 		}
+		
 		// The translator works on the machineRoot, get this.
 		ComponentImpl eventBComponent = (ComponentImpl) selectedEditPart
 				.getNotationView().getElement();

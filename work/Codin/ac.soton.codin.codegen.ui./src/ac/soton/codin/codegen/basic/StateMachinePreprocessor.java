@@ -108,6 +108,9 @@ public class StateMachinePreprocessor {
 		ProcessSMAssistant processSMAssistant = new ProcessSMAssistant();
 		SynchSMAssistant synchSMAssistant = new SynchSMAssistant();
 		for (Component component : selectedComponentList) {
+			// add the component to the list of components
+			smTranslationData.componentList.add(component);
+			
 			Statemachine procSM = smTranslationData.processSM_Map.get(component.getName());
 			// if the component has a state-machine
 			if (procSM != null) {

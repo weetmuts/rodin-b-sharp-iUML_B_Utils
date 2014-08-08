@@ -1,5 +1,6 @@
 package ac.soton.codin.codegen.basic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.rodinp.core.IRodinProject;
 
+import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -74,6 +76,9 @@ public class StateMachineTranslationData {
 	// particular)
 	public Map<AbstractNode, List<Event>> component_nodeEventMap = new HashMap<AbstractNode, List<Event>>();
 	public Map<Statemachine, Subroutine> synchSM_subroutineMap = new HashMap<Statemachine, Subroutine>();
+	
+	// Keep track of the components to be translated
+	public List<Component> componentList = new ArrayList<>();
 
 
 	// call reset for each new component

@@ -162,12 +162,10 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// state's top-level branch.
 		topBranch.getCondition().addAll(predicateStringList);
 		// add any actions
-		EList<Action> actionEList = currentTransition.getActions();
+		List<Action> actionList = currentTransition.getActions();
 		// transform the actions of this transition
 		// to an il1.command for the branch body.
 		// First create a java list
-		List<Action> actionList = Arrays.asList(actionEList
-				.toArray(new Action[actionEList.size()]));
 		Command branchBody = completeIL1CaseActionSequence(stateMachineName,
 				currentState, targetName, actionList);
 		// Set the branch body for the first transition
@@ -216,12 +214,10 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			// add the predicate string to the subbranch condition
 			subBranch.getCondition().addAll(predicateStringList);
 			// add any actions
-			EList<Action> actionEList = currentTransition.getActions();
+			List<Action> actionList = currentTransition.getActions();
 			// transform the actions of this transition
 			// to an il1.command for the branch body.
 			// First create a java list
-			List<Action> actionList = Arrays.asList(actionEList
-					.toArray(new Action[actionEList.size()]));
 			Command subBranchBody = completeIL1CaseActionSequence(
 					stateMachineName, currentState, targetName, actionList);
 			subBranch.setAction(subBranchBody);
