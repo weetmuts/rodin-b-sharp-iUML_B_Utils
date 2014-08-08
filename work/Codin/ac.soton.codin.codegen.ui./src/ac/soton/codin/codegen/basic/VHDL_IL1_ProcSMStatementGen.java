@@ -25,14 +25,15 @@ import org.eventb.emf.core.machine.Guard;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.impl.FinalImpl;
 
-public class VHDL_IL1_ProcSMGenerator {
+public class VHDL_IL1_ProcSMStatementGen {
 
-	private static VHDL_IL1_ProcSMGenerator singleton;
+	private static VHDL_IL1_ProcSMStatementGen singleton;
 
-	public static VHDL_IL1_ProcSMGenerator getDefault() {
+	public static VHDL_IL1_ProcSMStatementGen getDefault() {
 		if (singleton == null) {
-			singleton = new VHDL_IL1_ProcSMGenerator();
+			singleton = new VHDL_IL1_ProcSMStatementGen();
 			return singleton;
 		} else {
 			return singleton;
@@ -42,7 +43,7 @@ public class VHDL_IL1_ProcSMGenerator {
 	private Program program = null;
 	private Map<State, Subroutine> stateSubroutine_Map = new HashMap<State, Subroutine>();
 
-	public void makeProcSMStatement(Task task,
+	public void run(Task task,
 			StateMachineTranslationData smTranslationMgr)
 			throws CodinTranslatorException {
 		program = smTranslationMgr.program;
@@ -298,8 +299,9 @@ public class VHDL_IL1_ProcSMGenerator {
 			AbstractNode targetNode, List<Action> actionList) {
 		// use this command to make a sequence from the list of actions
 		Command body = makeIL1SeqFromActionList(actionList);
-		// if there is a new target state
-		if (targetNode != null && targetNode != currentState) {
+		// if there is a new target state but not a final impl
+		Class<FinalImpl> theFinalImplClass = FinalImpl.class;
+		if (targetNode != null && targetNode.getClass() != theFinalImplClass && targetNode != currentState) {
 			// create a new next-state subroutine Call
 			Call call = Il1Factory.eINSTANCE.createCall();
 			// set the subroutine associated with the call

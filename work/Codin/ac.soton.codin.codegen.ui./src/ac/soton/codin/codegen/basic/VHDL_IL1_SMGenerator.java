@@ -4,13 +4,13 @@ import org.eventb.codegen.il1.Task;
 import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.emf.core.EventBElement;
 
-public class VHDL_IL1_Generator {
+public class VHDL_IL1_SMGenerator {
 
-	private static VHDL_IL1_Generator singleton = null;
+	private static VHDL_IL1_SMGenerator singleton = null;
 
-	public static VHDL_IL1_Generator getDefault() {
+	public static VHDL_IL1_SMGenerator getDefault() {
 		if (singleton == null) {
-			singleton = new VHDL_IL1_Generator();
+			singleton = new VHDL_IL1_SMGenerator();
 			return singleton;
 		} else {
 			return singleton;
@@ -23,13 +23,9 @@ public class VHDL_IL1_Generator {
 			throws TaskingTranslationException, CodinTranslatorException {
 		// Run the state-machine processor on the state-machines.
 		// this should generate a map of states to events and next states.
-		StateMachinePreprocessor.getDefault().preProcess(emfMachine, 
-				smTranslationMgr.taskingTranslationManager, smTranslationMgr);
+		StateMachinePreprocessor.getDefault().run(emfMachine, smTranslationMgr);
 		// We can use the maps to generate the IL1 control flow for the state machines. 
-		VHDL_IL1_SynchSMGenerator.getDefault().makeSynchSMSubroutines(task, smTranslationMgr);
-		VHDL_IL1_ProcSMGenerator.getDefault().makeProcSMStatement(task, smTranslationMgr);
-		
-		// add variables and initialisations etc
-
+		VHDL_IL1_SynchSMSubroutineGen.getDefault().run(task, smTranslationMgr);
+		VHDL_IL1_ProcSMStatementGen.getDefault().run(task, smTranslationMgr);
 	}
 }

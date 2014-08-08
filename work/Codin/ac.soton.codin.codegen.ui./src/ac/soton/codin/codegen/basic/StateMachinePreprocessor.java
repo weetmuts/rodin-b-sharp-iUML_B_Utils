@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eventb.codegen.tasking.TaskingTranslationException;
-import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 
@@ -30,15 +29,13 @@ public class StateMachinePreprocessor {
 		}
 	}
 
-	public void preProcess(EventBElement source, 
-			TaskingTranslationManager translationManager,
+	public void run(EventBElement source, 
 			StateMachineTranslationData smTranslationData)
 			throws TaskingTranslationException, CodinTranslatorException {
 		// The machine that we are working on.
 		parentMachine = (MachineImpl) source;
 
 		smTranslationData.parentMachine = parentMachine;
-		smTranslationData.taskingTranslationManager = translationManager;
 		// selected components in the UI
 		List<ComponentEditPart> selectedComponentEditList = CodinTranslator.selectedComponentList;
 		// All components in the machine

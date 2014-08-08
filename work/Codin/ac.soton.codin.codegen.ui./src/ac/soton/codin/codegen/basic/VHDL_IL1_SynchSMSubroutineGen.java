@@ -25,16 +25,16 @@ import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.Transition;
 
-public class VHDL_IL1_SynchSMGenerator {
+public class VHDL_IL1_SynchSMSubroutineGen {
 
-	private static VHDL_IL1_SynchSMGenerator singleton = null;
+	private static VHDL_IL1_SynchSMSubroutineGen singleton = null;
 	// flag indicating that we require case 'others' to 
 	// be added to a case statement 
 	private boolean requiresNonProgress;
 
-	public static VHDL_IL1_SynchSMGenerator getDefault() {
+	public static VHDL_IL1_SynchSMSubroutineGen getDefault() {
 		if (singleton == null) {
-			singleton = new VHDL_IL1_SynchSMGenerator();
+			singleton = new VHDL_IL1_SynchSMSubroutineGen();
 			return singleton;
 		} else {
 			return singleton;
@@ -43,7 +43,7 @@ public class VHDL_IL1_SynchSMGenerator {
 
 
 	// Make the synchronous state-machine's subroutines
-	public void makeSynchSMSubroutines(Task task,
+	public void run(Task task,
 			StateMachineTranslationData smTranslationMgr) {
 		// We can create a subroutine for each synchronous state-machine.
 		Map<String, List<Statemachine>> synchronousSM_Map = smTranslationMgr.synchronousSM_Map;
