@@ -57,7 +57,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 					.getInitialisations();
 			for (ComponentInitialisation initialisation : initialisationsList) {
 				makeDeclaration(smTranslationMgr, tmpDeclarationList,
-						component, initialisation);
+						topComponent, initialisation);
 			}
 		}
 
