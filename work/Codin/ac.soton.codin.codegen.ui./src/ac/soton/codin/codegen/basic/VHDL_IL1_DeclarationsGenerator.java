@@ -8,12 +8,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eventb.codegen.il1.ConstantDecl;
 import org.eventb.codegen.il1.Declaration;
 import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 
 import ac.soton.eventb.emf.components.Component;
+import ac.soton.eventb.emf.components.ComponentAxiom;
+import ac.soton.eventb.emf.components.ComponentConstant;
 import ac.soton.eventb.emf.components.ComponentInitialisation;
 import ac.soton.eventb.emf.components.ComponentInvariant;
 import ac.soton.eventb.emf.components.Connector;
@@ -42,41 +45,66 @@ public class VHDL_IL1_DeclarationsGenerator {
 			List<ComponentInitialisation> initialisationsList = component
 					.getInitialisations();
 			for (ComponentInitialisation initialisation : initialisationsList) {
-				makeDeclaration(smTranslationMgr, tmpDeclarationList,
+				makeVarDeclaration(smTranslationMgr, tmpDeclarationList,
 						component, initialisation);
 			}
 		}
 		// Use a component to find the container and get the top-level
 		// variables.
-		Component component = smTranslationMgr.componentList.get(0);
+		Component firstInList = smTranslationMgr.componentList.get(0);
 		Component topComponent = null;
-		EObject tmpTopComponent_ = component.eContainer();
+		EObject tmpTopComponent_ = firstInList.eContainer();
 		if (tmpTopComponent_.getClass() == ComponentImpl.class) {
 			topComponent = (Component) tmpTopComponent_;
 			List<ComponentInitialisation> initialisationsList = topComponent
 					.getInitialisations();
 			for (ComponentInitialisation initialisation : initialisationsList) {
-				makeDeclaration(smTranslationMgr, tmpDeclarationList,
+				makeVarDeclaration(smTranslationMgr, tmpDeclarationList,
 						topComponent, initialisation);
 			}
+			// Make constant declarations
+			makeConstDeclarations(smTranslationMgr, tmpDeclarationList, topComponent);
 		}
 
 		// We track of signals in the smTranslatorData class. We can then map
-		// the associated variable Declarations to signals in the 
+		// the associated variable Declarations to signals in the
 		// stage 2 (IL1 to code) translation.
-		for(Connector connector: topComponent.getConnectors()){
+		for (Connector connector : topComponent.getConnectors()) {
 			smTranslationMgr.connectorList.add(connector);
 		}
-		
-		
+
 		// Add the new list to the existing list of declarations.
 		program.getDecls().addAll(tmpDeclarationList);
 	}
 
-	private void makeDeclaration(StateMachineTranslationData smTranslationMgr,
+	private void makeConstDeclarations(StateMachineTranslationData smTranslationMgr,
+			List<Declaration> tmpDeclarationList, Component topComponent) {
+		List<ComponentConstant> constantList = topComponent.getConstants();
+		List<ComponentAxiom> axiomList = topComponent.getAxioms();
+		// for each constant
+		for (ComponentConstant constant : constantList) {
+			String cName = constant.getName();
+			// To find the typing axiom:
+			// find an axiom that starts with the constant's
+			// name and contains the :: element of symbol.
+			// We ignore partitions (enums) for now.
+			for(ComponentAxiom axiom: axiomList){
+				String predicate = axiom.getPredicate();
+				predicate = makeSingleSpaceBetweenElements(predicate);
+				if(predicate.startsWith(cName) 
+						&& predicate.contains(CodeGenTaskingUtils.ELEMENT_OF) ){
+					ConstantDecl cDecl = Il1Factory.eINSTANCE.createConstantDecl();
+					tmpDeclarationList.add(cDecl);
+					cDecl.setIdentifier(cName);
+				}
+			}
+		}
+	}
+
+	private void makeVarDeclaration(StateMachineTranslationData smTranslationMgr,
 			List<Declaration> tmpDeclarationList, Component component,
 			ComponentInitialisation initialisation) {
-		Declaration decl = Il1Factory.eINSTANCE.createVariableDecl();
+		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
 		String initialisationString = initialisation.getAction();
 		initialisationString = makeSingleSpaceBetweenElements(initialisationString);
 		// Obtain the variable name from the first part
@@ -84,9 +112,9 @@ public class VHDL_IL1_DeclarationsGenerator {
 		String variableName = initialisationString.split(" ")[0];
 		variableName = variableName.trim();
 		// set information for the declaration
-		decl.setIdentifier(variableName);
-		decl.setProjectName(smTranslationMgr.parentProject.getElementName());
-		decl.setComponentName(smTranslationMgr.parentMachine.getName());
+		vDecl.setIdentifier(variableName);
+		vDecl.setProjectName(smTranslationMgr.parentProject.getElementName());
+		vDecl.setComponentName(smTranslationMgr.parentMachine.getName());
 		// Get the initialisation part
 		boolean hasDetAssignment = initialisationString.startsWith(variableName
 				+ " " + ASSIGNMENT_SYMBOL);
@@ -104,12 +132,12 @@ public class VHDL_IL1_DeclarationsGenerator {
 			}
 			// set the initial value.
 			if (aInit != null && aInit.length > 1) {
-				decl.setInitialValue(aInit[1].trim());
+				vDecl.setInitialValue(aInit[1].trim());
 			}
 		}
 		// add this declaration to the tmp list of declarations
-		if (decl != null) {
-			tmpDeclarationList.add(decl);
+		if (vDecl != null) {
+			tmpDeclarationList.add(vDecl);
 		}
 
 		// Finished the initialisation part. Now add the type info.
@@ -127,7 +155,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 					// we have found a typing predicate for this
 					// initialisation
 					// and the type is at index 2 of the wordList
-					decl.setType(wordList.get(2));
+					vDecl.setType(wordList.get(2));
 					// quit the invariant search loop.
 					break;
 				}
@@ -142,9 +170,11 @@ public class VHDL_IL1_DeclarationsGenerator {
 		boolean lastNormal = true;
 		for (char c : predIn.toCharArray()) {
 			boolean currentNormal = ((c >= 'a' && c <= 'z')
-					|| (c >= 'A' && c <= 'Z') || c == ' ' || c == '_' || (c >= '0'
-					&& c <= '9' || CodeGenTaskingUtils.INT_SYMBOL
-					.equals("" + c)));
+					|| (c >= 'A' && c <= 'Z') || c == ' ' || c == '_' 
+					|| (c >= '0' && c <= '9'  ) 
+					|| CodeGenTaskingUtils.INT_SYMBOL.equals("" + c)
+					|| CodeGenTaskingUtils.BOOL_SYMBOL.equals("" + c)
+					);
 
 			if (lastNormal && currentNormal) { // do nothing special
 			} else if (lastNormal && !currentNormal) { // add a space
