@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: QuickPrint
+Bundle-SymbolicName: QuickPrint; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: quickprint.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore;bundle-version="2.7.0",
+ org.eventb.codegen.IL1.core;bundle-version="0.0.3"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.emf.ecore.xmi.impl
