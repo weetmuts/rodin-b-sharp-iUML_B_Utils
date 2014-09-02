@@ -16,6 +16,8 @@ import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 
+import quickprint.util.QuickPrintInfo;
+
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;
@@ -77,7 +79,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// the associated variable Declarations to signals in the
 		// stage 2 (IL1 to code) translation.
 		for (Connector connector : topComponent.getConnectors()) {
-			smTranslationMgr.connectorList.add(connector);
+			StateMachineTranslationData.connectorList.add(connector);
+			QuickPrintInfo.getConns().add(connector);
 		}
 
 		// Add the new list to the existing list of declarations.
@@ -100,7 +103,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// We ignore partitions (enums) for now.
 			for (ComponentAxiom axiom : axiomList) {
 				String predicate = axiom.getPredicate();
-				predicate = makeSingleSpaceBetweenElements(predicate);
+				predicate = new TranslatorUtils()
+						.makeSingleSpaceBetweenElements(predicate);
 				// if this is an initialisation axiom of the form cName = x
 				// or type axiom cName : y
 				// then we assume it is a constant Declaration with value x
@@ -122,8 +126,10 @@ public class VHDL_IL1_DeclarationsGenerator {
 						tmpDeclarationList.add(cDecl);
 						cDecl.setIdentifier(cName);
 						cDeclMap.put(cName, cDecl);
-						cDecl.setComponentName(smTranslationMgr.parentMachine.getName());
-						cDecl.setProjectName(smTranslationMgr.parentProject.getElementName());
+						cDecl.setComponentName(smTranslationMgr.parentMachine
+								.getName());
+						cDecl.setProjectName(smTranslationMgr.parentProject
+								.getElementName());
 					}
 					// else get the existing declaration
 					else {
@@ -162,7 +168,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 			ComponentInitialisation initialisation) {
 		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
 		String initialisationString = initialisation.getAction();
-		initialisationString = makeSingleSpaceBetweenElements(initialisationString);
+		initialisationString = new TranslatorUtils()
+				.makeSingleSpaceBetweenElements(initialisationString);
 		// Obtain the variable name from the first part
 		// of the initialisation string.
 		String variableName = initialisationString.split(" ")[0];
@@ -200,7 +207,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 		List<ComponentInvariant> invariantList = component.getInvariants();
 		for (ComponentInvariant invariant : invariantList) {
 			String predicate = invariant.getPredicate();
-			predicate = makeSingleSpaceBetweenElements(predicate.trim());
+			predicate = new TranslatorUtils()
+					.makeSingleSpaceBetweenElements(predicate.trim());
 			// if we found an invariant that starts with the varName
 			// lets see if it has is a typing expression
 			if (predicate.startsWith(variableName)) {
@@ -219,28 +227,4 @@ public class VHDL_IL1_DeclarationsGenerator {
 		}
 	}
 
-	public String makeSingleSpaceBetweenElements(String predIn) {
-		// first remove spaces
-		predIn = predIn.replace(" ", "");
-		String pred = "";
-		boolean lastNormal = true;
-		for (char c : predIn.toCharArray()) {
-			boolean currentNormal = ((c >= 'a' && c <= 'z')
-					|| (c >= 'A' && c <= 'Z') || c == ' ' || c == '_'
-					|| (c >= '0' && c <= '9')
-					|| CodeGenTaskingUtils.INT_SYMBOL.equals("" + c) || CodeGenTaskingUtils.BOOL_SYMBOL
-					.equals("" + c));
-
-			if (lastNormal && currentNormal) { // do nothing special
-			} else if (lastNormal && !currentNormal) { // add a space
-				pred += ' ';
-			} else if (!lastNormal && currentNormal) { // add a space
-				pred += ' ';
-			} else if (!lastNormal && !currentNormal) { // do nothing special
-			}
-			lastNormal = currentNormal;
-			pred += c;
-		}
-		return pred;
-	}
 }

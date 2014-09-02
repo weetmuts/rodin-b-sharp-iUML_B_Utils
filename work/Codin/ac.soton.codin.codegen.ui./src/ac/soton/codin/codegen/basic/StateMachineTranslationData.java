@@ -81,7 +81,7 @@ public class StateMachineTranslationData {
 	// Keep track of the components to be translated
 	public List<Component> componentList = new ArrayList<>();
 	// Keep track of the connectors
-	public List<Connector> connectorList = new ArrayList<>();
+	public static List<Connector> connectorList = new ArrayList<>();
 
 
 	// call reset for each new component

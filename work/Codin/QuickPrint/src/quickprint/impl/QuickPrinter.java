@@ -1,6 +1,7 @@
 package quickprint.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,10 +28,14 @@ import org.eventb.codegen.il1.Seq;
 import org.eventb.codegen.il1.Subroutine;
 import org.eventb.codegen.il1.VariableDecl;
 
+import quickprint.util.QuickPrintInfo;
+
+import ac.soton.codin.codegen.basic.TranslatorUtils;
+import ac.soton.eventb.emf.components.Connector;
+
 @SuppressWarnings("restriction")
 public class QuickPrinter {
 
-	
 	private EClass programClass = Il1Package.Literals.PROGRAM;
 	private EClass vDeclClass = Il1Package.Literals.VARIABLE_DECL;
 	private EClass cDeclClass = Il1Package.Literals.CONSTANT_DECL;
@@ -45,7 +50,6 @@ public class QuickPrinter {
 	private EClass elseIfClass = Il1Package.Literals.ELSE_IF;
 	private EClass callClass = Il1Package.Literals.CALL;
 
-	
 	public void printElements(IStructuredSelection selectionChanged)
 			throws IOException {
 		Iterator<?> iter = selectionChanged.iterator();
@@ -66,7 +70,7 @@ public class QuickPrinter {
 		}
 	}
 
-	//print from a supplied list list
+	// print from a supplied list list
 	private void print(List<EObject> content) {
 		// print info for this object
 
@@ -77,89 +81,106 @@ public class QuickPrinter {
 
 	// print from a supplied IL1 command
 	private void print(EObject element) {
-		if(element == null) return;
+		if (element == null)
+			return;
 		EClass eClass = element.eClass();
-		
 
-		
 		if (eClass == programClass) {
-		}
-		else if(eClass == vDeclClass){
+		} else if (eClass == vDeclClass) {
 			VariableDecl el = (VariableDecl) element;
-			System.out.println( "VARIABLE " + el.getIdentifier() + " " + el.getType() + " := " + el.getInitialValue());
+			System.out.println("VARIABLE " + el.getIdentifier() + " "
+					+ el.getType() + " := " + el.getInitialValue());
 			return;
-		}
-		else if(eClass == cDeclClass){
+		} else if (eClass == cDeclClass) {
 			ConstantDecl el = (ConstantDecl) element;
-			System.out.println( "CONSTANT " + el.getIdentifier() + " " + el.getType() + " := " + el.getInitialValue());
+			System.out.println("CONSTANT " + el.getIdentifier() + " "
+					+ el.getType() + " := " + el.getInitialValue());
 			return;
-		}
-		else if(eClass == subroutineClass){
+		} else if (eClass == subroutineClass) {
 			Subroutine el = (Subroutine) element;
 			System.out.println("\nSUBROUTINE " + el.getName());
 			print(el.getBody());
 			return;
-		}
-		else if(eClass == paramClass){
+		} else if (eClass == paramClass) {
 			Parameter el = (Parameter) element;
 			System.out.println("Parameter " + el.getIdentifier());
 			return;
-		}
-		else if(eClass == guardClass){
-			 ConditionSet el = (ConditionSet) element;
-			 EList<String> conditions = el.getConditions();
-			 System.out.println("Conditions");
-			 for(String s : conditions){
-				 System.out.println(" @Condition " + s);
-			 }
-			 return;
-		}
-		else if(eClass == caseStatementClass){
+		} else if (eClass == guardClass) {
+			ConditionSet el = (ConditionSet) element;
+			EList<String> conditions = el.getConditions();
+			System.out.println("Conditions");
+			for (String s : conditions) {
+				System.out.println(" @Condition " + s);
+			}
+			return;
+		} else if (eClass == caseStatementClass) {
 			CaseStatement el = (CaseStatement) element;
 			System.out.println("WHEN " + el.getCaseValue());
 			print(el.getCommand());
 			return;
-		}
-		else if(eClass == actionClass){
+		} else if (eClass == actionClass) {
 			Action el = (Action) element;
-			System.out.println(" @Action " + el.getAction() + ";");
+			List<Connector> connectorList = QuickPrintInfo.getConns();
+			List<String> connectorNamesList = new ArrayList<>();
+			for (Connector c : connectorList) {
+				connectorNamesList.add(c.getName().toLowerCase());
+			}
+			String actionString = new TranslatorUtils()
+					.makeSingleSpaceBetweenElements(el.getAction());
+			
+			String[] actionArray = actionString.split(" ");
+			String varName = actionArray[2];
+			// NOTE!!!
+			// This only translates assignment to signal assignment
+			// if the translator has been run since start up.
+			// This is because the information necessary to print
+			// it is only generated during translation. 
+			// We could add an attribute to the assignment
+			// in a 'proper' translation.
+			if(connectorNamesList.contains(varName)){
+				actionArray[1] = " <= ";
+				// recreate string
+				String newString = "";
+				for(int i = 0; i<actionArray.length; i++){
+					newString = newString + " " + actionArray[i];
+				}
+				System.out.println(" @Action " + newString + ";");
+			}
+			else{
+				System.out.println(" @Action " + el.getAction() + ";");
+			}
 			return;
-		}
-		else if(eClass == seqClass){
+		} else if (eClass == seqClass) {
 			Seq el = (Seq) element;
 			print(el.getLeftBranch());
 			print(el.getRightBranch());
 			return;
-		}
-		else if(eClass == caseClass) {
+		} else if (eClass == caseClass) {
 			Case el = (Case) element;
 			System.out.println("CASE " + el.getCaseExpression());
-		}
-		else if(eClass == ifClass){
+		} else if (eClass == ifClass) {
 			If el = (If) element;
 			System.out.println("IF ");
-			for(String s: el.getCondition()){
+			for (String s : el.getCondition()) {
 				System.out.println(" @Condition " + s);
 			}
 			print(el.getBody());
 			print(el.getBranch());
-			System.out.println("ELSE "); 
+			System.out.println("ELSE ");
 			print(el.getElse());
 			return;
-		}
-		else if(eClass == elseIfClass){
+		} else if (eClass == elseIfClass) {
 			ElseIf el = (ElseIf) element;
 			System.out.println("ELSIF ");
-			for(String s: el.getCondition()){
+			for (String s : el.getCondition()) {
 				System.out.println(" @Condition " + s);
 			}
-		}
-		else if(eClass == callClass){
+		} else if (eClass == callClass) {
 			Call el = (Call) element;
 			System.out.println("CALL " + el.getSubroutine().getName());
 			return;
 		}
-		
+
 		// pass on the List-Based children to print
 		List<EObject> children = element.eContents();
 		if (children != null) {

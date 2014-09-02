@@ -122,6 +122,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		// IL1 to Code goes here.
 		//>>
 		saveBaseProgram(program, targetFile(target));
+		
 		System.out.println();
 
 	}
