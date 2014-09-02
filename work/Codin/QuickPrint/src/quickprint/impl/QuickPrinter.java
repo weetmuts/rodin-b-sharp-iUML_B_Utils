@@ -1,4 +1,4 @@
-package quickprint;
+package quickprint.impl;
 
 import java.io.IOException;
 import java.util.Iterator;

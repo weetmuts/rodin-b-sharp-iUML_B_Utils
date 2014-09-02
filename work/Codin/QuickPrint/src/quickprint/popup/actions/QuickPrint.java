@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import quickprint.QuickPrinter;
+import quickprint.impl.QuickPrinter;
 
 public class QuickPrint implements IObjectActionDelegate {
 
