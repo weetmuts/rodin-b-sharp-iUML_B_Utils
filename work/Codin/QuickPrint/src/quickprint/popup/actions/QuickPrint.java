@@ -37,7 +37,7 @@ public class QuickPrint implements IObjectActionDelegate {
 	public void run(IAction action) {
 		QuickPrinter qp = new QuickPrinter();
 		try {
-			qp.printElements(selectionChanged);
+			qp.printSelection(selectionChanged);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
