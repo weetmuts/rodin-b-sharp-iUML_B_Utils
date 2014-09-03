@@ -79,7 +79,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 						.toArray(new State[stateMap.size()]));
 				for (State currentState : stateList) {
 					// ignore the initialisation.
-					if (currentState.getName().equals("dummyTopState"))
+					if (currentState.getName().equals("BeginCycle"))
 						continue;
 					// reset the non-progress flag. This flag causes a
 					// "when => others" case to be generated in the case

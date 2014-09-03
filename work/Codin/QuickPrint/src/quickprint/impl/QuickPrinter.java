@@ -18,6 +18,7 @@ import org.eventb.codegen.il1.Action;
 import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.il1.Case;
 import org.eventb.codegen.il1.CaseStatement;
+import org.eventb.codegen.il1.Command;
 import org.eventb.codegen.il1.ConditionSet;
 import org.eventb.codegen.il1.ConstantDecl;
 import org.eventb.codegen.il1.ElseIf;
@@ -72,8 +73,6 @@ public class QuickPrinter {
 
 	// print from a supplied list list
 	private void print(List<EObject> content) {
-		// print info for this object
-
 		for (EObject element : content) {
 			print(element);
 		}
@@ -98,8 +97,21 @@ public class QuickPrinter {
 			return;
 		} else if (eClass == subroutineClass) {
 			Subroutine el = (Subroutine) element;
-			System.out.println("\nSUBROUTINE " + el.getName());
+			String subroutineName = el.getName();
+			String subroutineType ;
+			String paramString = "";
+
+			if(subroutineName.equals("BeginCycle")){
+				subroutineType = "PROCESS";
+				paramString = "(...)";
+			}
+			else{
+				subroutineType = "PROCEDURE";
+			}
+			System.out.println("\n" + subroutineName + ": " + subroutineType + paramString);
+			System.out.println("BEGIN");
 			print(el.getBody());
+			System.out.println("END " + subroutineType + " " + subroutineName + ";");
 			return;
 		} else if (eClass == paramClass) {
 			Parameter el = (Parameter) element;
@@ -115,8 +127,14 @@ public class QuickPrinter {
 			return;
 		} else if (eClass == caseStatementClass) {
 			CaseStatement el = (CaseStatement) element;
-			System.out.println("WHEN " + el.getCaseValue());
-			print(el.getCommand());
+			System.out.println("WHEN " + el.getCaseValue() + " => ");
+			Command command = el.getCommand();
+			if(command == null){
+				System.out.println(" @Action null ;");
+			}
+			else{
+				print(command);
+			}
 			return;
 		} else if (eClass == actionClass) {
 			Action el = (Action) element;
@@ -157,17 +175,25 @@ public class QuickPrinter {
 			return;
 		} else if (eClass == caseClass) {
 			Case el = (Case) element;
-			System.out.println("CASE " + el.getCaseExpression());
+			System.out.println("CASE " + el.getCaseExpression() + " IS ");
+			List<CaseStatement> caseStatementEList = el.getCaseStatement();
+			for(CaseStatement cs: caseStatementEList){
+				print(cs);
+			}
+			System.out.println("END CASE;");
+			return;
 		} else if (eClass == ifClass) {
 			If el = (If) element;
 			System.out.println("IF ");
 			for (String s : el.getCondition()) {
 				System.out.println(" @Condition " + s);
 			}
+			System.out.println("THEN ");
 			print(el.getBody());
 			print(el.getBranch());
 			System.out.println("ELSE ");
 			print(el.getElse());
+			System.out.println("END IF;");
 			return;
 		} else if (eClass == elseIfClass) {
 			ElseIf el = (ElseIf) element;
@@ -175,9 +201,10 @@ public class QuickPrinter {
 			for (String s : el.getCondition()) {
 				System.out.println(" @Condition " + s);
 			}
+			System.out.println("THEN ");
 		} else if (eClass == callClass) {
 			Call el = (Call) element;
-			System.out.println("CALL " + el.getSubroutine().getName());
+			System.out.println(" @Call " + el.getSubroutine().getName() + ";");
 			return;
 		}
 

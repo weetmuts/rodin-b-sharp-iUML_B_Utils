@@ -6,7 +6,8 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             objectClass="org.eclipse.core.resources.IFile"
-            id="QuickPrint.contribution1">
+            id="QuickPrint.contribution1"
+             nameFilter="*.il1">
          <menu
                label="View"
                path="additions"

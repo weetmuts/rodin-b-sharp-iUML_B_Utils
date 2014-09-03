@@ -176,7 +176,7 @@ public class ProcessSMAssistant {
 				if (parentState == null) {
 					// we have the topmost initial node
 					parentState = StatemachinesFactory.eINSTANCE.createState();
-					parentState.setName("dummyTopState");
+					parentState.setName("BeginCycle");
 				}
 
 				for (Transition initialTransition : outgoingTList) {
