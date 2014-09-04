@@ -30,7 +30,7 @@ public class StateMachinePreprocessor {
 	}
 
 	public void run(EventBElement source, 
-			StateMachineTranslationData smTranslationData)
+			VHDL_TranslationData smTranslationData)
 			throws TaskingTranslationException, CodinTranslatorException {
 		// The machine that we are working on.
 		parentMachine = (MachineImpl) source;

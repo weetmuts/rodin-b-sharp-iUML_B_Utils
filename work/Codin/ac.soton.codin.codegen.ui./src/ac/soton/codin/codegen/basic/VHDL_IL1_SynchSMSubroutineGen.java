@@ -44,7 +44,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 
 	// Make the synchronous state-machine's subroutines
 	public void run(Task task,
-			StateMachineTranslationData smTranslationMgr) {
+			VHDL_TranslationData smTranslationMgr) {
 		// We can create a subroutine for each synchronous state-machine.
 		Map<String, List<Statemachine>> synchronousSM_Map = smTranslationMgr.synchronousSM_Map;
 		for (String componentName : synchronousSM_Map.keySet()) {

@@ -19,7 +19,7 @@ public class VHDL_IL1_SMGenerator {
 
 	// Generate the IL1 model.
 	public void run(Task task,
-			StateMachineTranslationData smTranslationMgr, EventBElement emfMachine)
+			VHDL_TranslationData smTranslationMgr, EventBElement emfMachine)
 			throws TaskingTranslationException, CodinTranslatorException {
 		// Run the state-machine processor on the state-machines.
 		// this should generate a map of states to events and next states.

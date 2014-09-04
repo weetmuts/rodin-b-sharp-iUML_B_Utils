@@ -11,6 +11,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "QuickPrint"; //$NON-NLS-1$
+	public static final String GENERATED_SRC_FOLDER = "out";
+	public static final String TEMPLATES_SRC_FOLDER = "templates";
 
 	// The shared instance
 	private static Activator plugin;

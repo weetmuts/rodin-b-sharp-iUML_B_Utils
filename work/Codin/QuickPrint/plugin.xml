@@ -25,5 +25,20 @@
          </action>
       </objectContribution>
    </extension>
+   <extension
+         id="QuickPrintUtil.tag"
+         name="QuickPrintUtil.tag"
+         point="org.eventb.codegen.templates.tag">
+      <tagCommentCharacters
+            tagCommentCharacters="--##">
+      </tagCommentCharacters>
+   </extension>
+   <extension
+         point="org.eventb.codegen.templates.generator">
+      <templateGenerator
+            GeneratorClass="quickprint.impl.TopLevelGenerator"
+            tag="QuickPrintUtil.topLevelGenerator">
+      </templateGenerator>
+   </extension>
 
 </plugin>

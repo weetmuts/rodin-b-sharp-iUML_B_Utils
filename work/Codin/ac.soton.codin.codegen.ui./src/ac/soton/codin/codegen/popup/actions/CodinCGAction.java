@@ -58,6 +58,9 @@ public class CodinCGAction implements IObjectActionDelegate {
 			Status status = new Status(IStatus.ERROR, CodinCGPlugin.PLUGIN_ID,
 					"Failed Translation: URISyntaxException:" + e.getMessage(), e);
 			StatusManager.getManager().handle(status, StatusManager.SHOW);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 

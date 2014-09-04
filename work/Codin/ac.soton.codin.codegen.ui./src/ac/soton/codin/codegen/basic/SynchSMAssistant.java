@@ -31,7 +31,7 @@ public class SynchSMAssistant {
 	// Initial states have to be treated differently.
 	public Map<State, Map<Event, AbstractNode>> synchSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
 
-	public void buildNextStateMaps(StateMachineTranslationData smTranslationData) {
+	public void buildNextStateMaps(VHDL_TranslationData smTranslationData) {
 		// For each component
 		for (String componentName : smTranslationData.synchronousSM_Map
 				.keySet()) {
@@ -207,7 +207,7 @@ public class SynchSMAssistant {
 	}
 
 	private Map<State, Map<Event, AbstractNode>> flattenStateMachine(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
 		unifiedMap.putAll(synchSM_curr_nextStateMap);
@@ -279,7 +279,7 @@ public class SynchSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_flattened_Event_Target(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 
 		Map<Statemachine, Map<State, Map<Event, AbstractNode>>> zeroMap = smTranslationData.synchSM_flattened_nextStateMap;
 		for(Statemachine statemachine: zeroMap.keySet()){

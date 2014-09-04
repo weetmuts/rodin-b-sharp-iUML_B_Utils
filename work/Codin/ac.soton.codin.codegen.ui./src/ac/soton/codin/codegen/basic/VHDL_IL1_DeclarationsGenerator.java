@@ -16,8 +16,9 @@ import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 
-import quickprint.util.QuickPrintInfo;
+import quickprint.impl.QuickPrintInfo;
 
+import ac.soton.codegen.utils.TranslatorUtils;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;
@@ -41,7 +42,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 
 	private Program program;
 
-	public void run(StateMachineTranslationData smTranslationMgr)
+	public void run(VHDL_TranslationData smTranslationMgr)
 			throws CodinTranslatorException {
 		this.program = smTranslationMgr.program;
 		List<Declaration> tmpDeclarationList = new ArrayList<>();
@@ -79,7 +80,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// the associated variable Declarations to signals in the
 		// stage 2 (IL1 to code) translation.
 		for (Connector connector : topComponent.getConnectors()) {
-			StateMachineTranslationData.connectorList.add(connector);
+			VHDL_TranslationData.connectorList.add(connector);
 			QuickPrintInfo.getConns().add(connector);
 		}
 
@@ -88,7 +89,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 	}
 
 	private void makeConstDeclarations(
-			StateMachineTranslationData smTranslationMgr,
+			VHDL_TranslationData smTranslationMgr,
 			List<Declaration> tmpDeclarationList, Component topComponent)
 			throws CodinTranslatorException {
 		List<ComponentConstant> constantList = topComponent.getConstants();
@@ -163,7 +164,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 	}
 
 	private void makeVarDeclaration(
-			StateMachineTranslationData smTranslationMgr,
+			VHDL_TranslationData smTranslationMgr,
 			List<Declaration> tmpDeclarationList, Component component,
 			ComponentInitialisation initialisation) {
 		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();

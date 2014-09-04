@@ -19,7 +19,7 @@ import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 
-public class StateMachineTranslationData {
+public class VHDL_TranslationData {
 
 	MachineImpl parentMachine;
 	public IRodinProject parentProject = null;

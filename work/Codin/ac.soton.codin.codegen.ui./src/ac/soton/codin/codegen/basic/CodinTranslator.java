@@ -31,6 +31,7 @@ import org.eventb.emf.persistence.factory.RodinResource;
 import org.osgi.service.prefs.BackingStoreException;
 import org.rodinp.core.IRodinProject;
 
+import quickprint.impl.QuickPrinter;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.impl.ComponentImpl;
 
@@ -43,11 +44,10 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 	public static List<ComponentEditPart> selectedComponentList = new ArrayList<>();
 	private MachineImpl emfMachine = null;
 	private static IFile target;
+	private IRodinProject rodinProject;
 
 	public void translate(IStructuredSelection selection)
-			throws CodinTranslatorException, TaskingTranslationException,
-			BackingStoreException, CoreException, IOException,
-			URISyntaxException {
+			throws Exception {
 		// set the list of components to be translated
 
 		for (Object s : selection.toList()) {
@@ -78,7 +78,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		Resource resource = emfMachine.eResource();
 		if (resource instanceof RodinResource) {
 			RodinResource rodinResource = (RodinResource) resource;
-			IRodinProject rodinProject = rodinResource.getRodinFile()
+			rodinProject = rodinResource.getRodinFile()
 					.getRodinProject();
 			IEventBProject eventBProject = (IEventBProject) rodinProject
 					.getAdapter(IEventBProject.class);
@@ -93,15 +93,13 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 	}
 
 	private void doTranslation(IMachineRoot machineRoot)
-			throws TaskingTranslationException, BackingStoreException,
-			CoreException, IOException, URISyntaxException,
-			CodinTranslatorException {
+			throws Exception {
 		// Initialisations
 		// Initialise the tasking translation manager
 		Il1PackageImpl.init();
 		Il1Factory factory = Il1Factory.eINSTANCE;
 		// create a new class to store translation info
-		StateMachineTranslationData smTranslationMgr = new StateMachineTranslationData();
+		VHDL_TranslationData smTranslationMgr = new VHDL_TranslationData();
 		// and we made need the previous tasking translation manager
 		taskingTranslationManager = new TaskingTranslationManager(factory);
 		smTranslationMgr.taskingTranslationManager = taskingTranslationManager;
@@ -113,6 +111,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		Task task = Il1Factory.eINSTANCE.createTask();
 		// add it to the program
 		program.getTaskTypeTasks().add(task);
+		program.setName(machineRoot.getElementName());
 		smTranslationMgr.program = program;
 		// do the translation of the state machines
 		VHDL_IL1_SMGenerator.getDefault().run(task, smTranslationMgr, emfMachine);
@@ -122,8 +121,12 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		// IL1 to Code goes here.
 		//>>
 		saveBaseProgram(program, targetFile(target));
+
+		QuickPrinter qp = new QuickPrinter();
+		qp.setTranslationManager(rodinProject);
 		
-		System.out.println();
+		qp.useTemplates(program);
+
 
 	}
 

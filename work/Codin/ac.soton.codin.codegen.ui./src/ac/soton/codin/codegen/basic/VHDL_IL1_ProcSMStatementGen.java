@@ -44,7 +44,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	private Map<State, Subroutine> stateSubroutine_Map = new HashMap<State, Subroutine>();
 
 	public void run(Task task,
-			StateMachineTranslationData smTranslationMgr)
+			VHDL_TranslationData smTranslationMgr)
 			throws CodinTranslatorException {
 		program = smTranslationMgr.program;
 		// make a subroutine for each state in the process state-machine
@@ -54,7 +54,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	}
 
 	// This method builds subroutines for the process state machine
-	private void makeSubroutines(StateMachineTranslationData smTranslationMgr)
+	private void makeSubroutines(VHDL_TranslationData smTranslationMgr)
 			throws CodinTranslatorException {
 		stateSubroutine_Map.clear();
 		// each state has an associated subroutine
@@ -76,7 +76,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	}
 
 	private void makeSubroutineBodies(
-			StateMachineTranslationData smTranslationMgr) {
+			VHDL_TranslationData smTranslationMgr) {
 
 		for (State currentState : smTranslationMgr.processSM_transitPathMap.keySet()) {
 			// Get the transit paths for this state
@@ -215,7 +215,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	}
 
 	private void makeSynchSMCallSeq(
-			StateMachineTranslationData smTranslationMgr,
+			VHDL_TranslationData smTranslationMgr,
 			Subroutine currentStateSubroutine, AbstractNode targetNode,
 			List<Statemachine> synchSMList) {
 		List<Call> callList = new ArrayList<>();

@@ -40,7 +40,7 @@ public class ProcessSMAssistant {
 	private Map<State, Map<Event, AbstractNode>> processSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
 
 	public void findProcessUsersOfSynchSM(Statemachine statemachine,
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 		// Store a map of all the synchronous state machine events and which
 		// state-machines they play for!
 		// Event <-> List<state-machine>.
@@ -79,7 +79,7 @@ public class ProcessSMAssistant {
 	// state-machine subroutines.
 	// First we generate state-'outgoing transition' info.
 	public void preProcessProcStateMachine(Statemachine statemachine,
-			StateMachineTranslationData smTranslationData)
+			VHDL_TranslationData smTranslationData)
 			throws TaskingTranslationException {
 		// Obtain the nodes in the state-machine.
 		EList<AbstractNode> nodes = statemachine.getNodes();
@@ -91,7 +91,7 @@ public class ProcessSMAssistant {
 
 	private void extractDataForNode(AbstractNode node,
 			Statemachine statemachine,
-			StateMachineTranslationData smTranslationData)
+			VHDL_TranslationData smTranslationData)
 			throws TaskingTranslationException {
 
 		EList<Transition> outGoing = node.getOutgoing();
@@ -160,7 +160,7 @@ public class ProcessSMAssistant {
 	// In second-pass pre-processing: for each node, identify a
 	// starting state, elaborating events on transitions, and a target state.
 	// This gives us a map: State<->(Event<->Node)
-	public void buildNextStateMaps(StateMachineTranslationData smTranslationData) {
+	public void buildNextStateMaps(VHDL_TranslationData smTranslationData) {
 		Set<AbstractNode> nodeSet = smTranslationData.component_nodeEventMap
 				.keySet();
 		List<Object> nodeList = Arrays.asList(nodeSet.toArray());
@@ -346,7 +346,7 @@ public class ProcessSMAssistant {
 	}
 
 	private void updateTransitionPath(Event event,
-			StateMachineTranslationData smTranslationData, State parentState,
+			VHDL_TranslationData smTranslationData, State parentState,
 			ArrayList<Guard> transitPathGuardList,
 			ArrayList<Action> transitPathActionList, Map<Event, AbstractNode> storedInnerMap) {
 		// Set up a transitPath.
@@ -394,7 +394,7 @@ public class ProcessSMAssistant {
 	// the external transition target (i.e. the related event) at the
 	// internal transition target in our (flattened) map structure.
 	private void flattenStateMachine(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
 		unifiedMap.putAll(processSM_curr_nextStateMap);
 		unifiedMap.putAll(processSM_ini_nextStateMap);
@@ -506,7 +506,7 @@ public class ProcessSMAssistant {
 	}
 
 	public void testPrint_transit_map(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 		System.out.println("BEGIN: testPrint_transit_map");
 		for (State state : smTranslationData.processSM_transitPathMap.keySet()) {
 
@@ -548,7 +548,7 @@ public class ProcessSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_initial_Event_Target(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 		System.out.println("BEGIN testPrint_initial_Event_Target");
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = processSM_ini_nextStateMap;
@@ -578,7 +578,7 @@ public class ProcessSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_current_Event_Target(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 		System.out.println("BEGIN testPrint_current_Event_Target");
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = processSM_curr_nextStateMap;
@@ -608,7 +608,7 @@ public class ProcessSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_flattened_Event_Target(
-			StateMachineTranslationData smTranslationData) {
+			VHDL_TranslationData smTranslationData) {
 		System.out.println("BEGIN ProcSM_testPrint_flattened_Event_Target");
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationData.processSM_flattenedNextStateMap;
