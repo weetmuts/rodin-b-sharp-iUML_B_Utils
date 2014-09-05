@@ -57,6 +57,7 @@ public class QuickPrinter {
 	private EClass callClass = Il1Package.Literals.CALL;
 	private IRodinProject sourceRodinProject;
 	private Program program;
+	private List<String> returnList = new ArrayList<>();
 	
 	public void useTemplates(Program program) throws Exception {
 		this.program = program;
@@ -70,6 +71,7 @@ public class QuickPrinter {
 				Activator.GENERATED_SRC_FOLDER);
 		templateProcessor.initialiseSource(sourceRodinProject,
 				Activator.TEMPLATES_SRC_FOLDER);
+		
 		// Get the processor to instantiate the 'Top-Level' template.
 		// Templates contained 'within' are handled by the processor
 		// and TemplateHelper. We can pass a data object to assist with the
@@ -109,16 +111,16 @@ public class QuickPrinter {
 	}
 
 	// print from a supplied list list
-	public void printEobjectList(List<EObject> content) {
+	private void printEobjectList(List<EObject> content) {
 		for (EObject element : content) {
 			printEobject(element);
 		}
 	}
 
 	// print from a supplied IL1 command
-	public void printEobject(EObject element) {
+	public List<String> printEobject(EObject element) {
 		if (element == null)
-			return;
+			return returnList;
 		EClass eClass = element.eClass();
 
 		if (eClass == programClass) {
@@ -136,45 +138,47 @@ public class QuickPrinter {
 			for (Task t : taskList) {
 				doPrint(t);
 			}
-			return;
+			return returnList;
 		} else if (eClass == vDeclClass) {
 			doPrint((VariableDecl) element);
-			return;
+			return returnList;
 		} else if (eClass == cDeclClass) {
 			doPrint((ConstantDecl) element);
-			return;
+			return returnList;
 		} else if (eClass == subroutineClass) {
 			doPrint((Subroutine) element);
-			return;
+			return returnList;
 		} else if (eClass == paramClass) {
 			doPrint((Parameter) element);
-			return;
+			return returnList;
 		} else if (eClass == guardClass) {
 			doPrint((ConditionSet) element);
-			return;
+			return returnList;
 		} else if (eClass == caseStatementClass) {
 			doprint((CaseStatement) element);
-			return;
+			return returnList;
 		} else if (eClass == actionClass) {
 			doPrint((Action) element);
-			return;
+			return returnList;
 		} else if (eClass == seqClass) {
 			doPrint((Seq) element);
-			return;
+			return returnList;
 		} else if (eClass == caseClass) {
 			doPrint((Case) element);
-			return;
+			return returnList;
 		} else if (eClass == ifClass) {
 			doPrint((If) element);
-			return;
+			return returnList;
 		} else if (eClass == elseIfClass) {
 			doPrint((ElseIf) element);
-			return;
+			return returnList;
 		} else if (eClass == callClass) {
 			doPrint((Call) element);
-			return;
+			return returnList;
 		}
-
+		else{
+			return returnList;
+		}
 		// // pass on the List-Based children to print
 		// List<EObject> children = element.eContents();
 		// if (children != null) {
@@ -191,10 +195,12 @@ public class QuickPrinter {
 
 	private void doPrint(Call el) {
 		System.out.println(" " + el.getSubroutine().getName() + ";");
+		returnList.add(" " + el.getSubroutine().getName() + ";");
 	}
 
 	private void doPrint(ElseIf el) {
 		System.out.println("ELSIF ");
+		returnList.add("ELSIF ");
 		boolean first = true;
 
 		for (String s : el.getCondition()) {
@@ -202,40 +208,51 @@ public class QuickPrinter {
 			if (first) {
 				first = false;
 				System.out.println(" " + s);
+				returnList.add(" " + s);
 			} else {
 				System.out.println(" and " + s);
+				returnList.add(" and " + s);
 			}
 		}
 		System.out.println("THEN ");
+		returnList.add("THEN ");
 		printEobject(el.getAction());
 	}
 
 	private void doPrint(If el) {
 		System.out.println("IF ");
+		returnList.add("IF ");
 		boolean first = true;
 		for (String s : el.getCondition()) {
 			if (first) {
 				first = false;
 				System.out.println(" " + s);
+				returnList.add(" " + s);
 			} else {
 				System.out.println(" and " + s);
+				returnList.add(" and " + s);
 			}
 		}
 		System.out.println("THEN ");
+		returnList.add("THEN ");
 		printEobject(el.getBody());
 		printEobject(el.getBranch());
 		System.out.println("ELSE ");
+		returnList.add("ELSE ");
 		printEobject(el.getElse());
 		System.out.println("END IF;");
+		returnList.add("END IF;");
 	}
 
 	private void doPrint(Case el) {
 		System.out.println("CASE " + el.getCaseExpression() + " IS ");
+		returnList.add("CASE " + el.getCaseExpression() + " IS ");
 		List<CaseStatement> caseStatementEList = el.getCaseStatement();
 		for (CaseStatement cs : caseStatementEList) {
 			printEobject(cs);
 		}
 		System.out.println("END CASE;");
+		returnList.add("END CASE;");
 	}
 
 	private void doPrint(Seq el) {
@@ -265,8 +282,10 @@ public class QuickPrinter {
 				newString = newString + " " + actionArray[i];
 			}
 			System.out.println(newString + ";");
+			returnList.add(newString + ";");
 		} else {
 			System.out.println(" " + el.getAction() + ";");
+			returnList.add(" " + el.getAction() + ";");
 		}
 	}
 
@@ -281,9 +300,11 @@ public class QuickPrinter {
 
 	private void doprint(CaseStatement el) {
 		System.out.println("WHEN " + el.getCaseValue() + " => ");
+		returnList.add("WHEN " + el.getCaseValue() + " => ");
 		Command command = el.getCommand();
 		if (command == null) {
 			System.out.println(" null ;");
+			returnList.add(" null ;");
 		} else {
 			printEobject(command);
 		}
@@ -292,13 +313,16 @@ public class QuickPrinter {
 	private void doPrint(ConditionSet el) {
 		EList<String> conditions = el.getConditions();
 		System.out.println("Conditions");
+		returnList.add("Conditions");
 		for (String s : conditions) {
 			System.out.println(" " + s);
+			returnList.add(" " + s);
 		}
 	}
 
 	private void doPrint(Parameter el) {
 		System.out.println("Parameter " + el.getIdentifier());
+		returnList.add("Parameter " + el.getIdentifier());
 	}
 
 	private void doPrint(Subroutine el) {
@@ -314,14 +338,20 @@ public class QuickPrinter {
 		}
 		System.out.println("\n" + subroutineName + ": " + subroutineType
 				+ paramString);
+		returnList.add("\n" + subroutineName + ": " + subroutineType
+				+ paramString);
 		System.out.println("BEGIN");
+		returnList.add("BEGIN");
 		printEobject(el.getBody());
 		System.out
 				.println("END " + subroutineType + " " + subroutineName + ";");
+		returnList.add("END " + subroutineType + " " + subroutineName + ";");
 	}
 
 	private void doPrint(ConstantDecl el) {
 		System.out.println("CONSTANT " + el.getIdentifier() + ": "
+				+ el.getType() + " := " + el.getInitialValue());
+		returnList.add("CONSTANT " + el.getIdentifier() + ": "
 				+ el.getType() + " := " + el.getInitialValue());
 	}
 
@@ -337,6 +367,8 @@ public class QuickPrinter {
 		}
 		
 		System.out.println(declType + el.getIdentifier() + ": "
+				+ el.getType() + " := " + el.getInitialValue());
+		returnList.add(declType + el.getIdentifier() + ": "
 				+ el.getType() + " := " + el.getInitialValue());
 	}
 

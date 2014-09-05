@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
@@ -21,14 +20,12 @@ import org.eventb.codegen.il1.translator.AbstractTranslateEventBToTarget;
 import org.eventb.codegen.il1.translator.ClassHeaderInformation;
 import org.eventb.codegen.il1.translator.IL1TranslationManager;
 import org.eventb.codegen.il1.translator.TargetLanguage;
-import org.eventb.codegen.tasking.TaskingTranslationException;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
 import org.eventb.core.IEventBProject;
 import org.eventb.core.IMachineRoot;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.factory.RodinResource;
-import org.osgi.service.prefs.BackingStoreException;
 import org.rodinp.core.IRodinProject;
 
 import quickprint.impl.QuickPrinter;
