@@ -37,7 +37,7 @@
          point="org.eventb.codegen.templates.generator">
       <templateGenerator
             GeneratorClass="quickprint.impl.TopLevelGenerator"
-            tag="QuickPrintUtil.topLevelGenerator">
+            tag="topLevelGenerator">
       </templateGenerator>
    </extension>
 

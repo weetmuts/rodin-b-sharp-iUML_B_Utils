@@ -66,7 +66,7 @@ public class QuickPrinter {
 		templateProcessor.setFileExtension(".vhdl");
 		//also set vhdl language formatter at a later date
 		
-		templateProcessor.initialiseTarget(sourceRodinProject.getProject(),
+		templateProcessor.initialiseTarget(sourceRodinProject,
 				Activator.GENERATED_SRC_FOLDER);
 		templateProcessor.initialiseSource(sourceRodinProject,
 				Activator.TEMPLATES_SRC_FOLDER);
@@ -116,14 +116,14 @@ public class QuickPrinter {
 	}
 
 	// print from a supplied IL1 command
-	private void printEobject(EObject element) {
+	public void printEobject(EObject element) {
 		if (element == null)
 			return;
 		EClass eClass = element.eClass();
 
 		if (eClass == programClass) {
 			program = (Program) element;
-			
+			System.out.println("\n");
 			EList<Declaration> decls = program.getDecls();
 			for (Declaration d : decls) {
 				if (d.eClass() == vDeclClass) {

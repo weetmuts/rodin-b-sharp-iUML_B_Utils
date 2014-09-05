@@ -13,7 +13,6 @@ Require-Bundle: ac.soton.eventb.emf.components.diagram;bundle-version="[4.0.0,5.
  ac.soton.compositionmodel.core;bundle-version="0.0.1",
  org.eventb.compositeControlMetamodel;bundle-version="0.0.3",
  QuickPrint;bundle-version="1.0.0",
- org.eventb.codegen.utils;bundle-version="0.0.1",
  org.eventb.codegen.tasking;bundle-version="0.0.4"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

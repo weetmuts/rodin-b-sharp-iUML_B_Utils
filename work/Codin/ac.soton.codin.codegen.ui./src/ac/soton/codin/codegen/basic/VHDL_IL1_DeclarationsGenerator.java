@@ -18,7 +18,6 @@ import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 
 import quickprint.impl.QuickPrintInfo;
 
-import ac.soton.codegen.utils.TranslatorUtils;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;
@@ -104,8 +103,13 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// We ignore partitions (enums) for now.
 			for (ComponentAxiom axiom : axiomList) {
 				String predicate = axiom.getPredicate();
-				predicate = new TranslatorUtils()
-						.makeSingleSpaceBetweenElements(predicate);
+//////// REPLACE With THIS
+/////// 		predicate = new TranslatorUtils()
+///////				.makeSingleSpaceBetweenElements(predicate);
+				predicate = CodeGenTaskingUtils
+								.makeSingleSpaceBetweenElements(predicate);
+///////	END REPLACE
+				
 				// if this is an initialisation axiom of the form cName = x
 				// or type axiom cName : y
 				// then we assume it is a constant Declaration with value x
@@ -169,8 +173,14 @@ public class VHDL_IL1_DeclarationsGenerator {
 			ComponentInitialisation initialisation) {
 		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
 		String initialisationString = initialisation.getAction();
-		initialisationString = new TranslatorUtils()
-				.makeSingleSpaceBetweenElements(initialisationString);
+
+//////// REPLACE With THIS
+/////// 		initialisationString = new TranslatorUtils()
+///////				.makeSingleSpaceBetweenElements(initialisationString);
+		initialisationString = CodeGenTaskingUtils
+								.makeSingleSpaceBetweenElements(initialisationString);
+///////	END REPLACE	
+
 		// Obtain the variable name from the first part
 		// of the initialisation string.
 		String variableName = initialisationString.split(" ")[0];
@@ -207,10 +217,13 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// Finished the initialisation part. Now add the type info.
 		List<ComponentInvariant> invariantList = component.getInvariants();
 		for (ComponentInvariant invariant : invariantList) {
-			String predicate = invariant.getPredicate();
-			predicate = new TranslatorUtils()
-					.makeSingleSpaceBetweenElements(predicate.trim());
-			// if we found an invariant that starts with the varName
+			String predicate = invariant.getPredicate().trim();
+//////// REPLACE With THIS
+/////// 		predicate = new TranslatorUtils()
+///////				.makeSingleSpaceBetweenElements(predicate);
+						predicate = CodeGenTaskingUtils
+										.makeSingleSpaceBetweenElements(predicate);
+		///////	END REPLACE			// if we found an invariant that starts with the varName
 			// lets see if it has is a typing expression
 			if (predicate.startsWith(variableName)) {
 				String[] wordArray = predicate.split(" ");

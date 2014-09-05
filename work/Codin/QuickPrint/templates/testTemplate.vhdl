@@ -3,5 +3,5 @@
  END ENTITY Component1 ;
 
  ARCHITECTURE Component1 IS
- 	 --## <TopLevelGenerator>
+ 	 --## <topLevelGenerator>
  END ARCHITECTURE Component1 ;
