@@ -17,6 +17,7 @@ import org.eventb.codegen.il1.Declaration;
 import org.eventb.codegen.il1.Enumeration;
 import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
+import org.eventb.codegen.il1.VariableDecl;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 import org.eventb.emf.core.machine.Event;
 
@@ -106,31 +107,35 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// get the nodes of the state-machine
 			List<AbstractNode> nodeList = sm.getNodes();
 			// we add each program counter value;
+			VariableDecl varDecl = Il1Factory.eINSTANCE.createVariableDecl();
+			// we add the program counter states enum
 			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
-			Enumeration next_enm = Il1Factory.eINSTANCE.createEnumeration();
-			enm.setIdentifier(sm.getName());
-			next_enm.setIdentifier("next_" + sm.getName());
 			program.getDecls().add(enm);
+			enm.setIdentifier(sm.getName() + "_States");
 			for (AbstractNode node : nodeList) {
 				if (node != null) {
 					// if we have a state add the name to the literals
 					if (node.eClass() == StatemachinesPackage.Literals.STATE) {
 						State state = (State) node;
 						enm.getLiteralValues().add(state.getName());
-						next_enm.getLiteralValues().add(state.getName());
-					}
-					else if(node.eClass() == StatemachinesPackage.Literals.INITIAL){
+					} else if (node.eClass() == StatemachinesPackage.Literals.INITIAL) {
+						// else we have the initialisation.
 						Initial i = (Initial) node;
-						// the should be exactly one outgoing transition on the initial node
+						// the should be exactly one outgoing transition on the
+						// initial node
 						Transition transition = i.getOutgoing().get(0);
-						AbstractNode initialSychSMCounterValue = transition.getTarget();
-						if(initialSychSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE){
-							State startingState = (State) initialSychSMCounterValue;
-							enm.setInitialValue(startingState.getName());
+						AbstractNode initialSynchSMCounterValue = transition
+								.getTarget();
+						if (initialSynchSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE) {
+							State startingState = (State) initialSynchSMCounterValue;
+							varDecl.setInitialValue(startingState.getName());
 						}
 					}
 				}
 			}
+			program.getDecls().add(varDecl);
+			varDecl.setIdentifier(sm.getName());
+			varDecl.setType(sm.getName() + "_States");
 		}
 	}
 

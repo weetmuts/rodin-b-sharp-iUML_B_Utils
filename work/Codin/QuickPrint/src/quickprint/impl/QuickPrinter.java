@@ -23,6 +23,7 @@ import org.eventb.codegen.il1.ConditionSet;
 import org.eventb.codegen.il1.ConstantDecl;
 import org.eventb.codegen.il1.Declaration;
 import org.eventb.codegen.il1.ElseIf;
+import org.eventb.codegen.il1.Enumeration;
 import org.eventb.codegen.il1.If;
 import org.eventb.codegen.il1.Il1Package;
 import org.eventb.codegen.il1.Parameter;
@@ -45,6 +46,7 @@ public class QuickPrinter {
 	private EClass programClass = Il1Package.Literals.PROGRAM;
 	private EClass vDeclClass = Il1Package.Literals.VARIABLE_DECL;
 	private EClass cDeclClass = Il1Package.Literals.CONSTANT_DECL;
+	private EClass eDeclClass = Il1Package.Literals.ENUMERATION;
 	private EClass subroutineClass = Il1Package.Literals.SUBROUTINE;
 	private EClass paramClass = Il1Package.Literals.PARAMETER;
 	private EClass guardClass = Il1Package.Literals.CONDITION_SET;
@@ -132,6 +134,8 @@ public class QuickPrinter {
 					doPrint((VariableDecl) d);
 				} else if (d.eClass() == cDeclClass) {
 					doPrint((ConstantDecl) d);
+				} else if (d.eClass() == eDeclClass){
+					doPrint((Enumeration) d);
 				}
 			}
 			List<Task> taskList = program.getTaskTypeTasks();
@@ -358,6 +362,26 @@ public class QuickPrinter {
 				+ el.getType() + " := " + el.getInitialValue());
 	}
 
+	private void doPrint(Enumeration el) {
+		System.out.print("TYPE " + el.getIdentifier() + " IS (");
+		boolean first = true;
+		String tmpStr = "TYPE " + el.getIdentifier() + " IS (";
+		for(String str: el.getLiteralValues()){
+			if(first){
+				System.out.print(str);
+				tmpStr = tmpStr + str;
+				first = false;
+			}
+			else{
+				System.out.print(", " + str);
+				tmpStr = tmpStr + ", " + str;
+			}
+		}
+		System.out.println(");");
+		tmpStr = tmpStr + ");";
+		returnList.add(tmpStr);
+	}
+	
 	private void doPrint(VariableDecl el) {
 		List<String> connectorNameList = getConnectorNameList();
 		String declType;
