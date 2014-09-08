@@ -106,8 +106,9 @@ public class VHDL_IL1_DeclarationsGenerator {
 		for (Statemachine sm : synchSMList) {
 			// get the nodes of the state-machine
 			List<AbstractNode> nodeList = sm.getNodes();
-			// we add each program counter value;
-			VariableDecl varDecl = Il1Factory.eINSTANCE.createVariableDecl();
+			// we add a program counter variable;
+			VariableDecl pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
+			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
 			// we add the program counter states enum
 			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
 			program.getDecls().add(enm);
@@ -128,14 +129,20 @@ public class VHDL_IL1_DeclarationsGenerator {
 								.getTarget();
 						if (initialSynchSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE) {
 							State startingState = (State) initialSynchSMCounterValue;
-							varDecl.setInitialValue(startingState.getName());
+							pcVarDecl.setInitialValue(startingState.getName());
+							next_pcVarDecl.setInitialValue(startingState.getName());
 						}
 					}
 				}
 			}
-			program.getDecls().add(varDecl);
-			varDecl.setIdentifier(sm.getName());
-			varDecl.setType(sm.getName() + "_States");
+			// add the variable to record the current state-machine state.
+			program.getDecls().add(pcVarDecl);
+			pcVarDecl.setIdentifier(sm.getName());
+			pcVarDecl.setType(sm.getName() + "_States");
+			// add the variable to record the next state-machine state.
+			program.getDecls().add(next_pcVarDecl);
+			next_pcVarDecl.setIdentifier("next_"+sm.getName());
+			next_pcVarDecl.setType(sm.getName() + "_States");
 		}
 	}
 
