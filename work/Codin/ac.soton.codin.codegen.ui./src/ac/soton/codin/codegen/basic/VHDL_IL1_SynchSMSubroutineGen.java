@@ -95,8 +95,6 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					EList<Transition> transitionList = currentState
 							.getOutgoing();
 					// handle the case of one outgoing event for this state.
-					// There should be no guards on the event - we do not handle
-					// synchronising events with typed parameters.
 					if (transitionList.size() == 1) {
 						makeIL1CaseNonBranching(stateMachineName, currentState,
 								caseStatement);
@@ -136,8 +134,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				transitionList);
 		Transition currentTransition = newTransitionList.remove(0);
 
-		// // for each transition
-		// for (Transition currentTransition : transitionList) {
+		// for each transition
 		AbstractNode targetNode = currentTransition.getTarget();
 		String targetName = null;
 		if (targetNode instanceof State) {
@@ -176,7 +173,12 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// and process the rest as a subBranch
 		makeIL1SubBranch(newTransitionList, stateMachineName, currentState,
 				topBranch, null);
-		// }
+		// Since we have multiple transitions then we have guarded trasition, and
+		// therefore require an implicit self loop. This is implemented here.
+		org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE.createAction();
+		doNothingAction.setAction("null");
+		topBranch.setElse(doNothingAction);
+		
 		// set the case-statement body
 		caseStatement.setCommand(topBranch);
 

@@ -266,7 +266,10 @@ public class QuickPrinter {
 				.makeSingleSpaceBetweenElements(el.getAction());
 
 		String[] actionArray = actionString.split(" ");
-		String varName = actionArray[2];
+		String varName = "";
+		if(actionArray.length >= 2){
+			varName = actionArray[2];
+		}
 		// NOTE!!!
 		// This only translates assignment to signal assignment
 		// if the translator has been run since start up.

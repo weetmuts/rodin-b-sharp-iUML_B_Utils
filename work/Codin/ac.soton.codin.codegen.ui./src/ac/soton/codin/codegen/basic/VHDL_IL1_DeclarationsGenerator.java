@@ -102,13 +102,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// We ignore partitions (enums) for now.
 			for (ComponentAxiom axiom : axiomList) {
 				String predicate = axiom.getPredicate();
-//////// REPLACE With THIS
-/////// 		predicate = new TranslatorUtils()
-///////				.makeSingleSpaceBetweenElements(predicate);
 				predicate = CodeGenTaskingUtils
 								.makeSingleSpaceBetweenElements(predicate);
-///////	END REPLACE
-				
 				// if this is an initialisation axiom of the form cName = x
 				// or type axiom cName : y
 				// then we assume it is a constant Declaration with value x
@@ -217,12 +212,9 @@ public class VHDL_IL1_DeclarationsGenerator {
 		List<ComponentInvariant> invariantList = component.getInvariants();
 		for (ComponentInvariant invariant : invariantList) {
 			String predicate = invariant.getPredicate().trim();
-//////// REPLACE With THIS
-/////// 		predicate = new TranslatorUtils()
-///////				.makeSingleSpaceBetweenElements(predicate);
 						predicate = CodeGenTaskingUtils
 										.makeSingleSpaceBetweenElements(predicate);
-		///////	END REPLACE			// if we found an invariant that starts with the varName
+			// if we found an invariant that starts with the varName
 			// lets see if it has is a typing expression
 			if (predicate.startsWith(variableName)) {
 				String[] wordArray = predicate.split(" ");
