@@ -63,6 +63,11 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				smSubroutine.setProjectName(smTranslationMgr.parentProject
 						.getElementName());
 				task.getSubroutines().add(smSubroutine);
+				// Add a next_statemachineName variable declaration
+				//<><><><><><>
+				
+				
+				
 				// create a new case-block for this state-machine
 				Case caseblock = Il1Factory.eINSTANCE.createCase();
 				Il1Factory.eINSTANCE.createCase();
@@ -173,7 +178,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// and process the rest as a subBranch
 		makeIL1SubBranch(newTransitionList, stateMachineName, currentState,
 				topBranch, null);
-		// Since we have multiple transitions then we have guarded trasition, and
+		// Since we have multiple transitions, then we have guarded transitions, and
 		// therefore require an implicit self loop. This is implemented here.
 		org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE.createAction();
 		doNothingAction.setAction("null");
@@ -328,7 +333,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			// create a new state update action
 			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
 					.createAction();
-			il1Action.setAction(stateMachineName
+			il1Action.setAction("next" + stateMachineName
 					+ CodeGenTaskingUtils.ASSIGNMENT_SYMBOL + targetName);
 			// if the body is null
 			if (body == null) {

@@ -8,13 +8,17 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eventb.codegen.il1.ConstantDecl;
 import org.eventb.codegen.il1.Declaration;
+import org.eventb.codegen.il1.Enumeration;
 import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
+import org.eventb.emf.core.machine.Event;
 
 import quickprint.impl.QuickPrintInfo;
 import ac.soton.eventb.emf.components.Component;
@@ -24,6 +28,12 @@ import ac.soton.eventb.emf.components.ComponentInitialisation;
 import ac.soton.eventb.emf.components.ComponentInvariant;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.impl.ComponentImpl;
+import ac.soton.eventb.statemachines.AbstractNode;
+import ac.soton.eventb.statemachines.Initial;
+import ac.soton.eventb.statemachines.State;
+import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
+import ac.soton.eventb.statemachines.Transition;
 
 public class VHDL_IL1_DeclarationsGenerator {
 
@@ -84,10 +94,47 @@ public class VHDL_IL1_DeclarationsGenerator {
 
 		// Add the new list to the existing list of declarations.
 		program.getDecls().addAll(tmpDeclarationList);
+
+		// Add the state-machine program counter values as an enum.
+		List<Statemachine> synchSMList = Arrays
+				.asList(smTranslationMgr.synchSM_subroutineMap
+						.keySet()
+						.toArray(
+								new Statemachine[smTranslationMgr.synchSM_subroutineMap
+										.size()]));
+		for (Statemachine sm : synchSMList) {
+			// get the nodes of the state-machine
+			List<AbstractNode> nodeList = sm.getNodes();
+			// we add each program counter value;
+			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
+			Enumeration next_enm = Il1Factory.eINSTANCE.createEnumeration();
+			enm.setIdentifier(sm.getName());
+			next_enm.setIdentifier("next_" + sm.getName());
+			program.getDecls().add(enm);
+			for (AbstractNode node : nodeList) {
+				if (node != null) {
+					// if we have a state add the name to the literals
+					if (node.eClass() == StatemachinesPackage.Literals.STATE) {
+						State state = (State) node;
+						enm.getLiteralValues().add(state.getName());
+						next_enm.getLiteralValues().add(state.getName());
+					}
+					else if(node.eClass() == StatemachinesPackage.Literals.INITIAL){
+						Initial i = (Initial) node;
+						// the should be exactly one outgoing transition on the initial node
+						Transition transition = i.getOutgoing().get(0);
+						AbstractNode initialSychSMCounterValue = transition.getTarget();
+						if(initialSychSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE){
+							State startingState = (State) initialSychSMCounterValue;
+							enm.setInitialValue(startingState.getName());
+						}
+					}
+				}
+			}
+		}
 	}
 
-	private void makeConstDeclarations(
-			VHDL_TranslationData smTranslationMgr,
+	private void makeConstDeclarations(VHDL_TranslationData smTranslationMgr,
 			List<Declaration> tmpDeclarationList, Component topComponent)
 			throws CodinTranslatorException {
 		List<ComponentConstant> constantList = topComponent.getConstants();
@@ -103,7 +150,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 			for (ComponentAxiom axiom : axiomList) {
 				String predicate = axiom.getPredicate();
 				predicate = CodeGenTaskingUtils
-								.makeSingleSpaceBetweenElements(predicate);
+						.makeSingleSpaceBetweenElements(predicate);
 				// if this is an initialisation axiom of the form cName = x
 				// or type axiom cName : y
 				// then we assume it is a constant Declaration with value x
@@ -161,19 +208,18 @@ public class VHDL_IL1_DeclarationsGenerator {
 		}
 	}
 
-	private void makeVarDeclaration(
-			VHDL_TranslationData smTranslationMgr,
+	private void makeVarDeclaration(VHDL_TranslationData smTranslationMgr,
 			List<Declaration> tmpDeclarationList, Component component,
 			ComponentInitialisation initialisation) {
 		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
 		String initialisationString = initialisation.getAction();
 
-//////// REPLACE With THIS
-/////// 		initialisationString = new TranslatorUtils()
-///////				.makeSingleSpaceBetweenElements(initialisationString);
+		// ////// REPLACE With THIS
+		// ///// initialisationString = new TranslatorUtils()
+		// ///// .makeSingleSpaceBetweenElements(initialisationString);
 		initialisationString = CodeGenTaskingUtils
-								.makeSingleSpaceBetweenElements(initialisationString);
-///////	END REPLACE	
+				.makeSingleSpaceBetweenElements(initialisationString);
+		// ///// END REPLACE
 
 		// Obtain the variable name from the first part
 		// of the initialisation string.
@@ -212,8 +258,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 		List<ComponentInvariant> invariantList = component.getInvariants();
 		for (ComponentInvariant invariant : invariantList) {
 			String predicate = invariant.getPredicate().trim();
-						predicate = CodeGenTaskingUtils
-										.makeSingleSpaceBetweenElements(predicate);
+			predicate = CodeGenTaskingUtils
+					.makeSingleSpaceBetweenElements(predicate);
 			// if we found an invariant that starts with the varName
 			// lets see if it has is a typing expression
 			if (predicate.startsWith(variableName)) {
