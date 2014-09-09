@@ -107,7 +107,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 				// state
 				else {
 					List<Action> emfActionList = transitPath.getActionList();
-					Command command = completeIL1CaseActionSequence(currentState,
+					Command command = completeIL1ActionSequence(currentState,
 							targetNode, emfActionList);
 					currentStateSubroutine.setBody(command);
 				}
@@ -163,7 +163,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 		List<Action> emfActionList = firstPath.getActionList();
 		List<Guard> emfGuardList = firstPath.getGuardList();
 		List<String> guardList = makeIL1GuardsFromEMFGuardList(emfGuardList);
-		Command command = completeIL1CaseActionSequence(currentState, targetNode,
+		Command command = completeIL1ActionSequence(currentState, targetNode,
 				emfActionList);
 		If topBranch = Il1Factory.eINSTANCE.createIf();
 		topBranch.getCondition().addAll(guardList);
@@ -190,7 +190,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 			// transform the actions of this transition
 			// to an il1.command for the branch body.
 			// First create a java list
-			Command subBranchBody = completeIL1CaseActionSequence(
+			Command subBranchBody = completeIL1ActionSequence(
 					stateMachineName, currentState, actionList);
 			subBranch.setAction(subBranchBody);
 			// parentElseIf is null if this is to be added at the top-level
@@ -209,7 +209,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 			// transform the actions of this transition
 			// to an il1.command for the else body.
 			// First create a java list
-			Command elseBranchBody = completeIL1CaseActionSequence(
+			Command elseBranchBody = completeIL1ActionSequence(
 					stateMachineName, currentState, actionList);
 			topBranch.setElse(elseBranchBody);
 		}
@@ -296,7 +296,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 
 	// this method adds a next-state subroutine call to a body command,
 	// any actions are generated from an actionList.
-	private Command completeIL1CaseActionSequence(State currentState,
+	private Command completeIL1ActionSequence(State currentState,
 			AbstractNode targetNode, List<Action> actionList) {
 		// use this command to make a sequence from the list of actions
 		Command body = makeIL1SeqFromActionList(actionList);

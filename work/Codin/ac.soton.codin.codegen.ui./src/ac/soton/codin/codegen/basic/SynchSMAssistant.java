@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eventb.emf.core.machine.Event;
 
+import ac.soton.codin.codegen.quickPrint.QuickPrinter;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.Initial;
 import ac.soton.eventb.statemachines.Junction;
@@ -56,7 +57,7 @@ public class SynchSMAssistant {
 							// we have the topmost initial node
 							parentState = StatemachinesFactory.eINSTANCE
 									.createState();
-							parentState.setName("BeginCycle");
+							parentState.setName(QuickPrinter.BeginCycleName);
 						}
 
 						for (Transition initialTransition : outgoingTList) {

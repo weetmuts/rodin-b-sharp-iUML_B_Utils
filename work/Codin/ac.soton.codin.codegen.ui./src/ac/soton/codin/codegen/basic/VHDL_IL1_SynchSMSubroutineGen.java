@@ -20,6 +20,7 @@ import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 
+import ac.soton.codin.codegen.quickPrint.QuickPrinter;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -84,7 +85,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 						.toArray(new State[stateMap.size()]));
 				for (State currentState : stateList) {
 					// ignore the initialisation.
-					if (currentState.getName().equals("BeginCycle"))
+					if (currentState.getName().equals(QuickPrinter.BeginCycleName))
 						continue;
 					// reset the non-progress flag. This flag causes a
 					// "when => others" case to be generated in the case

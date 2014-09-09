@@ -1,19 +1,11 @@
 package ac.soton.codin.codegen.quickPrint;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.internal.resources.File;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eventb.codegen.il1.Action;
 import org.eventb.codegen.il1.Call;
 import org.eventb.codegen.il1.Case;
@@ -41,9 +33,9 @@ import ac.soton.codin.codegen.basic.VHDL_TranslationData;
 import ac.soton.codin.codegen.ui.CodinCGPlugin;
 import ac.soton.eventb.emf.components.Connector;
 
-@SuppressWarnings("restriction")
 public class QuickPrinter {
 
+	public static final String BeginCycleName = "BeginCycle";
 	private EClass programClass = Il1Package.Literals.PROGRAM;
 	private EClass vDeclClass = Il1Package.Literals.VARIABLE_DECL;
 	private EClass cDeclClass = Il1Package.Literals.CONSTANT_DECL;
@@ -61,6 +53,7 @@ public class QuickPrinter {
 	private IRodinProject sourceRodinProject;
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
+	
 	
 	public void useTemplates(Program program, VHDL_TranslationData smTranslationMgr) throws Exception {
 		this.program = program;
@@ -86,41 +79,7 @@ public class QuickPrinter {
 		generatorDataList.add(smTranslationMgr);
 		templateProcessor.instantiateTemplate("testTemplate.vhdl", generatorData);
 	}
-
 	
-	
-	public void printSelection(IStructuredSelection selectionChanged)
-			throws IOException {
-		List<String> connectorNameList = getConnectorNameList();
-		if(connectorNameList.size() == 0){
-			System.out.println("\n--#### No Connectors identified => Signals not Identified.");
-			System.out.println("--#### Run the VHDL generator to ensure they have been created.\n");
-		}
-		Iterator<?> iter = selectionChanged.iterator();
-		while (iter.hasNext()) {
-			Object item = iter.next();
-			Class<? extends Object> itemClass = item.getClass();
-			if (itemClass == File.class) {
-				File source = (File) item;
-				IPath fullPath = source.getFullPath();
-				URI uri = URI.createPlatformResourceURI(fullPath.toString(),
-						true);
-				Resource resource = new XMLResourceFactoryImpl()
-						.createResource(uri);
-				resource.load(null);
-				List<EObject> content = resource.getContents();
-				printEobjectList(content);
-			}
-		}
-	}
-
-	// print from a supplied list list
-	private void printEobjectList(List<EObject> content) {
-		for (EObject element : content) {
-			printEobject(element);
-		}
-	}
-
 	// print from a supplied IL1 command
 	public List<String> printEobject(EObject element) {
 		if (element == null)
@@ -185,11 +144,6 @@ public class QuickPrinter {
 		else{
 			return returnList;
 		}
-		// // pass on the List-Based children to print
-		// List<EObject> children = element.eContents();
-		// if (children != null) {
-		// printEobjectList(children);
-		// }
 	}
 
 	private void doPrint(Task t) {
@@ -280,13 +234,6 @@ public class QuickPrinter {
 		if(actionArray.length >= 2){
 			varName = actionArray[2];
 		}
-		// NOTE!!!
-		// This only translates assignment to signal assignment
-		// if the translator has been run since start up.
-		// This is because the information necessary to print
-		// it is only generated during translation.
-		// We could add an attribute to the assignment
-		// in a 'proper' translation.
 		if (connectorNameList.contains(varName)) {
 			actionArray[1] = " <= ";
 			// recreate string
@@ -343,7 +290,7 @@ public class QuickPrinter {
 		String subroutineType;
 		String paramString = "";
 
-		if (subroutineName.equals("BeginCycle")) {
+		if (subroutineName.equals(BeginCycleName)) {
 			subroutineType = "PROCESS";
 			paramString = "(...)";
 		} else {
