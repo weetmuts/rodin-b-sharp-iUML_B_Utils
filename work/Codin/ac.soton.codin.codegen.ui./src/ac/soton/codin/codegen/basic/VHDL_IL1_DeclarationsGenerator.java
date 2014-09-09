@@ -21,7 +21,7 @@ import org.eventb.codegen.il1.VariableDecl;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 import org.eventb.emf.core.machine.Event;
 
-import quickprint.impl.QuickPrintInfo;
+import ac.soton.codin.codegen.quickPrint.QuickPrintInfo;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;

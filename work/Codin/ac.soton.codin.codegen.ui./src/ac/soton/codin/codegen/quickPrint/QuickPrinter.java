@@ -1,4 +1,4 @@
-package quickprint.impl;
+package ac.soton.codin.codegen.quickPrint;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +37,8 @@ import org.eventb.codegen.templates.GeneratorData;
 import org.eventb.codegen.templates.util.TemplateProcessor;
 import org.rodinp.core.IRodinProject;
 
-import quickprint.Activator;
+import ac.soton.codin.codegen.basic.VHDL_TranslationData;
+import ac.soton.codin.codegen.ui.CodinCGPlugin;
 import ac.soton.eventb.emf.components.Connector;
 
 @SuppressWarnings("restriction")
@@ -61,7 +62,7 @@ public class QuickPrinter {
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
 	
-	public void useTemplates(Program program) throws Exception {
+	public void useTemplates(Program program, VHDL_TranslationData smTranslationMgr) throws Exception {
 		this.program = program;
 		// Create the Template Processor
 		TemplateProcessor templateProcessor = TemplateProcessor.getDefault();
@@ -70,9 +71,9 @@ public class QuickPrinter {
 		//also set vhdl language formatter at a later date
 		
 		templateProcessor.initialiseTarget(sourceRodinProject,
-				Activator.GENERATED_SRC_FOLDER);
+				CodinCGPlugin.GENERATED_SRC_FOLDER);
 		templateProcessor.initialiseSource(sourceRodinProject,
-				Activator.TEMPLATES_SRC_FOLDER);
+				CodinCGPlugin.TEMPLATES_SRC_FOLDER);
 		
 		// Get the processor to instantiate the 'Top-Level' template.
 		// Templates contained 'within' are handled by the processor
@@ -81,7 +82,8 @@ public class QuickPrinter {
 		// more complex if necessary (and add constraints)
 		GeneratorData generatorData = new GeneratorData();
 		List<Object> generatorDataList = generatorData.getDataList();
-		generatorDataList.add(program); // add data here
+		generatorDataList.add(program); // add program data here
+		generatorDataList.add(smTranslationMgr);
 		templateProcessor.instantiateTemplate("testTemplate.vhdl", generatorData);
 	}
 

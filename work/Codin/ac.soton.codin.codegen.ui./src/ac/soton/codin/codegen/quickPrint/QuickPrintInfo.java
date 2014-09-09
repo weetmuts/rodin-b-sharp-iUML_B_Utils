@@ -1,4 +1,4 @@
-package quickprint.impl;
+package ac.soton.codin.codegen.quickPrint;
 
 import java.util.ArrayList;
 import java.util.List;
