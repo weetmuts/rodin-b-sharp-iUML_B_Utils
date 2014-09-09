@@ -121,10 +121,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 
 		QuickPrinter qp = new QuickPrinter();
 		qp.setTranslationManager(rodinProject);
-		
 		qp.useTemplates(program, smTranslationMgr);
-
-
 	}
 
 	// Create the file associated with the output
