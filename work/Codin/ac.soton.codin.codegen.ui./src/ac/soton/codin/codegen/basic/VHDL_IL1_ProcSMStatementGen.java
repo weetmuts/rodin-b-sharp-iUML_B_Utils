@@ -200,7 +200,8 @@ public class VHDL_IL1_ProcSMStatementGen {
 				parentElseif.setBranch(subBranch);
 			makeSubBranch(transitPathList, topBranch, stateMachineName,
 					currentState, subBranch);
-		} else if (transitPathList.size() == 1) {
+		} 
+		else if (transitPathList.size() == 1) {
 			// set the elseBranch of the original 'if'.
 			TransitPath lastTransition = transitPathList.get(0);
 			// Else has no guards so just process the actions.

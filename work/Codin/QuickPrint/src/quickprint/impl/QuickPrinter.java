@@ -208,7 +208,6 @@ public class QuickPrinter {
 		boolean first = true;
 
 		for (String s : el.getCondition()) {
-
 			if (first) {
 				first = false;
 				System.out.println(" " + s);
@@ -221,6 +220,11 @@ public class QuickPrinter {
 		System.out.println("THEN ");
 		returnList.add("THEN ");
 		printEobject(el.getAction());
+		
+		ElseIf subBranch = el.getBranch();
+		if(subBranch != null){
+			doPrint(subBranch);
+		}
 	}
 
 	private void doPrint(If el) {
@@ -356,10 +360,19 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(ConstantDecl el) {
+		String constantType = el.getType();
+		if(constantType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
+			constantType = "Integer";
+		}
+		else if(constantType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
+			constantType = "Boolean";
+		}
+		
+		
 		System.out.println("CONSTANT " + el.getIdentifier() + ": "
-				+ el.getType() + " := " + el.getInitialValue());
+				+ constantType + " := " + el.getInitialValue());
 		returnList.add("CONSTANT " + el.getIdentifier() + ": "
-				+ el.getType() + " := " + el.getInitialValue());
+				+ constantType + " := " + el.getInitialValue());
 	}
 
 	private void doPrint(Enumeration el) {
@@ -384,19 +397,37 @@ public class QuickPrinter {
 	
 	private void doPrint(VariableDecl el) {
 		List<String> connectorNameList = getConnectorNameList();
-		String declType;
+		String initialValue = el.getInitialValue();
+		String variableType = el.getType();
+		String declarationType;
 		// If the list contains the variable ID then it is a signal.
 		if(connectorNameList.contains(el.getIdentifier())){
-			declType = "SIGNAL ";
+			declarationType = "SIGNAL ";
+			if(variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
+				variableType = "Integer";
+			}
+			else if(variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
+				variableType = "std_logic_signal";
+				if(initialValue.equals("true")){
+					initialValue = "1";
+				}
+				else{ initialValue = "0";}
+			}
 		}
 		else{
-			declType = "VARIABLE ";
+			declarationType = "VARIABLE ";
+			if(variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
+				variableType = "Integer";
+			}
+			else if(variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
+				variableType = "Boolean";
+			}
 		}
 		
-		System.out.println(declType + el.getIdentifier() + ": "
-				+ el.getType() + " := " + el.getInitialValue());
-		returnList.add(declType + el.getIdentifier() + ": "
-				+ el.getType() + " := " + el.getInitialValue());
+		System.out.println(declarationType + el.getIdentifier() + ": "
+				+ variableType + " := " + initialValue);
+		returnList.add(declarationType + el.getIdentifier() + ": "
+				+ variableType + " := " + initialValue);
 	}
 
 
