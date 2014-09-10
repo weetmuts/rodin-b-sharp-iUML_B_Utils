@@ -139,12 +139,14 @@ public class QuickPrinter {
 			return returnList;
 		} else if (eClass == callClass) {
 			doPrint((Call) element);
+//			doPrint_Inline((Call) element);
 			return returnList;
 		}
 		else{
 			return returnList;
 		}
 	}
+
 
 	private void doPrint(Task t) {
 		EList<Subroutine> subroutineList = t.getSubroutines();
@@ -153,6 +155,25 @@ public class QuickPrinter {
 		}
 	}
 
+	
+//	private void doPrint_Inline(Call el) {
+//		Subroutine calledSubroutine = el.getSubroutine();
+//		// find the Subroutine
+//		EList<Task> tasks = program.getTaskTypeTasks();
+//		
+//		
+//		EList<Subroutine> subroutineList = program.getTaskTypeTasks();
+//		Subroutine subroutineImpl = null;
+//		for(Subroutine s: subroutineList){
+//			if(calledSubroutine.getName().equals(s.getName())){
+//				subroutineImpl = s;
+//				break;
+//			}
+//		}
+//		printEobject(subroutineImpl.getBody());
+//	}
+
+	
 	private void doPrint(Call el) {
 		System.out.println(" " + el.getSubroutine().getName() + ";");
 		returnList.add(" " + el.getSubroutine().getName() + ";");
