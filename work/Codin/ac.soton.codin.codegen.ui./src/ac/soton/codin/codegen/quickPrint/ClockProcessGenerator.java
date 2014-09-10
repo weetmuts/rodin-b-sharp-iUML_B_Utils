@@ -1,9 +1,7 @@
 package ac.soton.codin.codegen.quickPrint;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import org.eventb.codegen.templates.IGenerator;
 import org.eventb.codegen.templates.IGeneratorData;
@@ -24,12 +22,10 @@ public class ClockProcessGenerator implements IGenerator {
 			}
 		}
 		
-		Set<Statemachine> keys = translationData.synchSM_flattened_nextStateMap.keySet();
-		List<Statemachine> synchSMList = Arrays.asList(keys.toArray(new Statemachine[keys.size()]));
 		ArrayList<String> returnList = new ArrayList<>();
-		for(Statemachine synchSM: synchSMList){
+		for(Statemachine synchSM: translationData.synchSMList){
 			String n = synchSM.getName();
-			returnList.add(n + " := next" + n );
+			returnList.add(n + " <= next_" + n );
 		}
 		return returnList;
 	}

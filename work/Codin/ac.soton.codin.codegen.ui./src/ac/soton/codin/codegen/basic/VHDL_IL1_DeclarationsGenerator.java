@@ -8,9 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eventb.codegen.il1.ConstantDecl;
 import org.eventb.codegen.il1.Declaration;
@@ -19,9 +17,7 @@ import org.eventb.codegen.il1.Il1Factory;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.il1.VariableDecl;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
-import org.eventb.emf.core.machine.Event;
 
-import ac.soton.codin.codegen.quickPrint.QuickPrintInfo;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;
@@ -90,20 +86,14 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// stage 2 (IL1 to code) translation.
 		for (Connector connector : topComponent.getConnectors()) {
 			VHDL_TranslationData.connectorList.add(connector);
-			QuickPrintInfo.getConns().add(connector);
+			smTranslationMgr.quickPrintInfo.getConnectorList().add(connector);
 		}
 
 		// Add the new list to the existing list of declarations.
 		program.getDecls().addAll(tmpDeclarationList);
 
 		// Add the state-machine program counter values as an enum.
-		List<Statemachine> synchSMList = Arrays
-				.asList(smTranslationMgr.synchSM_subroutineMap
-						.keySet()
-						.toArray(
-								new Statemachine[smTranslationMgr.synchSM_subroutineMap
-										.size()]));
-		for (Statemachine sm : synchSMList) {
+		for (Statemachine sm : smTranslationMgr.synchSMList) {
 			// get the nodes of the state-machine
 			List<AbstractNode> nodeList = sm.getNodes();
 			// we add a program counter variable;
@@ -226,12 +216,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
 		String initialisationString = initialisation.getAction();
 
-		// ////// REPLACE With THIS
-		// ///// initialisationString = new TranslatorUtils()
-		// ///// .makeSingleSpaceBetweenElements(initialisationString);
 		initialisationString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(initialisationString);
-		// ///// END REPLACE
 
 		// Obtain the variable name from the first part
 		// of the initialisation string.

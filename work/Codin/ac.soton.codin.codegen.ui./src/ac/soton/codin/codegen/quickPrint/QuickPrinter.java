@@ -31,7 +31,7 @@ import org.rodinp.core.IRodinProject;
 
 import ac.soton.codin.codegen.basic.VHDL_TranslationData;
 import ac.soton.codin.codegen.ui.CodinCGPlugin;
-import ac.soton.eventb.emf.components.Connector;
+import ac.soton.eventb.statemachines.Statemachine;
 
 public class QuickPrinter {
 
@@ -53,10 +53,25 @@ public class QuickPrinter {
 	private IRodinProject sourceRodinProject;
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
+	private static VHDL_TranslationData smTranslationMgr;
 	
-	
-	public void useTemplates(Program program, VHDL_TranslationData smTranslationMgr) throws Exception {
+	// Constructor used to initiate template build
+	public QuickPrinter(VHDL_TranslationData smTranslationMger, Program program, IRodinProject rodinProject) {
+		smTranslationMgr = smTranslationMger;
 		this.program = program;
+		this.sourceRodinProject = rodinProject;
+	}
+
+	// constructor used to initiate print-only feature
+	public QuickPrinter() {
+
+	}
+
+	public QuickPrinter(Program program) {
+		this.program = program;
+	}
+
+	public void useTemplates() throws Exception {
 		// Create the Template Processor
 		TemplateProcessor templateProcessor = TemplateProcessor.getDefault();
 		// Initialise the template processor with the TARGET and SOURCE information.
@@ -80,6 +95,11 @@ public class QuickPrinter {
 		templateProcessor.instantiateTemplate("testTemplate.vhdl", generatorData);
 	}
 	
+	public List<String> printProgram(){
+		printEobject(program);
+		return returnList;
+	}
+	
 	// print from a supplied IL1 command
 	public List<String> printEobject(EObject element) {
 		if (element == null)
@@ -88,7 +108,6 @@ public class QuickPrinter {
 
 		if (eClass == programClass) {
 			program = (Program) element;
-			System.out.println("\n");
 			EList<Declaration> decls = program.getDecls();
 			for (Declaration d : decls) {
 				if (d.eClass() == vDeclClass) {
@@ -138,8 +157,8 @@ public class QuickPrinter {
 			doPrint((ElseIf) element);
 			return returnList;
 		} else if (eClass == callClass) {
-			doPrint((Call) element);
-//			doPrint_Inline((Call) element);
+//			doPrint((Call) element);
+			doPrint_Inline((Call) element);
 			return returnList;
 		}
 		else{
@@ -156,45 +175,64 @@ public class QuickPrinter {
 	}
 
 	
-//	private void doPrint_Inline(Call el) {
-//		Subroutine calledSubroutine = el.getSubroutine();
-//		// find the Subroutine
-//		EList<Task> tasks = program.getTaskTypeTasks();
-//		
-//		
-//		EList<Subroutine> subroutineList = program.getTaskTypeTasks();
-//		Subroutine subroutineImpl = null;
-//		for(Subroutine s: subroutineList){
-//			if(calledSubroutine.getName().equals(s.getName())){
-//				subroutineImpl = s;
-//				break;
-//			}
-//		}
-//		printEobject(subroutineImpl.getBody());
-//	}
+	private void doPrint_Inline(Call el) {
+		// get the subroutine of the call;
+		Subroutine calledSubroutine = el.getSubroutine();
+		// store the program's subroutine definitions
+		List<Subroutine> subroutineList = new ArrayList<>();
+		// add the program's mainEntry-level subroutines.
+		// But most subroutines will be in the tasks.
+		subroutineList.addAll(program.getSubroutines());
+		// find the Subroutine of tasks
+		EList<Task> taskList = program.getTaskTypeTasks();
+		for(Task task: taskList){
+			subroutineList.addAll(task.getSubroutines());
+		}
+		// find the called subroutine implementation in the list
+		Subroutine subroutineImpl = null;
+		for(Subroutine s: subroutineList){
+			if(calledSubroutine.getName().equals(s.getName())){
+				subroutineImpl = s;
+				break;
+			}
+		}
 
-	
-	private void doPrint(Call el) {
-		System.out.println(" " + el.getSubroutine().getName() + ";");
-		returnList.add(" " + el.getSubroutine().getName() + ";");
+		if(isSMSubroutine(subroutineImpl)){
+			// call the synch stateMachine procedure
+			returnList.add(subroutineImpl.getName()+";");
+		}
+		else{
+			Command body = subroutineImpl.getBody();
+			printEobject(body);
+		}
 	}
 
+	private boolean isSMSubroutine(Subroutine subroutineImpl) {
+		// returns true if the subroutine is in the list of 
+		// synchronous state machines, by name.
+		// get the list of synchronous state machines
+		ArrayList<String> synchSMNamesList = new ArrayList<>();
+		for(Statemachine s: smTranslationMgr.synchSMList){
+			synchSMNamesList.add(s.getName());
+		}
+		// if the subroutine is a synch stateMachine call,
+		boolean hasSynchSMName = synchSMNamesList.contains(subroutineImpl.getName());
+		return hasSynchSMName;
+	}
+
+	
 	private void doPrint(ElseIf el) {
-		System.out.println("ELSIF ");
 		returnList.add("ELSIF ");
 		boolean first = true;
 
 		for (String s : el.getCondition()) {
 			if (first) {
 				first = false;
-				System.out.println(" " + s);
 				returnList.add(" " + s);
 			} else {
-				System.out.println(" and " + s);
 				returnList.add(" and " + s);
 			}
 		}
-		System.out.println("THEN ");
 		returnList.add("THEN ");
 		printEobject(el.getAction());
 		
@@ -205,38 +243,30 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(If el) {
-		System.out.println("IF ");
 		returnList.add("IF ");
 		boolean first = true;
 		for (String s : el.getCondition()) {
 			if (first) {
 				first = false;
-				System.out.println(" " + s);
 				returnList.add(" " + s);
 			} else {
-				System.out.println(" and " + s);
 				returnList.add(" and " + s);
 			}
 		}
-		System.out.println("THEN ");
 		returnList.add("THEN ");
 		printEobject(el.getBody());
 		printEobject(el.getBranch());
-		System.out.println("ELSE ");
 		returnList.add("ELSE ");
 		printEobject(el.getElse());
-		System.out.println("END IF;");
 		returnList.add("END IF;");
 	}
 
 	private void doPrint(Case el) {
-		System.out.println("CASE " + el.getCaseExpression() + " IS ");
 		returnList.add("CASE " + el.getCaseExpression() + " IS ");
 		List<CaseStatement> caseStatementEList = el.getCaseStatement();
 		for (CaseStatement cs : caseStatementEList) {
 			printEobject(cs);
 		}
-		System.out.println("END CASE;");
 		returnList.add("END CASE;");
 	}
 
@@ -246,7 +276,7 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(Action el) {
-		List<String> connectorNameList = getConnectorNameList();
+		List<String> connectorNameList = smTranslationMgr.quickPrintInfo.getConnectorNameList();
 		String actionString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(el.getAction());
 
@@ -262,29 +292,16 @@ public class QuickPrinter {
 			for (int i = 0; i < actionArray.length; i++) {
 				newString = newString + " " + actionArray[i];
 			}
-			System.out.println(newString + ";");
 			returnList.add(newString + ";");
 		} else {
-			System.out.println(" " + el.getAction() + ";");
 			returnList.add(" " + el.getAction() + ";");
 		}
 	}
 
-	private List<String> getConnectorNameList() {
-		List<Connector> connectorList = QuickPrintInfo.getConns();
-		List<String> connectorNamesList = new ArrayList<>();
-		for (Connector c : connectorList) {
-			connectorNamesList.add(c.getName().toLowerCase());
-		}
-		return connectorNamesList;
-	}
-
 	private void doprint(CaseStatement el) {
-		System.out.println("WHEN " + el.getCaseValue() + " => ");
 		returnList.add("WHEN " + el.getCaseValue() + " => ");
 		Command command = el.getCommand();
 		if (command == null) {
-			System.out.println(" null ;");
 			returnList.add(" null ;");
 		} else {
 			printEobject(command);
@@ -293,39 +310,40 @@ public class QuickPrinter {
 
 	private void doPrint(ConditionSet el) {
 		EList<String> conditions = el.getConditions();
-		System.out.println("Conditions");
 		returnList.add("Conditions");
 		for (String s : conditions) {
-			System.out.println(" " + s);
 			returnList.add(" " + s);
 		}
 	}
 
 	private void doPrint(Parameter el) {
-		System.out.println("Parameter " + el.getIdentifier());
 		returnList.add("Parameter " + el.getIdentifier());
 	}
 
 	private void doPrint(Subroutine el) {
+		
 		String subroutineName = el.getName();
 		String subroutineType;
 		String paramString = "";
 
-		if (subroutineName.equals(BeginCycleName)) {
-			subroutineType = "PROCESS";
-			paramString = "(...)";
-		} else {
+		// if the subroutine is a state machine implementation
+		// then it a procedure.
+		if(isSMSubroutine(el)){
 			subroutineType = "PROCEDURE";
 		}
-		System.out.println("\n" + subroutineName + ": " + subroutineType
-				+ paramString);
+		// else if it is the process SM entry then it is process
+		else if (subroutineName.equals(BeginCycleName)) {
+			subroutineType = "PROCESS";
+			paramString = "(...)";
+		}
+		// else return since the other subroutines should be in-lined
+		else {
+			return;
+		}
 		returnList.add("\n" + subroutineName + ": " + subroutineType
 				+ paramString);
-		System.out.println("BEGIN");
 		returnList.add("BEGIN");
 		printEobject(el.getBody());
-		System.out
-				.println("END " + subroutineType + " " + subroutineName + ";");
 		returnList.add("END " + subroutineType + " " + subroutineName + ";");
 	}
 
@@ -337,42 +355,37 @@ public class QuickPrinter {
 		else if(constantType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
 			constantType = "Boolean";
 		}
-		
-		
-		System.out.println("CONSTANT " + el.getIdentifier() + ": "
-				+ constantType + " := " + el.getInitialValue());
 		returnList.add("CONSTANT " + el.getIdentifier() + ": "
 				+ constantType + " := " + el.getInitialValue());
 	}
 
 	private void doPrint(Enumeration el) {
-		System.out.print("TYPE " + el.getIdentifier() + " IS (");
 		boolean first = true;
 		String tmpStr = "TYPE " + el.getIdentifier() + " IS (";
 		for(String str: el.getLiteralValues()){
 			if(first){
-				System.out.print(str);
 				tmpStr = tmpStr + str;
 				first = false;
 			}
 			else{
-				System.out.print(", " + str);
 				tmpStr = tmpStr + ", " + str;
 			}
 		}
-		System.out.println(");");
 		tmpStr = tmpStr + ");";
 		returnList.add(tmpStr);
 	}
 	
 	private void doPrint(VariableDecl el) {
-		List<String> connectorNameList = getConnectorNameList();
+		List<String> connectorNameList = smTranslationMgr.quickPrintInfo.getConnectorNameList();
+		List<String> synchSMNames = smTranslationMgr.quickPrintInfo.getSynchSMNamesList();
+		String assignmentOperator = " := ";
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();
-		String declarationType;
+		String declarationType = null;
 		// If the list contains the variable ID then it is a signal.
 		if(connectorNameList.contains(el.getIdentifier())){
 			declarationType = "SIGNAL ";
+			assignmentOperator = " <= ";
 			if(variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
 				variableType = "Integer";
 			}
@@ -384,6 +397,12 @@ public class QuickPrinter {
 				else{ initialValue = "0";}
 			}
 		}
+		// else if the variable is a state-machine program counter
+		// (i.e. with the same name as the state-machine itself)
+		else if(synchSMNames.contains(el.getIdentifier())){
+			declarationType = "SIGNAL ";
+			assignmentOperator = " <= ";
+		}
 		else{
 			declarationType = "VARIABLE ";
 			if(variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
@@ -393,16 +412,7 @@ public class QuickPrinter {
 				variableType = "Boolean";
 			}
 		}
-		
-		System.out.println(declarationType + el.getIdentifier() + ": "
-				+ variableType + " := " + initialValue);
 		returnList.add(declarationType + el.getIdentifier() + ": "
-				+ variableType + " := " + initialValue);
-	}
-
-
-
-	public void setTranslationManager(IRodinProject rodinProject) {
-		this.sourceRodinProject = rodinProject;
+				+ variableType + assignmentOperator + initialValue);
 	}
 }

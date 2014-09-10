@@ -13,6 +13,7 @@ import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.rodinp.core.IRodinProject;
 
+import ac.soton.codin.codegen.quickPrint.QuickPrintInfo;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.statemachines.AbstractNode;
@@ -65,29 +66,36 @@ public class VHDL_TranslationData {
 	// in a map of ComponentName <-> ProcessStateMachine
 	public Map<String, Statemachine> processSM_Map = new HashMap<String, Statemachine>();
 
-	// BEGIN: The following maps are refreshed (cleared) for each new component.
-
-	// In a component: Given a state node, get the events associated with the
-	// state
-	public Map<State, List<Event>> component_stateEventMap = new HashMap<State, List<Event>>();
-
-	// In a component: Complement to the stateEventMap above: Keys are nodes,
-	// but not including states.
-	// Given a node, we can get the associated events. (Needed for Joins, in
-	// particular)
-	public Map<AbstractNode, List<Event>> component_nodeEventMap = new HashMap<AbstractNode, List<Event>>();
-	public Map<Statemachine, Subroutine> synchSM_subroutineMap = new HashMap<Statemachine, Subroutine>();
-	
 	// Keep track of the components to be translated
 	public List<Component> componentList = new ArrayList<>();
 	// Keep track of the connectors
 	public static List<Connector> connectorList = new ArrayList<>();
 
-
+	
+	// BEGIN: The following maps/data structures are refreshed (cleared) for each new component.
+	//
+	// In a component: Given a state node, get the events associated with the
+	// state
+	public Map<State, List<Event>> component_stateEventMap = new HashMap<State, List<Event>>();
+	// provide some utilities for each iteration
+	public QuickPrintInfo quickPrintInfo = new QuickPrintInfo(this);
+	// In a component: Complement to the stateEventMap above: Keys are nodes,
+	// but not including states.
+	// Given a node, we can get the associated events. (Needed for Joins, in
+	// particular)
+	public Map<AbstractNode, List<Event>> component_nodeEventMap = new HashMap<AbstractNode, List<Event>>();
+	// A map from synchronous state-machines to subroutines
+	public Map<Statemachine, Subroutine> synchSM_subroutineMap = new HashMap<Statemachine, Subroutine>();
+	// A list of synchronous state-machines for the current component
+	public List<Statemachine> synchSMList = new ArrayList<>();
+	
 	// call reset for each new component
 	public void resetMaps() {
 		component_stateEventMap.clear();
 		component_nodeEventMap.clear();
+		synchronousSM_Map.clear();
+		quickPrintInfo = new QuickPrintInfo(this);
+		synchSMList.clear();
 	}
 
 	// END: of maps refreshed (cleared) for each new component.

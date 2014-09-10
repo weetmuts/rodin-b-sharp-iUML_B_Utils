@@ -20,7 +20,7 @@ public class TopLevelGenerator implements IGenerator {
 			}
 		}
 		
-		QuickPrinter qp = new QuickPrinter();
-		return qp.printEobject(program);
+		QuickPrinter qp = new QuickPrinter(program);
+		return qp.printProgram();
 	}
 }

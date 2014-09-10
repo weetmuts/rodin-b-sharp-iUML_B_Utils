@@ -124,6 +124,7 @@ public class StateMachinePreprocessor {
 			// We use this to find out when a procSM 'calls' a synchSM .
 			List<Statemachine> synchSMList = smTranslationData.synchronousSM_Map
 					.get(component.getName());
+			smTranslationData.synchSMList = synchSMList;
 			for (Statemachine synchSM : synchSMList) {
 				processSMAssistant.findProcessUsersOfSynchSM(synchSM,
 						smTranslationData);
