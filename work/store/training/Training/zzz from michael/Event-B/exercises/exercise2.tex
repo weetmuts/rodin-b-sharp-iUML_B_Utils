@@ -1,0 +1,203 @@
+\documentclass{article}
+%\documentclass{slides}
+%dvipdfm -l
+
+%\usepackage{a4}
+\usepackage{bsymb}
+\usepackage{b}
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+
+
+\begin{centering}
+Exercise on Relations in Event-B \\
+Michael Butler, University of Southampton \\[1ex] ~\\
+\end{centering}
+
+
+
+\noindent  Assume the following 2 relations:
+\begin{eqnarray*}
+    A &=& \set{~ a1\mapsto b3,~ a2\mapsto b1, a3\mapsto b3,
+    a2\mapsto b6 ~} \\
+    B &=&  \set{~ b3\mapsto c1,~ b1\mapsto c2, b5\mapsto c1 ~}
+\end{eqnarray*}
+
+\noindent 1.  Compute $\set{a1,a3,a4}\domres A$ \\
+
+\noindent2.  Compute $B\ransub \set{c1,c3}$ \\
+
+\noindent3.  Compute $A~;B$ \\
+
+\noindent4. A hotel reception system allocates guests to rooms.
+Each room is allocated to at most one guest.  When a guest checks
+in, the system finds a  free room and allocates that room to them.
+When they check-out, the room is de-allocated. Write a B
+specification of a system that manages the allocation of rooms.
+Include a
+check-in operation and a check-out operation. \\
+
+\noindent 5. Add an operation to the room allocation system to
+check which room(s) a guest is allocated to. \\
+
+
+\noindent 6. Extend your B model so that the hotel has a variable
+set of rooms that can be extended or reduced.  Add operations to
+add and remove rooms.  Extend the existing operations where
+necessary.
+
+\end{document}
+
+\newpage
+
+\noindent  Assume the following 2 relations:
+\begin{eqnarray*}
+    A &=& \set{~ a1\mapsto b3,~ a2\mapsto b1,~ a3\mapsto b3,~
+    a2\mapsto b6 ~} \\
+    B &=&  \set{~ b3\mapsto c1,~ b1\mapsto c2,~ b5\mapsto c1 ~}
+\end{eqnarray*}
+
+\noindent 1.  Compute $\set{a1,a3,a4}\domres A$ \\
+\begin{eqnarray*}
+    \set{a1,a3,a4}\domres A &=& \set{~ a1\mapsto b3,~  a3\mapsto b3 ~}
+\end{eqnarray*}
+
+\noindent2.  Compute $B\ransub \set{c1,c3}$ \\
+\begin{eqnarray*}
+    B\ransub \set{c1,c3} &=& \set{~  b1\mapsto c2 ~}
+\end{eqnarray*}
+
+\noindent3.  Compute $A~;B$ \\
+\begin{eqnarray*}
+    A~;B &~=~& \set{~  a1\mapsto c1,~ a2\mapsto c2,~ a3\mapsto c1 ~}
+\end{eqnarray*}
+
+\noindent4. A hotel reception system allocates guests to rooms.
+Each room is allocated to at most one guest.  When a guest checks
+in, the system finds a  free room and allocates that room to them.
+When they check-out, the room is de-allocated. Write a B
+specification of a system that manages the allocation of a fixed
+set of rooms. Include a
+check-in operation and a check-out operation. \\
+
+
+\machineA{Logon} \\
+%
+\setsA{~~~
+    Guest, Room  } \\
+%
+\variablesA{alloc} \\
+%
+\invariantA{
+        alloc ~\in~ Room \pfun Guest  }
+
+
+\initialisationA{
+    alloc ~:=~ \set{}  }
+
+
+
+\operB{CheckIn(r,g)}{
+    \preB{
+      r ~\in~ Room ~\land~ \\
+      g ~\in~ Guest ~\land~ \\
+      r~\not\in~ dom(alloc)
+    }{
+      alloc(r) ~\assign~ g
+    } }
+
+\operB{CheckOut(r)}{
+    \preB{
+      r ~\in~ Room ~\land~ \\
+      r \in dom(alloc)
+    }{
+      alloc ~\assign~ \set{r}\domsub alloc
+    } }
+
+\noindent 5. Add an operation to the room allocation system to
+check which room(s) a guest is allocated to.
+
+\operB{rr \longleftarrow CheckRooms(g)}{
+    \preB{
+      g ~\in~ Guest ~\land~
+    }{
+      rr ~\assign~ alloc^{-1}[\set{g}]
+    } }
+
+Alternative specification:
+
+ \operB{rr \longleftarrow CheckRooms(g)}{
+    \preB{
+      g ~\in~ Guest ~\land~
+    }{
+      rr ~\assign~ dom(alloc\ranres\set{g})
+    } }
+
+\noindent 6. Extend your B model so that the hotel has a variable
+set of rooms that can be extended or reduced.  Add operations to
+add and remove rooms.  Extend the existing operations where
+necessary.
+
+
+\variablesA{alloc, rooms} \\
+%
+\invariant{
+        alloc ~\in~ Room \pfun Guest  ~\land\\
+        rooms \in \power(Room) ~\land \\
+        dom(alloc) \subseteq rooms  }
+
+
+\initialisationA{
+    alloc ~:=~ \set{} ~~||~~ rooms :=\set{} }
+
+\operB{AddRoom(r)}{
+    \preB{
+      r ~\in~ Room ~\land~ \\
+      r~\not\in~ rooms
+    }{
+      rooms ~\assign~ rooms \cup \set{r}
+    } }
+
+We should only remove a room if it is not currently allocated:
+ \operB{RemoveRoom(r)}{
+    \preB{
+      r ~\in~ rooms ~\land~ \\
+      r~\not\in~ dom(alloc)
+    }{
+      rooms ~\assign~ rooms \setminus \set{r}
+    } }
+
+
+Modify CheckIn and CheckOut:
+
+\operB{CheckIn(r,g)}{
+    \preB{
+      r ~\in~ rooms ~\land~ \\
+      g ~\in~ Guest ~\land~ \\
+      r\not\in dom(alloc)
+    }{
+      alloc(r) ~\assign~ g
+    } }
+
+\operB{CheckOut(r)}{
+    \preB{
+      r ~\in~ rooms ~\land~ \\
+      r \in dom(alloc)
+    }{
+      alloc ~\assign~ \set{r}\domsub alloc
+    } }
+
+CheckRooms does not need to be changed.
+
+
+
+\end{document}

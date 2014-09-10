@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile ch.ethz.eventb.decomposition.decomposed="true" org.eventb.core.configuration="ch.ethz.eventb.decomposition.mchBase;org.eventb.codegen.ui.cgConfig" org.eventb.core.generated="true" version="5">
+<org.eventb.core.variable name="'" org.eventb.core.identifier="mwAmount"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="mwCommand"/>
+<org.eventb.core.invariant name=")" org.eventb.core.label="typing_mwCommand" org.eventb.core.predicate="mwCommand ∈ activity" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="*" org.eventb.core.label="typing_mwAmount" org.eventb.core.predicate="mwAmount ∈ ℤ" org.eventb.core.theorem="true"/>
+<org.eventb.core.invariant name="+" org.eventb.core.label="transfer_inv3" org.eventb.core.predicate="mwAmount ∈ ℤ "/>
+<org.eventb.core.event name="," org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="mwAmount ≔ 0" org.eventb.core.label="act3"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="mwCommand ≔ credit" org.eventb.core.label="act6"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="-" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="send">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="srcAmount_p"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="srcCommand_p"/>
+<org.eventb.core.action name="+" org.eventb.core.assignment="mwAmount ≔ srcAmount_p" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="," org.eventb.core.assignment="mwCommand ≔ srcCommand_p" org.eventb.core.label="act2"/>
+<org.eventb.core.guard name="-" org.eventb.core.label="typing_srcCommand_p" org.eventb.core.predicate="srcCommand_p ∈ activity" org.eventb.core.theorem="true"/>
+<org.eventb.core.guard name="." org.eventb.core.label="typing_srcAmount_p" org.eventb.core.predicate="srcAmount_p ∈ ℤ" org.eventb.core.theorem="true"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="." org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="recv">
+<org.eventb.core.parameter name="'" org.eventb.core.identifier="mwAmount_p"/>
+<org.eventb.core.parameter name="(" org.eventb.core.identifier="mwCommand_p"/>
+<org.eventb.core.guard name="+" org.eventb.core.label="typing_mwAmount_p" org.eventb.core.predicate="mwAmount_p ∈ ℤ" org.eventb.core.theorem="true"/>
+<org.eventb.core.guard name="," org.eventb.core.label="typing_mwCommand_p" org.eventb.core.predicate="mwCommand_p ∈ activity" org.eventb.core.theorem="true"/>
+<org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="mwAmount_p = mwAmount"/>
+<org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="mwCommand_p = mwCommand"/>
+</org.eventb.core.event>
+<org.eventb.core.seesContext name="/" org.eventb.core.target="ctx"/>
+</org.eventb.core.machineFile>

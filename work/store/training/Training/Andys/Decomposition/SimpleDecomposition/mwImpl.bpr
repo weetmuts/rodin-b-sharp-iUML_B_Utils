@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="send/act1/SIM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(activity,{credit},{debit}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p0" org.eventb.core.prInfHyps="p1,p2"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p1,p2"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p4"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p6"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(activity,{credit},{debit})">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="activity={credit,debit}">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬credit=debit">
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="srcAmount_∈ℤ">
+<org.eventb.core.prIdent name="srcAmount_" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="mwAmount∈ℤ">
+<org.eventb.core.prIdent name="mwAmount" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="mwCommand∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="mwCommand" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="srcCommand_∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="srcCommand_" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="send/act2/SIM" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(activity,{credit},{debit}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p0" org.eventb.core.prInfHyps="p1,p2"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p1,p2"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p4"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p6"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(activity,{credit},{debit})">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="activity={credit,debit}">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬credit=debit">
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="srcAmount_∈ℤ">
+<org.eventb.core.prIdent name="srcAmount_" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="mwAmount∈ℤ">
+<org.eventb.core.prIdent name="mwAmount" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="mwCommand∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="mwCommand" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="srcCommand_∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="srcCommand_" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="recv/grd1/GRD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(activity,{credit},{debit}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p0" org.eventb.core.prInfHyps="p1,p2"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p1,p2"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p4"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p6"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(activity,{credit},{debit})">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="mwCommand_∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="mwCommand_" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="activity={credit,debit}">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬credit=debit">
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="mwAmount∈ℤ">
+<org.eventb.core.prIdent name="mwAmount" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="mwCommand∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="mwCommand" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="mwAmount_∈ℤ">
+<org.eventb.core.prIdent name="mwAmount_" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="recv/grd2/GRD" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prHyps="">
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition(activity,{credit},{debit}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p0" org.eventb.core.prInfHyps="p1,p2"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p0"/>
+<org.eventb.core.prHypAction name="SELECT2" org.eventb.core.prHyps="p1,p2"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p4"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prHypAction name="HIDE3" org.eventb.core.prHyps="p6"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue=""/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="partition(activity,{credit},{debit})">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="mwCommand_∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="mwCommand_" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="activity={credit,debit}">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="¬credit=debit">
+<org.eventb.core.prIdent name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.prIdent name="debit" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="mwAmount∈ℤ">
+<org.eventb.core.prIdent name="mwAmount" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="mwCommand∈activity">
+<org.eventb.core.prIdent name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.prIdent name="mwCommand" org.eventb.core.type="activity"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="mwAmount_∈ℤ">
+<org.eventb.core.prIdent name="mwAmount_" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>

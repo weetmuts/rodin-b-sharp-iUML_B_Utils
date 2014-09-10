@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.poIdentifier name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="debit" org.eventb.core.type="activity"/>
+<org.eventb.core.poPredicate name="activitz" org.eventb.core.predicate="partition(activity,{credit},{debit})" org.eventb.core.source="/SimpleDecomposition/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="destAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="mwAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="srcAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="srcCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poPredicate name="destCommane" org.eventb.core.predicate="srcAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="destCommanf" org.eventb.core.predicate="destAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#,"/>
+<org.eventb.core.poPredicate name="destCommang" org.eventb.core.predicate="mwAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#."/>
+<org.eventb.core.poPredicate name="destCommanh" org.eventb.core.predicate="srcCommand∈activity" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poPredicate name="destCommani" org.eventb.core.predicate="destCommand∈activity" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#4"/>
+<org.eventb.core.poPredicate name="destCommanj" org.eventb.core.predicate="mwCommand∈activity" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#6"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTIDENTdestCommane" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwCommand'" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="srcAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="srcCommand'" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="destCommand'" org.eventb.core.type="activity"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPdestCommane" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTIDENTdestCommane" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poSequent name="send/act1/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTALLHYPdestCommanf"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="srcAmount_p=srcAmount" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#1|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#1"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#1|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#7"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poSequent#send\/act1\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="send/act2/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTALLHYPdestCommanf"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="srcCommand_p=srcCommand" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#1|org.eventb.core.action#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#1"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#1|org.eventb.core.action#("/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#7"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poSequent#send\/act2\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTdestCommanf" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwCommand'" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="srcCommand_p" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="mwAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="srcAmount_p" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPdestCommanf" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTIDENTdestCommanf" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="srcAmount_p=srcAmount" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#7|org.eventb.core.guard#*"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="srcCommand_p=srcCommand" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#7|org.eventb.core.guard#,"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="recv/act1/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTALLHYPdestCommang"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="mwAmount_p=mwAmount" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#2|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#2"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#2|org.eventb.core.action#'"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#8"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poSequent#recv\/act1\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="recv/act2/SIM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Action simulation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTALLHYPdestCommang"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="mwCommand_p=mwCommand" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#2|org.eventb.core.action#("/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#2"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.event#2|org.eventb.core.action#("/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#8"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poSequent#recv\/act2\/SIM|org.eventb.core.poPredicateSet#SEQHYP"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTdestCommang" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwAmount_p" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwCommand_p" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="destAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand'" org.eventb.core.type="activity"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPdestCommang" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#EVTIDENTdestCommang" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="mwAmount_p=mwAmount" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="mwCommand_p=mwCommand" org.eventb.core.source="/SimpleDecomposition/transfer1.bum|org.eventb.core.machineFile#transfer1|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1.bpo|org.eventb.core.poFile#transfer1|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0"/>
+</org.eventb.core.poFile>

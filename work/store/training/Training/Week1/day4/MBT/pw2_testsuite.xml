@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<test_suite>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Ex_Comm">
+            <value>0</value>
+            <value>0</value>
+        </event>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="Ex_Comm">
+            <value>0</value>
+            <value>0</value>
+        </event>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Ex_Comm">
+            <value>0</value>
+            <value>0</value>
+        </event>
+        <event name="PE"/>
+    </test_case>
+</test_suite>

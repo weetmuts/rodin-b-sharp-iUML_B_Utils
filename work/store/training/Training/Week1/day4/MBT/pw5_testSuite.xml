@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<test_suite>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="obs_detect"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>0</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Normal_NeutralNeutral"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="obs_detect"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="obs_detect"/>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>MIDDLE</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Normal_ToDown"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>MIDDLE</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Normal_ToDown"/>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>0</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Normal_NeutralNeutral"/>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Normal_EndStop"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>0</value>
+            <value>−1</value>
+        </event>
+        <event name="selectPass"/>
+        <event name="Normal_EndStop"/>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="obs_detect"/>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>MIDDLE</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="Normal_ToDown"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>MIDDLE</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="Normal_ToDown"/>
+        <event name="PE"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="Normal_EndStop"/>
+    </test_case>
+    <test_case>
+        <INITIALISATION>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">MIDDLE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">0</value>
+            <value type="variable">FALSE</value>
+            <value type="variable">TRUE</value>
+        </INITIALISATION>
+        <event name="PE"/>
+        <event name="getEStop">
+            <value>BOTTOM</value>
+        </event>
+        <event name="ValidateCom">
+            <value>−1</value>
+            <value>−1</value>
+        </event>
+        <event name="selectDri"/>
+        <event name="Normal_EndStop"/>
+        <event name="PE"/>
+    </test_case>
+</test_suite>

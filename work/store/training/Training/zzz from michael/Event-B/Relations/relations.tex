@@ -1,0 +1,1548 @@
+%\documentclass[handout]{beamer}
+\documentclass{beamer}
+
+\usepackage{bsymb}
+\usepackage{b}
+\usepackage{xcolor}
+
+% Purpose of modelling?
+
+% difference between axioms and invariants?
+% can macine have axioms and vice versa
+
+% why state invariants explicitly
+% explain keywords
+
+% ctr := ctr-1  versus  ctr=ctr-1
+
+% explain skip
+
+\mode<presentation>
+{
+    	%\usetheme{Warsaw}
+	\setbeamertemplate{footline}
+	{\centerline{\insertframenumber/\inserttotalframenumber}}
+} 
+
+
+\title{More on Event-B: Relations}
+
+\author{\copyright\ Michael Butler}
+
+\institute{ University of Southampton }
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+
+\titlepage
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Ordered Pairs and Cartesian Products}
+
+An \alert{ordered pair}  is an element consisting of two parts: 
+
+~~~~~~~ a \alert{first} part and a \alert{second} part.
+
+~
+
+An ordered pair with first part $x$ and second part $y$  is written:~~~~    \fbox{$x \mapsto y$}
+
+~
+
+The \alert{Cartesian product }of two sets is the \alert{set of pairs} whose first part is in $S$ and second part is in $T$.
+
+~
+
+The Cartesian product of $S$ with $T$ is written:~~~
+\fbox{$
+    S \cross T
+$}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Cartesian Products: Definition and Examples}
+
+~
+
+Defining Cartesian product:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Predicate & Definition \\[2pt] \hline
+~&\\
+$~~x \mapsto y ~~\in~~ S \cross T ~~$ &  $~~x\in S  ~~\land~~ y\in T~~$  \\
+~&\\ \hline
+\end{tabular}
+\end{center}
+
+~
+
+Examples:
+\begin{eqnarray*}
+	\set{a,b,c} \cross \set{1,2} & = &
+		\set{~ a\mapsto1, ~ a\mapsto2, ~ b\mapsto1, ~ \\
+		&& ~~b\mapsto2, ~ c\mapsto1, ~ c\mapsto2, ~} \\
+&\\
+	\set{a,b,c} \cross \set{} & = & ?\\
+&\\
+	\set{~\set{a},~ \set{a,b}~ } ~\cross~ \set{1,2} & = & ?\\
+\end{eqnarray*}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Cartesian Product is a Type Constructor}
+
+
+
+$
+    S \cross T
+$ is a new type constructed from types $S$ and $T$.
+
+~
+
+Cartesian product is the type constructor for ordered pairs.
+
+~
+
+Given~ $x~\in~S$,~~  $y~\in~T$,~~~  we have
+\begin{center}
+\fbox{~$
+    x \mapsto y ~~\in~~ S \cross T
+~$}
+\end{center}
+
+\[
+    4\mapsto 7 ~~\in~~ ?
+\]
+\[
+    \set{5,6,3} \mapsto 4 ~~\in~~ ?
+\]
+\[
+    \set{~ 4\mapsto 8,~ 3\mapsto 0,~ 2\mapsto 9 ~}~\in~~ ?
+\]
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Sets of Order Pairs}
+A  database can be modelled as a \alert{set of ordered pairs}:
+\begin{eqnarray*}
+    directory & = &
+    \set{~ mary \mapsto 287573, \\
+&&  ~~mary \mapsto 398620, \\
+&&  ~~john \mapsto 829483, \\
+&&  ~~jim \mapsto 398620 ~}
+\end{eqnarray*}
+
+$directory$ has type
+\[
+    directory~~\in~~ \power (Person \cross PhoneNum)
+\]
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Relations}
+
+A  \alert{relation} is a set of ordered pairs.
+
+~
+
+A relation is a common modelling structure so Event-B has a special notation for it:
+\[
+    \mbox{\fbox{$T \rel S$}} ~~=~~ \power(T\cross S)
+\]
+
+So we can write:
+\[
+    directory ~~\in~~ Person \rel PhoneNum
+\]
+
+Do not confuse the arrow symbols:
+
+
+~~~~~~$\rel$  combines \alert{two sets} to form a \alert{set}.
+
+~~~~~~$\mapsto$  combines \alert{two elements} to form an \alert{ordered pair.}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Domain and Range}
+
+
+\begin{itemize}\setlength{\itemsep}{5pt}
+\item The \alert{domain} of a relation $R$ is the set of first parts of all the pairs in $R$,
+written \fbox{$dom(R)$}
+
+\item The \alert{range} of a relation $R$ is the set of second parts of all the pairs in $R$,
+written \fbox{$ran(R)$}
+\end{itemize}
+
+
+
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Predicate & Definition \\[2pt] \hline
+~&\\
+$~~x   \in dom(R) ~~$ &  $~~\exists y\cdot~ x \mapsto y~\in~ R~~$  \\
+~&\\ \hline
+~&\\
+$~~y   \in ran(R)  ~~$ &  $~~\exists x\cdot ~ x \mapsto y~\in~ R~~$  \\
+~&\\ \hline\end{tabular}
+\end{center}
+
+
+Examples:
+\[
+    \dom(directory) ~~=~~ \set{ mary, john, jim } 
+\]
+\[    \ran(directory) ~~=~~ \set{ 287573, 398620, 829483 }
+\]
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Telephone Directory Model}
+
+\begin{itemize}
+\item  Phone directory relates people to their phone numbers.
+\item  Each person can have zero or more numbers.
+\item  People can share numbers.
+\end{itemize}
+
+~
+
+
+\contextA{PhoneContext}
+\setsA{
+     Person ~~~  PhoneNum
+}
+\ENDC
+
+~
+
+\machineA{PhoneBook}
+%
+\variablesA{dir}
+%
+\invariantA{
+        dir ~\in~ Person \rel PhoneNum   }
+
+~
+
+\initialisationA{
+    dir ~:=~ \set{} }
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Extending the Directory}
+
+Add an entry to the directory:
+
+\operA{AddEntry}{
+    \anyB{p,n}{p \in Person \\ n\in PhoneNum}{dir ~\assign~ dir \cup \set{p\mapsto n}  }
+    }
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Relational Image}
+
+Assume $~~R ~\in~ S\rel T $   ~~and~~ $A\subseteq S$
+
+~
+
+
+The \alert{relational image} of set $A$ under relation $R$ is written~
+\fbox{$~R[A]~$}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Predicate & Definition \\[2pt] \hline
+~&\\
+$~~y   \in R[A]   ~~$ &  $~~\exists x\cdot ~ x\in A ~~\land~~ x \mapsto y~\in~ R~~$  \\
+~&\\ \hline\end{tabular}
+\end{center}
+
+
+
+Example:
+\begin{eqnarray*}
+    directory & = &
+    \set{~ mary \mapsto 287573, \\
+&&  ~~mary \mapsto 398620, \\
+&&  ~~john \mapsto 829483, \\
+&&  ~~jim \mapsto 398620 ~}
+\end{eqnarray*}
+%
+\begin{eqnarray*}
+    directory[~\set{mary}~] & = &
+    \set{~  287573,~ 398620 ~}
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Modelling Queries using Relational Image}
+
+Determine all the numbers associated with a person in the directory:
+\operA{GetNumbers}{
+    \anyBs{p,ns!}{p \in Person \\ ns! = dir[~\set{p}~]  }
+    }
+
+~
+
+Determine all the numbers associated with a set of people:
+\operA{GetMultiNumbers}{
+    \anyBs{ps,ns!}{ps \subseteq Person \\ ns! = dir[~ps~]  }
+    }
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Relational Inverse}
+
+Given $~~R ~\in~ S\rel T $, the \alert{relational inverse} of  $R$ is  written ~\fbox{$R^{-1}$}
+
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Predicate & Definition \\[2pt] \hline
+~&\\
+$~~y\mapsto x   ~\in~ R^{-1}   ~~$ &  $~~x\mapsto y ~\in~ R~~$  \\
+~&\\ \hline\end{tabular}
+\end{center}
+
+Example:
+\begin{eqnarray*}
+    directory^{-1} & = &
+    \set{~ 287573\mapsto mary , \\
+&&~~  398620\mapsto mary , \\
+&&~~  829483\mapsto john , \\
+&&~~  398620\mapsto jim   ~}
+\end{eqnarray*}
+%
+\begin{eqnarray*}
+    directory^{-1}[~\set{398620}~] & = &
+    \set{~  mary,~ jim ~}
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\frametitle{ Inverse Queries }
+
+Return all the people associated with a number in the directory:
+\operA{GetNames}{
+    \anyBs{n,ps!}{n\in PhoneNum \\ ps! = dir^{-1}[~\set{n}~]  }
+    }
+
+~
+
+Return all the people associated with a set of numbers:
+\operA{GetMultiNames}{
+    \anyBs{ns,ps!}{ns \subseteq PhoneNum \\ ps! = dir^{-1}[~ns~]  }
+    }
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Domain Restriction}
+
+Given $~~R ~\in~ S\rel T $   ~~and~~ $A\subseteq S$,
+
+
+the \alert{domain restriction} of $R$ by $A$  is writen~ \fbox{$A\domres R$}
+
+~
+
+Restrict relation $R$ so that it only contains pairs whose first part
+is in the set $A$.
+
+~
+
+Example:
+\begin{eqnarray*}
+    directory & = &
+    \set{~ mary \mapsto 287573,~~
+  mary \mapsto 398620, \\
+&& ~~~ john \mapsto 829483,~~
+  jim \mapsto 398620 ~}
+\end{eqnarray*}
+%
+\begin{eqnarray*}
+    \set{john,jim,jane} \domres directory & = &
+    \set{~ john \mapsto 829483, \\
+&&~~~  jim \mapsto 398620 ~}
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Domain Subtraction}
+
+Given $~~R ~\in~ S\rel T $   ~~and~~ $A\subseteq S$,
+
+the \alert{domain subtraction} of $R$ by $A$  is written~ \fbox{$A\domsub R$}
+
+~
+
+Remove those pairs from $R$ whose first part is in  $A$.
+
+~
+
+Example:
+\begin{eqnarray*}
+    \set{john,jim,jane} \domsub directory & = &
+    \set{~ mary \mapsto 287573, \\
+&&~~~  mary \mapsto 398620 ~}
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Domain and Range, Restriction and Substraction}
+
+Assume $~~R ~\in~ S\rel T $   ~~and~~ $A\subseteq S$ ~~and~~ $B\subseteq T$
+
+\begin{center}
+\begin{tabular}{|c|c|l|}
+\hline
+Predicate & Definition & \\[2pt] \hline
+&&\\
+$~~x\mapsto y   ~\in~ A\domres R   ~~$ &  $~~x\mapsto y ~\in~ R ~~\land~~ x\in A~~$ 
+& \mbox{domain } \\
+&& \mbox{restriction} \\ \hline &&\\
+$~~x\mapsto y   ~\in~ A\domsub R   ~~$ &  $~~x\mapsto y ~\in~ R ~~\land~~ x\not\in A~~$  
+& \mbox{domain } \\
+&& \mbox{subtraction} \\ \hline &&\\
+$~~x\mapsto y   ~\in~ R\ranres B   ~~$ &  $~~x\mapsto y ~\in~ R ~~\land~~ y \in B~~$ 
+& \mbox{range } \\
+&& \mbox{restriction} \\ \hline &&\\
+$~~x\mapsto y   ~\in~ R\ransub B   ~~$ &  $~~x\mapsto y ~\in~ R ~~\land~~ y \not\in B~~$ 
+& \mbox{range } \\
+&& \mbox{subtraction} \\ \hline
+\end{tabular}
+\end{center}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Removing Entries from the Directory}
+
+Remove all the entries associated with a person in the directory:
+\operA{RemovePerson}{
+    \anyB{p}{p \in Person }{dir ~\assign~ \set{p} \domsub dir  }
+    }
+
+~
+
+Remove all the entries associated with a number in the directory:
+\operA{RemoveNumber}{
+    \anyB{n}{n \in PhoneNum }{dir ~\assign~  dir \ransub \set{n}   }
+    }
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Relational Composition}
+
+Given $~~Q ~\in~ S\rel T $   ~~and~~ $~~R ~\in~ T\rel U $, 
+
+the \alert{relational composition} of $Q$ and $R$   is written~ \fbox{$Q~;R$}
+
+~
+
+We have that 
+$~~~~~~~~~~~~~~Q~;R ~~\in~~ S\rel U$
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Predicate & Definition \\[2pt] \hline
+~&\\
+$~~x\mapsto z ~\in~ (Q~;R) ~~$ &  $~~\exists y\cdot ~ x\mapsto y ~\in~ Q ~~\land~~ y\mapsto z ~\in~ R~~$  \\
+~&\\ \hline\end{tabular}
+\end{center}
+
+
+
+Example:
+\begin{eqnarray*}
+    M & = &  \set{~ a \mapsto l, b \mapsto m, c \mapsto n ~} \\
+    N & = & \set{~ l \mapsto 4, n \mapsto 6, p \mapsto 8 ~}\\
+    M~;N &=&  ?
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Composition and Image}
+
+Given $~~Q ~\in~ S\rel T $   ~~and~~ $~~R ~\in~ T\rel U $  ~~and~~
+$A \subseteq S$
+\begin{eqnarray*}
+    (Q~;R)[~A~]  &=&  R[~Q[~A~]~]
+\end{eqnarray*}
+
+
+
+Example:
+%
+\begin{eqnarray*}
+    M & = &  \set{~ a \mapsto l, b \mapsto m, c \mapsto n ~} \\
+    N & = & \set{~ l \mapsto 4, n \mapsto 6, p \mapsto 8 ~}\\&\\
+    (M~;N)~ [~\set{a,b}~] &=&  ? \\
+    N[~M [~\set{a,b}~]~] &=&  ?
+ %   &=&  N [\set{l,m}] \\
+ %   &=&  \set{4}
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Extend directory with friends}
+
+\variablesA{dir, friend}
+%
+\invariant{
+        friend ~\in~ Person \rel Person  \\
+        dir ~\in~ Person \rel PhoneNum }
+
+~
+
+Return the telephone numbers of all friends of $p$:
+
+\operB{GetFriendNumbers}{
+    \anyBs{p,ns!}{p \in Person \\ ns! = (friend;\!dir)[~\set{p}~]   }
+    }
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Recap}
+\begin{itemize}
+\item Cartesian product is the type constructor  for pairs of elements.
+\item A relation is a set of pairs.
+\item Range of a relation, domain of a relation.
+\item Relational image, relational inverse.
+\item Restriction and subtraction.
+\item Relational composition.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Homogeneous Relations}
+
+Homogeneous relation is a relation between single type:
+\begin{eqnarray*}
+    R ~\in~ \mbox{\fbox{$S\rel S$}}
+\end{eqnarray*}
+
+
+Reflexive $~~~~~~~~
+    a\mapsto a ~\in~ R
+$
+
+Transitive
+\begin{eqnarray*}
+    a\mapsto b ~\in~ R  ~~~\land~~~ b\mapsto c~\in~ R
+    &~~~\implies~~~&  a \mapsto c ~\in~ R
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Reflexive Transitive Closure}
+
+Given  a relation $~~~R ~\in~ S\rel S ~~$ we write
+~~~\fbox{$R^{*}$}~~  for the\\ reflexive transitive closure of $R$
+
+
+Closure: add sufficient mappings to $R$ to get a relation that is
+reflexive and transitive
+
+
+
+
+Examples
+\begin{eqnarray*}
+    M &=& \set{~ 1 \mapsto 2,~ 2\mapsto 3 ~}  \\
+    M^{*} &=&  \set{~ 1 \mapsto 2,~ 2\mapsto 3,~ 1 \mapsto 3 \\&&
+            ~~ 1 \mapsto 1,~ 2 \mapsto 2,~ 3 \mapsto 3 ~}
+\end{eqnarray*}
+%
+\begin{eqnarray*}
+    N &=& \set{~ 1 \mapsto 2,~ 2\mapsto 3~ 2\mapsto 4 ~}  \\
+    N^{*} &=&
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Friends of friends}
+%
+\variablesA{friend}
+%
+\invariantA{
+        friend ~\in~ Person \rel Person   }
+%
+\operA{peo \longleftarrow GetFriends(p)}{
+    \preB{p \in Person }{peo ~\assign~ friend[~\set{p}~]   }
+    }
+%
+All friends of friends  of $p$: \operA{peo \longleftarrow
+GetFriendGroup(p)}{
+    \preB{p \in Person }{peo ~\assign~ friend^{*}[~\set{p}~]   }
+    }
+
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Symmetric Relations}
+
+
+
+Symmetric
+\begin{eqnarray*}
+    a\mapsto b ~\in~ R
+    &~~~\implies~~~&  b \mapsto a ~\in~ R
+\end{eqnarray*}
+
+All mappings hold in both directions.
+
+Should ~~~$friend~\in~Person\rel Person$~~~ be symmetric ?
+
+How to make a relation ~$R$~ symmetric?
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{Connecting Towns}
+
+\setsA{ Town }
+%
+\variablesA{link}
+%
+\invariant{
+        link ~\in~ Town \rel Town ~\land\\
+        link ~=~ link^{-1}  }
+
+\operA{AddLink(t1,t2)}{
+    \preB{
+      t1 \in Town ~\land\\
+      t2 \in Town
+    }{
+      link ~\assign~ link~\cup~\set{t1\mapsto t2}~\cup~\set{t2\mapsto t1}
+    }}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+
+
+2 towns are connected if there is a path of links that can be
+followed from one town to the other.  This is the case when the
+towns are related by the reflexive transitive closure:
+\[
+    t1 \mapsto t2  ~\in~  link^{*}
+\]
+
+
+Check if 2 towns are connected: \operB{res \longleftarrow
+CheckConnected(t1,t2)}{
+    \preB{
+      t1 \in Town ~\land\\
+      t2 \in Town
+    }{
+      res ~\assign~ bool(~t1 \mapsto t2  ~\in~  link^{*}~)
+    }}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{Partial Functions in B}
+
+~
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Partial Functions}
+
+Special kind of relation:\\
+Each domain element has at most one range element associated with
+it. To declare $f$ as a partial function:
+\[
+    f ~\in~ \mbox{\fbox{$X\pfun Y$}}
+\]
+
+This says that $f$ is a many-to-one relation\\
+Each domain element is mapped to exactly one range element:
+\begin{eqnarray*}
+    x~\in~ dom(f) ~
+    &~~\implies~~& card(~f[\set{x}]~) ~=~ 1
+\end{eqnarray*}
+
+More usually formalised as
+\begin{eqnarray*}
+    x\mapsto y_{1}~\in~ f ~~\land~~ x\mapsto y_{2}~\in~ f
+    &~~\implies~~& y_{1} = y_{2}
+\end{eqnarray*}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\frametitle{Function Application}
+
+We can use function application for partial functions.
+
+If $x\in \dom(f)$, then we write ~~~\fbox{$f(x)$}~~~ for the
+unique range element associated with $x$ in $f$.
+
+If $~x\not\in\dom(f)~$, then $f(x)$ is undefined.
+
+If $~card(~f[\set{x}]~)>1~$, then $f(x)$ is undefined.
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\[
+\begin{array}{rcl}
+    dir1 & = &
+    \set{~  mary \mapsto 398620, \\
+&&  ~~jim \mapsto 493028, \\
+&&  ~~jane \mapsto 493028 ~}
+\end{array}
+~~~~~~
+\begin{array}{rcl}
+    dir2 & = &
+    \set{~ mary \mapsto 287573, \\
+&&  ~~mary \mapsto 398620, \\
+&&  ~~jane \mapsto 493028 ~}
+\end{array}
+\]
+
+~
+
+\begin{description}  \setlength{\itemsep}{0pt}
+\centering \item    $dir1 ~\in~ Person \pfun Phone$ \item
+$dir1(jim) ~=~ 493028$ \item  $dir1(sarah)$ ~is undefined \item
+$dir2$ is not a partial function \item $dir2(mary)$ is undefined
+\end{description}
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Function Operators}
+
+All the relational operators can be used on partial functions
+(restriction, subtraction, image, composition, etc).
+
+Be careful with some operators!
+
+\begin{itemize}
+\item Set Union:~ $f \cup g$ is a partial function provided
+\[
+    x\in \dom(f) ~\land~ x\in \dom(g) ~~~\implies~~~ f(x) = g(x)
+\]
+Why?
+
+
+\item Inverse:~ $f^{-1}$ is not always a partial function. Why
+not?
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Function Overriding}
+
+ Override $f$ by $g$ ~~\fbox{~$f\ovl g$~}
+
+ $f$ and $g$ must be partial functions of the same type
+
+ Replace an existing mappings with new ones
+
+\begin{eqnarray*}
+     f \ovl \set{a \mapsto b} &=&
+     (\set{a}\domsub f) \cup \set{a \mapsto b} \\
+     f \ovl g &=&
+     (\dom(g)\domsub f) \cup g
+\end{eqnarray*}
+%
+\begin{eqnarray*}
+    dir1 & = &
+    \set{~  mary \mapsto 398620, ~  john \mapsto 829483, \\
+&&  jim \mapsto 493028, ~  jane \mapsto 493028 ~}
+\end{eqnarray*}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Birthday Book Spec}
+
+Birthday book relates people to their birthday.
+
+Each person can have at most one birthday.
+
+People can share birthdays.
+
+\setsA{
+     Person ~~;~  Date
+}
+%
+\variablesA{bb}
+%
+\invariantA{
+        bb ~\in~ Person \pfun Date   }
+%
+\initialisationA{
+    bb ~:=~ \set{} }
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+Add an entry to the directory: \operA{AddEntry}{
+    \anyB{p,d}{p \in Person \\ d\in Date}{bb ~\assign~ bb \ovl \set{p\mapsto d}  }
+    }
+
+Syntactic shorthand: \operA{AddEntry}{
+    \anyB{p,d}{p \in Person \\ d\in Date}{bb(p) ~\assign~ d  }
+    }
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+Check a person's birthday:
+\operA{Check}{
+    \anyBs{p,d!}{p \in Person~\\ p\in dom(bb) \\ d! = bb(p)  }
+    }
+
+\end{frame}
+
+
+\begin{frame}
+
+
+Check birthdays on a particular date:
+\operA{Who}{
+    \anyBs{d,ps!}{d \in Date  \\ ps! = bb^{-1}[\set{d}]  }
+    }
+
+\[
+bb^{-1} ~~\in~~ Date \rel Person
+\]
+
+Alternative:
+\operA{Who}{
+    \anyBs{d,ps!}{d \in Date  \\ ps! = dom(bb\ranres\set{d})  }
+    }
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Secure database example}
+
+~
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+We consider a  secure database. Each object in the database has a
+ data component.
+
+Each object has a classification between 1 and 10.
+
+Users of the system have a clearance level between 1 and 10.
+
+Users can only read and write objects whose classification is no
+greater than the user's clearance level.
+
+What are the \textit{types, operations, variables}?
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+
+\setsA{
+     Object ~~;~  Data ~~;~ User
+}
+%
+\variablesA{objs,~ users,~ data,~ class,~ clear}
+%
+\invariant{
+    objs ~\subseteq~ Object ~\\
+    users ~\subseteq~ User ~\\
+       data ~\in~ Object \pfun Data ~\\
+        class ~\in~ Object \pfun (1..10) ~\\
+        clear ~\in~ User \pfun (1..10) ~\\ ~\\
+        dom(data) = objs ~\\
+        dom(class) = objs ~\\
+        dom(clear) = users
+          }
+
+The invariant $dom(data) = objs$  means that $data(o)$ is
+well-defined whenever $o\in objs$.  ~~ Why is this important?
+%
+%\initialisationA{
+%    data, class, clear ~:=~ \set{},~ \set{},~\set{} }
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Total Functions}
+
+A total function is a special kind of partial function.
+ To declare $f$ as a total function:
+\[
+    f ~\in~ \mbox{\fbox{$X\tfun Y$}}
+\]
+
+This means that $f$ is well-defined for every element in $X$,
+i.e., $f ~\in~ X\tfun Y$  is shorthand for
+\[
+    f ~\in~ X\pfun Y  ~~\land~~ dom(f) = X
+\]
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+We can re-write the invariant for the secure database to use total
+functions:
+
+\invariant{
+    objs ~\subseteq~ Object ~\\
+    users ~\subseteq~ User ~\\
+       data ~\in~ objs \tfun Data ~\\
+        class ~\in~ objs \tfun (1..10) ~\\
+        clear ~\in~ users \tfun (1..10)
+          }
+
+Using the total function arrow means that we don't need to
+explicitly specify that $dom(data)=objs$.
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+ \operB{AddUser}{
+    \anyB{u,c}{
+        u ~\in~ User\setminus users ~~\\
+        c ~\in~ 1..10
+    }{
+        users ~\assign~ users \cup \set{u} \\
+        clear(u) ~\assign~ c
+    } }
+
+The new user must not already exist.
+
+We need to provide the initial clearance level for the new user.
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\operB{AddObject}{
+    \anyB{o,d,c}{
+        o ~\in~ Object  \setminus objs ~~ \\
+        d ~\in~ Data ~\\~ c ~\in~ 1..10
+    }{
+        objs ~\assign~ objs \cup \set{o}  \\
+        data(o) ~\assign~ d  \\
+        class(o) ~\assign~ c
+    } }
+
+The new object must not already exist.
+
+We need to provide the initial classification level and data value
+for the new object.
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+ \operB{Read}{
+    \anyBs{u,o,d!}{ \begin{array}{ll}
+        u ~\in~ users ~~  & \mbox{The user must exist} \\
+        o~\in~ objs ~~ & \mbox{The object must exist}\\
+        clear(u) \geq class(o)~~~~  & \mbox{The clearance must be ok} \\
+        d! = data(o)  & \mbox{The data associated with the object}
+           \end{array}
+    } }
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+ \operB{Write}{
+    \anyB{u,o,d}{
+        u ~\in~ users ~~ \\
+        o~\in~ objs ~~\\
+        clear(u) \geq class(o)
+    }{
+        data(o) ~\assign~ d
+    } }
+
+    The write operation overwrites the data value associate with
+    the object with a new value.
+\end{frame}
+
+
+
+
+\begin{frame}
+
+ \begin{minipage}[t]{5in}
+\operB{ChangeClass}{
+    \anyB{o,c}{
+                o ~\in~ objs ~~\\
+                c ~\in~ 1..10
+    }{
+        class(o) ~\assign~ c
+    } }
+
+\end{minipage}
+\begin{minipage}[t]{5in}
+
+ \operB{ChangeClear}{
+    \anyB{u,c}{
+                u ~\in~ users ~~\\
+                c ~\in~ 1..10
+    }{
+        clear(u) ~\assign~ c
+    } }
+\end{minipage}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\begin{minipage}[t]{5in}
+ \operB{RemoveUser}{
+    \anyB{u}{
+        u ~\in~ users
+    }{
+        users ~\assign~ users \setminus \set{u}  \\
+        clear := \set{u} \domsub clear
+    } }
+
+\end{minipage}
+\begin{minipage}[t]{5in}
+
+ \operB{RemoveObject}{
+    \anyB{o}{
+        o ~\in~ objs
+    }{
+        objs ~\assign~ objs \setminus \set{o}  \\
+        class := \set{o} \domsub class \\
+        data := \set{o} \domsub data
+    } }
+\end{minipage}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+
+
+Extend the database specification so that each object has an owner
+and the clearance associated with that owner must be at least as
+high as the classification of the object.  Only the owner of an
+object is allowed to delete it.
+
+What operations are affected?
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Nondeterministic actions}
+Assign a value from set $S$ to variable $x$:~~~~
+\fbox{$
+~x~:\in~S~
+$}
+
+~~~~Feasibility obligation: $S$ is non-empty.
+
+Assign a value satisfying $P$ to variable $x$:~~~~
+\fbox{$
+~x~:\!|~~ P(x,x')~
+$}
+
+~~~~Example, increase x:~~~  $x~ :\!|~~ x'>x$
+
+~~~~Feasibility obligation: $P$ is satisfiable:~~~~  $\exists x'.P$
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Implicit Specification}
+{Find the position of a value in an array:}
+
+\variablesA{array,k}
+\invariantA{array\in (1..N) \tfun T ~~\land~~ k\in(1..N)}
+
+ \operB{FindPosition}{
+    \anyB{t}{ t ~\in~ T }{\mbox{Set k so that $array(k)=t$}}
+}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Find the position of a value in an array}
+
+\variablesA{array,k}
+\invariantA{array\in (1..N) \tfun T ~~\land~~ k\in(1..N)}
+
+
+ \operB{FindPositionOK}{
+    \anyB{t,k'}{ t ~\in~ T \\
+    k' ~\in~ 1..N \\
+    array(k')=t  }{ k := k' }
+}
+
+What if $t\not\in ran(array)$~ ?
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Explicit guarding}
+
+
+\begin{minipage}[t]{5in}
+ \operB{FindPositionOK}{
+    \anyB{t,k'}{ t ~\in~ ran(array) \\
+    k' ~\in~ 1..N \\
+    array(k')=t  }{ k := k' }
+}
+\end{minipage}
+\begin{minipage}[t]{4in}
+
+ \operB{FindPositionKO}{
+    \anyB{t}{ t ~\not\in~ ran(array) }{k:=0}
+}
+\end{minipage}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Find the first occurrence}
+
+\operB{FindPositionOK}{
+    \anyB{t,k'}{ t ~\in~ ran(array) \\
+    k' ~\in~ 1..N \\
+    array(k')=t\\
+    \forall j \cdot j\in 1..N ~\land~ array(j)=t ~~\implies~~ k'\leq j
+      }{ k := k' }
+}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Find the first occurrence, alternative formulation}
+%
+\operB{FindPositionOK}{
+    \anyB{t,k'}{ t ~\in~ ran(array) \\
+    k' = min(dom(array\ranres\set{t}))
+      }{ k := k' }
+}
+%
+\operB{FindPositionOK}{
+    \anyB{t}{ t ~\in~ ran(array)
+      }{ k := min(dom(array\ranres\set{t})) }
+}
+
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Sort an array}
+
+\variablesA{array}
+\invariantA{array\in (1..N) \tfun \nat }
+
+ \operB{Sort}{
+    \anyB{array'}{ array' ~\mbox{is sorted} }{array:=array'}
+}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\variablesA{array}
+\invariantA{array\in (1..N) \tfun \nat }
+
+ \operB{Sort}{
+    \anyB{array'}{%
+    \forall i \cdot i\in 1..N-1 ~~\implies~~ array'(i) \leq array'(i+1) }{ %
+    array:=array'}
+}
+
+Is this enough?
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Permutation}
+
+
+ \operB{Sort}{
+    \anyB{array'}{%
+    \forall i \cdot i\in 1..N-1 ~~\implies~~ array'(i) \leq array'(i+1) \\
+    \forall x \cdot x\in \nat ~~\implies~~ card(array'\ranres\set{x}) = card(array\ranres\set{x}) }{ %
+    array:=array'}
+}
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+

@@ -1,0 +1,76 @@
+%\documentclass[handout]{beamer}
+\documentclass{beamer}
+
+\usepackage{bsymb}
+\usepackage{b}
+\usepackage{xcolor}
+
+% Purpose of modelling?
+
+% difference between axioms and invariants?
+% can macine have axioms and vice versa
+
+% why state invariants explicitly
+% explain keywords
+
+% ctr := ctr-1  versus  ctr=ctr-1
+
+% explain skip
+
+\mode<presentation>
+{
+    	%\usetheme{Warsaw}
+	\setbeamertemplate{footline}
+	{\centerline{\insertframenumber/\inserttotalframenumber}}
+} 
+
+
+\title{Decomposition Exercise}
+
+\author{Andy Edmunds}
+
+\institute{ University of Southampton }
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+
+\titlepage
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Decomposition}
+\begin{itemize}
+\item Create/use an abstract model of a credit/debit instruction passing through middleware, to a target system.
+\item The instruction at source \emph{src} has a value, and a command i.e. credit or debit.
+\item Model the transfer of the information to the target.
+\item Add parameters to send and receive event to faciitate decomposition. 
+\item Decompose using Shared Event Decomposition.
+\end{itemize}
+
+\begin{itemize}
+\item Try the same with Shared Variable decompostion and compare.
+\end{itemize}
+
+\begin{figure}
+	\includegraphics[scale=0.5]{Overview}
+\end{figure}
+\end{frame}
+
+
+
+
+
+\end{document}
+
+
+
+

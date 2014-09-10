@@ -1,0 +1,999 @@
+%\documentclass[handout]{beamer}
+\documentclass{beamer}
+
+\usepackage{bsymb}
+\usepackage{b}
+\usepackage{xcolor}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+
+\mode<presentation>
+{
+    	%\usetheme{Warsaw}
+	\setbeamertemplate{footline}
+	{\centerline{\insertframenumber/\inserttotalframenumber}}
+} 
+
+
+% Purpose of modelling?
+
+% difference between axioms and invariants?
+% can macine have axioms and vice versa
+
+% why state invariants explicitly
+% explain keywords
+
+% ctr := ctr-1  versus  ctr=ctr-1
+
+% explain defs
+
+% running examples of badly typed expressions
+
+
+\title{An Introduction to Event-B}
+\subtitle{Presented by: Andy Edmunds}
+
+\author{\copyright\ Michael Butler}
+
+\institute{ University of Southampton }
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+
+\titlepage
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Simple  Event-B model: Counter }
+
+\contextA{CounterContext}
+\constantsA{cmax}
+\propertiesA{cmax \in \nat~~~~~~~~~~~ \mbox{ \alert{//~\textit{cmax} is a natural number}} }
+\ENDC\\
+
+~\\
+
+\machineA{Counter}
+\seesA{CounterContext}
+\variablesA{ctr}
+\invariant{
+        ctr \in \intg ~~~~~~~~~~~~~~~ \mbox{ \alert{//~\textit{ctr} is an integer }} \\
+        0 \leq ctr \leq cmax~~~~~~ \mbox{ \alert{//~between 0 and \textit{cmax} }}} \\
+
+Invariants define \alert{valid} system states.
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Increasing and decreasing the Counter }
+
+\initialisationA{
+    ctr:=0 }
+
+\operations
+
+\begin{columns}
+\begin{column}{2in}
+\operA{Inc}{
+    \whenB{ctr < cmax}{ctr \assign ctr +1}
+    }
+\end{column}
+\begin{column}{2in}
+\operA{Dec}{
+    \whenB{ctr > 0}{ctr \assign ctr -1}
+    }
+\end{column}
+\end{columns}
+
+~\\
+
+~\\
+
+Events define \alert{changes} to the system state.
+
+~
+
+Events have \alert{guards} and \alert{actions}.
+
+~
+
+Guards must be true for the actions to be executed.
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Simple Example: Dictionary }
+
+\contextA{DictionaryContext}
+\setsA{Word~~~~~~ \mbox{ \alert{//~ \textit{Word} is a basic type introduced for this model }}}	
+\ENDC\\
+
+~
+
+~
+
+\machineA{Dictionary}
+\variablesA{known} 
+
+~
+
+\invariantA{
+        known \subseteq Word~~~~~ \mbox{ \alert{//~ set of known words}} }
+
+~
+
+\initialisationA{
+    known:=\set{} }
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Adding  words to the Dictionary }
+
+\operations
+\operB{AddWord}{
+    \anyB{w}{w \in Word}{ known \assign known ~\cup~ \set{w} }
+    }
+
+~
+
+~
+
+This event has a \alert{parameter} $w$ representing the word that is added to the set of known words.
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Basic Set Theory}
+\begin{itemize}
+\item 
+A \alert{set} is a collection of \alert{elements}.  
+
+\item Elements of a set are \alert{not ordered}.
+
+\item Elements of a set may be numbers, variable identifiers, etc.
+
+%\item \alert{Sets are elements} in their own right, e.g., we can have a set of sets.
+\item Sets may be:\\\quad \alert{infinite} (by default) or,\\\quad \alert{finite} (by restriction).
+
+\item Elements and Sets are related by set-membership: an element can be a \alert{member} of the set.
+
+\end{itemize}
+
+For \alert{element $x$} and \alert{set $S$,} we express the \alert{membership relation} as follows:
+\begin{eqnarray*}
+\fbox{~$
+    x  ~\in~ S
+~$}
+\end{eqnarray*}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{ Enumeration and Cardinality of Finite Sets}
+
+\begin{itemize}
+\item Finite sets can be expressed by \alert{enumerating} the elements within braces, for example:
+\begin{eqnarray*}
+&\set{~3,5,8~} \\
+&\set{~ a,b,c,d ~}
+\end{eqnarray*}
+\end{itemize}
+
+\begin{itemize}
+\item The \alert{cardinality} of a finite set is the number of elements in that set:
+\begin{eqnarray*}
+\fbox{~$
+    card(S)
+~$}
+\end{eqnarray*}
+\item For example
+\begin{eqnarray*}
+card(~\set{~3,5,8~}~) &=& 3 \\
+card(~\set{~ a,b,c,d ~}~) &=& 4\\
+card(~\set{}~) &=& 0
+\end{eqnarray*}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Subset and Equality Relations for Sets}
+
+\begin{itemize}
+\item A set $S$ is said to be \alert{subset} of set $T$ when every element of $S$ is also an element of $T$.  This is written as follows:
+\begin{eqnarray*}
+\fbox{~$
+    S  ~\subseteq~ T
+~$}
+\end{eqnarray*}
+\item For example:~~~~
+$
+\set{~5,8~} ~\subseteq~ \set{~4,5,6,7,8~}
+$
+\end{itemize}
+
+~
+
+\begin{itemize}
+\item A set $S$ is said to be equal to set $T$ when $S\subseteq T$ and $T\subseteq S$.
+\begin{eqnarray*}
+\fbox{~$
+    S  ~=~ T
+~$}
+\end{eqnarray*}
+\item For example:~~~~
+$
+\set{~5,8,3~} ~=~ \set{~3,5,5,8~}
+$
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\frametitle{Operations on sets}
+
+\begin{itemize}
+\item   \alert{Union} of $S$ and $T$: set of elements \alert{in either} $S$ \alert{or} $T$:
+\begin{eqnarray*}
+\fbox{~$
+    S  ~\cup~ T
+~$}
+\end{eqnarray*}
+\item   \alert{Intersection} of $S$ and $T$: set of elements \alert{in both} $S$ \alert{and} $T$:
+\begin{eqnarray*}
+\fbox{~$
+    S  ~\cap~ T
+~$}
+\end{eqnarray*}
+\item   \alert{Difference} of $S$ and $T$:  set of elements \alert{in}  $S$ \alert{but not in}  $T$:
+\begin{eqnarray*}
+\fbox{~$
+    S  ~\setminus~ T
+~$}
+\end{eqnarray*}\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\frametitle{Example Set Expressions}
+
+\begin{eqnarray*}
+\set{a,b,c} ~\cup~ \set{b,d} &=& \set{a,b,c,d} \\
+\set{a,b,c} ~\cap~ \set{b,d} &=& \set{b} \\
+\set{a,b,c} ~\setminus~ \set{b,d} &=& \set{a,c} \\
+~\\
+\set{a,b,c} ~\cap~ \set{d,e,f} &=& \set{} \\
+\set{a,b,c} ~\setminus~ \set{d,e,f}  &=& \set{a,b,c}  \\
+\end{eqnarray*}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Simple Example: Dictionary }
+
+\contextA{DictionaryContext}
+\setsA{Word~~~~~~ \mbox{ \alert{//~ \textit{Word} is a basic type introduced for this model }}}	
+\ENDC\\
+
+~
+
+~
+
+\machineA{Dictionary}
+\variablesA{known} 
+
+~
+
+\invariantA{
+        known \subseteq Word~~~~~ \mbox{ \alert{//~ set of known words}} }
+
+~
+
+\initialisationA{
+    known:=\set{} }
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Adding  words to the Dictionary }
+
+\operations
+\operB{AddWord}{
+    \anyB{w}{w \in Word}{ known \assign known ~\cup~ \set{w} }
+    }
+
+~
+
+~
+
+This event has a \alert{parameter} $w$ representing the word that is added to the set of known words.
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Checking if a word is in a dictionary: 2 cases }
+
+
+
+\begin{columns}
+\begin{column}{2in}
+\operB{CheckWordOK}{
+    \anyB{w,r!}{w \in known\\
+    r!=TRUE}{skip   \mbox{ \alert{// omit in Rodin}} }       }
+\end{column}
+\begin{column}{2in}
+\operB{CheckWordNotOK}{
+    \anyB{w,r!}{w \not\in known\\
+    r!=FALSE}{skip \mbox{ \alert{// omit}}}
+    }
+\end{column}
+\end{columns}
+
+~
+
+~
+
+Cases are represented by \alert{separate events}.
+
+~
+
+In both cases, $r!$ represents a \alert{result parameter}.
+
+~
+
+We use the `!' convention to represent result parameters.
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{B \textit{context} contains}
+\begin{itemize} \setlength{\itemsep}{6pt}
+\item \textbf{Sets}:    abstract types used in specification
+\item \textbf{Constants}: logical variables whose value remain constant
+\item \textbf{Axioms}: constraints on the constants.  An axiom is a logical predicate.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\frametitle{B \textit{machine} contains}
+\begin{itemize} \setlength{\itemsep}{6pt}
+\item \textbf{Variables}:  state variables whose values can
+change
+\item \textbf{Invariants}: constraints on the variables that should
+always hold true. An invariant is a logical predicate.
+\item
+\textbf{Initialisation}: initial values for the abstract variables
+\item
+\textbf{Events}:  guarded actions specifying ways in which the
+variables can change.  Events may have parameters.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Counting Dictionary}
+
+
+
+
+\machineA{Counting Dictionary}
+\variablesA{known~~ count}
+\invariant{
+        known \subseteq Word \\
+        count = card(known) }
+
+
+\operations
+
+\operB{AddWord}{
+    \anyB{w}{w \in Word}{ known \assign known ~\cup~ \set{w}\\
+            count := count+1 }
+    }
+
+\begin{itemize}
+ \pause \item {Is this specification of \textit{AddWord} correct?}
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Word deletion in Counting Dictionary}
+
+
+
+
+
+\operB{RemoveWord}{
+    \anyB{w}{w \in Word}{ known \assign known ~\setminus~ \set{w}\\
+            count := count-1 }
+    }
+
+\begin{itemize}
+  \item {Is this specification of \textit{RemoveWord} correct?}
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Correct versions of Add and Remove}
+
+
+\begin{columns}
+\begin{column}{2in}
+\operB{AddWord}{
+    \anyB{w}{\alert{w \in Word ~\setminus~ known}}{ known \assign known ~\cup~ \set{w}\\
+            count := count+1 }
+    }
+\end{column}
+\begin{column}{2in}
+\operB{RemoveWord}{
+    \anyB{w}{\alert{w \in known}}{ known \assign known ~\setminus~ \set{w}\\
+            count := count-1 }
+    }
+\end{column}
+\end{columns}
+
+~
+
+~
+
+\begin{itemize}
+  \item Both of these events maintain the invariant \alert{$count = card(known)$}
+that \alert{links} \textit{count} and \textit{known}.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Example  Requirements for a Building Control System}
+
+\begin{itemize} \setlength{\itemsep}{6pt}
+\item Specify a system that monitors users entering and leaving a
+building. 
+\item A person can only enter the building if they are
+recognised by the monitor. 
+\item The system should be aware of
+whether a recognised
+     user is currently inside or outside the building.
+
+\end{itemize}
+
+Is there anything missing from this set of requirements?
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+%
+\contextA{BuildingContext}
+%
+\setsA{~~~
+    User   }
+\ENDC
+
+~\\
+
+\machineA{Building} 
+%
+\variablesA{register~~ in~~ out} 
+%
+\invariant{
+        register ~\subseteq~ User ~~~~~ \mbox{ \alert{//~ set of registered users}} \\[2pt]
+        in ~\subseteq~ register ~~~~~~~~~ \mbox{ \alert{//~ set of  registered users who are inside}} \\[2pt]
+        out ~\subseteq~ register ~~~~~~~ \mbox{ \alert{//~ set of  registered users  who are outside}} \\[2pt]
+        in \cap out ~=~ \set{} ~~~~~~ \mbox{ \alert{//~ no users can be both inside and outside}} \\[2pt]
+        register ~=~ in \cup out  ~~~~~ 
+	\mbox{ \alert{//~ all registered users must be}}\\
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\mbox{ \alert{//~ either inside or outside}} }
+%
+\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Entering and Leaving the Building}
+\initialisationA{
+    in,~out,~register~:=~ \set{},~\set{},~\set{} }~\\
+
+\events
+
+\begin{columns}
+\begin{column}{2in}
+\operB{Enter}{
+    \anyB{s}{s \in out}{in \assign in\cup\set{s} \\ out \assign out \setminus\set{s} }
+    }
+\end{column}
+\begin{column}{2in}
+\operB{Leave}{
+    \anyB{s}{s \in in}{in \assign in\setminus\set{s} \\ out \assign out \cup\set{s} }
+    }
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Adding New Users}
+
+New users cannot be registered already.
+
+~
+
+\operB{NewUser}{
+    \anyB{s}{s ~\in~ (User\setminus register) }{
+    register \assign register \cup \set{s}
+    } }
+
+~
+
+\pause
+Can anyone spot an error in this specification?
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Adding New Users -- Correct Version}
+
+\operB{NewUser}{
+    \anyB{s}{s ~\in~ (User\setminus register) }{
+    register \assign register \cup \set{s}
+     \\ out\assign out \cup \set{s}
+    } }
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Types}
+
+All variables and expressions in B must have a \alert{type}.
+
+Types are represented by sets.
+
+~
+
+Let $T$ be a set and $x$ a constant or variable.
+
+\alert{$x \in T$}~ specifies that \alert{$x$ is of type $T$}.\\[2pt]
+
+~
+
+Examples:
+\[\begin{array}{l}
+    a~\in~\mathbb{N} \\
+    b~\in~\mathbb{Z}\\
+    w ~\in~ Word \\
+    unix ~\in~ OperatingSystem
+\end{array}\]
+
+What are the types of the following expressions?
+\[\begin{array}{l}
+  unix \\ [2pt]
+  (a+b)\cross 3 
+\end{array}\]
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Types in B}
+\begin{itemize}
+\item
+Predefined Types:\\
+$~~~~~~~~\mathbb{Z}$  Integers\\
+
+$~~~~~~~~\mathbb{B}$  Booleans \set{~TRUE, FALSE~}
+
+~
+
+\item Basic Types (or Carrier Sets):\\
+$~~~~~~~~$\setsA{ ~Word ~~~ Name } 
+\end{itemize}
+
+Basic types are  introduced to represent the entities of the problem being modelled.
+
+~
+
+Note: $\nat$ is a subet of $\intg$ representing all non-negative integers (including 0).
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Powersets}
+
+The \alert{powerset}  of a set $S$ is the set whose elements are all subsets of $S$:
+\begin{eqnarray*}
+\fbox{~$
+    \power(S)  
+~$}
+\end{eqnarray*}
+
+Example
+\begin{eqnarray*}
+    \power(~\set{a,b,c}~) &=&
+    \set{~ \set{},~ \set{a},~ \set{b},~ \set{c},~\\ &&~~
+     \set{a,b},~ \set{a,c},~ \set{b,c},~ \set{a,b,c} ~}
+\end{eqnarray*}
+
+
+
+Note$~~~~~~
+    S ~\in~ \pow(T)
+~~~$ \alert{is the same as} $~~~
+    S ~\subseteq~ T
+$
+
+~
+
+Sets are themselves  elements -- so we can have \alert{sets of sets}.
+
+$\power(~\set{a,b,c}~)$ is an example of a set of sets.
+
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Types of Sets}
+
+All the elements of a set must have the same type.
+
+~
+
+For example, $\set{3,4,5}$ is a set of integers.
+
+More Precisely:~~ $\set{3,4,5} ~\in~ \power(\mathbb{Z})$.
+
+
+So the type of $\set{3,4,5}$ is $\power(\mathbb{Z})$
+
+~
+
+To declare $x$ to be a set of elements of type $T$ we write either
+\begin{eqnarray*}
+    x \in \power(T)  &~~~\mbox{or}~~~&
+    x \subseteq T
+\end{eqnarray*}
+
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Checking Types}
+
+Assume $S$ and $T$ have type $\power(M)$. What are the types of:
+\begin{eqnarray*}
+    S \cup T ~~?\\
+    S \cap T ~~?
+\end{eqnarray*}
+
+
+Type of $\set{~ \set{3,4},~ \set{4,6},~ \set{7} ~}$~ ?
+
+~
+
+Expressions which are incorrectly typed are meaningless:
+\begin{eqnarray*}
+    &&\set{~ 4, 6, unix ~} \\
+    &&\set{~windows, mac ~} ~\cup~ \set{~ bmw, tata, ford, toyota~}
+\end{eqnarray*}
+where $bmw \in CARS$ etc.
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Classification of Types}
+
+{\bf Simple Types:}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item $\mathbb{Z},~  \mathbb{B}$
+ \item Basic types
+(e.g., $Word$, $Name$) 
+\end{itemize}
+
+~
+
+{\bf Constructed Types:} ~~
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item $\power(T)$
+\end{itemize}
+
+$\power(T)$ is a type that is \alert{constructed} from $T$. 
+
+~
+
+We will see more constructed types later.
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Why Types?}
+\begin{itemize}
+\item Types help to structure specifications by differentiating objects.
+
+~
+
+\item Types help to prevent errors by not allowing
+ us to write meaningless things.
+
+~
+
+\item Types can be checked by computer.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Predicate Logic}
+
+\textbf{Basic predicates:}~~~ $x\in S$,~ $S\subseteq T$,~ $S=T$,~ $x<y$,~ $x\leq y$
+
+~
+
+\textbf{Predicate operators:}
+
+\begin{itemize}
+\item Negation:~ \fbox{$\lnot P$} ~~~  $P$ does \alert{not}  hold 
+
+~
+
+\item Conjunction:~ \fbox{$P~\land~Q$} ~~~ {both} $P$ \alert{and} $Q$ hold 
+
+~
+
+\item Disjunction:~ \fbox{$P~\lor~Q$}~~~ {either}  $P$ \alert{or} $Q$ holds
+
+~
+
+\item Implication:~ \fbox{$P~\implies~Q$}~~~ \alert{if} $P$ holds, \alert{then} $Q$ holds
+
+~
+
+\item Universal Quantification:~ \fbox{$\forall x\cdot P$}~~~  $P$ holds for \alert{all}   $x$.
+
+~
+
+\item Existential Quantification:~ \fbox{$\exists x\cdot P$}~~~  $P$ holds for \alert{some}   $x$.
+
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Defining Set Operators with Logic}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Predicate & Definition \\[2pt] \hline
+~&\\
+$x\not\in S$  &  $\lnot~(x\in S) $ \\
+~&\\ \hline
+~&\\
+$~~x~\in~ S\cup T~~$  &  $~~x\in S  ~~\lor~~ x\in T~~$ \\
+~&\\ \hline
+~&\\
+$x~\in~ S\cap T$  &  $x\in S  ~~\land~~ x\in T$ \\
+~&\\ \hline
+~&\\
+$x~\in~ S\setminus T$  &  $x\in S  ~~\land~~ x\not\in T$ \\
+~&\\ \hline
+~&\\
+$S~\subseteq~ T $  &  $~~\forall x \cdot x\in S  ~\implies~ x\in T~~$ \\
+~&\\ \hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Predicates versus Expressions}
+
+\begin{itemize}
+\item Predicates and expressions are distinct.
+
+~
+
+\item Expressions have a data type, e.g. integer or set of integers.
+
+~
+
+\item Predicates are evaluated to a Boolean value.
+
+~
+
+\item Quantification over variables, not predicates, is supported. This includes quantification
+over sets.
+
+~
+
+\item Comprehension sets are supported.
+\end{itemize}
+\end{frame}
+
+\end{document}
+

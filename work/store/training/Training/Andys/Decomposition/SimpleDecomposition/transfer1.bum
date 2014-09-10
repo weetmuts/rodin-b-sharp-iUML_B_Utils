@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="transfer"/>
+<org.eventb.core.seesContext name="0" org.eventb.core.target="ctx"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="srcAmount"/>
+<org.eventb.core.variable name=")" org.eventb.core.identifier="mwAmount"/>
+<org.eventb.core.variable name="*" org.eventb.core.identifier="destAmount"/>
+<org.eventb.core.variable name="-" org.eventb.core.identifier="srcCommand"/>
+<org.eventb.core.variable name="3" org.eventb.core.identifier="destCommand"/>
+<org.eventb.core.variable name="5" org.eventb.core.identifier="mwCommand"/>
+<org.eventb.core.event name="6" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION"/>
+<org.eventb.core.event name="7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="send">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="send"/>
+<org.eventb.core.action name="'" org.eventb.core.assignment="mwAmount ≔ srcAmount_p" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="mwCommand ≔ srcCommand_p" org.eventb.core.label="act2"/>
+<org.eventb.core.parameter name=")" org.eventb.codegen.ui.parameterTypeAttribute="--unset--" org.eventb.core.identifier="srcAmount_p"/>
+<org.eventb.core.guard name="*" org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="grd1" org.eventb.core.predicate="srcAmount_p= srcAmount"/>
+<org.eventb.core.parameter name="+" org.eventb.codegen.ui.parameterTypeAttribute="--unset--" org.eventb.core.identifier="srcCommand_p"/>
+<org.eventb.core.guard name="," org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="grd2" org.eventb.core.predicate="srcCommand_p = srcCommand"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="recv">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="recv"/>
+<org.eventb.core.action name="'" org.eventb.core.assignment="destAmount ≔ mwAmount_p" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="destCommand ≔ mwCommand_p" org.eventb.core.label="act2"/>
+<org.eventb.core.parameter name=")" org.eventb.codegen.ui.parameterTypeAttribute="--unset--" org.eventb.core.identifier="mwAmount_p"/>
+<org.eventb.core.parameter name="*" org.eventb.codegen.ui.parameterTypeAttribute="--unset--" org.eventb.core.identifier="mwCommand_p"/>
+<org.eventb.core.guard name="+" org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="grd1" org.eventb.core.predicate="mwAmount_p = mwAmount"/>
+<org.eventb.core.guard name="," org.eventb.codegen.ui.typingAttribute="Typing" org.eventb.core.label="grd2" org.eventb.core.predicate="mwCommand_p = mwCommand"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

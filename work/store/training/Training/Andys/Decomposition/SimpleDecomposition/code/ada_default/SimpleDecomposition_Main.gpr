@@ -1,0 +1,3 @@
+project SimpleDecomposition_Main is
+  for Main use ("SimpleDecomposition_Main.adb");
+end SimpleDecomposition_Main;

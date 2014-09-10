@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.poIdentifier name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="debit" org.eventb.core.type="activity"/>
+<org.eventb.core.poPredicate name="activitz" org.eventb.core.predicate="partition(activity,{credit},{debit})" org.eventb.core.source="/SimpleDecomposition/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="destAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="mwAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="srcAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="srcCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poPredicate name="destCommane" org.eventb.core.predicate="srcAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="destCommanf" org.eventb.core.predicate="destAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#,"/>
+<org.eventb.core.poPredicate name="destCommang" org.eventb.core.predicate="mwAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#."/>
+<org.eventb.core.poPredicate name="destCommanh" org.eventb.core.predicate="srcCommand∈activity" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poPredicate name="destCommani" org.eventb.core.predicate="destCommand∈activity" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#4"/>
+<org.eventb.core.poPredicate name="destCommanj" org.eventb.core.predicate="mwCommand∈activity" org.eventb.core.source="/SimpleDecomposition/transfer.bum|org.eventb.core.machineFile#transfer|org.eventb.core.invariant#6"/>
+<org.eventb.core.poPredicate name="destCommank" org.eventb.core.predicate="destAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/target.bum|org.eventb.core.machineFile#target|org.eventb.core.invariant#)"/>
+<org.eventb.core.poPredicate name="destCommanl" org.eventb.core.predicate="destCommand∈activity" org.eventb.core.source="/SimpleDecomposition/target.bum|org.eventb.core.machineFile#target|org.eventb.core.invariant#*"/>
+<org.eventb.core.poPredicate name="destCommanm" org.eventb.core.predicate="mwCommand∈activity" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.invariant#)"/>
+<org.eventb.core.poPredicate name="destCommann" org.eventb.core.predicate="mwAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.invariant#*"/>
+<org.eventb.core.poPredicate name="destCommano" org.eventb.core.predicate="mwAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="destCommanp" org.eventb.core.predicate="srcCommand∈activity" org.eventb.core.source="/SimpleDecomposition/src.bum|org.eventb.core.machineFile#src|org.eventb.core.invariant#)"/>
+<org.eventb.core.poPredicate name="destCommanq" org.eventb.core.predicate="srcAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/src.bum|org.eventb.core.machineFile#src|org.eventb.core.invariant#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTIDENTtarget_internal_includes2_ct{" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwCommand'" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="srcAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="srcCommand'" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="destCommand'" org.eventb.core.type="activity"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTALLHYPtarget_internal_includes2_ct{" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#CMPEVTIDENTtarget_internal_includes2_ct{" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="CMPEVTIDENTtarget_internal_includes2_ct|" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwCommand'" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="srcCommand_p" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="mwAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="srcAmount_p" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTALLHYPtarget_internal_includes2_ct|" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#CMPEVTIDENTtarget_internal_includes2_ct\|" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="srcCommand_p∈activity" org.eventb.core.source="/SimpleDecomposition/src.bum|org.eventb.core.machineFile#src|org.eventb.core.event#,|org.eventb.core.guard#+"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="srcAmount_p∈ℤ" org.eventb.core.source="/SimpleDecomposition/src.bum|org.eventb.core.machineFile#src|org.eventb.core.event#,|org.eventb.core.guard#,"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="srcAmount_p=srcAmount" org.eventb.core.source="/SimpleDecomposition/src.bum|org.eventb.core.machineFile#src|org.eventb.core.event#,|org.eventb.core.guard#)"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="srcCommand_p=srcCommand" org.eventb.core.source="/SimpleDecomposition/src.bum|org.eventb.core.machineFile#src|org.eventb.core.event#,|org.eventb.core.guard#*"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="srcCommand_p∈activity" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.event#-|org.eventb.core.guard#-"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="srcAmount_p∈ℤ" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.event#-|org.eventb.core.guard#."/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTIDENTtarget_internal_includes2_ct}" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwAmount_p" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwCommand_p" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="destAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand'" org.eventb.core.type="activity"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="CMPEVTALLHYPtarget_internal_includes2_ct}" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#CMPEVTIDENTtarget_internal_includes2_ct}" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="mwAmount_p∈ℤ" org.eventb.core.source="/SimpleDecomposition/target.bum|org.eventb.core.machineFile#target|org.eventb.core.event#,|org.eventb.core.guard#-"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="mwCommand_p∈activity" org.eventb.core.source="/SimpleDecomposition/target.bum|org.eventb.core.machineFile#target|org.eventb.core.event#,|org.eventb.core.guard#."/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="mwAmount_p∈ℤ" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.event#.|org.eventb.core.guard#+"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="mwCommand_p∈activity" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.event#.|org.eventb.core.guard#,"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="mwAmount_p=mwAmount" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.event#.|org.eventb.core.guard#)"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="mwCommand_p=mwCommand" org.eventb.core.source="/SimpleDecomposition/mw.bum|org.eventb.core.machineFile#mw|org.eventb.core.event#.|org.eventb.core.guard#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SimpleDecomposition/transfer1_CMP.bpo|org.eventb.core.poFile#transfer1_CMP|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0"/>
+</org.eventb.core.poFile>

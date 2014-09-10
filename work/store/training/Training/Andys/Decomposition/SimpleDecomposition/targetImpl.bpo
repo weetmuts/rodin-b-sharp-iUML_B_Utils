@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="activity" org.eventb.core.type="ℙ(activity)"/>
+<org.eventb.core.poIdentifier name="credit" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="debit" org.eventb.core.type="activity"/>
+<org.eventb.core.poPredicate name="activitz" org.eventb.core.predicate="partition(activity,{credit},{debit})" org.eventb.core.source="/SimpleDecomposition/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/SimpleDecomposition/targetImpl.bpo|org.eventb.core.poFile#targetImpl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="destAmount" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand" org.eventb.core.type="activity"/>
+<org.eventb.core.poPredicate name="destCommane" org.eventb.core.predicate="destAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/target.bum|org.eventb.core.machineFile#target|org.eventb.core.invariant#)"/>
+<org.eventb.core.poPredicate name="destCommanf" org.eventb.core.predicate="destCommand∈activity" org.eventb.core.source="/SimpleDecomposition/target.bum|org.eventb.core.machineFile#target|org.eventb.core.invariant#*"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTIDENTdestCommane" org.eventb.core.parentSet="/SimpleDecomposition/targetImpl.bpo|org.eventb.core.poFile#targetImpl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="destAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand'" org.eventb.core.type="activity"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPdestCommane" org.eventb.core.parentSet="/SimpleDecomposition/targetImpl.bpo|org.eventb.core.poFile#targetImpl|org.eventb.core.poPredicateSet#EVTIDENTdestCommane" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTdestCommanf" org.eventb.core.parentSet="/SimpleDecomposition/targetImpl.bpo|org.eventb.core.poFile#targetImpl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="mwAmount_p" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="mwCommand_p" org.eventb.core.type="activity"/>
+<org.eventb.core.poIdentifier name="destAmount'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="destCommand'" org.eventb.core.type="activity"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPdestCommanf" org.eventb.core.parentSet="/SimpleDecomposition/targetImpl.bpo|org.eventb.core.poFile#targetImpl|org.eventb.core.poPredicateSet#EVTIDENTdestCommanf" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="mwAmount_p∈ℤ" org.eventb.core.source="/SimpleDecomposition/targetImpl.bum|org.eventb.core.machineFile#targetImpl|org.eventb.core.event#\/|org.eventb.core.guard#-"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="mwCommand_p∈activity" org.eventb.core.source="/SimpleDecomposition/targetImpl.bum|org.eventb.core.machineFile#targetImpl|org.eventb.core.event#\/|org.eventb.core.guard#."/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SimpleDecomposition/targetImpl.bpo|org.eventb.core.poFile#targetImpl|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="destAmount∈ℤ" org.eventb.core.source="/SimpleDecomposition/targetImpl.bum|org.eventb.core.machineFile#targetImpl|org.eventb.core.invariant#inv1"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="destCommand∈activity" org.eventb.core.source="/SimpleDecomposition/targetImpl.bum|org.eventb.core.machineFile#targetImpl|org.eventb.core.invariant#inv2"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

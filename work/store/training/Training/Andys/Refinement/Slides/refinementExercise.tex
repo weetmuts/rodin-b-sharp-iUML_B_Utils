@@ -1,0 +1,59 @@
+%\documentclass[handout]{beamer}
+\documentclass{beamer}
+
+\usepackage{bsymb}
+\usepackage{b}
+\usepackage{xcolor}
+
+
+\mode<presentation>
+{
+    	%\usetheme{Warsaw}
+	\setbeamertemplate{footline}
+	{\centerline{\insertframenumber/\inserttotalframenumber}}
+} 
+
+
+\title{The Metro Refinement Example}
+
+\author{Andy Edmunds}
+
+\institute{ University of Southampton }
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{The Metro System}
+\begin{itemize}
+	\item Import the exercise model from MetroSafety\_Exercise.zip
+	\item Read and understand, as much as possible, the variables, and events.
+	\item Do not focus, to much, on the axioms, and invariants at this stage; but the following may be useful.
+	\begin{itemize}
+		\item $CDV$ is a (carrier) set of track sections.
+		\item $cdvrel = CDV \rel CDV$
+		\item $cdvfn = CDV \pfun CDV$
+		\item $tcl \in cdvrel \tfun cdvrel$ is the transitive closure of track sections.
+	\end{itemize}
+	\item Add a message send event, indicating that a train may proceed to its next section. Introduce $tmsgs \in trns \tfun \pow(\Bool)$
+	\item Model receipt of the permission by introducing an event, and $ permit \in trns \tfun \Bool $
+	\item Modify \emph{enterCDV}, \emph{leaveCDV}, \emph{brake} (when a train's permit is false), and \emph{addTrain}.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
+
+
+
+
