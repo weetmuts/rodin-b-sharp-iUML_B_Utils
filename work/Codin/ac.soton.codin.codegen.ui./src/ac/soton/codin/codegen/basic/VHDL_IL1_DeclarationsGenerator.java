@@ -99,6 +99,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// we add a program counter variable;
 			VariableDecl pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
 			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
+			VariableDecl init_pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
 			// we add the program counter states enum
 			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
 			program.getDecls().add(enm);
@@ -117,10 +118,12 @@ public class VHDL_IL1_DeclarationsGenerator {
 						Transition transition = i.getOutgoing().get(0);
 						AbstractNode initialSynchSMCounterValue = transition
 								.getTarget();
+						// if we have a state machine counter value
 						if (initialSynchSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE) {
 							State startingState = (State) initialSynchSMCounterValue;
 							pcVarDecl.setInitialValue(startingState.getName());
 							next_pcVarDecl.setInitialValue(startingState.getName());
+							init_pcVarDecl.setInitialValue(startingState.getName());
 						}
 					}
 				}
@@ -133,6 +136,10 @@ public class VHDL_IL1_DeclarationsGenerator {
 			program.getDecls().add(next_pcVarDecl);
 			next_pcVarDecl.setIdentifier("next_"+sm.getName());
 			next_pcVarDecl.setType(sm.getName() + "_States");
+			// we also need to record the initial value
+			program.getDecls().add(init_pcVarDecl);
+			init_pcVarDecl.setIdentifier("init_"+sm.getName());
+			init_pcVarDecl.setType(sm.getName() + "_States");
 		}
 	}
 

@@ -9,8 +9,9 @@ import org.eventb.codegen.templates.IGeneratorData;
 import ac.soton.codin.codegen.basic.VHDL_TranslationData;
 import ac.soton.eventb.statemachines.Statemachine;
 
-public class ClockProcessGenerator implements IGenerator {
+public class ResetVariablesGenerator implements IGenerator {
 
+	
 	private VHDL_TranslationData translationData =  null;
 
 	@Override
@@ -25,8 +26,10 @@ public class ClockProcessGenerator implements IGenerator {
 		ArrayList<String> returnList = new ArrayList<>();
 		for(Statemachine synchSM: translationData.synchSMList){
 			String n = synchSM.getName();
-			returnList.add(n + " <= next_" + n +";");
+			returnList.add(n + " <= init_" + n +";");
 		}
 		return returnList;
+
 	}
+
 }

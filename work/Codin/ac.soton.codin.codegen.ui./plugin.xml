@@ -39,6 +39,10 @@
             GeneratorClass="ac.soton.codin.codegen.quickPrint.ClockProcessGenerator"
             tag="clockProcessGenerator">
       </templateGenerator>
+      <templateGenerator
+            GeneratorClass="ac.soton.codin.codegen.quickPrint.ResetVariablesGenerator"
+            tag="resetVariablesGenerator">
+      </templateGenerator>
    </extension>
 
 </plugin>

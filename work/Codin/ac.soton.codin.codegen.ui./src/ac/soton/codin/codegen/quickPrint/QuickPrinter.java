@@ -399,7 +399,9 @@ public class QuickPrinter {
 		}
 		// else if the variable is a state-machine program counter
 		// (i.e. with the same name as the state-machine itself)
-		else if(synchSMNames.contains(el.getIdentifier())){
+		else if(synchSMNames.contains(el.getIdentifier()) 
+		//		||synchSMNames.contains(el.getIdentifier().replace("init_", ""))
+				){
 			declarationType = "SIGNAL ";
 			assignmentOperator = " <= ";
 		}
