@@ -3,4 +3,3 @@
 - add port updates
 - nested synchSM support
 - format VHDL output
-- change filename to component name

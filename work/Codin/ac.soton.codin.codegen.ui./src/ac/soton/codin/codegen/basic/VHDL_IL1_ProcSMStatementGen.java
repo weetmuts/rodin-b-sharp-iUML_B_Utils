@@ -44,21 +44,21 @@ public class VHDL_IL1_ProcSMStatementGen {
 	private Map<State, Subroutine> stateSubroutine_Map = new HashMap<State, Subroutine>();
 
 	public void run(Task task,
-			VHDL_TranslationData smTranslationMgr)
+			VHDL_TranslationData translationData)
 			throws CodinTranslatorException {
-		program = smTranslationMgr.program;
+		program = translationData.program;
 		// make a subroutine for each state in the process state-machine
-		makeSubroutines(smTranslationMgr);
+		makeSubroutines(translationData);
 		// in the second pass we provide the subroutine bodies
-		makeSubroutineBodies(smTranslationMgr);
+		makeSubroutineBodies(translationData);
 	}
 
 	// This method builds subroutines for the process state machine
-	private void makeSubroutines(VHDL_TranslationData smTranslationMgr)
+	private void makeSubroutines(VHDL_TranslationData translationData)
 			throws CodinTranslatorException {
 		stateSubroutine_Map.clear();
 		// each state has an associated subroutine
-		for (State state : smTranslationMgr.processSM_transitPathMap.keySet()) {
+		for (State state : translationData.processSM_transitPathMap.keySet()) {
 			Subroutine stateSubroutine = Il1Factory.eINSTANCE
 					.createSubroutine();
 			// get the one and only task model for the VHDL process
@@ -67,20 +67,20 @@ public class VHDL_IL1_ProcSMStatementGen {
 			// we'll keep a map of State<->state-subroutine for our own use
 			stateSubroutine_Map.put(state, stateSubroutine);
 			stateSubroutine.setName(state.getName());
-			stateSubroutine.setMachineName(smTranslationMgr.parentMachine
+			stateSubroutine.setMachineName(translationData.parentMachine
 					.getName());
-			stateSubroutine.setProjectName(smTranslationMgr.parentProject
+			stateSubroutine.setProjectName(translationData.parentProject
 					.getProject().getName());
 			stateSubroutine.setTemporary(false);
 		}
 	}
 
 	private void makeSubroutineBodies(
-			VHDL_TranslationData smTranslationMgr) {
+			VHDL_TranslationData translationData) {
 
-		for (State currentState : smTranslationMgr.processSM_transitPathMap.keySet()) {
+		for (State currentState : translationData.processSM_transitPathMap.keySet()) {
 			// Get the transit paths for this state
-			List<TransitPath> transitPathList = smTranslationMgr.processSM_transitPathMap
+			List<TransitPath> transitPathList = translationData.processSM_transitPathMap
 					.get(currentState);
 			// get the subroutine for this state that was generated in the first
 			// pass.
@@ -96,11 +96,11 @@ public class VHDL_IL1_ProcSMStatementGen {
 				TransitPath transitPath = transitPathList.get(0);
 				AbstractNode targetNode = transitPath.getTargetNode();
 				Event transitEvent = transitPath.getEvent();
-				List<Statemachine> synchSMList = smTranslationMgr.synchSMEventUser
+				List<Statemachine> synchSMList = translationData.synchSMEventUser
 						.get(transitEvent);
 				// if the event is associated with a synch state-machine
 				if (synchSMList != null && synchSMList.size() > 0) {
-					makeSynchSMCallSeq(smTranslationMgr,
+					makeSynchSMCallSeq(translationData,
 							currentStateSubroutine, targetNode, synchSMList);
 				}
 				// else the event is a simple transition with a call to its next
@@ -122,7 +122,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 				boolean isSynchSMTransition = false;
 				for(TransitPath transitPath: transitPathList){
 					Event transitEvent = transitPath.getEvent();
-					List<Statemachine> synchSMList = smTranslationMgr.synchSMEventUser
+					List<Statemachine> synchSMList = translationData.synchSMEventUser
 							.get(transitEvent);
 					if(synchSMList != null && synchSMList.size()>0) isSynchSMTransition = true;
 					break;
@@ -136,11 +136,11 @@ public class VHDL_IL1_ProcSMStatementGen {
 					for(TransitPath transitPath: transitPathList){
 						Event transitEvent = transitPath.getEvent();
 						
-						allSynchSMSet.addAll(smTranslationMgr.synchSMEventUser
+						allSynchSMSet.addAll(translationData.synchSMEventUser
 								.get(transitEvent));
 					}
 					List<Statemachine> allSynchSMList = Arrays.asList(allSynchSMSet.toArray(new Statemachine[allSynchSMSet.size()]));
-					makeSynchSMCallSeq(smTranslationMgr,
+					makeSynchSMCallSeq(translationData,
 							currentStateSubroutine, targetNode, allSynchSMList);
 				}
 				// else create a branching structure to represent the transitions
@@ -216,13 +216,13 @@ public class VHDL_IL1_ProcSMStatementGen {
 	}
 
 	private void makeSynchSMCallSeq(
-			VHDL_TranslationData smTranslationMgr,
+			VHDL_TranslationData translationData,
 			Subroutine currentStateSubroutine, AbstractNode targetNode,
 			List<Statemachine> synchSMList) {
 		List<Call> callList = new ArrayList<>();
 		for (Statemachine statemachine : synchSMList) {
 			// get the pre-existing subroutine for the synchSM
-			Subroutine calledSynchSMSubroutine = smTranslationMgr.synchSM_subroutineMap
+			Subroutine calledSynchSMSubroutine = translationData.synchSM_subroutineMap
 					.get(statemachine);
 			// create a call and add it to a list of calls
 			Call synchSMCall = Il1Factory.eINSTANCE.createCall();

@@ -47,25 +47,25 @@ public class VHDL_IL1_DeclarationsGenerator {
 
 	private Program program;
 
-	public void run(VHDL_TranslationData smTranslationMgr)
+	public void run(VHDL_TranslationData translationData)
 			throws CodinTranslatorException {
-		this.program = smTranslationMgr.program;
+		this.program = translationData.program;
 		List<Declaration> tmpDeclarationList = new ArrayList<>();
 		// get the variables from the top-level and components.
-		for (Component component : smTranslationMgr.componentList) {
+		for (Component component : translationData.componentList) {
 			List<ComponentInitialisation> initialisationsList = component
 					.getInitialisations();
 			for (ComponentInitialisation initialisation : initialisationsList) {
-				makeVarDeclaration(smTranslationMgr, tmpDeclarationList,
+				makeVarDeclaration(translationData, tmpDeclarationList,
 						component, initialisation);
 			}
 			// Make constant declarations
-			makeConstDeclarations(smTranslationMgr, tmpDeclarationList,
+			makeConstDeclarations(translationData, tmpDeclarationList,
 					component);
 		}
 		// Use a component to find the container and get the top-level
 		// variables.
-		Component firstInList = smTranslationMgr.componentList.get(0);
+		Component firstInList = translationData.componentList.get(0);
 		Component topComponent = null;
 		EObject tmpTopComponent_ = firstInList.eContainer();
 		if (tmpTopComponent_.getClass() == ComponentImpl.class) {
@@ -73,11 +73,11 @@ public class VHDL_IL1_DeclarationsGenerator {
 			List<ComponentInitialisation> initialisationsList = topComponent
 					.getInitialisations();
 			for (ComponentInitialisation initialisation : initialisationsList) {
-				makeVarDeclaration(smTranslationMgr, tmpDeclarationList,
+				makeVarDeclaration(translationData, tmpDeclarationList,
 						topComponent, initialisation);
 			}
 			// Make constant declarations
-			makeConstDeclarations(smTranslationMgr, tmpDeclarationList,
+			makeConstDeclarations(translationData, tmpDeclarationList,
 					topComponent);
 		}
 
@@ -86,14 +86,14 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// stage 2 (IL1 to code) translation.
 		for (Connector connector : topComponent.getConnectors()) {
 			VHDL_TranslationData.connectorList.add(connector);
-			smTranslationMgr.quickPrintInfo.getConnectorList().add(connector);
+			translationData.quickPrintInfo.getConnectorList().add(connector);
 		}
 
 		// Add the new list to the existing list of declarations.
 		program.getDecls().addAll(tmpDeclarationList);
 
 		// Add the state-machine program counter values as an enum.
-		for (Statemachine sm : smTranslationMgr.synchSMList) {
+		for (Statemachine sm : translationData.synchSMList) {
 			// get the nodes of the state-machine
 			List<AbstractNode> nodeList = sm.getNodes();
 			// we add a program counter variable;
@@ -143,7 +143,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 		}
 	}
 
-	private void makeConstDeclarations(VHDL_TranslationData smTranslationMgr,
+	private void makeConstDeclarations(VHDL_TranslationData translationData,
 			List<Declaration> tmpDeclarationList, Component topComponent)
 			throws CodinTranslatorException {
 		List<ComponentConstant> constantList = topComponent.getConstants();
@@ -181,9 +181,9 @@ public class VHDL_IL1_DeclarationsGenerator {
 						tmpDeclarationList.add(cDecl);
 						cDecl.setIdentifier(cName);
 						cDeclMap.put(cName, cDecl);
-						cDecl.setComponentName(smTranslationMgr.parentMachine
+						cDecl.setComponentName(translationData.parentMachine
 								.getName());
-						cDecl.setProjectName(smTranslationMgr.parentProject
+						cDecl.setProjectName(translationData.parentProject
 								.getElementName());
 					}
 					// else get the existing declaration
@@ -217,7 +217,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 		}
 	}
 
-	private void makeVarDeclaration(VHDL_TranslationData smTranslationMgr,
+	private void makeVarDeclaration(VHDL_TranslationData translationData,
 			List<Declaration> tmpDeclarationList, Component component,
 			ComponentInitialisation initialisation) {
 		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
@@ -232,8 +232,8 @@ public class VHDL_IL1_DeclarationsGenerator {
 		variableName = variableName.trim();
 		// set information for the declaration
 		vDecl.setIdentifier(variableName);
-		vDecl.setProjectName(smTranslationMgr.parentProject.getElementName());
-		vDecl.setComponentName(smTranslationMgr.parentMachine.getName());
+		vDecl.setProjectName(translationData.parentProject.getElementName());
+		vDecl.setComponentName(translationData.parentMachine.getName());
 		// Get the initialisation part
 		boolean hasDetAssignment = initialisationString.startsWith(variableName
 				+ " " + ASSIGNMENT_SYMBOL);

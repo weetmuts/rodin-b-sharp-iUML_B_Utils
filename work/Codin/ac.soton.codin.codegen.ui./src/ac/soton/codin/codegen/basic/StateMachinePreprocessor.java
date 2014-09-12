@@ -30,16 +30,16 @@ public class StateMachinePreprocessor {
 	}
 
 	public void run(EventBElement source, 
-			VHDL_TranslationData smTranslationData)
+			VHDL_TranslationData translationData)
 			throws TaskingTranslationException, CodinTranslatorException {
 		// The machine that we are working on.
 		parentMachine = (MachineImpl) source;
 
-		smTranslationData.parentMachine = parentMachine;
+		translationData.parentMachine = parentMachine;
 		// selected components in the UI
 		List<ComponentEditPart> selectedComponentEditList = CodinTranslator.selectedComponentList;
 		// All components in the machine
-		EList<EObject> componentEList = smTranslationData.parentMachine
+		EList<EObject> componentEList = translationData.parentMachine
 				.getAllContained(ComponentsPackage.Literals.COMPONENT, true);
 
 		List<Component> componentArray = new ArrayList<Component>();
@@ -94,11 +94,16 @@ public class StateMachinePreprocessor {
 			} else if (procSM_EList.size() == 1) {
 				// store the process state machine in a map of componentName <->
 				// StateMachine
-				smTranslationData.processSM_Map.put(component.getName(), procSM_EList.get(0));
+				translationData.processSM_Map.put(component.getName(), procSM_EList.get(0));
 				// store the synchronous state machines in a map of
 				// componentName <-> StateMachine
-				smTranslationData.synchronousSM_Map.put(component.getName(),
-						component.getSynchronousStatemachines());
+				List<Statemachine> synchronousStatemachines = component.getSynchronousStatemachines();
+				translationData.synchronousSM_Map.put(component.getName(),
+						synchronousStatemachines);
+				// store a map of state-machine <-> containing component
+				for(Statemachine statemachine: synchronousStatemachines){
+					translationData.SM_Component_Map.put(statemachine, component);
+				}
 			}
 		}
 
@@ -109,25 +114,25 @@ public class StateMachinePreprocessor {
 		SynchSMAssistant synchSMAssistant = new SynchSMAssistant();
 		for (Component component : selectedComponentList) {
 			// add the component to the list of components
-			smTranslationData.componentList.add(component);
+			translationData.componentList.add(component);
 			
-			Statemachine procSM = smTranslationData.processSM_Map.get(component.getName());
+			Statemachine procSM = translationData.processSM_Map.get(component.getName());
 			// if the component has a state-machine
 			if (procSM != null) {
-				// store relevant info in the smTranslationMgr maps
+				// store relevant info in the translationData maps
 				// for this component
 				processSMAssistant.preProcessProcStateMachine(procSM,
-						smTranslationData);
+						translationData);
 			}
 
 			// Find which SynchSMs relate to events in the procSM.
 			// We use this to find out when a procSM 'calls' a synchSM .
-			List<Statemachine> synchSMList = smTranslationData.synchronousSM_Map
+			List<Statemachine> synchSMList = translationData.synchronousSM_Map
 					.get(component.getName());
-			smTranslationData.synchSMList = synchSMList;
+			translationData.synchSMList = synchSMList;
 			for (Statemachine synchSM : synchSMList) {
 				processSMAssistant.findProcessUsersOfSynchSM(synchSM,
-						smTranslationData);
+						translationData);
 			}
 
 		}
@@ -135,12 +140,12 @@ public class StateMachinePreprocessor {
 		// Now the second-pass pre-processing: for each node, identify a
 		// starting state; elaborating events on transitions, and a target
 		// state. This gives us a map: State<->(Event<->Node)
-		processSMAssistant.buildNextStateMaps(smTranslationData);
-		synchSMAssistant.buildNextStateMaps(smTranslationData);
+		processSMAssistant.buildNextStateMaps(translationData);
+		synchSMAssistant.buildNextStateMaps(translationData);
 
 		// do print-outs of process state machine
-		processSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
-		synchSMAssistant.testPrint_flattened_Event_Target(smTranslationData);
-		processSMAssistant.testPrint_transit_map(smTranslationData);
+		processSMAssistant.testPrint_flattened_Event_Target(translationData);
+		synchSMAssistant.testPrint_flattened_Event_Target(translationData);
+		processSMAssistant.testPrint_transit_map(translationData);
 	}
 }

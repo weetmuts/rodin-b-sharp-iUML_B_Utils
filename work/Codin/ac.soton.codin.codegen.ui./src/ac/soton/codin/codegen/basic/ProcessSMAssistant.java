@@ -41,7 +41,7 @@ public class ProcessSMAssistant {
 	private Map<State, Map<Event, AbstractNode>> processSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
 
 	public void findProcessUsersOfSynchSM(Statemachine statemachine,
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 		// Store a map of all the synchronous state machine events and which
 		// state-machines they play for!
 		// Event <-> List<state-machine>.
@@ -55,16 +55,16 @@ public class ProcessSMAssistant {
 				EList<Event> elaboratesList = transition.getElaborates();
 				for (Event event : elaboratesList) {
 					// if the event has no state machines associated with it
-					List<Statemachine> stateMachineList = smTranslationData.synchSMEventUser
+					List<Statemachine> stateMachineList = translationData.synchSMEventUser
 							.get(event);
 					if (stateMachineList == null) {
 						List<Statemachine> newSMList_ = new ArrayList<Statemachine>();
 						newSMList_.add(statemachine);
-						smTranslationData.synchSMEventUser.put(event,
+						translationData.synchSMEventUser.put(event,
 								newSMList_);
 					} else {
 						stateMachineList.add(statemachine);
-						smTranslationData.synchSMEventUser.put(event,
+						translationData.synchSMEventUser.put(event,
 								stateMachineList);
 					}
 				}
@@ -80,19 +80,19 @@ public class ProcessSMAssistant {
 	// state-machine subroutines.
 	// First we generate state-'outgoing transition' info.
 	public void preProcessProcStateMachine(Statemachine statemachine,
-			VHDL_TranslationData smTranslationData)
+			VHDL_TranslationData translationData)
 			throws TaskingTranslationException {
 		// Obtain the nodes in the state-machine.
 		EList<AbstractNode> nodes = statemachine.getNodes();
 		// for each node we gather info
 		for (AbstractNode node : nodes) {
-			extractDataForNode(node, statemachine, smTranslationData);
+			extractDataForNode(node, statemachine, translationData);
 		}
 	}
 
 	private void extractDataForNode(AbstractNode node,
 			Statemachine statemachine,
-			VHDL_TranslationData smTranslationData)
+			VHDL_TranslationData translationData)
 			throws TaskingTranslationException {
 
 		EList<Transition> outGoing = node.getOutgoing();
@@ -118,7 +118,7 @@ public class ProcessSMAssistant {
 							.getName());
 				}
 				eventList.add(event);
-				smTranslationData.taskingTranslationManager.getEventTargMap()
+				translationData.taskingTranslationManager.getEventTargMap()
 						.put(event, t.getTarget());
 
 				// store a link between the event and the state-machine
@@ -130,19 +130,19 @@ public class ProcessSMAssistant {
 		}
 
 		// add the eventList, associated with this state (and the node), to maps
-		List<Event> storedEventList = smTranslationData.component_nodeEventMap
+		List<Event> storedEventList = translationData.component_nodeEventMap
 				.get(node);
 		if (storedEventList == null) {
-			smTranslationData.component_nodeEventMap.put(node, eventList);
+			translationData.component_nodeEventMap.put(node, eventList);
 			if (node instanceof State) {
-				smTranslationData.component_stateEventMap.put((State) node,
+				translationData.component_stateEventMap.put((State) node,
 						eventList);
 			}
 		} else {
 			storedEventList.addAll(eventList);
-			smTranslationData.component_nodeEventMap.put(node, storedEventList);
+			translationData.component_nodeEventMap.put(node, storedEventList);
 			if (node instanceof State) {
-				smTranslationData.component_stateEventMap.put((State) node,
+				translationData.component_stateEventMap.put((State) node,
 						storedEventList);
 			}
 		}
@@ -153,7 +153,7 @@ public class ProcessSMAssistant {
 			EList<Statemachine> containedSMList = ((State) node)
 					.getStatemachines();
 			for (Statemachine s : containedSMList) {
-				preProcessProcStateMachine(s, smTranslationData);
+				preProcessProcStateMachine(s, translationData);
 			}
 		}
 	}
@@ -161,8 +161,8 @@ public class ProcessSMAssistant {
 	// In second-pass pre-processing: for each node, identify a
 	// starting state, elaborating events on transitions, and a target state.
 	// This gives us a map: State<->(Event<->Node)
-	public void buildNextStateMaps(VHDL_TranslationData smTranslationData) {
-		Set<AbstractNode> nodeSet = smTranslationData.component_nodeEventMap
+	public void buildNextStateMaps(VHDL_TranslationData translationData) {
+		Set<AbstractNode> nodeSet = translationData.component_nodeEventMap
 				.keySet();
 		List<Object> nodeList = Arrays.asList(nodeSet.toArray());
 		// for each node, identify and process the initial states,
@@ -211,7 +211,7 @@ public class ProcessSMAssistant {
 								storedInnerMap.put(junctionEvent,
 										junctionTransition.getTarget());
 								updateTransitionPath(junctionEvent,
-										smTranslationData, parentState,
+										translationData, parentState,
 										transitPathGuardList, transitPathActionList, storedInnerMap);
 							}
 						}
@@ -223,7 +223,7 @@ public class ProcessSMAssistant {
 					// We can get the events of the initial transition from
 					// the pre-constructed list.
 					else {
-						List<Event> eventList = smTranslationData.component_nodeEventMap
+						List<Event> eventList = translationData.component_nodeEventMap
 								.get(initialState);
 						// for each event related to the initial state
 						for (Event event : eventList) {
@@ -244,7 +244,7 @@ public class ProcessSMAssistant {
 							processSM_ini_nextStateMap.put(parentState,
 									storedInnerMap);
 
-							updateTransitionPath(event, smTranslationData,
+							updateTransitionPath(event, translationData,
 									parentState, transitPathGuardList,
 									transitPathActionList, storedInnerMap);
 						}
@@ -254,7 +254,7 @@ public class ProcessSMAssistant {
 			// end of sorting the initial transitions
 
 			// Next process the States
-			Set<State> stateSet = smTranslationData.component_stateEventMap
+			Set<State> stateSet = translationData.component_stateEventMap
 					.keySet();
 			List<Object> stateList = Arrays.asList(stateSet.toArray());
 			// foreach state
@@ -301,7 +301,7 @@ public class ProcessSMAssistant {
 											junctionTransition.getTarget());
 									// eventList.add(junctionEvent);
 									updateTransitionPath(junctionEvent,
-											smTranslationData, state,
+											translationData, state,
 											transitPathGuardList,
 											transitPathActionList, storedInnerMap);
 								}
@@ -334,7 +334,7 @@ public class ProcessSMAssistant {
 								processSM_curr_nextStateMap.put(state,
 										storedInnerMap);
 
-								updateTransitionPath(event, smTranslationData,
+								updateTransitionPath(event, translationData,
 										state, transitPathGuardList,
 										transitPathActionList, storedInnerMap);
 							}
@@ -343,15 +343,15 @@ public class ProcessSMAssistant {
 				}
 			}
 		}
-		flattenStateMachine(smTranslationData);
+		flattenStateMachine(translationData);
 	}
 
 	private void updateTransitionPath(Event event,
-			VHDL_TranslationData smTranslationData, State parentState,
+			VHDL_TranslationData translationData, State parentState,
 			ArrayList<Guard> transitPathGuardList,
 			ArrayList<Action> transitPathActionList, Map<Event, AbstractNode> storedInnerMap) {
 		// Set up a transitPath.
-		List<TransitPath> transitPathList = smTranslationData.processSM_transitPathMap
+		List<TransitPath> transitPathList = translationData.processSM_transitPathMap
 				.get(parentState);
 		TransitPath transitPath = null;
 		if(transitPathList == null){
@@ -388,14 +388,14 @@ public class ProcessSMAssistant {
 				}
 			}
 		}
-		smTranslationData.processSM_transitPathMap.put(parentState, transitPathList);
+		translationData.processSM_transitPathMap.put(parentState, transitPathList);
 	}
 
 	// Flattening removes nested initial transitions. It points
 	// the external transition target (i.e. the related event) at the
 	// internal transition target in our (flattened) map structure.
 	private void flattenStateMachine(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
 		unifiedMap.putAll(processSM_curr_nextStateMap);
 		unifiedMap.putAll(processSM_ini_nextStateMap);
@@ -460,7 +460,7 @@ public class ProcessSMAssistant {
 							System.out.println("to be removed: " + s2.getName()
 									+ "->" + e2.getName() + "->" + n2Name);
 
-							Map<State, List<TransitPath>> transitPathMap = smTranslationData.processSM_transitPathMap;
+							Map<State, List<TransitPath>> transitPathMap = translationData.processSM_transitPathMap;
 							// get all the paths from s1
 							List<TransitPath> s1_transitPathList = transitPathMap
 									.get(s1);
@@ -481,10 +481,10 @@ public class ProcessSMAssistant {
 									// if it is empty just remove it
 									s2_transitPathList.remove(tp);
 									if(s2_transitPathList.size() == 0){
-										smTranslationData.processSM_transitPathMap.remove(s2);
+										translationData.processSM_transitPathMap.remove(s2);
 									}
 									else{
-										smTranslationData.processSM_transitPathMap.put(s2, s2_transitPathList);
+										translationData.processSM_transitPathMap.put(s2, s2_transitPathList);
 									}
 									break;
 								}
@@ -503,15 +503,15 @@ public class ProcessSMAssistant {
 				}
 			}
 		}
-		smTranslationData.processSM_flattenedNextStateMap = updatedMap;
+		translationData.processSM_flattenedNextStateMap = updatedMap;
 	}
 
 	public void testPrint_transit_map(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 		System.out.println("BEGIN: testPrint_transit_map");
-		for (State state : smTranslationData.processSM_transitPathMap.keySet()) {
+		for (State state : translationData.processSM_transitPathMap.keySet()) {
 
-			List<TransitPath> tPathList = smTranslationData.processSM_transitPathMap
+			List<TransitPath> tPathList = translationData.processSM_transitPathMap
 					.get(state);
 
 			for (TransitPath tPath : tPathList) {
@@ -549,7 +549,7 @@ public class ProcessSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_initial_Event_Target(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 		System.out.println("BEGIN testPrint_initial_Event_Target");
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = processSM_ini_nextStateMap;
@@ -579,7 +579,7 @@ public class ProcessSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_current_Event_Target(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 		System.out.println("BEGIN testPrint_current_Event_Target");
 		// Test navigation through the map of state-event-next states
 		Map<State, Map<Event, AbstractNode>> oneMap = processSM_curr_nextStateMap;
@@ -609,10 +609,10 @@ public class ProcessSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_flattened_Event_Target(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 		System.out.println("BEGIN ProcSM_testPrint_flattened_Event_Target");
 		// Test navigation through the map of state-event-next states
-		Map<State, Map<Event, AbstractNode>> oneMap = smTranslationData.processSM_flattenedNextStateMap;
+		Map<State, Map<Event, AbstractNode>> oneMap = translationData.processSM_flattenedNextStateMap;
 		Set<State> oneKeys = oneMap.keySet();
 		List<State> oneKeyList = Arrays.asList(oneKeys
 				.toArray(new State[oneKeys.size()]));
@@ -624,12 +624,12 @@ public class ProcessSMAssistant {
 			for (Event evt : twoKeyList) {
 				// if the event is in the event state-machine user list then
 				// call the sm routine
-				boolean isSynchSMEvent = smTranslationData.synchSMEventUser
+				boolean isSynchSMEvent = translationData.synchSMEventUser
 						.keySet().contains(evt);
 				// The string to call the state machines
 				String smCallString = "";
 				if (isSynchSMEvent) {
-					List<Statemachine> stateMachineUsers = smTranslationData.synchSMEventUser
+					List<Statemachine> stateMachineUsers = translationData.synchSMEventUser
 							.get(evt);
 					for (Statemachine statemachine : stateMachineUsers) {
 						smCallString = smCallString + ".Call("

@@ -19,13 +19,13 @@ public class VHDL_IL1_SMGenerator {
 
 	// Generate the IL1 model.
 	public void run(Task task,
-			VHDL_TranslationData smTranslationMgr, EventBElement emfMachine)
+			VHDL_TranslationData translationData, EventBElement emfMachine)
 			throws TaskingTranslationException, CodinTranslatorException {
 		// Run the state-machine processor on the state-machines.
 		// this should generate a map of states to events and next states.
-		StateMachinePreprocessor.getDefault().run(emfMachine, smTranslationMgr);
+		StateMachinePreprocessor.getDefault().run(emfMachine, translationData);
 		// We can use the maps to generate the IL1 control flow for the state machines. 
-		VHDL_IL1_SynchSMSubroutineGen.getDefault().run(task, smTranslationMgr);
-		VHDL_IL1_ProcSMStatementGen.getDefault().run(task, smTranslationMgr);
+		VHDL_IL1_SynchSMSubroutineGen.getDefault().run(task, translationData);
+		VHDL_IL1_ProcSMStatementGen.getDefault().run(task, translationData);
 	}
 }

@@ -24,6 +24,7 @@ public class VHDL_TranslationData {
 
 	MachineImpl parentMachine;
 	public IRodinProject parentProject = null;
+	public Component currentComponent = null;
 
 	TaskingTranslationManager taskingTranslationManager;
 	IL1Element actualTarget;
@@ -34,7 +35,7 @@ public class VHDL_TranslationData {
 
 	// Given a current state node: navigate to next state, via events/joins etc:
 	// Descriptively: a map of type CurrentState <-> (Event <-> NextState)
-	// Represention of flattened state machine
+	// Representation of flattened state machine
 	public Map<State, Map<Event, AbstractNode>> processSM_flattenedNextStateMap;
 	
 	// Each state has a list of transit paths; a transit path includes guards and actions.
@@ -60,6 +61,10 @@ public class VHDL_TranslationData {
 	// Store the synchronous state-machines for each component
 	// in a map of ComponentName <-> ListOfStatemachines
 	public Map<String, List<Statemachine>> synchronousSM_Map = new HashMap<String, List<Statemachine>>();
+	
+	// given a state-machine find the component associated with it.
+	// in a map of State-machine <-> Component
+	public Map<Statemachine, Component> SM_Component_Map = new HashMap<>();
 
 	// There is just one process state-machine per component,
 	// for each component, record the process state-machines
@@ -91,6 +96,7 @@ public class VHDL_TranslationData {
 	
 	// call reset for each new component
 	public void resetMaps() {
+		currentComponent = null;
 		component_stateEventMap.clear();
 		component_nodeEventMap.clear();
 		synchronousSM_Map.clear();

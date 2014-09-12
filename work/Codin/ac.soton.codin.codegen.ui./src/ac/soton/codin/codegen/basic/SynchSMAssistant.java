@@ -32,14 +32,14 @@ public class SynchSMAssistant {
 	// Initial states have to be treated differently.
 	public Map<State, Map<Event, AbstractNode>> synchSM_ini_nextStateMap = new HashMap<State, Map<Event, AbstractNode>>();
 
-	public void buildNextStateMaps(VHDL_TranslationData smTranslationData) {
+	public void buildNextStateMaps(VHDL_TranslationData translationData) {
 		// For each component
-		for (String componentName : smTranslationData.synchronousSM_Map
+		for (String componentName : translationData.synchronousSM_Map
 				.keySet()) {
 			// reset the nextState data for a new component
 			resetMaps();
 			// get this component's state-machines.
-			List<Statemachine> statemachineList = smTranslationData.synchronousSM_Map
+			List<Statemachine> statemachineList = translationData.synchronousSM_Map
 					.get(componentName);
 			for (Statemachine statemachine : statemachineList) {
 				// build next step maps
@@ -195,9 +195,9 @@ public class SynchSMAssistant {
 					}
 				}
 				// flatten the state-machine
-				Map<State, Map<Event, AbstractNode>> flattenedStatemachineData = flattenStateMachine(smTranslationData);
+				Map<State, Map<Event, AbstractNode>> flattenedStatemachineData = flattenStateMachine(translationData);
 				// store the flattened state-machine in a map with the state-machine key
-				smTranslationData.synchSM_flattened_nextStateMap.put(statemachine,flattenedStatemachineData);
+				translationData.synchSM_flattened_nextStateMap.put(statemachine,flattenedStatemachineData);
 			}
 		}
 	}
@@ -208,7 +208,7 @@ public class SynchSMAssistant {
 	}
 
 	private Map<State, Map<Event, AbstractNode>> flattenStateMachine(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 
 		Map<State, Map<Event, AbstractNode>> unifiedMap = new HashMap<State, Map<Event, AbstractNode>>();
 		unifiedMap.putAll(synchSM_curr_nextStateMap);
@@ -280,9 +280,9 @@ public class SynchSMAssistant {
 
 	// test print the flattened state machine targets
 	public void testPrint_flattened_Event_Target(
-			VHDL_TranslationData smTranslationData) {
+			VHDL_TranslationData translationData) {
 
-		Map<Statemachine, Map<State, Map<Event, AbstractNode>>> zeroMap = smTranslationData.synchSM_flattened_nextStateMap;
+		Map<Statemachine, Map<State, Map<Event, AbstractNode>>> zeroMap = translationData.synchSM_flattened_nextStateMap;
 		for(Statemachine statemachine: zeroMap.keySet()){
 			Map<State, Map<Event, AbstractNode>> oneMap = zeroMap.get(statemachine);
 

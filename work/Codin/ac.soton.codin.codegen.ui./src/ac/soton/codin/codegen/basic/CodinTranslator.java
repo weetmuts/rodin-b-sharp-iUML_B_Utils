@@ -46,6 +46,9 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 	public void translate(IStructuredSelection selection)
 			throws Exception {
 		// set the list of components to be translated
+		if(selection.size() > 1){
+			throw new CodinTranslatorException("This tool only handles one component at a time (for now?).");
+		}
 
 		for (Object s : selection.toList()) {
 			if (s instanceof ComponentEditPart) {
@@ -96,11 +99,11 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		Il1PackageImpl.init();
 		Il1Factory factory = Il1Factory.eINSTANCE;
 		// create a new class to store translation info
-		VHDL_TranslationData smTranslationMgr = new VHDL_TranslationData();
+		VHDL_TranslationData translationData = new VHDL_TranslationData();
 		// and we made need the previous tasking translation manager
 		taskingTranslationManager = new TaskingTranslationManager(factory);
-		smTranslationMgr.taskingTranslationManager = taskingTranslationManager;
-		smTranslationMgr.parentProject = machineRoot.getParent().getRodinProject();
+		translationData.taskingTranslationManager = taskingTranslationManager;
+		translationData.parentProject = machineRoot.getParent().getRodinProject();
 		// prevent tasking static checks on Task Body and so on
 		TaskingTranslationManager.setTranslationType("non-tasking");
 		Program program = Il1Factory.eINSTANCE.createProgram();
@@ -108,18 +111,16 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		Task task = Il1Factory.eINSTANCE.createTask();
 		// add it to the program
 		program.getTaskTypeTasks().add(task);
-		program.setName(machineRoot.getElementName());
-		smTranslationMgr.program = program;
+		translationData.program = program;
 		// do the translation of the state machines
-		VHDL_IL1_SMGenerator.getDefault().run(task, smTranslationMgr, emfMachine);
+		VHDL_IL1_SMGenerator.getDefault().run(task, translationData, emfMachine);
 		// add variables and initialisations etc
-		VHDL_IL1_DeclarationsGenerator.getDefault().run(smTranslationMgr);
-
-		// IL1 to Code goes here.
-		//>>
+		VHDL_IL1_DeclarationsGenerator.getDefault().run(translationData);
+		// Save the IL1 model.
+		program.setName(translationData.currentComponent.getName());
 		saveBaseProgram(program, targetFile(target));
-
-		QuickPrinter qp = new QuickPrinter(smTranslationMgr, program, rodinProject);
+		// pass it to the quickprinter
+		QuickPrinter qp = new QuickPrinter(translationData, program, rodinProject);
 		qp.useTemplates();
 	}
 

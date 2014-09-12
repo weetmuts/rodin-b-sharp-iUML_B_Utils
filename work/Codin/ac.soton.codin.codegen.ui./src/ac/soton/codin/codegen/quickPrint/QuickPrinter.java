@@ -53,11 +53,11 @@ public class QuickPrinter {
 	private IRodinProject sourceRodinProject;
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
-	private static VHDL_TranslationData smTranslationMgr;
+	private static VHDL_TranslationData translationData;
 	
 	// Constructor used to initiate template build
-	public QuickPrinter(VHDL_TranslationData smTranslationMger, Program program, IRodinProject rodinProject) {
-		smTranslationMgr = smTranslationMger;
+	public QuickPrinter(VHDL_TranslationData translationData, Program program, IRodinProject rodinProject) {
+		QuickPrinter.translationData = translationData;
 		this.program = program;
 		this.sourceRodinProject = rodinProject;
 	}
@@ -91,7 +91,7 @@ public class QuickPrinter {
 		GeneratorData generatorData = new GeneratorData();
 		List<Object> generatorDataList = generatorData.getDataList();
 		generatorDataList.add(program); // add program data here
-		generatorDataList.add(smTranslationMgr);
+		generatorDataList.add(translationData);
 		templateProcessor.instantiateTemplate("testTemplate.vhdl", generatorData);
 	}
 	
@@ -212,7 +212,7 @@ public class QuickPrinter {
 		// synchronous state machines, by name.
 		// get the list of synchronous state machines
 		ArrayList<String> synchSMNamesList = new ArrayList<>();
-		for(Statemachine s: smTranslationMgr.synchSMList){
+		for(Statemachine s: translationData.synchSMList){
 			synchSMNamesList.add(s.getName());
 		}
 		// if the subroutine is a synch stateMachine call,
@@ -276,7 +276,7 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(Action el) {
-		List<String> connectorNameList = smTranslationMgr.quickPrintInfo.getConnectorNameList();
+		List<String> connectorNameList = translationData.quickPrintInfo.getConnectorNameList();
 		String actionString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(el.getAction());
 
@@ -376,8 +376,8 @@ public class QuickPrinter {
 	}
 	
 	private void doPrint(VariableDecl el) {
-		List<String> connectorNameList = smTranslationMgr.quickPrintInfo.getConnectorNameList();
-		List<String> synchSMNames = smTranslationMgr.quickPrintInfo.getSynchSMNamesList();
+		List<String> connectorNameList = translationData.quickPrintInfo.getConnectorNameList();
+		List<String> synchSMNames = translationData.quickPrintInfo.getSynchSMNamesList();
 		String assignmentOperator = " := ";
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();

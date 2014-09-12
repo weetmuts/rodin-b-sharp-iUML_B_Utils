@@ -9,12 +9,12 @@ import ac.soton.eventb.statemachines.Statemachine;
 
 public class QuickPrintInfo {
 	private static List<Connector> conns = new ArrayList<>();
-	private VHDL_TranslationData smTranslationData;
+	private VHDL_TranslationData translationData;
 	
 	
 	
 	public QuickPrintInfo(VHDL_TranslationData vhdl_translationData) {
-		this.smTranslationData = vhdl_translationData;
+		this.translationData = vhdl_translationData;
 	}
 
 	public List<Connector> getConnectorList(){
@@ -32,7 +32,7 @@ public class QuickPrintInfo {
 
 	public List<String> getSynchSMNamesList() {
 		ArrayList<String> returnList = new ArrayList<>();
-		for(Statemachine s: smTranslationData.synchSMList){
+		for(Statemachine s: translationData.synchSMList){
 			returnList.add(s.getName());
 		}
 		return returnList;

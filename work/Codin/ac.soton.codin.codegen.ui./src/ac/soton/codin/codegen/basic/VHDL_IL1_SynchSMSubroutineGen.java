@@ -21,6 +21,7 @@ import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 
 import ac.soton.codin.codegen.quickPrint.QuickPrinter;
+import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -43,19 +44,23 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	}
 
 	// Make the synchronous state-machine's subroutines
-	public void run(Task task, VHDL_TranslationData smTranslationMgr) {
+	public void run(Task task, VHDL_TranslationData translationData) {
+		// get a state-machine to track down the component parent
+		Statemachine aStatemachine = translationData.synchSMList.get(0);
+		Component parentComponent = translationData.SM_Component_Map.get(aStatemachine);
+		translationData.currentComponent = parentComponent;
 		// We can create a subroutine for each synchronous state-machine.
-		for (Statemachine statemachine : smTranslationMgr.synchSMList) {
+		for (Statemachine statemachine : translationData.synchSMList) {
 			String stateMachineName = statemachine.getName();
 			// Set up the subroutine that will implement the state-machine
 			Subroutine smSubroutine = Il1Factory.eINSTANCE.createSubroutine();
-			smTranslationMgr.synchSM_subroutineMap.put(statemachine,
+			translationData.synchSM_subroutineMap.put(statemachine,
 					smSubroutine);
 			smSubroutine.setName(stateMachineName);
 			smSubroutine.setTemporary(false);
-			smSubroutine.setMachineName(smTranslationMgr.parentMachine
+			smSubroutine.setMachineName(translationData.parentMachine
 					.getName());
-			smSubroutine.setProjectName(smTranslationMgr.parentProject
+			smSubroutine.setProjectName(translationData.parentProject
 					.getElementName());
 			task.getSubroutines().add(smSubroutine);
 			// create a new case-block for this state-machine
@@ -68,7 +73,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			// iterate through each state. Each state is a case-statement
 			// multiple outgoing transitions/events require a choice,
 			// derived from a guard.
-			Map<State, Map<Event, AbstractNode>> stateMap = smTranslationMgr.synchSM_flattened_nextStateMap
+			Map<State, Map<Event, AbstractNode>> stateMap = translationData.synchSM_flattened_nextStateMap
 					.get(statemachine);
 			List<State> stateList = Arrays.asList(stateMap.keySet().toArray(
 					new State[stateMap.size()]));
