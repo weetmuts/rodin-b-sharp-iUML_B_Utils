@@ -283,7 +283,7 @@ public class QuickPrinter {
 		String[] actionArray = actionString.split(" ");
 		String varName = "";
 		if(actionArray.length >= 2){
-			varName = actionArray[2];
+			varName = actionArray[0];
 		}
 		if (connectorNameList.contains(varName)) {
 			actionArray[1] = " <= ";
