@@ -1,4 +1,3 @@
-- add outgoing connector to example
 - complete port definitions
 - add port updates
 - nested synchSM support
