@@ -1,4 +1,3 @@
-- complete port definitions
 - add port updates
 - nested synchSM support
 - format VHDL output

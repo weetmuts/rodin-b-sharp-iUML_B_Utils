@@ -30,6 +30,7 @@ import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.factory.RodinResource;
 import org.rodinp.core.IRodinProject;
 
+import ac.soton.codin.codegen.formatter.Formatter;
 import ac.soton.codin.codegen.quickPrint.QuickPrinter;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.impl.ComponentImpl;
@@ -125,6 +126,9 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		// pass it to the quickprinter
 		QuickPrinter qp = new QuickPrinter(translationData, program, rodinProject);
 		qp.useTemplates();
+		Formatter f = new Formatter();
+		f.formatVHDL(translationData);
+		
 	}
 
 	// Create the file associated with the output
