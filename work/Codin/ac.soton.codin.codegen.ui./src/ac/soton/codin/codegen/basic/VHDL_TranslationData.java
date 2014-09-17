@@ -24,6 +24,10 @@ public class VHDL_TranslationData {
 
 	MachineImpl parentMachine;
 	public IRodinProject parentProject = null;
+	// The current component (being processed) can be set in 
+	// downstream processing to gain access the maps.
+	// This should be reset (calling the reset() method)
+	// while iterating through components during processing
 	public Component currentComponent = null;
 
 	TaskingTranslationManager taskingTranslationManager;
@@ -75,8 +79,7 @@ public class VHDL_TranslationData {
 	public List<Component> componentList = new ArrayList<>();
 	// Keep track of the connectors
 	public static List<Connector> connectorList = new ArrayList<>();
-
-	
+		
 	// BEGIN: The following maps/data structures are refreshed (cleared) for each new component.
 	//
 	// In a component: Given a state node, get the events associated with the

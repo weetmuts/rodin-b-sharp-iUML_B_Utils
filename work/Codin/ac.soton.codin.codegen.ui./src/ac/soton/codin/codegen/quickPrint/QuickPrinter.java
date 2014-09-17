@@ -31,6 +31,8 @@ import org.rodinp.core.IRodinProject;
 
 import ac.soton.codin.codegen.basic.VHDL_TranslationData;
 import ac.soton.codin.codegen.ui.CodinCGPlugin;
+import ac.soton.eventb.emf.components.Component;
+import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.statemachines.Statemachine;
 
 public class QuickPrinter {
@@ -54,9 +56,10 @@ public class QuickPrinter {
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
 	private static VHDL_TranslationData translationData;
-	
+
 	// Constructor used to initiate template build
-	public QuickPrinter(VHDL_TranslationData translationData, Program program, IRodinProject rodinProject) {
+	public QuickPrinter(VHDL_TranslationData translationData, Program program,
+			IRodinProject rodinProject) {
 		QuickPrinter.translationData = translationData;
 		this.program = program;
 		this.sourceRodinProject = rodinProject;
@@ -74,15 +77,16 @@ public class QuickPrinter {
 	public void useTemplates() throws Exception {
 		// Create the Template Processor
 		TemplateProcessor templateProcessor = TemplateProcessor.getDefault();
-		// Initialise the template processor with the TARGET and SOURCE information.
+		// Initialise the template processor with the TARGET and SOURCE
+		// information.
 		templateProcessor.setFileExtension(".vhdl");
-		//also set vhdl language formatter at a later date
-		
+		// also set vhdl language formatter at a later date
+
 		templateProcessor.initialiseTarget(sourceRodinProject,
 				CodinCGPlugin.GENERATED_SRC_FOLDER);
 		templateProcessor.initialiseSource(sourceRodinProject,
 				CodinCGPlugin.TEMPLATES_SRC_FOLDER);
-		
+
 		// Get the processor to instantiate the 'Top-Level' template.
 		// Templates contained 'within' are handled by the processor
 		// and TemplateHelper. We can pass a data object to assist with the
@@ -92,14 +96,15 @@ public class QuickPrinter {
 		List<Object> generatorDataList = generatorData.getDataList();
 		generatorDataList.add(program); // add program data here
 		generatorDataList.add(translationData);
-		templateProcessor.instantiateTemplate("testTemplate.vhdl", generatorData);
+		templateProcessor.instantiateTemplate("testTemplate.vhdl",
+				generatorData);
 	}
-	
-	public List<String> printProgram(){
+
+	public List<String> printProgram() {
 		printEobject(program);
 		return returnList;
 	}
-	
+
 	// print from a supplied IL1 command
 	public List<String> printEobject(EObject element) {
 		if (element == null)
@@ -114,7 +119,7 @@ public class QuickPrinter {
 					doPrint((VariableDecl) d);
 				} else if (d.eClass() == cDeclClass) {
 					doPrint((ConstantDecl) d);
-				} else if (d.eClass() == eDeclClass){
+				} else if (d.eClass() == eDeclClass) {
 					doPrint((Enumeration) d);
 				}
 			}
@@ -157,15 +162,13 @@ public class QuickPrinter {
 			doPrint((ElseIf) element);
 			return returnList;
 		} else if (eClass == callClass) {
-//			doPrint((Call) element);
+			// doPrint((Call) element);
 			doPrint_Inline((Call) element);
 			return returnList;
-		}
-		else{
+		} else {
 			return returnList;
 		}
 	}
-
 
 	private void doPrint(Task t) {
 		EList<Subroutine> subroutineList = t.getSubroutines();
@@ -174,7 +177,6 @@ public class QuickPrinter {
 		}
 	}
 
-	
 	private void doPrint_Inline(Call el) {
 		// get the subroutine of the call;
 		Subroutine calledSubroutine = el.getSubroutine();
@@ -185,42 +187,41 @@ public class QuickPrinter {
 		subroutineList.addAll(program.getSubroutines());
 		// find the Subroutine of tasks
 		EList<Task> taskList = program.getTaskTypeTasks();
-		for(Task task: taskList){
+		for (Task task : taskList) {
 			subroutineList.addAll(task.getSubroutines());
 		}
 		// find the called subroutine implementation in the list
 		Subroutine subroutineImpl = null;
-		for(Subroutine s: subroutineList){
-			if(calledSubroutine.getName().equals(s.getName())){
+		for (Subroutine s : subroutineList) {
+			if (calledSubroutine.getName().equals(s.getName())) {
 				subroutineImpl = s;
 				break;
 			}
 		}
 
-		if(isSMSubroutine(subroutineImpl)){
+		if (isSMSubroutine(subroutineImpl)) {
 			// call the synch stateMachine procedure
-			returnList.add(subroutineImpl.getName()+";");
-		}
-		else{
+			returnList.add(subroutineImpl.getName() + ";");
+		} else {
 			Command body = subroutineImpl.getBody();
 			printEobject(body);
 		}
 	}
 
 	private boolean isSMSubroutine(Subroutine subroutineImpl) {
-		// returns true if the subroutine is in the list of 
+		// returns true if the subroutine is in the list of
 		// synchronous state machines, by name.
 		// get the list of synchronous state machines
 		ArrayList<String> synchSMNamesList = new ArrayList<>();
-		for(Statemachine s: translationData.synchSMList){
+		for (Statemachine s : translationData.synchSMList) {
 			synchSMNamesList.add(s.getName());
 		}
 		// if the subroutine is a synch stateMachine call,
-		boolean hasSynchSMName = synchSMNamesList.contains(subroutineImpl.getName());
+		boolean hasSynchSMName = synchSMNamesList.contains(subroutineImpl
+				.getName());
 		return hasSynchSMName;
 	}
 
-	
 	private void doPrint(ElseIf el) {
 		returnList.add("ELSIF ");
 		boolean first = true;
@@ -235,9 +236,9 @@ public class QuickPrinter {
 		}
 		returnList.add("THEN ");
 		printEobject(el.getAction());
-		
+
 		ElseIf subBranch = el.getBranch();
-		if(subBranch != null){
+		if (subBranch != null) {
 			doPrint(subBranch);
 		}
 	}
@@ -276,16 +277,10 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(Action el) {
-		List<String> connectorNameList = translationData.quickPrintInfo.getConnectorNameList();
 		String actionString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(el.getAction());
-
 		String[] actionArray = actionString.split(" ");
-		String varName = "";
-		if(actionArray.length >= 2){
-			varName = actionArray[0];
-		}
-		if (connectorNameList.contains(varName)) {
+		if (actionAssignsToConnector(el)) {
 			actionArray[1] = " <= ";
 			// recreate string
 			String newString = "";
@@ -321,20 +316,20 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(Subroutine el) {
-		
+
 		String subroutineName = el.getName();
 		String subroutineType;
 		String paramString = "";
 
 		// if the subroutine is a state machine implementation
 		// then it a procedure.
-		if(isSMSubroutine(el)){
+		if (isSMSubroutine(el)) {
 			subroutineType = "PROCEDURE";
 		}
 		// else if it is the process SM entry then it is process
 		else if (subroutineName.equals(BeginCycleName)) {
 			subroutineType = "PROCESS";
-			paramString = "(...)";
+			paramString = "("+makeSensitivityList()+")";
 		}
 		// else return since the other subroutines should be in-lined
 		else {
@@ -349,72 +344,106 @@ public class QuickPrinter {
 
 	private void doPrint(ConstantDecl el) {
 		String constantType = el.getType();
-		if(constantType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
+		if (constantType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
 			constantType = "Integer";
-		}
-		else if(constantType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
+		} else if (constantType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)) {
 			constantType = "Boolean";
 		}
-		returnList.add("CONSTANT " + el.getIdentifier() + ": "
-				+ constantType + " := " + el.getInitialValue());
+		returnList.add("CONSTANT " + el.getIdentifier() + ": " + constantType
+				+ " := " + el.getInitialValue());
 	}
 
 	private void doPrint(Enumeration el) {
 		boolean first = true;
 		String tmpStr = "TYPE " + el.getIdentifier() + " IS (";
-		for(String str: el.getLiteralValues()){
-			if(first){
+		for (String str : el.getLiteralValues()) {
+			if (first) {
 				tmpStr = tmpStr + str;
 				first = false;
-			}
-			else{
+			} else {
 				tmpStr = tmpStr + ", " + str;
 			}
 		}
 		tmpStr = tmpStr + ");";
 		returnList.add(tmpStr);
 	}
-	
+
 	private void doPrint(VariableDecl el) {
-		List<String> connectorNameList = translationData.quickPrintInfo.getConnectorNameList();
-		List<String> synchSMNames = translationData.quickPrintInfo.getSynchSMNamesList();
+		List<String> connectorNameList = translationData.quickPrintInfo
+				.getConnectorNameList();
+		List<String> synchSMNames = translationData.quickPrintInfo
+				.getSynchSMNamesList();
 		String assignmentOperator = " := ";
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();
 		String declarationType = null;
 		// If the list contains the variable ID then it is a signal.
-		if(connectorNameList.contains(el.getIdentifier())){
+		if (connectorNameList.contains(el.getIdentifier())) {
 			declarationType = "SIGNAL ";
 			assignmentOperator = " <= ";
-			if(variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
+			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
 				variableType = "Integer";
-			}
-			else if(variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
+			} else if (variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)) {
 				variableType = "std_logic_signal";
-				if(initialValue.equals("true")){
+				if (initialValue.equals("true")) {
 					initialValue = "1";
+				} else {
+					initialValue = "0";
 				}
-				else{ initialValue = "0";}
 			}
 		}
 		// else if the variable is a state-machine program counter
 		// (i.e. with the same name as the state-machine itself)
-		else if(synchSMNames.contains(el.getIdentifier()) 
-		//		||synchSMNames.contains(el.getIdentifier().replace("init_", ""))
-				){
+		else if (synchSMNames.contains(el.getIdentifier())
+		// ||synchSMNames.contains(el.getIdentifier().replace("init_", ""))
+		) {
 			declarationType = "SIGNAL ";
 			assignmentOperator = " <= ";
-		}
-		else{
+		} else {
 			declarationType = "VARIABLE ";
-			if(variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)){
+			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
 				variableType = "Integer";
-			}
-			else if(variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)){
+			} else if (variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)) {
 				variableType = "Boolean";
 			}
 		}
 		returnList.add(declarationType + el.getIdentifier() + ": "
 				+ variableType + assignmentOperator + initialValue);
+	}
+
+	// if a connector is being assigned to, on the RHS
+	// of an expression, return true.
+	private boolean actionAssignsToConnector(Action el) {
+		List<String> connectorNameList = translationData.quickPrintInfo
+				.getConnectorNameList();
+		String actionString = CodeGenTaskingUtils
+				.makeSingleSpaceBetweenElements(el.getAction());
+		String[] actionArray = actionString.split(" ");
+		String varName = "";
+		if (actionArray.length >= 2) {
+			varName = actionArray[0];
+		}
+		return connectorNameList.contains(varName);
+	}
+
+	private String makeSensitivityList() {
+		Component currentComponent = translationData.currentComponent;
+		EList<Connector> inConnectorList = currentComponent.getInConnectors();
+		// flatten the sensitivity list
+		String sensitivityList = "";
+		boolean first = true;
+		for (Connector s : inConnectorList) {
+			// The convention is to have a lower-case version of
+			// the Connector name, for the signal.
+			String name = s.getName().toLowerCase();
+			if (!first) {
+				sensitivityList = sensitivityList + ", " + name;
+			} else {
+				first = false;
+				sensitivityList = name;
+			}
+
+		}
+		return sensitivityList;
 	}
 }

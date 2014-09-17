@@ -11,6 +11,7 @@ import org.eventb.emf.core.machine.impl.MachineImpl;
 
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentsPackage;
+import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentNameEditPart;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -72,7 +73,7 @@ public class StateMachinePreprocessor {
 		for (Component component : componentArray) {
 			if (selectedComponentNames.contains(component.getName())) {
 				selectedComponentList.add(component);
-			}
+			}			
 		}
 
 		// FOR EACH SELECTED COMPONENT >>>,
