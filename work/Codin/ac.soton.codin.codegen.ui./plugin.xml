@@ -43,6 +43,10 @@
             GeneratorClass="ac.soton.codin.codegen.quickPrint.ResetVariablesGenerator"
             tag="resetVariablesGenerator">
       </templateGenerator>
+      <templateGenerator
+            GeneratorClass="ac.soton.codin.codegen.quickPrint.PortMapGenerator"
+            tag="portMapGenerator">
+      </templateGenerator>
    </extension>
 
 </plugin>

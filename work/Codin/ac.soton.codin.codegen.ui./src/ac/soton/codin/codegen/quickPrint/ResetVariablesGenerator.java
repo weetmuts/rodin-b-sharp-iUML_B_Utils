@@ -20,6 +20,7 @@ public class ResetVariablesGenerator implements IGenerator {
 		for(Object o: dataList){
 			if(o instanceof VHDL_TranslationData){
 				translationData = (VHDL_TranslationData) o;
+				break;
 			}
 		}
 		
