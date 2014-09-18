@@ -171,7 +171,7 @@ public class ProcessSMAssistant {
 			if (node instanceof Initial) {
 				Initial initialState = (Initial) node;
 				EList<Transition> outgoingTList = initialState.getOutgoing();
-				// Get the existing events associated with the inital state
+				// Get the existing events associated with the initial state
 				State parentState = (State) initialState
 						.getContaining(StatemachinesPackage.Literals.STATE);
 				if (parentState == null) {
@@ -272,9 +272,7 @@ public class ProcessSMAssistant {
 						ArrayList<Action> transitPathActionList = new ArrayList<Action>();
 						transitPathActionList.addAll(stateTransition.getActions());
 						// if the state transition target is a Junction we will
-						// need
-						// to
-						// build the event list here
+						// need to build the event list here
 						if (transitionTarget instanceof Junction) {
 							transitPathGuardList.addAll(stateTransition
 									.getGuards());

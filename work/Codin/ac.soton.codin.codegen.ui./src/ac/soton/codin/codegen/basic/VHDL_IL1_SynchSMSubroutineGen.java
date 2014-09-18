@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eventb.codegen.il1.Case;
 import org.eventb.codegen.il1.CaseStatement;
 import org.eventb.codegen.il1.Command;
@@ -25,6 +26,7 @@ import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.statemachines.Transition;
 
 public class VHDL_IL1_SynchSMSubroutineGen {
@@ -33,6 +35,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	// flag indicating that we require case 'others' to
 	// be added to a case statement
 	private boolean requiresNonProgress;
+	private VHDL_TranslationData translationData;
 
 	public static VHDL_IL1_SynchSMSubroutineGen getDefault() {
 		if (singleton == null) {
@@ -44,10 +47,12 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	}
 
 	// Make the synchronous state-machine's subroutines
-	public void run(Task task, VHDL_TranslationData translationData) {
+	public void run(Task task, VHDL_TranslationData translationData_) {
 		// get a state-machine to track down the component parent
+		translationData = translationData_;
 		Statemachine aStatemachine = translationData.synchSMList.get(0);
-		Component parentComponent = translationData.SM_Component_Map.get(aStatemachine);
+		Component parentComponent = translationData.SM_Component_Map
+				.get(aStatemachine);
 		translationData.currentComponent = parentComponent;
 		// We can create a subroutine for each synchronous state-machine.
 		for (Statemachine statemachine : translationData.synchSMList) {
@@ -58,8 +63,8 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					smSubroutine);
 			smSubroutine.setName(stateMachineName);
 			smSubroutine.setTemporary(false);
-			smSubroutine.setMachineName(translationData.parentMachine
-					.getName());
+			smSubroutine
+					.setMachineName(translationData.parentMachine.getName());
 			smSubroutine.setProjectName(translationData.parentProject
 					.getElementName());
 			task.getSubroutines().add(smSubroutine);
@@ -136,7 +141,13 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		AbstractNode targetNode = currentTransition.getTarget();
 		String targetName = null;
 		if (targetNode instanceof State) {
-			targetName = ((State) targetNode).getName();
+			State targetState = (State) targetNode;
+			if(hasNestedSM(targetState)){
+				// get any of the events, use to find the nested target state.
+				Event event = currentTransition.getElaborates().get(0);
+				findNestedTarget(currentState, event);
+			}
+			targetName = targetState.getName();
 			if (targetNode.getOutgoing().size() == 0) {
 				// This is an implicit final state
 				if (requiresNonProgress == false) {
@@ -203,7 +214,9 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			AbstractNode targetNode = currentTransition.getTarget();
 			String targetName = null;
 			if (targetNode instanceof State) {
-				targetName = ((State) targetNode).getName();
+				State targetState = (State) targetNode;
+				hasNestedSM(targetState);
+				targetName = targetState.getName();
 				if (targetNode.getOutgoing().size() == 0) {
 					// This is an implicit final state
 					if (requiresNonProgress == false) {
@@ -232,33 +245,6 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			makeIL1SubBranch(newTransitionList, stateMachineName, currentState,
 					topBranch, subBranch);
 		}
-		// else if (transitionList.size() == 1) {
-		// // set the elseBranch of the original 'if'.
-		// Transition lastTransition = transitionList.get(0);
-		// // Get the target name of this transition if there is one.
-		// AbstractNode targetNode = lastTransition.getTarget();
-		// String targetName = null;
-		// if (targetNode instanceof State) {
-		// targetName = ((State) targetNode).getName();
-		// if (targetNode.getOutgoing().size() == 0) {
-		// // This is an implicit final state
-		// if (requiresNonProgress == false) {
-		// requiresNonProgress = true;
-		// }
-		// }
-		// }
-		// // Else will have no guards
-		// // So just process the actions.
-		// EList<Action> actionEList = lastTransition.getActions();
-		// // transform the actions of this transition
-		// // to an il1.command for the else body.
-		// // First create a java list
-		// List<Action> actionList = Arrays.asList(actionEList
-		// .toArray(new Action[actionEList.size()]));
-		// Command elseBranchBody = completeIL1CaseActionSequence(
-		// stateMachineName, currentState, targetName, actionList);
-		// topBranch.setElse(elseBranchBody);
-		// }
 	}
 
 	// make the case body for the current state, where there is just
@@ -270,7 +256,9 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			AbstractNode targetNode = transition.getTarget();
 			String targetName = null;
 			if (targetNode instanceof State) {
-				targetName = ((State) targetNode).getName();
+				State targetState = (State) targetNode;
+				hasNestedSM(targetState);
+				targetName = targetState.getName();
 				if (targetNode.getOutgoing().size() == 0) {
 					// This is an implicit final state
 					if (requiresNonProgress == false) {
@@ -354,5 +342,29 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			predicateStringList.add(guard.getPredicate());
 		}
 		return predicateStringList;
+	}
+
+	private boolean hasNestedSM(State targetState) {
+		EList<EObject> list = targetState.getAllContained(
+				StatemachinesPackage.Literals.STATEMACHINE, true);
+		for(EObject eo: list){
+			if(eo != null){
+				//we have found a nested state-machine
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private AbstractNode findNestedTarget(State currentState, Event event) {
+		// get the transit map for this state.
+		Map<State, List<TransitPath>> map = translationData.synchSM_transitPathMap;
+		List<TransitPath> transitPathList = map.get(currentState);
+		for(TransitPath transitPath: transitPathList){
+			if(transitPath.getEvent() == event){
+				return transitPath.getTargetNode();
+			}
+		}
+		return null;
 	}
 }

@@ -44,6 +44,8 @@ public class VHDL_TranslationData {
 	
 	// Each state has a list of transit paths; a transit path includes guards and actions.
 	public Map<State, List<TransitPath>> processSM_transitPathMap =  new HashMap<State, List<TransitPath>>();
+	// Now we added one for nested synchSMs, for collecting guards/actions etc.
+	public Map<State, List<TransitPath>> synchSM_transitPathMap =  new HashMap<State, List<TransitPath>>();
 
 	// Given a synchronous State-machine and current state node: navigate to the
 	// next state, via events/joins etc: Descriptively: a map of 
