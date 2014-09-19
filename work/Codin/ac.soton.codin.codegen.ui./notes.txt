@@ -1,3 +1,2 @@
 - add port updates
-- nested synchSM support
-- format VHDL output
+- Missing guards on initial transitions, seem to be in TransitPaths. But not being generated into IL1

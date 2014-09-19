@@ -136,7 +136,7 @@ public class SynchSMAssistant {
 					storedInnerMap.put(junctionEvent,
 							junctionTransition.getTarget());
 					// eventList.add(junctionEvent);
-					updateTransitionPath(junctionEvent, state,
+					updateTransitPath(junctionEvent, state,
 							transitPathGuardList, transitPathActionList,
 							storedInnerMap);
 				}
@@ -167,14 +167,14 @@ public class SynchSMAssistant {
 				}
 				synchSM_curr_nextStateMap.put(state, storedInnerMap);
 
-				updateTransitionPath(event, state, transitPathGuardList,
+				updateTransitPath(event, state, transitPathGuardList,
 						transitPathActionList, storedInnerMap);
 
 			}
 		}
 	}
 
-	private void updateTransitionPath(Event event, State state,
+	private void updateTransitPath(Event event, State state,
 			ArrayList<Guard> transitPathGuardList,
 			ArrayList<Action> transitPathActionList,
 			Map<Event, AbstractNode> storedInnerMap) {
@@ -292,7 +292,7 @@ public class SynchSMAssistant {
 					// TargetState map
 					synchSM_ini_nextStateMap.put(parentState, storedInnerMap);
 					
-					updateTransitionPath(event, parentState, transitPathGuardList, transitPathActionList, storedInnerMap);
+					updateTransitPath(event, parentState, transitPathGuardList, transitPathActionList, storedInnerMap);
 
 				}
 			}
