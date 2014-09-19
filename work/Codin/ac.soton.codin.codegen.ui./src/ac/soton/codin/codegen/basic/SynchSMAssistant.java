@@ -2,7 +2,6 @@ package ac.soton.codin.codegen.basic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +39,6 @@ public class SynchSMAssistant {
 
 	private State parentState;
 
-	@SuppressWarnings("unchecked")
 	public void buildNextStateMaps(VHDL_TranslationData translationData_) {
 		// For each component
 		translationData = translationData_;
@@ -53,18 +51,6 @@ public class SynchSMAssistant {
 			for (Statemachine statemachine : statemachineList) {
 				// process each state-machine
 				doStateMachine(statemachine);
-				// This is NEW !!!! If the state-machine is nested
-				EList<EObject> nestedSynchSMs_ = statemachine.getAllContained(
-						StatemachinesPackage.Literals.STATEMACHINE, true);
-				List<Statemachine> nestSynchSMList = new ArrayList<>();
-				nestSynchSMList
-						.addAll((Collection<? extends Statemachine>) nestedSynchSMs_);
-				// process nested synch state-machines
-				for (Statemachine nestedStatemachine : nestSynchSMList) {
-					if (nestedStatemachine == null)
-						continue;
-					doStateMachine(nestedStatemachine);
-				}
 				// flatten the state-machine
 				Map<State, Map<Event, AbstractNode>> flattenedStatemachineData = flattenStateMachine();
 				// store the flattened state-machine in a map with the
@@ -106,6 +92,18 @@ public class SynchSMAssistant {
 			for (Transition stateTransition : outgoingTList) {
 				doOutgoingTransition(state, stateTransition);
 			}
+			
+			// Alternative NEW approach !!!! for nested state-machines
+			EList<Statemachine> nestSynchSMList = state.getStatemachines();
+			// process nested synch state-machines
+			for (Statemachine nestedStatemachine : nestSynchSMList) {
+				if (nestedStatemachine == null)
+					continue;
+				doStateMachine(nestedStatemachine);
+			}
+			
+			
+			// END Alternative NEW approach !!!! for nested state-machines
 		}
 	}
 
@@ -114,7 +112,8 @@ public class SynchSMAssistant {
 		ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 		ArrayList<Action> transitPathActionList = new ArrayList<Action>();
 		transitPathActionList.addAll(stateTransition.getActions());
-
+		transitPathGuardList.addAll(stateTransition.getGuards());
+		
 		// if the state transition target is a Junction we
 		// will need to build the event list here
 		if (transitionTarget instanceof Junction) {
@@ -149,6 +148,9 @@ public class SynchSMAssistant {
 		// we can obtain the events that it elaborates
 		else {
 			List<Event> eventList = stateTransition.getElaborates();
+			transitPathGuardList.addAll(stateTransition
+					.getGuards());
+			transitPathActionList.addAll(stateTransition.getActions());
 
 			// for each event related to the state
 			for (Event event : eventList) {
@@ -164,6 +166,10 @@ public class SynchSMAssistant {
 					storedInnerMap = innerMap;
 				}
 				synchSM_curr_nextStateMap.put(state, storedInnerMap);
+
+				updateTransitionPath(event, state, transitPathGuardList,
+						transitPathActionList, storedInnerMap);
+
 			}
 		}
 	}
@@ -175,7 +181,7 @@ public class SynchSMAssistant {
 
 		// Set up a transitPath.
 		List<TransitPath> transitPathList = translationData.synchSM_transitPathMap
-				.get(parentState);
+				.get(state);
 		TransitPath transitPath = null;
 		if (transitPathList == null) {
 			transitPathList = new ArrayList<TransitPath>();
@@ -211,7 +217,7 @@ public class SynchSMAssistant {
 				}
 			}
 		}
-		translationData.synchSM_transitPathMap.put(parentState,
+		translationData.synchSM_transitPathMap.put(state,
 				transitPathList);
 
 	}
@@ -229,6 +235,12 @@ public class SynchSMAssistant {
 		for (Transition initialTransition : outgoingTList) {
 			AbstractNode initialTransitionTarget = initialTransition
 					.getTarget();
+			
+			ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
+			ArrayList<Action> transitPathActionList = new ArrayList<Action>();
+			transitPathActionList.addAll(initialTransition.getActions());
+			transitPathGuardList.addAll(initialTransition.getGuards());
+			
 			if (initialTransitionTarget instanceof Junction) {
 				// we have found a Junction, so need to obtain
 				// its eventlist
@@ -256,6 +268,10 @@ public class SynchSMAssistant {
 			// transition from the pre-constructed list.
 			else {
 				List<Event> eventList = initialTransition.getElaborates();
+				transitPathGuardList.addAll(initialTransition
+						.getGuards());
+				transitPathActionList.addAll(initialTransition.getActions());
+
 				// for each event related to the initial state
 				for (Event event : eventList) {
 					// create the 'inner map'
@@ -275,6 +291,8 @@ public class SynchSMAssistant {
 					// initialState, with the Event<->
 					// TargetState map
 					synchSM_ini_nextStateMap.put(parentState, storedInnerMap);
+					
+					updateTransitionPath(event, parentState, transitPathGuardList, transitPathActionList, storedInnerMap);
 
 				}
 			}

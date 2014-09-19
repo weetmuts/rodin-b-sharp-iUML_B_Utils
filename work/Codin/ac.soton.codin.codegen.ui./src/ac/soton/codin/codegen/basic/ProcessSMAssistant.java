@@ -210,7 +210,7 @@ public class ProcessSMAssistant {
 									.getElaborates()) {
 								storedInnerMap.put(junctionEvent,
 										junctionTransition.getTarget());
-								updateTransitionPath(junctionEvent,
+								updateTransitPath(junctionEvent,
 										translationData, parentState,
 										transitPathGuardList, transitPathActionList, storedInnerMap);
 							}
@@ -244,7 +244,7 @@ public class ProcessSMAssistant {
 							processSM_ini_nextStateMap.put(parentState,
 									storedInnerMap);
 
-							updateTransitionPath(event, translationData,
+							updateTransitPath(event, translationData,
 									parentState, transitPathGuardList,
 									transitPathActionList, storedInnerMap);
 						}
@@ -266,11 +266,10 @@ public class ProcessSMAssistant {
 
 					// foreach outgoing transition
 					for (Transition stateTransition : outgoingTList) {
-						ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 						AbstractNode transitionTarget = stateTransition
 								.getTarget();
+						ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 						ArrayList<Action> transitPathActionList = new ArrayList<Action>();
-						transitPathActionList.addAll(stateTransition.getActions());
 						// if the state transition target is a Junction we will
 						// need to build the event list here
 						if (transitionTarget instanceof Junction) {
@@ -298,7 +297,7 @@ public class ProcessSMAssistant {
 									storedInnerMap.put(junctionEvent,
 											junctionTransition.getTarget());
 									// eventList.add(junctionEvent);
-									updateTransitionPath(junctionEvent,
+									updateTransitPath(junctionEvent,
 											translationData, state,
 											transitPathGuardList,
 											transitPathActionList, storedInnerMap);
@@ -316,6 +315,8 @@ public class ProcessSMAssistant {
 									.getElaborates();
 							transitPathGuardList.addAll(stateTransition
 									.getGuards());
+							transitPathActionList.addAll(stateTransition.getActions());
+
 							// for each event related to the state
 							for (Event event : eventList) {
 								// create the 'inner map'
@@ -332,7 +333,7 @@ public class ProcessSMAssistant {
 								processSM_curr_nextStateMap.put(state,
 										storedInnerMap);
 
-								updateTransitionPath(event, translationData,
+								updateTransitPath(event, translationData,
 										state, transitPathGuardList,
 										transitPathActionList, storedInnerMap);
 							}
@@ -344,7 +345,7 @@ public class ProcessSMAssistant {
 		flattenStateMachine(translationData);
 	}
 
-	private void updateTransitionPath(Event event,
+	private void updateTransitPath(Event event,
 			VHDL_TranslationData translationData, State parentState,
 			ArrayList<Guard> transitPathGuardList,
 			ArrayList<Action> transitPathActionList, Map<Event, AbstractNode> storedInnerMap) {

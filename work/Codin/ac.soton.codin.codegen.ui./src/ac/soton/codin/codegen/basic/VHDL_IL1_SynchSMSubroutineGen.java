@@ -47,7 +47,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	}
 
 	// Make the synchronous state-machine's subroutines
-	public void run(Task task, VHDL_TranslationData translationData_) {
+	public void run(Task task, VHDL_TranslationData translationData_) throws CodinTranslatorException {
 		// get a state-machine to track down the component parent
 		translationData = translationData_;
 		Statemachine aStatemachine = translationData.synchSMList.get(0);
@@ -126,7 +126,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	// make the case body for the current state, where there are multiple
 	// transitions/events from the state.
 	private void makeIL1CaseBranch(String stateMachineName, State currentState,
-			CaseStatement caseStatement) {
+			CaseStatement caseStatement) throws CodinTranslatorException {
 		EList<Transition> transitionEList = currentState.getOutgoing();
 		List<Transition> transitionList = new ArrayList<Transition>(
 				transitionEList);
@@ -145,8 +145,13 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			if(hasNestedSM(targetState)){
 				// get any of the events, use to find the nested target state.
 				Event event = currentTransition.getElaborates().get(0);
-				findNestedTarget(currentState, event);
-			}
+				AbstractNode nestedTarget = findNestedTarget(currentState, event);
+				if(nestedTarget.eClass() != StatemachinesPackage.Literals.STATE){
+					throw new CodinTranslatorException("Nested Statemachine does not have a state as a target node");
+				}else{
+					targetState = (State) nestedTarget;
+				}
+		}
 			targetName = targetState.getName();
 			if (targetNode.getOutgoing().size() == 0) {
 				// This is an implicit final state
@@ -199,7 +204,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	// the final transition.
 	private void makeIL1SubBranch(List<Transition> transitionList,
 			String stateMachineName, State currentState, If topBranch,
-			ElseIf parentElseif) {
+			ElseIf parentElseif) throws CodinTranslatorException {
 		// there will be a subBranch + an else. So create the subBranch
 		// and call this again with a reduced list
 		// if (transitionList.size() > 1) {
@@ -215,7 +220,19 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			String targetName = null;
 			if (targetNode instanceof State) {
 				State targetState = (State) targetNode;
-				hasNestedSM(targetState);
+				if(hasNestedSM(targetState)){
+					// get any of the events, use to find the nested target state.
+					Event event = currentTransition.getElaborates().get(0);
+					AbstractNode nestedTarget = findNestedTarget(currentState, event);
+					if(nestedTarget.eClass() != StatemachinesPackage.Literals.STATE){
+						throw new CodinTranslatorException("Nested Statemachine does not have a state as a target node");
+					}
+					else{
+						targetState = (State) nestedTarget;
+						targetNode = nestedTarget;
+					}
+				}
+				
 				targetName = targetState.getName();
 				if (targetNode.getOutgoing().size() == 0) {
 					// This is an implicit final state
