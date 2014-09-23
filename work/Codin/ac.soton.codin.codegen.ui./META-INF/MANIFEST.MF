@@ -18,4 +18,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eventb.core,
  org.eventb.emf.persistence.factory
-Export-Package: ac.soton.codin.codegen.basic
+Export-Package: ac.soton.codin.codegen.basic,
+ ac.soton.codin.codegen.ui
