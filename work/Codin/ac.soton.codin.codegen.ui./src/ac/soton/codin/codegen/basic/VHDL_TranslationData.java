@@ -15,7 +15,6 @@ import org.rodinp.core.IRodinProject;
 
 import ac.soton.codin.codegen.quickPrint.QuickPrintInfo;
 import ac.soton.eventb.emf.components.Component;
-import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
@@ -79,9 +78,7 @@ public class VHDL_TranslationData {
 
 	// Keep track of the components to be translated
 	public List<Component> componentList = new ArrayList<>();
-	// Keep track of the connectors
-	public static List<Connector> connectorList = new ArrayList<>();
-		
+			
 	// BEGIN: The following maps/data structures are refreshed (cleared) for each new component.
 	//
 	// In a component: Given a state node, get the events associated with the

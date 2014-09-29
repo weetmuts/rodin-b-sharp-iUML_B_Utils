@@ -369,16 +369,15 @@ public class QuickPrinter {
 	}
 
 	private void doPrint(VariableDecl el) {
-		List<String> connectorNameList = translationData.quickPrintInfo
-				.getConnectorNameList();
 		List<String> synchSMNames = translationData.quickPrintInfo
 				.getSynchSMNamesList();
+		List<String> signalNameList = translationData.quickPrintInfo.getSignalNamesList();
 		String assignmentOperator = " := ";
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();
 		String declarationType = null;
 		// If the list contains the variable ID then it is a signal.
-		if (connectorNameList.contains(el.getIdentifier())) {
+		if (signalNameList.contains(el.getIdentifier())) {
 			declarationType = "SIGNAL ";
 			assignmentOperator = " <= ";
 			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {

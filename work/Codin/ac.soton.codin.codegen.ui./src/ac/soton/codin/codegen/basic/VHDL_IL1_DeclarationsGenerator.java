@@ -18,6 +18,7 @@ import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.il1.VariableDecl;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 
+import ac.soton.codin.codegen.quickPrint.QuickPrintInfo;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;
@@ -85,7 +86,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// the associated variable Declarations to signals in the
 		// stage 2 (IL1 to code) translation.
 		for (Connector connector : topComponent.getConnectors()) {
-			VHDL_TranslationData.connectorList.add(connector);
+//			VHDL_TranslationData.connectorList.add(connector);
 			translationData.quickPrintInfo.getConnectorList().add(connector);
 		}
 
@@ -99,7 +100,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// we add a program counter variable;
 			VariableDecl pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
 			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
-			VariableDecl init_pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
+			ConstantDecl init_pcConstDecl = Il1Factory.eINSTANCE.createConstantDecl();
 			// we add the program counter states enum
 			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
 			program.getDecls().add(enm);
@@ -123,7 +124,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 							State startingState = (State) initialSynchSMCounterValue;
 							pcVarDecl.setInitialValue(startingState.getName());
 							next_pcVarDecl.setInitialValue(startingState.getName());
-							init_pcVarDecl.setInitialValue(startingState.getName());
+							init_pcConstDecl.setInitialValue(startingState.getName());
 						}
 					}
 				}
@@ -136,10 +137,11 @@ public class VHDL_IL1_DeclarationsGenerator {
 			program.getDecls().add(next_pcVarDecl);
 			next_pcVarDecl.setIdentifier("next_"+sm.getName());
 			next_pcVarDecl.setType(sm.getName() + "_States");
+			translationData.quickPrintInfo.getSignalsList().add(next_pcVarDecl);
 			// we also need to record the initial value
-			program.getDecls().add(init_pcVarDecl);
-			init_pcVarDecl.setIdentifier("init_"+sm.getName());
-			init_pcVarDecl.setType(sm.getName() + "_States");
+			program.getDecls().add(init_pcConstDecl);
+			init_pcConstDecl.setIdentifier("init_"+sm.getName());
+			init_pcConstDecl.setType(sm.getName() + "_States");
 		}
 	}
 

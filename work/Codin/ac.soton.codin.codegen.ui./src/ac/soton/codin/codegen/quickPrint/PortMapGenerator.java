@@ -31,10 +31,12 @@ public class PortMapGenerator implements IGenerator {
 		EList<Connector> outConnectors = currentComponent.getOutConnectors();
 		EList<Connector> inConnectors = currentComponent.getInConnectors();
 		for(Connector outC: outConnectors){
-			returnList.add(outC.getName().toLowerCase() + ": out std_logic;" );
+			String typeString = outC.getType();
+			returnList.add(outC.getName().toLowerCase() + ": out " + typeString + ";" );
 		}
 		for(Connector inC: inConnectors){
-			returnList.add(inC.getName().toLowerCase() + ": in std_logic;" );
+			String typeString = inC.getType();
+			returnList.add(inC.getName().toLowerCase() + ": in " + typeString + ";" );
 		}
 		// the port map has an extra delimiter, delete it
 		String lastString = returnList.get(returnList.size()-1);
