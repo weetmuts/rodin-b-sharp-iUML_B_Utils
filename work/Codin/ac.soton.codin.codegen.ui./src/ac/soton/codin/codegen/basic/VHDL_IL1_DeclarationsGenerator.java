@@ -222,7 +222,9 @@ public class VHDL_IL1_DeclarationsGenerator {
 	private void makeVarDeclaration(VHDL_TranslationData translationData,
 			List<Declaration> tmpDeclarationList, Component component,
 			ComponentInitialisation initialisation) {
-		Declaration vDecl = Il1Factory.eINSTANCE.createVariableDecl();
+		VariableDecl vDecl = Il1Factory.eINSTANCE.createVariableDecl();
+		// All event-B variables map to signals
+		translationData.quickPrintInfo.getSignalsList().add(vDecl);
 		String initialisationString = initialisation.getAction();
 
 		initialisationString = CodeGenTaskingUtils

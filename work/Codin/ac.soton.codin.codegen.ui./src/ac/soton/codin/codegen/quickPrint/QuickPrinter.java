@@ -280,7 +280,7 @@ public class QuickPrinter {
 		String actionString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(el.getAction());
 		String[] actionArray = actionString.split(" ");
-		if (actionAssignsToConnector(el)) {
+		if (actionAssignsToSignal(el)) {
 			actionArray[1] = " <= ";
 			// recreate string
 			String newString = "";
@@ -410,11 +410,11 @@ public class QuickPrinter {
 				+ variableType + assignmentOperator + initialValue);
 	}
 
-	// if a connector is being assigned to, on the RHS
+	// if a signal is being assigned to, on the RHS
 	// of an expression, return true.
-	private boolean actionAssignsToConnector(Action el) {
-		List<String> connectorNameList = translationData.quickPrintInfo
-				.getConnectorNameList();
+	private boolean actionAssignsToSignal(Action el) {
+		List<String> signalNamesList = translationData.quickPrintInfo
+				.getSignalNamesList();
 		String actionString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(el.getAction());
 		String[] actionArray = actionString.split(" ");
@@ -422,7 +422,7 @@ public class QuickPrinter {
 		if (actionArray.length >= 2) {
 			varName = actionArray[0];
 		}
-		return connectorNameList.contains(varName);
+		return signalNamesList.contains(varName);
 	}
 
 	private String makeSensitivityList() {

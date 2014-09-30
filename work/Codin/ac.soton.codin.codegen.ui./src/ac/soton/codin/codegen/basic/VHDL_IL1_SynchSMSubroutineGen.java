@@ -335,7 +335,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			// create a new state update action
 			org.eventb.codegen.il1.Action il1Action = Il1Factory.eINSTANCE
 					.createAction();
-			il1Action.setAction("next" + stateMachineName
+			il1Action.setAction("next_" + stateMachineName
 					+ CodeGenTaskingUtils.ASSIGNMENT_SYMBOL + targetName);
 			// if the body is null
 			if (body == null) {
