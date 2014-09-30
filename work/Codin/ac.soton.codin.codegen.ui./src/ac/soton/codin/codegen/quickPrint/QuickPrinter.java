@@ -376,7 +376,7 @@ public class QuickPrinter {
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();
 		String declarationType = null;
-		// If the list contains the variable ID then it is a signal.
+		// IF the signal name list contains the variable ID ...
 		if (signalNameList.contains(el.getIdentifier())) {
 			declarationType = "SIGNAL ";
 			assignmentOperator = " <= ";
@@ -391,8 +391,8 @@ public class QuickPrinter {
 				}
 			}
 		}
-		// else if the variable is a state-machine program counter
-		// (i.e. with the same name as the state-machine itself)
+		// ELSE if the variable is a state-machine program counter
+		// (i.e. with the same name as the state-machine itself)...
 		else if (synchSMNames.contains(el.getIdentifier())
 		// ||synchSMNames.contains(el.getIdentifier().replace("init_", ""))
 		) {
