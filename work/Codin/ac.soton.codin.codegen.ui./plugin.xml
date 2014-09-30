@@ -47,6 +47,10 @@
             GeneratorClass="ac.soton.codin.codegen.quickPrint.PortMapGenerator"
             tag="portMapGenerator">
       </templateGenerator>
+      <templateGenerator
+            GeneratorClass="ac.soton.codin.codegen.quickPrint.ReplaceUnicode"
+            tag="replaceUnicode">
+      </templateGenerator>
    </extension>
 
 </plugin>

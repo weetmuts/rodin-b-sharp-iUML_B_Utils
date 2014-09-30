@@ -12,6 +12,7 @@ public class CodinCGPlugin extends AbstractUIPlugin {
 	public static final String PLUGIN_ID = "ac.soton.codin.codegen.ui"; //$NON-NLS-1$
 	public static final String GENERATED_SRC_FOLDER = "out";
 	public static final String TEMPLATES_SRC_FOLDER = "templates";
+	public static final String VHDL_EXT = "vhdl";
 
 	// The shared instance
 	private static CodinCGPlugin plugin;

@@ -74,12 +74,12 @@ public class QuickPrinter {
 		this.program = program;
 	}
 
-	public void useTemplates() throws Exception {
+	public void printToFile() throws Exception {
 		// Create the Template Processor
 		TemplateProcessor templateProcessor = TemplateProcessor.getDefault();
 		// Initialise the template processor with the TARGET and SOURCE
 		// information.
-		templateProcessor.setFileExtension(".vhdl");
+		templateProcessor.setFileExtension(CodinCGPlugin.VHDL_EXT);
 		// also set vhdl language formatter at a later date
 
 		templateProcessor.initialiseTarget(sourceRodinProject,
