@@ -56,6 +56,7 @@ public class QuickPrinter {
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
 	private static VHDL_TranslationData translationData;
+	private boolean finishingDeclarativePart = false;
 
 	// Constructor used to initiate template build
 	public QuickPrinter(VHDL_TranslationData translationData, Program program,
@@ -328,12 +329,17 @@ public class QuickPrinter {
 		}
 		// else if it is the process SM entry then it is process
 		else if (subroutineName.equals(BeginCycleName)) {
+			finishingDeclarativePart = true;
 			subroutineType = "PROCESS";
 			paramString = "("+makeSensitivityList()+")";
 		}
 		// else return since the other subroutines should be in-lined
 		else {
 			return;
+		}
+		if(finishingDeclarativePart){
+			finishingDeclarativePart = false;
+			returnList.add("begin");
 		}
 		returnList.add("\n" + subroutineName + ": " + subroutineType
 				+ paramString);
@@ -350,7 +356,7 @@ public class QuickPrinter {
 			constantType = "Boolean";
 		}
 		returnList.add("CONSTANT " + el.getIdentifier() + ": " + constantType
-				+ " := " + el.getInitialValue());
+				+ " := " + el.getInitialValue()+";");
 	}
 
 	private void doPrint(Enumeration el) {
@@ -379,11 +385,11 @@ public class QuickPrinter {
 		// IF the signal name list contains the variable ID ...
 		if (signalNameList.contains(el.getIdentifier())) {
 			declarationType = "SIGNAL ";
-			assignmentOperator = " <= ";
+			assignmentOperator = " := ";
 			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
 				variableType = "Integer";
 			} else if (variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)) {
-				variableType = "std_logic_signal";
+				variableType = "std_logic";
 				if (initialValue.equals("true")) {
 					initialValue = "1";
 				} else {
@@ -397,7 +403,7 @@ public class QuickPrinter {
 		// ||synchSMNames.contains(el.getIdentifier().replace("init_", ""))
 		) {
 			declarationType = "SIGNAL ";
-			assignmentOperator = " <= ";
+			assignmentOperator = " := ";
 		} else {
 			declarationType = "VARIABLE ";
 			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
@@ -407,7 +413,7 @@ public class QuickPrinter {
 			}
 		}
 		returnList.add(declarationType + el.getIdentifier() + ": "
-				+ variableType + assignmentOperator + initialValue);
+				+ variableType + assignmentOperator + initialValue+";");
 	}
 
 	// if a signal is being assigned to, on the RHS

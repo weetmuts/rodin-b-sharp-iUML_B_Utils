@@ -31,6 +31,7 @@ import org.rodinp.core.IRodinProject;
 
 import ac.soton.codin.codegen.formatter.Formatter;
 import ac.soton.codin.codegen.quickPrint.QuickPrinter;
+import ac.soton.codin.codegen.quickPrint.UnicodeReplaceUtil;
 import ac.soton.eventb.emf.components.diagram.edit.parts.ComponentEditPart;
 import ac.soton.eventb.emf.components.impl.ComponentImpl;
 
@@ -127,7 +128,8 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		qp.printToFile();
 		Formatter f = new Formatter();
 		f.formatVHDL(translationData);
-		
+		UnicodeReplaceUtil replacer = new UnicodeReplaceUtil();
+		replacer.run(translationData); 
 	}
 
 	// Create the file associated with the output
