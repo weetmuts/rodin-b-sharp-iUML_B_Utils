@@ -61,7 +61,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			Subroutine smSubroutine = Il1Factory.eINSTANCE.createSubroutine();
 			translationData.synchSM_subroutineMap.put(statemachine,
 					smSubroutine);
-			smSubroutine.setName(stateMachineName);
+			smSubroutine.setName("do_"+stateMachineName);
 			smSubroutine.setTemporary(false);
 			smSubroutine
 					.setMachineName(translationData.parentMachine.getName());

@@ -219,7 +219,7 @@ public class QuickPrinter {
 		}
 		// if the subroutine is a synch stateMachine call,
 		boolean hasSynchSMName = synchSMNamesList.contains(subroutineImpl
-				.getName());
+				.getName().replace("do_", ""));
 		return hasSynchSMName;
 	}
 

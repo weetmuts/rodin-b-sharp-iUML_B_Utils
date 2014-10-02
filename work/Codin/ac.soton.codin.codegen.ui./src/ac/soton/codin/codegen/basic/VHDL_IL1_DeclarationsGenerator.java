@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eventb.codegen.il1.ConstantDecl;
 import org.eventb.codegen.il1.Declaration;
@@ -85,7 +86,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 		// the associated variable Declarations to signals in the
 		// stage 2 (IL1 to code) translation.
 		for (Connector connector : topComponent.getConnectors()) {
-//			VHDL_TranslationData.connectorList.add(connector);
+			// VHDL_TranslationData.connectorList.add(connector);
 			translationData.quickPrintInfo.getConnectorList().add(connector);
 		}
 
@@ -98,22 +99,34 @@ public class VHDL_IL1_DeclarationsGenerator {
 			List<AbstractNode> nodeList = sm.getNodes();
 			// we add a program counter variable;
 			VariableDecl pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
-			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
-			ConstantDecl init_pcConstDecl = Il1Factory.eINSTANCE.createConstantDecl();
+			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE
+					.createVariableDecl();
+			ConstantDecl init_pcConstDecl = Il1Factory.eINSTANCE
+					.createConstantDecl();
 			// we add the program counter states enum
 			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
 			program.getDecls().add(enm);
 			enm.setIdentifier(sm.getName() + "_States");
+
+			// Can we get all the states, and sub-states in the state-machine?
+
+			EList<EObject> allStates = sm.getAllContained(
+					StatemachinesPackage.Literals.STATE, true);
+
+			for (EObject eo : allStates) {
+				State state = (State) eo;
+				if (state != null) {
+					enm.getLiteralValues().add(state.getName());
+				}
+			}
+
 			for (AbstractNode node : nodeList) {
 				if (node != null) {
-					// if we have a state add the name to the literals
-					if (node.eClass() == StatemachinesPackage.Literals.STATE) {
-						State state = (State) node;
-						enm.getLiteralValues().add(state.getName());
-					} else if (node.eClass() == StatemachinesPackage.Literals.INITIAL) {
+					if (node.eClass() == StatemachinesPackage.Literals.INITIAL) {
 						// else we have the initialisation.
 						Initial i = (Initial) node;
-						// the should be exactly one outgoing transition on the
+						// there should be exactly one outgoing transition on
+						// the
 						// initial node
 						Transition transition = i.getOutgoing().get(0);
 						AbstractNode initialSynchSMCounterValue = transition
@@ -122,8 +135,10 @@ public class VHDL_IL1_DeclarationsGenerator {
 						if (initialSynchSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE) {
 							State startingState = (State) initialSynchSMCounterValue;
 							pcVarDecl.setInitialValue(startingState.getName());
-							next_pcVarDecl.setInitialValue(startingState.getName());
-							init_pcConstDecl.setInitialValue(startingState.getName());
+							next_pcVarDecl.setInitialValue(startingState
+									.getName());
+							init_pcConstDecl.setInitialValue(startingState
+									.getName());
 						}
 					}
 				}
@@ -134,13 +149,16 @@ public class VHDL_IL1_DeclarationsGenerator {
 			pcVarDecl.setType(sm.getName() + "_States");
 			// add the variable to record the next state-machine state.
 			program.getDecls().add(next_pcVarDecl);
-			next_pcVarDecl.setIdentifier("next_"+sm.getName());
+			next_pcVarDecl.setIdentifier("next_" + sm.getName());
 			next_pcVarDecl.setType(sm.getName() + "_States");
 			translationData.quickPrintInfo.getSignalsList().add(next_pcVarDecl);
 			// we also need to record the initial value
 			program.getDecls().add(init_pcConstDecl);
-			init_pcConstDecl.setIdentifier("init_"+sm.getName());
+			init_pcConstDecl.setIdentifier("init_" + sm.getName());
 			init_pcConstDecl.setType(sm.getName() + "_States");
+
+			// but wait the state machine may have nested states.
+
 		}
 	}
 
