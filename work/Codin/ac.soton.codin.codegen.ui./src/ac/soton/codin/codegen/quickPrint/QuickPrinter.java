@@ -320,6 +320,14 @@ public class QuickPrinter {
 
 		// if the subroutine is a state machine implementation
 		// then it a procedure.
+		
+		// TODO - split the synchSM procedures and processSM
+		// Store the synchSM procedures for later insertion into
+		// the declarative part of 'the' cycle process.
+		// Since there is just one cycle process we can remove
+		// the finishing declarative part flag. We add the begin
+		// keyword here, since when we get here, we know that
+		// we're out of the declarative part.
 		if (isSMSubroutine(el)) {
 			subroutineType = "PROCEDURE";
 			returnList.add("\n"+ subroutineType + " " + subroutineName + " IS ");

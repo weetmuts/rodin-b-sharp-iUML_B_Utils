@@ -26,6 +26,9 @@ public class VHDL_IL1_SMGenerator {
 		StateMachinePreprocessor.getDefault().run(emfMachine, translationData);
 		// We can use the maps to generate the IL1 control flow for the state machines. 
 		VHDL_IL1_SynchSMSubroutineGen.getDefault().run(task, translationData);
+		// Downstream processing makes use of the fact that synchSM subroutines
+		// are generated BEFORE the process state machine. Do not change this
+		// order without due consideration.
 		VHDL_IL1_ProcSMStatementGen.getDefault().run(task, translationData);
 	}
 }
