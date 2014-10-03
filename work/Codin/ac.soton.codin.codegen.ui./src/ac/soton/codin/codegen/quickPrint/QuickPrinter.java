@@ -376,12 +376,20 @@ public class QuickPrinter {
 				.getSynchSMNamesList();
 		List<String> signalNameList = translationData.quickPrintInfo
 				.getSignalNamesList();
+		List<String> connectorNamesList = translationData.quickPrintInfo
+				.getConnectorNameList();
 		String assignmentOperator = " := ";
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();
 		String declarationType = null;
-		// IF the signal name list contains the variable ID ...
-		if (signalNameList.contains(el.getIdentifier())) {
+		
+		String variableName = el.getIdentifier();
+		if(connectorNamesList.contains(variableName)){
+			// IF the variable is a connector ignore it
+			return;
+		}
+		// else IF the variable is a signal ...
+		else if (signalNameList.contains(variableName)) {
 			declarationType = "SIGNAL ";
 			assignmentOperator = " := ";
 			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
@@ -389,7 +397,7 @@ public class QuickPrinter {
 			} else if (variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)) {
 				variableType = "std_logic";
 				translationData.quickPrintInfo.getStdLogicNamesList().add(
-						el.getIdentifier());
+						variableName);
 				if (initialValue.equals("true")) {
 					initialValue = "'1'";
 				} else {
@@ -399,9 +407,7 @@ public class QuickPrinter {
 		}
 		// ELSE if the variable is a state-machine program counter
 		// (i.e. with the same name as the state-machine itself)...
-		else if (synchSMNames.contains(el.getIdentifier())
-		// ||synchSMNames.contains(el.getIdentifier().replace("init_", ""))
-		) {
+		else if (synchSMNames.contains(variableName)) {
 			declarationType = "SIGNAL ";
 			assignmentOperator = " := ";
 		} else {
@@ -412,8 +418,8 @@ public class QuickPrinter {
 				variableType = "Boolean";
 			}
 		}
-		returnList.add(declarationType + el.getIdentifier() + ": "
-				+ variableType + assignmentOperator + initialValue + ";");
+		returnList.add(declarationType + variableName + ": " + variableType
+				+ assignmentOperator + initialValue + ";");
 	}
 
 	// If a signal is being assigned to, on the RHS
@@ -483,7 +489,7 @@ public class QuickPrinter {
 							.getStdLogicNamesList();
 					if (stdLogicNamesList.contains(rightString)) {
 						predArray[i] = "'1'";
-						// we've sorted [i + 2] so increment i by 2 
+						// we've sorted [i + 2] so increment i by 2
 						// and let the for-loop do another increment
 						i = i + 2;
 					}
@@ -511,7 +517,7 @@ public class QuickPrinter {
 							.getStdLogicNamesList();
 					if (stdLogicNamesList.contains(rightString)) {
 						predArray[i] = "'0'";
-						// we've sorted [i + 2] so increment i by 2 
+						// we've sorted [i + 2] so increment i by 2
 						// and let the for-loop do another increment
 						i = i + 2;
 					}
@@ -519,8 +525,8 @@ public class QuickPrinter {
 			}
 		}
 		// recreate the predicate
-		for(int i = 0; i < predArray.length; i++){
-			resolvedPredicate = resolvedPredicate + " " +predArray[i];
+		for (int i = 0; i < predArray.length; i++) {
+			resolvedPredicate = resolvedPredicate + " " + predArray[i];
 		}
 		return resolvedPredicate;
 	}
