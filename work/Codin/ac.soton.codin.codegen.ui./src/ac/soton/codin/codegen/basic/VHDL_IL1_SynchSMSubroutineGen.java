@@ -47,7 +47,8 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	}
 
 	// Make the synchronous state-machine's subroutines
-	public void run(Task task, VHDL_TranslationData translationData_) throws CodinTranslatorException {
+	public void run(Task task, VHDL_TranslationData translationData_)
+			throws CodinTranslatorException {
 		// get a state-machine to track down the component parent
 		translationData = translationData_;
 		Statemachine aStatemachine = translationData.synchSMList.get(0);
@@ -61,7 +62,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			Subroutine smSubroutine = Il1Factory.eINSTANCE.createSubroutine();
 			translationData.synchSM_subroutineMap.put(statemachine,
 					smSubroutine);
-			smSubroutine.setName("do_"+stateMachineName);
+			smSubroutine.setName("do_" + stateMachineName);
 			smSubroutine.setTemporary(false);
 			smSubroutine
 					.setMachineName(translationData.parentMachine.getName());
@@ -82,14 +83,15 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					.get(statemachine);
 			List<State> stateList = Arrays.asList(stateMap.keySet().toArray(
 					new State[stateMap.size()]));
+			// reset the non-progress flag. This flag causes a
+			// "when => others" case to be generated in the case
+			// of states with no outgoing transitions.
+			requiresNonProgress = false;
+
 			for (State currentState : stateList) {
 				// ignore the initialisation.
 				if (currentState.getName().equals(QuickPrinter.BeginCycleName))
 					continue;
-				// reset the non-progress flag. This flag causes a
-				// "when => others" case to be generated in the case
-				// of states with no outgoing transitions.
-				requiresNonProgress = false;
 				// create a new case-block for this state
 				CaseStatement caseStatement = Il1Factory.eINSTANCE
 						.createCaseStatement();
@@ -110,15 +112,17 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				} else {
 					// Do nothing, this is an implicit final state
 				}
-				// We supply an others case, for non-progressing states
-				// i.e. states with no outgoing transitions.
-				if (requiresNonProgress) {
-					CaseStatement othersStatement = Il1Factory.eINSTANCE
-							.createCaseStatement();
-					caseblock.getCaseStatement().add(othersStatement);
-					othersStatement.setCaseValue("others");
-					// There is no command for this case - it is null
-				}
+			}
+
+			// we've handled all the states - now for the others statement
+			// We supply an others case, for non-progressing states
+			// i.e. states with no outgoing transitions.
+			if (requiresNonProgress) {
+				CaseStatement othersStatement = Il1Factory.eINSTANCE
+						.createCaseStatement();
+				caseblock.getCaseStatement().add(othersStatement);
+				othersStatement.setCaseValue("others");
+				// There is no command for this case - it is null
 			}
 		}
 	}
@@ -142,16 +146,18 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		String targetName = null;
 		if (targetNode instanceof State) {
 			State targetState = (State) targetNode;
-			if(hasNestedSM(targetState)){
+			if (hasNestedSM(targetState)) {
 				// get any of the events, use to find the nested target state.
 				Event event = currentTransition.getElaborates().get(0);
-				AbstractNode nestedTarget = findNestedTarget(currentState, event);
-				if(nestedTarget.eClass() != StatemachinesPackage.Literals.STATE){
-					throw new CodinTranslatorException("Nested Statemachine does not have a state as a target node");
-				}else{
+				AbstractNode nestedTarget = findNestedTarget(currentState,
+						event);
+				if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
+					throw new CodinTranslatorException(
+							"Nested Statemachine does not have a state as a target node");
+				} else {
 					targetState = (State) nestedTarget;
 				}
-		}
+			}
 			targetName = targetState.getName();
 			if (targetNode.getOutgoing().size() == 0) {
 				// This is an implicit final state
@@ -190,10 +196,12 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// Since we have multiple transitions, then we have guarded transitions,
 		// and
 		// therefore require an implicit self loop. This is implemented here.
-		org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE
-				.createAction();
-		doNothingAction.setAction("null");
-		topBranch.setElse(doNothingAction);
+
+// ELSE null branch removed.		
+//		org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE
+//				.createAction();
+//		doNothingAction.setAction("null");
+//		topBranch.setElse(doNothingAction);
 
 		// set the case-statement body
 		caseStatement.setCommand(topBranch);
@@ -220,19 +228,21 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			String targetName = null;
 			if (targetNode instanceof State) {
 				State targetState = (State) targetNode;
-				if(hasNestedSM(targetState)){
-					// get any of the events, use to find the nested target state.
+				if (hasNestedSM(targetState)) {
+					// get any of the events, use to find the nested target
+					// state.
 					Event event = currentTransition.getElaborates().get(0);
-					AbstractNode nestedTarget = findNestedTarget(currentState, event);
-					if(nestedTarget.eClass() != StatemachinesPackage.Literals.STATE){
-						throw new CodinTranslatorException("Nested Statemachine does not have a state as a target node");
-					}
-					else{
+					AbstractNode nestedTarget = findNestedTarget(currentState,
+							event);
+					if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
+						throw new CodinTranslatorException(
+								"Nested Statemachine does not have a state as a target node");
+					} else {
 						targetState = (State) nestedTarget;
 						targetNode = nestedTarget;
 					}
 				}
-				
+
 				targetName = targetState.getName();
 				if (targetNode.getOutgoing().size() == 0) {
 					// This is an implicit final state
@@ -364,9 +374,9 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	private boolean hasNestedSM(State targetState) {
 		EList<EObject> list = targetState.getAllContained(
 				StatemachinesPackage.Literals.STATEMACHINE, true);
-		for(EObject eo: list){
-			if(eo != null){
-				//we have found a nested state-machine
+		for (EObject eo : list) {
+			if (eo != null) {
+				// we have found a nested state-machine
 				return true;
 			}
 		}
@@ -377,8 +387,8 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// get the transit map for this state.
 		Map<State, List<TransitPath>> map = translationData.synchSM_transitPathMap;
 		List<TransitPath> transitPathList = map.get(currentState);
-		for(TransitPath transitPath: transitPathList){
-			if(transitPath.getEvent() == event){
+		for (TransitPath transitPath : transitPathList) {
+			if (transitPath.getEvent() == event) {
 				return transitPath.getTargetNode();
 			}
 		}
