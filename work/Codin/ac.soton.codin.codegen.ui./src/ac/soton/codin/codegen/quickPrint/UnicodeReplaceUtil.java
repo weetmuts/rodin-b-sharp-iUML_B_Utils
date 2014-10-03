@@ -15,8 +15,6 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eventb.codegen.templates.IGeneratorData;
 
 import ac.soton.codin.codegen.basic.VHDL_TranslationData;
 import ac.soton.codin.codegen.ui.CodinCGPlugin;
@@ -80,40 +78,40 @@ public class UnicodeReplaceUtil{
 		List<String> newCodeArray = new ArrayList<>();
 		for (String originalString : tempStore) {
 			if (originalString.contains(NAT)) {
-				newCodeArray.add(originalString.replace(NAT, "Integer"));
+				newCodeArray.add(originalString.replace(NAT, CodinCGPlugin.INT_TYPE_STRING));
 			}
 			else if (originalString.contains(INT)) {
-				newCodeArray.add(originalString.replace(INT, "Integer"));
+				newCodeArray.add(originalString.replace(INT, CodinCGPlugin.INT_TYPE_STRING));
 			}
 			else if (originalString.contains(LAND)) {
-				newCodeArray.add(originalString.replace(LAND, "and"));
+				newCodeArray.add(originalString.replace(LAND, CodinCGPlugin.AND_STRING));
 			}
 			else if (originalString.contains(LOR)) {
-				newCodeArray.add(originalString.replace(LOR, "or"));
+				newCodeArray.add(originalString.replace(LOR, CodinCGPlugin.OR_STRING));
 			}
 			else if (originalString.contains(LNOT)) {
-				newCodeArray.add(originalString.replace(LNOT, "not"));
+				newCodeArray.add(originalString.replace(LNOT, CodinCGPlugin.NOT_STRING));
 			}
 			else if (originalString.contains(NEQ)) {
-				newCodeArray.add(originalString.replace(NEQ, "/="));
+				newCodeArray.add(originalString.replace(NEQ, CodinCGPlugin.NEQ_STRING));
 			}
 			else if (originalString.contains(LEQ)) {
-				newCodeArray.add(originalString.replace(LEQ, "<="));
+				newCodeArray.add(originalString.replace(LEQ, CodinCGPlugin.LEQ_STRING));
 			}
 			else if (originalString.contains(GEQ)) {
-				newCodeArray.add(originalString.replace(GEQ, ">="));
+				newCodeArray.add(originalString.replace(GEQ, CodinCGPlugin.GEQ_STRING));
 			}
 			else if (originalString.contains(UPTO)) {
-				newCodeArray.add(originalString.replace(UPTO, ".."));
+				newCodeArray.add(originalString.replace(UPTO, CodinCGPlugin.UPTO_STRING));
 			}
 			else if (originalString.contains(MINUS)) {
-				newCodeArray.add(originalString.replace(MINUS, "-"));
+				newCodeArray.add(originalString.replace(MINUS, CodinCGPlugin.MINUS_STRING));
 			}
 			else if (originalString.contains(MULT)) {
-				newCodeArray.add(originalString.replace(MULT, "*"));
+				newCodeArray.add(originalString.replace(MULT, CodinCGPlugin.MULT_STRING));
 			}
 			else if (originalString.contains(BCMEQ)) {
-				newCodeArray.add(originalString.replace(BCMEQ, ":="));
+				newCodeArray.add(originalString.replace(BCMEQ, CodinCGPlugin.BCMEQ_STRING));
 			}
 			else {
 				newCodeArray.add(originalString);

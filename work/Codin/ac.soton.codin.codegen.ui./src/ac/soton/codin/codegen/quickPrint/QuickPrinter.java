@@ -56,7 +56,7 @@ public class QuickPrinter {
 	private Program program;
 	private List<String> returnList = new ArrayList<>();
 	private static VHDL_TranslationData translationData;
-	private boolean finishingDeclarativePart = false;
+	private boolean finishingDeclarativePart = true;
 
 	// Constructor used to initiate template build
 	public QuickPrinter(VHDL_TranslationData translationData, Program program,
@@ -163,7 +163,6 @@ public class QuickPrinter {
 			doPrint((ElseIf) element);
 			return returnList;
 		} else if (eClass == callClass) {
-			// doPrint((Call) element);
 			doPrint_Inline((Call) element);
 			return returnList;
 		} else {
@@ -209,25 +208,12 @@ public class QuickPrinter {
 		}
 	}
 
-	private boolean isSMSubroutine(Subroutine subroutineImpl) {
-		// returns true if the subroutine is in the list of
-		// synchronous state machines, by name.
-		// get the list of synchronous state machines
-		ArrayList<String> synchSMNamesList = new ArrayList<>();
-		for (Statemachine s : translationData.synchSMList) {
-			synchSMNamesList.add(s.getName());
-		}
-		// if the subroutine is a synch stateMachine call,
-		boolean hasSynchSMName = synchSMNamesList.contains(subroutineImpl
-				.getName().replace("do_", ""));
-		return hasSynchSMName;
-	}
-
 	private void doPrint(ElseIf el) {
 		returnList.add("ELSIF ");
 		boolean first = true;
 
 		for (String s : el.getCondition()) {
+			s = resolvePredicate(s);
 			if (first) {
 				first = false;
 				returnList.add(" " + s);
@@ -248,6 +234,7 @@ public class QuickPrinter {
 		returnList.add("IF ");
 		boolean first = true;
 		for (String s : el.getCondition()) {
+			s = resolvePredicate(s);
 			if (first) {
 				first = false;
 				returnList.add(" " + s);
@@ -283,13 +270,22 @@ public class QuickPrinter {
 		String[] actionArray = actionString.split(" ");
 		if (actionAssignsToSignal(el)) {
 			actionArray[1] = " <= ";
+			// if it is std_logic type then add quotes to
+			// what we assume is an integer literal.
+			// more complex expressions will have to be
+			// handled differently.
+			if (actionAssignsToStdLogic(el)) {
+				actionArray[2] = "'" + actionArray[2] + "'";
+			}
 			// recreate string
 			String newString = "";
 			for (int i = 0; i < actionArray.length; i++) {
 				newString = newString + " " + actionArray[i];
 			}
 			returnList.add(newString + ";");
-		} else {
+		}
+
+		else {
 			returnList.add(" " + el.getAction() + ";");
 		}
 	}
@@ -326,23 +322,24 @@ public class QuickPrinter {
 		// then it a procedure.
 		if (isSMSubroutine(el)) {
 			subroutineType = "PROCEDURE";
+			returnList.add("\n"+ subroutineType + " " + subroutineName + " IS ");
 		}
 		// else if it is the process SM entry then it is process
 		else if (subroutineName.equals(BeginCycleName)) {
-			finishingDeclarativePart = true;
+			if (finishingDeclarativePart) {
+				finishingDeclarativePart = false;
+				returnList.add("\nbegin");
+			}
 			subroutineType = "PROCESS";
-			paramString = "("+makeSensitivityList()+")";
+			paramString = "(" + makeSensitivityList() + ")";
+
+			returnList.add("\n" + subroutineName + ": " + subroutineType
+					 + paramString + " IS ");
 		}
 		// else return since the other subroutines should be in-lined
 		else {
 			return;
 		}
-		if(finishingDeclarativePart){
-			finishingDeclarativePart = false;
-			returnList.add("begin");
-		}
-		returnList.add("\n" + subroutineName + ": " + subroutineType
-				+ paramString);
 		returnList.add("BEGIN");
 		printEobject(el.getBody());
 		returnList.add("END " + subroutineType + " " + subroutineName + ";");
@@ -356,7 +353,7 @@ public class QuickPrinter {
 			constantType = "Boolean";
 		}
 		returnList.add("CONSTANT " + el.getIdentifier() + ": " + constantType
-				+ " := " + el.getInitialValue()+";");
+				+ " := " + el.getInitialValue() + ";");
 	}
 
 	private void doPrint(Enumeration el) {
@@ -377,7 +374,8 @@ public class QuickPrinter {
 	private void doPrint(VariableDecl el) {
 		List<String> synchSMNames = translationData.quickPrintInfo
 				.getSynchSMNamesList();
-		List<String> signalNameList = translationData.quickPrintInfo.getSignalNamesList();
+		List<String> signalNameList = translationData.quickPrintInfo
+				.getSignalNamesList();
 		String assignmentOperator = " := ";
 		String initialValue = el.getInitialValue();
 		String variableType = el.getType();
@@ -390,10 +388,12 @@ public class QuickPrinter {
 				variableType = "Integer";
 			} else if (variableType.equals(CodeGenTaskingUtils.BOOL_SYMBOL)) {
 				variableType = "std_logic";
+				translationData.quickPrintInfo.getStdLogicNamesList().add(
+						el.getIdentifier());
 				if (initialValue.equals("true")) {
-					initialValue = "1";
+					initialValue = "'1'";
 				} else {
-					initialValue = "0";
+					initialValue = "'0'";
 				}
 			}
 		}
@@ -413,10 +413,10 @@ public class QuickPrinter {
 			}
 		}
 		returnList.add(declarationType + el.getIdentifier() + ": "
-				+ variableType + assignmentOperator + initialValue+";");
+				+ variableType + assignmentOperator + initialValue + ";");
 	}
 
-	// if a signal is being assigned to, on the RHS
+	// If a signal is being assigned to, on the RHS
 	// of an expression, return true.
 	private boolean actionAssignsToSignal(Action el) {
 		List<String> signalNamesList = translationData.quickPrintInfo
@@ -429,6 +429,114 @@ public class QuickPrinter {
 			varName = actionArray[0];
 		}
 		return signalNamesList.contains(varName);
+	}
+
+	// If action is of type std_logic return true.
+	private boolean actionAssignsToStdLogic(Action el) {
+		List<String> stdLogicNamesList = translationData.quickPrintInfo
+				.getStdLogicNamesList();
+		String actionString = CodeGenTaskingUtils
+				.makeSingleSpaceBetweenElements(el.getAction());
+		String[] actionArray = actionString.split(" ");
+		String varName = "";
+		if (actionArray.length >= 2) {
+			varName = actionArray[0];
+		}
+		return stdLogicNamesList.contains(varName);
+	}
+
+	// If a predicate refers to a std_logic then booleans literals true/false
+	// are mapped to '0' and '1'. It is more complex than an action since
+	// predicate can be more complex. So:
+	// std_log1 = true or false = std_log2 and aVar = true or std_log1 /=
+	// std_log2
+	// maps to
+	// std_log1 = '1' or std_log2 = '0' and aVar = true or std_log1 /= std_log2
+	// Where aVar is a variable. Note eventB ordering is not implied.
+	private String resolvePredicate(String predicate) {
+		String resolvedPredicate = "";
+		String predString = CodeGenTaskingUtils
+				.makeSingleSpaceBetweenElements(predicate);
+		String[] predArray = predString.split(" ");
+		// find the locations of the literals
+		for (int i = 1; i < predArray.length; i++) {
+			String s = predArray[i];
+			// if it is a 'true' literal
+			if (s.equals(CodinCGPlugin.TRUE_LITERAL_STRING)) {
+				// look to the left. If it is an equality/inequality
+				// look to the left again. If this a varNmae of type std_logic
+				// then change true to '1'
+				if (CodinCGPlugin.stdLogicPredOpsList
+						.contains(predArray[i - 1])) {
+					String leftString = predArray[i - 2];
+					List<String> stdLogicNamesList = translationData.quickPrintInfo
+							.getStdLogicNamesList();
+					if (stdLogicNamesList.contains(leftString)) {
+						predArray[i] = "'1'";
+					}
+				}
+				// do the same but looking right of the literal
+				else if (CodinCGPlugin.stdLogicPredOpsList
+						.contains(predArray[i + 1])) {
+					String rightString = predArray[i + 2];
+					List<String> stdLogicNamesList = translationData.quickPrintInfo
+							.getStdLogicNamesList();
+					if (stdLogicNamesList.contains(rightString)) {
+						predArray[i] = "'1'";
+						// we've sorted [i + 2] so increment i by 2 
+						// and let the for-loop do another increment
+						i = i + 2;
+					}
+				}
+			}
+			// else if it is false
+			else if (s.equals(CodinCGPlugin.FALSE_LITERAL_STRING)) {
+				// look to the left. If it is an equality/inequality
+				// look to the left again. If this a varNmae of type std_logic
+				// then change false to '0'
+				if (CodinCGPlugin.stdLogicPredOpsList
+						.contains(predArray[i - 1])) {
+					String leftString = predArray[i - 2];
+					List<String> stdLogicNamesList = translationData.quickPrintInfo
+							.getStdLogicNamesList();
+					if (stdLogicNamesList.contains(leftString)) {
+						predArray[i] = "'0'";
+					}
+				}
+				// do the same but looking right of the literal
+				else if (CodinCGPlugin.stdLogicPredOpsList
+						.contains(predArray[i + 1])) {
+					String rightString = predArray[i + 2];
+					List<String> stdLogicNamesList = translationData.quickPrintInfo
+							.getStdLogicNamesList();
+					if (stdLogicNamesList.contains(rightString)) {
+						predArray[i] = "'0'";
+						// we've sorted [i + 2] so increment i by 2 
+						// and let the for-loop do another increment
+						i = i + 2;
+					}
+				}
+			}
+		}
+		// recreate the predicate
+		for(int i = 0; i < predArray.length; i++){
+			resolvedPredicate = resolvedPredicate + " " +predArray[i];
+		}
+		return resolvedPredicate;
+	}
+
+	private boolean isSMSubroutine(Subroutine subroutineImpl) {
+		// returns true if the subroutine is in the list of
+		// synchronous state machines, by name.
+		// get the list of synchronous state machines
+		ArrayList<String> synchSMNamesList = new ArrayList<>();
+		for (Statemachine s : translationData.synchSMList) {
+			synchSMNamesList.add(s.getName());
+		}
+		// if the subroutine is a synch stateMachine call,
+		boolean hasSynchSMName = synchSMNamesList.contains(subroutineImpl
+				.getName().replace("do_", ""));
+		return hasSynchSMName;
 	}
 
 	private String makeSensitivityList() {

@@ -10,10 +10,13 @@ import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.statemachines.Statemachine;
 
 public class QuickPrintInfo {
-	private static List<Connector> connectorList = new ArrayList<>();
-	private static List<VariableDecl> signalDeclsList = new ArrayList<>();
 	private VHDL_TranslationData translationData;
-	
+	// Keep track of connectors that will become signals
+	private static List<Connector> connectorList = new ArrayList<>();
+	// Keep track of all the signals
+	private static List<VariableDecl> signalDeclsList = new ArrayList<>();
+	// Keep track of the signals of type std_logic
+	private List<String> stdLogicNamesList = new ArrayList<>();
 	
 	
 	public QuickPrintInfo(VHDL_TranslationData vhdl_translationData) {
@@ -62,5 +65,9 @@ public class QuickPrintInfo {
 			returnList.add(s.getName());
 		}
 		return returnList;
+	}
+
+	public List<String> getStdLogicNamesList() {
+		return stdLogicNamesList ;		
 	}
 }
