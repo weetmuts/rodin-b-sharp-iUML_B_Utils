@@ -126,10 +126,10 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 		// pass it to the quickprinter
 		QuickPrinter qp = new QuickPrinter(translationData, program, rodinProject);
 		qp.printToFile();
-		Formatter f = new Formatter();
-		f.formatVHDL(translationData);
 		UnicodeReplaceUtil replacer = new UnicodeReplaceUtil();
 		replacer.run(translationData); 
+		Formatter f = new Formatter();
+		f.formatVHDL(translationData);
 	}
 
 	// Create the file associated with the output

@@ -104,12 +104,26 @@ public class VHDL_IL1_ProcSMStatementGen {
 							currentStateSubroutine, targetNode, synchSMList);
 				}
 				// else the event is a simple transition with a call to its next
-				// state
+				// state - but it may have a guard(s), since we have an implicit do nothing
 				else {
 					List<Action> emfActionList = transitPath.getActionList();
+					List<Guard> emfGuardList = transitPath.getGuardList();
+					// make the command to place in the branch
 					Command command = completeIL1ActionSequence(currentState,
 							targetNode, emfActionList);
-					currentStateSubroutine.setBody(command);
+					List<String> guardList = makeIL1GuardsFromEMFGuardList(emfGuardList);
+					// if we have a guarded transition
+					if(guardList.size()>0){
+						// make a branch
+						If branch = Il1Factory.eINSTANCE.createIf();
+						branch.getCondition().addAll(guardList);
+						branch.setBody(command);
+						currentStateSubroutine.setBody(branch);
+					}
+					// else there are no guards
+					else{
+						currentStateSubroutine.setBody(command);
+					}
 				}
 			}
 			// if there are multiple transit paths

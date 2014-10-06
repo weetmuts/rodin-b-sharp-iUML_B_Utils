@@ -2,6 +2,8 @@ package ac.soton.codin.codegen.quickPrint;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -54,9 +56,7 @@ public class QuickPrinter {
 	private EClass callClass = Il1Package.Literals.CALL;
 	private IRodinProject sourceRodinProject;
 	private Program program;
-	private List<String> returnList = new ArrayList<>();
 	private static VHDL_TranslationData translationData;
-	private boolean finishingDeclarativePart = true;
 
 	// Constructor used to initiate template build
 	public QuickPrinter(VHDL_TranslationData translationData, Program program,
@@ -81,6 +81,7 @@ public class QuickPrinter {
 		// Initialise the template processor with the TARGET and SOURCE
 		// information.
 		templateProcessor.setFileExtension(CodinCGPlugin.VHDL_EXT);
+		templateProcessor.setLanguage("VHDL");
 		// also set vhdl language formatter at a later date
 
 		templateProcessor.initialiseTarget(sourceRodinProject,
@@ -97,17 +98,18 @@ public class QuickPrinter {
 		List<Object> generatorDataList = generatorData.getDataList();
 		generatorDataList.add(program); // add program data here
 		generatorDataList.add(translationData);
-		templateProcessor.instantiateTemplate("testTemplate.vhdl",
+		templateProcessor.instantiateTemplate("testTemplate." + CodinCGPlugin.VHDL_EXT,
 				generatorData);
 	}
 
 	public List<String> printProgram() {
-		printEobject(program);
+		List<String> returnList = new ArrayList<>();
+		printEobject(program, returnList);
 		return returnList;
 	}
 
 	// print from a supplied IL1 command
-	public List<String> printEobject(EObject element) {
+	public List<String> printEobject(EObject element, List<String> returnList) {
 		if (element == null)
 			return returnList;
 		EClass eClass = element.eClass();
@@ -117,67 +119,67 @@ public class QuickPrinter {
 			EList<Declaration> decls = program.getDecls();
 			for (Declaration d : decls) {
 				if (d.eClass() == vDeclClass) {
-					doPrint((VariableDecl) d);
+					doPrint((VariableDecl) d, returnList);
 				} else if (d.eClass() == cDeclClass) {
-					doPrint((ConstantDecl) d);
+					doPrint((ConstantDecl) d, returnList);
 				} else if (d.eClass() == eDeclClass) {
-					doPrint((Enumeration) d);
+					doPrint((Enumeration) d, returnList);
 				}
 			}
 			List<Task> taskList = program.getTaskTypeTasks();
 			for (Task t : taskList) {
-				doPrint(t);
+				doPrint(t, returnList);
 			}
 			return returnList;
 		} else if (eClass == vDeclClass) {
-			doPrint((VariableDecl) element);
+			doPrint((VariableDecl) element, returnList);
 			return returnList;
 		} else if (eClass == cDeclClass) {
-			doPrint((ConstantDecl) element);
+			doPrint((ConstantDecl) element, returnList);
 			return returnList;
 		} else if (eClass == subroutineClass) {
-			doPrint((Subroutine) element);
+			doPrint((Subroutine) element, returnList);
 			return returnList;
 		} else if (eClass == paramClass) {
-			doPrint((Parameter) element);
+			doPrint((Parameter) element, returnList);
 			return returnList;
 		} else if (eClass == guardClass) {
-			doPrint((ConditionSet) element);
+			doPrint((ConditionSet) element, returnList);
 			return returnList;
 		} else if (eClass == caseStatementClass) {
-			doprint((CaseStatement) element);
+			doprint((CaseStatement) element, returnList);
 			return returnList;
 		} else if (eClass == actionClass) {
-			doPrint((Action) element);
+			doPrint((Action) element, returnList);
 			return returnList;
 		} else if (eClass == seqClass) {
-			doPrint((Seq) element);
+			doPrint((Seq) element, returnList);
 			return returnList;
 		} else if (eClass == caseClass) {
-			doPrint((Case) element);
+			doPrint((Case) element, returnList);
 			return returnList;
 		} else if (eClass == ifClass) {
-			doPrint((If) element);
+			doPrint((If) element, returnList);
 			return returnList;
 		} else if (eClass == elseIfClass) {
-			doPrint((ElseIf) element);
+			doPrint((ElseIf) element, returnList);
 			return returnList;
 		} else if (eClass == callClass) {
-			doPrint_Inline((Call) element);
+			doPrint_Inline((Call) element, returnList);
 			return returnList;
 		} else {
 			return returnList;
 		}
 	}
 
-	private void doPrint(Task t) {
+	private void doPrint(Task t, List<String> returnList) {
 		EList<Subroutine> subroutineList = t.getSubroutines();
 		for (Subroutine s : subroutineList) {
-			doPrint(s);
+			doPrint(s, returnList);
 		}
 	}
 
-	private void doPrint_Inline(Call el) {
+	private void doPrint_Inline(Call el, List<String> returnList) {
 		// get the subroutine of the call;
 		Subroutine calledSubroutine = el.getSubroutine();
 		// store the program's subroutine definitions
@@ -204,11 +206,11 @@ public class QuickPrinter {
 			returnList.add(subroutineImpl.getName() + ";");
 		} else {
 			Command body = subroutineImpl.getBody();
-			printEobject(body);
+			printEobject(body, returnList);
 		}
 	}
 
-	private void doPrint(ElseIf el) {
+	private void doPrint(ElseIf el, List<String> returnList) {
 		returnList.add("ELSIF ");
 		boolean first = true;
 
@@ -222,15 +224,15 @@ public class QuickPrinter {
 			}
 		}
 		returnList.add("THEN ");
-		printEobject(el.getAction());
+		printEobject(el.getAction(), returnList);
 
 		ElseIf subBranch = el.getBranch();
 		if (subBranch != null) {
-			doPrint(subBranch);
+			doPrint(subBranch, returnList);
 		}
 	}
 
-	private void doPrint(If el) {
+	private void doPrint(If el, List<String> returnList) {
 		returnList.add("IF ");
 		boolean first = true;
 		for (String s : el.getCondition()) {
@@ -243,28 +245,28 @@ public class QuickPrinter {
 			}
 		}
 		returnList.add("THEN ");
-		printEobject(el.getBody());
-		printEobject(el.getBranch());
+		printEobject(el.getBody(), returnList);
+		printEobject(el.getBranch(), returnList);
 //		returnList.add("ELSE ");
 //		printEobject(el.getElse());
 		returnList.add("END IF;");
 	}
 
-	private void doPrint(Case el) {
+	private void doPrint(Case el, List<String> returnList) {
 		returnList.add("CASE " + el.getCaseExpression() + " IS ");
 		List<CaseStatement> caseStatementEList = el.getCaseStatement();
 		for (CaseStatement cs : caseStatementEList) {
-			printEobject(cs);
+			printEobject(cs, returnList);
 		}
 		returnList.add("END CASE;");
 	}
 
-	private void doPrint(Seq el) {
-		printEobject(el.getLeftBranch());
-		printEobject(el.getRightBranch());
+	private void doPrint(Seq el, List<String> returnList ) {
+		printEobject(el.getLeftBranch(), returnList);
+		printEobject(el.getRightBranch(), returnList);
 	}
 
-	private void doPrint(Action el) {
+	private void doPrint(Action el, List<String> returnList) {
 		String actionString = CodeGenTaskingUtils
 				.makeSingleSpaceBetweenElements(el.getAction());
 		String[] actionArray = actionString.split(" ");
@@ -290,17 +292,17 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doprint(CaseStatement el) {
+	private void doprint(CaseStatement el, List<String> returnList) {
 		returnList.add("WHEN " + el.getCaseValue() + " => ");
 		Command command = el.getCommand();
 		if (command == null) {
 			returnList.add(" null ;");
 		} else {
-			printEobject(command);
+			printEobject(command, returnList);
 		}
 	}
 
-	private void doPrint(ConditionSet el) {
+	private void doPrint(ConditionSet el, List<String> returnList) {
 		EList<String> conditions = el.getConditions();
 		returnList.add("Conditions");
 		for (String s : conditions) {
@@ -308,52 +310,61 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doPrint(Parameter el) {
+	private void doPrint(Parameter el, List<String> returnList) {
 		returnList.add("Parameter " + el.getIdentifier());
 	}
 
-	private void doPrint(Subroutine el) {
+	private void doPrint(Subroutine el, List<String> returnList) {
 
 		String subroutineName = el.getName();
 		String subroutineType;
 		String paramString = "";
 
 		// if the subroutine is a state machine implementation
-		// then it a procedure.
+		// then it is mapped to a procedure.
 		
-		// TODO - split the synchSM procedures and processSM
-		// Store the synchSM procedures for later insertion into
-		// the declarative part of 'the' cycle process.
-		// Since there is just one cycle process we can remove
-		// the finishing declarative part flag. We add the begin
-		// keyword here, since when we get here, we know that
-		// we're out of the declarative part.
+		// We split the synchSM procedures and processSM,
+		// storing the synchSM procedures for later insertion into
+		// the declarative part of 'the' main-cycle process.
+		// There is just one cycle process! 
 		if (isSMSubroutine(el)) {
 			subroutineType = "PROCEDURE";
-			returnList.add("\n"+ subroutineType + " " + subroutineName + " IS ");
+			List<String> tmpCodeList = new ArrayList<String>();
+			tmpCodeList.add("\n"+ subroutineType + " " + subroutineName + " IS ");
+			tmpCodeList.add("BEGIN");
+			printEobject(el.getBody(),tmpCodeList);
+			tmpCodeList.add("END " + subroutineType + " " + subroutineName + ";");
+			translationData.storedSynchSMTranslations.put(subroutineName, tmpCodeList);
 		}
 		// else if it is the process SM entry then it is process
 		else if (subroutineName.equals(BeginCycleName)) {
-			if (finishingDeclarativePart) {
-				finishingDeclarativePart = false;
-				returnList.add("\nbegin");
-			}
+			returnList.add("\nbegin");
 			subroutineType = "PROCESS";
 			paramString = "(" + makeSensitivityList() + ")";
-
+			// create the process header
 			returnList.add("\n" + subroutineName + ": " + subroutineType
 					 + paramString + " IS ");
+			// add a declarative part which contains the synchSM procedures
+			Map<String, List<String>> storedCodeMap = translationData.storedSynchSMTranslations;
+			Set<String> procedureNames =  storedCodeMap.keySet();
+			for(String procedureName: procedureNames){
+				List<String> codeListing = storedCodeMap.get(procedureName);
+				for(String line: codeListing){
+					returnList.add(line);
+				}
+				returnList.add("");
+			}
+			returnList.add("BEGIN");
+			printEobject(el.getBody(), returnList);
+			returnList.add("END " + subroutineType + " " + subroutineName + ";");
 		}
 		// else return since the other subroutines should be in-lined
 		else {
 			return;
 		}
-		returnList.add("BEGIN");
-		printEobject(el.getBody());
-		returnList.add("END " + subroutineType + " " + subroutineName + ";");
 	}
 
-	private void doPrint(ConstantDecl el) {
+	private void doPrint(ConstantDecl el, List<String> returnList) {
 		String constantType = el.getType();
 		if (constantType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {
 			constantType = "Integer";
@@ -364,7 +375,7 @@ public class QuickPrinter {
 				+ " := " + el.getInitialValue() + ";");
 	}
 
-	private void doPrint(Enumeration el) {
+	private void doPrint(Enumeration el, List<String> returnList) {
 		boolean first = true;
 		String tmpStr = "TYPE " + el.getIdentifier() + " IS (";
 		for (String str : el.getLiteralValues()) {
@@ -379,7 +390,7 @@ public class QuickPrinter {
 		returnList.add(tmpStr);
 	}
 
-	private void doPrint(VariableDecl el) {
+	private void doPrint(VariableDecl el, List<String> returnList) {
 		List<String> synchSMNames = translationData.quickPrintInfo
 				.getSynchSMNamesList();
 		List<String> signalNameList = translationData.quickPrintInfo

@@ -156,8 +156,9 @@ public class VHDL_IL1_DeclarationsGenerator {
 			program.getDecls().add(init_pcConstDecl);
 			init_pcConstDecl.setIdentifier("init_" + sm.getName());
 			init_pcConstDecl.setType(sm.getName() + "_States");
-
-			// but wait the state machine may have nested states.
+			// The state machine may have nested states, but we have removed
+			// them by flattenening, so we only require the top-level state-machine
+			// counter
 
 		}
 	}

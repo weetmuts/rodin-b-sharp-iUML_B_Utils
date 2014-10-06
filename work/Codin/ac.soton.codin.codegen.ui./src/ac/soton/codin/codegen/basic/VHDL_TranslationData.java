@@ -95,6 +95,8 @@ public class VHDL_TranslationData {
 	public Map<Statemachine, Subroutine> synchSM_subroutineMap = new HashMap<Statemachine, Subroutine>();
 	// A list of synchronous state-machines for the current component
 	public List<Statemachine> synchSMList = new ArrayList<>();
+	// Store the synchronous state-machine translations in a map of SubroutineName <-> CodeListing
+	public Map<String, List<String>> storedSynchSMTranslations = new HashMap<String, List<String>>();
 	
 	// call reset for each new component
 	public void resetMaps() {

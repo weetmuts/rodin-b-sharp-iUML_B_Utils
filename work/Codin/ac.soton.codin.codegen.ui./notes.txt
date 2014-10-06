@@ -1,2 +1,3 @@
 - add port updates
-- Missing guards on initial transitions, seem to be in TransitPaths. But not being generated into IL1
+- move state-machine procedures' location to inside the process state-machine, at QuickPrinter.doPrint(Subroutine el)
+

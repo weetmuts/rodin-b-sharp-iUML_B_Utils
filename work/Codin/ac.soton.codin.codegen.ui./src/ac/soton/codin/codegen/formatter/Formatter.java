@@ -2,7 +2,6 @@ package ac.soton.codin.codegen.formatter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,11 +13,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
-import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
 
 import ac.soton.codin.codegen.basic.VHDL_TranslationData;
+import ac.soton.codin.codegen.ui.CodinCGPlugin;
 
 public class Formatter {
 
@@ -97,7 +96,7 @@ public class Formatter {
 
 		IProject p = project.getCorrespondingResource().getProject();
 		IFolder folder = p.getFolder("out");
-		IFile f = folder.getFile(programName + ".vhdl");
+		IFile f = folder.getFile(programName + "." + CodinCGPlugin.VHDL_EXT);
 		IPath loc = f.getRawLocation();
 
 		FileReader fr = new FileReader(loc.toString());
