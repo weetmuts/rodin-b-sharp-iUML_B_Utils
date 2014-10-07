@@ -1,0 +1,156 @@
+﻿A template defines the top-level entity/architecture, and update behaviour using a clock/reset process.
+The template contains place holders to populate the component-dependent details.
+Current translation translates types of Event-B integer and boolean variables/constants depending on where they map to in VHDL.
+Integer variables map to signals with type Integer.
+Boolean variables map to signals with type std_out.
+Integer constants map to constant Integer types.
+The process state-machine do not have a control variable, since it is translated to sequential behaviour which occurs in one clock tick.
+Each synchronous state-machine has an enumerated type *_states representing the possible states. Where * represents the state-machine name.
+A variable  of type *_states records the current state-machine state.
+A variable next_* records the next state-machine state at the next clock tick. 
+A constant init_* records the initial value of the state-machine state.  
+
+
+Top-level Diagram
+
+ Name
+No mapping to VHDL. Ignored in translation.
+ Variables
+Variables (a) associated with connectors become signals in the entity port declaration.
+Variables associated with incoming connectors also map to 'signals' in the the cycle process sensitivity list.
+ Invariants
+Map to typing information for the variables in (a) the entity port declaration.
+ Initialisations
+Map to initialisations of the variables in (a).
+ Sets
+No mapping to VHDL. Ignored in translation.
+ Constants
+Map to VHDL Constants (b) declared and initialised in the architecture declarative section.
+ Axioms
+Contributes to mapping of (b).
+
+
+Component
+Maps to entity/architecture descriptions.
+ Name
+Maps to the entity declaration 'name'.
+ Variables
+Map to VHDL signals (c) declared and initialised in the architecture declarative section.
+ Invariants
+Contribute to mapping of (c).
+ Initialisations
+Contribute to mapping of (c).
+ Sets
+No mapping to VHDL. Ignored in translation.
+ Constants
+Map to VHDL Constants (d) declared and initialised in the architecture declarative section.
+ Axioms 
+Contribute to mapping of (d).
+ Port-wake
+No mapping to VHDL. Ignored in translation: The port-wake is simulated by the test-bench.
+ Variable reads are implemented using explicit assignment from signal to variable. Mapping information is obtained from the state-machine diagrams.
+ Self-wake
+No mapping to VHDL. The self-wake is simulated by the test-bench.
+ Transition
+No mapping to VHDL. Information is obtained from state-machine diagrams.
+ Operation
+No mapping to VHDL. Mapping information is obtained from the state-machine diagrams.
+ Process state-machine
+Maps to a concurrent process in the architecture. 
+ Describes a sequence of events occurring within a single clock cycle.
+A path formed by a sequence of transitions, between initial and final states, must be traversed in the single clock cycle.
+ There is a single process state-machine per component.
+  Name
+Not used, but may map to the name of the 'cycle' process if required.
+  Initial
+No mapping to VHDL. Ignored in translation.
+   incoming
+No mapping to VHDL. Ignored in translation.
+   outgoing
+The top-level initial state's outgoing transition provides the entry point for the sequential behaviour. Subsequent (nested) initial states are removed during flattening.
+ Guards/Actions of initial outgoing transitions, involving a junction target, will be accumulated during flattening.
+  Final
+No mapping to VHDL. Ignored in translation.
+   incoming
+Not used (since it will be mapped as a state's outgoing transition).
+   outgoing
+No mapping to VHDL. Ignored in translation.
+  State
+No mapping to VHDL. Removed in translation.
+   Nested state-machine
+No mapping to VHDL. Removed in translation. A nested state-machine's initial state's outgoing transitions' elaborating events match incoming transitions. The redundant transitions are removed during flattening.
+   Name
+No mapping to VHDL.  
+  Any
+No mapping to VHDL.
+  Junction
+No mapping to VHDL. Removed in translation.
+ Guards/Actions of incoming/outgoing transitions, will be accumulated during flattening. 
+ Currently restricted to multiple incoming – single outgoing Junctions.
+  Fork/Join
+No mapping to VHDL.
+  Invariant
+No mapping to VHDL.
+  Transitions and elaborating events
+A single outgoing transition with no guard: Action maps to an assignment. (forced progress)
+ A single outgoing transition with a guard: Maps to a branch where the guards maps to the conditions, actions map to assignments. (Potential non-progress/ implicit self-loop)
+ Multiple outgoing transitions map to branches and sub-branches.
+ There is no guarantee of guard disjointness. 
+ Guard incompleteness is a feature of the approach, resulting in potential non-progress (i.e. an implicit self-transition).
+When an event is encountered, that is referred to in a synchronous state-machine, a synchronous state-machine procedure call is created. The call (and procedure name) are based on the synchronous state-machine name.  
+See (_). 
+ Synchronous state-machine
+
+
+
+
+
+ Asynchronous state-machine
+No mapping to VHDL.
+
+
+
+
+
+
+
+
+
+
+
+
+Connectors
+
+ Name 
+
+ Type
+
+ Initial
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
