@@ -247,8 +247,11 @@ public class QuickPrinter {
 		returnList.add("THEN ");
 		printEobject(el.getBody(), returnList);
 		printEobject(el.getBranch(), returnList);
-//		returnList.add("ELSE ");
-//		printEobject(el.getElse());
+		Command elseCommand = el.getElse();
+		if(elseCommand != null){
+			returnList.add("ELSE ");
+			printEobject(elseCommand, returnList);
+		}
 		returnList.add("END IF;");
 	}
 
