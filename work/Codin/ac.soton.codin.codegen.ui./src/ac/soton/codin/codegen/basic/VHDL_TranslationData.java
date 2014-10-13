@@ -97,6 +97,10 @@ public class VHDL_TranslationData {
 	public List<Statemachine> synchSMList = new ArrayList<>();
 	// Store the synchronous state-machine translations in a map of SubroutineName <-> CodeListing
 	public Map<String, List<String>> storedSynchSMTranslations = new HashMap<String, List<String>>();
+	// We need to access type information for variables/ constants, which means storing invariants
+	// and axioms. Keep track in maps of type ComponentName <-> List(predicateString).
+	public Map<String, List<String>> componentInvariantMap = new HashMap<>();
+	public Map<String, List<String>> componentAxiomMap = new HashMap<>();
 	
 	// call reset for each new component
 	public void resetMaps() {

@@ -52,7 +52,9 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// get a state-machine to track down the component parent
 		translationData = translationData_;
 		if(!(translationData.synchSMList.size() == 1)){
-			throw new CodinTranslatorException("Invalid number of Synchronous State-machines in this component");
+			throw new CodinTranslatorException("Invalid count (" + translationData.synchSMList.size() 
+					+ ") of Synchronous State-machines found in component: "
+					+ translationData.currentComponent.getName());
 		}
 		Statemachine aStatemachine = translationData.synchSMList.get(0);
 		Component parentComponent = translationData.SM_Component_Map

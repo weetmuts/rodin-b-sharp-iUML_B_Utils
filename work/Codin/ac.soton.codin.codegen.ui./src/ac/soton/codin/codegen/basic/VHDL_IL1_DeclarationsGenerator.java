@@ -20,10 +20,8 @@ import org.eventb.codegen.il1.VariableDecl;
 import org.eventb.codegen.tasking.utils.CodeGenTaskingUtils;
 
 import ac.soton.eventb.emf.components.Component;
-import ac.soton.eventb.emf.components.ComponentAxiom;
 import ac.soton.eventb.emf.components.ComponentConstant;
 import ac.soton.eventb.emf.components.ComponentInitialisation;
-import ac.soton.eventb.emf.components.ComponentInvariant;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.impl.ComponentImpl;
 import ac.soton.eventb.statemachines.AbstractNode;
@@ -52,7 +50,48 @@ public class VHDL_IL1_DeclarationsGenerator {
 			throws CodinTranslatorException {
 		this.program = translationData.program;
 		List<Declaration> tmpDeclarationList = new ArrayList<>();
-		// get the variables from the top-level and components.
+
+////////// Begin:
+////////// The following Code has been removed since variables and
+////////// constants, declared at the top-most level are to be ignored.
+
+		// Use a component to find the container and get the top-level
+		// variables.
+		// Component firstInList = translationData.componentList.get(0);
+		// Component topComponent = null;
+		// EObject tmpTopComponent_ = firstInList.eContainer();
+		// if (tmpTopComponent_.getClass() == ComponentImpl.class) {
+		// topComponent = (Component) tmpTopComponent_;
+		// List<ComponentInitialisation> initialisationsList = topComponent
+		// .getInitialisations();
+		// for (ComponentInitialisation initialisation : initialisationsList) {
+		// makeVarDeclaration(translationData, tmpDeclarationList,
+		// topComponent, initialisation);
+		// }
+		// // Make constant declarations
+		// makeConstDeclarations(translationData, tmpDeclarationList,
+		// topComponent);
+		// }
+
+////////// End:
+////////// The previous code was removed.
+
+		// We track of signals in the smTranslatorData class. We can then map
+		// the associated variable Declarations to signals in the
+		// stage 2 (IL1 to code) translation.
+		Component firstInList = translationData.componentList.get(0);
+		Component topComponent = null;
+		EObject tmpTopComponent_ = firstInList.eContainer();
+		if (tmpTopComponent_.getClass() == ComponentImpl.class) {
+			topComponent = (Component) tmpTopComponent_;
+			for (Connector connector : topComponent.getConnectors()) {
+				// VHDL_TranslationData.connectorList.add(connector);
+				translationData.quickPrintInfo.getConnectorList()
+						.add(connector);
+			}
+		}
+		
+		// get the variable/constant info from the components.
 		for (Component component : translationData.componentList) {
 			List<ComponentInitialisation> initialisationsList = component
 					.getInitialisations();
@@ -64,110 +103,18 @@ public class VHDL_IL1_DeclarationsGenerator {
 			makeConstDeclarations(translationData, tmpDeclarationList,
 					component);
 		}
-		// Use a component to find the container and get the top-level
-		// variables.
-		Component firstInList = translationData.componentList.get(0);
-		Component topComponent = null;
-		EObject tmpTopComponent_ = firstInList.eContainer();
-		if (tmpTopComponent_.getClass() == ComponentImpl.class) {
-			topComponent = (Component) tmpTopComponent_;
-			List<ComponentInitialisation> initialisationsList = topComponent
-					.getInitialisations();
-			for (ComponentInitialisation initialisation : initialisationsList) {
-				makeVarDeclaration(translationData, tmpDeclarationList,
-						topComponent, initialisation);
-			}
-			// Make constant declarations
-			makeConstDeclarations(translationData, tmpDeclarationList,
-					topComponent);
-		}
-
-		// We track of signals in the smTranslatorData class. We can then map
-		// the associated variable Declarations to signals in the
-		// stage 2 (IL1 to code) translation.
-		for (Connector connector : topComponent.getConnectors()) {
-			// VHDL_TranslationData.connectorList.add(connector);
-			translationData.quickPrintInfo.getConnectorList().add(connector);
-		}
-
 		// Add the new list to the existing list of declarations.
 		program.getDecls().addAll(tmpDeclarationList);
-
-		// Add the state-machine program counter values as an enum.
-		for (Statemachine sm : translationData.synchSMList) {
-			// get the nodes of the state-machine
-			List<AbstractNode> nodeList = sm.getNodes();
-			// we add a program counter variable;
-			VariableDecl pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
-			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE
-					.createVariableDecl();
-			ConstantDecl init_pcConstDecl = Il1Factory.eINSTANCE
-					.createConstantDecl();
-			// we add the program counter states enum
-			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
-			program.getDecls().add(enm);
-			enm.setIdentifier(sm.getName() + "_States");
-
-			// Can we get all the states, and sub-states in the state-machine?
-
-			EList<EObject> allStates = sm.getAllContained(
-					StatemachinesPackage.Literals.STATE, true);
-
-			for (EObject eo : allStates) {
-				State state = (State) eo;
-				if (state != null) {
-					enm.getLiteralValues().add(state.getName());
-				}
-			}
-
-			for (AbstractNode node : nodeList) {
-				if (node != null) {
-					if (node.eClass() == StatemachinesPackage.Literals.INITIAL) {
-						// else we have the initialisation.
-						Initial i = (Initial) node;
-						// there should be exactly one outgoing transition on
-						// the
-						// initial node
-						Transition transition = i.getOutgoing().get(0);
-						AbstractNode initialSynchSMCounterValue = transition
-								.getTarget();
-						// if we have a state machine counter value
-						if (initialSynchSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE) {
-							State startingState = (State) initialSynchSMCounterValue;
-							pcVarDecl.setInitialValue(startingState.getName());
-							next_pcVarDecl.setInitialValue(startingState
-									.getName());
-							init_pcConstDecl.setInitialValue(startingState
-									.getName());
-						}
-					}
-				}
-			}
-			// add the variable to record the current state-machine state.
-			program.getDecls().add(pcVarDecl);
-			pcVarDecl.setIdentifier(sm.getName());
-			pcVarDecl.setType(sm.getName() + "_States");
-			// add the variable to record the next state-machine state.
-			program.getDecls().add(next_pcVarDecl);
-			next_pcVarDecl.setIdentifier("next_" + sm.getName());
-			next_pcVarDecl.setType(sm.getName() + "_States");
-			translationData.quickPrintInfo.getSignalsList().add(next_pcVarDecl);
-			// we also need to record the initial value
-			program.getDecls().add(init_pcConstDecl);
-			init_pcConstDecl.setIdentifier("init_" + sm.getName());
-			init_pcConstDecl.setType(sm.getName() + "_States");
-			// The state machine may have nested states, but we have removed
-			// them by flattenening, so we only require the top-level state-machine
-			// counter
-
-		}
+		makeSMCounterStructures(translationData);
 	}
 
 	private void makeConstDeclarations(VHDL_TranslationData translationData,
-			List<Declaration> tmpDeclarationList, Component topComponent)
+			List<Declaration> tmpDeclarationList, Component component)
 			throws CodinTranslatorException {
-		List<ComponentConstant> constantList = topComponent.getConstants();
-		List<ComponentAxiom> axiomList = topComponent.getAxioms();
+		List<ComponentConstant> constantList = component.getConstants();
+
+		List<String> predicateList = translationData.componentAxiomMap.get(component.getName());
+		
 		Map<String, ConstantDecl> cDeclMap = new HashMap<>();
 		// for each constant
 		for (ComponentConstant constant : constantList) {
@@ -176,8 +123,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 			// find an axiom that starts with the constant's
 			// name and contains the :: element of symbol.
 			// We ignore partitions (enums) for now.
-			for (ComponentAxiom axiom : axiomList) {
-				String predicate = axiom.getPredicate();
+			for (String predicate : predicateList) {
 				predicate = CodeGenTaskingUtils
 						.makeSingleSpaceBetweenElements(predicate);
 				// if this is an initialisation axiom of the form cName = x
@@ -282,16 +228,17 @@ public class VHDL_IL1_DeclarationsGenerator {
 		}
 
 		// Finished the initialisation part. Now add the type info.
-		List<ComponentInvariant> invariantList = component.getInvariants();
-		for (ComponentInvariant invariant : invariantList) {
-			String predicate = invariant.getPredicate().trim();
+		// List<ComponentInvariant> invariantList = component.getInvariants();
+		List<String> invariantList = translationData.componentInvariantMap
+				.get(component.getName());
+		for (String predicate : invariantList) {
+			predicate = predicate.trim();
 			predicate = CodeGenTaskingUtils
 					.makeSingleSpaceBetweenElements(predicate);
 			// if we found an invariant that starts with the varName
 			// lets see if it has is a typing expression
 			if (predicate.startsWith(variableName)) {
 				String[] wordArray = predicate.split(" ");
-
 				List<String> wordList = Arrays.asList(wordArray);
 				if (wordList.contains(CodeGenTaskingUtils.ELEMENT_OF)) {
 					// we have found a typing predicate for this
@@ -305,4 +252,70 @@ public class VHDL_IL1_DeclarationsGenerator {
 		}
 	}
 
+	
+	// Add the state-machine program counter values as an enum.
+	// The state machine may have nested states, but we have removed
+	// them by flattenening, so we only require a top-level
+	// state-machine counter.
+	private void makeSMCounterStructures(VHDL_TranslationData translationData) {
+		for (Statemachine sm : translationData.synchSMList) {
+			// get the nodes of the state-machine
+			List<AbstractNode> nodeList = sm.getNodes();
+			// we add a program counter variable;
+			VariableDecl pcVarDecl = Il1Factory.eINSTANCE.createVariableDecl();
+			VariableDecl next_pcVarDecl = Il1Factory.eINSTANCE
+					.createVariableDecl();
+			ConstantDecl init_pcConstDecl = Il1Factory.eINSTANCE
+					.createConstantDecl();
+			// we add the program counter states enum
+			Enumeration enm = Il1Factory.eINSTANCE.createEnumeration();
+			program.getDecls().add(enm);
+			enm.setIdentifier(sm.getName() + "_States");
+			// Can we get all the states, and sub-states in the state-machine?
+			EList<EObject> allStates = sm.getAllContained(
+					StatemachinesPackage.Literals.STATE, true);
+			for (EObject eo : allStates) {
+				State state = (State) eo;
+				if (state != null) {
+					enm.getLiteralValues().add(state.getName());
+				}
+			}
+			for (AbstractNode node : nodeList) {
+				if (node != null) {
+					if (node.eClass() == StatemachinesPackage.Literals.INITIAL) {
+						// else we have the initialisation.
+						Initial i = (Initial) node;
+						// there should be exactly one outgoing transition on
+						// the
+						// initial node
+						Transition transition = i.getOutgoing().get(0);
+						AbstractNode initialSynchSMCounterValue = transition
+								.getTarget();
+						// if we have a state machine counter value
+						if (initialSynchSMCounterValue.eClass() == StatemachinesPackage.Literals.STATE) {
+							State startingState = (State) initialSynchSMCounterValue;
+							pcVarDecl.setInitialValue(startingState.getName());
+							next_pcVarDecl.setInitialValue(startingState
+									.getName());
+							init_pcConstDecl.setInitialValue(startingState
+									.getName());
+						}
+					}
+				}
+			}
+			// add the variable to record the current state-machine state.
+			program.getDecls().add(pcVarDecl);
+			pcVarDecl.setIdentifier(sm.getName());
+			pcVarDecl.setType(sm.getName() + "_States");
+			// add the variable to record the next state-machine state.
+			program.getDecls().add(next_pcVarDecl);
+			next_pcVarDecl.setIdentifier("next_" + sm.getName());
+			next_pcVarDecl.setType(sm.getName() + "_States");
+			translationData.quickPrintInfo.getSignalsList().add(next_pcVarDecl);
+			// we also need to record the initial value
+			program.getDecls().add(init_pcConstDecl);
+			init_pcConstDecl.setIdentifier("init_" + sm.getName());
+			init_pcConstDecl.setType(sm.getName() + "_States");
+		}
+	}
 }
