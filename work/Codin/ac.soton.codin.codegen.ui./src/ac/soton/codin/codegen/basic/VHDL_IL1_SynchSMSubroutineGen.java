@@ -24,6 +24,7 @@ import org.eventb.emf.core.machine.Guard;
 import ac.soton.codin.codegen.quickPrint.QuickPrinter;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.statemachines.AbstractNode;
+import ac.soton.eventb.statemachines.Junction;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
@@ -171,6 +172,27 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				}
 			}
 		}
+		else if(targetNode instanceof Junction){
+			// There should be only one outgoing transition from the junction
+			// set this as the target node
+			State targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+			if (hasNestedSM(targetState)) {
+				// get any of the events, use to find the nested target
+				// state.
+				Event event = currentTransition.getElaborates().get(0);
+				AbstractNode nestedTarget = findNestedTarget(currentState,
+						event);
+				if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
+					throw new CodinTranslatorException(
+							"Nested Statemachine does not have a state as a target node");
+				} else {
+					targetState = (State) nestedTarget;
+					targetNode = nestedTarget;
+				}
+			}
+			targetName = targetState.getName();
+		}
+
 		// for the first transition
 		EList<Guard> guardEList = currentTransition.getGuards();
 		// Transform the guards of this transition
@@ -256,6 +278,26 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					}
 				}
 			}
+			else if(targetNode instanceof Junction){
+				// There should be only one outgoing transition from the junction
+				// set this as the target node
+				State targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+				if (hasNestedSM(targetState)) {
+					// get any of the events, use to find the nested target
+					// state.
+					Event event = currentTransition.getElaborates().get(0);
+					AbstractNode nestedTarget = findNestedTarget(currentState,
+							event);
+					if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
+						throw new CodinTranslatorException(
+								"Nested Statemachine does not have a state as a target node");
+					} else {
+						targetState = (State) nestedTarget;
+						targetNode = nestedTarget;
+					}
+				}
+				targetName = targetState.getName();
+			}
 			EList<Guard> emfGuardList = currentTransition.getGuards();
 			// Obtain a list of predicate strings
 			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(emfGuardList);
@@ -298,6 +340,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					}
 				}
 			}
+			// No Junction Handling
 
 			EList<Action> actionEList = transition.getActions();
 			// transform the actions of this single transition
