@@ -52,8 +52,9 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			throws CodinTranslatorException {
 		// get a state-machine to track down the component parent
 		translationData = translationData_;
-		if(!(translationData.synchSMList.size() == 1)){
-			throw new CodinTranslatorException("Invalid count (" + translationData.synchSMList.size() 
+		if (!(translationData.synchSMList.size() == 1)) {
+			throw new CodinTranslatorException("Invalid count ("
+					+ translationData.synchSMList.size()
 					+ ") of Synchronous State-machines found in component: "
 					+ translationData.currentComponent.getName());
 		}
@@ -142,6 +143,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				transitionEList);
 		// Make a branch for this state's outgoing transitions.
 		If topBranch = Il1Factory.eINSTANCE.createIf();
+
 		// Remove the current transition from the processing list
 		ArrayList<Transition> newTransitionList = new ArrayList<Transition>(
 				transitionList);
@@ -150,11 +152,13 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// for each transition
 		AbstractNode targetNode = currentTransition.getTarget();
 		String targetName = null;
+		State targetState = null;
+		Event event = null;
 		if (targetNode instanceof State) {
-			State targetState = (State) targetNode;
+			targetState = (State) targetNode;
+			event = currentTransition.getElaborates().get(0);
 			if (hasNestedSM(targetState)) {
 				// get any of the events, use to find the nested target state.
-				Event event = currentTransition.getElaborates().get(0);
 				AbstractNode nestedTarget = findNestedTarget(currentState,
 						event);
 				if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
@@ -171,15 +175,15 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					requiresNonProgress = true;
 				}
 			}
-		}
-		else if(targetNode instanceof Junction){
+		} else if (targetNode instanceof Junction) {
 			// There should be only one outgoing transition from the junction
 			// set this as the target node
-			State targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+			targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+			// get any of the events, use to find the nested target
+			// state. Get the event that elaborates the Junction's
+			// outgoing transition.
+			event = targetNode.getOutgoing().get(0).getElaborates().get(0);
 			if (hasNestedSM(targetState)) {
-				// get any of the events, use to find the nested target
-				// state.
-				Event event = currentTransition.getElaborates().get(0);
 				AbstractNode nestedTarget = findNestedTarget(currentState,
 						event);
 				if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
@@ -189,10 +193,16 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					targetState = (State) nestedTarget;
 					targetNode = nestedTarget;
 				}
+			} else {
+				event = targetNode.getOutgoing().get(0).getElaborates().get(0);
 			}
 			targetName = targetState.getName();
 		}
-
+		// we want to store the state - branch info to print as
+		// a code comment
+		if (targetState != null && event != null) {
+			translationData.branchEventMap.put(topBranch, event.getName());
+		}
 		// for the first transition
 		EList<Guard> guardEList = currentTransition.getGuards();
 		// Transform the guards of this transition
@@ -224,11 +234,11 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// and
 		// therefore require an implicit self loop. This is implemented here.
 
-// ELSE null branch removed.		
-//		org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE
-//				.createAction();
-//		doNothingAction.setAction("null");
-//		topBranch.setElse(doNothingAction);
+		// ELSE null branch removed.
+		// org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE
+		// .createAction();
+		// doNothingAction.setAction("null");
+		// topBranch.setElse(doNothingAction);
 
 		// set the case-statement body
 		caseStatement.setCommand(topBranch);
@@ -253,12 +263,15 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			// Get the target name of this transition if there is one.
 			AbstractNode targetNode = currentTransition.getTarget();
 			String targetName = null;
+			State targetState = null;
+			Event event = null;
+			EList<Event> elaboratesList = currentTransition.getElaborates();
 			if (targetNode instanceof State) {
-				State targetState = (State) targetNode;
+				targetState = (State) targetNode;
+				// get any of the events, use to find the nested target
+				// state.
+				event = elaboratesList.get(0);
 				if (hasNestedSM(targetState)) {
-					// get any of the events, use to find the nested target
-					// state.
-					Event event = currentTransition.getElaborates().get(0);
 					AbstractNode nestedTarget = findNestedTarget(currentState,
 							event);
 					if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
@@ -277,15 +290,16 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 						requiresNonProgress = true;
 					}
 				}
-			}
-			else if(targetNode instanceof Junction){
-				// There should be only one outgoing transition from the junction
-				// set this as the target node
-				State targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+			} else if (targetNode instanceof Junction) {
+				// There should be only one outgoing transition from the
+				// junction set this as the target node
+				targetState = (State) targetNode.getOutgoing().get(0)
+						.getTarget();
+				// get any of the events, use to find the nested target
+				// state. Get the event that elaborates the Junction's
+				// outgoing transition.
+				event = targetNode.getOutgoing().get(0).getElaborates().get(0);
 				if (hasNestedSM(targetState)) {
-					// get any of the events, use to find the nested target
-					// state.
-					Event event = currentTransition.getElaborates().get(0);
 					AbstractNode nestedTarget = findNestedTarget(currentState,
 							event);
 					if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
@@ -298,6 +312,12 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				}
 				targetName = targetState.getName();
 			}
+			// we want to store the state - branch info to print as
+			// a code comment
+			if (targetState != null && event != null) {
+				translationData.subBranchEventMap.put(subBranch, event.getName());
+			}
+
 			EList<Guard> emfGuardList = currentTransition.getGuards();
 			// Obtain a list of predicate strings
 			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(emfGuardList);
@@ -324,7 +344,8 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	// make the case body for the current state, where there is just
 	// a single transition out from the state.
 	private void makeIL1CaseNonBranching(String stateMachineName,
-			State currentState, CaseStatement caseStatement) throws CodinTranslatorException {
+			State currentState, CaseStatement caseStatement)
+			throws CodinTranslatorException {
 		EList<Transition> transitionList = currentState.getOutgoing();
 		for (Transition transition : transitionList) {
 			AbstractNode targetNode = transition.getTarget();
@@ -341,10 +362,12 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				}
 			}
 			// Junction Handling
-			else if(targetNode instanceof Junction){
-				// There should be only one outgoing transition from the junction
+			else if (targetNode instanceof Junction) {
+				// There should be only one outgoing transition from the
+				// junction
 				// set this as the target node
-				State targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+				State targetState = (State) targetNode.getOutgoing().get(0)
+						.getTarget();
 				if (hasNestedSM(targetState)) {
 					// get any of the events, use to find the nested target
 					// state.

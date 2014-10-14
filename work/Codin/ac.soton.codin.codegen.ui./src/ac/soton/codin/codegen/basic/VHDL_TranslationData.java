@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eventb.codegen.il1.ElseIf;
 import org.eventb.codegen.il1.IL1Element;
+import org.eventb.codegen.il1.If;
 import org.eventb.codegen.il1.Program;
 import org.eventb.codegen.il1.Subroutine;
 import org.eventb.codegen.tasking.TaskingTranslationManager;
@@ -101,6 +103,10 @@ public class VHDL_TranslationData {
 	// and axioms. Keep track in maps of type ComponentName <-> List(predicateString).
 	public Map<String, List<String>> componentInvariantMap = new HashMap<>();
 	public Map<String, List<String>> componentAxiomMap = new HashMap<>();
+	// Store a map of branches to eventNames so we can print
+	// if -- event1 in the code
+	public Map<If, String> branchEventMap = new HashMap<>();
+	public Map<ElseIf, String> subBranchEventMap= new HashMap<>();
 	
 	// call reset for each new component
 	public void resetMaps() {

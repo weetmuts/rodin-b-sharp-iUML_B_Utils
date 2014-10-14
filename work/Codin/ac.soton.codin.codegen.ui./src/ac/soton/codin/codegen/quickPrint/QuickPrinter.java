@@ -210,30 +210,9 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doPrint(ElseIf el, List<String> returnList) {
-		returnList.add("ELSIF ");
-		boolean first = true;
-
-		for (String s : el.getCondition()) {
-			s = resolvePredicate(s);
-			if (first) {
-				first = false;
-				returnList.add(" " + s);
-			} else {
-				returnList.add(" and " + s);
-			}
-		}
-		returnList.add("THEN ");
-		printEobject(el.getAction(), returnList);
-
-		ElseIf subBranch = el.getBranch();
-		if (subBranch != null) {
-			doPrint(subBranch, returnList);
-		}
-	}
-
 	private void doPrint(If el, List<String> returnList) {
-		returnList.add("IF ");
+		String eventName = translationData.branchEventMap.get(el);
+		returnList.add("IF "+"\t\t-- "+eventName);		
 		boolean first = true;
 		for (String s : el.getCondition()) {
 			s = resolvePredicate(s);
@@ -253,6 +232,30 @@ public class QuickPrinter {
 			printEobject(elseCommand, returnList);
 		}
 		returnList.add("END IF;");
+	}
+
+	private void doPrint(ElseIf el, List<String> returnList) {
+		String eventName = translationData.subBranchEventMap.get(el);
+
+		returnList.add("ELSIF "+"\t\t-- "+eventName);
+		boolean first = true;
+
+		for (String s : el.getCondition()) {
+			s = resolvePredicate(s);
+			if (first) {
+				first = false;
+				returnList.add(" " + s);
+			} else {
+				returnList.add(" and " + s);
+			}
+		}
+		returnList.add("THEN ");
+		printEobject(el.getAction(), returnList);
+
+		ElseIf subBranch = el.getBranch();
+		if (subBranch != null) {
+			doPrint(subBranch, returnList);
+		}
 	}
 
 	private void doPrint(Case el, List<String> returnList) {

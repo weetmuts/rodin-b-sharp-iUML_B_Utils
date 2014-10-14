@@ -43,8 +43,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	private Program program = null;
 	private Map<State, Subroutine> stateSubroutine_Map = new HashMap<State, Subroutine>();
 
-	public void run(Task task,
-			VHDL_TranslationData translationData)
+	public void run(Task task, VHDL_TranslationData translationData)
 			throws CodinTranslatorException {
 		program = translationData.program;
 		// make a subroutine for each state in the process state-machine
@@ -75,16 +74,17 @@ public class VHDL_IL1_ProcSMStatementGen {
 		}
 	}
 
-	private void makeSubroutineBodies(
-			VHDL_TranslationData translationData) {
+	private void makeSubroutineBodies(VHDL_TranslationData translationData) {
 
-		for (State currentState : translationData.processSM_transitPathMap.keySet()) {
+		for (State currentState : translationData.processSM_transitPathMap
+				.keySet()) {
 			// Get the transit paths for this state
 			List<TransitPath> transitPathList = translationData.processSM_transitPathMap
 					.get(currentState);
 			// get the subroutine for this state that was generated in the first
 			// pass.
-			Subroutine currentStateSubroutine = stateSubroutine_Map.get(currentState);
+			Subroutine currentStateSubroutine = stateSubroutine_Map
+					.get(currentState);
 			// A state will have a next-state call, and at least one transit
 			// path 'action'.
 			// If there are multiple transit paths then a branching statement is
@@ -100,11 +100,12 @@ public class VHDL_IL1_ProcSMStatementGen {
 						.get(transitEvent);
 				// if the event is associated with a synch state-machine
 				if (synchSMList != null && synchSMList.size() > 0) {
-					makeSynchSMCallSeq(translationData,
-							currentStateSubroutine, targetNode, synchSMList);
+					makeSynchSMCallSeq(translationData, currentStateSubroutine,
+							targetNode, synchSMList);
 				}
 				// else the event is a simple transition with a call to its next
-				// state - but it may have a guard(s), since we have an implicit do nothing
+				// state - but it may have a guard(s), since we have an implicit
+				// do nothing
 				else {
 					List<Action> emfActionList = transitPath.getActionList();
 					List<Guard> emfGuardList = transitPath.getGuardList();
@@ -113,7 +114,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 							targetNode, emfActionList);
 					List<String> guardList = makeIL1GuardsFromEMFGuardList(emfGuardList);
 					// if we have a guarded transition
-					if(guardList.size()>0){
+					if (guardList.size() > 0) {
 						// make a branch
 						If branch = Il1Factory.eINSTANCE.createIf();
 						branch.getCondition().addAll(guardList);
@@ -121,7 +122,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 						currentStateSubroutine.setBody(branch);
 					}
 					// else there are no guards
-					else{
+					else {
 						currentStateSubroutine.setBody(command);
 					}
 				}
@@ -130,38 +131,53 @@ public class VHDL_IL1_ProcSMStatementGen {
 			else if (transitPathList.size() > 1) {
 				// each path has a branch/subbranch
 
-				// if any single event in this transitPathList is associated with
-				// a synch state-machine then we assume there are no other process
-				// transitions to handle; and all transitions are to a single state.
+				// if any single event in this transitPathList is associated
+				// with
+				// a synch state-machine then we assume there are no other
+				// process
+				// transitions to handle; and all transitions are to a single
+				// state.
 				boolean isSynchSMTransition = false;
-				for(TransitPath transitPath: transitPathList){
+				for (TransitPath transitPath : transitPathList) {
 					Event transitEvent = transitPath.getEvent();
 					List<Statemachine> synchSMList = translationData.synchSMEventUser
 							.get(transitEvent);
-					if(synchSMList != null && synchSMList.size()>0) isSynchSMTransition = true;
+					if (synchSMList != null && synchSMList.size() > 0)
+						isSynchSMTransition = true;
 					break;
 				}
-				if(isSynchSMTransition){
+				if (isSynchSMTransition) {
 					// get the first targetNode assuming they are all the same
-					AbstractNode targetNode = transitPathList.get(0).getTargetNode();
-					// find all the synchronous state machines that are associated with 
+					AbstractNode targetNode = transitPathList.get(0)
+							.getTargetNode();
+					// find all the synchronous state machines that are
+					// associated with
 					// these outgoing transitions
 					Set<Statemachine> allSynchSMSet = new HashSet<Statemachine>();
-					for(TransitPath transitPath: transitPathList){
+					for (TransitPath transitPath : transitPathList) {
 						Event transitEvent = transitPath.getEvent();
-						
-						allSynchSMSet.addAll(translationData.synchSMEventUser
-								.get(transitEvent));
+
+						List<Statemachine> list = translationData.synchSMEventUser
+								.get(transitEvent);
+						if (list != null) {
+							allSynchSMSet.addAll(list);
+						}
 					}
-					List<Statemachine> allSynchSMList = Arrays.asList(allSynchSMSet.toArray(new Statemachine[allSynchSMSet.size()]));
-					makeSynchSMCallSeq(translationData,
-							currentStateSubroutine, targetNode, allSynchSMList);
+					List<Statemachine> allSynchSMList = Arrays
+							.asList(allSynchSMSet
+									.toArray(new Statemachine[allSynchSMSet
+											.size()]));
+					makeSynchSMCallSeq(translationData, currentStateSubroutine,
+							targetNode, allSynchSMList);
 				}
-				// else create a branching structure to represent the transitions
-				// of the state, then finally add a call to the next stateSubroutine
+				// else create a branching structure to represent the
+				// transitions
+				// of the state, then finally add a call to the next
+				// stateSubroutine
 				// if one exists.
-				else{
-					currentStateSubroutine.setBody(makeTopBranch(currentState, transitPathList));
+				else {
+					currentStateSubroutine.setBody(makeTopBranch(currentState,
+							transitPathList));
 				}
 			}
 			// there are no transit paths, do nothing
@@ -170,7 +186,8 @@ public class VHDL_IL1_ProcSMStatementGen {
 		}
 	}
 
-	private If makeTopBranch(State currentState, List<TransitPath> transitPathList) {
+	private If makeTopBranch(State currentState,
+			List<TransitPath> transitPathList) {
 		// get the first transit path and remove form the list
 		TransitPath firstPath = transitPathList.remove(0);
 		AbstractNode targetNode = firstPath.getTargetNode();
@@ -182,7 +199,8 @@ public class VHDL_IL1_ProcSMStatementGen {
 		If topBranch = Il1Factory.eINSTANCE.createIf();
 		topBranch.getCondition().addAll(guardList);
 		topBranch.setBody(command);
-		makeSubBranch(transitPathList, topBranch, currentState, targetNode, null);
+		makeSubBranch(transitPathList, topBranch, currentState, targetNode,
+				null);
 		return topBranch;
 	}
 
@@ -204,8 +222,8 @@ public class VHDL_IL1_ProcSMStatementGen {
 			// transform the actions of this transition
 			// to an il1.command for the branch body.
 			// First create a java list
-			Command subBranchBody = completeIL1ActionSequence(
-					stateMachineName, currentState, actionList);
+			Command subBranchBody = completeIL1ActionSequence(stateMachineName,
+					currentState, actionList);
 			subBranch.setAction(subBranchBody);
 			// parentElseIf is null if this is to be added at the top-level
 			if (parentElseif == null)
@@ -214,8 +232,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 				parentElseif.setBranch(subBranch);
 			makeSubBranch(transitPathList, topBranch, stateMachineName,
 					currentState, subBranch);
-		} 
-		else if (transitPathList.size() == 1) {
+		} else if (transitPathList.size() == 1) {
 			// set the elseBranch of the original 'if'.
 			TransitPath lastTransition = transitPathList.get(0);
 			// Else has no guards so just process the actions.
@@ -229,8 +246,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 		}
 	}
 
-	private void makeSynchSMCallSeq(
-			VHDL_TranslationData translationData,
+	private void makeSynchSMCallSeq(VHDL_TranslationData translationData,
 			Subroutine currentStateSubroutine, AbstractNode targetNode,
 			List<Statemachine> synchSMList) {
 		List<Call> callList = new ArrayList<>();
@@ -245,8 +261,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 			synchSMCall.setSubroutine(EcoreUtil.copy(calledSynchSMSubroutine));
 		}
 		// Get the subroutine associated with the target node
-		Subroutine targetSubroutine = stateSubroutine_Map
-				.get(targetNode);
+		Subroutine targetSubroutine = stateSubroutine_Map.get(targetNode);
 		Seq callSeq = Il1Factory.eINSTANCE.createSeq();
 		// convert the list of calls to a sequence
 		// the left branch calls the synch state machines
@@ -316,14 +331,15 @@ public class VHDL_IL1_ProcSMStatementGen {
 		Command body = makeIL1SeqFromActionList(actionList);
 		// if there is a new target state but not a final impl
 		Class<FinalImpl> theFinalImplClass = FinalImpl.class;
-		if (targetNode != null && targetNode.getClass() != theFinalImplClass && targetNode != currentState) {
+		if (targetNode != null && targetNode.getClass() != theFinalImplClass
+				&& targetNode != currentState) {
 			// create a new next-state subroutine Call
 			Call call = Il1Factory.eINSTANCE.createCall();
 			// set the subroutine associated with the call
 			Subroutine nextStateSubroutine = stateSubroutine_Map
 					.get(targetNode);
 			// if there is no next state, then we do nothing.
-			if(nextStateSubroutine == null){
+			if (nextStateSubroutine == null) {
 				return null;
 			}
 			// We seem to need to copy this, since the subroutine
@@ -346,7 +362,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 		}
 		// return the list of actions in the case that there
 		// is no next state.
-		else{
+		else {
 			return body;
 		}
 	}
