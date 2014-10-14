@@ -324,7 +324,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	// make the case body for the current state, where there is just
 	// a single transition out from the state.
 	private void makeIL1CaseNonBranching(String stateMachineName,
-			State currentState, CaseStatement caseStatement) {
+			State currentState, CaseStatement caseStatement) throws CodinTranslatorException {
 		EList<Transition> transitionList = currentState.getOutgoing();
 		for (Transition transition : transitionList) {
 			AbstractNode targetNode = transition.getTarget();
@@ -340,8 +340,27 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					}
 				}
 			}
-			// No Junction Handling
-
+			// Junction Handling
+			else if(targetNode instanceof Junction){
+				// There should be only one outgoing transition from the junction
+				// set this as the target node
+				State targetState = (State) targetNode.getOutgoing().get(0).getTarget();
+				if (hasNestedSM(targetState)) {
+					// get any of the events, use to find the nested target
+					// state.
+					Event event = transition.getElaborates().get(0);
+					AbstractNode nestedTarget = findNestedTarget(currentState,
+							event);
+					if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
+						throw new CodinTranslatorException(
+								"Nested Statemachine does not have a state as a target node");
+					} else {
+						targetState = (State) nestedTarget;
+						targetNode = nestedTarget;
+					}
+				}
+				targetName = targetState.getName();
+			}
 			EList<Action> actionEList = transition.getActions();
 			// transform the actions of this single transition
 			// to an il1.command for the caseStatement body.
