@@ -154,6 +154,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		String targetName = null;
 		State targetState = null;
 		Event event = null;
+		Transition transitionIntoJunction = null;
 		if (targetNode instanceof State) {
 			targetState = (State) targetNode;
 			event = currentTransition.getElaborates().get(0);
@@ -183,6 +184,8 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			// get the revised elaborating event
 			 event = currentTransition.getTarget().getOutgoing().get(0)
 					.getElaborates().get(0);
+			// store the original transition to get the guards
+			transitionIntoJunction = currentTransition; 
 			// set the revised transition
 			currentTransition = currentTransition.getTarget().getOutgoing().get(0);
 
@@ -206,15 +209,15 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		if (targetState != null && event != null) {
 			translationData.branchEventMap.put(topBranch, event.getName());
 		}
-		// for the first transition
-		EList<Guard> guardEList = currentTransition.getGuards();
-		// Transform the guards of this transition
-		// to a list of guards for this branch condition.
-		// First create a java list from the EList
-		List<Guard> emfGuardList = Arrays.asList(guardEList
-				.toArray(new Guard[guardEList.size()]));
+		// get the predicates for the condition
+		List<Guard> guardList =  new ArrayList<>();
+		guardList.addAll(currentTransition.getGuards());
+		// add any pre-junction guards
+		if(transitionIntoJunction != null){
+			guardList.addAll(transitionIntoJunction.getGuards());
+		}
 		// Obtain a list of predicate strings
-		List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(emfGuardList);
+		List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(guardList);
 		// add the predicate string to the branch condition for this
 		// state's top-level branch.
 		topBranch.getCondition().addAll(predicateStringList);
@@ -268,6 +271,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			String targetName = null;
 			State targetState = null;
 			Event event = null;
+			Transition transitionIntoJunction = null;
 			EList<Event> elaboratesList = currentTransition.getElaborates();
 			if (targetNode instanceof State) {
 				targetState = (State) targetNode;
@@ -301,6 +305,8 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				// get the revised elaborating event
 				 event = currentTransition.getTarget().getOutgoing().get(0)
 						.getElaborates().get(0);
+				// store the original transition to get the guards
+				transitionIntoJunction = currentTransition; 
 				// set the revised transition
 				currentTransition = currentTransition.getTarget().getOutgoing().get(0);
 
@@ -323,10 +329,14 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				translationData.subBranchEventMap.put(subBranch,
 						event.getName());
 			}
-
-			EList<Guard> emfGuardList = currentTransition.getGuards();
 			// Obtain a list of predicate strings
-			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(emfGuardList);
+			List<Guard> guardList =  new ArrayList<>();
+			guardList.addAll(currentTransition.getGuards());
+			// add any pre-junction guards
+			if(transitionIntoJunction != null){
+				guardList.addAll(transitionIntoJunction.getGuards());
+			}
+			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(guardList);
 			// add the predicate string to the subbranch condition
 			subBranch.getCondition().addAll(predicateStringList);
 			// add any actions
