@@ -31,6 +31,7 @@ import org.eventb.codegen.templates.GeneratorData;
 import org.eventb.codegen.templates.util.TemplateProcessor;
 import org.rodinp.core.IRodinProject;
 
+import ac.soton.codin.codegen.basic.CodinTranslatorException;
 import ac.soton.codin.codegen.basic.VHDL_TranslationData;
 import ac.soton.codin.codegen.ui.CodinCGPlugin;
 import ac.soton.eventb.emf.components.Component;
@@ -102,14 +103,14 @@ public class QuickPrinter {
 				generatorData);
 	}
 
-	public List<String> printProgram() {
+	public List<String> printProgram() throws CodinTranslatorException {
 		List<String> returnList = new ArrayList<>();
 		printEobject(program, returnList);
 		return returnList;
 	}
 
 	// print from a supplied IL1 command
-	public List<String> printEobject(EObject element, List<String> returnList) {
+	public List<String> printEobject(EObject element, List<String> returnList) throws CodinTranslatorException {
 		if (element == null)
 			return returnList;
 		EClass eClass = element.eClass();
@@ -172,14 +173,14 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doPrint(Task t, List<String> returnList) {
+	private void doPrint(Task t, List<String> returnList) throws CodinTranslatorException {
 		EList<Subroutine> subroutineList = t.getSubroutines();
 		for (Subroutine s : subroutineList) {
 			doPrint(s, returnList);
 		}
 	}
 
-	private void doPrint_Inline(Call el, List<String> returnList) {
+	private void doPrint_Inline(Call el, List<String> returnList) throws CodinTranslatorException {
 		// get the subroutine of the call;
 		Subroutine calledSubroutine = el.getSubroutine();
 		// store the program's subroutine definitions
@@ -210,7 +211,7 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doPrint(If el, List<String> returnList) {
+	private void doPrint(If el, List<String> returnList) throws CodinTranslatorException {
 		String eventName = translationData.branchEventMap.get(el);
 		returnList.add("IF "+"\t\t-- "+eventName);		
 		boolean first = true;
@@ -234,7 +235,7 @@ public class QuickPrinter {
 		returnList.add("END IF;");
 	}
 
-	private void doPrint(ElseIf el, List<String> returnList) {
+	private void doPrint(ElseIf el, List<String> returnList) throws CodinTranslatorException {
 		String eventName = translationData.subBranchEventMap.get(el);
 
 		returnList.add("ELSIF "+"\t\t-- "+eventName);
@@ -258,7 +259,7 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doPrint(Case el, List<String> returnList) {
+	private void doPrint(Case el, List<String> returnList) throws CodinTranslatorException {
 		returnList.add("CASE " + el.getCaseExpression() + " IS ");
 		List<CaseStatement> caseStatementEList = el.getCaseStatement();
 		for (CaseStatement cs : caseStatementEList) {
@@ -267,7 +268,7 @@ public class QuickPrinter {
 		returnList.add("END CASE;");
 	}
 
-	private void doPrint(Seq el, List<String> returnList ) {
+	private void doPrint(Seq el, List<String> returnList ) throws CodinTranslatorException {
 		printEobject(el.getLeftBranch(), returnList);
 		printEobject(el.getRightBranch(), returnList);
 	}
@@ -298,7 +299,7 @@ public class QuickPrinter {
 		}
 	}
 
-	private void doprint(CaseStatement el, List<String> returnList) {
+	private void doprint(CaseStatement el, List<String> returnList) throws CodinTranslatorException {
 		returnList.add("WHEN " + el.getCaseValue() + " => ");
 		Command command = el.getCommand();
 		if (command == null) {
@@ -320,7 +321,7 @@ public class QuickPrinter {
 		returnList.add("Parameter " + el.getIdentifier());
 	}
 
-	private void doPrint(Subroutine el, List<String> returnList) {
+	private void doPrint(Subroutine el, List<String> returnList) throws CodinTranslatorException {
 
 		String subroutineName = el.getName();
 		String subroutineType;
@@ -396,7 +397,7 @@ public class QuickPrinter {
 		returnList.add(tmpStr);
 	}
 
-	private void doPrint(VariableDecl el, List<String> returnList) {
+	private void doPrint(VariableDecl el, List<String> returnList) throws CodinTranslatorException {
 		List<String> synchSMNames = translationData.quickPrintInfo
 				.getSynchSMNamesList();
 		List<String> signalNameList = translationData.quickPrintInfo
@@ -415,6 +416,9 @@ public class QuickPrinter {
 		}
 		// else IF the variable is a signal ...
 		else if (signalNameList.contains(variableName)) {
+			if(variableType == null){
+				throw new CodinTranslatorException("No type for variable: "+ variableName +". Check Typing invariant");
+			}
 			declarationType = "SIGNAL ";
 			assignmentOperator = " := ";
 			if (variableType.equals(CodeGenTaskingUtils.INT_SYMBOL)) {

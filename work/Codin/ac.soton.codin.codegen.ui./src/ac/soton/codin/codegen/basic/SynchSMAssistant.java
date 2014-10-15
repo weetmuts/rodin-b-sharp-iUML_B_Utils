@@ -92,7 +92,7 @@ public class SynchSMAssistant {
 			for (Transition stateTransition : outgoingTList) {
 				doOutgoingTransition(state, stateTransition);
 			}
-			
+
 			// Alternative NEW approach !!!! for nested state-machines
 			EList<Statemachine> nestSynchSMList = state.getStatemachines();
 			// process nested synch state-machines
@@ -101,8 +101,7 @@ public class SynchSMAssistant {
 					continue;
 				doStateMachine(nestedStatemachine);
 			}
-			
-			
+
 			// END Alternative NEW approach !!!! for nested state-machines
 		}
 	}
@@ -111,18 +110,20 @@ public class SynchSMAssistant {
 		AbstractNode transitionTarget = stateTransition.getTarget();
 		ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 		ArrayList<Action> transitPathActionList = new ArrayList<Action>();
-		transitPathActionList.addAll(stateTransition.getActions());
-		transitPathGuardList.addAll(stateTransition.getGuards());
-		
+
 		// if the state transition target is a Junction we
 		// will need to build the event list here
 		if (transitionTarget instanceof Junction) {
 			transitPathGuardList.addAll(stateTransition.getGuards());
 			transitPathActionList.addAll(stateTransition.getActions());
 			Junction junctionTarget = (Junction) transitionTarget;
+			// get the junction's outgoing transition
+			Transition junctionOutTransition = junctionTarget.getOutgoing().get(0);
+			Event junctionOutEvent = junctionOutTransition.getElaborates().get(0);
+			transitPathGuardList.addAll(junctionOutTransition.getGuards());
+			transitPathActionList.addAll(junctionOutTransition.getActions());
 			// create the 'inner map'
 			Map<Event, AbstractNode> innerMap = new HashMap<Event, AbstractNode>();
-			EList<Transition> junctionOutList = junctionTarget.getOutgoing();
 			Map<Event, AbstractNode> storedInnerMap = synchSM_curr_nextStateMap
 					.get(state);
 			if (storedInnerMap != null) {
@@ -130,17 +131,10 @@ public class SynchSMAssistant {
 			} else {
 				storedInnerMap = innerMap;
 			}
-
-			for (Transition junctionTransition : junctionOutList) {
-				for (Event junctionEvent : junctionTransition.getElaborates()) {
-					storedInnerMap.put(junctionEvent,
-							junctionTransition.getTarget());
-					// eventList.add(junctionEvent);
-					updateTransitPath(junctionEvent, state,
-							transitPathGuardList, transitPathActionList,
-							storedInnerMap);
-				}
-			}
+			storedInnerMap.put(junctionOutEvent, junctionOutTransition.getTarget());
+			// eventList.add(junctionEvent);
+			updateTransitPath(junctionOutEvent, state, transitPathGuardList,
+					transitPathActionList, storedInnerMap);
 			synchSM_curr_nextStateMap.put(state, storedInnerMap);
 		}
 		// else if the outgoing transition target is not a
@@ -148,8 +142,7 @@ public class SynchSMAssistant {
 		// we can obtain the events that it elaborates
 		else {
 			List<Event> eventList = stateTransition.getElaborates();
-			transitPathGuardList.addAll(stateTransition
-					.getGuards());
+			transitPathGuardList.addAll(stateTransition.getGuards());
 			transitPathActionList.addAll(stateTransition.getActions());
 
 			// for each event related to the state
@@ -217,8 +210,7 @@ public class SynchSMAssistant {
 				}
 			}
 		}
-		translationData.synchSM_transitPathMap.put(state,
-				transitPathList);
+		translationData.synchSM_transitPathMap.put(state, transitPathList);
 
 	}
 
@@ -235,12 +227,12 @@ public class SynchSMAssistant {
 		for (Transition initialTransition : outgoingTList) {
 			AbstractNode initialTransitionTarget = initialTransition
 					.getTarget();
-			
+
 			ArrayList<Guard> transitPathGuardList = new ArrayList<Guard>();
 			ArrayList<Action> transitPathActionList = new ArrayList<Action>();
 			transitPathActionList.addAll(initialTransition.getActions());
 			transitPathGuardList.addAll(initialTransition.getGuards());
-			
+
 			if (initialTransitionTarget instanceof Junction) {
 				// we have found a Junction, so need to obtain
 				// its eventlist
@@ -268,8 +260,7 @@ public class SynchSMAssistant {
 			// transition from the pre-constructed list.
 			else {
 				List<Event> eventList = initialTransition.getElaborates();
-				transitPathGuardList.addAll(initialTransition
-						.getGuards());
+				transitPathGuardList.addAll(initialTransition.getGuards());
 				transitPathActionList.addAll(initialTransition.getActions());
 
 				// for each event related to the initial state
@@ -291,8 +282,9 @@ public class SynchSMAssistant {
 					// initialState, with the Event<->
 					// TargetState map
 					synchSM_ini_nextStateMap.put(parentState, storedInnerMap);
-					
-					updateTransitPath(event, parentState, transitPathGuardList, transitPathActionList, storedInnerMap);
+
+					updateTransitPath(event, parentState, transitPathGuardList,
+							transitPathActionList, storedInnerMap);
 
 				}
 			}

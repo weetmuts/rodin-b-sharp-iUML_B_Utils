@@ -109,8 +109,19 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				EList<Transition> transitionList = currentState.getOutgoing();
 				// handle the case of one outgoing event for this state.
 				if (transitionList.size() == 1) {
-					makeIL1CaseNonBranching(stateMachineName, currentState,
-							caseStatement);
+					EList<Guard> guardList = transitionList.get(0).getGuards();
+					// if we have no guard on the transition, we have a
+					// simple statement
+					if (guardList == null || guardList.size() == 0) {
+						makeIL1CaseNonBranching(stateMachineName, currentState,
+								caseStatement);
+					}
+					// else we have a statement with an implicit self loop
+					// since we have a single guard
+					else {
+						makeIL1CaseBranch(stateMachineName, currentState,
+								caseStatement);
+					}
 				}
 				// .. or multiple outgoing transitions for this state.
 				else if (transitionList.size() > 1) {
@@ -179,15 +190,13 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		} else if (targetNode instanceof Junction) {
 			// There should be only one outgoing transition from the junction
 			// set the revised target state
-			 targetState = (State) targetNode.getOutgoing().get(0)
-					.getTarget();
+			targetState = (State) targetNode.getOutgoing().get(0).getTarget();
 			// get the revised elaborating event
-			 event = currentTransition.getTarget().getOutgoing().get(0)
-					.getElaborates().get(0);
+			event = targetNode.getOutgoing().get(0).getElaborates().get(0);
 			// store the original transition to get the guards
-			transitionIntoJunction = currentTransition; 
+			transitionIntoJunction = currentTransition;
 			// set the revised transition
-			currentTransition = currentTransition.getTarget().getOutgoing().get(0);
+			currentTransition = targetNode.getOutgoing().get(0);
 
 			if (hasNestedSM(targetState)) {
 				AbstractNode nestedTarget = findNestedTarget(currentState,
@@ -199,8 +208,6 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					targetState = (State) nestedTarget;
 					targetNode = nestedTarget;
 				}
-			} else {
-				event = targetNode.getOutgoing().get(0).getElaborates().get(0);
 			}
 			targetName = targetState.getName();
 		}
@@ -210,19 +217,46 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			translationData.branchEventMap.put(topBranch, event.getName());
 		}
 		// get the predicates for the condition
-		List<Guard> guardList =  new ArrayList<>();
+		List<Guard> guardList = new ArrayList<>();
 		guardList.addAll(currentTransition.getGuards());
 		// add any pre-junction guards
-		if(transitionIntoJunction != null){
+		if (transitionIntoJunction != null) {
 			guardList.addAll(transitionIntoJunction.getGuards());
 		}
 		// Obtain a list of predicate strings
-		List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(guardList);
+		List<String> predicateStringList = makeIL1GuardStringsFromGuardList(guardList);
+		// get any actions
+		List<Action> actionList = currentTransition.getActions();
+
+
+		// /// Begin: Check the printed guardList against the tp guardlist
+		System.out.println("listed predicates/actions:" + currentState.getName()
+				+ "::" + event.getName());
+		for (String s : predicateStringList) System.out.println(s);
+		for(Action a: actionList) System.out.println(a.getAction());
+		System.out.println("tp::predicates/actions:");
+		List<TransitPath> tpList = translationData.synchSM_transitPathMap
+				.get(currentState);
+		TransitPath foundTP = null;
+
+		for (TransitPath tp : tpList) {
+			if (tp.getEvent().getName().equals(event.getName())) {
+				foundTP = tp;
+				break;
+			}
+		}
+		for (Guard g : foundTP.getGuardList()) {
+			System.out.println(g.getPredicate());
+		}
+		for(Action a: foundTP.getActionList()){
+			System.out.println(a.getAction());
+		}
+
+		// /// End: Check the printed guardList against the tp guardlist
 		// add the predicate string to the branch condition for this
+
 		// state's top-level branch.
 		topBranch.getCondition().addAll(predicateStringList);
-		// add any actions
-		List<Action> actionList = currentTransition.getActions();
 		// transform the actions of this transition
 		// to an il1.command for the branch body.
 		// First create a java list
@@ -236,16 +270,6 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// and process the rest as a subBranch
 		makeIL1SubBranch(newTransitionList, stateMachineName, currentState,
 				topBranch, null);
-		// Since we have multiple transitions, then we have guarded transitions,
-		// and
-		// therefore require an implicit self loop. This is implemented here.
-
-		// ELSE null branch removed.
-		// org.eventb.codegen.il1.Action doNothingAction = Il1Factory.eINSTANCE
-		// .createAction();
-		// doNothingAction.setAction("null");
-		// topBranch.setElse(doNothingAction);
-
 		// set the case-statement body
 		caseStatement.setCommand(topBranch);
 
@@ -298,17 +322,17 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 					}
 				}
 			} else if (targetNode instanceof Junction) {
-				// There should be only one outgoing transition from the junction 
+				// There should be only one outgoing transition from the
+				// junction
 				// set the revised target state
-				 targetState = (State) targetNode.getOutgoing().get(0)
+				targetState = (State) targetNode.getOutgoing().get(0)
 						.getTarget();
 				// get the revised elaborating event
-				 event = currentTransition.getTarget().getOutgoing().get(0)
-						.getElaborates().get(0);
+				event = targetNode.getOutgoing().get(0).getElaborates().get(0);
 				// store the original transition to get the guards
-				transitionIntoJunction = currentTransition; 
+				transitionIntoJunction = currentTransition;
 				// set the revised transition
-				currentTransition = currentTransition.getTarget().getOutgoing().get(0);
+				currentTransition = targetNode.getOutgoing().get(0);
 
 				if (hasNestedSM(targetState)) {
 					AbstractNode nestedTarget = findNestedTarget(currentState,
@@ -330,17 +354,41 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 						event.getName());
 			}
 			// Obtain a list of predicate strings
-			List<Guard> guardList =  new ArrayList<>();
+			List<Guard> guardList = new ArrayList<>();
 			guardList.addAll(currentTransition.getGuards());
 			// add any pre-junction guards
-			if(transitionIntoJunction != null){
+			if (transitionIntoJunction != null) {
 				guardList.addAll(transitionIntoJunction.getGuards());
 			}
-			List<String> predicateStringList = makeIL1GuardsFromEMFGuardList(guardList);
-			// add the predicate string to the subbranch condition
-			subBranch.getCondition().addAll(predicateStringList);
+			List<String> predicateStringList = makeIL1GuardStringsFromGuardList(guardList);
 			// add any actions
 			List<Action> actionList = currentTransition.getActions();
+
+			// /// Begin: Check the printed guardList against the tp guardlist
+			System.out.println("listed predicates/actions:" + currentState.getName()
+					+ "::" + event.getName());
+			for (String s : predicateStringList) System.out.println(s);
+			for(Action a: actionList) System.out.println(a.getAction());
+			System.out.println("tp::predicates/actions:");
+			List<TransitPath> tpList = translationData.synchSM_transitPathMap
+					.get(currentState);
+			TransitPath foundTP = null;
+			for (TransitPath tp : tpList) {
+				if (tp.getEvent().getName().equals(event.getName())) {
+					foundTP = tp;
+					break;
+				}
+			}
+			for (Guard g : foundTP.getGuardList()) {
+				System.out.println(g.getPredicate());
+			}
+			for(Action a: foundTP.getActionList()){
+				System.out.println(a.getAction());
+			}
+			// /// End: Check the printed guardList against the tp guardlist
+
+			// add the predicate string to the subbranch condition
+			subBranch.getCondition().addAll(predicateStringList);
 			// transform the actions of this transition
 			// to an il1.command for the branch body.
 			// First create a java list
@@ -358,7 +406,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	}
 
 	// make the case body for the current state, where there is just
-	// a single transition out from the state.
+	// a single transition with no guard out from the state.
 	private void makeIL1CaseNonBranching(String stateMachineName,
 			State currentState, CaseStatement caseStatement)
 			throws CodinTranslatorException {
@@ -385,14 +433,13 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 				State targetState = (State) targetNode.getOutgoing().get(0)
 						.getTarget();
 				// get the revised elaborating event
-				Event event = transition.getTarget().getOutgoing().get(0)
-						.getElaborates().get(0);
+				Event event = targetNode.getOutgoing().get(0).getElaborates()
+						.get(0);
 				// set the revised transition
-				transition = transition.getTarget().getOutgoing().get(0);
+				transition = targetNode.getOutgoing().get(0);
 				if (hasNestedSM(targetState)) {
 					// get any of the events, use to find the nested target
 					// state.
-					event = transition.getElaborates().get(0);
 					AbstractNode nestedTarget = findNestedTarget(currentState,
 							event);
 					if (nestedTarget.eClass() != StatemachinesPackage.Literals.STATE) {
@@ -474,9 +521,9 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		return body;
 	}
 
-	private List<String> makeIL1GuardsFromEMFGuardList(List<Guard> emfGuardEList) {
+	private List<String> makeIL1GuardStringsFromGuardList(List<Guard> guardEList) {
 		List<String> predicateStringList = new ArrayList<>();
-		for (Guard guard : emfGuardEList) {
+		for (Guard guard : guardEList) {
 			predicateStringList.add(guard.getPredicate());
 		}
 		return predicateStringList;
