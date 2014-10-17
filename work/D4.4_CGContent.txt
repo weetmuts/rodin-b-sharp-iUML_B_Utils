@@ -1,0 +1,36 @@
+﻿A General contribution to code generation in Advance has been the maintenance of the existing code generation technology, and additionally the advancement of new code generation methods, and technology. This had begun, but was not well developed, in the previous DEPLOY project. We have significantly improved the usability of the methods and tools during the project's lifetime. For example Tasking Event-B is now fully integrated with the Event-B Editors, and we introduced the use of Theories as a means of specifying translations. Thus we have improved extensibility of the code generator, targeting C, and Java, in addition to Ada. We also added the ability to translate state-machines to code, since state-machines are frequently used to describe the behaviour of the embedded controllers that we model. A specific contributions towards the co-simulation approach includes the generation of C code, in a specific format, for use in the co-simulation framework. 
+Early in the project we anticipated the need to generate code from Event-B state-machine diagrams. An early approach was to use the existing Tasking mechanism of Tasking Event-B, to generate the code for embedded controllers in addition to a simulation of the environment. The early simulation approach made use of a single tasking machine, modelling the read/write activity between controller and environment. State-machine diagrams describes the controller behaviour when the inputs have been received. A mapping from the task body provides the additional scheduling code, to facilitate simulation of a controller in its environment. The mapping from state-machines to code generates the following:
+
+• A case construct, for each state-machine.
+• A case statement in the construct, for each state in a state-machine.
+• A branch for each transition from a state.
+• A branch condition that can be used to guide the simulation.
+
+The main program invokes the state-machine implementations in a loop, once per cycle, using a "read-inputs"/"evaluate state-machine"/"write-outputs". With goal of improving coverage analysis of the controller code, we have shown how we can instrument the code to guide the simulation, thus controlling the relative rate that non-deterministic transitions are traversed in a simulation. 
+The ADVANCE project settled on The Functional Mock-up Interface (FMI) approach to support co-simulation of dynamic models. The Event-B Component diagram, developed to facilitate visual modelling of component relationships, can be used to guide a code generator. Code generation is initiated by selecting a component in the diagram for translation. The generated output is a combination of XML-files and C-code. In compliance with the FMI standard, the C-code can then be compiled, and packaged with the xml files, in a Functional Mock-up Unit (FMU)  for use on different platforms. The FMU can then be imported into the component diagram, and used in place of the Event-B component. Code can also be extracted, for compilation and use in the actual deployed controller. 
+During the project's life-time we undertook education/training/coaching with a number of industrial partners. This stimulated further development of code generation tools and, partly funded by Advance, resulted in a significant improvement in usability of the method and tools. We introduced more automation, and therefore reduced the number project of manual steps to be performed during the preparation phase for code generation. This also eliminated the need for the pre-requisite knowledge that these activities required. During this work we fully integrated Event-B and the Java Development Tool-kit. This meant that both the Event-B models and the related Java code could reside (and Java be built) in the same project. 
+The Event-B translators facilitate code generation, and the theory plug-in allows mathematical extensions to be added to an Event-B development. When working at the implementation level we need to consider how to translate the newly added types and operators into code. The existing theory plug-in is augmented by adding a Translation Rules section to the interface. This enables us to specify translation rules that map Event-B formulas to code. 
+In further developments we added a feature to generate Java interfaces for the Environment models. This facilitates manual implementation of environment simulations. The modeller does not then have to completely specify the environment simulation in Event-B, and can defer decisions about simulation specifics. Usually the models generated during decomposition are sufficient to describe the interface, so a minimal amount of effort need be put into modelling the environment for simulation purposes. We addressed re-usability issues, by facilitating re-use of boilerplate code with templates and code-injection. This approach has been used in Advance, for FMI code generation, and in other unrelated projects. In addition, we developed ideas for the use of the Theory plug-in and Java Templates, for generating code for "Implementable Sets and Functions". The approach is based on mapping Event-B sets and functions to implementations in Java, via abstractions of the implementations specified using a Theory component.
+
+Wiki:
+http://wiki.event-b.org/index.php/Code_Generation_Activity 
+
+Training Material:
+http://eprints.soton.ac.uk/350510/1/CGTraining.pdf
+http://eprints.soton.ac.uk/370198/1/AvoidingProgrammingForSafetyCriticalSystems.pdf
+
+Papers:
+Edmunds, Andrew and Colley, John and Butler, Michael Building on the DEPLOY  legacy: code generation and simulation. In: DS-Event-B-2012: Workshop on the experience of and advances in developing dependable systems in Event-B.
+http://deploy-eprints.ecs.soton.ac.uk/455/2/DS_EventB_2012.pdf
+
+Edmunds, Andrew and Butler, Michael and Maamria, Issam and Silva, Renato and Lovell, Chris (2012) Event-B code generation: type extension with theories. In: ABZ 2012, 19-21 June 2012, Pisa, Italy.
+http://eprints.soton.ac.uk/336226/1/ABZ2012_short_v20120202.pdf
+Edmunds, Andrew and Butler, Michael and Maamria, Issam and Silva, Renato and Lovell, Chris (2012) Event-B code generation: type extension with theories. In: ABZ 2012, 19-21 June 2012, Pisa, Italy.
+http://eprints.soton.ac.uk/336226/1/ABZ2012_short_v20120202.pdf
+
+Edmunds, Andrew and Rezazadeh, Abdolbaghi and Butler, Michael (2012) Formal  modelling for Ada implementations: Tasking Event-B. In: Ada-Europe 2012: 17th International Conference on Reliable Software Technologies, Stockholm.
+http://deploy-eprints.ecs.soton.ac.uk/375/1/AdaEurope2012.pdf
+
+Edmunds, Andrew. Templates for Event-B Code Generation. In Proceedings of 4th International ABZ Conference (ABZ 2014).
+http://eprints.soton.ac.uk/364265/1/Templates4CG.pdf
+
