@@ -41,7 +41,7 @@ public class CodinTranslator extends AbstractTranslateEventBToTarget {
 	private static TaskingTranslationManager taskingTranslationManager = null;
 	private static TargetLanguage targetLanguage = null;
 	// the components that have been selected for translation
-	public static List<ComponentEditPart> selectedComponentList = new ArrayList<>();
+	public static List<ComponentEditPart> selectedComponentList = new ArrayList<ComponentEditPart>();
 	private MachineImpl emfMachine = null;
 	private static IFile target;
 	private IRodinProject rodinProject;

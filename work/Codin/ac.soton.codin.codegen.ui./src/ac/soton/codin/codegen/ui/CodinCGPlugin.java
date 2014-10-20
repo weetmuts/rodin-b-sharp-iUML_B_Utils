@@ -51,7 +51,7 @@ public class CodinCGPlugin extends AbstractUIPlugin {
 	// and remember:
 	// x = std_logic_val + '1' is ok in VHDL but not Event-B
 	// since std_logic_val: BOOL
-	public static List<String> stdLogicPredOpsList = new ArrayList<>();
+	public static List<String> stdLogicPredOpsList = new ArrayList<String>();
 
 	// The shared instance
 	private static CodinCGPlugin plugin;

@@ -52,9 +52,9 @@ public class StateMachinePreprocessor {
 		}
 
 		// keep track of (EMF) componentNames selected for code generation
-		List<String> selectedComponentNames = new ArrayList<>();
+		List<String> selectedComponentNames = new ArrayList<String>();
 		// keep track of (EMF) components selected for code generation
-		List<Component> selectedComponentList = new ArrayList<>();
+		List<Component> selectedComponentList = new ArrayList<Component>();
 
 		// foreach selected UI component, get the name, add to the list of
 		// selected component names
@@ -160,13 +160,13 @@ public class StateMachinePreprocessor {
 	private void collectTypePredicates(VHDL_TranslationData translationData, Component component) {
 		// Get Invariants/Axioms of this component
 		EList<ComponentInvariant> invariantList = component.getInvariants();
-		List<String> iPredicateList = new ArrayList<>();
+		List<String> iPredicateList = new ArrayList<String>();
 		for(ComponentInvariant i: invariantList){
 			iPredicateList.add(i.getPredicate());
 		}
 		List<String> existingIList = translationData.componentInvariantMap.get(component.getName());
 		if(existingIList == null){
-			existingIList = new ArrayList<>();
+			existingIList = new ArrayList<String>();
 		}
 		for(String predicate: iPredicateList){
 			if(!existingIList.contains(predicate)){
@@ -175,13 +175,13 @@ public class StateMachinePreprocessor {
 		}
 		// Now do axioms
 		EList<ComponentAxiom> axiomList = component.getAxioms();
-		List<String> aPredicateList = new ArrayList<>();
+		List<String> aPredicateList = new ArrayList<String>();
 		for(ComponentAxiom a: axiomList){
 			aPredicateList.add(a.getPredicate());
 		}
 		List<String> existingAList = translationData.componentAxiomMap.get(component.getName());
 		if(existingAList == null){
-			existingAList = new ArrayList<>();
+			existingAList = new ArrayList<String>();
 		}
 		for(String predicate: aPredicateList){
 			if(!existingAList.contains(predicate)){

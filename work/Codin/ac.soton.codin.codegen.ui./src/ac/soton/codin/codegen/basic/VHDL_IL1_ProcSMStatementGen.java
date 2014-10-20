@@ -249,7 +249,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	private void makeSynchSMCallSeq(VHDL_TranslationData translationData,
 			Subroutine currentStateSubroutine, AbstractNode targetNode,
 			List<Statemachine> synchSMList) {
-		List<Call> callList = new ArrayList<>();
+		List<Call> callList = new ArrayList<Call>();
 		for (Statemachine statemachine : synchSMList) {
 			// get the pre-existing subroutine for the synchSM
 			Subroutine calledSynchSMSubroutine = translationData.synchSM_subroutineMap
@@ -368,7 +368,7 @@ public class VHDL_IL1_ProcSMStatementGen {
 	}
 
 	private List<String> makeIL1GuardsFromEMFGuardList(List<Guard> emfGuardEList) {
-		List<String> predicateStringList = new ArrayList<>();
+		List<String> predicateStringList = new ArrayList<String>();
 		for (Guard guard : emfGuardEList) {
 			predicateStringList.add(guard.getPredicate());
 		}

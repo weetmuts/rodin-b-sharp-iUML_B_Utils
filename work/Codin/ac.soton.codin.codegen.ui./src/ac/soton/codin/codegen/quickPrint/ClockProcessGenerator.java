@@ -23,7 +23,7 @@ public class ClockProcessGenerator implements IGenerator {
 			}
 		}
 		
-		ArrayList<String> returnList = new ArrayList<>();
+		ArrayList<String> returnList = new ArrayList<String>();
 		for(Statemachine synchSM: translationData.synchSMList){
 			String n = synchSM.getName();
 			returnList.add(n + " <= next_" + n +";");

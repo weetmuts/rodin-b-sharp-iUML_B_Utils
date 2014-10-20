@@ -12,11 +12,11 @@ import ac.soton.eventb.statemachines.Statemachine;
 public class QuickPrintInfo {
 	private VHDL_TranslationData translationData;
 	// Keep track of connectors that will become signals
-	private static List<Connector> connectorList = new ArrayList<>();
+	private static List<Connector> connectorList = new ArrayList<Connector>();
 	// Keep track of all the signals
-	private static List<VariableDecl> signalDeclsList = new ArrayList<>();
+	private static List<VariableDecl> signalDeclsList = new ArrayList<VariableDecl>();
 	// Keep track of the signals of type std_logic
-	private List<String> stdLogicNamesList = new ArrayList<>();
+	private List<String> stdLogicNamesList = new ArrayList<String>();
 	
 	
 	public QuickPrintInfo(VHDL_TranslationData vhdl_translationData) {
@@ -35,7 +35,7 @@ public class QuickPrintInfo {
 	// connectors to be implemented as signals
 	public List<String> getConnectorNameList() {
 		List<Connector> connectorList = getConnectorList();
-		List<String> connectorNamesList = new ArrayList<>();
+		List<String> connectorNamesList = new ArrayList<String>();
 		for (Connector c : connectorList) {
 			connectorNamesList.add(c.getName().toLowerCase());
 		}
@@ -46,7 +46,7 @@ public class QuickPrintInfo {
 	// variablesAsSignals lists.
 	public List<String> getSignalNamesList(){
 		List<Connector> connectorList = getConnectorList();
-		List<String> signalNamesList = new ArrayList<>();
+		List<String> signalNamesList = new ArrayList<String>();
 		for (Connector c : connectorList) {
 			// we find the lower case of the connector - but not the variable below
 			String connectorName = c.getName().toLowerCase();
@@ -60,7 +60,7 @@ public class QuickPrintInfo {
 	}
 	
 	public List<String> getSynchSMNamesList() {
-		ArrayList<String> returnList = new ArrayList<>();
+		ArrayList<String> returnList = new ArrayList<String>();
 		for(Statemachine s: translationData.synchSMList){
 			returnList.add(s.getName());
 		}

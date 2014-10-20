@@ -49,7 +49,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 	public void run(VHDL_TranslationData translationData)
 			throws CodinTranslatorException {
 		this.program = translationData.program;
-		List<Declaration> tmpDeclarationList = new ArrayList<>();
+		List<Declaration> tmpDeclarationList = new ArrayList<Declaration>();
 
 ////////// Begin:
 ////////// The following Code has been removed since variables and
@@ -115,7 +115,7 @@ public class VHDL_IL1_DeclarationsGenerator {
 
 		List<String> predicateList = translationData.componentAxiomMap.get(component.getName());
 		
-		Map<String, ConstantDecl> cDeclMap = new HashMap<>();
+		Map<String, ConstantDecl> cDeclMap = new HashMap<String, ConstantDecl>();
 		// for each constant
 		for (ComponentConstant constant : constantList) {
 			String cName = constant.getName();

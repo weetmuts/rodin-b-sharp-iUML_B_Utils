@@ -46,7 +46,7 @@ public class UnicodeReplaceUtil{
 
 		for (int i = 0; i < fileResources.length; i++) {
 			IResource resource = fileResources[i];
-			List<String> tempStore = new ArrayList<>();
+			List<String> tempStore = new ArrayList<String>();
 			String fileExtension = resource.getFileExtension();
 			if (fileExtension != null
 					&& fileExtension.equals(CodinCGPlugin.VHDL_EXT)) {
@@ -75,7 +75,7 @@ public class UnicodeReplaceUtil{
 	}
 
 	private void removeUnicode(List<String> tempStore, File vhdlFile) throws IOException {
-		List<String> newCodeArray = new ArrayList<>();
+		List<String> newCodeArray = new ArrayList<String>();
 		for (String originalString : tempStore) {
 			if (originalString.contains(NAT)) {
 				newCodeArray.add(originalString.replace(NAT, CodinCGPlugin.INT_TYPE_STRING));

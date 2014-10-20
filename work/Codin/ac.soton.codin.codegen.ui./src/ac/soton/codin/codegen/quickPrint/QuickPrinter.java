@@ -104,7 +104,7 @@ public class QuickPrinter {
 	}
 
 	public List<String> printProgram() throws CodinTranslatorException {
-		List<String> returnList = new ArrayList<>();
+		List<String> returnList = new ArrayList<String>();
 		printEobject(program, returnList);
 		return returnList;
 	}
@@ -184,7 +184,7 @@ public class QuickPrinter {
 		// get the subroutine of the call;
 		Subroutine calledSubroutine = el.getSubroutine();
 		// store the program's subroutine definitions
-		List<Subroutine> subroutineList = new ArrayList<>();
+		List<Subroutine> subroutineList = new ArrayList<Subroutine>();
 		// add the program's mainEntry-level subroutines.
 		// But most subroutines will be in the tasks.
 		subroutineList.addAll(program.getSubroutines());
@@ -564,7 +564,7 @@ public class QuickPrinter {
 		// returns true if the subroutine is in the list of
 		// synchronous state machines, by name.
 		// get the list of synchronous state machines
-		ArrayList<String> synchSMNamesList = new ArrayList<>();
+		ArrayList<String> synchSMNamesList = new ArrayList<String>();
 		for (Statemachine s : translationData.synchSMList) {
 			synchSMNamesList.add(s.getName());
 		}

@@ -24,7 +24,7 @@ public class ResetVariablesGenerator implements IGenerator {
 			}
 		}
 		
-		ArrayList<String> returnList = new ArrayList<>();
+		ArrayList<String> returnList = new ArrayList<String>();
 		for(Statemachine synchSM: translationData.synchSMList){
 			String n = synchSM.getName();
 			returnList.add(n + " <= init_" + n +";");

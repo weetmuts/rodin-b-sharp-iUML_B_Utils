@@ -217,7 +217,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 			translationData.branchEventMap.put(topBranch, event.getName());
 		}
 		// get the predicates for the condition
-		List<Guard> guardList = new ArrayList<>();
+		List<Guard> guardList = new ArrayList<Guard>();
 		guardList.addAll(currentTransition.getGuards());
 		// add any pre-junction guards
 		if (transitionIntoJunction != null) {
@@ -284,7 +284,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 		// and call this again with a reduced list
 		// if (transitionList.size() > 1) {
 		if (transitionList.size() >= 1) {
-			ArrayList<Transition> newTransitionList = new ArrayList<>(
+			ArrayList<Transition> newTransitionList = new ArrayList<Transition>(
 					transitionList);
 			ElseIf subBranch = Il1Factory.eINSTANCE.createElseIf();
 			// create a subBranch from the removed transition
@@ -354,7 +354,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 						event.getName());
 			}
 			// Obtain a list of predicate strings
-			List<Guard> guardList = new ArrayList<>();
+			List<Guard> guardList = new ArrayList<Guard>();
 			guardList.addAll(currentTransition.getGuards());
 			// add any pre-junction guards
 			if (transitionIntoJunction != null) {
@@ -522,7 +522,7 @@ public class VHDL_IL1_SynchSMSubroutineGen {
 	}
 
 	private List<String> makeIL1GuardStringsFromGuardList(List<Guard> guardEList) {
-		List<String> predicateStringList = new ArrayList<>();
+		List<String> predicateStringList = new ArrayList<String>();
 		for (Guard guard : guardEList) {
 			predicateStringList.add(guard.getPredicate());
 		}

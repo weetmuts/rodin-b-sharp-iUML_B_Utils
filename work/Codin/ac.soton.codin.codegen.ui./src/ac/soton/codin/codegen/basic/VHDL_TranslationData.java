@@ -71,7 +71,7 @@ public class VHDL_TranslationData {
 	
 	// given a state-machine find the component associated with it.
 	// in a map of State-machine <-> Component
-	public Map<Statemachine, Component> SM_Component_Map = new HashMap<>();
+	public Map<Statemachine, Component> SM_Component_Map = new HashMap<Statemachine, Component>();
 
 	// There is just one process state-machine per component,
 	// for each component, record the process state-machines
@@ -79,7 +79,7 @@ public class VHDL_TranslationData {
 	public Map<String, Statemachine> processSM_Map = new HashMap<String, Statemachine>();
 
 	// Keep track of the components to be translated
-	public List<Component> componentList = new ArrayList<>();
+	public List<Component> componentList = new ArrayList<Component>();
 			
 	// BEGIN: The following maps/data structures are refreshed (cleared) for each new component.
 	//
@@ -96,17 +96,17 @@ public class VHDL_TranslationData {
 	// A map from synchronous state-machines to subroutines
 	public Map<Statemachine, Subroutine> synchSM_subroutineMap = new HashMap<Statemachine, Subroutine>();
 	// A list of synchronous state-machines for the current component
-	public List<Statemachine> synchSMList = new ArrayList<>();
+	public List<Statemachine> synchSMList = new ArrayList<Statemachine>();
 	// Store the synchronous state-machine translations in a map of SubroutineName <-> CodeListing
 	public Map<String, List<String>> storedSynchSMTranslations = new HashMap<String, List<String>>();
 	// We need to access type information for variables/ constants, which means storing invariants
 	// and axioms. Keep track in maps of type ComponentName <-> List(predicateString).
-	public Map<String, List<String>> componentInvariantMap = new HashMap<>();
-	public Map<String, List<String>> componentAxiomMap = new HashMap<>();
+	public Map<String, List<String>> componentInvariantMap = new HashMap<String, List<String>>();
+	public Map<String, List<String>> componentAxiomMap = new HashMap<String, List<String>>();
 	// Store a map of branches to eventNames so we can print
 	// if -- event1 in the code
-	public Map<If, String> branchEventMap = new HashMap<>();
-	public Map<ElseIf, String> subBranchEventMap= new HashMap<>();
+	public Map<If, String> branchEventMap = new HashMap<If, String>();
+	public Map<ElseIf, String> subBranchEventMap= new HashMap<ElseIf, String>();
 	
 	// call reset for each new component
 	public void resetMaps() {

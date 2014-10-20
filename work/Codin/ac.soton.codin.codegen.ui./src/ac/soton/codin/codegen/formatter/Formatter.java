@@ -23,8 +23,8 @@ public class Formatter {
 
 	int padSize = 0;
 
-	List<String> increasingKeywords = new ArrayList<>();
-	List<String> decreasingKeywords = new ArrayList<>();
+	List<String> increasingKeywords = new ArrayList<String>();
+	List<String> decreasingKeywords = new ArrayList<String>();
 
 	public Formatter() {
 		increasingKeywords.add("entity");
@@ -92,7 +92,7 @@ public class Formatter {
 		IRodinProject project = translationData.parentProject;
 		String programName = translationData.program.getName();
 
-		List<String> formattedArray = new ArrayList<>();
+		List<String> formattedArray = new ArrayList<String>();
 
 		IProject p = project.getCorrespondingResource().getProject();
 		IFolder folder = p.getFolder("out");

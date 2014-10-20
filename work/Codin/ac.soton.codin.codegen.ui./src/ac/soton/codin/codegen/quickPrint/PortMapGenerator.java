@@ -26,7 +26,7 @@ public class PortMapGenerator implements IGenerator {
 			}
 		}
 		
-		List<String> returnList = new ArrayList<>();
+		List<String> returnList = new ArrayList<String>();
 		Component currentComponent = translationData.currentComponent;
 		EList<Connector> outConnectors = currentComponent.getOutConnectors();
 		EList<Connector> inConnectors = currentComponent.getInConnectors();
