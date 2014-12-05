@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TextOut
+Bundle-SymbolicName: ac.soton.eventb.textout;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: ac.soton.eventb.textout.Activator
+Bundle-Vendor: University of Spouthampton
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eventb.core,
+ org.eventb.emf.persistence,
+ org.eventb.emf.core,
+ org.rodinp.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

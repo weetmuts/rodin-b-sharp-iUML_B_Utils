@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eventb.core.IMachineRoot"
+            id="ac.soton.eventb.textOut.contribution1">
+         <menu
+               label="Text Translations"
+               path="additions"
+               id="ac.soton.eventb.textOut.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Export Machine to Text"
+               class="ac.soton.eventb.textout.popup.actions.ExportMachineToText"
+               menubarPath="ac.soton.eventb.textOut.menu1/group1"
+               enablesFor="1"
+               id="ac.soton.eventb.textOut.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
