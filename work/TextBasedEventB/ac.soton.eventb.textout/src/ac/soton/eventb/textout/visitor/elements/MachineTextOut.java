@@ -7,16 +7,17 @@ import org.eclipse.emf.common.util.EList;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.machine.Variable;
 
-public class MachineProcessor {
+import ac.soton.eventb.textout.core.ExportTextManager;
 
-	public List<String> visit(Machine machine) {
+public class MachineTextOut {
+
+	public List<String> print(Machine machine) {
 		List<String> output = new ArrayList<>();
-		output.add("machine " + machine.getName());
-		String comment1 = machine.getComment();
-		if (comment1 != null && comment1 != "") {
-			output.add("// " + comment1);
-		}
+		// Add a comment string if necessary
+		String comment = ExportTextManager.adjustComment(machine.getComment());
+		output.add("machine " + machine.getName() + " " + comment);
 
 		EList<String> refinesNames = machine.getRefinesNames();
 		if (refinesNames.size() > 0) {
@@ -30,18 +31,30 @@ public class MachineProcessor {
 			output.addAll(seesNames);
 		}
 
+		EList<Variable> variableList = machine.getVariables();
+		if (variableList.size() > 0) {
+			output.add("variables ");
+			for (Variable v : variableList) {
+				output.addAll(new VariableTextOut().print(v));
+			}
+		}
+
 		EList<Invariant> invariantList = machine.getInvariants();
 		if (invariantList.size() > 0) {
 			output.add("invariants ");
 			for (Invariant invariant : invariantList) {
-				output.addAll(new InvariantProcessor().visit(invariant));
+				output.addAll(new InvariantTextOut().print(invariant));
 			}
 		}
-		output.add("events ");
+
 		EList<Event> eventList = machine.getEvents();
-		for (Event event : eventList) {
-			output.addAll(new EventProcessor().visit(event));
+		if (eventList.size() > 0) {
+			output.add("events ");
+			for (Event event : eventList) {
+				output.addAll(new EventTextOut().print(event));
+			}
 		}
+		output.add("end");
 		return output;
 	}
 }

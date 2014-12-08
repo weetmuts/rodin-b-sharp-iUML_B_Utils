@@ -13,7 +13,7 @@ import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.RodinDBException;
 
-import ac.soton.eventb.textout.visitor.elements.MachineProcessor;
+import ac.soton.eventb.textout.visitor.elements.MachineTextOut;
 
 public class ExportTextManager {
 
@@ -27,11 +27,21 @@ public class ExportTextManager {
 		MachineImpl emfMachine = (MachineImpl) element;
 		
 		
-		List<String> output = new MachineProcessor().visit(emfMachine);
+		List<String> output = new MachineTextOut().print(emfMachine);
 		
 		for(String string: output){
 			System.out.println(string);
 		}
 		
+	}
+	
+	public static String adjustComment(String comment){
+		String adjustedComment = "";
+		// add the comment characters if there is a comment
+		if (comment != null && !comment.equals("")) {
+			adjustedComment = comment + "// " + comment;
+		}
+		// if the comment is null or "" then return ""
+		return adjustedComment;
 	}
 }
