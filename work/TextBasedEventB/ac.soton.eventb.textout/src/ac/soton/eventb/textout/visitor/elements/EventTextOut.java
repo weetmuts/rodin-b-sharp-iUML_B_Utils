@@ -37,7 +37,7 @@ public class EventTextOut {
 		if(actionList.size()>0){
 			output.add("actions");
 			for(Action action: actionList){
-				output.addAll(new ActionTextOut().print(action));
+				output.addAll(new PrintableAction(action).print());
 			}
 		}
 		output.add("end");

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="ac.soton.eventb.textout.printable" name="Printable " schema="schema/ac.soton.eventb.textout.printable.exsd"/>
 
    <extension
          point="org.eclipse.ui.popupMenus">
@@ -23,6 +24,12 @@
                id="ac.soton.eventb.textOut.newAction">
          </action>
       </objectContribution>
+   </extension>
+   <extension
+         point="ac.soton.eventb.textout.printable">
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableAction">
+      </PrintableClass>
    </extension>
 
 </plugin>
