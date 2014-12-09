@@ -11,6 +11,9 @@ Require-Bundle: org.eclipse.ui,
  org.eventb.core,
  org.eventb.emf.persistence,
  org.eventb.emf.core,
- org.rodinp.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.rodinp.core,
+ org.eventb.taskingMetamodel
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Export-Package: ac.soton.eventb.textout.core
+Import-Package: org.eventb.codegen.il1

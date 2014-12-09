@@ -28,22 +28,28 @@
    <extension
          point="ac.soton.eventb.textout.printable">
       <PrintableClass
-            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableAction">
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableAction">
       </PrintableClass>
       <PrintableClass
-            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableGuard">
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableGuard">
       </PrintableClass>
       <PrintableClass
-            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableParameter">
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableParameter">
       </PrintableClass>
       <PrintableClass
-            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableVariable">
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableVariable">
       </PrintableClass>
       <PrintableClass
-            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableInvariant">
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableInvariant">
       </PrintableClass>
       <PrintableClass
-            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableEvent">
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableEvent">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableWitness">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.machine.PrintableMachine">
       </PrintableClass>
    </extension>
 

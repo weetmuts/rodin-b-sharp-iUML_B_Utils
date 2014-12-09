@@ -12,7 +12,7 @@ import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.RodinDBException;
 
-import ac.soton.eventb.textout.visitor.elements.MachineTextOut;
+import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
 
 public class ExportTextManager {
 
@@ -26,7 +26,9 @@ public class ExportTextManager {
 		MachineImpl emfMachine = (MachineImpl) element;
 		
 		
-		List<String> output = new MachineTextOut().print(emfMachine);
+		
+		
+		List<String> output = new PrintableMachine(emfMachine).print();
 		
 		for(String string: output){
 			System.out.println(string);

@@ -1,4 +1,4 @@
-package ac.soton.eventb.textout.visitor.elements;
+package ac.soton.eventb.textout.visitor.machine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.eventb.emf.core.machine.Action;
 
 import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.core.IPrintable;
 
 public class PrintableAction implements IPrintable{
 
@@ -16,7 +17,7 @@ public class PrintableAction implements IPrintable{
 	}
 	
 	public List<String> print() {
-		List<String> output = new ArrayList<>();
+		List<String> output = new ArrayList<String>();
 		String comment = ExportTextManager.adjustComment(action.getComment());
 		output.add("@" + action.getName() + " " + action.getAction() + comment);
 		return output;
