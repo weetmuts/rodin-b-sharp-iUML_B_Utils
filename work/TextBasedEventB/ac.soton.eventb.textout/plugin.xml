@@ -30,6 +30,21 @@
       <PrintableClass
             PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableAction">
       </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableGuard">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableParameter">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableVariable">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableInvariant">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.elements.PrintableEvent">
+      </PrintableClass>
    </extension>
 
 </plugin>

@@ -17,7 +17,7 @@
          </appinfo>
       </annotation>
       <complexType>
-         <sequence>
+         <sequence minOccurs="1" maxOccurs="unbounded">
             <element ref="PrintableClass"/>
          </sequence>
          <attribute name="point" type="string" use="required">
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":ac.soton.eventb.textout.visitor.elements.Printable"/>
+                  <meta.attribute kind="java" basedOn=":ac.soton.eventb.textout.visitor.elements.IPrintable"/>
                </appinfo>
             </annotation>
          </attribute>

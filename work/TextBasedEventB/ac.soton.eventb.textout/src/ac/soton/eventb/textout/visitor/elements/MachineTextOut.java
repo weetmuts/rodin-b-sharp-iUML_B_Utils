@@ -13,6 +13,8 @@ import ac.soton.eventb.textout.core.ExportTextManager;
 
 public class MachineTextOut {
 
+	String indent1 = " ";
+	
 	public List<String> print(Machine machine) {
 		List<String> output = new ArrayList<>();
 		// Add a comment string if necessary
@@ -22,20 +24,57 @@ public class MachineTextOut {
 		EList<String> refinesNames = machine.getRefinesNames();
 		if (refinesNames.size() > 0) {
 			output.add("refines ");
-			output.addAll(refinesNames);
+			for(String name : refinesNames){
+				output.add(indent1 + name);
+			}
 		}
 
 		EList<String> seesNames = machine.getSeesNames();
 		if (seesNames.size() > 0) {
 			output.add("sees ");
-			output.addAll(seesNames);
+			for(String name: seesNames){
+				output.add(indent1 + name);
+			}
 		}
 
 		EList<Variable> variableList = machine.getVariables();
 		if (variableList.size() > 0) {
 			output.add("variables ");
-			for (Variable v : variableList) {
-				output.addAll(new VariableTextOut().print(v));
+			
+			List<String> tempStore = new ArrayList<>();
+			for (Variable v : variableList) {				
+				tempStore.addAll(new PrintableVariable(v).print());
+			}
+			// if any parameter has a comment we put each parameter
+			// on its own line, else we make it into a sequential list			
+			boolean hasComments = false;
+			for(String s: tempStore){
+				if(s.contains("//")){
+					hasComments = true;
+					break;
+				}
+			}
+			
+			if(hasComments){
+				//we found a comment so just add individual lines
+				for(String s: tempStore){
+					output.add(indent1 + s);
+				}
+			}
+			else{
+				// no comment found so sequence the parameters
+				String out = indent1;
+				boolean first = true;
+				for(String s: tempStore){
+					if(first){
+						out = out + s;
+						first = false;
+					}
+					else{
+						out = out + " " + s;
+					}
+				}
+				output.add(out);
 			}
 		}
 
@@ -43,7 +82,9 @@ public class MachineTextOut {
 		if (invariantList.size() > 0) {
 			output.add("invariants ");
 			for (Invariant invariant : invariantList) {
-				output.addAll(new InvariantTextOut().print(invariant));
+				for(String s: new PrintableInvariant(invariant).print()){
+					output.add(indent1 + s);
+				}
 			}
 		}
 
@@ -51,7 +92,9 @@ public class MachineTextOut {
 		if (eventList.size() > 0) {
 			output.add("events ");
 			for (Event event : eventList) {
-				output.addAll(new EventTextOut().print(event));
+				for(String s: new PrintableEvent(event).print()){
+					output.add(indent1 + s);
+				}
 			}
 		}
 		output.add("end");

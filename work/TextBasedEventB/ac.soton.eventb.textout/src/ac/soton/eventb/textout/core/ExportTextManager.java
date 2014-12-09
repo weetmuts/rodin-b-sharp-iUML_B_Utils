@@ -1,6 +1,5 @@
 package ac.soton.eventb.textout.core;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +38,7 @@ public class ExportTextManager {
 		String adjustedComment = "";
 		// add the comment characters if there is a comment
 		if (comment != null && !comment.equals("")) {
-			adjustedComment = comment + "// " + comment;
+			adjustedComment = "// " + comment;
 		}
 		// if the comment is null or "" then return ""
 		return adjustedComment;
