@@ -21,8 +21,9 @@ import tasking.TaskingPackage;
 import tasking.Tasking_Machine;
 import tasking.impl.AutoTask_MachineImpl;
 import tasking.impl.Tasking_MachineImpl;
+import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
-import ac.soton.eventb.textout.core.IPrintable;
+import ac.soton.eventb.textout.tasking.core.PrintableTasking;
 
 public class PrintableMachine implements IPrintable {
 
@@ -127,8 +128,7 @@ public class PrintableMachine implements IPrintable {
 			
 			if(extensionEclass == autoTaskEClass){
 				AutoTask_Machine autoTask = (AutoTask_Machine) abstractExtension;
-				
-				System.out.println();
+				output.addAll(new PrintableTasking(autoTask).print());
 			}
 			else if(extensionEclass == sharedEClass){
 				Shared_Machine sharedMachine = (Shared_Machine) abstractExtension;

@@ -55,7 +55,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":ac.soton.eventb.textout.core.IPrintable"/>
+                  <meta.attribute kind="java" basedOn=":ac.soton.eventb.printable.IPrintable"/>
                </appinfo>
             </annotation>
          </attribute>

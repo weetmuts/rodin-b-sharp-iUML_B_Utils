@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tasking
+Bundle-SymbolicName: ac.soton.eventb.textout.tasking;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: ac.soton.eventb.textout.tasking.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ ac.soton.eventb.printable;bundle-version="0.0.1",
+ org.eventb.taskingMetamodel;bundle-version="0.1.4"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eventb.codegen.il1
+Export-Package: ac.soton.eventb.textout.tasking.core

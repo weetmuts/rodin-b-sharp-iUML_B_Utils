@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Printable
+Bundle-SymbolicName: ac.soton.eventb.printable
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: ac.soton.eventb.printable.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: ac.soton.eventb.printable

@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.eventb.emf.core.machine.Action;
 
+import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
-import ac.soton.eventb.textout.core.IPrintable;
 
 public class PrintableAction implements IPrintable{
 

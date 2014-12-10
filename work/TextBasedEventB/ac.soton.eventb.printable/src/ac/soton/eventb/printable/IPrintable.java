@@ -1,4 +1,4 @@
-package ac.soton.eventb.textout.core;
+package ac.soton.eventb.printable;
 
 import java.util.List;
 
