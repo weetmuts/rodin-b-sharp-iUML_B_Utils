@@ -1,6 +1,5 @@
 package ac.soton.eventb.textout.tasking.core;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -14,6 +13,12 @@ import tasking.Shared_Machine;
 import tasking.TaskingPackage;
 import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
 
+
+// Currently, the contents of this print method should be copied and pasted
+// (or copy the whole class, and refer to that) into ac.soton.eventb.textout
+// the PrintableMachine.print(). 
+// Ideally a self-referential approach should be used but at this time
+// I'm not coding it up.
 public class ExtPrintableMachine extends PrintableMachine {
 
 	public ExtPrintableMachine(Machine machine) {
