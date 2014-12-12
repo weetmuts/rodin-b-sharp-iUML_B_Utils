@@ -1,27 +1,13 @@
 package ac.soton.eventb.textout.visitor.machine;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.FileEditorInput;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.Variable;
-import org.rodinp.core.IRodinProject;
 
 import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
@@ -39,8 +25,9 @@ public class PrintableMachine implements IPrintable {
 		List<String> output = new ArrayList<String>();
 		// Add a comment string if necessary
 		String comment = ExportTextManager.adjustComment(machine.getComment());
+		// Name
 		output.add("machine " + machine.getName() + " " + comment);
-
+		//RefinesNames
 		EList<String> refinesNames = machine.getRefinesNames();
 		if (refinesNames.size() > 0) {
 			output.add("refines ");
@@ -48,7 +35,7 @@ public class PrintableMachine implements IPrintable {
 				output.add(indent1 + name);
 			}
 		}
-
+		// SeesNames
 		EList<String> seesNames = machine.getSeesNames();
 		if (seesNames.size() > 0) {
 			output.add("sees ");
@@ -56,7 +43,42 @@ public class PrintableMachine implements IPrintable {
 				output.add(indent1 + name);
 			}
 		}
+		
+		//Variables
+		formatVariables(output);
 
+		//Invariants
+		EList<Invariant> invariantList = machine.getInvariants();
+		if (invariantList.size() > 0) {
+			output.add("invariants ");
+			for (Invariant invariant : invariantList) {
+				for (String s : new PrintableInvariant(invariant).print()) {
+					output.add(indent1 + s);
+				}
+			}
+		}
+
+		// Events
+		EList<Event> eventList = machine.getEvents();
+		if (eventList.size() > 0) {
+			output.add("events ");
+			for (Event event : eventList) {
+				for (String s : new PrintableEvent(event).print()) {
+					output.add(indent1 + s);
+				}
+			}
+		}
+		output.add("end");
+
+		// Save and open for editing
+		String fileName = machine.getName() + ".mch";
+		ExportTextManager.saveToFile(output, fileName);
+		ExportTextManager.openFileForEditing(fileName, ExportTextManager.rodinProject);
+		
+		return output;
+	}
+
+	private void formatVariables(List<String> output) {
 		EList<Variable> variableList = machine.getVariables();
 		if (variableList.size() > 0) {
 			output.add("variables ");
@@ -82,75 +104,18 @@ public class PrintableMachine implements IPrintable {
 				}
 			} else {
 				// no comment found so sequence the parameters
-				String out = indent1;
+				String singleLineOut = indent1;
 				boolean first = true;
 				for (String s : tempStore) {
 					if (first) {
-						out = out + s;
+						singleLineOut = singleLineOut + s;
 						first = false;
 					} else {
-						out = out + " " + s;
+						singleLineOut = singleLineOut + " " + s;
 					}
 				}
-				output.add(out);
+				output.add(singleLineOut);
 			}
-		}
-
-		EList<Invariant> invariantList = machine.getInvariants();
-		if (invariantList.size() > 0) {
-			output.add("invariants ");
-			for (Invariant invariant : invariantList) {
-				for (String s : new PrintableInvariant(invariant).print()) {
-					output.add(indent1 + s);
-				}
-			}
-		}
-
-		EList<Event> eventList = machine.getEvents();
-		if (eventList.size() > 0) {
-			output.add("events ");
-			for (Event event : eventList) {
-				for (String s : new PrintableEvent(event).print()) {
-					output.add(indent1 + s);
-				}
-			}
-		}
-		output.add("end");
-
-		saveToFile(output);
-
-		return output;
-	}
-
-	private void saveToFile(List<String> output) {
-		IRodinProject rodinProject = ExportTextManager.rodinProject;
-		IPath parentProjectPath = rodinProject.getProject()
-				.getLocation();
-		String fileName = machine.getName() + ".mch";
-		String newFilePath = parentProjectPath.toString() + File.separatorChar + fileName;
-		
-		
-		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(newFilePath));
-			for (String line : output) {
-				out.write(line + "\n");
-			}
-			out.close();
-
-			rodinProject.getResource().refreshLocal(IResource.DEPTH_INFINITE, null);
-
-			// now open for editing
-			IFile file = rodinProject.getProject().getFile(fileName);
-			IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(file.getName());
-			IWorkbenchWindow workbenchWindow=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-
-			IWorkbenchPage page = workbenchWindow.getActivePage();
-			page.openEditor(new FileEditorInput(file), desc.getId());
-			
-		} catch (IOException e) {
-			e.printStackTrace(System.out);
-		} catch (CoreException e) {
-			e.printStackTrace();
 		}
 	}
 }

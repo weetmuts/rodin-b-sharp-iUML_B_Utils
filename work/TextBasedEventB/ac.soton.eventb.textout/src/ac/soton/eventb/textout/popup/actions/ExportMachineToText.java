@@ -7,6 +7,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.rodinp.core.IRodinElement;
 
@@ -36,14 +37,15 @@ public class ExportMachineToText implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		Object object = selection.getFirstElement();
-		if (object.getClass() == MachineRoot.class) {
-			//IMachineRoot machineRoot = (IMachineRoot) object;
-			IRodinElement machineRoot = (IRodinElement) object;
-			try {
-				new ExportTextManager().export(machineRoot);
-			} catch (Exception e) {
-				e.printStackTrace();
+		
+		try {
+			 if (object.getClass() == MachineRoot.class ||
+					 object.getClass() == ContextRoot.class ) {
+				 IRodinElement rodinElement = (IRodinElement) object;
+				new ExportTextManager().export(rodinElement);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

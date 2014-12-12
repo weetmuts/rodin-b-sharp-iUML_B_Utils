@@ -24,6 +24,25 @@
                id="ac.soton.eventb.textOut.newAction">
          </action>
       </objectContribution>
+      <objectContribution
+            id="ac.soton.eventb.textOut.contribution1"
+            objectClass="org.eventb.core.IContextRoot">
+         <menu
+               id="ac.soton.eventb.textOut.menu1"
+               label="Text Translations"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="ac.soton.eventb.textout.popup.actions.ExportMachineToText"
+               enablesFor="1"
+               id="ac.soton.eventb.textOut.newAction"
+               label="Export Context to Text"
+               menubarPath="ac.soton.eventb.textOut.menu1/group1">
+         </action>
+      </objectContribution>
    </extension>
    <extension
          point="ac.soton.eventb.textout.printable">
@@ -56,6 +75,15 @@
          point="ac.soton.eventb.textout.printable">
       <PrintableClass
             PrintableClass="ac.soton.eventb.textout.visitor.context.PrintableContext">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.context.PrintableSet">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.context.PrintableConstant">
+      </PrintableClass>
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.context.PrintableAxiom">
       </PrintableClass>
    </extension>
 

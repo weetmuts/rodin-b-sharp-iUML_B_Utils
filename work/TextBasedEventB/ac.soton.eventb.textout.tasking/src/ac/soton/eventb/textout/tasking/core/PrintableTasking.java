@@ -3,10 +3,10 @@ package ac.soton.eventb.textout.tasking.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import compositeControl.CompositeControl;
-
 import tasking.AutoTask_Machine;
 import ac.soton.eventb.printable.IPrintable;
+
+import compositeControl.CompositeControl;
 
 
 
