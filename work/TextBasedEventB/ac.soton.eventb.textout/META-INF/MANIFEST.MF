@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.eventb.emf.core,
  org.rodinp.core,
  ac.soton.eventb.printable;bundle-version="0.0.1",
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore,
+ org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: ac.soton.eventb.textout.core,

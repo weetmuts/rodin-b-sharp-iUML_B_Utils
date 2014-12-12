@@ -7,10 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
@@ -111,26 +117,40 @@ public class PrintableMachine implements IPrintable {
 		}
 		output.add("end");
 
+		saveToFile(output);
+
+		return output;
+	}
+
+	private void saveToFile(List<String> output) {
 		IRodinProject rodinProject = ExportTextManager.rodinProject;
 		IPath parentProjectPath = rodinProject.getProject()
 				.getLocation();
-		String newFilePath = parentProjectPath.toString() + File.separatorChar
-				+ machine.getName() + ".mch";
-
+		String fileName = machine.getName() + ".mch";
+		String newFilePath = parentProjectPath.toString() + File.separatorChar + fileName;
+		
+		
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(newFilePath));
 			for (String line : output) {
 				out.write(line + "\n");
 			}
 			out.close();
+
 			rodinProject.getResource().refreshLocal(IResource.DEPTH_INFINITE, null);
 
+			// now open for editing
+			IFile file = rodinProject.getProject().getFile(fileName);
+			IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(file.getName());
+			IWorkbenchWindow workbenchWindow=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+
+			IWorkbenchPage page = workbenchWindow.getActivePage();
+			page.openEditor(new FileEditorInput(file), desc.getId());
+			
 		} catch (IOException e) {
 			e.printStackTrace(System.out);
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-
-		return output;
 	}
 }
