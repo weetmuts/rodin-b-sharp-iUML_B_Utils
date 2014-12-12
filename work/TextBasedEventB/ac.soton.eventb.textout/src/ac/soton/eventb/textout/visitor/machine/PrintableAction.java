@@ -19,7 +19,7 @@ public class PrintableAction implements IPrintable{
 	public List<String> print() {
 		List<String> output = new ArrayList<String>();
 		String comment = ExportTextManager.adjustComment(action.getComment());
-		output.add("@" + action.getName() + " " + action.getAction() + comment);
+		output.add("@" + action.getName() + " \"" + action.getAction()+"\" " + comment);
 		return output;
 	}
 

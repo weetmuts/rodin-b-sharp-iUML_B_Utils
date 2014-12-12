@@ -23,7 +23,7 @@ public class PrintableWitness implements IPrintable {
 		String pred = witness.getPredicate();
 		String comment = witness.getComment();
 		comment = ExportTextManager.adjustComment(comment);
-		output.add(indent1 + "@" + name + " " + pred + " " + comment);
+		output.add(indent1 + "@" + name + " \"" + pred + "\" " + comment);
 		return output;
 	}
 

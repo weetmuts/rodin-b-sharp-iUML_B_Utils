@@ -21,14 +21,11 @@ public class PrintableGuard implements IPrintable {
 		List<String> output = new ArrayList<String>();
 		// Add a comment string if necessary
 		String comment = ExportTextManager.adjustComment(guard.getComment());
-		String theoremString;
+		String theoremString = "";
 		if(guard.isTheorem()){
 			theoremString = " theorem";
 		}
-		else{
-			theoremString = " not theorem";
-		}
-		output.add("@" + guard.getName() + " " + guard.getPredicate() + theoremString + " " + comment);
+		output.add("@" + guard.getName() + " \"" + guard.getPredicate() + "\" " + theoremString + " " + comment);
 		return output;
 	}
 

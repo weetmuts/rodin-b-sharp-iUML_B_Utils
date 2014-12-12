@@ -22,14 +22,12 @@ public class PrintableInvariant implements IPrintable {
 		// Add a comment string if necessary
 		String comment = ExportTextManager
 				.adjustComment(invariant.getComment());
-		String theoremString;
+		String theoremString = "";
 		if (invariant.isTheorem()) {
 			theoremString = " theorem";
-		} else {
-			theoremString = " not theorem";
-		}
-		output.add("@" + invariant.getName() + " " + invariant.getPredicate()
-				+ " " + theoremString + " " + comment);
+		} 
+		output.add("@" + invariant.getName() + " \"" + invariant.getPredicate()
+				+ "\" " + theoremString + " " + comment);
 		return output;
 	}
 

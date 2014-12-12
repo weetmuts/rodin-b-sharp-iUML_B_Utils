@@ -14,12 +14,16 @@ import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
+import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
 
 import ac.soton.eventb.textout.visitor.context.PrintableContext;
 import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
 
 public class ExportTextManager {
+	
+	
+	public static IRodinProject rodinProject;
 
 	public void export(IRodinElement rodinElement) throws RodinDBException,
 			Exception {
@@ -28,6 +32,7 @@ public class ExportTextManager {
 		map.clear();
 		EventBElement element = syncManager.loadRodinElement(rodinElement,
 				null, map, null);
+		rodinProject = rodinElement.getRodinProject();
 		List<String> output = new ArrayList<String>();
 		if (rodinElement.getClass() == MachineRoot.class) {
 			MachineImpl emfMachine = (MachineImpl) element;

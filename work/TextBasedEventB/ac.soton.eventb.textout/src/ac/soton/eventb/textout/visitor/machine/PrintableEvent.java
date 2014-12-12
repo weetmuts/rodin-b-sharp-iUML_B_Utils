@@ -26,19 +26,19 @@ public class PrintableEvent implements IPrintable {
 
 		List<String> output = new ArrayList<String>();
 		String comment = ExportTextManager.adjustComment(event.getComment());
-		String internalString = " internal";
-		if (event.isSetInternalId()) {
-			internalString = " " + event.getInternalId();
-		}
-		String extendedString;
+//		String internalString = " internal";
+//		if (event.isSetInternalId()) {
+//			internalString = " " + event.getInternalId();
+//		}
+		String extendedString = "";
 		if (event.isExtended()) {
 			extendedString = " extended";
-		} else {
-			extendedString = " not extended";
-		}
-		String convergenceString = " " + event.getConvergence().getLiteral();
+		} 
+		String convergenceString = event.getConvergence().getLiteral();
 
-		output.add("event " + event.getName() + internalString + extendedString
+		output.add("event" + " \"" + event.getName() + "\" " 
+				//+ internalString 
+				+ extendedString + " "
 				+ convergenceString + " " + comment);
 		EList<Parameter> parameterList = event.getParameters();
 		if (parameterList.size() > 0) {
