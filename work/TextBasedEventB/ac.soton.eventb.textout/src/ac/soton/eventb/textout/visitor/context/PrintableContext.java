@@ -44,6 +44,7 @@ public class PrintableContext implements IPrintable {
 		// Axioms
 		List<Axiom> axiomList = context.getAxioms();
 		if (axiomList.size() > 0) {
+			output.add("axioms ");
 			for (Axiom axiom : axiomList) {
 				output.addAll(new PrintableAxiom(axiom).print());
 			}
@@ -65,8 +66,8 @@ public class PrintableContext implements IPrintable {
 			for (Constant constant : constantList) {
 				tempStore.addAll(new PrintableConstant(constant).print());
 			}
+			output.addAll(resolveSingleMulti(tempStore));
 		}
-
 	}
 
 	private void formatCarrierSets(List<String> output) {
