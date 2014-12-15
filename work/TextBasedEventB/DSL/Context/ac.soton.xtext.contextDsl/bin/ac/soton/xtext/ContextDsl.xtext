@@ -22,6 +22,7 @@ Context returns context::Context:
 		('constants' /*'{'*/ constants+=Constant ( /*","*/ constants+=Constant)* /*'}'*/ )?
 		('axioms' /*'{'*/ axioms+=Axiom ( /*","*/ axioms+=Axiom)* /*'}'*/ )?
 //	'}'
+	'end'
 	;
 
 
@@ -89,13 +90,13 @@ Constant returns context::Constant:
 
 Axiom returns context::Axiom:
 //	(localGenerated?='localGenerated')?
-	(theorem?='theorem')?
 //	'Axiom'
 	'@'name=EString
 //	'{'
 //		('internalId' internalId=EString)?
+		/*'predicate'*/ predicate=EString?
+		(theorem?='theorem')?
 		('//' comment=EString)?
-		/*'predicate'*/ predicate=EString
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?

@@ -55,8 +55,8 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAxiomsAxiomParserRuleCall_7_1_0 = (RuleCall)cAxiomsAssignment_7_1.eContents().get(0);
 		private final Assignment cAxiomsAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
 		private final RuleCall cAxiomsAxiomParserRuleCall_7_2_0 = (RuleCall)cAxiomsAssignment_7_2.eContents().get(0);
+		private final Keyword cEndKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
-		////	'}'
 		//Context returns context::Context:
 		//	{context::Context} //	(localGenerated?='localGenerated')?
 		//	"context" name=EString //	'{'
@@ -66,7 +66,8 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("sets" / *'{'* / sets+=CarrierSet / *","* / sets+=CarrierSet*)? / *'}'* / ("constants" / *'{'* / constants+=Constant / *","* /
-		//	constants+=Constant*)? / *'}'* / ("axioms" / *'{'* / axioms+=Axiom / *","* / axioms+=Axiom*)? / *'}'* /;
+		//	constants+=Constant*)? / *'}'* / ("axioms" / *'{'* / axioms+=Axiom / *","* / axioms+=Axiom*)? / *'}'* / //	'}'
+		//	"end";
 		public ParserRule getRule() { return rule; }
 
 		//{context::Context} //	(localGenerated?='localGenerated')?
@@ -77,7 +78,8 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("sets" / *'{'* / sets+=CarrierSet / *","* / sets+=CarrierSet*)? / *'}'* / ("constants" / *'{'* / constants+=Constant / *","* /
-		//constants+=Constant*)? / *'}'* / ("axioms" / *'{'* / axioms+=Axiom / *","* / axioms+=Axiom*)? / *'}'* /
+		//constants+=Constant*)? / *'}'* / ("axioms" / *'{'* / axioms+=Axiom / *","* / axioms+=Axiom*)? / *'}'* / //	'}'
+		//"end"
 		public Group getGroup() { return cGroup; }
 
 		//{context::Context}
@@ -182,6 +184,10 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Axiom
 		public RuleCall getAxiomsAxiomParserRuleCall_7_2_0() { return cAxiomsAxiomParserRuleCall_7_2_0; }
+
+		////	'}'
+		//"end"
+		public Keyword getEndKeyword_8() { return cEndKeyword_8; }
 	}
 
 	public class EStringElements extends AbstractParserRuleElementFinder {
@@ -335,17 +341,17 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class AxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Axiom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTheoremAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cTheoremTheoremKeyword_0_0 = (Keyword)cTheoremAssignment_0.eContents().get(0);
-		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cSolidusSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cCommentAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cCommentEStringParserRuleCall_3_1_0 = (RuleCall)cCommentAssignment_3_1.eContents().get(0);
-		private final Assignment cPredicateAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPredicateEStringParserRuleCall_4_0 = (RuleCall)cPredicateAssignment_4.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateEStringParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cSolidusSolidusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cCommentAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cCommentEStringParserRuleCall_4_1_0 = (RuleCall)cCommentAssignment_4_1.eContents().get(0);
 		
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -383,54 +389,56 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'AttributeType' / * TODO: implement this rule and an appropriate IValueConverter * /;
 		////EJavaObject returns ecore::EJavaObject:
 		////	'EJavaObject' / * TODO: implement this rule and an appropriate IValueConverter * /;
-		//Axiom returns context::Axiom:
-		//	theorem?="theorem"? //	(localGenerated?='localGenerated')?
-		//	//	'Axiom'
+		//Axiom returns context::Axiom: //	(localGenerated?='localGenerated')?
+		////	'Axiom'
 		//	"@" name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	("//" comment=EString)? / *'predicate'* / predicate=EString;
+		//	/ *'predicate'* / predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
-		//theorem?="theorem"? //	(localGenerated?='localGenerated')?
+		////	(localGenerated?='localGenerated')?
 		////	'Axiom'
 		//"@" name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		//("//" comment=EString)? / *'predicate'* / predicate=EString
+		/// *'predicate'* / predicate=EString? theorem?="theorem"? ("//" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
-		//theorem?="theorem"?
-		public Assignment getTheoremAssignment_0() { return cTheoremAssignment_0; }
-
-		//"theorem"
-		public Keyword getTheoremTheoremKeyword_0_0() { return cTheoremTheoremKeyword_0_0; }
-
+		////	(localGenerated?='localGenerated')?
 		////	'Axiom'
 		//"@"
-		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+		public Keyword getCommercialAtKeyword_0() { return cCommercialAtKeyword_0; }
 
 		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+
+		////	'{'
+		////		('internalId' internalId=EString)?
+		/// *'predicate'* / predicate=EString?
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+
+		//EString
+		public RuleCall getPredicateEStringParserRuleCall_2_0() { return cPredicateEStringParserRuleCall_2_0; }
+
+		//theorem?="theorem"?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+
+		//"theorem"
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
 
 		//("//" comment=EString)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"//"
-		public Keyword getSolidusSolidusKeyword_3_0() { return cSolidusSolidusKeyword_3_0; }
+		public Keyword getSolidusSolidusKeyword_4_0() { return cSolidusSolidusKeyword_4_0; }
 
 		//comment=EString
-		public Assignment getCommentAssignment_3_1() { return cCommentAssignment_3_1; }
+		public Assignment getCommentAssignment_4_1() { return cCommentAssignment_4_1; }
 
 		//EString
-		public RuleCall getCommentEStringParserRuleCall_3_1_0() { return cCommentEStringParserRuleCall_3_1_0; }
-
-		/// *'predicate'* / predicate=EString
-		public Assignment getPredicateAssignment_4() { return cPredicateAssignment_4; }
-
-		//EString
-		public RuleCall getPredicateEStringParserRuleCall_4_0() { return cPredicateEStringParserRuleCall_4_0; }
+		public RuleCall getCommentEStringParserRuleCall_4_1_0() { return cCommentEStringParserRuleCall_4_1_0; }
 	}
 	
 	
@@ -478,7 +486,6 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	////	'}'
 	//Context returns context::Context:
 	//	{context::Context} //	(localGenerated?='localGenerated')?
 	//	"context" name=EString //	'{'
@@ -488,7 +495,8 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("sets" / *'{'* / sets+=CarrierSet / *","* / sets+=CarrierSet*)? / *'}'* / ("constants" / *'{'* / constants+=Constant / *","* /
-	//	constants+=Constant*)? / *'}'* / ("axioms" / *'{'* / axioms+=Axiom / *","* / axioms+=Axiom*)? / *'}'* /;
+	//	constants+=Constant*)? / *'}'* / ("axioms" / *'{'* / axioms+=Axiom / *","* / axioms+=Axiom*)? / *'}'* / //	'}'
+	//	"end";
 	public ContextElements getContextAccess() {
 		return (pContext != null) ? pContext : (pContext = new ContextElements());
 	}
@@ -599,12 +607,11 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'AttributeType' / * TODO: implement this rule and an appropriate IValueConverter * /;
 	////EJavaObject returns ecore::EJavaObject:
 	////	'EJavaObject' / * TODO: implement this rule and an appropriate IValueConverter * /;
-	//Axiom returns context::Axiom:
-	//	theorem?="theorem"? //	(localGenerated?='localGenerated')?
-	//	//	'Axiom'
+	//Axiom returns context::Axiom: //	(localGenerated?='localGenerated')?
+	////	'Axiom'
 	//	"@" name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	("//" comment=EString)? / *'predicate'* / predicate=EString;
+	//	/ *'predicate'* / predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
 	public AxiomElements getAxiomAccess() {
 		return (pAxiom != null) ? pAxiom : (pAxiom = new AxiomElements());
 	}

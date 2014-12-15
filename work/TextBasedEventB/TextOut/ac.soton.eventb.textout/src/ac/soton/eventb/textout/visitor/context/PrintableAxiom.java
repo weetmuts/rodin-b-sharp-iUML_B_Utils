@@ -26,7 +26,7 @@ public class PrintableAxiom implements IPrintable {
 		if (axiom.isTheorem()) {
 			theoremString = " theorem";
 		} 
-		output.add("@" + axiom.getName() + " \"" + axiom.getPredicate()
+		output.add(indent1 + "@" + axiom.getName() + " \"" + axiom.getPredicate()
 				+ "\" " + theoremString + " " + comment);
 		return output;
 	}

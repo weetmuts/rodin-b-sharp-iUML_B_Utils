@@ -49,7 +49,8 @@ public class PrintableContext implements IPrintable {
 				output.addAll(new PrintableAxiom(axiom).print());
 			}
 		}
-
+		output.add("end");
+		
 		// Save and open for editing
 		String fileName = context.getName() + ".ctx";
 		ExportTextManager.saveToFile(output, fileName);

@@ -434,6 +434,7 @@ rule__Context__Group__7
     }
 :
 	rule__Context__Group__7__Impl
+	rule__Context__Group__8
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -454,6 +455,38 @@ rule__Context__Group__7__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Context__Group__8
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Context__Group__8__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Context__Group__8__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getContextAccess().getEndKeyword_8()); }
+
+	'end' 
+
+{ after(grammarAccess.getContextAccess().getEndKeyword_8()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -1243,9 +1276,11 @@ rule__Axiom__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getTheoremAssignment_0()); }
-(rule__Axiom__TheoremAssignment_0)?
-{ after(grammarAccess.getAxiomAccess().getTheoremAssignment_0()); }
+{ before(grammarAccess.getAxiomAccess().getCommercialAtKeyword_0()); }
+
+	'@' 
+
+{ after(grammarAccess.getAxiomAccess().getCommercialAtKeyword_0()); }
 )
 
 ;
@@ -1272,11 +1307,9 @@ rule__Axiom__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getCommercialAtKeyword_1()); }
-
-	'@' 
-
-{ after(grammarAccess.getAxiomAccess().getCommercialAtKeyword_1()); }
+{ before(grammarAccess.getAxiomAccess().getNameAssignment_1()); }
+(rule__Axiom__NameAssignment_1)
+{ after(grammarAccess.getAxiomAccess().getNameAssignment_1()); }
 )
 
 ;
@@ -1303,9 +1336,9 @@ rule__Axiom__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getNameAssignment_2()); }
-(rule__Axiom__NameAssignment_2)
-{ after(grammarAccess.getAxiomAccess().getNameAssignment_2()); }
+{ before(grammarAccess.getAxiomAccess().getPredicateAssignment_2()); }
+(rule__Axiom__PredicateAssignment_2)?
+{ after(grammarAccess.getAxiomAccess().getPredicateAssignment_2()); }
 )
 
 ;
@@ -1332,9 +1365,9 @@ rule__Axiom__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getGroup_3()); }
-(rule__Axiom__Group_3__0)?
-{ after(grammarAccess.getAxiomAccess().getGroup_3()); }
+{ before(grammarAccess.getAxiomAccess().getTheoremAssignment_3()); }
+(rule__Axiom__TheoremAssignment_3)?
+{ after(grammarAccess.getAxiomAccess().getTheoremAssignment_3()); }
 )
 
 ;
@@ -1360,9 +1393,9 @@ rule__Axiom__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getPredicateAssignment_4()); }
-(rule__Axiom__PredicateAssignment_4)
-{ after(grammarAccess.getAxiomAccess().getPredicateAssignment_4()); }
+{ before(grammarAccess.getAxiomAccess().getGroup_4()); }
+(rule__Axiom__Group_4__0)?
+{ after(grammarAccess.getAxiomAccess().getGroup_4()); }
 )
 
 ;
@@ -1381,29 +1414,29 @@ finally {
 
 
 
-rule__Axiom__Group_3__0
+rule__Axiom__Group_4__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Axiom__Group_3__0__Impl
-	rule__Axiom__Group_3__1
+	rule__Axiom__Group_4__0__Impl
+	rule__Axiom__Group_4__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Axiom__Group_3__0__Impl
+rule__Axiom__Group_4__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_3_0()); }
+{ before(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0()); }
 
 	'//' 
 
-{ after(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_3_0()); }
+{ after(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0()); }
 )
 
 ;
@@ -1412,26 +1445,26 @@ finally {
 }
 
 
-rule__Axiom__Group_3__1
+rule__Axiom__Group_4__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Axiom__Group_3__1__Impl
+	rule__Axiom__Group_4__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Axiom__Group_3__1__Impl
+rule__Axiom__Group_4__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getCommentAssignment_3_1()); }
-(rule__Axiom__CommentAssignment_3_1)
-{ after(grammarAccess.getAxiomAccess().getCommentAssignment_3_1()); }
+{ before(grammarAccess.getAxiomAccess().getCommentAssignment_4_1()); }
+(rule__Axiom__CommentAssignment_4_1)
+{ after(grammarAccess.getAxiomAccess().getCommentAssignment_4_1()); }
 )
 
 ;
@@ -1663,37 +1696,52 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Axiom__TheoremAssignment_0
+rule__Axiom__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); }
+{ before(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_1_0()); }
+	ruleEString{ after(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Axiom__PredicateAssignment_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
 (
-{ before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); }
+{ before(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_2_0()); }
+	ruleEString{ after(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Axiom__TheoremAssignment_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); }
+(
+{ before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); }
 
 	'theorem' 
 
-{ after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); }
+{ after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); }
 )
 
-{ after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Axiom__NameAssignment_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_2_0()); }
-	ruleEString{ after(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_2_0()); }
+{ after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); }
 )
 
 ;
@@ -1701,29 +1749,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Axiom__CommentAssignment_3_1
+rule__Axiom__CommentAssignment_4_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_3_1_0()); }
-	ruleEString{ after(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_3_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Axiom__PredicateAssignment_4
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_4_0()); }
-	ruleEString{ after(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_4_0()); }
+{ before(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_4_1_0()); }
+	ruleEString{ after(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_4_1_0()); }
 )
 
 ;

@@ -281,7 +281,11 @@ ruleContext returns [EObject current=null]
 	    }
 
 )
-)*)?)
+)*)?	otherlv_17='end' 
+    {
+    	newLeafNode(otherlv_17, grammarAccess.getContextAccess().getEndKeyword_8());
+    }
+)
 ;
 
 
@@ -472,11 +476,51 @@ ruleAxiom returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
-(
-		lv_theorem_0_0=	'theorem' 
+(	otherlv_0='@' 
     {
-        newLeafNode(lv_theorem_0_0, grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0());
+    	newLeafNode(otherlv_0, grammarAccess.getAxiomAccess().getCommercialAtKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_1_0()); 
+	    }
+		lv_name_1_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAxiomRule());
+	        }
+       		set(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_2_0()); 
+	    }
+		lv_predicate_2_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAxiomRule());
+	        }
+       		set(
+       			$current, 
+       			"predicate",
+        		lv_predicate_2_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		lv_theorem_3_0=	'theorem' 
+    {
+        newLeafNode(lv_theorem_3_0, grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0());
     }
  
 	    {
@@ -487,69 +531,29 @@ ruleAxiom returns [EObject current=null]
 	    }
 
 )
-)?	otherlv_1='@' 
+)?(	otherlv_4='//' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getAxiomAccess().getCommercialAtKeyword_1());
+    	newLeafNode(otherlv_4, grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_4_1_0()); 
 	    }
-		lv_name_2_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAxiomRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_2_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_3='//' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_3_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_3_1_0()); 
-	    }
-		lv_comment_4_0=ruleEString		{
+		lv_comment_5_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getAxiomRule());
 	        }
        		set(
        			$current, 
        			"comment",
-        		lv_comment_4_0, 
+        		lv_comment_5_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_4_0()); 
-	    }
-		lv_predicate_5_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAxiomRule());
-	        }
-       		set(
-       			$current, 
-       			"predicate",
-        		lv_predicate_5_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
+))?)
 ;
 
 

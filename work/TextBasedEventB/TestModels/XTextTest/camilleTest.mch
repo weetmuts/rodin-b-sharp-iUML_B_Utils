@@ -9,13 +9,13 @@ invariants
  @cc "a ≥ 0"  
  @dd "c ∈ 0‥10"  
 events 
- event "INITIALISATION"  ordinary 
+ event INITIALISATION  ordinary 
  then
   @ll "a ≔ 0" 
   @jh "b≔ TRUE" 
   @kjc "c ≔  10" 
  end
- event "kjh"  ordinary // nnnnn
+ event kjh  ordinary // nnnnn
  any
   p // a comment
   q 
@@ -26,14 +26,14 @@ events
   @kjhk "a ≔ 0" 
   @jjj "c ≔ 0" 
  end
- event "evt"  ordinary 
+ event evt  ordinary 
  when 
   @hhh "a ≠ 0"  
   @jjj "a = 0"  
  then
   @opui "b ≔ FALSE" 
  end
- event "evt2"  ordinary 
+ event evt2  ordinary 
  any
   x 
  where 

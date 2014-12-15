@@ -224,8 +224,6 @@ finally {
 
 
 
-
-
 // Entry rule entryRuleParameter
 entryRuleParameter 
 :
@@ -1590,9 +1588,9 @@ rule__Invariant__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getInvariantAccess().getTheoremAssignment_2()); }
-(rule__Invariant__TheoremAssignment_2)?
-{ after(grammarAccess.getInvariantAccess().getTheoremAssignment_2()); }
+{ before(grammarAccess.getInvariantAccess().getPredicateAssignment_2()); }
+(rule__Invariant__PredicateAssignment_2)?
+{ after(grammarAccess.getInvariantAccess().getPredicateAssignment_2()); }
 )
 
 ;
@@ -1619,9 +1617,9 @@ rule__Invariant__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getInvariantAccess().getPredicateAssignment_3()); }
-(rule__Invariant__PredicateAssignment_3)?
-{ after(grammarAccess.getInvariantAccess().getPredicateAssignment_3()); }
+{ before(grammarAccess.getInvariantAccess().getTheoremAssignment_3()); }
+(rule__Invariant__TheoremAssignment_3)?
+{ after(grammarAccess.getInvariantAccess().getTheoremAssignment_3()); }
 )
 
 ;
@@ -1840,7 +1838,7 @@ rule__Variant__Group__3__Impl
 :
 (
 { before(grammarAccess.getVariantAccess().getGroup_3()); }
-(rule__Variant__Group_3__0)
+(rule__Variant__Group_3__0)?
 { after(grammarAccess.getVariantAccess().getGroup_3()); }
 )
 
@@ -3224,9 +3222,9 @@ rule__Guard__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getGuardAccess().getTheoremAssignment_2()); }
-(rule__Guard__TheoremAssignment_2)?
-{ after(grammarAccess.getGuardAccess().getTheoremAssignment_2()); }
+{ before(grammarAccess.getGuardAccess().getPredicateAssignment_2()); }
+(rule__Guard__PredicateAssignment_2)?
+{ after(grammarAccess.getGuardAccess().getPredicateAssignment_2()); }
 )
 
 ;
@@ -3253,9 +3251,9 @@ rule__Guard__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getGuardAccess().getPredicateAssignment_3()); }
-(rule__Guard__PredicateAssignment_3)
-{ after(grammarAccess.getGuardAccess().getPredicateAssignment_3()); }
+{ before(grammarAccess.getGuardAccess().getTheoremAssignment_3()); }
+(rule__Guard__TheoremAssignment_3)?
+{ after(grammarAccess.getGuardAccess().getTheoremAssignment_3()); }
 )
 
 ;
@@ -4029,22 +4027,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Invariant__TheoremAssignment_2
+rule__Invariant__PredicateAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_2_0()); }
-(
-{ before(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_2_0()); }
-
-	'theorem' 
-
-{ after(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_2_0()); }
-)
-
-{ after(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_2_0()); }
+{ before(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_2_0()); }
+	ruleEString{ after(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_2_0()); }
 )
 
 ;
@@ -4052,14 +4042,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Invariant__PredicateAssignment_3
+rule__Invariant__TheoremAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_3_0()); }
-	ruleEString{ after(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_3_0()); }
+{ before(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_3_0()); }
+(
+{ before(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_3_0()); }
+
+	'theorem' 
+
+{ after(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_3_0()); }
+)
+
+{ after(grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_3_0()); }
 )
 
 ;
@@ -4413,22 +4411,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Guard__TheoremAssignment_2
+rule__Guard__PredicateAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_2_0()); }
-(
-{ before(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_2_0()); }
-
-	'theorem' 
-
-{ after(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_2_0()); }
-)
-
-{ after(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_2_0()); }
+{ before(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_2_0()); }
+	ruleEString{ after(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_2_0()); }
 )
 
 ;
@@ -4436,14 +4426,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Guard__PredicateAssignment_3
+rule__Guard__TheoremAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_3_0()); }
-	ruleEString{ after(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_3_0()); }
+{ before(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_3_0()); }
+(
+{ before(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_3_0()); }
+
+	'theorem' 
+
+{ after(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_3_0()); }
+)
+
+{ after(grammarAccess.getGuardAccess().getTheoremTheoremKeyword_3_0()); }
 )
 
 ;

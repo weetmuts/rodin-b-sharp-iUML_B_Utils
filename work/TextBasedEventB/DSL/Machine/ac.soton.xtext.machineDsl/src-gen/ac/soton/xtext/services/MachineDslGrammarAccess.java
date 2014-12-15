@@ -356,10 +356,10 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cTheoremAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Keyword cTheoremTheoremKeyword_2_0 = (Keyword)cTheoremAssignment_2.eContents().get(0);
-		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateEStringParserRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateEStringParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cSolidusSolidusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cCommentAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -371,18 +371,18 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Invariant: //	(localGenerated?='localGenerated')?
 		////	'Invariant'
-		//	"@" name=EString theorem?="theorem"? //	'{'
+		//	"@" name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
 		//	//		'is' 
-		//	predicate=EString? ("//" comment=EString)?;
+		//	predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		////	(localGenerated?='localGenerated')?
 		////	'Invariant'
-		//"@" name=EString theorem?="theorem"? //	'{'
+		//"@" name=EString //	'{'
 		////		('internalId' internalId=EString)?
 		////		'is' 
-		//predicate=EString? ("//" comment=EString)?
+		//predicate=EString? theorem?="theorem"? ("//" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		////	(localGenerated?='localGenerated')?
@@ -396,20 +396,20 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
-		//theorem?="theorem"?
-		public Assignment getTheoremAssignment_2() { return cTheoremAssignment_2; }
-
-		//"theorem"
-		public Keyword getTheoremTheoremKeyword_2_0() { return cTheoremTheoremKeyword_2_0; }
-
 		////	'{'
 		////		('internalId' internalId=EString)?
 		////		'is' 
 		//predicate=EString?
-		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 
 		//EString
-		public RuleCall getPredicateEStringParserRuleCall_3_0() { return cPredicateEStringParserRuleCall_3_0; }
+		public RuleCall getPredicateEStringParserRuleCall_2_0() { return cPredicateEStringParserRuleCall_2_0; }
+
+		//theorem?="theorem"?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+
+		//"theorem"
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
 
 		//("//" comment=EString)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -443,13 +443,13 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Variant: //	(localGenerated?='localGenerated')?
 		//	"Variant" //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	"expression" expression=EString? ("//" comment=EString);
+		//	"expression" expression=EString? ("//" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		////	(localGenerated?='localGenerated')?
 		//"Variant" //	'{'
 		////		('internalId' internalId=EString)?
-		//"expression" expression=EString? ("//" comment=EString)
+		//"expression" expression=EString? ("//" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		////	(localGenerated?='localGenerated')?
@@ -467,7 +467,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getExpressionEStringParserRuleCall_2_0() { return cExpressionEStringParserRuleCall_2_0; }
 
-		//"//" comment=EString
+		//("//" comment=EString)?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"//"
@@ -725,50 +725,6 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getEndKeyword_11() { return cEndKeyword_11; }
 	}
 
-	public class EJavaObjectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EJavaObject");
-		private final Keyword cEJavaObjectKeyword = (Keyword)rule.eContents().get(1);
-		
-		////StringToStringMapEntry returns core::StringToStringMapEntry:
-		////	{core::StringToStringMapEntry}
-		////	'StringToStringMapEntry'
-		////	'{'
-		////		('key' key=EString)?
-		////		('value' value=EString)?
-		////	'}';
-		////EObject returns ecore::EObject:
-		////	{ecore::EObject}
-		////	'EObject'
-		////	;
-		////Extension returns core::Extension:
-		////	(localGenerated?='localGenerated')?
-		////	'Extension'
-		////	'{'
-		////		('internalId' internalId=EString)?
-		////		'extensionId' extensionId=EString
-		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
-		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
-		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-		////	'}'
-		////	;
-		////Attribute returns core::Attribute:
-		////	'Attribute'
-		////	'{'
-		////		'type' type=AttributeType
-		////		'value' value=EJavaObject
-		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
-		////	'}'
-		////	;
-		////enum AttributeType returns core::AttributeType:
-		////				Boolean = 'Boolean' | Handle = 'Handle' | Integer = 'Integer' | Long = 'Long' | String = 'String';
-		/// * TODO: implement this rule and an appropriate IValueConverter * / EJavaObject returns ecore::EJavaObject:
-		//	"EJavaObject";
-		public ParserRule getRule() { return rule; }
-
-		//"EJavaObject"
-		public Keyword getEJavaObjectKeyword() { return cEJavaObjectKeyword; }
-	}
-
 	public class ParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Parameter");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -829,10 +785,10 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cTheoremAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Keyword cTheoremTheoremKeyword_2_0 = (Keyword)cTheoremAssignment_2.eContents().get(0);
-		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateEStringParserRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateEStringParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cSolidusSolidusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cCommentAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -844,16 +800,16 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Guard: //	(localGenerated?='localGenerated')?
 		////	'Guard'
-		//	"@" name=EString theorem?="theorem"? //	'{'
+		//	"@" name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	predicate=EString ("//" comment=EString)?;
+		//	predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		////	(localGenerated?='localGenerated')?
 		////	'Guard'
-		//"@" name=EString theorem?="theorem"? //	'{'
+		//"@" name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		//predicate=EString ("//" comment=EString)?
+		//predicate=EString? theorem?="theorem"? ("//" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		////	(localGenerated?='localGenerated')?
@@ -867,19 +823,19 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
-		//theorem?="theorem"?
-		public Assignment getTheoremAssignment_2() { return cTheoremAssignment_2; }
-
-		//"theorem"
-		public Keyword getTheoremTheoremKeyword_2_0() { return cTheoremTheoremKeyword_2_0; }
-
 		////	'{'
 		////		('internalId' internalId=EString)?
-		//predicate=EString
-		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
+		//predicate=EString?
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 
 		//EString
-		public RuleCall getPredicateEStringParserRuleCall_3_0() { return cPredicateEStringParserRuleCall_3_0; }
+		public RuleCall getPredicateEStringParserRuleCall_2_0() { return cPredicateEStringParserRuleCall_2_0; }
+
+		//theorem?="theorem"?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+
+		//"theorem"
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
 
 		//("//" comment=EString)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -1040,6 +996,40 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cAnticipatedEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cAnticipatedAnticipatedKeyword_2_0 = (Keyword)cAnticipatedEnumLiteralDeclaration_2.eContents().get(0);
 		
+		////StringToStringMapEntry returns core::StringToStringMapEntry:
+		////	{core::StringToStringMapEntry}
+		////	'StringToStringMapEntry'
+		////	'{'
+		////		('key' key=EString)?
+		////		('value' value=EString)?
+		////	'}';
+		////EObject returns ecore::EObject:
+		////	{ecore::EObject}
+		////	'EObject'
+		////	;
+		////Extension returns core::Extension:
+		////	(localGenerated?='localGenerated')?
+		////	'Extension'
+		////	'{'
+		////		('internalId' internalId=EString)?
+		////		'extensionId' extensionId=EString
+		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
+		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
+		////	'}'
+		////	;
+		////Attribute returns core::Attribute:
+		////	'Attribute'
+		////	'{'
+		////		'type' type=AttributeType
+		////		'value' value=EJavaObject
+		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		////	'}'
+		////	;
+		////enum AttributeType returns core::AttributeType:
+		////				Boolean = 'Boolean' | Handle = 'Handle' | Integer = 'Integer' | Long = 'Long' | String = 'String';
+		////EJavaObject returns ecore::EJavaObject:
+		////	'EJavaObject' / * TODO: implement this rule and an appropriate IValueConverter * /;
 		////CarrierSet returns context::CarrierSet:
 		////	{context::CarrierSet}
 		////	(localGenerated?='localGenerated')?
@@ -1111,7 +1101,6 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	private InvariantElements pInvariant;
 	private VariantElements pVariant;
 	private EventElements pEvent;
-	private EJavaObjectElements pEJavaObject;
 	private ConvergenceElements unknownRuleConvergence;
 	private ParameterElements pParameter;
 	private GuardElements pGuard;
@@ -1246,10 +1235,10 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Invariant: //	(localGenerated?='localGenerated')?
 	////	'Invariant'
-	//	"@" name=EString theorem?="theorem"? //	'{'
+	//	"@" name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
 	//	//		'is' 
-	//	predicate=EString? ("//" comment=EString)?;
+	//	predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
 	public InvariantElements getInvariantAccess() {
 		return (pInvariant != null) ? pInvariant : (pInvariant = new InvariantElements());
 	}
@@ -1265,7 +1254,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//Variant: //	(localGenerated?='localGenerated')?
 	//	"Variant" //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	"expression" expression=EString? ("//" comment=EString);
+	//	"expression" expression=EString? ("//" comment=EString)?;
 	public VariantElements getVariantAccess() {
 		return (pVariant != null) ? pVariant : (pVariant = new VariantElements());
 	}
@@ -1327,16 +1316,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	;
 	////enum AttributeType returns core::AttributeType:
 	////				Boolean = 'Boolean' | Handle = 'Handle' | Integer = 'Integer' | Long = 'Long' | String = 'String';
-	/// * TODO: implement this rule and an appropriate IValueConverter * / EJavaObject returns ecore::EJavaObject:
-	//	"EJavaObject";
-	public EJavaObjectElements getEJavaObjectAccess() {
-		return (pEJavaObject != null) ? pEJavaObject : (pEJavaObject = new EJavaObjectElements());
-	}
-	
-	public ParserRule getEJavaObjectRule() {
-		return getEJavaObjectAccess().getRule();
-	}
-
+	////EJavaObject returns ecore::EJavaObject:
+	////	'EJavaObject' / * TODO: implement this rule and an appropriate IValueConverter * /;
 	////CarrierSet returns context::CarrierSet:
 	////	{context::CarrierSet}
 	////	(localGenerated?='localGenerated')?
@@ -1410,9 +1391,9 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Guard: //	(localGenerated?='localGenerated')?
 	////	'Guard'
-	//	"@" name=EString theorem?="theorem"? //	'{'
+	//	"@" name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	predicate=EString ("//" comment=EString)?;
+	//	predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
 	public GuardElements getGuardAccess() {
 		return (pGuard != null) ? pGuard : (pGuard = new GuardElements());
 	}

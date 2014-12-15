@@ -490,9 +490,27 @@ ruleInvariant returns [EObject current=null]
 )
 )(
 (
-		lv_theorem_2_0=	'theorem' 
+		{ 
+	        newCompositeNode(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_2_0()); 
+	    }
+		lv_predicate_2_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getInvariantRule());
+	        }
+       		set(
+       			$current, 
+       			"predicate",
+        		lv_predicate_2_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		lv_theorem_3_0=	'theorem' 
     {
-        newLeafNode(lv_theorem_2_0, grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_2_0());
+        newLeafNode(lv_theorem_3_0, grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_3_0());
     }
  
 	    {
@@ -500,24 +518,6 @@ ruleInvariant returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getInvariantRule());
 	        }
        		setWithLastConsumed($current, "theorem", true, "theorem");
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_3_0()); 
-	    }
-		lv_predicate_3_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getInvariantRule());
-	        }
-       		set(
-       			$current, 
-       			"predicate",
-        		lv_predicate_3_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -612,7 +612,7 @@ ruleVariant returns [EObject current=null]
 	    }
 
 )
-)))
+))?)
 ;
 
 
@@ -965,8 +965,6 @@ ruleevent returns [EObject current=null]
 
 
 
-
-
 // Entry rule entryRuleParameter
 entryRuleParameter returns [EObject current=null] 
 	:
@@ -1072,9 +1070,27 @@ ruleGuard returns [EObject current=null]
 )
 )(
 (
-		lv_theorem_2_0=	'theorem' 
+		{ 
+	        newCompositeNode(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_2_0()); 
+	    }
+		lv_predicate_2_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGuardRule());
+	        }
+       		set(
+       			$current, 
+       			"predicate",
+        		lv_predicate_2_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		lv_theorem_3_0=	'theorem' 
     {
-        newLeafNode(lv_theorem_2_0, grammarAccess.getGuardAccess().getTheoremTheoremKeyword_2_0());
+        newLeafNode(lv_theorem_3_0, grammarAccess.getGuardAccess().getTheoremTheoremKeyword_3_0());
     }
  
 	    {
@@ -1085,25 +1101,7 @@ ruleGuard returns [EObject current=null]
 	    }
 
 )
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_3_0()); 
-	    }
-		lv_predicate_3_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGuardRule());
-	        }
-       		set(
-       			$current, 
-       			"predicate",
-        		lv_predicate_3_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_4='//' 
+)?(	otherlv_4='//' 
     {
     	newLeafNode(otherlv_4, grammarAccess.getGuardAccess().getSolidusSolidusKeyword_4_0());
     }

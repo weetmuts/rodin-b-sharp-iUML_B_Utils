@@ -49,7 +49,7 @@ public class ContextDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantAccess().getGroup(), "rule__Constant__Group__0");
 					put(grammarAccess.getConstantAccess().getGroup_2(), "rule__Constant__Group_2__0");
 					put(grammarAccess.getAxiomAccess().getGroup(), "rule__Axiom__Group__0");
-					put(grammarAccess.getAxiomAccess().getGroup_3(), "rule__Axiom__Group_3__0");
+					put(grammarAccess.getAxiomAccess().getGroup_4(), "rule__Axiom__Group_4__0");
 					put(grammarAccess.getContextAccess().getNameAssignment_2(), "rule__Context__NameAssignment_2");
 					put(grammarAccess.getContextAccess().getCommentAssignment_3_1(), "rule__Context__CommentAssignment_3_1");
 					put(grammarAccess.getContextAccess().getExtendsAssignment_4_1(), "rule__Context__ExtendsAssignment_4_1");
@@ -64,10 +64,10 @@ public class ContextDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCarrierSetAccess().getCommentAssignment_2_1(), "rule__CarrierSet__CommentAssignment_2_1");
 					put(grammarAccess.getConstantAccess().getNameAssignment_1(), "rule__Constant__NameAssignment_1");
 					put(grammarAccess.getConstantAccess().getCommentAssignment_2_1(), "rule__Constant__CommentAssignment_2_1");
-					put(grammarAccess.getAxiomAccess().getTheoremAssignment_0(), "rule__Axiom__TheoremAssignment_0");
-					put(grammarAccess.getAxiomAccess().getNameAssignment_2(), "rule__Axiom__NameAssignment_2");
-					put(grammarAccess.getAxiomAccess().getCommentAssignment_3_1(), "rule__Axiom__CommentAssignment_3_1");
-					put(grammarAccess.getAxiomAccess().getPredicateAssignment_4(), "rule__Axiom__PredicateAssignment_4");
+					put(grammarAccess.getAxiomAccess().getNameAssignment_1(), "rule__Axiom__NameAssignment_1");
+					put(grammarAccess.getAxiomAccess().getPredicateAssignment_2(), "rule__Axiom__PredicateAssignment_2");
+					put(grammarAccess.getAxiomAccess().getTheoremAssignment_3(), "rule__Axiom__TheoremAssignment_3");
+					put(grammarAccess.getAxiomAccess().getCommentAssignment_4_1(), "rule__Axiom__CommentAssignment_4_1");
 				}
 			};
 		}

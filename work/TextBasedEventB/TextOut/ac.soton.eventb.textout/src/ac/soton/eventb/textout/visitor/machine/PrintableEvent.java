@@ -36,7 +36,7 @@ public class PrintableEvent implements IPrintable {
 		} 
 		String convergenceString = event.getConvergence().getLiteral();
 
-		output.add("event" + " \"" + event.getName() + "\" " 
+		output.add("event" + " " + event.getName() + " " 
 				//+ internalString 
 				+ extendedString + " "
 				+ convergenceString + " " + comment);

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalContextDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'comment'", "'extends'", "'sets'", "'constants'", "'axioms'", "'//'", "'@'", "'theorem'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'end'", "'comment'", "'extends'", "'sets'", "'constants'", "'axioms'", "'//'", "'@'", "'theorem'"
     };
     public static final int T__19=19;
     public static final int RULE_ID=5;
@@ -36,6 +36,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_ANY_OTHER=10;
+    public static final int T__20=20;
     public static final int RULE_INT=6;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
@@ -826,7 +827,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==12) ) {
+            if ( (LA2_0==13) ) {
                 alt2=1;
             }
             switch (alt2) {
@@ -922,7 +923,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==13) ) {
+            if ( (LA3_0==14) ) {
                 alt3=1;
             }
             switch (alt3) {
@@ -1018,7 +1019,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==14) ) {
+            if ( (LA4_0==15) ) {
                 alt4=1;
             }
             switch (alt4) {
@@ -1114,7 +1115,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==15) ) {
+            if ( (LA5_0==16) ) {
                 alt5=1;
             }
             switch (alt5) {
@@ -1155,17 +1156,22 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group__7"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:431:1: rule__Context__Group__7 : rule__Context__Group__7__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:431:1: rule__Context__Group__7 : rule__Context__Group__7__Impl rule__Context__Group__8 ;
     public final void rule__Context__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:435:1: ( rule__Context__Group__7__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:436:2: rule__Context__Group__7__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:435:1: ( rule__Context__Group__7__Impl rule__Context__Group__8 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:436:2: rule__Context__Group__7__Impl rule__Context__Group__8
             {
             pushFollow(FollowSets000.FOLLOW_rule__Context__Group__7__Impl_in_rule__Context__Group__7844);
             rule__Context__Group__7__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group__8_in_rule__Context__Group__7847);
+            rule__Context__Group__8();
 
             state._fsp--;
 
@@ -1188,31 +1194,31 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group__7__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:442:1: rule__Context__Group__7__Impl : ( ( rule__Context__Group_7__0 )? ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:443:1: rule__Context__Group__7__Impl : ( ( rule__Context__Group_7__0 )? ) ;
     public final void rule__Context__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:446:1: ( ( ( rule__Context__Group_7__0 )? ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:447:1: ( ( rule__Context__Group_7__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:447:1: ( ( ( rule__Context__Group_7__0 )? ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:448:1: ( ( rule__Context__Group_7__0 )? )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:447:1: ( ( rule__Context__Group_7__0 )? )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:448:1: ( rule__Context__Group_7__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:448:1: ( ( rule__Context__Group_7__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:449:1: ( rule__Context__Group_7__0 )?
             {
              before(grammarAccess.getContextAccess().getGroup_7()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:449:1: ( rule__Context__Group_7__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:450:1: ( rule__Context__Group_7__0 )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==16) ) {
+            if ( (LA6_0==17) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:449:2: rule__Context__Group_7__0
+                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:450:2: rule__Context__Group_7__0
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__0_in_rule__Context__Group__7__Impl871);
+                    pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__0_in_rule__Context__Group__7__Impl874);
                     rule__Context__Group_7__0();
 
                     state._fsp--;
@@ -1245,22 +1251,92 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Context__Group__7__Impl"
 
 
+    // $ANTLR start "rule__Context__Group__8"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:460:1: rule__Context__Group__8 : rule__Context__Group__8__Impl ;
+    public final void rule__Context__Group__8() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:464:1: ( rule__Context__Group__8__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:465:2: rule__Context__Group__8__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group__8__Impl_in_rule__Context__Group__8905);
+            rule__Context__Group__8__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Context__Group__8"
+
+
+    // $ANTLR start "rule__Context__Group__8__Impl"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:471:1: rule__Context__Group__8__Impl : ( 'end' ) ;
+    public final void rule__Context__Group__8__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:475:1: ( ( 'end' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:476:1: ( 'end' )
+            {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:476:1: ( 'end' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:477:1: 'end'
+            {
+             before(grammarAccess.getContextAccess().getEndKeyword_8()); 
+            match(input,12,FollowSets000.FOLLOW_12_in_rule__Context__Group__8__Impl933); 
+             after(grammarAccess.getContextAccess().getEndKeyword_8()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Context__Group__8__Impl"
+
+
     // $ANTLR start "rule__Context__Group_3__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:475:1: rule__Context__Group_3__0 : rule__Context__Group_3__0__Impl rule__Context__Group_3__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:508:1: rule__Context__Group_3__0 : rule__Context__Group_3__0__Impl rule__Context__Group_3__1 ;
     public final void rule__Context__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:479:1: ( rule__Context__Group_3__0__Impl rule__Context__Group_3__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:480:2: rule__Context__Group_3__0__Impl rule__Context__Group_3__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:512:1: ( rule__Context__Group_3__0__Impl rule__Context__Group_3__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:513:2: rule__Context__Group_3__0__Impl rule__Context__Group_3__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_3__0__Impl_in_rule__Context__Group_3__0918);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_3__0__Impl_in_rule__Context__Group_3__0982);
             rule__Context__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_3__1_in_rule__Context__Group_3__0921);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_3__1_in_rule__Context__Group_3__0985);
             rule__Context__Group_3__1();
 
             state._fsp--;
@@ -1284,20 +1360,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_3__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:487:1: rule__Context__Group_3__0__Impl : ( 'comment' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:520:1: rule__Context__Group_3__0__Impl : ( 'comment' ) ;
     public final void rule__Context__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:491:1: ( ( 'comment' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:492:1: ( 'comment' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:524:1: ( ( 'comment' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:525:1: ( 'comment' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:492:1: ( 'comment' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:493:1: 'comment'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:525:1: ( 'comment' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:526:1: 'comment'
             {
              before(grammarAccess.getContextAccess().getCommentKeyword_3_0()); 
-            match(input,12,FollowSets000.FOLLOW_12_in_rule__Context__Group_3__0__Impl949); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__Context__Group_3__0__Impl1013); 
              after(grammarAccess.getContextAccess().getCommentKeyword_3_0()); 
 
             }
@@ -1321,16 +1397,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_3__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:506:1: rule__Context__Group_3__1 : rule__Context__Group_3__1__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:539:1: rule__Context__Group_3__1 : rule__Context__Group_3__1__Impl ;
     public final void rule__Context__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:510:1: ( rule__Context__Group_3__1__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:511:2: rule__Context__Group_3__1__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:543:1: ( rule__Context__Group_3__1__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:544:2: rule__Context__Group_3__1__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_3__1__Impl_in_rule__Context__Group_3__1980);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_3__1__Impl_in_rule__Context__Group_3__11044);
             rule__Context__Group_3__1__Impl();
 
             state._fsp--;
@@ -1354,23 +1430,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_3__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:517:1: rule__Context__Group_3__1__Impl : ( ( rule__Context__CommentAssignment_3_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:550:1: rule__Context__Group_3__1__Impl : ( ( rule__Context__CommentAssignment_3_1 ) ) ;
     public final void rule__Context__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:521:1: ( ( ( rule__Context__CommentAssignment_3_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:522:1: ( ( rule__Context__CommentAssignment_3_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:554:1: ( ( ( rule__Context__CommentAssignment_3_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:555:1: ( ( rule__Context__CommentAssignment_3_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:522:1: ( ( rule__Context__CommentAssignment_3_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:523:1: ( rule__Context__CommentAssignment_3_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:555:1: ( ( rule__Context__CommentAssignment_3_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:556:1: ( rule__Context__CommentAssignment_3_1 )
             {
              before(grammarAccess.getContextAccess().getCommentAssignment_3_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:524:1: ( rule__Context__CommentAssignment_3_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:524:2: rule__Context__CommentAssignment_3_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:557:1: ( rule__Context__CommentAssignment_3_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:557:2: rule__Context__CommentAssignment_3_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__CommentAssignment_3_1_in_rule__Context__Group_3__1__Impl1007);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__CommentAssignment_3_1_in_rule__Context__Group_3__1__Impl1071);
             rule__Context__CommentAssignment_3_1();
 
             state._fsp--;
@@ -1401,21 +1477,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_4__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:538:1: rule__Context__Group_4__0 : rule__Context__Group_4__0__Impl rule__Context__Group_4__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:571:1: rule__Context__Group_4__0 : rule__Context__Group_4__0__Impl rule__Context__Group_4__1 ;
     public final void rule__Context__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:542:1: ( rule__Context__Group_4__0__Impl rule__Context__Group_4__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:543:2: rule__Context__Group_4__0__Impl rule__Context__Group_4__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:575:1: ( rule__Context__Group_4__0__Impl rule__Context__Group_4__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:576:2: rule__Context__Group_4__0__Impl rule__Context__Group_4__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__0__Impl_in_rule__Context__Group_4__01041);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__0__Impl_in_rule__Context__Group_4__01105);
             rule__Context__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__1_in_rule__Context__Group_4__01044);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__1_in_rule__Context__Group_4__01108);
             rule__Context__Group_4__1();
 
             state._fsp--;
@@ -1439,20 +1515,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_4__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:550:1: rule__Context__Group_4__0__Impl : ( 'extends' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:583:1: rule__Context__Group_4__0__Impl : ( 'extends' ) ;
     public final void rule__Context__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:554:1: ( ( 'extends' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:555:1: ( 'extends' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:587:1: ( ( 'extends' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:588:1: ( 'extends' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:555:1: ( 'extends' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:556:1: 'extends'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:588:1: ( 'extends' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:589:1: 'extends'
             {
              before(grammarAccess.getContextAccess().getExtendsKeyword_4_0()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Context__Group_4__0__Impl1072); 
+            match(input,14,FollowSets000.FOLLOW_14_in_rule__Context__Group_4__0__Impl1136); 
              after(grammarAccess.getContextAccess().getExtendsKeyword_4_0()); 
 
             }
@@ -1476,21 +1552,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_4__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:569:1: rule__Context__Group_4__1 : rule__Context__Group_4__1__Impl rule__Context__Group_4__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:602:1: rule__Context__Group_4__1 : rule__Context__Group_4__1__Impl rule__Context__Group_4__2 ;
     public final void rule__Context__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:573:1: ( rule__Context__Group_4__1__Impl rule__Context__Group_4__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:574:2: rule__Context__Group_4__1__Impl rule__Context__Group_4__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:606:1: ( rule__Context__Group_4__1__Impl rule__Context__Group_4__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:607:2: rule__Context__Group_4__1__Impl rule__Context__Group_4__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__1__Impl_in_rule__Context__Group_4__11103);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__1__Impl_in_rule__Context__Group_4__11167);
             rule__Context__Group_4__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__2_in_rule__Context__Group_4__11106);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__2_in_rule__Context__Group_4__11170);
             rule__Context__Group_4__2();
 
             state._fsp--;
@@ -1514,23 +1590,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_4__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:581:1: rule__Context__Group_4__1__Impl : ( ( rule__Context__ExtendsAssignment_4_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:614:1: rule__Context__Group_4__1__Impl : ( ( rule__Context__ExtendsAssignment_4_1 ) ) ;
     public final void rule__Context__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:585:1: ( ( ( rule__Context__ExtendsAssignment_4_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:586:1: ( ( rule__Context__ExtendsAssignment_4_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:618:1: ( ( ( rule__Context__ExtendsAssignment_4_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:619:1: ( ( rule__Context__ExtendsAssignment_4_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:586:1: ( ( rule__Context__ExtendsAssignment_4_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:587:1: ( rule__Context__ExtendsAssignment_4_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:619:1: ( ( rule__Context__ExtendsAssignment_4_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:620:1: ( rule__Context__ExtendsAssignment_4_1 )
             {
              before(grammarAccess.getContextAccess().getExtendsAssignment_4_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:588:1: ( rule__Context__ExtendsAssignment_4_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:588:2: rule__Context__ExtendsAssignment_4_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:621:1: ( rule__Context__ExtendsAssignment_4_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:621:2: rule__Context__ExtendsAssignment_4_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__ExtendsAssignment_4_1_in_rule__Context__Group_4__1__Impl1133);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__ExtendsAssignment_4_1_in_rule__Context__Group_4__1__Impl1197);
             rule__Context__ExtendsAssignment_4_1();
 
             state._fsp--;
@@ -1561,16 +1637,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_4__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:598:1: rule__Context__Group_4__2 : rule__Context__Group_4__2__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:631:1: rule__Context__Group_4__2 : rule__Context__Group_4__2__Impl ;
     public final void rule__Context__Group_4__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:602:1: ( rule__Context__Group_4__2__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:603:2: rule__Context__Group_4__2__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:635:1: ( rule__Context__Group_4__2__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:636:2: rule__Context__Group_4__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__2__Impl_in_rule__Context__Group_4__21163);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_4__2__Impl_in_rule__Context__Group_4__21227);
             rule__Context__Group_4__2__Impl();
 
             state._fsp--;
@@ -1594,20 +1670,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_4__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:609:1: rule__Context__Group_4__2__Impl : ( ( rule__Context__ExtendsAssignment_4_2 )* ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:642:1: rule__Context__Group_4__2__Impl : ( ( rule__Context__ExtendsAssignment_4_2 )* ) ;
     public final void rule__Context__Group_4__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:613:1: ( ( ( rule__Context__ExtendsAssignment_4_2 )* ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:614:1: ( ( rule__Context__ExtendsAssignment_4_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:646:1: ( ( ( rule__Context__ExtendsAssignment_4_2 )* ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:647:1: ( ( rule__Context__ExtendsAssignment_4_2 )* )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:614:1: ( ( rule__Context__ExtendsAssignment_4_2 )* )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:615:1: ( rule__Context__ExtendsAssignment_4_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:647:1: ( ( rule__Context__ExtendsAssignment_4_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:648:1: ( rule__Context__ExtendsAssignment_4_2 )*
             {
              before(grammarAccess.getContextAccess().getExtendsAssignment_4_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:616:1: ( rule__Context__ExtendsAssignment_4_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:649:1: ( rule__Context__ExtendsAssignment_4_2 )*
             loop7:
             do {
                 int alt7=2;
@@ -1620,9 +1696,9 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
                 switch (alt7) {
             	case 1 :
-            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:616:2: rule__Context__ExtendsAssignment_4_2
+            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:649:2: rule__Context__ExtendsAssignment_4_2
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Context__ExtendsAssignment_4_2_in_rule__Context__Group_4__2__Impl1190);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Context__ExtendsAssignment_4_2_in_rule__Context__Group_4__2__Impl1254);
             	    rule__Context__ExtendsAssignment_4_2();
 
             	    state._fsp--;
@@ -1659,21 +1735,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_5__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:632:1: rule__Context__Group_5__0 : rule__Context__Group_5__0__Impl rule__Context__Group_5__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:665:1: rule__Context__Group_5__0 : rule__Context__Group_5__0__Impl rule__Context__Group_5__1 ;
     public final void rule__Context__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:636:1: ( rule__Context__Group_5__0__Impl rule__Context__Group_5__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:637:2: rule__Context__Group_5__0__Impl rule__Context__Group_5__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:669:1: ( rule__Context__Group_5__0__Impl rule__Context__Group_5__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:670:2: rule__Context__Group_5__0__Impl rule__Context__Group_5__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__0__Impl_in_rule__Context__Group_5__01227);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__0__Impl_in_rule__Context__Group_5__01291);
             rule__Context__Group_5__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__1_in_rule__Context__Group_5__01230);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__1_in_rule__Context__Group_5__01294);
             rule__Context__Group_5__1();
 
             state._fsp--;
@@ -1697,20 +1773,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_5__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:644:1: rule__Context__Group_5__0__Impl : ( 'sets' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:677:1: rule__Context__Group_5__0__Impl : ( 'sets' ) ;
     public final void rule__Context__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:648:1: ( ( 'sets' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:649:1: ( 'sets' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:681:1: ( ( 'sets' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:682:1: ( 'sets' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:649:1: ( 'sets' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:650:1: 'sets'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:682:1: ( 'sets' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:683:1: 'sets'
             {
              before(grammarAccess.getContextAccess().getSetsKeyword_5_0()); 
-            match(input,14,FollowSets000.FOLLOW_14_in_rule__Context__Group_5__0__Impl1258); 
+            match(input,15,FollowSets000.FOLLOW_15_in_rule__Context__Group_5__0__Impl1322); 
              after(grammarAccess.getContextAccess().getSetsKeyword_5_0()); 
 
             }
@@ -1734,21 +1810,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_5__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:663:1: rule__Context__Group_5__1 : rule__Context__Group_5__1__Impl rule__Context__Group_5__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:696:1: rule__Context__Group_5__1 : rule__Context__Group_5__1__Impl rule__Context__Group_5__2 ;
     public final void rule__Context__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:667:1: ( rule__Context__Group_5__1__Impl rule__Context__Group_5__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:668:2: rule__Context__Group_5__1__Impl rule__Context__Group_5__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:700:1: ( rule__Context__Group_5__1__Impl rule__Context__Group_5__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:701:2: rule__Context__Group_5__1__Impl rule__Context__Group_5__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__1__Impl_in_rule__Context__Group_5__11289);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__1__Impl_in_rule__Context__Group_5__11353);
             rule__Context__Group_5__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__2_in_rule__Context__Group_5__11292);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__2_in_rule__Context__Group_5__11356);
             rule__Context__Group_5__2();
 
             state._fsp--;
@@ -1772,23 +1848,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_5__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:675:1: rule__Context__Group_5__1__Impl : ( ( rule__Context__SetsAssignment_5_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:708:1: rule__Context__Group_5__1__Impl : ( ( rule__Context__SetsAssignment_5_1 ) ) ;
     public final void rule__Context__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:679:1: ( ( ( rule__Context__SetsAssignment_5_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:680:1: ( ( rule__Context__SetsAssignment_5_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:712:1: ( ( ( rule__Context__SetsAssignment_5_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:713:1: ( ( rule__Context__SetsAssignment_5_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:680:1: ( ( rule__Context__SetsAssignment_5_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:681:1: ( rule__Context__SetsAssignment_5_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:713:1: ( ( rule__Context__SetsAssignment_5_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:714:1: ( rule__Context__SetsAssignment_5_1 )
             {
              before(grammarAccess.getContextAccess().getSetsAssignment_5_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:682:1: ( rule__Context__SetsAssignment_5_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:682:2: rule__Context__SetsAssignment_5_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:715:1: ( rule__Context__SetsAssignment_5_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:715:2: rule__Context__SetsAssignment_5_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__SetsAssignment_5_1_in_rule__Context__Group_5__1__Impl1319);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__SetsAssignment_5_1_in_rule__Context__Group_5__1__Impl1383);
             rule__Context__SetsAssignment_5_1();
 
             state._fsp--;
@@ -1819,16 +1895,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_5__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:692:1: rule__Context__Group_5__2 : rule__Context__Group_5__2__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:725:1: rule__Context__Group_5__2 : rule__Context__Group_5__2__Impl ;
     public final void rule__Context__Group_5__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:696:1: ( rule__Context__Group_5__2__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:697:2: rule__Context__Group_5__2__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:729:1: ( rule__Context__Group_5__2__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:730:2: rule__Context__Group_5__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__2__Impl_in_rule__Context__Group_5__21349);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_5__2__Impl_in_rule__Context__Group_5__21413);
             rule__Context__Group_5__2__Impl();
 
             state._fsp--;
@@ -1852,20 +1928,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_5__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:703:1: rule__Context__Group_5__2__Impl : ( ( rule__Context__SetsAssignment_5_2 )* ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:736:1: rule__Context__Group_5__2__Impl : ( ( rule__Context__SetsAssignment_5_2 )* ) ;
     public final void rule__Context__Group_5__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:707:1: ( ( ( rule__Context__SetsAssignment_5_2 )* ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:708:1: ( ( rule__Context__SetsAssignment_5_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:740:1: ( ( ( rule__Context__SetsAssignment_5_2 )* ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:741:1: ( ( rule__Context__SetsAssignment_5_2 )* )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:708:1: ( ( rule__Context__SetsAssignment_5_2 )* )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:709:1: ( rule__Context__SetsAssignment_5_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:741:1: ( ( rule__Context__SetsAssignment_5_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:742:1: ( rule__Context__SetsAssignment_5_2 )*
             {
              before(grammarAccess.getContextAccess().getSetsAssignment_5_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:710:1: ( rule__Context__SetsAssignment_5_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:743:1: ( rule__Context__SetsAssignment_5_2 )*
             loop8:
             do {
                 int alt8=2;
@@ -1878,9 +1954,9 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
                 switch (alt8) {
             	case 1 :
-            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:710:2: rule__Context__SetsAssignment_5_2
+            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:743:2: rule__Context__SetsAssignment_5_2
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Context__SetsAssignment_5_2_in_rule__Context__Group_5__2__Impl1376);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Context__SetsAssignment_5_2_in_rule__Context__Group_5__2__Impl1440);
             	    rule__Context__SetsAssignment_5_2();
 
             	    state._fsp--;
@@ -1917,21 +1993,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_6__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:726:1: rule__Context__Group_6__0 : rule__Context__Group_6__0__Impl rule__Context__Group_6__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:759:1: rule__Context__Group_6__0 : rule__Context__Group_6__0__Impl rule__Context__Group_6__1 ;
     public final void rule__Context__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:730:1: ( rule__Context__Group_6__0__Impl rule__Context__Group_6__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:731:2: rule__Context__Group_6__0__Impl rule__Context__Group_6__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:763:1: ( rule__Context__Group_6__0__Impl rule__Context__Group_6__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:764:2: rule__Context__Group_6__0__Impl rule__Context__Group_6__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__0__Impl_in_rule__Context__Group_6__01413);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__0__Impl_in_rule__Context__Group_6__01477);
             rule__Context__Group_6__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__1_in_rule__Context__Group_6__01416);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__1_in_rule__Context__Group_6__01480);
             rule__Context__Group_6__1();
 
             state._fsp--;
@@ -1955,20 +2031,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_6__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:738:1: rule__Context__Group_6__0__Impl : ( 'constants' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:771:1: rule__Context__Group_6__0__Impl : ( 'constants' ) ;
     public final void rule__Context__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:742:1: ( ( 'constants' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:743:1: ( 'constants' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:775:1: ( ( 'constants' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:776:1: ( 'constants' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:743:1: ( 'constants' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:744:1: 'constants'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:776:1: ( 'constants' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:777:1: 'constants'
             {
              before(grammarAccess.getContextAccess().getConstantsKeyword_6_0()); 
-            match(input,15,FollowSets000.FOLLOW_15_in_rule__Context__Group_6__0__Impl1444); 
+            match(input,16,FollowSets000.FOLLOW_16_in_rule__Context__Group_6__0__Impl1508); 
              after(grammarAccess.getContextAccess().getConstantsKeyword_6_0()); 
 
             }
@@ -1992,21 +2068,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_6__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:757:1: rule__Context__Group_6__1 : rule__Context__Group_6__1__Impl rule__Context__Group_6__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:790:1: rule__Context__Group_6__1 : rule__Context__Group_6__1__Impl rule__Context__Group_6__2 ;
     public final void rule__Context__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:761:1: ( rule__Context__Group_6__1__Impl rule__Context__Group_6__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:762:2: rule__Context__Group_6__1__Impl rule__Context__Group_6__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:794:1: ( rule__Context__Group_6__1__Impl rule__Context__Group_6__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:795:2: rule__Context__Group_6__1__Impl rule__Context__Group_6__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__1__Impl_in_rule__Context__Group_6__11475);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__1__Impl_in_rule__Context__Group_6__11539);
             rule__Context__Group_6__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__2_in_rule__Context__Group_6__11478);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__2_in_rule__Context__Group_6__11542);
             rule__Context__Group_6__2();
 
             state._fsp--;
@@ -2030,23 +2106,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_6__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:769:1: rule__Context__Group_6__1__Impl : ( ( rule__Context__ConstantsAssignment_6_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:802:1: rule__Context__Group_6__1__Impl : ( ( rule__Context__ConstantsAssignment_6_1 ) ) ;
     public final void rule__Context__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:773:1: ( ( ( rule__Context__ConstantsAssignment_6_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:774:1: ( ( rule__Context__ConstantsAssignment_6_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:806:1: ( ( ( rule__Context__ConstantsAssignment_6_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:807:1: ( ( rule__Context__ConstantsAssignment_6_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:774:1: ( ( rule__Context__ConstantsAssignment_6_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:775:1: ( rule__Context__ConstantsAssignment_6_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:807:1: ( ( rule__Context__ConstantsAssignment_6_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:808:1: ( rule__Context__ConstantsAssignment_6_1 )
             {
              before(grammarAccess.getContextAccess().getConstantsAssignment_6_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:776:1: ( rule__Context__ConstantsAssignment_6_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:776:2: rule__Context__ConstantsAssignment_6_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:809:1: ( rule__Context__ConstantsAssignment_6_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:809:2: rule__Context__ConstantsAssignment_6_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__ConstantsAssignment_6_1_in_rule__Context__Group_6__1__Impl1505);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__ConstantsAssignment_6_1_in_rule__Context__Group_6__1__Impl1569);
             rule__Context__ConstantsAssignment_6_1();
 
             state._fsp--;
@@ -2077,16 +2153,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_6__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:786:1: rule__Context__Group_6__2 : rule__Context__Group_6__2__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:819:1: rule__Context__Group_6__2 : rule__Context__Group_6__2__Impl ;
     public final void rule__Context__Group_6__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:790:1: ( rule__Context__Group_6__2__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:791:2: rule__Context__Group_6__2__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:823:1: ( rule__Context__Group_6__2__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:824:2: rule__Context__Group_6__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__2__Impl_in_rule__Context__Group_6__21535);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_6__2__Impl_in_rule__Context__Group_6__21599);
             rule__Context__Group_6__2__Impl();
 
             state._fsp--;
@@ -2110,20 +2186,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_6__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:797:1: rule__Context__Group_6__2__Impl : ( ( rule__Context__ConstantsAssignment_6_2 )* ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:830:1: rule__Context__Group_6__2__Impl : ( ( rule__Context__ConstantsAssignment_6_2 )* ) ;
     public final void rule__Context__Group_6__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:801:1: ( ( ( rule__Context__ConstantsAssignment_6_2 )* ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:802:1: ( ( rule__Context__ConstantsAssignment_6_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:834:1: ( ( ( rule__Context__ConstantsAssignment_6_2 )* ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:835:1: ( ( rule__Context__ConstantsAssignment_6_2 )* )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:802:1: ( ( rule__Context__ConstantsAssignment_6_2 )* )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:803:1: ( rule__Context__ConstantsAssignment_6_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:835:1: ( ( rule__Context__ConstantsAssignment_6_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:836:1: ( rule__Context__ConstantsAssignment_6_2 )*
             {
              before(grammarAccess.getContextAccess().getConstantsAssignment_6_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:804:1: ( rule__Context__ConstantsAssignment_6_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:837:1: ( rule__Context__ConstantsAssignment_6_2 )*
             loop9:
             do {
                 int alt9=2;
@@ -2136,9 +2212,9 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
                 switch (alt9) {
             	case 1 :
-            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:804:2: rule__Context__ConstantsAssignment_6_2
+            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:837:2: rule__Context__ConstantsAssignment_6_2
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Context__ConstantsAssignment_6_2_in_rule__Context__Group_6__2__Impl1562);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Context__ConstantsAssignment_6_2_in_rule__Context__Group_6__2__Impl1626);
             	    rule__Context__ConstantsAssignment_6_2();
 
             	    state._fsp--;
@@ -2175,21 +2251,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_7__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:820:1: rule__Context__Group_7__0 : rule__Context__Group_7__0__Impl rule__Context__Group_7__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:853:1: rule__Context__Group_7__0 : rule__Context__Group_7__0__Impl rule__Context__Group_7__1 ;
     public final void rule__Context__Group_7__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:824:1: ( rule__Context__Group_7__0__Impl rule__Context__Group_7__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:825:2: rule__Context__Group_7__0__Impl rule__Context__Group_7__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:857:1: ( rule__Context__Group_7__0__Impl rule__Context__Group_7__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:858:2: rule__Context__Group_7__0__Impl rule__Context__Group_7__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__0__Impl_in_rule__Context__Group_7__01599);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__0__Impl_in_rule__Context__Group_7__01663);
             rule__Context__Group_7__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__1_in_rule__Context__Group_7__01602);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__1_in_rule__Context__Group_7__01666);
             rule__Context__Group_7__1();
 
             state._fsp--;
@@ -2213,20 +2289,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_7__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:832:1: rule__Context__Group_7__0__Impl : ( 'axioms' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:865:1: rule__Context__Group_7__0__Impl : ( 'axioms' ) ;
     public final void rule__Context__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:836:1: ( ( 'axioms' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:837:1: ( 'axioms' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:869:1: ( ( 'axioms' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:870:1: ( 'axioms' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:837:1: ( 'axioms' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:838:1: 'axioms'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:870:1: ( 'axioms' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:871:1: 'axioms'
             {
              before(grammarAccess.getContextAccess().getAxiomsKeyword_7_0()); 
-            match(input,16,FollowSets000.FOLLOW_16_in_rule__Context__Group_7__0__Impl1630); 
+            match(input,17,FollowSets000.FOLLOW_17_in_rule__Context__Group_7__0__Impl1694); 
              after(grammarAccess.getContextAccess().getAxiomsKeyword_7_0()); 
 
             }
@@ -2250,21 +2326,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_7__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:851:1: rule__Context__Group_7__1 : rule__Context__Group_7__1__Impl rule__Context__Group_7__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:884:1: rule__Context__Group_7__1 : rule__Context__Group_7__1__Impl rule__Context__Group_7__2 ;
     public final void rule__Context__Group_7__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:855:1: ( rule__Context__Group_7__1__Impl rule__Context__Group_7__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:856:2: rule__Context__Group_7__1__Impl rule__Context__Group_7__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:888:1: ( rule__Context__Group_7__1__Impl rule__Context__Group_7__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:889:2: rule__Context__Group_7__1__Impl rule__Context__Group_7__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__1__Impl_in_rule__Context__Group_7__11661);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__1__Impl_in_rule__Context__Group_7__11725);
             rule__Context__Group_7__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__2_in_rule__Context__Group_7__11664);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__2_in_rule__Context__Group_7__11728);
             rule__Context__Group_7__2();
 
             state._fsp--;
@@ -2288,23 +2364,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_7__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:863:1: rule__Context__Group_7__1__Impl : ( ( rule__Context__AxiomsAssignment_7_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:896:1: rule__Context__Group_7__1__Impl : ( ( rule__Context__AxiomsAssignment_7_1 ) ) ;
     public final void rule__Context__Group_7__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:867:1: ( ( ( rule__Context__AxiomsAssignment_7_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:868:1: ( ( rule__Context__AxiomsAssignment_7_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:900:1: ( ( ( rule__Context__AxiomsAssignment_7_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:901:1: ( ( rule__Context__AxiomsAssignment_7_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:868:1: ( ( rule__Context__AxiomsAssignment_7_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:869:1: ( rule__Context__AxiomsAssignment_7_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:901:1: ( ( rule__Context__AxiomsAssignment_7_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:902:1: ( rule__Context__AxiomsAssignment_7_1 )
             {
              before(grammarAccess.getContextAccess().getAxiomsAssignment_7_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:870:1: ( rule__Context__AxiomsAssignment_7_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:870:2: rule__Context__AxiomsAssignment_7_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:903:1: ( rule__Context__AxiomsAssignment_7_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:903:2: rule__Context__AxiomsAssignment_7_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__AxiomsAssignment_7_1_in_rule__Context__Group_7__1__Impl1691);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__AxiomsAssignment_7_1_in_rule__Context__Group_7__1__Impl1755);
             rule__Context__AxiomsAssignment_7_1();
 
             state._fsp--;
@@ -2335,16 +2411,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_7__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:880:1: rule__Context__Group_7__2 : rule__Context__Group_7__2__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:913:1: rule__Context__Group_7__2 : rule__Context__Group_7__2__Impl ;
     public final void rule__Context__Group_7__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:884:1: ( rule__Context__Group_7__2__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:885:2: rule__Context__Group_7__2__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:917:1: ( rule__Context__Group_7__2__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:918:2: rule__Context__Group_7__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__2__Impl_in_rule__Context__Group_7__21721);
+            pushFollow(FollowSets000.FOLLOW_rule__Context__Group_7__2__Impl_in_rule__Context__Group_7__21785);
             rule__Context__Group_7__2__Impl();
 
             state._fsp--;
@@ -2368,35 +2444,35 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__Group_7__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:891:1: rule__Context__Group_7__2__Impl : ( ( rule__Context__AxiomsAssignment_7_2 )* ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:924:1: rule__Context__Group_7__2__Impl : ( ( rule__Context__AxiomsAssignment_7_2 )* ) ;
     public final void rule__Context__Group_7__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:895:1: ( ( ( rule__Context__AxiomsAssignment_7_2 )* ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:896:1: ( ( rule__Context__AxiomsAssignment_7_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:928:1: ( ( ( rule__Context__AxiomsAssignment_7_2 )* ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:929:1: ( ( rule__Context__AxiomsAssignment_7_2 )* )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:896:1: ( ( rule__Context__AxiomsAssignment_7_2 )* )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:897:1: ( rule__Context__AxiomsAssignment_7_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:929:1: ( ( rule__Context__AxiomsAssignment_7_2 )* )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:930:1: ( rule__Context__AxiomsAssignment_7_2 )*
             {
              before(grammarAccess.getContextAccess().getAxiomsAssignment_7_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:898:1: ( rule__Context__AxiomsAssignment_7_2 )*
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:931:1: ( rule__Context__AxiomsAssignment_7_2 )*
             loop10:
             do {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( ((LA10_0>=18 && LA10_0<=19)) ) {
+                if ( (LA10_0==19) ) {
                     alt10=1;
                 }
 
 
                 switch (alt10) {
             	case 1 :
-            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:898:2: rule__Context__AxiomsAssignment_7_2
+            	    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:931:2: rule__Context__AxiomsAssignment_7_2
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Context__AxiomsAssignment_7_2_in_rule__Context__Group_7__2__Impl1748);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Context__AxiomsAssignment_7_2_in_rule__Context__Group_7__2__Impl1812);
             	    rule__Context__AxiomsAssignment_7_2();
 
             	    state._fsp--;
@@ -2433,21 +2509,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:914:1: rule__CarrierSet__Group__0 : rule__CarrierSet__Group__0__Impl rule__CarrierSet__Group__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:947:1: rule__CarrierSet__Group__0 : rule__CarrierSet__Group__0__Impl rule__CarrierSet__Group__1 ;
     public final void rule__CarrierSet__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:918:1: ( rule__CarrierSet__Group__0__Impl rule__CarrierSet__Group__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:919:2: rule__CarrierSet__Group__0__Impl rule__CarrierSet__Group__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:951:1: ( rule__CarrierSet__Group__0__Impl rule__CarrierSet__Group__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:952:2: rule__CarrierSet__Group__0__Impl rule__CarrierSet__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__0__Impl_in_rule__CarrierSet__Group__01785);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__0__Impl_in_rule__CarrierSet__Group__01849);
             rule__CarrierSet__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__1_in_rule__CarrierSet__Group__01788);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__1_in_rule__CarrierSet__Group__01852);
             rule__CarrierSet__Group__1();
 
             state._fsp--;
@@ -2471,21 +2547,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:926:1: rule__CarrierSet__Group__0__Impl : ( () ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:959:1: rule__CarrierSet__Group__0__Impl : ( () ) ;
     public final void rule__CarrierSet__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:930:1: ( ( () ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:931:1: ( () )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:963:1: ( ( () ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:964:1: ( () )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:931:1: ( () )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:932:1: ()
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:964:1: ( () )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:965:1: ()
             {
              before(grammarAccess.getCarrierSetAccess().getCarrierSetAction_0()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:933:1: ()
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:935:1: 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:966:1: ()
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:968:1: 
             {
             }
 
@@ -2508,21 +2584,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:945:1: rule__CarrierSet__Group__1 : rule__CarrierSet__Group__1__Impl rule__CarrierSet__Group__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:978:1: rule__CarrierSet__Group__1 : rule__CarrierSet__Group__1__Impl rule__CarrierSet__Group__2 ;
     public final void rule__CarrierSet__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:949:1: ( rule__CarrierSet__Group__1__Impl rule__CarrierSet__Group__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:950:2: rule__CarrierSet__Group__1__Impl rule__CarrierSet__Group__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:982:1: ( rule__CarrierSet__Group__1__Impl rule__CarrierSet__Group__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:983:2: rule__CarrierSet__Group__1__Impl rule__CarrierSet__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__1__Impl_in_rule__CarrierSet__Group__11846);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__1__Impl_in_rule__CarrierSet__Group__11910);
             rule__CarrierSet__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__2_in_rule__CarrierSet__Group__11849);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__2_in_rule__CarrierSet__Group__11913);
             rule__CarrierSet__Group__2();
 
             state._fsp--;
@@ -2546,23 +2622,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:957:1: rule__CarrierSet__Group__1__Impl : ( ( rule__CarrierSet__NameAssignment_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:990:1: rule__CarrierSet__Group__1__Impl : ( ( rule__CarrierSet__NameAssignment_1 ) ) ;
     public final void rule__CarrierSet__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:961:1: ( ( ( rule__CarrierSet__NameAssignment_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:962:1: ( ( rule__CarrierSet__NameAssignment_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:994:1: ( ( ( rule__CarrierSet__NameAssignment_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:995:1: ( ( rule__CarrierSet__NameAssignment_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:962:1: ( ( rule__CarrierSet__NameAssignment_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:963:1: ( rule__CarrierSet__NameAssignment_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:995:1: ( ( rule__CarrierSet__NameAssignment_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:996:1: ( rule__CarrierSet__NameAssignment_1 )
             {
              before(grammarAccess.getCarrierSetAccess().getNameAssignment_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:964:1: ( rule__CarrierSet__NameAssignment_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:964:2: rule__CarrierSet__NameAssignment_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:997:1: ( rule__CarrierSet__NameAssignment_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:997:2: rule__CarrierSet__NameAssignment_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__NameAssignment_1_in_rule__CarrierSet__Group__1__Impl1876);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__NameAssignment_1_in_rule__CarrierSet__Group__1__Impl1940);
             rule__CarrierSet__NameAssignment_1();
 
             state._fsp--;
@@ -2593,16 +2669,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:974:1: rule__CarrierSet__Group__2 : rule__CarrierSet__Group__2__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1007:1: rule__CarrierSet__Group__2 : rule__CarrierSet__Group__2__Impl ;
     public final void rule__CarrierSet__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:978:1: ( rule__CarrierSet__Group__2__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:979:2: rule__CarrierSet__Group__2__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1011:1: ( rule__CarrierSet__Group__2__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1012:2: rule__CarrierSet__Group__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__2__Impl_in_rule__CarrierSet__Group__21906);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group__2__Impl_in_rule__CarrierSet__Group__21970);
             rule__CarrierSet__Group__2__Impl();
 
             state._fsp--;
@@ -2626,31 +2702,31 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:985:1: rule__CarrierSet__Group__2__Impl : ( ( rule__CarrierSet__Group_2__0 )? ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1018:1: rule__CarrierSet__Group__2__Impl : ( ( rule__CarrierSet__Group_2__0 )? ) ;
     public final void rule__CarrierSet__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:989:1: ( ( ( rule__CarrierSet__Group_2__0 )? ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:990:1: ( ( rule__CarrierSet__Group_2__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1022:1: ( ( ( rule__CarrierSet__Group_2__0 )? ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1023:1: ( ( rule__CarrierSet__Group_2__0 )? )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:990:1: ( ( rule__CarrierSet__Group_2__0 )? )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:991:1: ( rule__CarrierSet__Group_2__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1023:1: ( ( rule__CarrierSet__Group_2__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1024:1: ( rule__CarrierSet__Group_2__0 )?
             {
              before(grammarAccess.getCarrierSetAccess().getGroup_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:992:1: ( rule__CarrierSet__Group_2__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1025:1: ( rule__CarrierSet__Group_2__0 )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==17) ) {
+            if ( (LA11_0==18) ) {
                 alt11=1;
             }
             switch (alt11) {
                 case 1 :
-                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:992:2: rule__CarrierSet__Group_2__0
+                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1025:2: rule__CarrierSet__Group_2__0
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__0_in_rule__CarrierSet__Group__2__Impl1933);
+                    pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__0_in_rule__CarrierSet__Group__2__Impl1997);
                     rule__CarrierSet__Group_2__0();
 
                     state._fsp--;
@@ -2684,21 +2760,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group_2__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1008:1: rule__CarrierSet__Group_2__0 : rule__CarrierSet__Group_2__0__Impl rule__CarrierSet__Group_2__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1041:1: rule__CarrierSet__Group_2__0 : rule__CarrierSet__Group_2__0__Impl rule__CarrierSet__Group_2__1 ;
     public final void rule__CarrierSet__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1012:1: ( rule__CarrierSet__Group_2__0__Impl rule__CarrierSet__Group_2__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1013:2: rule__CarrierSet__Group_2__0__Impl rule__CarrierSet__Group_2__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1045:1: ( rule__CarrierSet__Group_2__0__Impl rule__CarrierSet__Group_2__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1046:2: rule__CarrierSet__Group_2__0__Impl rule__CarrierSet__Group_2__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__0__Impl_in_rule__CarrierSet__Group_2__01970);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__0__Impl_in_rule__CarrierSet__Group_2__02034);
             rule__CarrierSet__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__1_in_rule__CarrierSet__Group_2__01973);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__1_in_rule__CarrierSet__Group_2__02037);
             rule__CarrierSet__Group_2__1();
 
             state._fsp--;
@@ -2722,20 +2798,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group_2__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1020:1: rule__CarrierSet__Group_2__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1053:1: rule__CarrierSet__Group_2__0__Impl : ( '//' ) ;
     public final void rule__CarrierSet__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1024:1: ( ( '//' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1025:1: ( '//' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1057:1: ( ( '//' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1058:1: ( '//' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1025:1: ( '//' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1026:1: '//'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1058:1: ( '//' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1059:1: '//'
             {
              before(grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0()); 
-            match(input,17,FollowSets000.FOLLOW_17_in_rule__CarrierSet__Group_2__0__Impl2001); 
+            match(input,18,FollowSets000.FOLLOW_18_in_rule__CarrierSet__Group_2__0__Impl2065); 
              after(grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0()); 
 
             }
@@ -2759,16 +2835,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group_2__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1039:1: rule__CarrierSet__Group_2__1 : rule__CarrierSet__Group_2__1__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1072:1: rule__CarrierSet__Group_2__1 : rule__CarrierSet__Group_2__1__Impl ;
     public final void rule__CarrierSet__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1043:1: ( rule__CarrierSet__Group_2__1__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1044:2: rule__CarrierSet__Group_2__1__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1076:1: ( rule__CarrierSet__Group_2__1__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1077:2: rule__CarrierSet__Group_2__1__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__1__Impl_in_rule__CarrierSet__Group_2__12032);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__Group_2__1__Impl_in_rule__CarrierSet__Group_2__12096);
             rule__CarrierSet__Group_2__1__Impl();
 
             state._fsp--;
@@ -2792,23 +2868,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group_2__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1050:1: rule__CarrierSet__Group_2__1__Impl : ( ( rule__CarrierSet__CommentAssignment_2_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1083:1: rule__CarrierSet__Group_2__1__Impl : ( ( rule__CarrierSet__CommentAssignment_2_1 ) ) ;
     public final void rule__CarrierSet__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1054:1: ( ( ( rule__CarrierSet__CommentAssignment_2_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1055:1: ( ( rule__CarrierSet__CommentAssignment_2_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1087:1: ( ( ( rule__CarrierSet__CommentAssignment_2_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1088:1: ( ( rule__CarrierSet__CommentAssignment_2_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1055:1: ( ( rule__CarrierSet__CommentAssignment_2_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1056:1: ( rule__CarrierSet__CommentAssignment_2_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1088:1: ( ( rule__CarrierSet__CommentAssignment_2_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1089:1: ( rule__CarrierSet__CommentAssignment_2_1 )
             {
              before(grammarAccess.getCarrierSetAccess().getCommentAssignment_2_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1057:1: ( rule__CarrierSet__CommentAssignment_2_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1057:2: rule__CarrierSet__CommentAssignment_2_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1090:1: ( rule__CarrierSet__CommentAssignment_2_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1090:2: rule__CarrierSet__CommentAssignment_2_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__CommentAssignment_2_1_in_rule__CarrierSet__Group_2__1__Impl2059);
+            pushFollow(FollowSets000.FOLLOW_rule__CarrierSet__CommentAssignment_2_1_in_rule__CarrierSet__Group_2__1__Impl2123);
             rule__CarrierSet__CommentAssignment_2_1();
 
             state._fsp--;
@@ -2839,21 +2915,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1071:1: rule__Constant__Group__0 : rule__Constant__Group__0__Impl rule__Constant__Group__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1104:1: rule__Constant__Group__0 : rule__Constant__Group__0__Impl rule__Constant__Group__1 ;
     public final void rule__Constant__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1075:1: ( rule__Constant__Group__0__Impl rule__Constant__Group__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1076:2: rule__Constant__Group__0__Impl rule__Constant__Group__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1108:1: ( rule__Constant__Group__0__Impl rule__Constant__Group__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1109:2: rule__Constant__Group__0__Impl rule__Constant__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__02093);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__02157);
             rule__Constant__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__1_in_rule__Constant__Group__02096);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__1_in_rule__Constant__Group__02160);
             rule__Constant__Group__1();
 
             state._fsp--;
@@ -2877,21 +2953,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1083:1: rule__Constant__Group__0__Impl : ( () ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1116:1: rule__Constant__Group__0__Impl : ( () ) ;
     public final void rule__Constant__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1087:1: ( ( () ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1088:1: ( () )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1120:1: ( ( () ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1121:1: ( () )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1088:1: ( () )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1089:1: ()
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1121:1: ( () )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1122:1: ()
             {
              before(grammarAccess.getConstantAccess().getConstantAction_0()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1090:1: ()
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1092:1: 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1123:1: ()
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1125:1: 
             {
             }
 
@@ -2914,21 +2990,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1102:1: rule__Constant__Group__1 : rule__Constant__Group__1__Impl rule__Constant__Group__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1135:1: rule__Constant__Group__1 : rule__Constant__Group__1__Impl rule__Constant__Group__2 ;
     public final void rule__Constant__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1106:1: ( rule__Constant__Group__1__Impl rule__Constant__Group__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1107:2: rule__Constant__Group__1__Impl rule__Constant__Group__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1139:1: ( rule__Constant__Group__1__Impl rule__Constant__Group__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1140:2: rule__Constant__Group__1__Impl rule__Constant__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__1__Impl_in_rule__Constant__Group__12154);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__1__Impl_in_rule__Constant__Group__12218);
             rule__Constant__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__2_in_rule__Constant__Group__12157);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__2_in_rule__Constant__Group__12221);
             rule__Constant__Group__2();
 
             state._fsp--;
@@ -2952,23 +3028,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1114:1: rule__Constant__Group__1__Impl : ( ( rule__Constant__NameAssignment_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1147:1: rule__Constant__Group__1__Impl : ( ( rule__Constant__NameAssignment_1 ) ) ;
     public final void rule__Constant__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1118:1: ( ( ( rule__Constant__NameAssignment_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1119:1: ( ( rule__Constant__NameAssignment_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1151:1: ( ( ( rule__Constant__NameAssignment_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1152:1: ( ( rule__Constant__NameAssignment_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1119:1: ( ( rule__Constant__NameAssignment_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1120:1: ( rule__Constant__NameAssignment_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1152:1: ( ( rule__Constant__NameAssignment_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1153:1: ( rule__Constant__NameAssignment_1 )
             {
              before(grammarAccess.getConstantAccess().getNameAssignment_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1121:1: ( rule__Constant__NameAssignment_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1121:2: rule__Constant__NameAssignment_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1154:1: ( rule__Constant__NameAssignment_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1154:2: rule__Constant__NameAssignment_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__NameAssignment_1_in_rule__Constant__Group__1__Impl2184);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__NameAssignment_1_in_rule__Constant__Group__1__Impl2248);
             rule__Constant__NameAssignment_1();
 
             state._fsp--;
@@ -2999,16 +3075,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1131:1: rule__Constant__Group__2 : rule__Constant__Group__2__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1164:1: rule__Constant__Group__2 : rule__Constant__Group__2__Impl ;
     public final void rule__Constant__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1135:1: ( rule__Constant__Group__2__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1136:2: rule__Constant__Group__2__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1168:1: ( rule__Constant__Group__2__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1169:2: rule__Constant__Group__2__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__2__Impl_in_rule__Constant__Group__22214);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group__2__Impl_in_rule__Constant__Group__22278);
             rule__Constant__Group__2__Impl();
 
             state._fsp--;
@@ -3032,31 +3108,31 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1142:1: rule__Constant__Group__2__Impl : ( ( rule__Constant__Group_2__0 )? ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1175:1: rule__Constant__Group__2__Impl : ( ( rule__Constant__Group_2__0 )? ) ;
     public final void rule__Constant__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1146:1: ( ( ( rule__Constant__Group_2__0 )? ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1147:1: ( ( rule__Constant__Group_2__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1179:1: ( ( ( rule__Constant__Group_2__0 )? ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1180:1: ( ( rule__Constant__Group_2__0 )? )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1147:1: ( ( rule__Constant__Group_2__0 )? )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1148:1: ( rule__Constant__Group_2__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1180:1: ( ( rule__Constant__Group_2__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1181:1: ( rule__Constant__Group_2__0 )?
             {
              before(grammarAccess.getConstantAccess().getGroup_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1149:1: ( rule__Constant__Group_2__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1182:1: ( rule__Constant__Group_2__0 )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==17) ) {
+            if ( (LA12_0==18) ) {
                 alt12=1;
             }
             switch (alt12) {
                 case 1 :
-                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1149:2: rule__Constant__Group_2__0
+                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1182:2: rule__Constant__Group_2__0
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__0_in_rule__Constant__Group__2__Impl2241);
+                    pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__0_in_rule__Constant__Group__2__Impl2305);
                     rule__Constant__Group_2__0();
 
                     state._fsp--;
@@ -3090,21 +3166,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group_2__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1165:1: rule__Constant__Group_2__0 : rule__Constant__Group_2__0__Impl rule__Constant__Group_2__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1198:1: rule__Constant__Group_2__0 : rule__Constant__Group_2__0__Impl rule__Constant__Group_2__1 ;
     public final void rule__Constant__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1169:1: ( rule__Constant__Group_2__0__Impl rule__Constant__Group_2__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1170:2: rule__Constant__Group_2__0__Impl rule__Constant__Group_2__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1202:1: ( rule__Constant__Group_2__0__Impl rule__Constant__Group_2__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1203:2: rule__Constant__Group_2__0__Impl rule__Constant__Group_2__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__0__Impl_in_rule__Constant__Group_2__02278);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__0__Impl_in_rule__Constant__Group_2__02342);
             rule__Constant__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__1_in_rule__Constant__Group_2__02281);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__1_in_rule__Constant__Group_2__02345);
             rule__Constant__Group_2__1();
 
             state._fsp--;
@@ -3128,20 +3204,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group_2__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1177:1: rule__Constant__Group_2__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1210:1: rule__Constant__Group_2__0__Impl : ( '//' ) ;
     public final void rule__Constant__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1181:1: ( ( '//' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1182:1: ( '//' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1214:1: ( ( '//' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1215:1: ( '//' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1182:1: ( '//' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1183:1: '//'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1215:1: ( '//' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1216:1: '//'
             {
              before(grammarAccess.getConstantAccess().getSolidusSolidusKeyword_2_0()); 
-            match(input,17,FollowSets000.FOLLOW_17_in_rule__Constant__Group_2__0__Impl2309); 
+            match(input,18,FollowSets000.FOLLOW_18_in_rule__Constant__Group_2__0__Impl2373); 
              after(grammarAccess.getConstantAccess().getSolidusSolidusKeyword_2_0()); 
 
             }
@@ -3165,16 +3241,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group_2__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1196:1: rule__Constant__Group_2__1 : rule__Constant__Group_2__1__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1229:1: rule__Constant__Group_2__1 : rule__Constant__Group_2__1__Impl ;
     public final void rule__Constant__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1200:1: ( rule__Constant__Group_2__1__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1201:2: rule__Constant__Group_2__1__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1233:1: ( rule__Constant__Group_2__1__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1234:2: rule__Constant__Group_2__1__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__1__Impl_in_rule__Constant__Group_2__12340);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__Group_2__1__Impl_in_rule__Constant__Group_2__12404);
             rule__Constant__Group_2__1__Impl();
 
             state._fsp--;
@@ -3198,23 +3274,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group_2__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1207:1: rule__Constant__Group_2__1__Impl : ( ( rule__Constant__CommentAssignment_2_1 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1240:1: rule__Constant__Group_2__1__Impl : ( ( rule__Constant__CommentAssignment_2_1 ) ) ;
     public final void rule__Constant__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1211:1: ( ( ( rule__Constant__CommentAssignment_2_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1212:1: ( ( rule__Constant__CommentAssignment_2_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1244:1: ( ( ( rule__Constant__CommentAssignment_2_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1245:1: ( ( rule__Constant__CommentAssignment_2_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1212:1: ( ( rule__Constant__CommentAssignment_2_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1213:1: ( rule__Constant__CommentAssignment_2_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1245:1: ( ( rule__Constant__CommentAssignment_2_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1246:1: ( rule__Constant__CommentAssignment_2_1 )
             {
              before(grammarAccess.getConstantAccess().getCommentAssignment_2_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1214:1: ( rule__Constant__CommentAssignment_2_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1214:2: rule__Constant__CommentAssignment_2_1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1247:1: ( rule__Constant__CommentAssignment_2_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1247:2: rule__Constant__CommentAssignment_2_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Constant__CommentAssignment_2_1_in_rule__Constant__Group_2__1__Impl2367);
+            pushFollow(FollowSets000.FOLLOW_rule__Constant__CommentAssignment_2_1_in_rule__Constant__Group_2__1__Impl2431);
             rule__Constant__CommentAssignment_2_1();
 
             state._fsp--;
@@ -3245,21 +3321,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1228:1: rule__Axiom__Group__0 : rule__Axiom__Group__0__Impl rule__Axiom__Group__1 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1261:1: rule__Axiom__Group__0 : rule__Axiom__Group__0__Impl rule__Axiom__Group__1 ;
     public final void rule__Axiom__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1232:1: ( rule__Axiom__Group__0__Impl rule__Axiom__Group__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1233:2: rule__Axiom__Group__0__Impl rule__Axiom__Group__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1265:1: ( rule__Axiom__Group__0__Impl rule__Axiom__Group__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1266:2: rule__Axiom__Group__0__Impl rule__Axiom__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__0__Impl_in_rule__Axiom__Group__02401);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__0__Impl_in_rule__Axiom__Group__02465);
             rule__Axiom__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__1_in_rule__Axiom__Group__02404);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__1_in_rule__Axiom__Group__02468);
             rule__Axiom__Group__1();
 
             state._fsp--;
@@ -3283,42 +3359,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1240:1: rule__Axiom__Group__0__Impl : ( ( rule__Axiom__TheoremAssignment_0 )? ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1273:1: rule__Axiom__Group__0__Impl : ( '@' ) ;
     public final void rule__Axiom__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1244:1: ( ( ( rule__Axiom__TheoremAssignment_0 )? ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1245:1: ( ( rule__Axiom__TheoremAssignment_0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1277:1: ( ( '@' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1278:1: ( '@' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1245:1: ( ( rule__Axiom__TheoremAssignment_0 )? )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1246:1: ( rule__Axiom__TheoremAssignment_0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1278:1: ( '@' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1279:1: '@'
             {
-             before(grammarAccess.getAxiomAccess().getTheoremAssignment_0()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1247:1: ( rule__Axiom__TheoremAssignment_0 )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
-
-            if ( (LA13_0==19) ) {
-                alt13=1;
-            }
-            switch (alt13) {
-                case 1 :
-                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1247:2: rule__Axiom__TheoremAssignment_0
-                    {
-                    pushFollow(FollowSets000.FOLLOW_rule__Axiom__TheoremAssignment_0_in_rule__Axiom__Group__0__Impl2431);
-                    rule__Axiom__TheoremAssignment_0();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getAxiomAccess().getTheoremAssignment_0()); 
+             before(grammarAccess.getAxiomAccess().getCommercialAtKeyword_0()); 
+            match(input,19,FollowSets000.FOLLOW_19_in_rule__Axiom__Group__0__Impl2496); 
+             after(grammarAccess.getAxiomAccess().getCommercialAtKeyword_0()); 
 
             }
 
@@ -3341,21 +3396,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1257:1: rule__Axiom__Group__1 : rule__Axiom__Group__1__Impl rule__Axiom__Group__2 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1292:1: rule__Axiom__Group__1 : rule__Axiom__Group__1__Impl rule__Axiom__Group__2 ;
     public final void rule__Axiom__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1261:1: ( rule__Axiom__Group__1__Impl rule__Axiom__Group__2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1262:2: rule__Axiom__Group__1__Impl rule__Axiom__Group__2
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1296:1: ( rule__Axiom__Group__1__Impl rule__Axiom__Group__2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1297:2: rule__Axiom__Group__1__Impl rule__Axiom__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__1__Impl_in_rule__Axiom__Group__12462);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__1__Impl_in_rule__Axiom__Group__12527);
             rule__Axiom__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__2_in_rule__Axiom__Group__12465);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__2_in_rule__Axiom__Group__12530);
             rule__Axiom__Group__2();
 
             state._fsp--;
@@ -3379,21 +3434,31 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1269:1: rule__Axiom__Group__1__Impl : ( '@' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1304:1: rule__Axiom__Group__1__Impl : ( ( rule__Axiom__NameAssignment_1 ) ) ;
     public final void rule__Axiom__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1273:1: ( ( '@' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1274:1: ( '@' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1308:1: ( ( ( rule__Axiom__NameAssignment_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1309:1: ( ( rule__Axiom__NameAssignment_1 ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1274:1: ( '@' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1275:1: '@'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1309:1: ( ( rule__Axiom__NameAssignment_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1310:1: ( rule__Axiom__NameAssignment_1 )
             {
-             before(grammarAccess.getAxiomAccess().getCommercialAtKeyword_1()); 
-            match(input,18,FollowSets000.FOLLOW_18_in_rule__Axiom__Group__1__Impl2493); 
-             after(grammarAccess.getAxiomAccess().getCommercialAtKeyword_1()); 
+             before(grammarAccess.getAxiomAccess().getNameAssignment_1()); 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1311:1: ( rule__Axiom__NameAssignment_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1311:2: rule__Axiom__NameAssignment_1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__NameAssignment_1_in_rule__Axiom__Group__1__Impl2557);
+            rule__Axiom__NameAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getAxiomAccess().getNameAssignment_1()); 
 
             }
 
@@ -3416,21 +3481,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1288:1: rule__Axiom__Group__2 : rule__Axiom__Group__2__Impl rule__Axiom__Group__3 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1321:1: rule__Axiom__Group__2 : rule__Axiom__Group__2__Impl rule__Axiom__Group__3 ;
     public final void rule__Axiom__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1292:1: ( rule__Axiom__Group__2__Impl rule__Axiom__Group__3 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1293:2: rule__Axiom__Group__2__Impl rule__Axiom__Group__3
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1325:1: ( rule__Axiom__Group__2__Impl rule__Axiom__Group__3 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1326:2: rule__Axiom__Group__2__Impl rule__Axiom__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__2__Impl_in_rule__Axiom__Group__22524);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__2__Impl_in_rule__Axiom__Group__22587);
             rule__Axiom__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__3_in_rule__Axiom__Group__22527);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__3_in_rule__Axiom__Group__22590);
             rule__Axiom__Group__3();
 
             state._fsp--;
@@ -3454,31 +3519,42 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__2__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1300:1: rule__Axiom__Group__2__Impl : ( ( rule__Axiom__NameAssignment_2 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1333:1: rule__Axiom__Group__2__Impl : ( ( rule__Axiom__PredicateAssignment_2 )? ) ;
     public final void rule__Axiom__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1304:1: ( ( ( rule__Axiom__NameAssignment_2 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1305:1: ( ( rule__Axiom__NameAssignment_2 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1337:1: ( ( ( rule__Axiom__PredicateAssignment_2 )? ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1338:1: ( ( rule__Axiom__PredicateAssignment_2 )? )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1305:1: ( ( rule__Axiom__NameAssignment_2 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1306:1: ( rule__Axiom__NameAssignment_2 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1338:1: ( ( rule__Axiom__PredicateAssignment_2 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1339:1: ( rule__Axiom__PredicateAssignment_2 )?
             {
-             before(grammarAccess.getAxiomAccess().getNameAssignment_2()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1307:1: ( rule__Axiom__NameAssignment_2 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1307:2: rule__Axiom__NameAssignment_2
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__NameAssignment_2_in_rule__Axiom__Group__2__Impl2554);
-            rule__Axiom__NameAssignment_2();
+             before(grammarAccess.getAxiomAccess().getPredicateAssignment_2()); 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1340:1: ( rule__Axiom__PredicateAssignment_2 )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            state._fsp--;
+            if ( ((LA13_0>=RULE_STRING && LA13_0<=RULE_ID)) ) {
+                alt13=1;
+            }
+            switch (alt13) {
+                case 1 :
+                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1340:2: rule__Axiom__PredicateAssignment_2
+                    {
+                    pushFollow(FollowSets000.FOLLOW_rule__Axiom__PredicateAssignment_2_in_rule__Axiom__Group__2__Impl2617);
+                    rule__Axiom__PredicateAssignment_2();
 
+                    state._fsp--;
+
+
+                    }
+                    break;
 
             }
 
-             after(grammarAccess.getAxiomAccess().getNameAssignment_2()); 
+             after(grammarAccess.getAxiomAccess().getPredicateAssignment_2()); 
 
             }
 
@@ -3501,21 +3577,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__3"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1317:1: rule__Axiom__Group__3 : rule__Axiom__Group__3__Impl rule__Axiom__Group__4 ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1350:1: rule__Axiom__Group__3 : rule__Axiom__Group__3__Impl rule__Axiom__Group__4 ;
     public final void rule__Axiom__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1321:1: ( rule__Axiom__Group__3__Impl rule__Axiom__Group__4 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1322:2: rule__Axiom__Group__3__Impl rule__Axiom__Group__4
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1354:1: ( rule__Axiom__Group__3__Impl rule__Axiom__Group__4 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1355:2: rule__Axiom__Group__3__Impl rule__Axiom__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__3__Impl_in_rule__Axiom__Group__32584);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__3__Impl_in_rule__Axiom__Group__32648);
             rule__Axiom__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__4_in_rule__Axiom__Group__32587);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__4_in_rule__Axiom__Group__32651);
             rule__Axiom__Group__4();
 
             state._fsp--;
@@ -3539,32 +3615,32 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__3__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1329:1: rule__Axiom__Group__3__Impl : ( ( rule__Axiom__Group_3__0 )? ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1362:1: rule__Axiom__Group__3__Impl : ( ( rule__Axiom__TheoremAssignment_3 )? ) ;
     public final void rule__Axiom__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1333:1: ( ( ( rule__Axiom__Group_3__0 )? ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1334:1: ( ( rule__Axiom__Group_3__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1366:1: ( ( ( rule__Axiom__TheoremAssignment_3 )? ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1367:1: ( ( rule__Axiom__TheoremAssignment_3 )? )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1334:1: ( ( rule__Axiom__Group_3__0 )? )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1335:1: ( rule__Axiom__Group_3__0 )?
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1367:1: ( ( rule__Axiom__TheoremAssignment_3 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1368:1: ( rule__Axiom__TheoremAssignment_3 )?
             {
-             before(grammarAccess.getAxiomAccess().getGroup_3()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1336:1: ( rule__Axiom__Group_3__0 )?
+             before(grammarAccess.getAxiomAccess().getTheoremAssignment_3()); 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1369:1: ( rule__Axiom__TheoremAssignment_3 )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==17) ) {
+            if ( (LA14_0==20) ) {
                 alt14=1;
             }
             switch (alt14) {
                 case 1 :
-                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1336:2: rule__Axiom__Group_3__0
+                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1369:2: rule__Axiom__TheoremAssignment_3
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_3__0_in_rule__Axiom__Group__3__Impl2614);
-                    rule__Axiom__Group_3__0();
+                    pushFollow(FollowSets000.FOLLOW_rule__Axiom__TheoremAssignment_3_in_rule__Axiom__Group__3__Impl2678);
+                    rule__Axiom__TheoremAssignment_3();
 
                     state._fsp--;
 
@@ -3574,7 +3650,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
             }
 
-             after(grammarAccess.getAxiomAccess().getGroup_3()); 
+             after(grammarAccess.getAxiomAccess().getTheoremAssignment_3()); 
 
             }
 
@@ -3597,16 +3673,16 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__4"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1346:1: rule__Axiom__Group__4 : rule__Axiom__Group__4__Impl ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1379:1: rule__Axiom__Group__4 : rule__Axiom__Group__4__Impl ;
     public final void rule__Axiom__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1350:1: ( rule__Axiom__Group__4__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1351:2: rule__Axiom__Group__4__Impl
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1383:1: ( rule__Axiom__Group__4__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1384:2: rule__Axiom__Group__4__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__4__Impl_in_rule__Axiom__Group__42645);
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group__4__Impl_in_rule__Axiom__Group__42709);
             rule__Axiom__Group__4__Impl();
 
             state._fsp--;
@@ -3630,31 +3706,42 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Axiom__Group__4__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1357:1: rule__Axiom__Group__4__Impl : ( ( rule__Axiom__PredicateAssignment_4 ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1390:1: rule__Axiom__Group__4__Impl : ( ( rule__Axiom__Group_4__0 )? ) ;
     public final void rule__Axiom__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1361:1: ( ( ( rule__Axiom__PredicateAssignment_4 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1362:1: ( ( rule__Axiom__PredicateAssignment_4 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1394:1: ( ( ( rule__Axiom__Group_4__0 )? ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1395:1: ( ( rule__Axiom__Group_4__0 )? )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1362:1: ( ( rule__Axiom__PredicateAssignment_4 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1363:1: ( rule__Axiom__PredicateAssignment_4 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1395:1: ( ( rule__Axiom__Group_4__0 )? )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1396:1: ( rule__Axiom__Group_4__0 )?
             {
-             before(grammarAccess.getAxiomAccess().getPredicateAssignment_4()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1364:1: ( rule__Axiom__PredicateAssignment_4 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1364:2: rule__Axiom__PredicateAssignment_4
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__PredicateAssignment_4_in_rule__Axiom__Group__4__Impl2672);
-            rule__Axiom__PredicateAssignment_4();
+             before(grammarAccess.getAxiomAccess().getGroup_4()); 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1397:1: ( rule__Axiom__Group_4__0 )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            state._fsp--;
+            if ( (LA15_0==18) ) {
+                alt15=1;
+            }
+            switch (alt15) {
+                case 1 :
+                    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1397:2: rule__Axiom__Group_4__0
+                    {
+                    pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_4__0_in_rule__Axiom__Group__4__Impl2736);
+                    rule__Axiom__Group_4__0();
 
+                    state._fsp--;
+
+
+                    }
+                    break;
 
             }
 
-             after(grammarAccess.getAxiomAccess().getPredicateAssignment_4()); 
+             after(grammarAccess.getAxiomAccess().getGroup_4()); 
 
             }
 
@@ -3676,93 +3763,23 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Axiom__Group__4__Impl"
 
 
-    // $ANTLR start "rule__Axiom__Group_3__0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1384:1: rule__Axiom__Group_3__0 : rule__Axiom__Group_3__0__Impl rule__Axiom__Group_3__1 ;
-    public final void rule__Axiom__Group_3__0() throws RecognitionException {
+    // $ANTLR start "rule__Axiom__Group_4__0"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1417:1: rule__Axiom__Group_4__0 : rule__Axiom__Group_4__0__Impl rule__Axiom__Group_4__1 ;
+    public final void rule__Axiom__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1388:1: ( rule__Axiom__Group_3__0__Impl rule__Axiom__Group_3__1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1389:2: rule__Axiom__Group_3__0__Impl rule__Axiom__Group_3__1
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1421:1: ( rule__Axiom__Group_4__0__Impl rule__Axiom__Group_4__1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1422:2: rule__Axiom__Group_4__0__Impl rule__Axiom__Group_4__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_3__0__Impl_in_rule__Axiom__Group_3__02712);
-            rule__Axiom__Group_3__0__Impl();
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_4__0__Impl_in_rule__Axiom__Group_4__02777);
+            rule__Axiom__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_3__1_in_rule__Axiom__Group_3__02715);
-            rule__Axiom__Group_3__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Axiom__Group_3__0"
-
-
-    // $ANTLR start "rule__Axiom__Group_3__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1396:1: rule__Axiom__Group_3__0__Impl : ( '//' ) ;
-    public final void rule__Axiom__Group_3__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1400:1: ( ( '//' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1401:1: ( '//' )
-            {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1401:1: ( '//' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1402:1: '//'
-            {
-             before(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_3_0()); 
-            match(input,17,FollowSets000.FOLLOW_17_in_rule__Axiom__Group_3__0__Impl2743); 
-             after(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_3_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Axiom__Group_3__0__Impl"
-
-
-    // $ANTLR start "rule__Axiom__Group_3__1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1415:1: rule__Axiom__Group_3__1 : rule__Axiom__Group_3__1__Impl ;
-    public final void rule__Axiom__Group_3__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1419:1: ( rule__Axiom__Group_3__1__Impl )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1420:2: rule__Axiom__Group_3__1__Impl
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_3__1__Impl_in_rule__Axiom__Group_3__12774);
-            rule__Axiom__Group_3__1__Impl();
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_4__1_in_rule__Axiom__Group_4__02780);
+            rule__Axiom__Group_4__1();
 
             state._fsp--;
 
@@ -3781,35 +3798,25 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Axiom__Group_3__1"
+    // $ANTLR end "rule__Axiom__Group_4__0"
 
 
-    // $ANTLR start "rule__Axiom__Group_3__1__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1426:1: rule__Axiom__Group_3__1__Impl : ( ( rule__Axiom__CommentAssignment_3_1 ) ) ;
-    public final void rule__Axiom__Group_3__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Axiom__Group_4__0__Impl"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1429:1: rule__Axiom__Group_4__0__Impl : ( '//' ) ;
+    public final void rule__Axiom__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1430:1: ( ( ( rule__Axiom__CommentAssignment_3_1 ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1431:1: ( ( rule__Axiom__CommentAssignment_3_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1433:1: ( ( '//' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1434:1: ( '//' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1431:1: ( ( rule__Axiom__CommentAssignment_3_1 ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1432:1: ( rule__Axiom__CommentAssignment_3_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1434:1: ( '//' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1435:1: '//'
             {
-             before(grammarAccess.getAxiomAccess().getCommentAssignment_3_1()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1433:1: ( rule__Axiom__CommentAssignment_3_1 )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1433:2: rule__Axiom__CommentAssignment_3_1
-            {
-            pushFollow(FollowSets000.FOLLOW_rule__Axiom__CommentAssignment_3_1_in_rule__Axiom__Group_3__1__Impl2801);
-            rule__Axiom__CommentAssignment_3_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getAxiomAccess().getCommentAssignment_3_1()); 
+             before(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0()); 
+            match(input,18,FollowSets000.FOLLOW_18_in_rule__Axiom__Group_4__0__Impl2808); 
+             after(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0()); 
 
             }
 
@@ -3828,24 +3835,104 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Axiom__Group_3__1__Impl"
+    // $ANTLR end "rule__Axiom__Group_4__0__Impl"
+
+
+    // $ANTLR start "rule__Axiom__Group_4__1"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1448:1: rule__Axiom__Group_4__1 : rule__Axiom__Group_4__1__Impl ;
+    public final void rule__Axiom__Group_4__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1452:1: ( rule__Axiom__Group_4__1__Impl )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1453:2: rule__Axiom__Group_4__1__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__Group_4__1__Impl_in_rule__Axiom__Group_4__12839);
+            rule__Axiom__Group_4__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Axiom__Group_4__1"
+
+
+    // $ANTLR start "rule__Axiom__Group_4__1__Impl"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1459:1: rule__Axiom__Group_4__1__Impl : ( ( rule__Axiom__CommentAssignment_4_1 ) ) ;
+    public final void rule__Axiom__Group_4__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1463:1: ( ( ( rule__Axiom__CommentAssignment_4_1 ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1464:1: ( ( rule__Axiom__CommentAssignment_4_1 ) )
+            {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1464:1: ( ( rule__Axiom__CommentAssignment_4_1 ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1465:1: ( rule__Axiom__CommentAssignment_4_1 )
+            {
+             before(grammarAccess.getAxiomAccess().getCommentAssignment_4_1()); 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1466:1: ( rule__Axiom__CommentAssignment_4_1 )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1466:2: rule__Axiom__CommentAssignment_4_1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Axiom__CommentAssignment_4_1_in_rule__Axiom__Group_4__1__Impl2866);
+            rule__Axiom__CommentAssignment_4_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getAxiomAccess().getCommentAssignment_4_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Axiom__Group_4__1__Impl"
 
 
     // $ANTLR start "rule__Context__NameAssignment_2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1448:1: rule__Context__NameAssignment_2 : ( ruleEString ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1481:1: rule__Context__NameAssignment_2 : ( ruleEString ) ;
     public final void rule__Context__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1452:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1453:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1485:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1486:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1453:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1454:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1486:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1487:1: ruleEString
             {
              before(grammarAccess.getContextAccess().getNameEStringParserRuleCall_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__NameAssignment_22840);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__NameAssignment_22905);
             ruleEString();
 
             state._fsp--;
@@ -3873,20 +3960,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__CommentAssignment_3_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1463:1: rule__Context__CommentAssignment_3_1 : ( ruleEString ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1496:1: rule__Context__CommentAssignment_3_1 : ( ruleEString ) ;
     public final void rule__Context__CommentAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1467:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1468:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1500:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1501:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1468:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1469:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1501:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1502:1: ruleEString
             {
              before(grammarAccess.getContextAccess().getCommentEStringParserRuleCall_3_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__CommentAssignment_3_12871);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__CommentAssignment_3_12936);
             ruleEString();
 
             state._fsp--;
@@ -3914,24 +4001,24 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__ExtendsAssignment_4_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1478:1: rule__Context__ExtendsAssignment_4_1 : ( ( ruleEString ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1511:1: rule__Context__ExtendsAssignment_4_1 : ( ( ruleEString ) ) ;
     public final void rule__Context__ExtendsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1482:1: ( ( ( ruleEString ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1483:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1515:1: ( ( ( ruleEString ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1516:1: ( ( ruleEString ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1483:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1484:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1516:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1517:1: ( ruleEString )
             {
              before(grammarAccess.getContextAccess().getExtendsContextCrossReference_4_1_0()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1485:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1486:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1518:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1519:1: ruleEString
             {
              before(grammarAccess.getContextAccess().getExtendsContextEStringParserRuleCall_4_1_0_1()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_12906);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_12971);
             ruleEString();
 
             state._fsp--;
@@ -3963,24 +4050,24 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__ExtendsAssignment_4_2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1497:1: rule__Context__ExtendsAssignment_4_2 : ( ( ruleEString ) ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1530:1: rule__Context__ExtendsAssignment_4_2 : ( ( ruleEString ) ) ;
     public final void rule__Context__ExtendsAssignment_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1501:1: ( ( ( ruleEString ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1502:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1534:1: ( ( ( ruleEString ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1535:1: ( ( ruleEString ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1502:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1503:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1535:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1536:1: ( ruleEString )
             {
              before(grammarAccess.getContextAccess().getExtendsContextCrossReference_4_2_0()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1504:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1505:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1537:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1538:1: ruleEString
             {
              before(grammarAccess.getContextAccess().getExtendsContextEStringParserRuleCall_4_2_0_1()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_22945);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_23010);
             ruleEString();
 
             state._fsp--;
@@ -4012,20 +4099,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__SetsAssignment_5_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1516:1: rule__Context__SetsAssignment_5_1 : ( ruleCarrierSet ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1549:1: rule__Context__SetsAssignment_5_1 : ( ruleCarrierSet ) ;
     public final void rule__Context__SetsAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1520:1: ( ( ruleCarrierSet ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1521:1: ( ruleCarrierSet )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1553:1: ( ( ruleCarrierSet ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1554:1: ( ruleCarrierSet )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1521:1: ( ruleCarrierSet )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1522:1: ruleCarrierSet
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1554:1: ( ruleCarrierSet )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1555:1: ruleCarrierSet
             {
              before(grammarAccess.getContextAccess().getSetsCarrierSetParserRuleCall_5_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_12980);
+            pushFollow(FollowSets000.FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_13045);
             ruleCarrierSet();
 
             state._fsp--;
@@ -4053,20 +4140,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__SetsAssignment_5_2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1531:1: rule__Context__SetsAssignment_5_2 : ( ruleCarrierSet ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1564:1: rule__Context__SetsAssignment_5_2 : ( ruleCarrierSet ) ;
     public final void rule__Context__SetsAssignment_5_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1535:1: ( ( ruleCarrierSet ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1536:1: ( ruleCarrierSet )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1568:1: ( ( ruleCarrierSet ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1569:1: ( ruleCarrierSet )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1536:1: ( ruleCarrierSet )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1537:1: ruleCarrierSet
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1569:1: ( ruleCarrierSet )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1570:1: ruleCarrierSet
             {
              before(grammarAccess.getContextAccess().getSetsCarrierSetParserRuleCall_5_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_23011);
+            pushFollow(FollowSets000.FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_23076);
             ruleCarrierSet();
 
             state._fsp--;
@@ -4094,20 +4181,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__ConstantsAssignment_6_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1546:1: rule__Context__ConstantsAssignment_6_1 : ( ruleConstant ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1579:1: rule__Context__ConstantsAssignment_6_1 : ( ruleConstant ) ;
     public final void rule__Context__ConstantsAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1550:1: ( ( ruleConstant ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1551:1: ( ruleConstant )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1583:1: ( ( ruleConstant ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1584:1: ( ruleConstant )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1551:1: ( ruleConstant )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1552:1: ruleConstant
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1584:1: ( ruleConstant )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1585:1: ruleConstant
             {
              before(grammarAccess.getContextAccess().getConstantsConstantParserRuleCall_6_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_13042);
+            pushFollow(FollowSets000.FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_13107);
             ruleConstant();
 
             state._fsp--;
@@ -4135,20 +4222,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__ConstantsAssignment_6_2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1561:1: rule__Context__ConstantsAssignment_6_2 : ( ruleConstant ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1594:1: rule__Context__ConstantsAssignment_6_2 : ( ruleConstant ) ;
     public final void rule__Context__ConstantsAssignment_6_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1565:1: ( ( ruleConstant ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1566:1: ( ruleConstant )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1598:1: ( ( ruleConstant ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1599:1: ( ruleConstant )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1566:1: ( ruleConstant )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1567:1: ruleConstant
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1599:1: ( ruleConstant )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1600:1: ruleConstant
             {
              before(grammarAccess.getContextAccess().getConstantsConstantParserRuleCall_6_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_23073);
+            pushFollow(FollowSets000.FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_23138);
             ruleConstant();
 
             state._fsp--;
@@ -4176,20 +4263,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__AxiomsAssignment_7_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1576:1: rule__Context__AxiomsAssignment_7_1 : ( ruleAxiom ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1609:1: rule__Context__AxiomsAssignment_7_1 : ( ruleAxiom ) ;
     public final void rule__Context__AxiomsAssignment_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1580:1: ( ( ruleAxiom ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1581:1: ( ruleAxiom )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1613:1: ( ( ruleAxiom ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1614:1: ( ruleAxiom )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1581:1: ( ruleAxiom )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1582:1: ruleAxiom
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1614:1: ( ruleAxiom )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1615:1: ruleAxiom
             {
              before(grammarAccess.getContextAccess().getAxiomsAxiomParserRuleCall_7_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_13104);
+            pushFollow(FollowSets000.FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_13169);
             ruleAxiom();
 
             state._fsp--;
@@ -4217,20 +4304,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Context__AxiomsAssignment_7_2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1591:1: rule__Context__AxiomsAssignment_7_2 : ( ruleAxiom ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1624:1: rule__Context__AxiomsAssignment_7_2 : ( ruleAxiom ) ;
     public final void rule__Context__AxiomsAssignment_7_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1595:1: ( ( ruleAxiom ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1596:1: ( ruleAxiom )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1628:1: ( ( ruleAxiom ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1629:1: ( ruleAxiom )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1596:1: ( ruleAxiom )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1597:1: ruleAxiom
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1629:1: ( ruleAxiom )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1630:1: ruleAxiom
             {
              before(grammarAccess.getContextAccess().getAxiomsAxiomParserRuleCall_7_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_23135);
+            pushFollow(FollowSets000.FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_23200);
             ruleAxiom();
 
             state._fsp--;
@@ -4258,20 +4345,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__NameAssignment_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1606:1: rule__CarrierSet__NameAssignment_1 : ( ruleEString ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1639:1: rule__CarrierSet__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__CarrierSet__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1610:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1611:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1643:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1644:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1611:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1612:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1644:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1645:1: ruleEString
             {
              before(grammarAccess.getCarrierSetAccess().getNameEStringParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CarrierSet__NameAssignment_13166);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CarrierSet__NameAssignment_13231);
             ruleEString();
 
             state._fsp--;
@@ -4299,20 +4386,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__CommentAssignment_2_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1621:1: rule__CarrierSet__CommentAssignment_2_1 : ( ruleEString ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1654:1: rule__CarrierSet__CommentAssignment_2_1 : ( ruleEString ) ;
     public final void rule__CarrierSet__CommentAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1625:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1626:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1658:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1659:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1626:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1627:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1659:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1660:1: ruleEString
             {
              before(grammarAccess.getCarrierSetAccess().getCommentEStringParserRuleCall_2_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CarrierSet__CommentAssignment_2_13197);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CarrierSet__CommentAssignment_2_13262);
             ruleEString();
 
             state._fsp--;
@@ -4340,20 +4427,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__NameAssignment_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1636:1: rule__Constant__NameAssignment_1 : ( ruleEString ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1669:1: rule__Constant__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__Constant__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1640:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1641:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1673:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1674:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1641:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1642:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1674:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1675:1: ruleEString
             {
              before(grammarAccess.getConstantAccess().getNameEStringParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Constant__NameAssignment_13228);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Constant__NameAssignment_13293);
             ruleEString();
 
             state._fsp--;
@@ -4381,20 +4468,20 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__CommentAssignment_2_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1651:1: rule__Constant__CommentAssignment_2_1 : ( ruleEString ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1684:1: rule__Constant__CommentAssignment_2_1 : ( ruleEString ) ;
     public final void rule__Constant__CommentAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1655:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1656:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1688:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1689:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1656:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1657:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1689:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1690:1: ruleEString
             {
              before(grammarAccess.getConstantAccess().getCommentEStringParserRuleCall_2_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Constant__CommentAssignment_2_13259);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Constant__CommentAssignment_2_13324);
             ruleEString();
 
             state._fsp--;
@@ -4421,71 +4508,26 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Constant__CommentAssignment_2_1"
 
 
-    // $ANTLR start "rule__Axiom__TheoremAssignment_0"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1666:1: rule__Axiom__TheoremAssignment_0 : ( ( 'theorem' ) ) ;
-    public final void rule__Axiom__TheoremAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__Axiom__NameAssignment_1"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1699:1: rule__Axiom__NameAssignment_1 : ( ruleEString ) ;
+    public final void rule__Axiom__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1670:1: ( ( ( 'theorem' ) ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1671:1: ( ( 'theorem' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1703:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1704:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1671:1: ( ( 'theorem' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1672:1: ( 'theorem' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1704:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1705:1: ruleEString
             {
-             before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); 
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1673:1: ( 'theorem' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1674:1: 'theorem'
-            {
-             before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); 
-            match(input,19,FollowSets000.FOLLOW_19_in_rule__Axiom__TheoremAssignment_03295); 
-             after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); 
-
-            }
-
-             after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_0_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Axiom__TheoremAssignment_0"
-
-
-    // $ANTLR start "rule__Axiom__NameAssignment_2"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1689:1: rule__Axiom__NameAssignment_2 : ( ruleEString ) ;
-    public final void rule__Axiom__NameAssignment_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1693:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1694:1: ( ruleEString )
-            {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1694:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1695:1: ruleEString
-            {
-             before(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_2_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Axiom__NameAssignment_23334);
+             before(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_1_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Axiom__NameAssignment_13355);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_2_0()); 
+             after(grammarAccess.getAxiomAccess().getNameEStringParserRuleCall_1_0()); 
 
             }
 
@@ -4504,29 +4546,29 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Axiom__NameAssignment_2"
+    // $ANTLR end "rule__Axiom__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Axiom__CommentAssignment_3_1"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1704:1: rule__Axiom__CommentAssignment_3_1 : ( ruleEString ) ;
-    public final void rule__Axiom__CommentAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Axiom__PredicateAssignment_2"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1714:1: rule__Axiom__PredicateAssignment_2 : ( ruleEString ) ;
+    public final void rule__Axiom__PredicateAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1708:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1709:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1718:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1719:1: ( ruleEString )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1709:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1710:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1719:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1720:1: ruleEString
             {
-             before(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_3_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Axiom__CommentAssignment_3_13365);
+             before(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_2_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Axiom__PredicateAssignment_23386);
             ruleEString();
 
             state._fsp--;
 
-             after(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_3_1_0()); 
+             after(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_2_0()); 
 
             }
 
@@ -4545,29 +4587,33 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Axiom__CommentAssignment_3_1"
+    // $ANTLR end "rule__Axiom__PredicateAssignment_2"
 
 
-    // $ANTLR start "rule__Axiom__PredicateAssignment_4"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1719:1: rule__Axiom__PredicateAssignment_4 : ( ruleEString ) ;
-    public final void rule__Axiom__PredicateAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__Axiom__TheoremAssignment_3"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1729:1: rule__Axiom__TheoremAssignment_3 : ( ( 'theorem' ) ) ;
+    public final void rule__Axiom__TheoremAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1723:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1724:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1733:1: ( ( ( 'theorem' ) ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1734:1: ( ( 'theorem' ) )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1724:1: ( ruleEString )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1725:1: ruleEString
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1734:1: ( ( 'theorem' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1735:1: ( 'theorem' )
             {
-             before(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_4_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Axiom__PredicateAssignment_43396);
-            ruleEString();
+             before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); 
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1736:1: ( 'theorem' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1737:1: 'theorem'
+            {
+             before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); 
+            match(input,20,FollowSets000.FOLLOW_20_in_rule__Axiom__TheoremAssignment_33422); 
+             after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); 
 
-            state._fsp--;
+            }
 
-             after(grammarAccess.getAxiomAccess().getPredicateEStringParserRuleCall_4_0()); 
+             after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); 
 
             }
 
@@ -4586,7 +4632,48 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Axiom__PredicateAssignment_4"
+    // $ANTLR end "rule__Axiom__TheoremAssignment_3"
+
+
+    // $ANTLR start "rule__Axiom__CommentAssignment_4_1"
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1752:1: rule__Axiom__CommentAssignment_4_1 : ( ruleEString ) ;
+    public final void rule__Axiom__CommentAssignment_4_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1756:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1757:1: ( ruleEString )
+            {
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1757:1: ( ruleEString )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1758:1: ruleEString
+            {
+             before(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_4_1_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Axiom__CommentAssignment_4_13461);
+            ruleEString();
+
+            state._fsp--;
+
+             after(grammarAccess.getAxiomAccess().getCommentEStringParserRuleCall_4_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Axiom__CommentAssignment_4_1"
 
     // Delegated rules
 
@@ -4617,121 +4704,124 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         public static final BitSet FOLLOW_rule__Context__Group__1__Impl_in_rule__Context__Group__1478 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_rule__Context__Group__2_in_rule__Context__Group__1481 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_11_in_rule__Context__Group__1__Impl509 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group__2__Impl_in_rule__Context__Group__2540 = new BitSet(new long[]{0x000000000001F000L});
+        public static final BitSet FOLLOW_rule__Context__Group__2__Impl_in_rule__Context__Group__2540 = new BitSet(new long[]{0x000000000003F000L});
         public static final BitSet FOLLOW_rule__Context__Group__3_in_rule__Context__Group__2543 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__NameAssignment_2_in_rule__Context__Group__2__Impl570 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group__3__Impl_in_rule__Context__Group__3600 = new BitSet(new long[]{0x000000000001F000L});
+        public static final BitSet FOLLOW_rule__Context__Group__3__Impl_in_rule__Context__Group__3600 = new BitSet(new long[]{0x000000000003F000L});
         public static final BitSet FOLLOW_rule__Context__Group__4_in_rule__Context__Group__3603 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__Group_3__0_in_rule__Context__Group__3__Impl630 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group__4__Impl_in_rule__Context__Group__4661 = new BitSet(new long[]{0x000000000001F000L});
+        public static final BitSet FOLLOW_rule__Context__Group__4__Impl_in_rule__Context__Group__4661 = new BitSet(new long[]{0x000000000003F000L});
         public static final BitSet FOLLOW_rule__Context__Group__5_in_rule__Context__Group__4664 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__Group_4__0_in_rule__Context__Group__4__Impl691 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group__5__Impl_in_rule__Context__Group__5722 = new BitSet(new long[]{0x000000000001F000L});
+        public static final BitSet FOLLOW_rule__Context__Group__5__Impl_in_rule__Context__Group__5722 = new BitSet(new long[]{0x000000000003F000L});
         public static final BitSet FOLLOW_rule__Context__Group__6_in_rule__Context__Group__5725 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__Group_5__0_in_rule__Context__Group__5__Impl752 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group__6__Impl_in_rule__Context__Group__6783 = new BitSet(new long[]{0x000000000001F000L});
+        public static final BitSet FOLLOW_rule__Context__Group__6__Impl_in_rule__Context__Group__6783 = new BitSet(new long[]{0x000000000003F000L});
         public static final BitSet FOLLOW_rule__Context__Group__7_in_rule__Context__Group__6786 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__Group_6__0_in_rule__Context__Group__6__Impl813 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group__7__Impl_in_rule__Context__Group__7844 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__0_in_rule__Context__Group__7__Impl871 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_3__0__Impl_in_rule__Context__Group_3__0918 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_3__1_in_rule__Context__Group_3__0921 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_12_in_rule__Context__Group_3__0__Impl949 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_3__1__Impl_in_rule__Context__Group_3__1980 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__CommentAssignment_3_1_in_rule__Context__Group_3__1__Impl1007 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_4__0__Impl_in_rule__Context__Group_4__01041 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_4__1_in_rule__Context__Group_4__01044 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Context__Group_4__0__Impl1072 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_4__1__Impl_in_rule__Context__Group_4__11103 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_4__2_in_rule__Context__Group_4__11106 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__ExtendsAssignment_4_1_in_rule__Context__Group_4__1__Impl1133 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_4__2__Impl_in_rule__Context__Group_4__21163 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__ExtendsAssignment_4_2_in_rule__Context__Group_4__2__Impl1190 = new BitSet(new long[]{0x0000000000000032L});
-        public static final BitSet FOLLOW_rule__Context__Group_5__0__Impl_in_rule__Context__Group_5__01227 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_5__1_in_rule__Context__Group_5__01230 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_rule__Context__Group_5__0__Impl1258 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_5__1__Impl_in_rule__Context__Group_5__11289 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_5__2_in_rule__Context__Group_5__11292 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__SetsAssignment_5_1_in_rule__Context__Group_5__1__Impl1319 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_5__2__Impl_in_rule__Context__Group_5__21349 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__SetsAssignment_5_2_in_rule__Context__Group_5__2__Impl1376 = new BitSet(new long[]{0x0000000000000032L});
-        public static final BitSet FOLLOW_rule__Context__Group_6__0__Impl_in_rule__Context__Group_6__01413 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_6__1_in_rule__Context__Group_6__01416 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_15_in_rule__Context__Group_6__0__Impl1444 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_6__1__Impl_in_rule__Context__Group_6__11475 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Context__Group_6__2_in_rule__Context__Group_6__11478 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__ConstantsAssignment_6_1_in_rule__Context__Group_6__1__Impl1505 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_6__2__Impl_in_rule__Context__Group_6__21535 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__ConstantsAssignment_6_2_in_rule__Context__Group_6__2__Impl1562 = new BitSet(new long[]{0x0000000000000032L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__0__Impl_in_rule__Context__Group_7__01599 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__1_in_rule__Context__Group_7__01602 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_16_in_rule__Context__Group_7__0__Impl1630 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__1__Impl_in_rule__Context__Group_7__11661 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__2_in_rule__Context__Group_7__11664 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_1_in_rule__Context__Group_7__1__Impl1691 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__2__Impl_in_rule__Context__Group_7__21721 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_2_in_rule__Context__Group_7__2__Impl1748 = new BitSet(new long[]{0x00000000000C0002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group__0__Impl_in_rule__CarrierSet__Group__01785 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group__1_in_rule__CarrierSet__Group__01788 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group__1__Impl_in_rule__CarrierSet__Group__11846 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group__2_in_rule__CarrierSet__Group__11849 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__NameAssignment_1_in_rule__CarrierSet__Group__1__Impl1876 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group__2__Impl_in_rule__CarrierSet__Group__21906 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__0_in_rule__CarrierSet__Group__2__Impl1933 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__0__Impl_in_rule__CarrierSet__Group_2__01970 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__1_in_rule__CarrierSet__Group_2__01973 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_rule__CarrierSet__Group_2__0__Impl2001 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__1__Impl_in_rule__CarrierSet__Group_2__12032 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__CommentAssignment_2_1_in_rule__CarrierSet__Group_2__1__Impl2059 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__02093 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Constant__Group__1_in_rule__Constant__Group__02096 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__Group__1__Impl_in_rule__Constant__Group__12154 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_rule__Constant__Group__2_in_rule__Constant__Group__12157 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__NameAssignment_1_in_rule__Constant__Group__1__Impl2184 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__Group__2__Impl_in_rule__Constant__Group__22214 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__Group_2__0_in_rule__Constant__Group__2__Impl2241 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__Group_2__0__Impl_in_rule__Constant__Group_2__02278 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Constant__Group_2__1_in_rule__Constant__Group_2__02281 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_rule__Constant__Group_2__0__Impl2309 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__Group_2__1__Impl_in_rule__Constant__Group_2__12340 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Constant__CommentAssignment_2_1_in_rule__Constant__Group_2__1__Impl2367 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__0__Impl_in_rule__Axiom__Group__02401 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__1_in_rule__Axiom__Group__02404 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__TheoremAssignment_0_in_rule__Axiom__Group__0__Impl2431 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__1__Impl_in_rule__Axiom__Group__12462 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__2_in_rule__Axiom__Group__12465 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_18_in_rule__Axiom__Group__1__Impl2493 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__2__Impl_in_rule__Axiom__Group__22524 = new BitSet(new long[]{0x0000000000020030L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__3_in_rule__Axiom__Group__22527 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__NameAssignment_2_in_rule__Axiom__Group__2__Impl2554 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__3__Impl_in_rule__Axiom__Group__32584 = new BitSet(new long[]{0x0000000000020030L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__4_in_rule__Axiom__Group__32587 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group_3__0_in_rule__Axiom__Group__3__Impl2614 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__4__Impl_in_rule__Axiom__Group__42645 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__PredicateAssignment_4_in_rule__Axiom__Group__4__Impl2672 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group_3__0__Impl_in_rule__Axiom__Group_3__02712 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Axiom__Group_3__1_in_rule__Axiom__Group_3__02715 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_rule__Axiom__Group_3__0__Impl2743 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group_3__1__Impl_in_rule__Axiom__Group_3__12774 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__CommentAssignment_3_1_in_rule__Axiom__Group_3__1__Impl2801 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Context__NameAssignment_22840 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Context__CommentAssignment_3_12871 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_12906 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_22945 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_12980 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_23011 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_13042 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_23073 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_13104 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_23135 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__CarrierSet__NameAssignment_13166 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__CarrierSet__CommentAssignment_2_13197 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Constant__NameAssignment_13228 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Constant__CommentAssignment_2_13259 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_19_in_rule__Axiom__TheoremAssignment_03295 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__NameAssignment_23334 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__CommentAssignment_3_13365 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__PredicateAssignment_43396 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group__7__Impl_in_rule__Context__Group__7844 = new BitSet(new long[]{0x000000000003F000L});
+        public static final BitSet FOLLOW_rule__Context__Group__8_in_rule__Context__Group__7847 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__0_in_rule__Context__Group__7__Impl874 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group__8__Impl_in_rule__Context__Group__8905 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_12_in_rule__Context__Group__8__Impl933 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_3__0__Impl_in_rule__Context__Group_3__0982 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_3__1_in_rule__Context__Group_3__0985 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__Context__Group_3__0__Impl1013 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_3__1__Impl_in_rule__Context__Group_3__11044 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__CommentAssignment_3_1_in_rule__Context__Group_3__1__Impl1071 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_4__0__Impl_in_rule__Context__Group_4__01105 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_4__1_in_rule__Context__Group_4__01108 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_14_in_rule__Context__Group_4__0__Impl1136 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_4__1__Impl_in_rule__Context__Group_4__11167 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_4__2_in_rule__Context__Group_4__11170 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__ExtendsAssignment_4_1_in_rule__Context__Group_4__1__Impl1197 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_4__2__Impl_in_rule__Context__Group_4__21227 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__ExtendsAssignment_4_2_in_rule__Context__Group_4__2__Impl1254 = new BitSet(new long[]{0x0000000000000032L});
+        public static final BitSet FOLLOW_rule__Context__Group_5__0__Impl_in_rule__Context__Group_5__01291 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_5__1_in_rule__Context__Group_5__01294 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_15_in_rule__Context__Group_5__0__Impl1322 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_5__1__Impl_in_rule__Context__Group_5__11353 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_5__2_in_rule__Context__Group_5__11356 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__SetsAssignment_5_1_in_rule__Context__Group_5__1__Impl1383 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_5__2__Impl_in_rule__Context__Group_5__21413 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__SetsAssignment_5_2_in_rule__Context__Group_5__2__Impl1440 = new BitSet(new long[]{0x0000000000000032L});
+        public static final BitSet FOLLOW_rule__Context__Group_6__0__Impl_in_rule__Context__Group_6__01477 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_6__1_in_rule__Context__Group_6__01480 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_rule__Context__Group_6__0__Impl1508 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_6__1__Impl_in_rule__Context__Group_6__11539 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Context__Group_6__2_in_rule__Context__Group_6__11542 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__ConstantsAssignment_6_1_in_rule__Context__Group_6__1__Impl1569 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_6__2__Impl_in_rule__Context__Group_6__21599 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__ConstantsAssignment_6_2_in_rule__Context__Group_6__2__Impl1626 = new BitSet(new long[]{0x0000000000000032L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__0__Impl_in_rule__Context__Group_7__01663 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__1_in_rule__Context__Group_7__01666 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_17_in_rule__Context__Group_7__0__Impl1694 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__1__Impl_in_rule__Context__Group_7__11725 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__2_in_rule__Context__Group_7__11728 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_1_in_rule__Context__Group_7__1__Impl1755 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__2__Impl_in_rule__Context__Group_7__21785 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_2_in_rule__Context__Group_7__2__Impl1812 = new BitSet(new long[]{0x0000000000080002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group__0__Impl_in_rule__CarrierSet__Group__01849 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group__1_in_rule__CarrierSet__Group__01852 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group__1__Impl_in_rule__CarrierSet__Group__11910 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group__2_in_rule__CarrierSet__Group__11913 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__NameAssignment_1_in_rule__CarrierSet__Group__1__Impl1940 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group__2__Impl_in_rule__CarrierSet__Group__21970 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__0_in_rule__CarrierSet__Group__2__Impl1997 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__0__Impl_in_rule__CarrierSet__Group_2__02034 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__1_in_rule__CarrierSet__Group_2__02037 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_18_in_rule__CarrierSet__Group_2__0__Impl2065 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group_2__1__Impl_in_rule__CarrierSet__Group_2__12096 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CarrierSet__CommentAssignment_2_1_in_rule__CarrierSet__Group_2__1__Impl2123 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__02157 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Constant__Group__1_in_rule__Constant__Group__02160 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__Group__1__Impl_in_rule__Constant__Group__12218 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_rule__Constant__Group__2_in_rule__Constant__Group__12221 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__NameAssignment_1_in_rule__Constant__Group__1__Impl2248 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__Group__2__Impl_in_rule__Constant__Group__22278 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__Group_2__0_in_rule__Constant__Group__2__Impl2305 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__Group_2__0__Impl_in_rule__Constant__Group_2__02342 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Constant__Group_2__1_in_rule__Constant__Group_2__02345 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_18_in_rule__Constant__Group_2__0__Impl2373 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__Group_2__1__Impl_in_rule__Constant__Group_2__12404 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Constant__CommentAssignment_2_1_in_rule__Constant__Group_2__1__Impl2431 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__0__Impl_in_rule__Axiom__Group__02465 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__1_in_rule__Axiom__Group__02468 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_rule__Axiom__Group__0__Impl2496 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__1__Impl_in_rule__Axiom__Group__12527 = new BitSet(new long[]{0x0000000000140030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__2_in_rule__Axiom__Group__12530 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__NameAssignment_1_in_rule__Axiom__Group__1__Impl2557 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__2__Impl_in_rule__Axiom__Group__22587 = new BitSet(new long[]{0x0000000000140030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__3_in_rule__Axiom__Group__22590 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__PredicateAssignment_2_in_rule__Axiom__Group__2__Impl2617 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__3__Impl_in_rule__Axiom__Group__32648 = new BitSet(new long[]{0x0000000000140030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__4_in_rule__Axiom__Group__32651 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__TheoremAssignment_3_in_rule__Axiom__Group__3__Impl2678 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__4__Impl_in_rule__Axiom__Group__42709 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group_4__0_in_rule__Axiom__Group__4__Impl2736 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group_4__0__Impl_in_rule__Axiom__Group_4__02777 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group_4__1_in_rule__Axiom__Group_4__02780 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_18_in_rule__Axiom__Group_4__0__Impl2808 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group_4__1__Impl_in_rule__Axiom__Group_4__12839 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__CommentAssignment_4_1_in_rule__Axiom__Group_4__1__Impl2866 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Context__NameAssignment_22905 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Context__CommentAssignment_3_12936 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_12971 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Context__ExtendsAssignment_4_23010 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_13045 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCarrierSet_in_rule__Context__SetsAssignment_5_23076 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_13107 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleConstant_in_rule__Context__ConstantsAssignment_6_23138 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_13169 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAxiom_in_rule__Context__AxiomsAssignment_7_23200 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__CarrierSet__NameAssignment_13231 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__CarrierSet__CommentAssignment_2_13262 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Constant__NameAssignment_13293 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Constant__CommentAssignment_2_13324 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__NameAssignment_13355 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__PredicateAssignment_23386 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_20_in_rule__Axiom__TheoremAssignment_33422 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__CommentAssignment_4_13461 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

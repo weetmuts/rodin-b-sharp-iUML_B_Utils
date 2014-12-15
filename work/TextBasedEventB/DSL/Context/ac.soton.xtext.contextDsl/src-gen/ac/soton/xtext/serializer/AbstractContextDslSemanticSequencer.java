@@ -55,7 +55,7 @@ public abstract class AbstractContextDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (theorem?='theorem'? name=EString comment=EString? predicate=EString)
+	 *     (name=EString predicate=EString? theorem?='theorem'? comment=EString?)
 	 */
 	protected void sequence_Axiom(EObject context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

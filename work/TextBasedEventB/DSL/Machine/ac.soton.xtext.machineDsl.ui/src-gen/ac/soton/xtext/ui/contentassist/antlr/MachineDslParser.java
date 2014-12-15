@@ -85,8 +85,8 @@ public class MachineDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableAccess().getNameAssignment_1(), "rule__Variable__NameAssignment_1");
 					put(grammarAccess.getVariableAccess().getCommentAssignment_2_1(), "rule__Variable__CommentAssignment_2_1");
 					put(grammarAccess.getInvariantAccess().getNameAssignment_1(), "rule__Invariant__NameAssignment_1");
-					put(grammarAccess.getInvariantAccess().getTheoremAssignment_2(), "rule__Invariant__TheoremAssignment_2");
-					put(grammarAccess.getInvariantAccess().getPredicateAssignment_3(), "rule__Invariant__PredicateAssignment_3");
+					put(grammarAccess.getInvariantAccess().getPredicateAssignment_2(), "rule__Invariant__PredicateAssignment_2");
+					put(grammarAccess.getInvariantAccess().getTheoremAssignment_3(), "rule__Invariant__TheoremAssignment_3");
 					put(grammarAccess.getInvariantAccess().getCommentAssignment_4_1(), "rule__Invariant__CommentAssignment_4_1");
 					put(grammarAccess.getVariantAccess().getExpressionAssignment_2(), "rule__Variant__ExpressionAssignment_2");
 					put(grammarAccess.getVariantAccess().getCommentAssignment_3_1(), "rule__Variant__CommentAssignment_3_1");
@@ -109,8 +109,8 @@ public class MachineDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
 					put(grammarAccess.getParameterAccess().getCommentAssignment_2_1(), "rule__Parameter__CommentAssignment_2_1");
 					put(grammarAccess.getGuardAccess().getNameAssignment_1(), "rule__Guard__NameAssignment_1");
-					put(grammarAccess.getGuardAccess().getTheoremAssignment_2(), "rule__Guard__TheoremAssignment_2");
-					put(grammarAccess.getGuardAccess().getPredicateAssignment_3(), "rule__Guard__PredicateAssignment_3");
+					put(grammarAccess.getGuardAccess().getPredicateAssignment_2(), "rule__Guard__PredicateAssignment_2");
+					put(grammarAccess.getGuardAccess().getTheoremAssignment_3(), "rule__Guard__TheoremAssignment_3");
 					put(grammarAccess.getGuardAccess().getCommentAssignment_4_1(), "rule__Guard__CommentAssignment_4_1");
 					put(grammarAccess.getWitnessAccess().getLocalGeneratedAssignment_0(), "rule__Witness__LocalGeneratedAssignment_0");
 					put(grammarAccess.getWitnessAccess().getNameAssignment_2(), "rule__Witness__NameAssignment_2");

@@ -99,7 +99,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (name=EString theorem?='theorem'? predicate=EString comment=EString?)
+	 *     (name=EString predicate=EString? theorem?='theorem'? comment=EString?)
 	 */
 	protected void sequence_Guard(EObject context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -108,7 +108,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (name=EString theorem?='theorem'? predicate=EString? comment=EString?)
+	 *     (name=EString predicate=EString? theorem?='theorem'? comment=EString?)
 	 */
 	protected void sequence_Invariant(EObject context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -153,7 +153,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (expression=EString? comment=EString)
+	 *     (expression=EString? comment=EString?)
 	 */
 	protected void sequence_Variant(EObject context, Variant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

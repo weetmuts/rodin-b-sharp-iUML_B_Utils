@@ -91,11 +91,11 @@ Invariant returns Invariant:
 //	(localGenerated?='localGenerated')?
 //	'Invariant'
 	'@'name=EString
-	(theorem?='theorem')?
 //	'{'
 //		('internalId' internalId=EString)?
 //		'is' 
 		predicate=EString?
+		(theorem?='theorem')?
 		('//' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -109,7 +109,7 @@ Variant returns Variant:
 //	'{'
 //		('internalId' internalId=EString)?
 		'expression' expression=EString?
-		('//' comment=EString)
+		('//' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -180,8 +180,8 @@ event returns Event:
 //enum AttributeType returns core::AttributeType:
 //				Boolean = 'Boolean' | Handle = 'Handle' | Integer = 'Integer' | Long = 'Long' | String = 'String';
 
-EJavaObject returns ecore::EJavaObject:
-	'EJavaObject' /* TODO: implement this rule and an appropriate IValueConverter */;
+//EJavaObject returns ecore::EJavaObject:
+//	'EJavaObject' /* TODO: implement this rule and an appropriate IValueConverter */;
 
 //CarrierSet returns context::CarrierSet:
 //	{context::CarrierSet}
@@ -246,10 +246,10 @@ Guard returns Guard:
 //	(localGenerated?='localGenerated')?
 //	'Guard'
 	'@'name=EString
-	(theorem?='theorem')?
 //	'{'
 //		('internalId' internalId=EString)?
-		predicate=EString
+		predicate=EString?
+		(theorem?='theorem')?
 		('//' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?

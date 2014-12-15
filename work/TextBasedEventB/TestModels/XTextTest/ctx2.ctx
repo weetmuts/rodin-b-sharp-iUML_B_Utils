@@ -4,5 +4,6 @@ extends
 constants 
  cst3 
 axioms 
-@axm1 "cst3 ⊆ A"  
-@axm2 "cst1 ∩ cst3 = ∅"  
+ @axm1 "cst3 ⊆ A"  
+ @axm2 "cst1 ∩ cst3 = ∅"  
+end
