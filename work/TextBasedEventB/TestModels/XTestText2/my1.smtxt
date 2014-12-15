@@ -1,0 +1,24 @@
+StateMachine sm1
+	Nodes
+		Initial I,
+		Junction J,
+		State A,
+		State B,
+		State C nested 
+			StateMachine sm2 
+				Nodes
+					Initial C1,
+					State C2,
+					State C3
+				Transitions
+					Transition event ec1 source C1 target C2,
+					Transition event ec2 source C2 target F
+			End StateMachine				,
+		Final F	
+	Transitions
+		Transition event e1 source I target J,
+		Transition event e2 source J target A,
+		Transition event e3 source J target C,
+		Transition event e4 source A target F,
+		Transition event e5 source C target F 	
+End StateMachine

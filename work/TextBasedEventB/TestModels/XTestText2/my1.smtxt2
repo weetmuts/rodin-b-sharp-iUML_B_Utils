@@ -1,0 +1,29 @@
+Statemachine sm1
+	nodes
+		Initial internalId I,
+		Junction internalId J,
+		Final internalId F,
+		State A,
+		State B,
+		State C
+		statemachines{
+			Statemachine sm2 
+				nodes
+					Initial internalId C1,
+					State C2,
+					State C3
+				transitions
+					Transition elaborates ec1 target C2 source C1,
+					Transition elaborates ec2  target F source C2
+		}
+	transitions
+		Transition elaborates e1 target J source I,
+		Transition elaborates e2 target A source J,
+		Transition elaborates e3 target C source J,
+		Transition elaborates e4 target F source A,
+		Transition elaborates e5 C target source F  	
+
+				
+			
+	
+	
