@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.contextFile org.eventb.codegen.ui.taskingContextAttribute="Tasking" org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" version="3">
-<org.eventb.core.carrierSet name="'" org.eventb.core.identifier="activity"/>
-<org.eventb.core.constant name="(" org.eventb.core.identifier="credit"/>
-<org.eventb.core.constant name=")" org.eventb.core.identifier="debit"/>
-<org.eventb.core.axiom name="*" org.eventb.codegen.ui.typingAttribute="NonTyping" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(activity, {credit}, {debit})"/>
-</org.eventb.core.contextFile>
