@@ -82,7 +82,7 @@ registerGenModelFile = "platform:/resource/org.eclipse.emf.codegen.ecore/model/G
 
 			// scoping and exporting API
 			fragment = scoping.ImportURIScopingFragment auto-inject {}
-			fragment = exporting.SimpleNamesFragment auto-inject {}
+			fragment = exporting.QualifiedNamesFragment auto-inject {}
 			fragment = builder.BuilderIntegrationFragment auto-inject {}		
 
 			// generator API

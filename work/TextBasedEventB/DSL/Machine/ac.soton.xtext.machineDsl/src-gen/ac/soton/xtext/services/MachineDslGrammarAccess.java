@@ -427,57 +427,62 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class VariantElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Variant");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cVariantKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cExpressionKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpressionEStringParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cSolidusSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cCommentAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cCommentEStringParserRuleCall_3_1_0 = (RuleCall)cCommentAssignment_3_1.eContents().get(0);
+		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cVariantKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cExpressionKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cExpressionEStringParserRuleCall_3_0 = (RuleCall)cExpressionAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cSolidusSolidusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cCommentAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cCommentEStringParserRuleCall_4_1_0 = (RuleCall)cCommentAssignment_4_1.eContents().get(0);
 		
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		////	'}'
-		//Variant: //	(localGenerated?='localGenerated')?
+		//Variant:
+		//	{Variant} //	(localGenerated?='localGenerated')?
 		//	"Variant" //	'{'
 		//	//		('internalId' internalId=EString)?
 		//	"expression" expression=EString? ("//" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
-		////	(localGenerated?='localGenerated')?
+		//{Variant} //	(localGenerated?='localGenerated')?
 		//"Variant" //	'{'
 		////		('internalId' internalId=EString)?
 		//"expression" expression=EString? ("//" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
+		//{Variant}
+		public Action getVariantAction_0() { return cVariantAction_0; }
+
 		////	(localGenerated?='localGenerated')?
 		//"Variant"
-		public Keyword getVariantKeyword_0() { return cVariantKeyword_0; }
+		public Keyword getVariantKeyword_1() { return cVariantKeyword_1; }
 
 		////	'{'
 		////		('internalId' internalId=EString)?
 		//"expression"
-		public Keyword getExpressionKeyword_1() { return cExpressionKeyword_1; }
+		public Keyword getExpressionKeyword_2() { return cExpressionKeyword_2; }
 
 		//expression=EString?
-		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
+		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
 
 		//EString
-		public RuleCall getExpressionEStringParserRuleCall_2_0() { return cExpressionEStringParserRuleCall_2_0; }
+		public RuleCall getExpressionEStringParserRuleCall_3_0() { return cExpressionEStringParserRuleCall_3_0; }
 
 		//("//" comment=EString)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"//"
-		public Keyword getSolidusSolidusKeyword_3_0() { return cSolidusSolidusKeyword_3_0; }
+		public Keyword getSolidusSolidusKeyword_4_0() { return cSolidusSolidusKeyword_4_0; }
 
 		//comment=EString
-		public Assignment getCommentAssignment_3_1() { return cCommentAssignment_3_1; }
+		public Assignment getCommentAssignment_4_1() { return cCommentAssignment_4_1; }
 
 		//EString
-		public RuleCall getCommentEStringParserRuleCall_3_1_0() { return cCommentEStringParserRuleCall_3_1_0; }
+		public RuleCall getCommentEStringParserRuleCall_4_1_0() { return cCommentEStringParserRuleCall_4_1_0; }
 	}
 
 	public class EventElements extends AbstractParserRuleElementFinder {
@@ -500,11 +505,9 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRefinesAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final CrossReference cRefinesEventCrossReference_6_1_0 = (CrossReference)cRefinesAssignment_6_1.eContents().get(0);
 		private final RuleCall cRefinesEventEStringParserRuleCall_6_1_0_1 = (RuleCall)cRefinesEventCrossReference_6_1_0.eContents().get(1);
-		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
-		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
-		private final Assignment cRefinesAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
-		private final CrossReference cRefinesEventCrossReference_6_2_1_0 = (CrossReference)cRefinesAssignment_6_2_1.eContents().get(0);
-		private final RuleCall cRefinesEventEStringParserRuleCall_6_2_1_0_1 = (RuleCall)cRefinesEventCrossReference_6_2_1_0.eContents().get(1);
+		private final Assignment cRefinesAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final CrossReference cRefinesEventCrossReference_6_2_0 = (CrossReference)cRefinesAssignment_6_2.eContents().get(0);
+		private final RuleCall cRefinesEventEStringParserRuleCall_6_2_0_1 = (RuleCall)cRefinesEventCrossReference_6_2_0.eContents().get(1);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Keyword cWhenKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Assignment cGuardsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
@@ -540,8 +543,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	{Event} //	(localGenerated?='localGenerated')?
 		//	"event" name=EString extended?="extended"? //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] (","
-		//	refines+=[Event|EString])*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] / *","* /
+		//	refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)? / *'}'* / ("any" / *'{'* / parameters+=Parameter / *","* /
@@ -554,8 +557,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//{Event} //	(localGenerated?='localGenerated')?
 		//"event" name=EString extended?="extended"? //	'{'
 		////		('internalId' internalId=EString)?
-		/// *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] (","
-		//refines+=[Event|EString])*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		/// *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] / *","* /
+		//refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)? / *'}'* / ("any" / *'{'* / parameters+=Parameter / *","* /
@@ -602,7 +605,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getCommentEStringParserRuleCall_5_1_0() { return cCommentEStringParserRuleCall_5_1_0; }
 
-		//("refines" / *'('* / refines+=[Event|EString] ("," refines+=[Event|EString])*)?
+		//("refines" / *'('* / refines+=[Event|EString] / *","* / refines+=[Event|EString]*)?
 		public Group getGroup_6() { return cGroup_6; }
 
 		//"refines"
@@ -617,20 +620,14 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getRefinesEventEStringParserRuleCall_6_1_0_1() { return cRefinesEventEStringParserRuleCall_6_1_0_1; }
 
-		//("," refines+=[Event|EString])*
-		public Group getGroup_6_2() { return cGroup_6_2; }
-
-		//","
-		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
-
-		//refines+=[Event|EString]
-		public Assignment getRefinesAssignment_6_2_1() { return cRefinesAssignment_6_2_1; }
+		/// *","* / refines+=[Event|EString]*
+		public Assignment getRefinesAssignment_6_2() { return cRefinesAssignment_6_2; }
 
 		//[Event|EString]
-		public CrossReference getRefinesEventCrossReference_6_2_1_0() { return cRefinesEventCrossReference_6_2_1_0; }
+		public CrossReference getRefinesEventCrossReference_6_2_0() { return cRefinesEventCrossReference_6_2_0; }
 
 		//EString
-		public RuleCall getRefinesEventEStringParserRuleCall_6_2_1_0_1() { return cRefinesEventEStringParserRuleCall_6_2_1_0_1; }
+		public RuleCall getRefinesEventEStringParserRuleCall_6_2_0_1() { return cRefinesEventEStringParserRuleCall_6_2_0_1; }
 
 		//("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)?
 		public Group getGroup_7() { return cGroup_7; }
@@ -1251,7 +1248,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	////	'}'
-	//Variant: //	(localGenerated?='localGenerated')?
+	//Variant:
+	//	{Variant} //	(localGenerated?='localGenerated')?
 	//	"Variant" //	'{'
 	//	//		('internalId' internalId=EString)?
 	//	"expression" expression=EString? ("//" comment=EString)?;
@@ -1267,8 +1265,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	{Event} //	(localGenerated?='localGenerated')?
 	//	"event" name=EString extended?="extended"? //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] (","
-	//	refines+=[Event|EString])*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+	//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] / *","* /
+	//	refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)? / *'}'* / ("any" / *'{'* / parameters+=Parameter / *","* /

@@ -5,7 +5,7 @@ constants
  cst1 // cst comment
  cst2 
 axioms 
-@axm1 "cst1 ⊆ A"  // axiom comment
-@axm2 "cst2 ∈ ℕ"  
-@axm3 "cst2 ≥ 0"  theorem 
+ @axm1 "cst1 ⊆ A"  // axiom comment
+ @axm2 "cst2 ∈ ℕ"  
+ @axm3 "cst2 ≥ 0"  theorem 
 end
