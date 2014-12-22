@@ -3,7 +3,7 @@ variables a b c
 invariants
  @aa "a : NAT"
  @bb "b : BOOL"
- @cc theorem "a >= 0"
+ @cc "a >= 0" theorem
  @dd "c : 0..10"
  
 events 
