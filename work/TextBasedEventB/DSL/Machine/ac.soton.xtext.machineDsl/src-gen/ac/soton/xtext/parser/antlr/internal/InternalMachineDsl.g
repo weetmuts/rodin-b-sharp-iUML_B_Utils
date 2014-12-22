@@ -736,7 +736,7 @@ ruleevent returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getEventAccess().getRefinesEventCrossReference_6_1_0()); 
 	    }
-		ruleEString		{ 
+		ruleQString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -962,6 +962,55 @@ ruleevent returns [EObject current=null]
     }
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleQString
+entryRuleQString returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getQStringRule()); } 
+	 iv_ruleQString=ruleQString 
+	 { $current=$iv_ruleQString.current.getText(); }  
+	 EOF 
+;
+
+// Rule QString
+ruleQString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(    this_STRING_0=RULE_STRING    {
+		$current.merge(this_STRING_0);
+    }
+
+    { 
+    newLeafNode(this_STRING_0, grammarAccess.getQStringAccess().getSTRINGTerminalRuleCall_0()); 
+    }
+
+    |(    this_ID_1=RULE_ID    {
+		$current.merge(this_ID_1);
+    }
+
+    { 
+    newLeafNode(this_ID_1, grammarAccess.getQStringAccess().getIDTerminalRuleCall_1_0()); 
+    }
+(
+	kw='.' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getQStringAccess().getFullStopKeyword_1_1_0()); 
+    }
+    this_ID_3=RULE_ID    {
+		$current.merge(this_ID_3);
+    }
+
+    { 
+    newLeafNode(this_ID_3, grammarAccess.getQStringAccess().getIDTerminalRuleCall_1_1_1()); 
+    }
+)*))
+    ;
 
 
 

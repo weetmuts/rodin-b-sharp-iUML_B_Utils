@@ -25,6 +25,6 @@ events
  event evt  extended ordinary 
  end
  event evtr  extended ordinary
- refines "camilleTest.evt2" 
+ refines camilleTest.evt2 
  end
 end

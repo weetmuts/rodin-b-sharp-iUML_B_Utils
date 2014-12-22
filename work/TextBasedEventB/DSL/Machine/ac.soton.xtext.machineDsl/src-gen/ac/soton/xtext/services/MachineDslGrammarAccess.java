@@ -504,7 +504,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRefinesKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cRefinesAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final CrossReference cRefinesEventCrossReference_6_1_0 = (CrossReference)cRefinesAssignment_6_1.eContents().get(0);
-		private final RuleCall cRefinesEventEStringParserRuleCall_6_1_0_1 = (RuleCall)cRefinesEventCrossReference_6_1_0.eContents().get(1);
+		private final RuleCall cRefinesEventQStringParserRuleCall_6_1_0_1 = (RuleCall)cRefinesEventCrossReference_6_1_0.eContents().get(1);
 		private final Assignment cRefinesAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
 		private final CrossReference cRefinesEventCrossReference_6_2_0 = (CrossReference)cRefinesAssignment_6_2.eContents().get(0);
 		private final RuleCall cRefinesEventEStringParserRuleCall_6_2_0_1 = (RuleCall)cRefinesEventCrossReference_6_2_0.eContents().get(1);
@@ -543,7 +543,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	{Event} //	(localGenerated?='localGenerated')?
 		//	"event" name=EString extended?="extended"? //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] / *","* /
+		//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|QString] / *","* /
 		//	refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -557,7 +557,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//{Event} //	(localGenerated?='localGenerated')?
 		//"event" name=EString extended?="extended"? //	'{'
 		////		('internalId' internalId=EString)?
-		/// *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] / *","* /
+		/// *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|QString] / *","* /
 		//refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -605,20 +605,20 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getCommentEStringParserRuleCall_5_1_0() { return cCommentEStringParserRuleCall_5_1_0; }
 
-		//("refines" / *'('* / refines+=[Event|EString] / *","* / refines+=[Event|EString]*)?
+		//("refines" / *'('* / refines+=[Event|QString] / *","* / refines+=[Event|EString]*)?
 		public Group getGroup_6() { return cGroup_6; }
 
 		//"refines"
 		public Keyword getRefinesKeyword_6_0() { return cRefinesKeyword_6_0; }
 
-		/// *'('* / refines+=[Event|EString]
+		/// *'('* / refines+=[Event|QString]
 		public Assignment getRefinesAssignment_6_1() { return cRefinesAssignment_6_1; }
 
-		//[Event|EString]
+		//[Event|QString]
 		public CrossReference getRefinesEventCrossReference_6_1_0() { return cRefinesEventCrossReference_6_1_0; }
 
-		//EString
-		public RuleCall getRefinesEventEStringParserRuleCall_6_1_0_1() { return cRefinesEventEStringParserRuleCall_6_1_0_1; }
+		//QString
+		public RuleCall getRefinesEventQStringParserRuleCall_6_1_0_1() { return cRefinesEventQStringParserRuleCall_6_1_0_1; }
 
 		/// *","* / refines+=[Event|EString]*
 		public Assignment getRefinesAssignment_6_2() { return cRefinesAssignment_6_2; }
@@ -720,6 +720,42 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//"end"
 		public Keyword getEndKeyword_11() { return cEndKeyword_11; }
+	}
+
+	public class QStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QString");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
+		
+		//QString returns ecore::EString:
+		//	STRING | ID ("." ID)*;
+		public ParserRule getRule() { return rule; }
+
+		//STRING | ID ("." ID)*
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+
+		//ID ("." ID)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_0() { return cIDTerminalRuleCall_1_0; }
+
+		//("." ID)*
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_1_0() { return cFullStopKeyword_1_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1_1() { return cIDTerminalRuleCall_1_1_1; }
 	}
 
 	public class ParameterElements extends AbstractParserRuleElementFinder {
@@ -1098,6 +1134,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	private InvariantElements pInvariant;
 	private VariantElements pVariant;
 	private EventElements pEvent;
+	private QStringElements pQString;
 	private ConvergenceElements unknownRuleConvergence;
 	private ParameterElements pParameter;
 	private GuardElements pGuard;
@@ -1265,7 +1302,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	{Event} //	(localGenerated?='localGenerated')?
 	//	"event" name=EString extended?="extended"? //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|EString] / *","* /
+	//	/ *'convergence'* / convergence=Convergence? ("//" comment=EString)? ("refines" / *'('* / refines+=[Event|QString] / *","* /
 	//	refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -1280,6 +1317,16 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getEventRule() {
 		return getEventAccess().getRule();
+	}
+
+	//QString returns ecore::EString:
+	//	STRING | ID ("." ID)*;
+	public QStringElements getQStringAccess() {
+		return (pQString != null) ? pQString : (pQString = new QStringElements());
+	}
+	
+	public ParserRule getQStringRule() {
+		return getQStringAccess().getRule();
 	}
 
 	////StringToStringMapEntry returns core::StringToStringMapEntry:

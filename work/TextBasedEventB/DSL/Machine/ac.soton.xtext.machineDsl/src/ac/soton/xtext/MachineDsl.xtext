@@ -127,7 +127,7 @@ event returns Event:
 //		('internalId' internalId=EString)?
 		(/*'convergence'*/ convergence=Convergence)?
 		('//' comment=EString)?		
-		('refines' /*'('*/ refines+=[Event|EString] ( /*","*/ refines+=[Event|EString])* /*')'*/ )?
+		('refines' /*'('*/ refines+=[Event|QString] ( /*","*/ refines+=[Event|EString])* /*')'*/ )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -143,6 +143,10 @@ event returns Event:
 //	'}'
 	'end'
 	;
+
+QString returns ecore::EString:
+	STRING | ID ('.' ID)* ;
+
 
 //StringToStringMapEntry returns core::StringToStringMapEntry:
 //	{core::StringToStringMapEntry}

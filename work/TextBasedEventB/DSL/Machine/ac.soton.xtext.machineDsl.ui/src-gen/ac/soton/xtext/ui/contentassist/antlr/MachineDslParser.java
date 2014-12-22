@@ -38,6 +38,7 @@ public class MachineDslParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
+					put(grammarAccess.getQStringAccess().getAlternatives(), "rule__QString__Alternatives");
 					put(grammarAccess.getConvergenceAccess().getAlternatives(), "rule__Convergence__Alternatives");
 					put(grammarAccess.getMachineAccess().getGroup(), "rule__Machine__Group__0");
 					put(grammarAccess.getMachineAccess().getGroup_3(), "rule__Machine__Group_3__0");
@@ -60,6 +61,8 @@ public class MachineDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEventAccess().getGroup_8(), "rule__Event__Group_8__0");
 					put(grammarAccess.getEventAccess().getGroup_9(), "rule__Event__Group_9__0");
 					put(grammarAccess.getEventAccess().getGroup_10(), "rule__Event__Group_10__0");
+					put(grammarAccess.getQStringAccess().getGroup_1(), "rule__QString__Group_1__0");
+					put(grammarAccess.getQStringAccess().getGroup_1_1(), "rule__QString__Group_1_1__0");
 					put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
 					put(grammarAccess.getParameterAccess().getGroup_2(), "rule__Parameter__Group_2__0");
 					put(grammarAccess.getGuardAccess().getGroup(), "rule__Guard__Group__0");
