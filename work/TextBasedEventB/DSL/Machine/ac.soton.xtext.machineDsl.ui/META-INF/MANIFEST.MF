@@ -19,8 +19,9 @@ Require-Bundle: ac.soton.xtext.machineDsl;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: ac.soton.xtext.ui.quickfix,
+Export-Package: ac.soton.xtext.ui,
  ac.soton.xtext.ui.contentassist,
  ac.soton.xtext.ui.contentassist.antlr,
- ac.soton.xtext.ui.internal
+ ac.soton.xtext.ui.internal,
+ ac.soton.xtext.ui.quickfix
 Bundle-Activator: ac.soton.xtext.ui.internal.MachineDslActivator

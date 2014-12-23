@@ -1,6 +1,6 @@
-machine camilleTest0 
+machine camilleTest0_new 
 refines 
- camilleTest
+ camilleTest_new
 sees 
  ctx2
 variables 
@@ -13,18 +13,21 @@ events
   @act1 "refVar ≔ 99" 
  end
  event kjh  extended ordinary // nnnnn
+ refines
+ camilleTest_new.kjh
  any
   r 
  where 
   @grd1 "r ∈ ℕ"  
- with
-  @wit1 "⊤" 
  then
   @act1 "refVar ≔ r" 
  end
  event evt  extended ordinary 
+ refines
+ camilleTest_new.evt
  end
- event evtr  extended ordinary
- refines camilleTest.evt2 
+ event evt2  extended ordinary 
+ refines
+ camilleTest_new.evt2
  end
 end

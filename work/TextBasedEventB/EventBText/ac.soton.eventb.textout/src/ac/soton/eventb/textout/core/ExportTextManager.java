@@ -23,7 +23,9 @@ import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
+import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
+import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
@@ -35,8 +37,13 @@ import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
 
 public class ExportTextManager {
 
-	public static IRodinProject rodinProject;
+	private static IRodinProject rodinProject = null;
+	private static List<Machine> refinesEmfMachine = null;
+	private static List<Context> extendsEmfContext = null;
 
+	private Machine emfMachine = null;
+	private Context emfContext = null;
+	
 	public void export(IRodinElement rodinElement) throws RodinDBException,
 			Exception {
 		SyncManager syncManager = new SyncManager();
@@ -47,14 +54,11 @@ public class ExportTextManager {
 		rodinProject = rodinElement.getRodinProject();
 		List<String> output = new ArrayList<String>();
 		if (rodinElement.getClass() == MachineRoot.class) {
-			MachineImpl emfMachine = (MachineImpl) element;
+			emfMachine = (MachineImpl) element;			
 			output.addAll(new PrintableMachine(emfMachine).print());
 		} else if (rodinElement.getClass() == ContextRoot.class) {
-			ContextImpl emfContext = (ContextImpl) element;
+			emfContext = (ContextImpl) element;
 			output.addAll(new PrintableContext(emfContext).print());
-		}
-		for (String string : output) {
-			System.out.println(string);
 		}
 	}
 
@@ -103,4 +107,25 @@ public class ExportTextManager {
 			e.printStackTrace();
 		}
 	}
+
+	public static IRodinProject getRodinProject() {
+		return rodinProject;
+	}
+	public static List<Machine> getRefinesEmfMachine() {
+		return refinesEmfMachine;
+	}
+
+	public static void setRefinesEmfMachine(List<Machine> refinesEmfMachine) {
+		ExportTextManager.refinesEmfMachine = refinesEmfMachine;
+	}
+
+	public static List<Context> getExtendsEmfContext() {
+		return extendsEmfContext;
+	}
+
+	public static void setExtendsEmfContext(List<Context> extendsEmfContext) {
+		ExportTextManager.extendsEmfContext = extendsEmfContext;
+	}
+
 }
+

@@ -34,6 +34,8 @@ public class PrintableMachine implements IPrintable {
 			for (String name : refinesNames) {
 				output.add(indent1 + name);
 			}
+			// store the refined machines
+			ExportTextManager.setRefinesEmfMachine(machine.getRefines());
 		}
 		// SeesNames
 		EList<String> seesNames = machine.getSeesNames();
@@ -73,7 +75,7 @@ public class PrintableMachine implements IPrintable {
 		// Save and open for editing
 		String fileName = machine.getName() + ".mch";
 		ExportTextManager.saveToFile(output, fileName);
-		ExportTextManager.openFileForEditing(fileName, ExportTextManager.rodinProject);
+		ExportTextManager.openFileForEditing(fileName, ExportTextManager.getRodinProject());
 		
 		return output;
 	}

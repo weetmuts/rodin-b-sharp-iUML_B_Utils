@@ -54,7 +54,7 @@ public class PrintableContext implements IPrintable {
 		// Save and open for editing
 		String fileName = context.getName() + ".ctx";
 		ExportTextManager.saveToFile(output, fileName);
-		ExportTextManager.openFileForEditing(fileName, ExportTextManager.rodinProject);
+		ExportTextManager.openFileForEditing(fileName, ExportTextManager.getRodinProject());
 		
 		return output;
 	}

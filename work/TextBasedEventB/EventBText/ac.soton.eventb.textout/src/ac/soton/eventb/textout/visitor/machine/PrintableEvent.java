@@ -26,20 +26,27 @@ public class PrintableEvent implements IPrintable {
 
 		List<String> output = new ArrayList<String>();
 		String comment = ExportTextManager.adjustComment(event.getComment());
-//		String internalString = " internal";
-//		if (event.isSetInternalId()) {
-//			internalString = " " + event.getInternalId();
-//		}
+		// String internalString = " internal";
+		// if (event.isSetInternalId()) {
+		// internalString = " " + event.getInternalId();
+		// }
 		String extendedString = "";
 		if (event.isExtended()) {
 			extendedString = " extended";
-		} 
+		}
 		String convergenceString = event.getConvergence().getLiteral();
 
-		output.add("event" + " " + event.getName() + " " 
-				//+ internalString 
-				+ extendedString + " "
-				+ convergenceString + " " + comment);
+		output.add("event" + " " + event.getName() + " "
+		// + internalString
+				+ extendedString + " " + convergenceString + " " + comment);
+		List<Event> refinesList = event.getRefines();
+		// we will handle refinement of a single machine
+		if (refinesList.size() > 0 && !event.getName().equals("INITIALISATION")) {
+			output.add("refines");
+			output.add(ExportTextManager.getRefinesEmfMachine().get(0).getName() + "."
+					+ event.getName());
+		}
+
 		EList<Parameter> parameterList = event.getParameters();
 		if (parameterList.size() > 0) {
 			output.add("any");
