@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ac.soton.xtext.machineDsl.ui
-Bundle-Vendor: My Company
+Bundle-Vendor: University of Southampton
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: ac.soton.xtext.machineDsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy

@@ -19,6 +19,12 @@
       <handler
             commandId="ac.soton.eventb.textToRodin.commands.toRodin"
             class="ac.soton.eventb.texttorodin.handlers.EventBTextToRodinHandler">
+             <activeWhen>
+             <or>
+          	   <with variable="activePartId"><equals value="ac.soton.xtext.MachineDsl"/></with>
+        	   <with variable="activePartId"><equals value="ac.soton.xtext.ContextDsl"/></with>
+        	</or>
+         </activeWhen>
       </handler>
    </extension>
    <extension
@@ -51,8 +57,8 @@
                id="ac.soton.eventb.textToRodin.toolbars.toRodinToolbar">
             <command
                   commandId="ac.soton.eventb.textToRodin.commands.toRodin"
-                  icon="icons/sample.gif"
-                  tooltip="Say hello world"
+                  icon="icons/textToRodin.gif"
+                  tooltip="Save as Rodin Model"
                   id="ac.soton.eventb.textToRodin.toolbars.toRodin">
             </command>
          </toolbar>
