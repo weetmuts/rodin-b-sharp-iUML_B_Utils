@@ -76,27 +76,6 @@ public class NewAction implements IObjectActionDelegate {
 		}
 
 		
-		////////////////////////////////////////////////////////////////
-		
-		SyncManager syncManager = new SyncManager();
-		IRodinElement rodinElement = null;
-
-		
-		
-		Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-		map.clear();
-		try {
-			EventBElement element = syncManager.saveModelElement(emfElement, rodinParent, map, null);;
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		
-		//////////////////////////////////////////////////////////////////
-		
-		
-		
 		
 		List<EObject> contentOfYourFile = r.getContents();
 		for (EObject eo : contentOfYourFile) {

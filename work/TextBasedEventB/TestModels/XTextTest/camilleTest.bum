@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" org.eventb.texttools.text_lastmodified="1411977665328" org.eventb.texttools.text_representation="machine aa&#10;variables a b c&#10;invariants&#10; @aa a ∈ ℕ&#10; @bb b ∈ BOOL&#10; @cc  a ≥ 0&#10; @dd c ∈ 0‥10&#10;&#10;events&#10;event INITIALISATION&#10;then @ll a ≔ 0&#10;@jh b≔ TRUE&#10;@kjc c ≔  10&#10;end&#10;&#10;event kjh //nnnnn&#10;any p q&#10;where @lkjh p ∈ ℕ   @jhhgjgh q∈ ℤ&#10;then @kjhk a ≔ 0&#10;@jjj c ≔ 0&#10;end&#10;&#10;event evt&#10;when&#10;@hhh a ≠ 0&#10;@jjj a = 0&#10;then&#10;@opui b ≔ FALSE&#10;end&#10;&#10;event evt2&#10;any x&#10;where&#10;@lll x∈ ℤ&#10;@mmm a = 0&#10;then&#10;@nnn b ≔ TRUE&#10;@ppp a ≔x&#10;end&#10;&#10;end&#10;" version="5">
-<org.eventb.core.variable name="_4-__kEelEeSD0dsEqWTJug" org.eventb.core.comment="a variable comment" org.eventb.core.identifier="a"/>
-<org.eventb.core.variable name="_4_AmoEelEeSD0dsEqWTJug" org.eventb.core.identifier="b"/>
-<org.eventb.core.variable name="_4_AmoUelEeSD0dsEqWTJug" org.eventb.core.identifier="c"/>
-<org.eventb.core.invariant name="_4_AmokelEeSD0dsEqWTJug" org.eventb.core.label="aa" org.eventb.core.predicate="a ∈ ℕ"/>
-<org.eventb.core.invariant name="_4_BNsEelEeSD0dsEqWTJug" org.eventb.core.label="bb" org.eventb.core.predicate="b ∈ BOOL"/>
-<org.eventb.core.invariant name="_4_B0wEelEeSD0dsEqWTJug" org.eventb.core.label="cc" org.eventb.core.predicate="a ≥ 0"/>
-<org.eventb.core.invariant name="_4_B0wUelEeSD0dsEqWTJug" org.eventb.core.label="dd" org.eventb.core.predicate="c ∈ 0‥10"/>
-<org.eventb.core.event name="_U17DIEemEeSD0dsEqWTJug" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
-<org.eventb.core.action name="_U17qMEemEeSD0dsEqWTJug" org.eventb.core.assignment="a ≔ 0" org.eventb.core.label="ll"/>
-<org.eventb.core.action name="_U17qMUemEeSD0dsEqWTJug" org.eventb.core.assignment="b≔ TRUE" org.eventb.core.label="jh"/>
-<org.eventb.core.action name="_U17qMkemEeSD0dsEqWTJug" org.eventb.core.assignment="c ≔  10" org.eventb.core.label="kjc"/>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.variable name="_hGA-oZS8EeSfRpMJMqp9DA" org.eventb.core.identifier="a"/>
+<org.eventb.core.variable name="_hGBlsJS8EeSfRpMJMqp9DA" org.eventb.core.identifier="b"/>
+<org.eventb.core.variable name="_hGCMwJS8EeSfRpMJMqp9DA" org.eventb.core.identifier="c"/>
+<org.eventb.core.invariant name="_hGCMwZS8EeSfRpMJMqp9DA" org.eventb.core.label="aa" org.eventb.core.predicate="a ∈ ℕ"/>
+<org.eventb.core.invariant name="_hGCz0JS8EeSfRpMJMqp9DA" org.eventb.core.label="bb" org.eventb.core.predicate="b ∈ BOOL"/>
+<org.eventb.core.invariant name="_hGDa4JS8EeSfRpMJMqp9DA" org.eventb.core.label="cc" org.eventb.core.predicate="a ≥ 0"/>
+<org.eventb.core.invariant name="_hGDa4ZS8EeSfRpMJMqp9DA" org.eventb.core.label="dd" org.eventb.core.predicate="c ∈ 0‥10"/>
+<org.eventb.core.event name="_hGEB8JS8EeSfRpMJMqp9DA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_hGEpAJS8EeSfRpMJMqp9DA" org.eventb.core.assignment="a ≔ 0" org.eventb.core.label="ll"/>
+<org.eventb.core.action name="_hGFQEJS8EeSfRpMJMqp9DA" org.eventb.core.assignment="b≔ TRUE" org.eventb.core.label="jh"/>
+<org.eventb.core.action name="_hGFQEZS8EeSfRpMJMqp9DA" org.eventb.core.assignment="c ≔  10" org.eventb.core.label="kjc"/>
 </org.eventb.core.event>
-<org.eventb.core.event name="_4_B0wkelEeSD0dsEqWTJug" org.eventb.core.comment="nnnnn" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="kjh">
-<org.eventb.core.parameter name="_4_Cb0EelEeSD0dsEqWTJug" org.eventb.core.comment="a comment" org.eventb.core.identifier="p"/>
-<org.eventb.core.parameter name="_4_DC4EelEeSD0dsEqWTJug" org.eventb.core.identifier="q"/>
-<org.eventb.core.guard name="_4_DC4UelEeSD0dsEqWTJug" org.eventb.core.label="lkjh" org.eventb.core.predicate="p ∈ ℕ"/>
-<org.eventb.core.guard name="_4_DC4kelEeSD0dsEqWTJug" org.eventb.core.label="jhhgjgh" org.eventb.core.predicate="q∈ ℤ"/>
-<org.eventb.core.action name="_4_Dp8EelEeSD0dsEqWTJug" org.eventb.core.assignment="a ≔ 0" org.eventb.core.label="kjhk"/>
-<org.eventb.core.action name="_4_Dp8UelEeSD0dsEqWTJug" org.eventb.core.assignment="c ≔ 0" org.eventb.core.label="jjj"/>
+<org.eventb.core.event name="_hGF3IJS8EeSfRpMJMqp9DA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="kjh">
+<org.eventb.core.parameter name="_hGGeMJS8EeSfRpMJMqp9DA" org.eventb.core.identifier="p"/>
+<org.eventb.core.parameter name="_hGGeMZS8EeSfRpMJMqp9DA" org.eventb.core.identifier="q"/>
+<org.eventb.core.guard name="_hGGeMpS8EeSfRpMJMqp9DA" org.eventb.core.label="lkjh" org.eventb.core.predicate="p ∈ ℕ"/>
+<org.eventb.core.guard name="_hGHFQJS8EeSfRpMJMqp9DA" org.eventb.core.label="jhhgjgh" org.eventb.core.predicate="q∈ ℤ"/>
+<org.eventb.core.action name="_hGHsUJS8EeSfRpMJMqp9DA" org.eventb.core.assignment="a ≔ 0" org.eventb.core.label="kjhk"/>
+<org.eventb.core.action name="_hGHsUZS8EeSfRpMJMqp9DA" org.eventb.core.assignment="c ≔ 0" org.eventb.core.label="jjj"/>
 </org.eventb.core.event>
-<org.eventb.core.event name="_4_ERAEelEeSD0dsEqWTJug" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt">
-<org.eventb.core.guard name="_4_E4EEelEeSD0dsEqWTJug" org.eventb.core.label="hhh" org.eventb.core.predicate="a ≠ 0"/>
-<org.eventb.core.guard name="_4_E4EUelEeSD0dsEqWTJug" org.eventb.core.label="jjj" org.eventb.core.predicate="a = 0"/>
-<org.eventb.core.action name="_4_E4EkelEeSD0dsEqWTJug" org.eventb.core.assignment="b ≔ FALSE" org.eventb.core.label="opui"/>
+<org.eventb.core.event name="_hGITYJS8EeSfRpMJMqp9DA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt">
+<org.eventb.core.guard name="_hGI6cJS8EeSfRpMJMqp9DA" org.eventb.core.label="hhh" org.eventb.core.predicate="a ≠ 0"/>
+<org.eventb.core.guard name="_hGI6cZS8EeSfRpMJMqp9DA" org.eventb.core.label="jjj" org.eventb.core.predicate="a = 0"/>
+<org.eventb.core.action name="_hGJhgJS8EeSfRpMJMqp9DA" org.eventb.core.assignment="b ≔ FALSE" org.eventb.core.label="opui"/>
 </org.eventb.core.event>
-<org.eventb.core.event name="_4_FfIEelEeSD0dsEqWTJug" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt2">
-<org.eventb.core.parameter name="_4_FfIUelEeSD0dsEqWTJug" org.eventb.core.identifier="x"/>
-<org.eventb.core.guard name="_4_FfIkelEeSD0dsEqWTJug" org.eventb.core.label="lll" org.eventb.core.predicate="x∈ ℤ"/>
-<org.eventb.core.guard name="_4_GGMEelEeSD0dsEqWTJug" org.eventb.core.label="mmm" org.eventb.core.predicate="a = 0"/>
-<org.eventb.core.action name="_4_GGMUelEeSD0dsEqWTJug" org.eventb.core.assignment="b ≔ TRUE" org.eventb.core.label="nnn"/>
-<org.eventb.core.action name="_4_GGMkelEeSD0dsEqWTJug" org.eventb.core.assignment="a ≔x" org.eventb.core.label="ppp"/>
+<org.eventb.core.event name="_hGJhgZS8EeSfRpMJMqp9DA" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt2">
+<org.eventb.core.parameter name="_hGKIkJS8EeSfRpMJMqp9DA" org.eventb.core.identifier="x"/>
+<org.eventb.core.guard name="_hGKIkZS8EeSfRpMJMqp9DA" org.eventb.core.label="lll" org.eventb.core.predicate="x∈ ℤ"/>
+<org.eventb.core.guard name="_hGKvoJS8EeSfRpMJMqp9DA" org.eventb.core.label="mmm" org.eventb.core.predicate="a = 0"/>
+<org.eventb.core.action name="_hGKvoZS8EeSfRpMJMqp9DA" org.eventb.core.assignment="b ≔ TRUE" org.eventb.core.label="nnn"/>
+<org.eventb.core.action name="_hGLWsJS8EeSfRpMJMqp9DA" org.eventb.core.assignment="a ≔x" org.eventb.core.label="ppp"/>
 </org.eventb.core.event>
 </org.eventb.core.machineFile>
