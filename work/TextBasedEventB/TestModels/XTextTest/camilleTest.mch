@@ -1,8 +1,6 @@
 machine camilleTest 
 variables 
- a // a variable comment
- b 
- c 
+ a  b  c 
 invariants 
  @aa "a ∈ ℕ"  
  @bb "b ∈ BOOL"  
@@ -15,10 +13,9 @@ events
   @jh "b≔ TRUE" 
   @kjc "c ≔  10" 
  end
- event kjh  ordinary // nnnnn
+ event kjh  ordinary 
  any
-  p // a comment
-  q 
+  p  q 
  where 
   @lkjh "p ∈ ℕ"  
   @jhhgjgh "q∈ ℤ"  
