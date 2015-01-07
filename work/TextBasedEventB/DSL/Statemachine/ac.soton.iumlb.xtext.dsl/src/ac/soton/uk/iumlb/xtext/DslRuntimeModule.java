@@ -3,9 +3,11 @@
  */
 package ac.soton.uk.iumlb.xtext;
 
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class DslRuntimeModule extends ac.soton.uk.iumlb.xtext.AbstractDslRuntimeModule {
+	
 
 }

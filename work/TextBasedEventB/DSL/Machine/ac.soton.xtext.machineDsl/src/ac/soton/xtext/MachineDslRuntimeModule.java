@@ -3,9 +3,15 @@
  */
 package ac.soton.xtext;
 
+import org.eclipse.xtext.resource.IFragmentProvider;
+
+
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class MachineDslRuntimeModule extends ac.soton.xtext.AbstractMachineDslRuntimeModule {
-
+	public Class<? extends IFragmentProvider> bindIFragmentProvider() {
+		return CustomFragmentProvider.class;
+	}
 }
