@@ -6,9 +6,9 @@
 </org.eventb.core.poPredicateSet>
 <org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="false" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="1">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTALLHYPrefVas"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="99∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_1wHRYJZ4EeS8E93FccXGgg"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_1wqrAJZ4EeS8E93FccXGgg"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_1wHRYJZ4EeS8E93FccXGgg"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="99∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_aGjTQJgLEeSvQYnmlYnHDw"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_aGlIcJgLEeSvQYnmlYnHDw"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_aGjTQJgLEeSvQYnmlYnHDw"/>
 <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
 </org.eventb.core.poSequent>
@@ -17,6 +17,6 @@
 </org.eventb.core.poPredicateSet>
 <org.eventb.core.poPredicateSet name="EVTALLHYPrefVas" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTrefVas" org.eventb.core.poStamp="0"/>
 <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="refVar∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_1wHRYJZ4EeS8E93FccXGgg"/>
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="refVar∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_aGjTQJgLEeSvQYnmlYnHDw"/>
 </org.eventb.core.poPredicateSet>
 </org.eventb.core.poFile>

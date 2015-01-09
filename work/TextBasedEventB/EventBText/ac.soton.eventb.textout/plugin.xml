@@ -86,8 +86,5 @@
             PrintableClass="ac.soton.eventb.textout.visitor.context.PrintableAxiom">
       </PrintableClass>
    </extension>
-   <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-   </extension>
 
 </plugin>
