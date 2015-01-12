@@ -12,6 +12,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -23,6 +24,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.Machine;
@@ -80,6 +82,10 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			r.setURI(newURI);
 
 			List<EObject> contentList = r.getContents();
+			List<EventBElement> toRodinList = new ArrayList<EventBElement>();
+
+			
+			// get the machines and context - and pre-process
 			for (EObject e : contentList) {
 				Class<? extends EObject> eClazz = e.getClass();
 				Class<MachineImpl> machineClazz = MachineImpl.class;
@@ -87,16 +93,23 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 				boolean isMachine = eClazz == machineClazz;
 				boolean isContext = eClazz == contextClazz;
 				if (isMachine || isContext) {
-					Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-					SyncManager synchManager = new SyncManager();
-					try {
-						synchManager.saveModelElement((EventBElement) e,
-								rodinProject, map, null);
-					} catch (CoreException e1) {
-						e1.printStackTrace();
-					}
+					toRodinList.add((EventBElement) e);
 				}
 			}
+
+			// persist as rodin
+			for(EventBElement e: toRodinList){
+				Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
+				SyncManager synchManager = new SyncManager();
+				try {
+					synchManager.saveModelElement((EventBElement) e,
+							rodinProject, map, null);
+				} catch (CoreException e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+			
 		}
 		return null;
 	}
