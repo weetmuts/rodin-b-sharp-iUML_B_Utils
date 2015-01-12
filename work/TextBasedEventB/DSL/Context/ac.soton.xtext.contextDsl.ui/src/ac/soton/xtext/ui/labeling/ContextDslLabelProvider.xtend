@@ -4,6 +4,7 @@
 package ac.soton.xtext.ui.labeling
 
 import com.google.inject.Inject
+import org.eventb.emf.core.context.Context
 
 /**
  * Provides labels for a EObjects.
@@ -19,11 +20,12 @@ class ContextDslLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 
 	// Labels and icons can be computed like this:
 	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
-//	def image(Greeting ele) {
-//		'Greeting.gif'
-//	}
+	 def text(Context ele) {
+		ele.name
+	}
+
+	def image(Context ele) {
+		'Context.gif'
+	}
+
 }

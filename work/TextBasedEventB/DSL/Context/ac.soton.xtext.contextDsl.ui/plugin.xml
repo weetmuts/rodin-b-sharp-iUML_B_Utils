@@ -10,6 +10,7 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="ctx"
+            icon="icons/Context.gif"
             id="ac.soton.xtext.ContextDsl"
             name="ContextDsl Editor">
         </editor>

@@ -86,5 +86,25 @@
             PrintableClass="ac.soton.eventb.textout.visitor.context.PrintableAxiom">
       </PrintableClass>
    </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonFilter
+            activeByDefault="true"
+            class="ac.soton.eventb.textout.core.HideDefaultResourcesFilter"
+            id="ac.soton.eventb.textout.core.hideDefaultResources"
+            name="Do not hide EventBText">
+      </commonFilter>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="fr.systerel.explorer.navigator.view">
+         <includes>
+            <contentExtension
+                  pattern="ac.soton.eventb.textout.core.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
 
 </plugin>
