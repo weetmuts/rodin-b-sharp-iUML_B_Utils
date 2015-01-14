@@ -1,0 +1,40 @@
+in machine impl
+
+@Override
+	public EObject eResolveProxy(InternalEObject proxy) {
+		if (((proxy instanceof Machine && getRefines().contains(proxy)) || (proxy instanceof Context && getSees()
+				.contains(proxy))) && proxy.eIsProxy() && eResource() != null) {
+			URI proxyURI = proxy.eProxyURI();
+			try {
+
+				String fragment = proxyURI.fragment();
+
+				if (fragment.contains("xtextLink_")) {
+					EObject resolved = super.eResolveProxy(proxy);
+					return resolved;
+				}
+......
+
+
+
+
+
+in eventimpl
+
+protected String getRefinesName(int index) {
+		try{
+			//get the current BEvent at the given index (using basicGet to avoid resolving)
+			Event event = ((BasicEList<Event>)getRefines()).basicGet(index);
+			
+			if(event.eIsProxy()){
+				String ref = event.getReference();
+				String id = ref.substring(ref.lastIndexOf("/"), ref.length());
+				String replacementName = TextOutUtil.crossRefMap.get(id);
+				//remove incorrect identifier
+				ref = ref.replace("." + id, "::") + replacementName;
+				String uri = getURI().toString();
+				URI appendFragment = URI
+						.createPlatformResourceURI(uri, true).appendFragment(ref);
+				((InternalEObject) event).eSetProxyURI(appendFragment);
+				System.out.println();
+			}

@@ -26,7 +26,7 @@ events
  refines
  camilleTest_new.evt
  end
- event evt2  extended ordinary 
+ event evt2b  extended ordinary 
  refines
  camilleTest_new.evt2
  end
