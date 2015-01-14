@@ -15,7 +15,6 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -36,7 +35,6 @@ import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.impl.MachineImpl;
-import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinCore;
@@ -133,20 +131,11 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			for (EventBElement e : toRodinList) {
 				EcoreUtil.resolveAll(e);
 				Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-//				SyncManager synchManager = new SyncManager();
-//				try {
-//					synchManager.saveModelElement((EventBElement) e,
-//							rodinProject, map, null);
-//				} catch (CoreException e1) {
-//					e1.printStackTrace();
-//				}
-				
 				try {
 					ResourceSet rs2 = new ResourceSetImpl();
 					URI uri2 = uri;
 					uri2 = uri2.trimFileExtension().appendFileExtension("bum");
-
-					Resource r2 = rs2.getResource(uri2, false); //n.b. do not load until notifications disabled
+					Resource r2 = rs2.getResource(uri2, false); 
 					if (r2 == null) {
 						r2 = rs2.createResource(uri2);
 					}
@@ -154,7 +143,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 					r2.getContents().add(e);
 					r2.save(map);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
