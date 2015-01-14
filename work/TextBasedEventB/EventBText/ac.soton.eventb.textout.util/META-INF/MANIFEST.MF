@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Utils
+Bundle-SymbolicName: ac.soton.eventb.textout.util
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: ac.soton.eventb.textout.utils.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: ac.soton.eventb.textout.utils

@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -29,22 +29,19 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.xtext.mwe.Reader;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.impl.EventImpl;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinCore;
 
-import ac.soton.eventb.textout.util.TextOutUtil;
+import ac.soton.eventb.textout.utils.TextOutUtil;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -105,9 +102,8 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			List<EObject> contentList = r.getContents();
 			List<EventBElement> toRodinList = new ArrayList<EventBElement>();
 
-			// find the machines and context - and store
-			// the cross references in a map with machine/context names
-			// TODO event refines and contexts
+			// find the event refines cross references, store in a map 
+			// with machine/context names
 			for (EObject e : contentList) {
 				Class<? extends EObject> eClazz = e.getClass();
 				boolean isMachine = eClazz == machineClazz;
@@ -132,7 +128,7 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 
 			// copy the map to utils so that the
 			// eventb.emf.core can make use of it
-			TextOutUtil.crossRefMap.putAll(crossRefMap);
+	//		TextOutUtil.crossRefMap.putAll(crossRefMap);
 
 			// persist as rodin
 			for (EventBElement e : toRodinList) {
@@ -147,6 +143,7 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 				}
 			}
 		}
+		TextOutUtil.crossRefMap.clear();
 		return null;
 	}
 
@@ -156,12 +153,15 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			try {
 				FileReader fr = new FileReader(f.getLocation().toString());
 				BufferedReader br = new BufferedReader(fr);
-				for (Event evt : refinesList) {
-					if (evt.eIsProxy()) {
+				for (Event refinedEvt : refinesList) {
+					if (refinedEvt.eIsProxy()) {
 						String line = br.readLine();
 						while (line != null) {
+							Pattern p = Pattern.compile(" "+e.getName()+" ");
+					        Matcher matcher = p.matcher(line);
+					        boolean found = matcher.find();
 							if (line.contains("event")
-									&& line.contains(e.getName())) {
+									&& found) {
 								line = br.readLine();
 								// counter for refined events
 								int i = 0;
@@ -169,15 +169,17 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 								if(line.trim().length() > "refines".length()){
 									// remove the refines clause
 									String name = line.replace("refines", "").trim();
-									String incorrectName = ((InternalEObject) evt).eProxyURI().fragment();
+									String incorrectName = ((InternalEObject) refinedEvt).eProxyURI().fragment();
 									TextOutUtil.crossRefMap.put(incorrectName, name );
 									i++;
 								}
 								for (; i < refinesList.size();) {
 									line = br.readLine().trim();
 									if(line != null && line.trim().length() > 0){
-										String incorrectName = ((InternalEObject) evt).eProxyURI().fragment();
-										incorrectName = incorrectName.substring(incorrectName.lastIndexOf("/"), incorrectName.length());
+										String incorrectName = ((InternalEObject) refinedEvt).eProxyURI().fragment();
+										int xtTextLinkPos = incorrectName.indexOf("xtextLink_");
+										incorrectName = incorrectName.substring(xtTextLinkPos);
+										
 										TextOutUtil.crossRefMap.put(incorrectName, line.trim() );
 										i++;
 									}
@@ -185,7 +187,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 							}
 							line = br.readLine();
 						}
-						System.out.println();
 					}
 				}
 				br.close();
