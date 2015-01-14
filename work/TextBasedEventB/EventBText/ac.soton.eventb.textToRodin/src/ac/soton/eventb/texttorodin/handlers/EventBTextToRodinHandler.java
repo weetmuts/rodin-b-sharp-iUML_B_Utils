@@ -77,7 +77,7 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 					.getEditorInput();
 			// This is the file associated with the editor.
 			IFile f = input.getFile();
-			URI uri = URI.createPlatformResourceURI(f.getFullPath().toString(),
+			URI uri = URI.createPlatformResourceURI(f.getFullPath().toOSString(),
 					true);
 			// get the resource associated with the file
 			ResourceSet rs = new ResourceSetImpl();
@@ -128,19 +128,36 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 
 			// copy the map to utils so that the
 			// eventb.emf.core can make use of it
-	//		TextOutUtil.crossRefMap.putAll(crossRefMap);
 
 			// persist as rodin
 			for (EventBElement e : toRodinList) {
 				EcoreUtil.resolveAll(e);
 				Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-				SyncManager synchManager = new SyncManager();
+//				SyncManager synchManager = new SyncManager();
+//				try {
+//					synchManager.saveModelElement((EventBElement) e,
+//							rodinProject, map, null);
+//				} catch (CoreException e1) {
+//					e1.printStackTrace();
+//				}
+				
 				try {
-					synchManager.saveModelElement((EventBElement) e,
-							rodinProject, map, null);
-				} catch (CoreException e1) {
+					ResourceSet rs2 = new ResourceSetImpl();
+					URI uri2 = uri;
+					uri2 = uri2.trimFileExtension().appendFileExtension("bum");
+
+					Resource r2 = rs2.getResource(uri2, false); //n.b. do not load until notifications disabled
+					if (r2 == null) {
+						r2 = rs2.createResource(uri2);
+					}
+					r2.getContents().clear();
+					r2.getContents().add(e);
+					r2.save(map);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
 			}
 		}
 		TextOutUtil.crossRefMap.clear();
