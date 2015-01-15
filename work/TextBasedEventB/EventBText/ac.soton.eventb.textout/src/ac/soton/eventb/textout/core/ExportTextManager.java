@@ -68,6 +68,10 @@ public class ExportTextManager {
 		if (comment != null && !comment.equals("")) {
 			adjustedComment = "// " + comment;
 		}
+		
+		String separator = System.getProperty("line.separator");
+		adjustedComment = adjustedComment.replace(separator, " ");
+		adjustedComment = adjustedComment.replace("\r", " ");
 		// if the comment is null or "" then return ""
 		return adjustedComment;
 	}

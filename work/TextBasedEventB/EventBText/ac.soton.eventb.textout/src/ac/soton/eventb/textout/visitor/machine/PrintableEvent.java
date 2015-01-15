@@ -43,8 +43,10 @@ public class PrintableEvent implements IPrintable {
 		// we will handle refinement of a single machine
 		if (refinesList.size() > 0 && !event.getName().equals("INITIALISATION")) {
 			output.add("refines");
+			// assuming only refines one event
+			Event refinedEvent = refinesList.get(0);
 			output.add(ExportTextManager.getRefinesEmfMachine().get(0).getName() + "."
-					+ event.getName());
+					+ refinedEvent.getName());
 		}
 
 		EList<Parameter> parameterList = event.getParameters();
