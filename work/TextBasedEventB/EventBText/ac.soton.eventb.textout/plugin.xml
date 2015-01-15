@@ -92,7 +92,7 @@
             activeByDefault="true"
             class="ac.soton.eventb.textout.core.HideDefaultResourcesFilter"
             id="ac.soton.eventb.textout.core.hideDefaultResources"
-            name="Do not hide EventBText">
+            name="All non Rodin + non-EventBText">
       </commonFilter>
    </extension>
    <extension
