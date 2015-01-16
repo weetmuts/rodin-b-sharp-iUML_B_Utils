@@ -1,4 +1,4 @@
-machine camilleTest0_new 
+machine camilleTest0_new // My Comment
 refines 
  camilleTest_new
 sees 

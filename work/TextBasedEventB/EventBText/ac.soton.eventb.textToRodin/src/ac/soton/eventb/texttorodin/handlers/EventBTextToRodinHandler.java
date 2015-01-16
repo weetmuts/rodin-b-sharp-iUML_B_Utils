@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -28,7 +29,14 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.xtext.TerminalRule;
+import org.eclipse.xtext.impl.TerminalRuleImpl;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.impl.HiddenLeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eventb.emf.core.EventBCommented;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.impl.ContextImpl;
@@ -75,8 +83,8 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 					.getEditorInput();
 			// This is the file associated with the editor.
 			IFile f = input.getFile();
-			URI uri = URI.createPlatformResourceURI(f.getFullPath().toOSString(),
-					true);
+			URI uri = URI.createPlatformResourceURI(f.getFullPath()
+					.toOSString(), true);
 			// get the resource associated with the file
 			ResourceSet rs = new ResourceSetImpl();
 			Resource r = rs.getResource(uri, true);
@@ -100,7 +108,7 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			List<EObject> contentList = r.getContents();
 			List<EventBElement> toRodinList = new ArrayList<EventBElement>();
 
-			// find the event refines cross references, store in a map 
+			// find the event refines cross references, store in a map
 			// with machine/context names
 			for (EObject e : contentList) {
 				Class<? extends EObject> eClazz = e.getClass();
@@ -118,38 +126,76 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 						for (Event evt : eventList) {
 							recordCrossRefs(evt, f, uri, rs);
 						}
-
+						handleComments(e);
 					}
-
 				}
 			}
-
-			// copy the map to utils so that the
-			// eventb.emf.core can make use of it
-
 			// persist as rodin
-			for (EventBElement e : toRodinList) {
-				EcoreUtil.resolveAll(e);
-				Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-				try {
-					ResourceSet rs2 = new ResourceSetImpl();
-					URI uri2 = uri;
-					uri2 = uri2.trimFileExtension().appendFileExtension("bum");
-					Resource r2 = rs2.getResource(uri2, false); 
-					if (r2 == null) {
-						r2 = rs2.createResource(uri2);
-					}
-					r2.getContents().clear();
-					r2.getContents().add(e);
-					r2.save(map);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
+			save(uri, toRodinList);
 		}
 		TextOutUtil.crossRefMap.clear();
 		return null;
+	}
+
+	private void handleComments(EObject e) {
+		// this object can have an eventb comment
+		if (e instanceof EventBCommented) {
+			EventBCommented commentedElement = (EventBCommented) e;
+			// Get the node associated with this object. 
+			ICompositeNode compositeNode = NodeModelUtils.getNode(e);
+			// Comments are leaf nodes, so get these
+			Iterable<ILeafNode> leafnodes = compositeNode.getLeafNodes();
+			Iterator<ILeafNode> iter = leafnodes.iterator();
+			// comments are HiddeLeafNodes - so find these
+			while (iter.hasNext()) {
+				ILeafNode node = iter.next();
+				String text = node.getText();
+				if (node instanceof HiddenLeafNode) {
+					HiddenLeafNode hiddenLeafNode = (HiddenLeafNode) node;
+					EObject grammerElement = hiddenLeafNode.getGrammarElement();
+					// If it is a Comments, it is found in the Terminal rules
+					if (grammerElement instanceof TerminalRule) {
+						TerminalRule tRule = (TerminalRule) grammerElement;
+						String name = tRule.getName();
+						if (name.equals("SL_COMMENT")
+								|| name.equals("ML_COMMENT")) {
+							// set the comment in the model
+							text = text.replace("//", "");
+							text = text.replace("\n", "").trim();
+							commentedElement.setComment(text);
+							break;
+						}
+					}
+				}
+			}
+			// now get the contents and recurse
+			EList<EObject> eList = e.eContents();
+			for(EObject eobj: eList){
+				handleComments(eobj);
+			}
+		}
+	}
+
+	private void save(URI uri, List<EventBElement> toRodinList) {
+		for (EventBElement e : toRodinList) {
+			EcoreUtil.resolveAll(e);
+			Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
+			try {
+				ResourceSet rs2 = new ResourceSetImpl();
+				URI uri2 = uri;
+				uri2 = uri2.trimFileExtension().appendFileExtension("bum");
+				Resource r2 = rs2.getResource(uri2, false);
+				if (r2 == null) {
+					r2 = rs2.createResource(uri2);
+				}
+				r2.getContents().clear();
+				r2.getContents().add(e);
+				r2.save(map);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+
+		}
 	}
 
 	private void recordCrossRefs(Event e, IFile f, URI uri, ResourceSet rs) {
@@ -162,30 +208,39 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 					if (refinedEvt.eIsProxy()) {
 						String line = br.readLine();
 						while (line != null) {
-							Pattern p = Pattern.compile(" "+e.getName()+" ");
-					        Matcher matcher = p.matcher(line);
-					        boolean found = matcher.find();
-							if (line.contains("event")
-									&& found) {
+							Pattern p = Pattern
+									.compile(" " + e.getName() + " ");
+							Matcher matcher = p.matcher(line);
+							boolean found = matcher.find();
+							if (line.contains("event") && found) {
 								line = br.readLine();
 								// counter for refined events
 								int i = 0;
-								//if refines and an event name are in the same line
-								if(line.trim().length() > "refines".length()){
+								// if refines and an event name are in the same
+								// line
+								if (line.trim().length() > "refines".length()) {
 									// remove the refines clause
-									String name = line.replace("refines", "").trim();
-									String incorrectName = ((InternalEObject) refinedEvt).eProxyURI().fragment();
-									TextOutUtil.crossRefMap.put(incorrectName, name );
+									String name = line.replace("refines", "")
+											.trim();
+									String incorrectName = ((InternalEObject) refinedEvt)
+											.eProxyURI().fragment();
+									TextOutUtil.crossRefMap.put(incorrectName,
+											name);
 									i++;
 								}
 								for (; i < refinesList.size();) {
 									line = br.readLine().trim();
-									if(line != null && line.trim().length() > 0){
-										String incorrectName = ((InternalEObject) refinedEvt).eProxyURI().fragment();
-										int xtTextLinkPos = incorrectName.indexOf("xtextLink_");
-										incorrectName = incorrectName.substring(xtTextLinkPos);
-										
-										TextOutUtil.crossRefMap.put(incorrectName, line.trim() );
+									if (line != null
+											&& line.trim().length() > 0) {
+										String incorrectName = ((InternalEObject) refinedEvt)
+												.eProxyURI().fragment();
+										int xtTextLinkPos = incorrectName
+												.indexOf("xtextLink_");
+										incorrectName = incorrectName
+												.substring(xtTextLinkPos);
+
+										TextOutUtil.crossRefMap.put(
+												incorrectName, line.trim());
 										i++;
 									}
 								}
@@ -198,7 +253,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
