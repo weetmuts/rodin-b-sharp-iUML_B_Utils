@@ -132,14 +132,16 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 						recordCrossRefs(evt, f, uri, rs);
 					}
 				}
+				// retrieve lost comment of the machine
 				persistComments(e);
+				// retrieve lost comments of all the contents
 				TreeIterator<EObject> iter = e.eAllContents();
 				while (iter.hasNext()) {
 					EObject next = iter.next();
 					persistComments(next);
 				}
 			}
-			// persist in rodin database
+			// persist machine or context in rodin database
 			save(uri, toRodinList);
 		}
 		TextOutUtil.crossRefMap.clear();
