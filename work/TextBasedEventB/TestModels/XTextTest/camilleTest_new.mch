@@ -1,11 +1,11 @@
-machine camilleTest_new 
+machine camilleTest_new // a comment on a machine
 variables 
  a // a variable comment
- b 
- c 
+ b // b variable comment
+ c // c variable comment
 invariants 
- @aa "a ∈ ℕ"  
- @bb "b ∈ BOOL"  
+ @aa "a ∈ ℕ"  // aa invariant comment
+ @bb "b ∈ BOOL"  // bb invariant comment
  @cc "a ≥ 0"  
  @dd "c ∈ 0‥10"  
 events 
@@ -17,14 +17,14 @@ events
  end
  event kjh  ordinary // nnnnn
  any
-  p // a comment
-  q 
+  p // p parameter comment
+  q // q parameter comment
  where 
-  @lkjh "p ∈ ℕ"  
-  @jhhgjgh "q∈ ℤ"  
+  @lkjh "p ∈ ℕ"  // p guard comment
+  @jhhgjgh "q∈ ℤ"  // q guard comment
  then
-  @kjhk "a ≔ 0" 
-  @jjj "c ≔ 0" 
+  @kjhk "a ≔ 0" // a action comment
+  @jjj "c ≔ 0" // c action comment
  end
  event evt  ordinary 
  when 

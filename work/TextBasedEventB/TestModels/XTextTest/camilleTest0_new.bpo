@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poFile org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="18">
 <org.eventb.core.poIdentifier name="A" org.eventb.core.type="ℙ(A)"/>
 <org.eventb.core.poIdentifier name="B" org.eventb.core.type="ℙ(B)"/>
 <org.eventb.core.poIdentifier name="cst1" org.eventb.core.type="ℙ(A)"/>
@@ -9,45 +9,45 @@
 <org.eventb.core.poPredicate name="cst4" org.eventb.core.predicate="cst2∈ℕ" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#,"/>
 <org.eventb.core.poPredicate name="cst5" org.eventb.core.predicate="cst2≥0" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#-"/>
 <org.eventb.core.poIdentifier name="cst3" org.eventb.core.type="ℙ(A)"/>
-<org.eventb.core.poPredicate name="cst6" org.eventb.core.predicate="cst3⊆A" org.eventb.core.source="/XTextTest/ctx2.buc|org.eventb.core.contextFile#ctx2|org.eventb.core.axiom#*"/>
-<org.eventb.core.poPredicate name="cst7" org.eventb.core.predicate="cst1∩cst3=(∅ ⦂ ℙ(A))" org.eventb.core.source="/XTextTest/ctx2.buc|org.eventb.core.contextFile#ctx2|org.eventb.core.axiom#+"/>
+<org.eventb.core.poPredicate name="cst6" org.eventb.core.predicate="cst3⊆A" org.eventb.core.source="/XTextTest/ctx2_new.buc|org.eventb.core.contextFile#ctx2_new|org.eventb.core.axiom#_OD6ukZ-wEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="cst7" org.eventb.core.predicate="cst1∩cst3=(∅ ⦂ ℙ(A))" org.eventb.core.source="/XTextTest/ctx2_new.buc|org.eventb.core.contextFile#ctx2_new|org.eventb.core.axiom#_OD7VoJ-wEeSY1oSys4f7KA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="18">
 <org.eventb.core.poIdentifier name="a" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="b" org.eventb.core.type="BOOL"/>
 <org.eventb.core.poIdentifier name="c" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="refVar" org.eventb.core.type="ℤ"/>
-<org.eventb.core.poPredicate name="refVas" org.eventb.core.predicate="a∈ℕ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_o67wMJyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="refVat" org.eventb.core.predicate="b∈BOOL" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_o68XQJyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="refVau" org.eventb.core.predicate="a≥0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_o68XQZyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="refVav" org.eventb.core.predicate="c∈0 ‥ 10" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_o68-UJyCEeSfjfnKr3E6Tg"/>
+<org.eventb.core.poPredicate name="refVas" org.eventb.core.predicate="a∈ℕ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_J5XEkZ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="refVat" org.eventb.core.predicate="b∈BOOL" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_J5XroJ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="refVau" org.eventb.core.predicate="a≥0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_J5YSsJ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="refVav" org.eventb.core.predicate="c∈0 ‥ 10" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.invariant#_J5Y5wJ-uEeSY1oSys4f7KA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTALLHYPrefVas"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="99∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_-4E2sp1jEeSZle-XU6dZcw"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o69lYJyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_-4E2s51jEeSZle-XU6dZcw"/>
-<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_-4E2sp1jEeSZle-XU6dZcw"/>
+<org.eventb.core.poSequent name="INITIALISATION/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTALLHYPctx2_ney"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="99∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_WMH2sp-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5Zg0J-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_WMH2s5-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_WMH2sp-uEeSY1oSys4f7KA"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poSequent#INITIALISATION\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTrefVas" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTIDENTctx2_ney" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="18">
 <org.eventb.core.poIdentifier name="b'" org.eventb.core.type="BOOL"/>
 <org.eventb.core.poIdentifier name="c'" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="refVar'" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="a'" org.eventb.core.type="ℤ"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPrefVas" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTrefVas" org.eventb.core.poStamp="0"/>
-<org.eventb.core.poSequent name="kjh/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTALLHYPrefVat"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="r∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_-4E2sp1jEeSZle-XU6dZcw"/>
-<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o6_akJyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_-4FdwZ1jEeSZle-XU6dZcw"/>
-<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_-4E2sp1jEeSZle-XU6dZcw"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPctx2_ney" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTctx2_ney" org.eventb.core.poStamp="18"/>
+<org.eventb.core.poSequent name="kjh/inv1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTALLHYPctx2_nez"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="r∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_WMH2sp-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5b9EZ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_WMIdwZ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_WMH2sp-uEeSY1oSys4f7KA"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poSequent#kjh\/inv1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTrefVat" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTIDENTctx2_nez" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="18">
 <org.eventb.core.poIdentifier name="p" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="c'" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="refVar'" org.eventb.core.type="ℤ"/>
@@ -55,28 +55,28 @@
 <org.eventb.core.poIdentifier name="q" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="a'" org.eventb.core.type="ℤ"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPrefVat" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTrefVat" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="p∈ℕ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o6_akJyCEeSfjfnKr3E6Tg|org.eventb.core.guard#_o7ABoZyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="q∈ℤ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o6_akJyCEeSfjfnKr3E6Tg|org.eventb.core.guard#_o7AosJyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="r∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_-4FdwZ1jEeSZle-XU6dZcw|org.eventb.core.guard#_-4GE0p1jEeSZle-XU6dZcw"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPctx2_nez" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTctx2_nez" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="p∈ℕ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5b9EZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_J5dLMZ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="q∈ℤ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5b9EZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_J5dyQJ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="r∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.event#_WMIdwZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_WMJE0Z-uEeSY1oSys4f7KA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTIDENTrefVau" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTIDENTctx2_ne{" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="18">
 <org.eventb.core.poIdentifier name="b'" org.eventb.core.type="BOOL"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPrefVau" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTrefVau" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a≠0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o7Cd4JyCEeSfjfnKr3E6Tg|org.eventb.core.guard#_o7DE8JyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="a=0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o7Cd4JyCEeSfjfnKr3E6Tg|org.eventb.core.guard#_o7DsAJyCEeSfjfnKr3E6Tg"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPctx2_ne{" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTctx2_ne{" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="a≠0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5eZUZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_J5fAYJ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="a=0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5eZUZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_J5fAYZ-uEeSY1oSys4f7KA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTIDENTrefVav" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="EVTIDENTctx2_ne|" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="18">
 <org.eventb.core.poIdentifier name="b'" org.eventb.core.type="BOOL"/>
 <org.eventb.core.poIdentifier name="x" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="a'" org.eventb.core.type="ℤ"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPrefVav" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTrefVav" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="x∈ℤ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o7ETEJyCEeSfjfnKr3E6Tg|org.eventb.core.guard#_o7E6IZyCEeSfjfnKr3E6Tg"/>
-<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="a=0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_o7ETEJyCEeSfjfnKr3E6Tg|org.eventb.core.guard#_o7FhMJyCEeSfjfnKr3E6Tg"/>
+<org.eventb.core.poPredicateSet name="EVTALLHYPctx2_ne|" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#EVTIDENTctx2_ne\|" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="x∈ℤ" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5fncZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_J5gOgJ-uEeSY1oSys4f7KA"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="a=0" org.eventb.core.source="/XTextTest/camilleTest_new.bum|org.eventb.core.machineFile#camilleTest_new|org.eventb.core.event#_J5fncZ-uEeSY1oSys4f7KA|org.eventb.core.guard#_J5gOgZ-uEeSY1oSys4f7KA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
-<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="refVar∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_-4E2sp1jEeSZle-XU6dZcw"/>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/XTextTest/camilleTest0_new.bpo|org.eventb.core.poFile#camilleTest0_new|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="18">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="refVar∈ℕ" org.eventb.core.source="/XTextTest/camilleTest0_new.bum|org.eventb.core.machineFile#camilleTest0_new|org.eventb.core.invariant#_WMH2sp-uEeSY1oSys4f7KA"/>
 </org.eventb.core.poPredicateSet>
 </org.eventb.core.poFile>

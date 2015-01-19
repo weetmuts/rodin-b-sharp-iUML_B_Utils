@@ -1,0 +1,9 @@
+context ctx2_new // this is my Context
+extends 
+ ctx	
+constants 
+ cst3 //	constant comment
+axioms 
+ @axm1 "cst3 ⊆ A"  // and axiom comment
+ @axm2 "cst1 ∩ cst3 = ∅"  
+end

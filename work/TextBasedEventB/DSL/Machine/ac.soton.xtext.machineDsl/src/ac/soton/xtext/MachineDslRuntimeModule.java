@@ -3,8 +3,8 @@
  */
 package ac.soton.xtext;
 
-// I don't think we'll need the customfragmentProvider. Delete when we're sure.
-//import org.eclipse.xtext.resource.IFragmentProvider;
+import org.eclipse.xtext.parsetree.reconstr.ICommentAssociater;
+
 
 
 
@@ -12,5 +12,7 @@ package ac.soton.xtext;
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class MachineDslRuntimeModule extends ac.soton.xtext.AbstractMachineDslRuntimeModule {
-
+	public Class<? extends ICommentAssociater> bindICommentAssociater() {
+		return CustomCommentAssociater.class;
+	}
 }

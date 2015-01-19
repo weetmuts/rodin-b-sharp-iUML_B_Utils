@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -17,6 +16,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -30,18 +30,26 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.impl.TerminalRuleImpl;
+import org.eclipse.xtext.nodemodel.BidiIterator;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.HiddenLeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eventb.emf.core.EventBCommented;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
+import org.eventb.emf.core.context.Axiom;
+import org.eventb.emf.core.context.Constant;
+import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
+import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
+import org.eventb.emf.core.machine.Guard;
+import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.machine.Parameter;
+import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
@@ -64,6 +72,9 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 
 	// a place to store machines etc that require processing
 	public static Map<String, String> crossRefMap = new HashMap<String, String>();
+	private boolean isMachine;
+	private boolean isContext;
+	private EventBCommented previousCommentedElement = null;
 
 	/**
 	 * the command has been executed, so extract extract the needed information
@@ -100,79 +111,89 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 				return null;
 			}
 
-			// reset the URI to point to a new file
-			URI newURI = uri.trimFileExtension().appendFileExtension("bum");
-			r.setURI(newURI);
-
 			// get the contents of the resource
-			List<EObject> contentList = r.getContents();
+			EObject e = r.getContents().get(0);
 			List<EventBElement> toRodinList = new ArrayList<EventBElement>();
 
 			// find the event refines cross references, store in a map
 			// with machine/context names
-			for (EObject e : contentList) {
-				Class<? extends EObject> eClazz = e.getClass();
-				boolean isMachine = eClazz == machineClazz;
-				boolean isContext = eClazz == contextClazz;
-				// if we have a machine or context
-				// we need to store the (key) xtext cross reference name
-				// and (value) machine/context name for later use
-				if (isMachine || isContext) {
-					toRodinList.add((EventBElement) e);
-
-					if (isMachine) {
-						Machine machine = (Machine) e;
-						List<Event> eventList = machine.getEvents();
-						for (Event evt : eventList) {
-							recordCrossRefs(evt, f, uri, rs);
-						}
-						handleComments(e);
+			Class<? extends EObject> eClazz = e.getClass();
+			isMachine = eClazz == machineClazz;
+			isContext = eClazz == contextClazz;
+			// if we have a machine or context
+			// we need to store the (key) xtext cross reference name
+			// and (value) machine/context name for later use
+			if (isMachine || isContext) {
+				toRodinList.add((EventBElement) e);
+				if (isMachine) {
+					Machine machine = (Machine) e;
+					List<Event> eventList = machine.getEvents();
+					for (Event evt : eventList) {
+						recordCrossRefs(evt, f, uri, rs);
 					}
 				}
+				persistComments(e);
+				TreeIterator<EObject> iter = e.eAllContents();
+				while (iter.hasNext()) {
+					EObject next = iter.next();
+					persistComments(next);
+				}
 			}
-			// persist as rodin
+			// persist in rodin database
 			save(uri, toRodinList);
 		}
 		TextOutUtil.crossRefMap.clear();
 		return null;
 	}
 
-	private void handleComments(EObject e) {
+	// XText comments are a horrible mess. The comments may appear before or
+	// after the associated semantic text. The comments also
+	// contain spurious end of line characters and spurious text. 
+	// The 'actual' comment can come before or after the 
+	// spurious newline.
+	private void persistComments(EObject e) {
 		// this object can have an eventb comment
 		if (e instanceof EventBCommented) {
-			EventBCommented commentedElement = (EventBCommented) e;
-			// Get the node associated with this object. 
+			EventBCommented currentCommentedElement = (EventBCommented) e;
+			// Get the node associated with this object.
 			ICompositeNode compositeNode = NodeModelUtils.getNode(e);
-			// Comments are leaf nodes, so get these
-			Iterable<ILeafNode> leafnodes = compositeNode.getLeafNodes();
-			Iterator<ILeafNode> iter = leafnodes.iterator();
+			// Get the node iterator
+			BidiIterator<INode> iter = compositeNode.getChildren().iterator();
 			// comments are HiddeLeafNodes - so find these
 			while (iter.hasNext()) {
-				ILeafNode node = iter.next();
+				INode node = iter.next();
+
 				String text = node.getText();
-				if (node instanceof HiddenLeafNode) {
-					HiddenLeafNode hiddenLeafNode = (HiddenLeafNode) node;
-					EObject grammerElement = hiddenLeafNode.getGrammarElement();
-					// If it is a Comments, it is found in the Terminal rules
-					if (grammerElement instanceof TerminalRule) {
-						TerminalRule tRule = (TerminalRule) grammerElement;
-						String name = tRule.getName();
-						if (name.equals("SL_COMMENT")
-								|| name.equals("ML_COMMENT")) {
-							// set the comment in the model
-							text = text.replace("//", "");
-							text = text.replace("\n", "").trim();
-							commentedElement.setComment(text);
-							break;
-						}
+				if (text.contains("//")) {
+					// set the comment in the previous element
+					text = text.replace("//", "");
+					// remove any spurious trailing newlines
+					if(text.contains("\n") && !(previousCommentedElement instanceof Constant)){
+						text = text.substring(0, text.indexOf("\n"));
 					}
+					// unless it is a comment on a constant which comes with a
+					// spurious preceding newline
+					else if(text.contains("\n") && previousCommentedElement instanceof Constant){
+						text.replace("\n", "");
+					}
+					text = text.trim();
+					if (e instanceof Event ||
+							e instanceof Machine ||
+							e instanceof Context) {
+						currentCommentedElement.setComment(text);
+					} else if (e instanceof Parameter ||
+							e instanceof Invariant || 
+							e instanceof Variable ||
+							e instanceof Guard ||
+							e instanceof Action ||
+							e instanceof Constant ||
+							e instanceof Axiom) {
+						previousCommentedElement.setComment(text);
+					}
+					break;
 				}
 			}
-			// now get the contents and recurse
-			EList<EObject> eList = e.eContents();
-			for(EObject eobj: eList){
-				handleComments(eobj);
-			}
+			previousCommentedElement = currentCommentedElement;
 		}
 	}
 
@@ -183,7 +204,13 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			try {
 				ResourceSet rs2 = new ResourceSetImpl();
 				URI uri2 = uri;
-				uri2 = uri2.trimFileExtension().appendFileExtension("bum");
+
+				if (isMachine) {
+					uri2 = uri2.trimFileExtension().appendFileExtension("bum");
+				} else if (isContext) {
+					uri2 = uri2.trimFileExtension().appendFileExtension("buc");
+				}
+
 				Resource r2 = rs2.getResource(uri2, false);
 				if (r2 == null) {
 					r2 = rs2.createResource(uri2);

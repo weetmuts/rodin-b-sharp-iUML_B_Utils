@@ -2,7 +2,7 @@ machine camilleTest0_new // My Comment
 refines 
  camilleTest_new
 sees 
- ctx2
+ ctx2_new
 variables 
  a  b  c  refVar 
 invariants 
