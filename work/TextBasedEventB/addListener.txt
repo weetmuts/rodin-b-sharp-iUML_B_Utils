@@ -1,0 +1,27 @@
+		final IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event);
+		Class<XtextEditor> xTextEditorClazz = XtextEditor.class;
+		Class<? extends IEditorPart> thisEditorClazz = editorPart.getClass();
+
+		if (thisEditorClazz == xTextEditorClazz) {
+			// Get the input from the editor UI
+			IFileEditorInput input = (IFileEditorInput) editorPart
+					.getEditorInput();
+	
+			
+			ISelectionListener mylistener = new ISelectionListener() {
+				@Override
+				public void selectionChanged(IWorkbenchPart sourcepart, ISelection selection) {
+		        if (sourcepart != editorPart.getSite() &&
+		            selection instanceof IStructuredSelection) {
+		            doSomething(((IStructuredSelection) selection).toList());
+		            }
+		        }
+
+				private void doSomething(List list) {
+					// TODO Auto-generated method stub
+					System.out.println();
+				}
+		    };
+			
+			editorPart.getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(mylistener);
+
