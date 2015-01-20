@@ -14,11 +14,13 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.eventb.emf.core.EventBElement;
@@ -105,11 +107,19 @@ public class ExportTextManager {
 				.getActiveWorkbenchWindow();
 
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		try {
-			page.openEditor(new FileEditorInput(file), desc.getId());
-		} catch (PartInitException e) {
-			e.printStackTrace();
-		}
+			IEditorPart editorPart;
+			try {
+				editorPart = page.openEditor(new FileEditorInput(file), desc.getId());
+				if(editorPart instanceof XtextEditor){
+					AddRodinKeyboardListener.setup((XtextEditor) editorPart);
+					
+				}
+
+			} catch (PartInitException e) {
+				e.printStackTrace();
+			}
+			
+			
 	}
 
 	public static IRodinProject getRodinProject() {

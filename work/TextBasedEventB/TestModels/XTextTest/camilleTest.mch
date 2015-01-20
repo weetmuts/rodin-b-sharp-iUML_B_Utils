@@ -9,7 +9,7 @@ invariants
 events 
  event INITIALISATION  ordinary 
  then
-  @ll "a ≔ 0" 
+  @ll "a ≔ 0 ∪ kjh" 
   @jh "b≔ TRUE" 
   @kjc "c ≔  10" 
  end
