@@ -12,10 +12,10 @@ public class CustomXtextEditorCallback extends
 	@Override
 	public void afterCreatePartControl(XtextEditor editor) {
 		super.afterCreatePartControl(editor);
-		setup(editor);
+//		setupRodinKeyboardListener(editor);
 	}
 
-	private void setup(XtextEditor editor) {
+	private void setupRodinKeyboardListener(XtextEditor editor) {
 		StyledText textWidget = editor.getInternalSourceViewer().getTextWidget();
 
 		ModifyListener eventBListener = RodinKeyboardPlugin.getDefault()
