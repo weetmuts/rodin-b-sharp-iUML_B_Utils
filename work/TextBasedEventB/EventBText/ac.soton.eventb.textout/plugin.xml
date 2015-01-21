@@ -107,18 +107,82 @@
       </viewerContentBinding>
    </extension>
    <extension
-         point="org.eclipse.ui.editorActions">
-      <action
-            actionID="org.eventb.textOut.core.translateAction"
-            class="org.eventb.textOut.core.TranslateAction"
-            icon="Machine.gif"
-            id="org.eventb.textOut.core.translate"
-            label="%TranslateToText"
-            menubarPath="org.eventb.ui.eventBMenu/New"
-            style="push"
-            toolbarPath="org.eventb.ui.eventBEditor"
-            tooltip="%TranslateToText">
-      </action>
+         point="org.eclipse.ui.commands">
+      <category
+            id="ac.soton.eventb.textout.commands.category"
+            name="Rodin To text Category">
+      </category>
+      <command
+            categoryId="ac.soton.eventb.textout.commands.category"
+            id="ac.soton.eventb.textout.commands.toText"
+            name="Rodin to Text ">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="ac.soton.eventb.textout.core.EventBRodinToTextHandler"
+            commandId="ac.soton.eventb.textout.commands.toText">
+         <activeWhen>
+            <or>
+               <with
+                     variable="activePartId">
+                  <equals
+                        value="fr.systerel.editor.editors.RodinEditor">
+                  </equals>
+               </with>
+               <with
+                     variable="activePartId">
+                  <equals
+                        value="org.eventb.ui.editors.machine">
+                  </equals>
+               </with>
+               <with
+                     variable="activePartId">
+                  <equals
+                        value="org.eventb.ui.editors.context">
+                  </equals>
+               </with>
+            </or>
+         </activeWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="ac.soton.eventb.textout.commands.toText"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+7">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="ac.soton.eventb.textout.toolbars.toTextToolbar">
+            <command
+                  commandId="ac.soton.eventb.textout.commands.toText"
+                  icon="icons/Machine.gif"
+                  id="ac.soton.eventb.textout.toolbars.toText"
+                  tooltip="Save Rodin as Text">
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="ac.soton.eventb.textout.menus.sampleMenu"
+               label="Rodin to Text Menu"
+               mnemonic="M">
+            <command
+                  commandId="ac.soton.eventb.textout.commands.toText"
+                  id="ac.soton.eventb.textout.menus.toText"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
    </extension>
 
 </plugin>
