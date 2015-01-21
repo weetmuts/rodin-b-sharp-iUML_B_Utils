@@ -13,6 +13,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -48,11 +53,19 @@ public class ExportTextManager {
 	
 	public void export(IRodinElement rodinElement) throws RodinDBException,
 			Exception {
-		SyncManager syncManager = new SyncManager();
 		Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
 		map.clear();
-		EventBElement element = syncManager.loadRodinElement(rodinElement,
-				null, map, null);
+
+		IResource rodinResource = rodinElement.getResource();
+		ResourceSet rs = new ResourceSetImpl();	
+		URI uri = URI.createPlatformResourceURI(rodinResource.getFullPath()
+				.toOSString(), true);
+		Resource emfResource = rs.getResource(uri, true);
+		if(!emfResource.isLoaded()){
+			emfResource.load(map);
+		}
+		EObject element = emfResource.getContents().get(0);
+		
 		rodinProject = rodinElement.getRodinProject();
 		List<String> output = new ArrayList<String>();
 		if (rodinElement.getClass() == MachineRoot.class) {

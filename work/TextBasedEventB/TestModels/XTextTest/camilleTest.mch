@@ -1,8 +1,10 @@
-machine camilleTest ⃫comment  1
+machine camilleTest // comment  1
 variables 
- a ⃫comment 2 b  c ⃫comment 3
+ a // comment 2
+ b 
+ c // comment 3
 invariants 
- @aa "a ∈ ℕ"  ⃫comment 4
+ @aa "a ∈ ℕ"  // comment 4
  @bb "b ∈ BOOL"  
  @cc "a ≥ 0"  
  @dd "c ∈ 0‥10"  

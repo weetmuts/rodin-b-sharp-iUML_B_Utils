@@ -106,5 +106,19 @@
          </includes>
       </viewerContentBinding>
    </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <action
+            actionID="org.eventb.textOut.core.translateAction"
+            class="org.eventb.textOut.core.TranslateAction"
+            icon="Machine.gif"
+            id="org.eventb.textOut.core.translate"
+            label="%TranslateToText"
+            menubarPath="org.eventb.ui.eventBMenu/New"
+            style="push"
+            toolbarPath="org.eventb.ui.eventBEditor"
+            tooltip="%TranslateToText">
+      </action>
+   </extension>
 
 </plugin>

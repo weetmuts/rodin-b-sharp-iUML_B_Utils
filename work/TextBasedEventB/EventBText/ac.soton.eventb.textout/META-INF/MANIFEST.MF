@@ -16,4 +16,6 @@ Export-Package: ac.soton.eventb.textout.core,
  ac.soton.eventb.textout.visitor.context,
  ac.soton.eventb.textout.visitor.machine
 Import-Package: org.eclipse.xtext.ui.editor,
+ org.eventb.internal.ui.eventbeditor.actions,
+ org.eventb.ui.eventbeditor,
  org.rodinp.keyboard
