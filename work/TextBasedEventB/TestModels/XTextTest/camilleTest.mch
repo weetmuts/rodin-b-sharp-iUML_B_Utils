@@ -1,15 +1,15 @@
-machine camilleTest 
+machine camilleTest ⃫comment  1
 variables 
- a  b  c 
+ a ⃫comment 2 b  c ⃫comment 3
 invariants 
- @aa "a ∈ ℕ"  
+ @aa "a ∈ ℕ"  ⃫comment 4
  @bb "b ∈ BOOL"  
  @cc "a ≥ 0"  
  @dd "c ∈ 0‥10"  
 events 
  event INITIALISATION  ordinary 
  then
-  @ll "a ≔ 0 ∪ kjh" 
+  @ll "a ≔ 0" 
   @jh "b≔ TRUE" 
   @kjc "c ≔  10" 
  end

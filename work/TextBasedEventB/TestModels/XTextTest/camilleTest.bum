@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
-<org.eventb.core.variable name="_hGA-oZS8EeSfRpMJMqp9DA" org.eventb.core.identifier="a"/>
+<org.eventb.core.machineFile org.eventb.core.comment="comment  1" org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" version="5">
+<org.eventb.core.variable name="_hGA-oZS8EeSfRpMJMqp9DA" org.eventb.core.comment="comment 2" org.eventb.core.identifier="a"/>
 <org.eventb.core.variable name="_hGBlsJS8EeSfRpMJMqp9DA" org.eventb.core.identifier="b"/>
-<org.eventb.core.variable name="_hGCMwJS8EeSfRpMJMqp9DA" org.eventb.core.identifier="c"/>
-<org.eventb.core.invariant name="_hGCMwZS8EeSfRpMJMqp9DA" org.eventb.core.label="aa" org.eventb.core.predicate="a ∈ ℕ"/>
+<org.eventb.core.variable name="_hGCMwJS8EeSfRpMJMqp9DA" org.eventb.core.comment="comment 3" org.eventb.core.identifier="c"/>
+<org.eventb.core.invariant name="_hGCMwZS8EeSfRpMJMqp9DA" org.eventb.core.comment="comment 4" org.eventb.core.label="aa" org.eventb.core.predicate="a ∈ ℕ"/>
 <org.eventb.core.invariant name="_hGCz0JS8EeSfRpMJMqp9DA" org.eventb.core.label="bb" org.eventb.core.predicate="b ∈ BOOL"/>
 <org.eventb.core.invariant name="_hGDa4JS8EeSfRpMJMqp9DA" org.eventb.core.label="cc" org.eventb.core.predicate="a ≥ 0"/>
 <org.eventb.core.invariant name="_hGDa4ZS8EeSfRpMJMqp9DA" org.eventb.core.label="dd" org.eventb.core.predicate="c ∈ 0‥10"/>

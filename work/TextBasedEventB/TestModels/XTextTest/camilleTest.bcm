@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig">
 <org.eventb.core.scInvariant name="'" org.eventb.core.label="aa" org.eventb.core.predicate="a∈ℕ" org.eventb.core.source="/XTextTest/camilleTest.bum|org.eventb.core.machineFile#camilleTest|org.eventb.core.invariant#_hGCMwZS8EeSfRpMJMqp9DA" org.eventb.core.theorem="false"/>
 <org.eventb.core.scInvariant name="(" org.eventb.core.label="bb" org.eventb.core.predicate="b∈BOOL" org.eventb.core.source="/XTextTest/camilleTest.bum|org.eventb.core.machineFile#camilleTest|org.eventb.core.invariant#_hGCz0JS8EeSfRpMJMqp9DA" org.eventb.core.theorem="false"/>
 <org.eventb.core.scInvariant name=")" org.eventb.core.label="cc" org.eventb.core.predicate="a≥0" org.eventb.core.source="/XTextTest/camilleTest.bum|org.eventb.core.machineFile#camilleTest|org.eventb.core.invariant#_hGDa4JS8EeSfRpMJMqp9DA" org.eventb.core.theorem="false"/>
