@@ -6,7 +6,6 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
@@ -29,8 +28,8 @@ public class TextOutUtil {
 				.getDefaultEditor(file.getName());
 		IEditorDescriptor desc = defaultDesc;
 		if(defaultDesc.getId().equals("org.eventb.texteditor.ui.texteditor")){
-			// we don't want to use camille so override the default with
-			// the rodin editor
+			// we don't want to use camille, so override if camille is the default, with
+			// the rodin editor.
 			desc  = rodinEditorDesc;
 		}
 		
