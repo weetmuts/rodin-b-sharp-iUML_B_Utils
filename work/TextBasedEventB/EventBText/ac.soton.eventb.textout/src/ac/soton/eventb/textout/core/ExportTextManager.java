@@ -26,15 +26,11 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eventb.core.basis.ContextRoot;
-import org.eventb.core.basis.MachineRoot;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.impl.MachineImpl;
-import org.eventb.emf.persistence.synchroniser.SyncManager;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
@@ -68,10 +64,10 @@ public class ExportTextManager {
 		
 		rodinProject = rodinElement.getRodinProject();
 		List<String> output = new ArrayList<String>();
-		if (rodinElement.getClass() == MachineRoot.class) {
+		if (element.getClass() == MachineImpl.class) {
 			emfMachine = (MachineImpl) element;			
 			output.addAll(new PrintableMachine(emfMachine).print());
-		} else if (rodinElement.getClass() == ContextRoot.class) {
+		} else if (element.getClass() == ContextImpl.class) {
 			emfContext = (ContextImpl) element;
 			output.addAll(new PrintableContext(emfContext).print());
 		}

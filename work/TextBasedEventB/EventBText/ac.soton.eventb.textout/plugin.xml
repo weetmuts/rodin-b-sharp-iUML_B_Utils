@@ -164,7 +164,7 @@
                id="ac.soton.eventb.textout.toolbars.toTextToolbar">
             <command
                   commandId="ac.soton.eventb.textout.commands.toText"
-                  icon="icons/Machine.gif"
+                  icon="icons/rodinToText.gif"
                   id="ac.soton.eventb.textout.toolbars.toText"
                   tooltip="Save Rodin as Text">
             </command>
