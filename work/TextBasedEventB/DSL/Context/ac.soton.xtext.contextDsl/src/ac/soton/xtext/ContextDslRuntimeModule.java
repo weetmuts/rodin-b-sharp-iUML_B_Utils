@@ -12,4 +12,6 @@ public class ContextDslRuntimeModule extends ac.soton.xtext.AbstractContextDslRu
 	public Class<? extends ICommentAssociater> bindICommentAssociater() {
 		return CustomCommentAssociater.class;
 	}
+	
+	
 }

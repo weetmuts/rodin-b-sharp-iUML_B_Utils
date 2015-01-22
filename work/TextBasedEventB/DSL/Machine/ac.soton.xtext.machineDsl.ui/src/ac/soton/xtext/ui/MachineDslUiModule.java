@@ -6,12 +6,19 @@ package ac.soton.xtext.ui;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
+
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class MachineDslUiModule extends ac.soton.xtext.ui.AbstractMachineDslUiModule {
 	public MachineDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	public void configureXtextEditorCallbacks(Binder binder) {
+		binder.bind(IXtextEditorCallback.class).annotatedWith(Names.named("dontcare2")).to(CustomXtextEditorCallback.class);
 	}
 	
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {		
