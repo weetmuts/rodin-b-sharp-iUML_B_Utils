@@ -1,25 +1,18 @@
 package ac.soton.eventb.texttorodin.handlers;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -73,6 +66,7 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 	private boolean isMachine;
 	private boolean isContext;
 	private EventBCommented previousCommentedElement = null;
+	private IRodinProject rodinProject;
 
 	/**
 	 * the command has been executed, so extract extract the needed information
@@ -100,7 +94,7 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 
 			// check we are in a rodin project
 			String directoryName = uri.segment(uri.segmentCount() - 2);
-			IRodinProject rodinProject = RodinCore.getRodinDB()
+			rodinProject = RodinCore.getRodinDB()
 					.getRodinProject(directoryName);
 			if (rodinProject == null) {
 				Shell shell = editorPart.getSite().getShell();
@@ -123,13 +117,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			// and (value) machine/context name for later use
 			if (isMachine || isContext) {
 				toRodinList.add((EventBElement) e);
-				if (isMachine) {
-					Machine machine = (Machine) e;
-					List<Event> eventList = machine.getEvents();
-					for (Event evt : eventList) {
-						recordCrossRefs(evt, f, uri, rs);
-					}
-				}
 				// retrieve lost comment of the machine
 				persistComments(e);
 				// retrieve lost comments of all the contents
@@ -218,70 +205,13 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 				r2.getContents().clear();
 				r2.getContents().add(e);
 				r2.save(map);
+				
+				String fileName = e.getURI().lastSegment();
+				TextOutUtil.openFileForEditing(fileName , rodinProject);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 
-		}
-	}
-
-	private void recordCrossRefs(Event e, IFile f, URI uri, ResourceSet rs) {
-		EList<Event> refinesList = e.getRefines();
-		if (refinesList.size() > 0) {
-			try {
-				FileReader fr = new FileReader(f.getLocation().toString());
-				BufferedReader br = new BufferedReader(fr);
-				for (Event refinedEvt : refinesList) {
-					if (refinedEvt.eIsProxy()) {
-						String line = br.readLine();
-						while (line != null) {
-							Pattern p = Pattern
-									.compile(" " + e.getName() + " ");
-							Matcher matcher = p.matcher(line);
-							boolean found = matcher.find();
-							if (line.contains("event") && found) {
-								line = br.readLine();
-								// counter for refined events
-								int i = 0;
-								// if refines and an event name are in the same
-								// line
-								if (line.trim().length() > "refines".length()) {
-									// remove the refines clause
-									String name = line.replace("refines", "")
-											.trim();
-									String incorrectName = ((InternalEObject) refinedEvt)
-											.eProxyURI().fragment();
-									TextOutUtil.crossRefMap.put(incorrectName,
-											name);
-									i++;
-								}
-								for (; i < refinesList.size();) {
-									line = br.readLine().trim();
-									if (line != null
-											&& line.trim().length() > 0) {
-										String incorrectName = ((InternalEObject) refinedEvt)
-												.eProxyURI().fragment();
-										int xtTextLinkPos = incorrectName
-												.indexOf("xtextLink_");
-										incorrectName = incorrectName
-												.substring(xtTextLinkPos);
-
-										TextOutUtil.crossRefMap.put(
-												incorrectName, line.trim());
-										i++;
-									}
-								}
-							}
-							line = br.readLine();
-						}
-					}
-				}
-				br.close();
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
 		}
 	}
 

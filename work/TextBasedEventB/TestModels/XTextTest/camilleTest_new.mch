@@ -2,7 +2,7 @@ machine camilleTest_new // a comment on a machine
 variables 
  a // a variable comment
  b // b variable comment
- c // c variable comment
+ c 
 invariants 
  @aa "a ∈ ℕ"  // aa invariant comment
  @bb "b ∈ BOOL"  // bb invariant comment
@@ -18,13 +18,13 @@ events
  event kjh  ordinary // nnnnn
  any
   p // p parameter comment
-  q // q parameter comment
+  q 
  where 
   @lkjh "p ∈ ℕ"  // p guard comment
-  @jhhgjgh "q∈ ℤ"  // q guard comment
+  @jhhgjgh "q∈ ℤ"  
  then
   @kjhk "a ≔ 0" // a action comment
-  @jjj "c ≔ 0" // c action comment
+  @jjj "c ≔ 0" 
  end
  event evt  ordinary 
  when 

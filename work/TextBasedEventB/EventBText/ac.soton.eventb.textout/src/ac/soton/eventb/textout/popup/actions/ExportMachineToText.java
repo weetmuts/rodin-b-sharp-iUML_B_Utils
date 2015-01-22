@@ -36,13 +36,15 @@ public class ExportMachineToText implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
+		// Handle the pop-up menu selection for text from Rodin
+		// There should only be a single object selected
 		Object object = selection.getFirstElement();
-		
 		try {
 			 if (object.getClass() == MachineRoot.class ||
 					 object.getClass() == ContextRoot.class ) {
 				 IRodinElement rodinElement = (IRodinElement) object;
-				new ExportTextManager().export(rodinElement);
+				 // Export the machine/context RodinElement
+				ExportTextManager.export(rodinElement);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

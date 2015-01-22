@@ -1,8 +1,8 @@
-machine camilleTest // comment  1
+machine camilleTest // comment  1b
 variables 
  a // comment 2
  b 
- c // comment 3
+ c 
 invariants 
  @aa "a ∈ ℕ"  // comment 4
  @bb "b ∈ BOOL"  

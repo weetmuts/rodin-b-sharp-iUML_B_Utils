@@ -5,18 +5,15 @@ Bundle-SymbolicName: ac.soton.eventb.textout;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: ac.soton.eventb.textout.Activator
 Bundle-Vendor: University of Spouthampton
-Require-Bundle: org.eclipse.ui,
- org.eventb.emf.persistence,
+Require-Bundle: org.eventb.emf.persistence,
  ac.soton.eventb.printable;bundle-version="0.0.1",
  org.eclipse.ui.ide,
- org.eclipse.xtext.ui;bundle-version="2.6.2"
+ org.eclipse.xtext.ui;bundle-version="2.6.2",
+ ac.soton.eventb.textout.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: ac.soton.eventb.textout.core,
  ac.soton.eventb.textout.visitor.context,
  ac.soton.eventb.textout.visitor.machine
-Import-Package: fr.systerel.editor.internal.editors,
- org.eclipse.xtext.ui.editor,
- org.eventb.internal.ui.eventbeditor.actions,
- org.eventb.ui.eventbeditor,
+Import-Package: org.eclipse.xtext.ui.editor,
  org.rodinp.keyboard

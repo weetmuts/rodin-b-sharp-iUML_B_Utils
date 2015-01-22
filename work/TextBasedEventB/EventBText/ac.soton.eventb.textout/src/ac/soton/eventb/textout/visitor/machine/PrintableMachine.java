@@ -11,6 +11,7 @@ import org.eventb.emf.core.machine.Variable;
 
 import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.TextOutUtil;
 
 public class PrintableMachine implements IPrintable {
 
@@ -75,7 +76,7 @@ public class PrintableMachine implements IPrintable {
 		// Save and open for editing
 		String fileName = machine.getName() + ".mch";
 		ExportTextManager.saveToFile(output, fileName);
-		ExportTextManager.openFileForEditing(fileName, ExportTextManager.getRodinProject());
+		TextOutUtil.openFileForEditing(fileName, ExportTextManager.getRodinProject());
 		
 		return output;
 	}

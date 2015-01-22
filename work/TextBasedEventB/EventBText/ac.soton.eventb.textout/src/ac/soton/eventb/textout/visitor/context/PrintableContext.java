@@ -10,6 +10,7 @@ import org.eventb.emf.core.context.Context;
 
 import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.TextOutUtil;
 
 public class PrintableContext implements IPrintable {
 
@@ -54,7 +55,7 @@ public class PrintableContext implements IPrintable {
 		// Save and open for editing
 		String fileName = context.getName() + ".ctx";
 		ExportTextManager.saveToFile(output, fileName);
-		ExportTextManager.openFileForEditing(fileName, ExportTextManager.getRodinProject());
+		TextOutUtil.openFileForEditing(fileName, ExportTextManager.getRodinProject());
 		
 		return output;
 	}

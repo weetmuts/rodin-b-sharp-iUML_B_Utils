@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -18,14 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
@@ -44,14 +35,16 @@ public class ExportTextManager {
 	private static List<Machine> refinesEmfMachine = null;
 	private static List<Context> extendsEmfContext = null;
 
-	private Machine emfMachine = null;
-	private Context emfContext = null;
+	private static Machine emfMachine = null;
+	private static Context emfContext = null;
 	
-	public void export(IRodinElement rodinElement) throws RodinDBException,
+	public static void export(IRodinElement rodinElement) throws RodinDBException,
 			Exception {
 		Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
 		map.clear();
-
+		// Store the rodin project for use when saving
+		rodinProject = rodinElement.getRodinProject();
+		// Load the EMF model associated with the machine/context
 		IResource rodinResource = rodinElement.getResource();
 		ResourceSet rs = new ResourceSetImpl();	
 		URI uri = URI.createPlatformResourceURI(rodinResource.getFullPath()
@@ -61,8 +54,6 @@ public class ExportTextManager {
 			emfResource.load(map);
 		}
 		EObject element = emfResource.getContents().get(0);
-		
-		rodinProject = rodinElement.getRodinProject();
 		List<String> output = new ArrayList<String>();
 		if (element.getClass() == MachineImpl.class) {
 			emfMachine = (MachineImpl) element;			
@@ -105,30 +96,6 @@ public class ExportTextManager {
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void openFileForEditing(String fileName,
-			IRodinProject rodinProject) {
-		IFile file = rodinProject.getProject().getFile(fileName);
-		IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry()
-				.getDefaultEditor(file.getName());
-		IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow();
-
-		IWorkbenchPage page = workbenchWindow.getActivePage();
-			IEditorPart editorPart;
-			try {
-				editorPart = page.openEditor(new FileEditorInput(file), desc.getId());
-				if(editorPart instanceof XtextEditor){
-					AddRodinKeyboardListener.setup((XtextEditor) editorPart);
-					
-				}
-
-			} catch (PartInitException e) {
-				e.printStackTrace();
-			}
-			
-			
 	}
 
 	public static IRodinProject getRodinProject() {

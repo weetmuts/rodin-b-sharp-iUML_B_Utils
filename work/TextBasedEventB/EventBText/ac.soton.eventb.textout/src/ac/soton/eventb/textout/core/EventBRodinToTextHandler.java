@@ -26,7 +26,8 @@ import org.rodinp.core.RodinDBException;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class EventBRodinToTextHandler extends AbstractHandler {
-
+	// Handles the execution that results from the button click 
+	// when enabled in the Rodin editor tool bar.
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IEditorPart editorPart = HandlerUtil.getActiveEditorChecked(event);
@@ -49,6 +50,7 @@ public class EventBRodinToTextHandler extends AbstractHandler {
 			return null;
 		}
 
+		// The next sequence gets the RodinElement from the project
 		String fName = uri.lastSegment();
 
 		IRodinFile rodinFile = rodinProject.getRodinFile(fName);
@@ -56,12 +58,14 @@ public class EventBRodinToTextHandler extends AbstractHandler {
 				.getRootElementType();
 
 		String elId = elType.getId();
+		// If it's a machine or context then export it
 		if (elId.equals(IMachineRoot.ELEMENT_TYPE.getId()) ||
 				elId.equals(IContextRoot.ELEMENT_TYPE.getId())) {
 			
 			IRodinElement rodinEl = (IRodinElement) rodinFile;
 			try {
-				new ExportTextManager().export(rodinEl);
+				// Call the export method.
+				ExportTextManager.export(rodinEl);
 			} catch (RodinDBException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
