@@ -26,7 +26,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCommentKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cGreaterThanSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cCommentAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cCommentEStringParserRuleCall_3_1_0 = (RuleCall)cCommentAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
@@ -61,7 +61,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	{context::Context} //	(localGenerated?='localGenerated')?
 		//	"context" name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	("comment" comment=EString)? ("extends" / *'('* / extends+=[context::Context|EString] / *","* /
+		//	(">" comment=EString)? ("extends" / *'('* / extends+=[context::Context|EString] / *","* /
 		//	extends+=[context::Context|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -73,7 +73,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//{context::Context} //	(localGenerated?='localGenerated')?
 		//"context" name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		//("comment" comment=EString)? ("extends" / *'('* / extends+=[context::Context|EString] / *","* /
+		//(">" comment=EString)? ("extends" / *'('* / extends+=[context::Context|EString] / *","* /
 		//extends+=[context::Context|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -95,11 +95,11 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 
-		//("comment" comment=EString)?
+		//(">" comment=EString)?
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"comment"
-		public Keyword getCommentKeyword_3_0() { return cCommentKeyword_3_0; }
+		//">"
+		public Keyword getGreaterThanSignKeyword_3_0() { return cGreaterThanSignKeyword_3_0; }
 
 		//comment=EString
 		public Assignment getCommentAssignment_3_1() { return cCommentAssignment_3_1; }
@@ -291,7 +291,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cSolidusSolidusKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cGreaterThanSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cCommentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cCommentEStringParserRuleCall_2_1_0 = (RuleCall)cCommentAssignment_2_1.eContents().get(0);
 		
@@ -304,14 +304,14 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	//	'Constant'
 		//	name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	("//" comment=EString)?;
+		//	(">" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		//{context::Constant} //	(localGenerated?='localGenerated')?
 		////	'Constant'
 		//name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		//("//" comment=EString)?
+		//(">" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		//{context::Constant}
@@ -325,11 +325,11 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
-		//("//" comment=EString)?
+		//(">" comment=EString)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"//"
-		public Keyword getSolidusSolidusKeyword_2_0() { return cSolidusSolidusKeyword_2_0; }
+		//">"
+		public Keyword getGreaterThanSignKeyword_2_0() { return cGreaterThanSignKeyword_2_0; }
 
 		//comment=EString
 		public Assignment getCommentAssignment_2_1() { return cCommentAssignment_2_1; }
@@ -349,7 +349,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cSolidusSolidusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cGreaterThanSignKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cCommentAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cCommentEStringParserRuleCall_4_1_0 = (RuleCall)cCommentAssignment_4_1.eContents().get(0);
 		
@@ -393,14 +393,14 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'Axiom'
 		//	"@" name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	/ *'predicate'* / predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
+		//	/ *'predicate'* / predicate=EString? theorem?="theorem"? (">" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		////	(localGenerated?='localGenerated')?
 		////	'Axiom'
 		//"@" name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		/// *'predicate'* / predicate=EString? theorem?="theorem"? ("//" comment=EString)?
+		/// *'predicate'* / predicate=EString? theorem?="theorem"? (">" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		////	(localGenerated?='localGenerated')?
@@ -428,11 +428,11 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"theorem"
 		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
 
-		//("//" comment=EString)?
+		//(">" comment=EString)?
 		public Group getGroup_4() { return cGroup_4; }
 
-		//"//"
-		public Keyword getSolidusSolidusKeyword_4_0() { return cSolidusSolidusKeyword_4_0; }
+		//">"
+		public Keyword getGreaterThanSignKeyword_4_0() { return cGreaterThanSignKeyword_4_0; }
 
 		//comment=EString
 		public Assignment getCommentAssignment_4_1() { return cCommentAssignment_4_1; }
@@ -490,7 +490,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	{context::Context} //	(localGenerated?='localGenerated')?
 	//	"context" name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	("comment" comment=EString)? ("extends" / *'('* / extends+=[context::Context|EString] / *","* /
+	//	(">" comment=EString)? ("extends" / *'('* / extends+=[context::Context|EString] / *","* /
 	//	extends+=[context::Context|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -562,7 +562,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//	'Constant'
 	//	name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	("//" comment=EString)?;
+	//	(">" comment=EString)?;
 	public ConstantElements getConstantAccess() {
 		return (pConstant != null) ? pConstant : (pConstant = new ConstantElements());
 	}
@@ -611,7 +611,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'Axiom'
 	//	"@" name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	/ *'predicate'* / predicate=EString? theorem?="theorem"? ("//" comment=EString)?;
+	//	/ *'predicate'* / predicate=EString? theorem?="theorem"? (">" comment=EString)?;
 	public AxiomElements getAxiomAccess() {
 		return (pAxiom != null) ? pAxiom : (pAxiom = new AxiomElements());
 	}

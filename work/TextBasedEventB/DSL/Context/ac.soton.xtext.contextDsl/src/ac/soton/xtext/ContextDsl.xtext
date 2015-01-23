@@ -13,7 +13,7 @@ Context returns context::Context:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		('comment' comment=EString)?
+		('>' comment=EString)?
 		('extends' /*'('*/ extends+=[context::Context|EString] ( /*","*/ extends+=[context::Context|EString])* /*')'*/ )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -81,7 +81,7 @@ Constant returns context::Constant:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -96,7 +96,7 @@ Axiom returns context::Axiom:
 //		('internalId' internalId=EString)?
 		/*'predicate'*/ predicate=EString?
 		(theorem?='theorem')?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?

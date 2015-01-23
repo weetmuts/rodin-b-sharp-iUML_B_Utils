@@ -523,11 +523,11 @@ rule__Context__Group_3__0__Impl
     }
 :
 (
-{ before(grammarAccess.getContextAccess().getCommentKeyword_3_0()); }
+{ before(grammarAccess.getContextAccess().getGreaterThanSignKeyword_3_0()); }
 
-	'comment' 
+	'>' 
 
-{ after(grammarAccess.getContextAccess().getCommentKeyword_3_0()); }
+{ after(grammarAccess.getContextAccess().getGreaterThanSignKeyword_3_0()); }
 )
 
 ;
@@ -1213,11 +1213,11 @@ rule__Constant__Group_2__0__Impl
     }
 :
 (
-{ before(grammarAccess.getConstantAccess().getSolidusSolidusKeyword_2_0()); }
+{ before(grammarAccess.getConstantAccess().getGreaterThanSignKeyword_2_0()); }
 
-	'//' 
+	'>' 
 
-{ after(grammarAccess.getConstantAccess().getSolidusSolidusKeyword_2_0()); }
+{ after(grammarAccess.getConstantAccess().getGreaterThanSignKeyword_2_0()); }
 )
 
 ;
@@ -1432,11 +1432,11 @@ rule__Axiom__Group_4__0__Impl
     }
 :
 (
-{ before(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0()); }
+{ before(grammarAccess.getAxiomAccess().getGreaterThanSignKeyword_4_0()); }
 
-	'//' 
+	'>' 
 
-{ after(grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0()); }
+{ after(grammarAccess.getAxiomAccess().getGreaterThanSignKeyword_4_0()); }
 )
 
 ;

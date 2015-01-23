@@ -105,9 +105,9 @@ ruleContext returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_3='comment' 
+)(	otherlv_3='>' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getContextAccess().getCommentKeyword_3_0());
+    	newLeafNode(otherlv_3, grammarAccess.getContextAccess().getGreaterThanSignKeyword_3_0());
     }
 (
 (
@@ -433,9 +433,9 @@ ruleConstant returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2='//' 
+)(	otherlv_2='>' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getConstantAccess().getSolidusSolidusKeyword_2_0());
+    	newLeafNode(otherlv_2, grammarAccess.getConstantAccess().getGreaterThanSignKeyword_2_0());
     }
 (
 (
@@ -531,9 +531,9 @@ ruleAxiom returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_4='//' 
+)?(	otherlv_4='>' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getAxiomAccess().getSolidusSolidusKeyword_4_0());
+    	newLeafNode(otherlv_4, grammarAccess.getAxiomAccess().getGreaterThanSignKeyword_4_0());
     }
 (
 (

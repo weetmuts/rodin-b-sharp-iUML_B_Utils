@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMachineDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ordinary'", "'convergent'", "'anticipated'", "'machine'", "'end'", "'//'", "'refines'", "'sees'", "'variables'", "'invariants'", "'variant'", "'events'", "'@'", "'Variant'", "'expression'", "'event'", "'when'", "'any'", "'where'", "'with'", "'then'", "'.'", "'theorem'", "'extended'", "'localGenerated'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ordinary'", "'convergent'", "'anticipated'", "'machine'", "'end'", "'>'", "'refines'", "'sees'", "'variables'", "'invariants'", "'variant'", "'events'", "'@'", "'Variant'", "'expression'", "'event'", "'when'", "'any'", "'where'", "'with'", "'then'", "'.'", "'theorem'", "'extended'", "'localGenerated'"
     };
     public static final int RULE_ID=5;
     public static final int T__29=29;
@@ -2270,21 +2270,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Machine__Group_3__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:822:1: rule__Machine__Group_3__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:822:1: rule__Machine__Group_3__0__Impl : ( '>' ) ;
     public final void rule__Machine__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:826:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:827:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:826:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:827:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:827:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:828:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:827:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:828:1: '>'
             {
-             before(grammarAccess.getMachineAccess().getSolidusSolidusKeyword_3_0()); 
+             before(grammarAccess.getMachineAccess().getGreaterThanSignKeyword_3_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Machine__Group_3__0__Impl1663); 
-             after(grammarAccess.getMachineAccess().getSolidusSolidusKeyword_3_0()); 
+             after(grammarAccess.getMachineAccess().getGreaterThanSignKeyword_3_0()); 
 
             }
 
@@ -4121,21 +4121,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Variable__Group_2__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1512:1: rule__Variable__Group_2__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1512:1: rule__Variable__Group_2__0__Impl : ( '>' ) ;
     public final void rule__Variable__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1516:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1517:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1516:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1517:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1517:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1518:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1517:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1518:1: '>'
             {
-             before(grammarAccess.getVariableAccess().getSolidusSolidusKeyword_2_0()); 
+             before(grammarAccess.getVariableAccess().getGreaterThanSignKeyword_2_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Variable__Group_2__0__Impl3024); 
-             after(grammarAccess.getVariableAccess().getSolidusSolidusKeyword_2_0()); 
+             after(grammarAccess.getVariableAccess().getGreaterThanSignKeyword_2_0()); 
 
             }
 
@@ -4719,21 +4719,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Invariant__Group_4__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1731:1: rule__Invariant__Group_4__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1731:1: rule__Invariant__Group_4__0__Impl : ( '>' ) ;
     public final void rule__Invariant__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1735:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1736:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1735:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1736:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1736:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1737:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1736:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1737:1: '>'
             {
-             before(grammarAccess.getInvariantAccess().getSolidusSolidusKeyword_4_0()); 
+             before(grammarAccess.getInvariantAccess().getGreaterThanSignKeyword_4_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Invariant__Group_4__0__Impl3459); 
-             after(grammarAccess.getInvariantAccess().getSolidusSolidusKeyword_4_0()); 
+             after(grammarAccess.getInvariantAccess().getGreaterThanSignKeyword_4_0()); 
 
             }
 
@@ -5286,21 +5286,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Variant__Group_4__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1954:1: rule__Variant__Group_4__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1954:1: rule__Variant__Group_4__0__Impl : ( '>' ) ;
     public final void rule__Variant__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1958:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1959:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1958:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1959:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1959:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1960:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1959:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:1960:1: '>'
             {
-             before(grammarAccess.getVariantAccess().getSolidusSolidusKeyword_4_0()); 
+             before(grammarAccess.getVariantAccess().getGreaterThanSignKeyword_4_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Variant__Group_4__0__Impl3896); 
-             after(grammarAccess.getVariantAccess().getSolidusSolidusKeyword_4_0()); 
+             after(grammarAccess.getVariantAccess().getGreaterThanSignKeyword_4_0()); 
 
             }
 
@@ -6514,21 +6514,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_5__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2394:1: rule__Event__Group_5__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2394:1: rule__Event__Group_5__0__Impl : ( '>' ) ;
     public final void rule__Event__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2398:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2399:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2398:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2399:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2399:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2400:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2399:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:2400:1: '>'
             {
-             before(grammarAccess.getEventAccess().getSolidusSolidusKeyword_5_0()); 
+             before(grammarAccess.getEventAccess().getGreaterThanSignKeyword_5_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Event__Group_5__0__Impl4773); 
-             after(grammarAccess.getEventAccess().getSolidusSolidusKeyword_5_0()); 
+             after(grammarAccess.getEventAccess().getGreaterThanSignKeyword_5_0()); 
 
             }
 
@@ -8791,21 +8791,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Parameter__Group_2__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3240:1: rule__Parameter__Group_2__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3240:1: rule__Parameter__Group_2__0__Impl : ( '>' ) ;
     public final void rule__Parameter__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3244:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3245:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3244:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3245:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3245:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3246:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3245:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3246:1: '>'
             {
-             before(grammarAccess.getParameterAccess().getSolidusSolidusKeyword_2_0()); 
+             before(grammarAccess.getParameterAccess().getGreaterThanSignKeyword_2_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Parameter__Group_2__0__Impl6443); 
-             after(grammarAccess.getParameterAccess().getSolidusSolidusKeyword_2_0()); 
+             after(grammarAccess.getParameterAccess().getGreaterThanSignKeyword_2_0()); 
 
             }
 
@@ -9389,21 +9389,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Guard__Group_4__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3459:1: rule__Guard__Group_4__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3459:1: rule__Guard__Group_4__0__Impl : ( '>' ) ;
     public final void rule__Guard__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3463:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3464:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3463:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3464:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3464:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3465:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3464:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3465:1: '>'
             {
-             before(grammarAccess.getGuardAccess().getSolidusSolidusKeyword_4_0()); 
+             before(grammarAccess.getGuardAccess().getGreaterThanSignKeyword_4_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Guard__Group_4__0__Impl6878); 
-             after(grammarAccess.getGuardAccess().getSolidusSolidusKeyword_4_0()); 
+             after(grammarAccess.getGuardAccess().getGreaterThanSignKeyword_4_0()); 
 
             }
 
@@ -9987,21 +9987,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Witness__Group_4__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3678:1: rule__Witness__Group_4__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3678:1: rule__Witness__Group_4__0__Impl : ( '>' ) ;
     public final void rule__Witness__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3682:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3683:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3682:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3683:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3683:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3684:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3683:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3684:1: '>'
             {
-             before(grammarAccess.getWitnessAccess().getSolidusSolidusKeyword_4_0()); 
+             before(grammarAccess.getWitnessAccess().getGreaterThanSignKeyword_4_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Witness__Group_4__0__Impl7313); 
-             after(grammarAccess.getWitnessAccess().getSolidusSolidusKeyword_4_0()); 
+             after(grammarAccess.getWitnessAccess().getGreaterThanSignKeyword_4_0()); 
 
             }
 
@@ -10489,21 +10489,21 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Action__Group_3__0__Impl"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3866:1: rule__Action__Group_3__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3866:1: rule__Action__Group_3__0__Impl : ( '>' ) ;
     public final void rule__Action__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3870:1: ( ( '//' ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3871:1: ( '//' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3870:1: ( ( '>' ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3871:1: ( '>' )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3871:1: ( '//' )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3872:1: '//'
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3871:1: ( '>' )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:3872:1: '>'
             {
-             before(grammarAccess.getActionAccess().getSolidusSolidusKeyword_3_0()); 
+             before(grammarAccess.getActionAccess().getGreaterThanSignKeyword_3_0()); 
             match(input,16,FollowSets000.FOLLOW_16_in_rule__Action__Group_3__0__Impl7685); 
-             after(grammarAccess.getActionAccess().getSolidusSolidusKeyword_3_0()); 
+             after(grammarAccess.getActionAccess().getGreaterThanSignKeyword_3_0()); 
 
             }
 

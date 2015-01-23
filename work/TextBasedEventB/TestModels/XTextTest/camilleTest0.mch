@@ -1,4 +1,5 @@
-machine camilleTest0 
+machine camilleTest0 > "got you
+ljklk"
 refines 
  camilleTest
 sees 
@@ -10,9 +11,9 @@ invariants
 events 
  event INITIALISATION  extended ordinary 
  then
-  @act1 "refVar ≔ 99" //"kljh"
+  @act1 "refVar ≔ 99" > "here and"
  end
- event kjh  extended ordinary // nnnnn
+ event kjh  extended ordinary > "back"
  refines
  camilleTest.kjh
  any

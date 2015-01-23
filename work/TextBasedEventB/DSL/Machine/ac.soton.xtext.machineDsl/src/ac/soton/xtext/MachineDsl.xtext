@@ -13,7 +13,7 @@ Machine returns Machine:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		('//' comment=EString)?
+		('>' comment=EString)?
 		('refines' /*'('*/ refines+=[Machine|EString] ( /*","*/ refines+=[Machine|EString])* /*')'*/ )?
 		('sees' /*'('*/ sees+=[context::Context|EString] ( /*","*/ sees+=[context::Context|EString])* /*')'*/ )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -63,7 +63,7 @@ EString returns ecore::EString:
 //	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('//' comment=EString)?
+//		('>' comment=EString)?
 //		('extends' '(' extends+=[context::Context|EString] ( "," extends+=[context::Context|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -80,7 +80,7 @@ Variable returns Variable:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -96,7 +96,7 @@ Invariant returns Invariant:
 //		'is' 
 		predicate=EString?
 		(theorem?='theorem')?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -110,7 +110,7 @@ Variant returns Variant:
 //	'{'
 //		('internalId' internalId=EString)?
 		'expression' expression=EString?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -126,7 +126,7 @@ event returns Event:
 //	'{'
 //		('internalId' internalId=EString)?
 		(/*'convergence'*/ convergence=Convergence)?
-		('//' comment=EString)?		
+		('>' comment=EString)?		
 		('refines' /*'('*/ refines+=[Event|QString] ( /*","*/ refines+=[Event|EString])* /*')'*/ )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -195,7 +195,7 @@ QString returns ecore::EString:
 //	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('//' comment=EString)?
+//		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -209,7 +209,7 @@ QString returns ecore::EString:
 //	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('//' comment=EString)?
+//		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -222,7 +222,7 @@ QString returns ecore::EString:
 //	'@'name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('//' comment=EString)?
+//		('>' comment=EString)?
 //		'predicate' predicate=EString
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -240,7 +240,7 @@ Parameter returns Parameter:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -255,7 +255,7 @@ Guard returns Guard:
 //		('internalId' internalId=EString)?
 		predicate=EString?
 		(theorem?='theorem')?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -269,7 +269,7 @@ Witness returns Witness:
 //	'{'
 //		('internalId' internalId=EString)?
 		/*'predicate'*/ predicate=EString?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -284,7 +284,7 @@ Action returns Action:
 //		('internalId' internalId=EString)?
 //		'then' 
 		action=EString?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?

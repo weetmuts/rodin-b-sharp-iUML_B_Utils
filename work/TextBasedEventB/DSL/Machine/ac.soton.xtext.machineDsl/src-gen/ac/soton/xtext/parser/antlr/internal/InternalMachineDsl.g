@@ -106,9 +106,9 @@ ruleMachine returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_3='//' 
+)(	otherlv_3='>' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getMachineAccess().getSolidusSolidusKeyword_3_0());
+    	newLeafNode(otherlv_3, grammarAccess.getMachineAccess().getGreaterThanSignKeyword_3_0());
     }
 (
 (
@@ -423,9 +423,9 @@ ruleVariable returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2='//' 
+)(	otherlv_2='>' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getVariableAccess().getSolidusSolidusKeyword_2_0());
+    	newLeafNode(otherlv_2, grammarAccess.getVariableAccess().getGreaterThanSignKeyword_2_0());
     }
 (
 (
@@ -521,9 +521,9 @@ ruleInvariant returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_4='//' 
+)?(	otherlv_4='>' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getInvariantAccess().getSolidusSolidusKeyword_4_0());
+    	newLeafNode(otherlv_4, grammarAccess.getInvariantAccess().getGreaterThanSignKeyword_4_0());
     }
 (
 (
@@ -596,9 +596,9 @@ ruleVariant returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_4='//' 
+)?(	otherlv_4='>' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getVariantAccess().getSolidusSolidusKeyword_4_0());
+    	newLeafNode(otherlv_4, grammarAccess.getVariantAccess().getGreaterThanSignKeyword_4_0());
     }
 (
 (
@@ -700,9 +700,9 @@ ruleevent returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_5='//' 
+)?(	otherlv_5='>' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getEventAccess().getSolidusSolidusKeyword_5_0());
+    	newLeafNode(otherlv_5, grammarAccess.getEventAccess().getGreaterThanSignKeyword_5_0());
     }
 (
 (
@@ -1054,9 +1054,9 @@ ruleParameter returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2='//' 
+)(	otherlv_2='>' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getParameterAccess().getSolidusSolidusKeyword_2_0());
+    	newLeafNode(otherlv_2, grammarAccess.getParameterAccess().getGreaterThanSignKeyword_2_0());
     }
 (
 (
@@ -1152,9 +1152,9 @@ ruleGuard returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_4='//' 
+)?(	otherlv_4='>' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getGuardAccess().getSolidusSolidusKeyword_4_0());
+    	newLeafNode(otherlv_4, grammarAccess.getGuardAccess().getGreaterThanSignKeyword_4_0());
     }
 (
 (
@@ -1250,9 +1250,9 @@ ruleWitness returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_4='//' 
+)?(	otherlv_4='>' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getWitnessAccess().getSolidusSolidusKeyword_4_0());
+    	newLeafNode(otherlv_4, grammarAccess.getWitnessAccess().getGreaterThanSignKeyword_4_0());
     }
 (
 (
@@ -1333,9 +1333,9 @@ ruleAction returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_3='//' 
+)?(	otherlv_3='>' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getActionAccess().getSolidusSolidusKeyword_3_0());
+    	newLeafNode(otherlv_3, grammarAccess.getActionAccess().getGreaterThanSignKeyword_3_0());
     }
 (
 (
