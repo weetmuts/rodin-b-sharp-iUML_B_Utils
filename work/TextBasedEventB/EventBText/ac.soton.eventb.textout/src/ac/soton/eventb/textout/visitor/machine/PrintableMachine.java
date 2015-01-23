@@ -94,7 +94,8 @@ public class PrintableMachine implements IPrintable {
 			// on its own line, else we make it into a sequential list
 			boolean hasComments = false;
 			for (String s : tempStore) {
-				if (s.contains("//")) {
+				// relies on predicates being in comments
+				if(s.indexOf(">") < s.indexOf("\"")){
 					hasComments = true;
 					break;
 				}
