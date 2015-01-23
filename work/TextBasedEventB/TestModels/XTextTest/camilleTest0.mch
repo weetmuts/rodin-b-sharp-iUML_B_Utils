@@ -10,7 +10,7 @@ invariants
 events 
  event INITIALISATION  extended ordinary 
  then
-  @act1 "refVar ≔ 99" 
+  @act1 "refVar ≔ 99" //"kljh"
  end
  event kjh  extended ordinary // nnnnn
  refines

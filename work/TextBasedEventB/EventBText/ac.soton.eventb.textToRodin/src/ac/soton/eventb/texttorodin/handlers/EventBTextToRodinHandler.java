@@ -42,6 +42,7 @@ import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.Parameter;
 import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.impl.MachineImpl;
+import org.eventb.emf.persistence.EMFRodinDB;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinCore;
@@ -118,13 +119,13 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			if (isMachine || isContext) {
 				toRodinList.add((EventBElement) e);
 				// retrieve lost comment of the machine
-				persistComments(e);
+//				persistComments(e);
 				// retrieve lost comments of all the contents
-				TreeIterator<EObject> iter = e.eAllContents();
-				while (iter.hasNext()) {
-					EObject next = iter.next();
-					persistComments(next);
-				}
+//				TreeIterator<EObject> iter = e.eAllContents();
+//				while (iter.hasNext()) {
+//					EObject next = iter.next();
+//					persistComments(next);
+//				}
 			}
 			// persist machine or context in rodin database
 			save(uri, toRodinList);
@@ -187,30 +188,28 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 	private void save(URI uri, List<EventBElement> toRodinList) {
 		for (EventBElement e : toRodinList) {
 			EcoreUtil.resolveAll(e);
-			Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-			try {
-				ResourceSet rs2 = new ResourceSetImpl();
-				URI uri2 = uri;
+//			Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
+//			ResourceSet rs2 = new ResourceSetImpl();
+			URI uri2 = uri;
 
-				if (isMachine) {
-					uri2 = uri2.trimFileExtension().appendFileExtension("bum");
-				} else if (isContext) {
-					uri2 = uri2.trimFileExtension().appendFileExtension("buc");
-				}
-
-				Resource r2 = rs2.getResource(uri2, false);
-				if (r2 == null) {
-					r2 = rs2.createResource(uri2);
-				}
-				r2.getContents().clear();
-				r2.getContents().add(e);
-				r2.save(map);
-				
-				String fileName = e.getURI().lastSegment();
-				TextOutUtil.openFileForEditing(fileName , rodinProject);
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			if (isMachine) {
+				uri2 = uri2.trimFileExtension().appendFileExtension("bum");
+			} else if (isContext) {
+				uri2 = uri2.trimFileExtension().appendFileExtension("buc");
 			}
+
+//				Resource r2 = rs2.getResource(uri2, false);
+//				if (r2 == null) {
+//					r2 = rs2.createResource(uri2);
+//				}
+//				r2.getContents().clear();
+//				r2.getContents().add(e);
+//				r2.save(map);
+			
+			EMFRodinDB.INSTANCE.saveResource(uri2, e);
+			
+			String fileName = e.getURI().lastSegment();
+			TextOutUtil.openFileForEditing(fileName , rodinProject);
 
 		}
 	}

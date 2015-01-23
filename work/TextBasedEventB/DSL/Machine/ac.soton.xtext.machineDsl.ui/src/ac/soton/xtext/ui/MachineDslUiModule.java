@@ -17,12 +17,12 @@ public class MachineDslUiModule extends ac.soton.xtext.ui.AbstractMachineDslUiMo
 		super(plugin);
 	}
 	
-	public void configureXtextEditorCallbacks(Binder binder) {
-		binder.bind(IXtextEditorCallback.class).annotatedWith(Names.named("dontcare2")).to(CustomXtextEditorCallback.class);
-	}
-	
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {		
-		return CustomXtextEditorCallback.class;
-	}
+//	public void configureXtextEditorCallbacks(Binder binder) {
+//		binder.bind(IXtextEditorCallback.class).annotatedWith(Names.named("dontcare2")).to(CustomXtextEditorCallback.class);
+//	}
+//	
+//	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {		
+//		return CustomXtextEditorCallback.class;
+//	}
 	
 }
