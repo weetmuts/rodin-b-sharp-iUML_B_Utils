@@ -1,11 +1,12 @@
 machine camilleTest0 > "got you
-ljklk"
+under my 
+skin"
 refines 
  camilleTest
 sees 
  ctx2
 variables 
- a  b  c  refVar 
+ a > "aa" b > "bbb" c  refVar 
 invariants 
  @inv1 "refVar ∈ ℕ"  
 events 

@@ -1,6 +1,5 @@
 package ac.soton.eventb.texttorodin.handlers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +9,6 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -22,28 +20,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.xtext.nodemodel.BidiIterator;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eventb.emf.core.EventBCommented;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBObject;
-import org.eventb.emf.core.context.Axiom;
-import org.eventb.emf.core.context.Constant;
-import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
-import org.eventb.emf.core.machine.Action;
-import org.eventb.emf.core.machine.Event;
-import org.eventb.emf.core.machine.Guard;
-import org.eventb.emf.core.machine.Invariant;
-import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.Parameter;
-import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.impl.MachineImpl;
 import org.eventb.emf.persistence.EMFRodinDB;
-import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinCore;
 
@@ -66,7 +47,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 	public static Map<String, String> crossRefMap = new HashMap<String, String>();
 	private boolean isMachine;
 	private boolean isContext;
-	private EventBCommented previousCommentedElement = null;
 	private IRodinProject rodinProject;
 
 	/**
@@ -118,14 +98,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			// and (value) machine/context name for later use
 			if (isMachine || isContext) {
 				toRodinList.add((EventBElement) e);
-				// retrieve lost comment of the machine
-//				persistComments(e);
-				// retrieve lost comments of all the contents
-//				TreeIterator<EObject> iter = e.eAllContents();
-//				while (iter.hasNext()) {
-//					EObject next = iter.next();
-//					persistComments(next);
-//				}
 			}
 			// persist machine or context in rodin database
 			save(uri, toRodinList);
@@ -134,84 +106,18 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 		return null;
 	}
 
-	// XText comments are a horrible mess. The comments may appear before or
-	// after the associated semantic text. The comments also
-	// contain spurious end of line characters and spurious text. 
-	// The 'actual' comment can come before or after the 
-	// spurious newline.
-	private void persistComments(EObject e) {
-		// this object can have an eventb comment
-		if (e instanceof EventBCommented) {
-			EventBCommented currentCommentedElement = (EventBCommented) e;
-			// Get the node associated with this object.
-			ICompositeNode compositeNode = NodeModelUtils.getNode(e);
-			// Get the node iterator
-			BidiIterator<INode> iter = compositeNode.getChildren().iterator();
-			// comments are HiddeLeafNodes - so find these
-			while (iter.hasNext()) {
-				INode node = iter.next();
-
-				String text = node.getText();
-				if (text.contains("//")) {
-					// set the comment in the previous element
-					text = text.replace("//", "");
-					// remove any spurious trailing newlines
-					if(text.contains("\n") && !(previousCommentedElement instanceof Constant)){
-						text = text.substring(0, text.indexOf("\n"));
-					}
-					// unless it is a comment on a constant which comes with a
-					// spurious preceding newline
-					else if(text.contains("\n") && previousCommentedElement instanceof Constant){
-						text.replace("\n", "");
-					}
-					text = text.trim();
-					if (e instanceof Event ||
-							e instanceof Machine ||
-							e instanceof Context) {
-						currentCommentedElement.setComment(text);
-					} else if (e instanceof Parameter ||
-							e instanceof Invariant || 
-							e instanceof Variable ||
-							e instanceof Guard ||
-							e instanceof Action ||
-							e instanceof Constant ||
-							e instanceof Axiom) {
-						previousCommentedElement.setComment(text);
-					}
-					break;
-				}
-			}
-			previousCommentedElement = currentCommentedElement;
-		}
-	}
-
 	private void save(URI uri, List<EventBElement> toRodinList) {
 		for (EventBElement e : toRodinList) {
 			EcoreUtil.resolveAll(e);
-//			Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-//			ResourceSet rs2 = new ResourceSetImpl();
 			URI uri2 = uri;
-
 			if (isMachine) {
 				uri2 = uri2.trimFileExtension().appendFileExtension("bum");
 			} else if (isContext) {
 				uri2 = uri2.trimFileExtension().appendFileExtension("buc");
 			}
-
-//				Resource r2 = rs2.getResource(uri2, false);
-//				if (r2 == null) {
-//					r2 = rs2.createResource(uri2);
-//				}
-//				r2.getContents().clear();
-//				r2.getContents().add(e);
-//				r2.save(map);
-			
 			EMFRodinDB.INSTANCE.saveResource(uri2, e);
-			
 			String fileName = e.getURI().lastSegment();
 			TextOutUtil.openFileForEditing(fileName , rodinProject);
-
 		}
 	}
-
 }

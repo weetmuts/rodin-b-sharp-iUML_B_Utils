@@ -31,6 +31,7 @@ import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
 
 public class ExportTextManager {
 
+	private static String COMMENT_CHAR = ">";
 	private static IRodinProject rodinProject = null;
 	private static List<Machine> refinesEmfMachine = null;
 	private static List<Context> extendsEmfContext = null;
@@ -68,12 +69,8 @@ public class ExportTextManager {
 		String adjustedComment = "";
 		// add the comment characters if there is a comment
 		if (comment != null && !comment.equals("")) {
-			adjustedComment = "// " + comment;
+			adjustedComment = COMMENT_CHAR +" \"" + comment + "\"";
 		}
-		
-		String separator = System.getProperty("line.separator");
-		adjustedComment = adjustedComment.replace(separator, " ");
-		adjustedComment = adjustedComment.replace("\r", " ");
 		// if the comment is null or "" then return ""
 		return adjustedComment;
 	}
