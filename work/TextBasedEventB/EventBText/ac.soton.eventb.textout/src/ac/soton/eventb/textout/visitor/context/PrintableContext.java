@@ -89,8 +89,8 @@ public class PrintableContext implements IPrintable {
 		// on its own line, else we make it into a sequential list
 		boolean hasComments = false;
 		for (String separateLine : incomingSeparateLines) {
-			if (separateLine.contains("//")) {
-				hasComments = true;
+			hasComments = TextOutUtil.hasComment(separateLine);
+			if(hasComments){
 				break;
 			}
 		}

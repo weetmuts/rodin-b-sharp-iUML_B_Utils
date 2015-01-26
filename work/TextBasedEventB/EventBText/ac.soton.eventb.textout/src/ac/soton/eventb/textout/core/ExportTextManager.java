@@ -26,12 +26,12 @@ import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
 
+import ac.soton.eventb.textout.utils.TextOutUtil;
 import ac.soton.eventb.textout.visitor.context.PrintableContext;
 import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
 
 public class ExportTextManager {
 
-	private static String COMMENT_CHAR = ">";
 	private static IRodinProject rodinProject = null;
 	private static List<Machine> refinesEmfMachine = null;
 	private static List<Context> extendsEmfContext = null;
@@ -69,7 +69,7 @@ public class ExportTextManager {
 		String adjustedComment = "";
 		// add the comment characters if there is a comment
 		if (comment != null && !comment.equals("")) {
-			adjustedComment = COMMENT_CHAR +" \"" + comment + "\"";
+			adjustedComment = TextOutUtil.COMMENT_CHAR +" \"" + comment + "\"";
 		}
 		// if the comment is null or "" then return ""
 		return adjustedComment;

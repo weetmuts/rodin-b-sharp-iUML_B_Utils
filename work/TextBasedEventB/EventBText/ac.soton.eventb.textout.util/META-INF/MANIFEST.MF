@@ -8,8 +8,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.rodinp.core,
  org.eclipse.ui.workbench,
- org.eclipse.xtext.ui
+ org.eclipse.xtext.ui,
+ org.eventb.emf.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: ac.soton.eventb.textout.utils
-Import-Package: org.eclipse.ui.part
+Import-Package: org.eclipse.ui.part,
+ org.eventb.core.basis

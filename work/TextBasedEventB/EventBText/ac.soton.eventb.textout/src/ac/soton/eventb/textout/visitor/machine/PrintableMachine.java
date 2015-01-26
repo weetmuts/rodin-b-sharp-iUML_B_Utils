@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
@@ -92,16 +93,15 @@ public class PrintableMachine implements IPrintable {
 			}
 			// if any parameter has a comment we put each parameter
 			// on its own line, else we make it into a sequential list
-			boolean hasComments = false;
+			boolean hasComment = false;
 			for (String s : tempStore) {
-				// relies on predicates being in comments
-				if(s.indexOf(">") < s.indexOf("\"")){
-					hasComments = true;
+				hasComment = TextOutUtil.hasComment(s);
+				if(hasComment){
 					break;
 				}
 			}
 
-			if (hasComments) {
+			if (hasComment) {
 				// we found a comment so just add individual lines
 				for (String s : tempStore) {
 					output.add(indent1 + s);

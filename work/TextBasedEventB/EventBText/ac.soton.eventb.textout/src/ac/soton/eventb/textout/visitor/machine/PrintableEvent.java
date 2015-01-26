@@ -12,6 +12,7 @@ import org.eventb.emf.core.machine.Witness;
 
 import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.TextOutUtil;
 
 public class PrintableEvent implements IPrintable {
 
@@ -60,7 +61,7 @@ public class PrintableEvent implements IPrintable {
 			// on its own line, else we make it into a sequential list
 			boolean hasComments = false;
 			for (String s : tempStore) {
-				if (s.contains("//")) {
+				if (TextOutUtil.hasComment(s)) {
 					hasComments = true;
 					break;
 				}

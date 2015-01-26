@@ -102,7 +102,6 @@ public class EventBTextToRodinHandler extends AbstractHandler {
 			// persist machine or context in rodin database
 			save(uri, toRodinList);
 		}
-		TextOutUtil.crossRefMap.clear();
 		return null;
 	}
 
