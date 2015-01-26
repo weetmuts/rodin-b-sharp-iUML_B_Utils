@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="ac.soton.eventb.text.feature"
+      label="%featureName"
+      version="0.0.1.qualifier"
+      provider-name="University of Southampton">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates/site.xml"/>
+   </url>
+
+   <requires>
+      <import plugin="org.rodinp.core" version="1.6.1" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.6.2" match="compatible"/>
+      <import plugin="org.eventb.emf.persistence" version="3.0.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.textout.util" version="0.0.1" match="compatible"/>
+      <import plugin="org.eclipse.xtext" version="2.6.2" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.util" version="2.6.2" match="compatible"/>
+      <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.common.types" version="2.6.2" match="compatible"/>
+      <import plugin="org.eclipse.swt" version="3.7.2" match="compatible"/>
+      <import plugin="org.rodinp.keyboard" version="1.2.0" match="compatible"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.6.2" match="compatible"/>
+      <import plugin="ac.soton.xtext.contextDsl" version="0.0.1" match="compatible"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui.shared" version="2.6.2" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.6.2" match="compatible"/>
+      <import plugin="org.eclipse.xtext.common.types.ui" version="2.6.2" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.6.2" match="compatible"/>
+      <import plugin="org.eclipse.compare" version="3.5.202" match="compatible"/>
+      <import plugin="ac.soton.xtext.machineDsl" version="0.0.1" match="compatible"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.6.2.v201407030533"/>
+   </requires>
+
+   <plugin
+         id="ac.soton.eventb.textout"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.textout.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.textToRodin"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xtext.contextDsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xtext.contextDsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xtext.machineDsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xtext.machineDsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.printable"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
