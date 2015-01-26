@@ -729,30 +729,30 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Keyword cMiddleDotKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
 		
 		//QString returns ecore::EString:
-		//	STRING | ID ("." ID)*;
+		//	STRING | ID ("·" ID)*;
 		public ParserRule getRule() { return rule; }
 
-		//STRING | ID ("." ID)*
+		//STRING | ID ("·" ID)*
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
 
-		//ID ("." ID)*
+		//ID ("·" ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_0() { return cIDTerminalRuleCall_1_0; }
 
-		//("." ID)*
+		//("·" ID)*
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//"."
-		public Keyword getFullStopKeyword_1_1_0() { return cFullStopKeyword_1_1_0; }
+		//"·"
+		public Keyword getMiddleDotKeyword_1_1_0() { return cMiddleDotKeyword_1_1_0; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_1_1() { return cIDTerminalRuleCall_1_1_1; }
@@ -1320,7 +1320,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QString returns ecore::EString:
-	//	STRING | ID ("." ID)*;
+	//	STRING | ID ("·" ID)*;
 	public QStringElements getQStringAccess() {
 		return (pQString != null) ? pQString : (pQString = new QStringElements());
 	}

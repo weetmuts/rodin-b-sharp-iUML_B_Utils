@@ -46,7 +46,7 @@ public class PrintableEvent implements IPrintable {
 			output.add("refines");
 			// assuming only refines one event
 			Event refinedEvent = refinesList.get(0);
-			output.add(ExportTextManager.getRefinesEmfMachine().get(0).getName() + "."
+			output.add(ExportTextManager.getRefinesEmfMachine().get(0).getName() + "·"
 					+ refinedEvent.getName());
 		}
 

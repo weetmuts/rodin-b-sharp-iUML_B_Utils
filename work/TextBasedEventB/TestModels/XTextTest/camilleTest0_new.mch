@@ -1,4 +1,4 @@
-machine camilleTest0_new // My Comment
+machine camilleTest0_new > "My Comment"
 refines 
  camilleTest_new
 sees 
@@ -12,9 +12,9 @@ events
  then
   @act1 "refVar ≔ 99" 
  end
- event kjh  extended ordinary // nnnnn
+ event kjh  extended ordinary > "nnnnn"
  refines
- camilleTest_new.kjh
+ camilleTest_new·kjh
  any
   r 
  where 
@@ -22,12 +22,12 @@ events
  then
   @act1 "refVar ≔ r" 
  end
- event evt  extended ordinary 
+ event evt extended ordinary 
  refines
- camilleTest_new.evt
+  camilleTest_new·evt
  end
  event evt2b  extended ordinary 
  refines
- camilleTest_new.evt2
+  camilleTest_new·evt2
  end
 end

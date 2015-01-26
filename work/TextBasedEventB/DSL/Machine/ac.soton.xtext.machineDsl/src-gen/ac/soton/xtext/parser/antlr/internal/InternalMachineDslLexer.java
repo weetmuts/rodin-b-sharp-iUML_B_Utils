@@ -482,10 +482,10 @@ public class InternalMachineDslLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:31:7: ( '.' )
-            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:31:9: '.'
+            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:31:7: ( '\\u00B7' )
+            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:31:9: '\\u00B7'
             {
-            match('.'); 
+            match('\u00B7'); 
 
             }
 
@@ -1387,10 +1387,10 @@ public class InternalMachineDslLexer extends Lexer {
     static final String DFA12_specialS =
         "\1\2\23\uffff\1\1\1\0\u0097\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\30\2\27\2\30\1\27\22\30\1\27\1\30\1\24\4\30\1\25\6\30\1"+
-            "\15\1\26\12\23\4\30\1\2\1\30\1\10\25\22\1\12\4\22\3\30\1\21"+
-            "\1\22\1\30\1\14\1\22\1\20\1\22\1\7\3\22\1\6\2\22\1\16\1\1\1"+
-            "\22\1\17\2\22\1\3\1\4\1\11\1\22\1\5\1\13\3\22\uff85\30",
+            "\11\30\2\27\2\30\1\27\22\30\1\27\1\30\1\24\4\30\1\25\7\30\1"+
+            "\26\12\23\4\30\1\2\1\30\1\10\25\22\1\12\4\22\3\30\1\21\1\22"+
+            "\1\30\1\14\1\22\1\20\1\22\1\7\3\22\1\6\2\22\1\16\1\1\1\22\1"+
+            "\17\2\22\1\3\1\4\1\11\1\22\1\5\1\13\3\22\74\30\1\15\uff48\30",
             "\1\31",
             "",
             "\1\34",
@@ -1649,7 +1649,7 @@ public class InternalMachineDslLexer extends Lexer {
 
                         else if ( (LA12_0=='a') ) {s = 12;}
 
-                        else if ( (LA12_0=='.') ) {s = 13;}
+                        else if ( (LA12_0=='\u00B7') ) {s = 13;}
 
                         else if ( (LA12_0=='l') ) {s = 14;}
 
@@ -1671,7 +1671,7 @@ public class InternalMachineDslLexer extends Lexer {
 
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 23;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='-')||(LA12_0>=':' && LA12_0<='=')||LA12_0=='?'||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 24;}
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='.')||(LA12_0>=':' && LA12_0<='=')||LA12_0=='?'||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\u00B6')||(LA12_0>='\u00B8' && LA12_0<='\uFFFF')) ) {s = 24;}
 
                         if ( s>=0 ) return s;
                         break;

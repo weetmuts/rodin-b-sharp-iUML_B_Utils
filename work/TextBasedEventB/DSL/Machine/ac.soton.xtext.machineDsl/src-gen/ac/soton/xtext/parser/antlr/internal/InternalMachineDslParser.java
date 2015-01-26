@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMachineDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'machine'", "'>'", "'refines'", "'sees'", "'variables'", "'invariants'", "'variant'", "'events'", "'end'", "'@'", "'theorem'", "'Variant'", "'expression'", "'event'", "'extended'", "'when'", "'any'", "'where'", "'with'", "'then'", "'.'", "'localGenerated'", "'ordinary'", "'convergent'", "'anticipated'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'machine'", "'>'", "'refines'", "'sees'", "'variables'", "'invariants'", "'variant'", "'events'", "'end'", "'@'", "'theorem'", "'Variant'", "'expression'", "'event'", "'extended'", "'when'", "'any'", "'where'", "'with'", "'then'", "'\\u00B7'", "'localGenerated'", "'ordinary'", "'convergent'", "'anticipated'"
     };
     public static final int RULE_ID=5;
     public static final int T__29=29;
@@ -2461,7 +2461,7 @@ public class InternalMachineDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQString"
-    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:980:1: ruleQString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )* ) ) ;
+    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:980:1: ruleQString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )* ) ) ;
     public final AntlrDatatypeRuleToken ruleQString() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2473,10 +2473,10 @@ public class InternalMachineDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:983:28: ( (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )* ) ) )
-            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:984:1: (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )* ) )
+            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:983:28: ( (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )* ) ) )
+            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:984:1: (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )* ) )
             {
-            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:984:1: (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )* ) )
+            // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:984:1: (this_STRING_0= RULE_STRING | (this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )* ) )
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -2507,10 +2507,10 @@ public class InternalMachineDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:992:6: (this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )* )
+                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:992:6: (this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )* )
                     {
-                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:992:6: (this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )* )
-                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:992:11: this_ID_1= RULE_ID (kw= '.' this_ID_3= RULE_ID )*
+                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:992:6: (this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )* )
+                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:992:11: this_ID_1= RULE_ID (kw= '\\u00B7' this_ID_3= RULE_ID )*
                     {
                     this_ID_1=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleQString1829); 
 
@@ -2519,7 +2519,7 @@ public class InternalMachineDslParser extends AbstractInternalAntlrParser {
                      
                         newLeafNode(this_ID_1, grammarAccess.getQStringAccess().getIDTerminalRuleCall_1_0()); 
                         
-                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:999:1: (kw= '.' this_ID_3= RULE_ID )*
+                    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:999:1: (kw= '\\u00B7' this_ID_3= RULE_ID )*
                     loop34:
                     do {
                         int alt34=2;
@@ -2532,12 +2532,12 @@ public class InternalMachineDslParser extends AbstractInternalAntlrParser {
 
                         switch (alt34) {
                     	case 1 :
-                    	    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:1000:2: kw= '.' this_ID_3= RULE_ID
+                    	    // ../ac.soton.xtext.machineDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalMachineDsl.g:1000:2: kw= '\\u00B7' this_ID_3= RULE_ID
                     	    {
                     	    kw=(Token)match(input,31,FollowSets000.FOLLOW_31_in_ruleQString1848); 
 
                     	            current.merge(kw);
-                    	            newLeafNode(kw, grammarAccess.getQStringAccess().getFullStopKeyword_1_1_0()); 
+                    	            newLeafNode(kw, grammarAccess.getQStringAccess().getMiddleDotKeyword_1_1_0()); 
                     	        
                     	    this_ID_3=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleQString1863); 
 

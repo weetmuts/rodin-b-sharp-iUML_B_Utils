@@ -997,10 +997,10 @@ ruleQString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
     newLeafNode(this_ID_1, grammarAccess.getQStringAccess().getIDTerminalRuleCall_1_0()); 
     }
 (
-	kw='.' 
+	kw='\u00B7' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getQStringAccess().getFullStopKeyword_1_1_0()); 
+        newLeafNode(kw, grammarAccess.getQStringAccess().getMiddleDotKeyword_1_1_0()); 
     }
     this_ID_3=RULE_ID    {
 		$current.merge(this_ID_3);

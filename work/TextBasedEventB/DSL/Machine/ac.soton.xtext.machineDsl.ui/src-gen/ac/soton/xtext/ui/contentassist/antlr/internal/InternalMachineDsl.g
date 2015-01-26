@@ -3086,11 +3086,11 @@ rule__QString__Group_1_1__0__Impl
     }
 :
 (
-{ before(grammarAccess.getQStringAccess().getFullStopKeyword_1_1_0()); }
+{ before(grammarAccess.getQStringAccess().getMiddleDotKeyword_1_1_0()); }
 
-	'.' 
+	'\u00B7' 
 
-{ after(grammarAccess.getQStringAccess().getFullStopKeyword_1_1_0()); }
+{ after(grammarAccess.getQStringAccess().getMiddleDotKeyword_1_1_0()); }
 )
 
 ;

@@ -145,7 +145,7 @@ event returns Event:
 	;
 
 QString returns ecore::EString:
-	STRING | ID ('.' ID)* ;
+	STRING | ID ('\u00b7' ID)* ;
 
 
 //StringToStringMapEntry returns core::StringToStringMapEntry:

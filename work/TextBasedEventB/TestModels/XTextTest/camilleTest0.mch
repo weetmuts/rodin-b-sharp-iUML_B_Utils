@@ -19,7 +19,7 @@ events
  end
  event kjh  extended ordinary > "back"
  refines
- camilleTest.kjh
+ camilleTest·kjh
  any
   r 
  where 
@@ -29,10 +29,10 @@ events
  end
  event evt  extended ordinary 
  refines
- camilleTest.evt
+ camilleTest·evt
  end
  event evt2  extended ordinary 
  refines
- camilleTest.evt2
+ camilleTest·evt2
  end
 end

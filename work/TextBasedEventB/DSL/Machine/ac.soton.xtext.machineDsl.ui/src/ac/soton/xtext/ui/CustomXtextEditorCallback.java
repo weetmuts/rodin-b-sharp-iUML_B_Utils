@@ -12,7 +12,7 @@ public class CustomXtextEditorCallback extends
 	@Override
 	public void afterCreatePartControl(XtextEditor editor) {
 		super.afterCreatePartControl(editor);
-//		setupRodinKeyboardListener(editor);
+		setupRodinKeyboardListener(editor);
 	}
 
 	private void setupRodinKeyboardListener(XtextEditor editor) {
