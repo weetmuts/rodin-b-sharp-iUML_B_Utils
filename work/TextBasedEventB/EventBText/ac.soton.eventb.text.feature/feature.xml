@@ -22,17 +22,15 @@
    </url>
 
    <requires>
-      <import plugin="org.rodinp.core" version="1.6.1" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui" version="2.6.2" match="compatible"/>
-      <import plugin="org.eventb.emf.persistence" version="3.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.textout.util" version="0.0.1" match="compatible"/>
+      <import plugin="org.rodinp.keyboard" version="1.2.0" match="compatible"/>
+      <import plugin="org.rodinp.core" version="1.6.1" match="compatible"/>
       <import plugin="org.eclipse.xtext" version="2.6.2" match="compatible"/>
-      <import plugin="org.eventb.emf.core" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.util" version="2.6.2" match="compatible"/>
       <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.common.types" version="2.6.2" match="compatible"/>
       <import plugin="org.eclipse.swt" version="3.7.2" match="compatible"/>
-      <import plugin="org.rodinp.keyboard" version="1.2.0" match="compatible"/>
       <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.6.2" match="compatible"/>
       <import plugin="ac.soton.xtext.contextDsl" version="0.0.1" match="compatible"/>
@@ -46,6 +44,22 @@
       <import plugin="org.eclipse.compare" version="3.5.202" match="compatible"/>
       <import plugin="ac.soton.xtext.machineDsl" version="0.0.1" match="compatible"/>
       <import feature="org.eclipse.xtext.runtime" version="2.6.2.v201407030533"/>
+      <import feature="org.eventb.emf.feature" version="4.0.1" match="compatible"/>
+      <import plugin="org.eventb.emf.persistence" version="3.0.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.printable" version="0.0.1" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
+      <import plugin="org.eventb.ui" version="2.3.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.edit" version="2.7.0" match="compatible"/>
+      <import plugin="org.eventb.core" version="2.3.0" match="compatible"/>
+      <import plugin="org.rodinp.core" version="1.5.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="2.2.3"/>
+      <import plugin="org.eclipse.emf.compare" version="1.2.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.compare.match" version="1.2.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.compare.diff" version="1.2.1" match="compatible"/>
    </requires>
 
    <plugin
@@ -106,6 +120,27 @@
 
    <plugin
          id="org.eventb.emf.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.persistence"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.formulas"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.compare"
          download-size="0"
          install-size="0"
          version="0.0.0"
