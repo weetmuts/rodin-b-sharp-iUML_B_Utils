@@ -1,6 +1,8 @@
 package ac.soton.eventb.textout.utils;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -8,6 +10,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.rodinp.core.IRodinProject;
 
@@ -43,7 +46,12 @@ public class TextOutUtil {
 				// AddRodinKeyboardListener.setup((XtextEditor) editorPart);
 			}
 		} catch (PartInitException e) {
-			e.printStackTrace();
+			Status status = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID,
+					"Failed TextOut: PartInitException: "
+					+ e.getMessage()  , e);
+				StatusManager.getManager().handle(status,
+					StatusManager.SHOW);
 		}
 	}
 

@@ -12,11 +12,14 @@ import java.util.Map;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
@@ -26,6 +29,7 @@ import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
 
+import ac.soton.eventb.textout.Activator;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 import ac.soton.eventb.textout.visitor.context.PrintableContext;
 import ac.soton.eventb.textout.visitor.machine.PrintableMachine;
@@ -89,9 +93,19 @@ public class ExportTextManager {
 			rodinProject.getResource().refreshLocal(IResource.DEPTH_INFINITE,
 					null);
 		} catch (IOException e) {
-			e.printStackTrace(System.out);
+			Status status = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID,
+					"Failed TextOut: IOException: "
+					+ e.getMessage()  , e);
+				StatusManager.getManager().handle(status,
+					StatusManager.SHOW);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			Status status = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID,
+					"Failed TextOut: CoreException: "
+					+ e.getMessage()  , e);
+				StatusManager.getManager().handle(status,
+					StatusManager.SHOW);
 		}
 	}
 

@@ -1,5 +1,7 @@
 package ac.soton.eventb.textout.popup.actions;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -7,10 +9,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.rodinp.core.IRodinElement;
 
+import ac.soton.eventb.textout.Activator;
 import ac.soton.eventb.textout.core.ExportTextManager;
 
 public class ExportMachineToText implements IObjectActionDelegate {
@@ -47,7 +51,12 @@ public class ExportMachineToText implements IObjectActionDelegate {
 				ExportTextManager.export(rodinElement);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Status status = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID,
+					"Failed TextOut: Exception: "
+					+ e.getMessage()  , e);
+				StatusManager.getManager().handle(status,
+					StatusManager.SHOW);
 		}
 	}
 

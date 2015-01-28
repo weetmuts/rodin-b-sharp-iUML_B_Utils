@@ -4,12 +4,15 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.eventb.core.IContextRoot;
 import org.eventb.core.IMachineRoot;
 import org.rodinp.core.IElementType;
@@ -18,6 +21,8 @@ import org.rodinp.core.IRodinFile;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinCore;
 import org.rodinp.core.RodinDBException;
+
+import ac.soton.eventb.textout.Activator;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -67,9 +72,19 @@ public class EventBRodinToTextHandler extends AbstractHandler {
 				// Call the export method.
 				ExportTextManager.export(rodinEl);
 			} catch (RodinDBException e) {
-				e.printStackTrace();
+				Status status = new Status(IStatus.ERROR,
+						Activator.PLUGIN_ID,
+						"Failed TextOut: RodinDBException: "
+						+ e.getMessage()  , e);
+					StatusManager.getManager().handle(status,
+						StatusManager.SHOW);
 			} catch (Exception e) {
-				e.printStackTrace();
+				Status status = new Status(IStatus.ERROR,
+						Activator.PLUGIN_ID,
+						"Failed TextOut: Exception: "
+						+ e.getMessage()  , e);
+					StatusManager.getManager().handle(status,
+						StatusManager.SHOW);
 			}
 		}
 		return null;

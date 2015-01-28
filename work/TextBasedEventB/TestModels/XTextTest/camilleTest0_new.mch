@@ -22,12 +22,12 @@ events
  then
   @act1 "refVar ≔ r" 
  end
- event evt extended ordinary 
+ event evt  extended ordinary 
  refines
-  camilleTest_new·evt
+ camilleTest_new·evt
  end
  event evt2b  extended ordinary 
  refines
-  camilleTest_new·evt2
+ camilleTest_new·evt2
  end
 end
