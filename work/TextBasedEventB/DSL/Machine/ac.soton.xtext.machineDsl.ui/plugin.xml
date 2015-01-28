@@ -396,7 +396,7 @@
     </provider>
   </extension>
   <extension
-        point="org.rodinp.keyboard.symbols">
+        point="org.rodinp.keyboard.core.symbols">
      <symbol
            combo="//"
            id="commentSymbol"

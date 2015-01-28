@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/EMF_EVENT_B,Rodin2.8,EMF_EventB_Extension/ac.soton.eventb.emf.core.extension"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/iUML_B,Rodin2.8/iumlb,ac.soton.eventb.emf.diagrams"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/EventBText/ac.soton.eventb.printable"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/iUML_B,Rodin2.8/iumlb,ac.soton.eventb.statemachines"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/iUML_B,Rodin2.8/iumlb,ac.soton.eventb.statemachines.diagram"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/EventBText/ac.soton.eventb.textout"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/EventBText/ac.soton.eventb.textout.util"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/EventBText/ac.soton.eventb.textToRodin"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/DSL/Context/ac.soton.xtext.contextDsl"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/DSL/Context/ac.soton.xtext.contextDsl.sdk"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/DSL/Context/ac.soton.xtext.contextDsl.ui"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/DSL/Machine/ac.soton.xtext.machineDsl"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/DSL/Machine/ac.soton.xtext.machineDsl.sdk"/>
+<project reference="1.0,https://andyed2003@bitbucket.org/andyed2003/bitbucket-work.git,EventBTextForRodin3.0.1,work/TextBasedEventB/DSL/Machine/ac.soton.xtext.machineDsl.ui"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,fr.systerel.editor"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,fr.systerel.explorer"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.eventb.core"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/EMF_EVENT_B,Rodin2.8,EMF_EventB/org.eventb.emf.compare"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/EMF_EVENT_B,Rodin2.8,EMF_EventB/org.eventb.emf.core"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/EMF_EVENT_B,Rodin2.8,EMF_EventB/org.eventb.emf.feature"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/EMF_EVENT_B,Rodin2.8,EMF_EventB/org.eventb.emf.formulas"/>
+<project reference="1.0,ssh://aedmunds@git.code.sf.net/p/rodin-b-sharp/EMF_EVENT_B,Rodin2.8,EMF_EventB/org.eventb.emf.persistence"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.eventb.ide"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.eventb.ui"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.rodinp.core"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.rodinp.core.emf"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.rodinp.keyboard"/>
+<project reference="1.0,git://git.code.sf.net/p/rodin-b-sharp/rodincore,2.8-master,org.rodinp.platform"/>
+</provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1418629568427_9" label="contextXText" name="contextXText">
+<item elementID="=ac.soton.xtext.contextDsl.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.contextDsl.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.contextDsl.sdk" type="4"/>
+<item elementID="=ac.soton.xtext.contextDsl" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1417774182067_3" label="EventBEMF" name="EventBEMF">
+<item elementID="=ac.soton.eventb.emf.diagrams" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.emf.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.emf.compare" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eventb.emf.feature" type="4"/>
+<item elementID="=ac.soton.eventb.emf.core.extension" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.emf.formulas" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.emf.persistence" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1417778531899_8" label="EventBText" name="EventBText">
+<item elementID="=ac.soton.eventb.textToRodin" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ac.soton.eventb.textout" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ac.soton.eventb.printable" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ac.soton.eventb.textout.util" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1417774340373_7" label="iUMLB" name="iUMLB">
+<item elementID="=ac.soton.eventb.statemachines.diagram" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ac.soton.eventb.statemachines" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1417774213511_4" label="iumlbXText1" name="iumlbXText1">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.statemachine.core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.statemachine.dsl.sdk" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.statemachine.dsl.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.statemachine.dsl" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.statemachine.dsl.tests" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1417774938643_9" label="iumlbXText2" name="iumlbXText2">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.iumlb.xtext.dsl.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.iumlb.xtext.dsl.sdk" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.iumlb.xtext.dsl" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.iumlb.xtext.dsl.tests" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1417774235493_5" label="machineXText" name="machineXText">
+<item elementID="=ac.soton.xtext.machineDsl.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.machineDsl.sdk" type="4"/>
+<item elementID="=ac.soton.xtext.machineDsl" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ac.soton.xtext.machineDsl.tests" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1420793639302_10" label="rodinCore" name="rodinCore">
+<item elementID="=org.rodinp.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=fr.systerel.explorer" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=fr.systerel.editor" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.ide" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.rodinp.core.emf" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eventb.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.rodinp.platform" type="4"/>
+<item elementID="=org.rodinp.keyboard" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+</psf>
