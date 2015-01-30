@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.machineFile org.eventb.core.comment="My Comment" org.eventb.core.configuration="org.eventb.core.fwd" version="5">
-<org.eventb.core.refinesMachine name="_KtmaYKcAEeS2LpNDgHXvAg" org.eventb.core.target="camilleTest_new"/>
-<org.eventb.core.seesContext name="_KtmaYacAEeS2LpNDgHXvAg" org.eventb.core.target="ctx2_new"/>
-<org.eventb.core.variable name="_KtmaYqcAEeS2LpNDgHXvAg" org.eventb.core.identifier="a"/>
-<org.eventb.core.variable name="_KtmaY6cAEeS2LpNDgHXvAg" org.eventb.core.identifier="b"/>
-<org.eventb.core.variable name="_KtnBcKcAEeS2LpNDgHXvAg" org.eventb.core.identifier="c"/>
-<org.eventb.core.variable name="_KtnBcacAEeS2LpNDgHXvAg" org.eventb.core.identifier="refVar"/>
-<org.eventb.core.invariant name="_KtnBcqcAEeS2LpNDgHXvAg" org.eventb.core.label="inv1" org.eventb.core.predicate="refVar ∈ ℕ"/>
-<org.eventb.core.event name="_KtnBc6cAEeS2LpNDgHXvAg" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
-<org.eventb.core.action name="_KtnogKcAEeS2LpNDgHXvAg" org.eventb.core.assignment="refVar ≔ 99" org.eventb.core.label="act1"/>
+<org.eventb.core.refinesMachine name="__rxQ4KhNEeSZ65DibpQHbg" org.eventb.core.target="camilleTest_new"/>
+<org.eventb.core.seesContext name="__rxQ4ahNEeSZ65DibpQHbg" org.eventb.core.target="ctx2_new"/>
+<org.eventb.core.variable name="__rx38KhNEeSZ65DibpQHbg" org.eventb.core.identifier="a"/>
+<org.eventb.core.variable name="__rx38ahNEeSZ65DibpQHbg" org.eventb.core.identifier="b"/>
+<org.eventb.core.variable name="__rx38qhNEeSZ65DibpQHbg" org.eventb.core.identifier="c"/>
+<org.eventb.core.variable name="__rx386hNEeSZ65DibpQHbg" org.eventb.core.identifier="refVar"/>
+<org.eventb.core.invariant name="__rx39KhNEeSZ65DibpQHbg" org.eventb.core.label="inv1" org.eventb.core.predicate="refVar ∈ ℕ"/>
+<org.eventb.core.event name="__ryfAKhNEeSZ65DibpQHbg" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="__ryfAahNEeSZ65DibpQHbg" org.eventb.core.assignment="refVar ≔ 99" org.eventb.core.label="act1"/>
 </org.eventb.core.event>
-<org.eventb.core.event name="_KtnogacAEeS2LpNDgHXvAg" org.eventb.core.comment="nnnnn" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="kjh">
-<org.eventb.core.refinesEvent name="_KtnogqcAEeS2LpNDgHXvAg" org.eventb.core.target="kjh"/>
-<org.eventb.core.parameter name="_Ktnog6cAEeS2LpNDgHXvAg" org.eventb.core.identifier="r"/>
-<org.eventb.core.guard name="_KtnohKcAEeS2LpNDgHXvAg" org.eventb.core.label="grd1" org.eventb.core.predicate="r ∈ ℕ"/>
-<org.eventb.core.action name="_KtoPkKcAEeS2LpNDgHXvAg" org.eventb.core.assignment="refVar ≔ r" org.eventb.core.label="act1"/>
+<org.eventb.core.event name="__ryfAqhNEeSZ65DibpQHbg" org.eventb.core.comment="nnnnn" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="kjh">
+<org.eventb.core.refinesEvent name="__rzGEKhNEeSZ65DibpQHbg" org.eventb.core.target="kjh"/>
+<org.eventb.core.parameter name="__rzGEahNEeSZ65DibpQHbg" org.eventb.core.identifier="r"/>
+<org.eventb.core.guard name="__rzGEqhNEeSZ65DibpQHbg" org.eventb.core.label="grd1" org.eventb.core.predicate="r ∈ ℕ"/>
+<org.eventb.core.action name="__rzGE6hNEeSZ65DibpQHbg" org.eventb.core.assignment="refVar ≔ r" org.eventb.core.label="act1"/>
 </org.eventb.core.event>
-<org.eventb.core.event name="_KtoPkacAEeS2LpNDgHXvAg" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="evt">
-<org.eventb.core.refinesEvent name="_KtoPkqcAEeS2LpNDgHXvAg" org.eventb.core.target="evt"/>
+<org.eventb.core.event name="__rzGFKhNEeSZ65DibpQHbg" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="evt">
+<org.eventb.core.refinesEvent name="__rztIKhNEeSZ65DibpQHbg" org.eventb.core.target="evt"/>
 </org.eventb.core.event>
-<org.eventb.core.event name="_KtoPk6cAEeS2LpNDgHXvAg" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="evt2b">
-<org.eventb.core.refinesEvent name="_KtoPlKcAEeS2LpNDgHXvAg" org.eventb.core.target="evt2"/>
+<org.eventb.core.event name="__rztIahNEeSZ65DibpQHbg" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="evt2b">
+<org.eventb.core.refinesEvent name="__rztIqhNEeSZ65DibpQHbg" org.eventb.core.target="evt2"/>
 </org.eventb.core.event>
 </org.eventb.core.machineFile>
