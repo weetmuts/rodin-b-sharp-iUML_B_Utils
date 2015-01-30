@@ -67,7 +67,7 @@ CarrierSet returns context::CarrierSet:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		('//' comment=EString)?
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?

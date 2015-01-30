@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/ac.soton.eventb.text.feature_0.0.1.201501301124.jar" id="ac.soton.eventb.text.feature" version="0.0.1.201501301124">
+   <feature url="features/ac.soton.eventb.text.feature_0.0.1.201501301201.jar" id="ac.soton.eventb.text.feature" version="0.0.1.201501301201">
       <category name="Text Based EventB"/>
    </feature>
    <category-def name="Text Based EventB" label="Text Based EventB"/>

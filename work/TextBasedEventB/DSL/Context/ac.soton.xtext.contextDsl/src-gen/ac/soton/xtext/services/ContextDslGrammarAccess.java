@@ -237,7 +237,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cSolidusSolidusKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cGreaterThanSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cCommentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cCommentEStringParserRuleCall_2_1_0 = (RuleCall)cCommentAssignment_2_1.eContents().get(0);
 		
@@ -250,14 +250,14 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	//	'CarrierSet'
 		//	name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	("//" comment=EString)?;
+		//	(">" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		//{context::CarrierSet} //	(localGenerated?='localGenerated')?
 		////	'CarrierSet'
 		//name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		//("//" comment=EString)?
+		//(">" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		//{context::CarrierSet}
@@ -271,11 +271,11 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
-		//("//" comment=EString)?
+		//(">" comment=EString)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"//"
-		public Keyword getSolidusSolidusKeyword_2_0() { return cSolidusSolidusKeyword_2_0; }
+		//">"
+		public Keyword getGreaterThanSignKeyword_2_0() { return cGreaterThanSignKeyword_2_0; }
 
 		//comment=EString
 		public Assignment getCommentAssignment_2_1() { return cCommentAssignment_2_1; }
@@ -544,7 +544,7 @@ public class ContextDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//	'CarrierSet'
 	//	name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	("//" comment=EString)?;
+	//	(">" comment=EString)?;
 	public CarrierSetElements getCarrierSetAccess() {
 		return (pCarrierSet != null) ? pCarrierSet : (pCarrierSet = new CarrierSetElements());
 	}

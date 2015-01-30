@@ -1056,11 +1056,11 @@ rule__CarrierSet__Group_2__0__Impl
     }
 :
 (
-{ before(grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0()); }
+{ before(grammarAccess.getCarrierSetAccess().getGreaterThanSignKeyword_2_0()); }
 
-	'//' 
+	'>' 
 
-{ after(grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0()); }
+{ after(grammarAccess.getCarrierSetAccess().getGreaterThanSignKeyword_2_0()); }
 )
 
 ;

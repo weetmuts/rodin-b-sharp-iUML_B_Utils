@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalContextDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'end'", "'>'", "'extends'", "'sets'", "'constants'", "'axioms'", "'//'", "'@'", "'theorem'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'end'", "'>'", "'extends'", "'sets'", "'constants'", "'axioms'", "'@'", "'theorem'"
     };
     public static final int T__19=19;
     public static final int RULE_ID=5;
@@ -36,7 +36,6 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_ANY_OTHER=10;
-    public static final int T__20=20;
     public static final int RULE_INT=6;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
@@ -2463,7 +2462,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==19) ) {
+                if ( (LA10_0==18) ) {
                     alt10=1;
                 }
 
@@ -2719,7 +2718,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==18) ) {
+            if ( (LA11_0==13) ) {
                 alt11=1;
             }
             switch (alt11) {
@@ -2798,21 +2797,21 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CarrierSet__Group_2__0__Impl"
-    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1053:1: rule__CarrierSet__Group_2__0__Impl : ( '//' ) ;
+    // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1053:1: rule__CarrierSet__Group_2__0__Impl : ( '>' ) ;
     public final void rule__CarrierSet__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1057:1: ( ( '//' ) )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1058:1: ( '//' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1057:1: ( ( '>' ) )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1058:1: ( '>' )
             {
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1058:1: ( '//' )
-            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1059:1: '//'
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1058:1: ( '>' )
+            // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1059:1: '>'
             {
-             before(grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0()); 
-            match(input,18,FollowSets000.FOLLOW_18_in_rule__CarrierSet__Group_2__0__Impl2065); 
-             after(grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0()); 
+             before(grammarAccess.getCarrierSetAccess().getGreaterThanSignKeyword_2_0()); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__CarrierSet__Group_2__0__Impl2065); 
+             after(grammarAccess.getCarrierSetAccess().getGreaterThanSignKeyword_2_0()); 
 
             }
 
@@ -3372,7 +3371,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1279:1: '@'
             {
              before(grammarAccess.getAxiomAccess().getCommercialAtKeyword_0()); 
-            match(input,19,FollowSets000.FOLLOW_19_in_rule__Axiom__Group__0__Impl2496); 
+            match(input,18,FollowSets000.FOLLOW_18_in_rule__Axiom__Group__0__Impl2496); 
              after(grammarAccess.getAxiomAccess().getCommercialAtKeyword_0()); 
 
             }
@@ -3632,7 +3631,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==20) ) {
+            if ( (LA14_0==19) ) {
                 alt14=1;
             }
             switch (alt14) {
@@ -4608,7 +4607,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
             // ../ac.soton.xtext.contextDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalContextDsl.g:1737:1: 'theorem'
             {
              before(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); 
-            match(input,20,FollowSets000.FOLLOW_20_in_rule__Axiom__TheoremAssignment_33422); 
+            match(input,19,FollowSets000.FOLLOW_19_in_rule__Axiom__TheoremAssignment_33422); 
              after(grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0()); 
 
             }
@@ -4753,24 +4752,24 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         public static final BitSet FOLLOW_rule__Context__ConstantsAssignment_6_1_in_rule__Context__Group_6__1__Impl1569 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__Group_6__2__Impl_in_rule__Context__Group_6__21599 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__ConstantsAssignment_6_2_in_rule__Context__Group_6__2__Impl1626 = new BitSet(new long[]{0x0000000000000032L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__0__Impl_in_rule__Context__Group_7__01663 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__0__Impl_in_rule__Context__Group_7__01663 = new BitSet(new long[]{0x0000000000040000L});
         public static final BitSet FOLLOW_rule__Context__Group_7__1_in_rule__Context__Group_7__01666 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_17_in_rule__Context__Group_7__0__Impl1694 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__Group_7__1__Impl_in_rule__Context__Group_7__11725 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_rule__Context__Group_7__1__Impl_in_rule__Context__Group_7__11725 = new BitSet(new long[]{0x0000000000040000L});
         public static final BitSet FOLLOW_rule__Context__Group_7__2_in_rule__Context__Group_7__11728 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_1_in_rule__Context__Group_7__1__Impl1755 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Context__Group_7__2__Impl_in_rule__Context__Group_7__21785 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_2_in_rule__Context__Group_7__2__Impl1812 = new BitSet(new long[]{0x0000000000080002L});
+        public static final BitSet FOLLOW_rule__Context__AxiomsAssignment_7_2_in_rule__Context__Group_7__2__Impl1812 = new BitSet(new long[]{0x0000000000040002L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group__0__Impl_in_rule__CarrierSet__Group__01849 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group__1_in_rule__CarrierSet__Group__01852 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__CarrierSet__Group__1__Impl_in_rule__CarrierSet__Group__11910 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_rule__CarrierSet__Group__1__Impl_in_rule__CarrierSet__Group__11910 = new BitSet(new long[]{0x0000000000002000L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group__2_in_rule__CarrierSet__Group__11913 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__CarrierSet__NameAssignment_1_in_rule__CarrierSet__Group__1__Impl1940 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group__2__Impl_in_rule__CarrierSet__Group__21970 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group_2__0_in_rule__CarrierSet__Group__2__Impl1997 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group_2__0__Impl_in_rule__CarrierSet__Group_2__02034 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group_2__1_in_rule__CarrierSet__Group_2__02037 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_18_in_rule__CarrierSet__Group_2__0__Impl2065 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__CarrierSet__Group_2__0__Impl2065 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__CarrierSet__Group_2__1__Impl_in_rule__CarrierSet__Group_2__12096 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__CarrierSet__CommentAssignment_2_1_in_rule__CarrierSet__Group_2__1__Impl2123 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__02157 = new BitSet(new long[]{0x0000000000000030L});
@@ -4787,14 +4786,14 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         public static final BitSet FOLLOW_rule__Constant__CommentAssignment_2_1_in_rule__Constant__Group_2__1__Impl2431 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Axiom__Group__0__Impl_in_rule__Axiom__Group__02465 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_rule__Axiom__Group__1_in_rule__Axiom__Group__02468 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_19_in_rule__Axiom__Group__0__Impl2496 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__1__Impl_in_rule__Axiom__Group__12527 = new BitSet(new long[]{0x0000000000102030L});
+        public static final BitSet FOLLOW_18_in_rule__Axiom__Group__0__Impl2496 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__1__Impl_in_rule__Axiom__Group__12527 = new BitSet(new long[]{0x0000000000082030L});
         public static final BitSet FOLLOW_rule__Axiom__Group__2_in_rule__Axiom__Group__12530 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Axiom__NameAssignment_1_in_rule__Axiom__Group__1__Impl2557 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__2__Impl_in_rule__Axiom__Group__22587 = new BitSet(new long[]{0x0000000000102030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__2__Impl_in_rule__Axiom__Group__22587 = new BitSet(new long[]{0x0000000000082030L});
         public static final BitSet FOLLOW_rule__Axiom__Group__3_in_rule__Axiom__Group__22590 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Axiom__PredicateAssignment_2_in_rule__Axiom__Group__2__Impl2617 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Axiom__Group__3__Impl_in_rule__Axiom__Group__32648 = new BitSet(new long[]{0x0000000000102030L});
+        public static final BitSet FOLLOW_rule__Axiom__Group__3__Impl_in_rule__Axiom__Group__32648 = new BitSet(new long[]{0x0000000000082030L});
         public static final BitSet FOLLOW_rule__Axiom__Group__4_in_rule__Axiom__Group__32651 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Axiom__TheoremAssignment_3_in_rule__Axiom__Group__3__Impl2678 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Axiom__Group__4__Impl_in_rule__Axiom__Group__42709 = new BitSet(new long[]{0x0000000000000002L});
@@ -4820,7 +4819,7 @@ public class InternalContextDslParser extends AbstractInternalContentAssistParse
         public static final BitSet FOLLOW_ruleEString_in_rule__Constant__CommentAssignment_2_13324 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__NameAssignment_13355 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__PredicateAssignment_23386 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_20_in_rule__Axiom__TheoremAssignment_33422 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_rule__Axiom__TheoremAssignment_33422 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__Axiom__CommentAssignment_4_13461 = new BitSet(new long[]{0x0000000000000002L});
     }
 

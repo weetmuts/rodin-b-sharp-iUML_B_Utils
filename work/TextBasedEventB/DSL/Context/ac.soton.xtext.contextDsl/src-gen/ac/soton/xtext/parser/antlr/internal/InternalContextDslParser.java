@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalContextDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'>'", "'extends'", "'sets'", "'constants'", "'axioms'", "'end'", "'//'", "'@'", "'theorem'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'>'", "'extends'", "'sets'", "'constants'", "'axioms'", "'end'", "'@'", "'theorem'"
     };
     public static final int T__19=19;
     public static final int RULE_ID=5;
@@ -35,7 +35,6 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_ANY_OTHER=10;
-    public static final int T__20=20;
     public static final int RULE_INT=6;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
@@ -601,7 +600,7 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
                         int alt8=2;
                         int LA8_0 = input.LA(1);
 
-                        if ( (LA8_0==19) ) {
+                        if ( (LA8_0==18) ) {
                             alt8=1;
                         }
 
@@ -824,7 +823,7 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCarrierSet"
-    // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:341:1: ruleCarrierSet returns [EObject current=null] : ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:341:1: ruleCarrierSet returns [EObject current=null] : ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) ) )? ) ;
     public final EObject ruleCarrierSet() throws RecognitionException {
         EObject current = null;
 
@@ -837,11 +836,11 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:344:28: ( ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) ) )? ) )
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:1: ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) ) )? )
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:344:28: ( ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) ) )? ) )
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:1: ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) ) )? )
             {
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:1: ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) ) )? )
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:2: () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) ) )?
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:1: ( () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) ) )? )
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:2: () ( (lv_name_1_0= ruleEString ) ) (otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) ) )?
             {
             // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:345:2: ()
             // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:346:5: 
@@ -885,20 +884,20 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:369:2: (otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) ) )?
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:369:2: (otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) ) )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==18) ) {
+            if ( (LA11_0==12) ) {
                 alt11=1;
             }
             switch (alt11) {
                 case 1 :
-                    // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:369:4: otherlv_2= '//' ( (lv_comment_3_0= ruleEString ) )
+                    // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:369:4: otherlv_2= '>' ( (lv_comment_3_0= ruleEString ) )
                     {
-                    otherlv_2=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleCarrierSet673); 
+                    otherlv_2=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleCarrierSet673); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0());
+                        	newLeafNode(otherlv_2, grammarAccess.getCarrierSetAccess().getGreaterThanSignKeyword_2_0());
                         
                     // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:373:1: ( (lv_comment_3_0= ruleEString ) )
                     // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:374:1: (lv_comment_3_0= ruleEString )
@@ -1187,7 +1186,7 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
             // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:479:1: (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_predicate_2_0= ruleEString ) )? ( (lv_theorem_3_0= 'theorem' ) )? (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
             // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:479:3: otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_predicate_2_0= ruleEString ) )? ( (lv_theorem_3_0= 'theorem' ) )? (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
             {
-            otherlv_0=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAxiom916); 
+            otherlv_0=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleAxiom916); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getAxiomAccess().getCommercialAtKeyword_0());
                 
@@ -1268,7 +1267,7 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==20) ) {
+            if ( (LA14_0==19) ) {
                 alt14=1;
             }
             switch (alt14) {
@@ -1278,7 +1277,7 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
                     // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:520:1: (lv_theorem_3_0= 'theorem' )
                     // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:521:3: lv_theorem_3_0= 'theorem'
                     {
-                    lv_theorem_3_0=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleAxiom977); 
+                    lv_theorem_3_0=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAxiom977); 
 
                             newLeafNode(lv_theorem_3_0, grammarAccess.getAxiomAccess().getTheoremTheoremKeyword_3_0());
                         
@@ -1390,9 +1389,9 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_15_in_ruleContext321 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleConstant_in_ruleContext342 = new BitSet(new long[]{0x0000000000030030L});
         public static final BitSet FOLLOW_ruleConstant_in_ruleContext363 = new BitSet(new long[]{0x0000000000030030L});
-        public static final BitSet FOLLOW_16_in_ruleContext379 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_ruleAxiom_in_ruleContext400 = new BitSet(new long[]{0x00000000000A0000L});
-        public static final BitSet FOLLOW_ruleAxiom_in_ruleContext421 = new BitSet(new long[]{0x00000000000A0000L});
+        public static final BitSet FOLLOW_16_in_ruleContext379 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_ruleAxiom_in_ruleContext400 = new BitSet(new long[]{0x0000000000060000L});
+        public static final BitSet FOLLOW_ruleAxiom_in_ruleContext421 = new BitSet(new long[]{0x0000000000060000L});
         public static final BitSet FOLLOW_17_in_ruleContext436 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_entryRuleEString473 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleEString484 = new BitSet(new long[]{0x0000000000000002L});
@@ -1400,8 +1399,8 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_RULE_ID_in_ruleEString550 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleCarrierSet_in_entryRuleCarrierSet595 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleCarrierSet605 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleCarrierSet660 = new BitSet(new long[]{0x0000000000040002L});
-        public static final BitSet FOLLOW_18_in_ruleCarrierSet673 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleCarrierSet660 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_12_in_ruleCarrierSet673 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleCarrierSet694 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstant_in_entryRuleConstant732 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstant742 = new BitSet(new long[]{0x0000000000000002L});
@@ -1410,10 +1409,10 @@ public class InternalContextDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleEString_in_ruleConstant831 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleAxiom_in_entryRuleAxiom869 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleAxiom879 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_19_in_ruleAxiom916 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAxiom937 = new BitSet(new long[]{0x0000000000101032L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAxiom958 = new BitSet(new long[]{0x0000000000101002L});
-        public static final BitSet FOLLOW_20_in_ruleAxiom977 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_18_in_ruleAxiom916 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAxiom937 = new BitSet(new long[]{0x0000000000081032L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAxiom958 = new BitSet(new long[]{0x0000000000081002L});
+        public static final BitSet FOLLOW_19_in_ruleAxiom977 = new BitSet(new long[]{0x0000000000001002L});
         public static final BitSet FOLLOW_12_in_ruleAxiom1004 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleAxiom1025 = new BitSet(new long[]{0x0000000000000002L});
     }

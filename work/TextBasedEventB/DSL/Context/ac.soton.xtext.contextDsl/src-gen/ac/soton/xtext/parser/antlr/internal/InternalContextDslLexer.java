@@ -12,13 +12,8 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalContextDslLexer extends Lexer {
-    public static final int RULE_ID=5;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__20=20;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=7;
     public static final int T__19=19;
+    public static final int RULE_ID=5;
     public static final int RULE_STRING=4;
     public static final int T__16=16;
     public static final int T__15=15;
@@ -28,8 +23,12 @@ public class InternalContextDslLexer extends Lexer {
     public static final int T__11=11;
     public static final int T__14=14;
     public static final int T__13=13;
+    public static final int RULE_ANY_OTHER=10;
     public static final int RULE_INT=6;
     public static final int RULE_WS=9;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int EOF=-1;
+    public static final int RULE_ML_COMMENT=7;
 
     // delegates
     // delegators
@@ -195,11 +194,10 @@ public class InternalContextDslLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:18:7: ( '//' )
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:18:9: '//'
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:18:7: ( '@' )
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:18:9: '@'
             {
-            match("//"); 
-
+            match('@'); 
 
             }
 
@@ -216,28 +214,8 @@ public class InternalContextDslLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:19:7: ( '@' )
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:19:9: '@'
-            {
-            match('@'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__19"
-
-    // $ANTLR start "T__20"
-    public final void mT__20() throws RecognitionException {
-        try {
-            int _type = T__20;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:20:7: ( 'theorem' )
-            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:20:9: 'theorem'
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:19:7: ( 'theorem' )
+            // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:19:9: 'theorem'
             {
             match("theorem"); 
 
@@ -250,7 +228,7 @@ public class InternalContextDslLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__20"
+    // $ANTLR end "T__19"
 
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
@@ -767,8 +745,8 @@ public class InternalContextDslLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=17;
+        // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=16;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -835,56 +813,49 @@ public class InternalContextDslLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:64: T__20
-                {
-                mT__20(); 
-
-                }
-                break;
-            case 11 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:70: RULE_ID
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:64: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 12 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:78: RULE_INT
+            case 11 :
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:72: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 13 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:87: RULE_STRING
+            case 12 :
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:81: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 14 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:99: RULE_ML_COMMENT
+            case 13 :
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:93: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 15 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:115: RULE_SL_COMMENT
+            case 14 :
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:109: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 16 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:131: RULE_WS
+            case 15 :
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:125: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 17 :
-                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:139: RULE_ANY_OTHER
+            case 16 :
+                // ../ac.soton.xtext.contextDsl/src-gen/ac/soton/xtext/parser/antlr/internal/InternalContextDsl.g:1:133: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -898,50 +869,50 @@ public class InternalContextDslLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\21\1\uffff\3\21\1\17\1\uffff\1\21\1\17\2\uffff\2\17\2"+
-        "\uffff\1\21\2\uffff\4\21\1\43\2\uffff\1\21\3\uffff\2\21\1\51\2\21"+
-        "\2\uffff\4\21\1\uffff\1\60\5\21\1\uffff\5\21\1\73\1\21\1\75\1\21"+
-        "\1\77\1\uffff\1\100\1\uffff\1\21\2\uffff\1\102\1\uffff";
+        "\1\uffff\1\21\1\uffff\3\21\1\uffff\1\21\1\17\2\uffff\3\17\2\uffff"+
+        "\1\21\2\uffff\4\21\1\uffff\1\21\5\uffff\2\21\1\47\6\21\1\uffff\1"+
+        "\56\5\21\1\uffff\5\21\1\71\1\21\1\73\1\21\1\75\1\uffff\1\76\1\uffff"+
+        "\1\21\2\uffff\1\100\1\uffff";
     static final String DFA12_eofS =
-        "\103\uffff";
+        "\101\uffff";
     static final String DFA12_minS =
-        "\1\0\1\157\1\uffff\1\156\1\145\1\170\1\52\1\uffff\1\150\1\101\2"+
-        "\uffff\2\0\2\uffff\1\156\2\uffff\1\164\1\144\1\164\1\151\1\0\2\uffff"+
-        "\1\145\3\uffff\1\163\1\145\1\60\1\163\1\157\2\uffff\1\157\1\145"+
-        "\1\164\1\156\1\uffff\1\60\1\155\1\162\1\170\1\141\1\144\1\uffff"+
-        "\1\163\1\145\1\164\1\156\1\163\1\60\1\155\1\60\1\164\1\60\1\uffff"+
-        "\1\60\1\uffff\1\163\2\uffff\1\60\1\uffff";
+        "\1\0\1\157\1\uffff\1\156\1\145\1\170\1\uffff\1\150\1\101\2\uffff"+
+        "\2\0\1\52\2\uffff\1\156\2\uffff\1\164\1\144\1\164\1\151\1\uffff"+
+        "\1\145\5\uffff\1\163\1\145\1\60\1\163\2\157\1\145\1\164\1\156\1"+
+        "\uffff\1\60\1\155\1\162\1\170\1\141\1\144\1\uffff\1\163\1\145\1"+
+        "\164\1\156\1\163\1\60\1\155\1\60\1\164\1\60\1\uffff\1\60\1\uffff"+
+        "\1\163\2\uffff\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\157\1\uffff\1\170\1\145\1\170\1\57\1\uffff\1\150\1\172"+
-        "\2\uffff\2\uffff\2\uffff\1\156\2\uffff\1\164\1\144\1\164\1\151\1"+
-        "\uffff\2\uffff\1\145\3\uffff\1\164\1\145\1\172\1\163\1\157\2\uffff"+
-        "\1\157\1\145\1\164\1\156\1\uffff\1\172\1\155\1\162\1\170\1\141\1"+
-        "\144\1\uffff\1\163\1\145\1\164\1\156\1\163\1\172\1\155\1\172\1\164"+
-        "\1\172\1\uffff\1\172\1\uffff\1\163\2\uffff\1\172\1\uffff";
+        "\1\uffff\1\157\1\uffff\1\170\1\145\1\170\1\uffff\1\150\1\172\2\uffff"+
+        "\2\uffff\1\57\2\uffff\1\156\2\uffff\1\164\1\144\1\164\1\151\1\uffff"+
+        "\1\145\5\uffff\1\164\1\145\1\172\1\163\2\157\1\145\1\164\1\156\1"+
+        "\uffff\1\172\1\155\1\162\1\170\1\141\1\144\1\uffff\1\163\1\145\1"+
+        "\164\1\156\1\163\1\172\1\155\1\172\1\164\1\172\1\uffff\1\172\1\uffff"+
+        "\1\163\2\uffff\1\172\1\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\4\uffff\1\11\2\uffff\1\13\1\14\2\uffff\1\20\1\21\1"+
-        "\uffff\1\13\1\2\5\uffff\1\16\1\11\1\uffff\1\14\1\15\1\20\5\uffff"+
-        "\1\10\1\17\4\uffff\1\7\6\uffff\1\4\12\uffff\1\6\1\uffff\1\1\1\uffff"+
-        "\1\3\1\12\1\uffff\1\5";
+        "\2\uffff\1\2\3\uffff\1\10\2\uffff\1\12\1\13\3\uffff\1\17\1\20\1"+
+        "\uffff\1\12\1\2\4\uffff\1\10\1\uffff\1\13\1\14\1\15\1\16\1\17\11"+
+        "\uffff\1\7\6\uffff\1\4\12\uffff\1\6\1\uffff\1\1\1\uffff\1\3\1\11"+
+        "\1\uffff\1\5";
     static final String DFA12_specialS =
-        "\1\2\13\uffff\1\0\1\1\11\uffff\1\3\53\uffff}>";
+        "\1\0\12\uffff\1\2\1\1\64\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\17\2\16\2\17\1\16\22\17\1\16\1\17\1\14\4\17\1\15\7\17\1"+
-            "\6\12\13\4\17\1\2\1\17\1\7\32\12\3\17\1\11\1\12\1\17\1\5\1\12"+
-            "\1\1\1\12\1\3\15\12\1\4\1\10\6\12\uff85\17",
+            "\11\17\2\16\2\17\1\16\22\17\1\16\1\17\1\13\4\17\1\14\7\17\1"+
+            "\15\12\12\4\17\1\2\1\17\1\6\32\11\3\17\1\10\1\11\1\17\1\5\1"+
+            "\11\1\1\1\11\1\3\15\11\1\4\1\7\6\11\uff85\17",
             "\1\20",
             "",
             "\1\24\11\uffff\1\23",
             "\1\25",
             "\1\26",
-            "\1\30\4\uffff\1\27",
             "",
-            "\1\32",
+            "\1\30",
             "\32\21\4\uffff\1\21\1\uffff\32\21",
             "",
             "",
-            "\0\34",
-            "\0\34",
+            "\0\32",
+            "\0\32",
+            "\1\33\4\uffff\1\34",
             "",
             "",
             "\1\36",
@@ -951,46 +922,44 @@ public class InternalContextDslLexer extends Lexer {
             "\1\40",
             "\1\41",
             "\1\42",
-            "\0\44",
+            "",
+            "\1\43",
             "",
             "",
-            "\1\45",
             "",
             "",
             "",
-            "\1\47\1\46",
-            "\1\50",
+            "\1\45\1\44",
+            "\1\46",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\1\50",
+            "\1\51",
             "\1\52",
             "\1\53",
-            "",
-            "",
             "\1\54",
             "\1\55",
-            "\1\56",
-            "\1\57",
             "",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\1\57",
+            "\1\60",
             "\1\61",
             "\1\62",
             "\1\63",
+            "",
             "\1\64",
             "\1\65",
-            "",
             "\1\66",
             "\1\67",
             "\1\70",
-            "\1\71",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
             "\1\72",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
             "\1\74",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
-            "\1\76",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
             "",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
             "",
-            "\1\101",
+            "\1\77",
             "",
             "",
             "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
@@ -1027,33 +996,13 @@ public class InternalContextDslLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_12 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 28;}
-
-                        else s = 15;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_13 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_13>='\u0000' && LA12_13<='\uFFFF')) ) {s = 28;}
-
-                        else s = 15;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1067,21 +1016,21 @@ public class InternalContextDslLexer extends Lexer {
 
                         else if ( (LA12_0=='a') ) {s = 5;}
 
-                        else if ( (LA12_0=='/') ) {s = 6;}
+                        else if ( (LA12_0=='@') ) {s = 6;}
 
-                        else if ( (LA12_0=='@') ) {s = 7;}
+                        else if ( (LA12_0=='t') ) {s = 7;}
 
-                        else if ( (LA12_0=='t') ) {s = 8;}
+                        else if ( (LA12_0=='^') ) {s = 8;}
 
-                        else if ( (LA12_0=='^') ) {s = 9;}
+                        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='b'||LA12_0=='d'||(LA12_0>='f' && LA12_0<='r')||(LA12_0>='u' && LA12_0<='z')) ) {s = 9;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='b'||LA12_0=='d'||(LA12_0>='f' && LA12_0<='r')||(LA12_0>='u' && LA12_0<='z')) ) {s = 10;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 10;}
 
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 11;}
+                        else if ( (LA12_0=='\"') ) {s = 11;}
 
-                        else if ( (LA12_0=='\"') ) {s = 12;}
+                        else if ( (LA12_0=='\'') ) {s = 12;}
 
-                        else if ( (LA12_0=='\'') ) {s = 13;}
+                        else if ( (LA12_0=='/') ) {s = 13;}
 
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 14;}
 
@@ -1089,13 +1038,23 @@ public class InternalContextDslLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
-                        int LA12_23 = input.LA(1);
+                    case 1 : 
+                        int LA12_12 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_23>='\u0000' && LA12_23<='\uFFFF')) ) {s = 36;}
+                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 26;}
 
-                        else s = 35;
+                        else s = 15;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_11 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_11>='\u0000' && LA12_11<='\uFFFF')) ) {s = 26;}
+
+                        else s = 15;
 
                         if ( s>=0 ) return s;
                         break;

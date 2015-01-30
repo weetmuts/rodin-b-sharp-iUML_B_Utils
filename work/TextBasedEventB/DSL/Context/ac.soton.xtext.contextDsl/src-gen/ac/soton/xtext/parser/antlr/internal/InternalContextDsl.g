@@ -366,9 +366,9 @@ ruleCarrierSet returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2='//' 
+)(	otherlv_2='>' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getCarrierSetAccess().getSolidusSolidusKeyword_2_0());
+    	newLeafNode(otherlv_2, grammarAccess.getCarrierSetAccess().getGreaterThanSignKeyword_2_0());
     }
 (
 (

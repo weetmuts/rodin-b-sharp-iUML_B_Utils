@@ -71,9 +71,11 @@ public class ExportTextManager {
 
 	public static String adjustComment(String comment) {
 		String adjustedComment = "";
-		// add the comment characters if there is a comment
+		// add the comment characters if there is a comment,
+		// after replacing "s with ', " becomes the comment delimiter
 		if (comment != null && !comment.equals("")) {
-			adjustedComment = TextOutUtil.COMMENT_CHAR +" \"" + comment + "\"";
+			adjustedComment = comment.replaceAll("\"", "'");
+			adjustedComment = TextOutUtil.COMMENT_CHAR +" \"" + adjustedComment + "\"";
 		}
 		// if the comment is null or "" then return ""
 		return adjustedComment;
