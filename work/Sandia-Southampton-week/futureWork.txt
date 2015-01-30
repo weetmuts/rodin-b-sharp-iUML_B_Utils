@@ -1,0 +1,10 @@
+
+Model using Text Editor (XText?) + use Rose Editor + diagram editors.
+
+Think about a future text-based Standard.
+
+Text version of state-machines, in xtext.
+
+Consider Plug-in extensibility when designing text editor.
+
+
