@@ -16,12 +16,9 @@ public class ContextDslUiModule extends ac.soton.xtext.ui.AbstractContextDslUiMo
 	public ContextDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
-//	public void configureXtextEditorCallbacks(Binder binder) {
-//		binder.bind(IXtextEditorCallback.class).annotatedWith(Names.named("dontcare2")).to(CustomXtextEditorCallback.class);
-//	}
-//	
-//	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {		
-//		return CustomXtextEditorCallback.class;
-//	}
+	
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {		
+		return CustomXtextEditorCallback.class;
+	}
 	
 }
