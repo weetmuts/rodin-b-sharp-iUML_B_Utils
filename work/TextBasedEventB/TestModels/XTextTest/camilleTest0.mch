@@ -31,7 +31,7 @@ events
  refines
  camilleTest·evt
  end
- event evt2  extended ordinary 
+ event evt2b  extended ordinary 
  refines
  camilleTest·evt2
  end

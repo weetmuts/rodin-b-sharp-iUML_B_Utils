@@ -22,8 +22,8 @@
    </url>
 
    <requires>
+      <import plugin="org.eventb.emf.persistence" version="3.0.1" match="compatible"/>
       <import plugin="ac.soton.eventb.printable" version="0.0.1" match="compatible"/>
-      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui" version="2.6.2" match="equivalent"/>
       <import plugin="ac.soton.eventb.textout.util" version="0.0.1" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="4.0.0" match="compatible"/>
@@ -49,8 +49,9 @@
       <import plugin="org.eclipse.compare" version="3.5.202" match="compatible"/>
       <import plugin="ac.soton.xtext.machineDsl" version="0.0.1" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
-      <import feature="org.eclipse.xtext.runtime" version="2.6.2.v201407030533"/>
-      <import plugin="org.eventb.emf.persistence" version="3.0.1" match="compatible"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.6.2.v201407030533" match="perfect"/>
+      <import plugin="org.rodinp.core" version="1.6.1" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="compatible"/>
    </requires>
 
    <plugin
