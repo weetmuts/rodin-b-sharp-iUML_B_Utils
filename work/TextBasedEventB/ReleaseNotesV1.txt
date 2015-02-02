@@ -24,7 +24,7 @@ Install the Text-based Event-B Editor in the usual way.
 
 
 The plug-in has been tested on Ubuntu 14.04 (x86-64)
-
+Problems were experienced with unicode characters in Windows7 64bit (Which could be investigated if necessary).
 
 Use
 ===
