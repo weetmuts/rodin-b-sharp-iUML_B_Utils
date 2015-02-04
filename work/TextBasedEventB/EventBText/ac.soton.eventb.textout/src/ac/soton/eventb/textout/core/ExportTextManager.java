@@ -2,8 +2,10 @@ package ac.soton.eventb.textout.core;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +89,11 @@ public class ExportTextManager {
 		String newFilePath = parentProjectPath.toString() + File.separatorChar
 				+ fileName;
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(newFilePath));
+			
+			BufferedWriter out = new BufferedWriter
+				    (new OutputStreamWriter(new FileOutputStream(newFilePath),"UTF-8"));
+			
+//			BufferedWriter out = new BufferedWriter(new FileWriter(newFilePath));
 			for (String line : output) {
 				out.write(line + "\n");
 			}
