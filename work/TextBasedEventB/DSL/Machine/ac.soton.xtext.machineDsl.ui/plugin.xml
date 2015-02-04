@@ -395,19 +395,4 @@
             extensions="mch">
     </provider>
   </extension>
-  <extension
-        point="org.rodinp.keyboard.core.symbols">
-     <symbol
-           combo="//"
-           id="commentSymbol"
-           name="CommentSymbol"
-           translation="//">
-     </symbol>
-     <symbol
-           combo="."
-           id="ignoreDot"
-           name="IgnoreDot"
-           translation=".">
-     </symbol>
-  </extension>
 </plugin>
