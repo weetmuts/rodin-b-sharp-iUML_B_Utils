@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scRefinesMachine name="'" org.eventb.core.scTarget="/StatemachineTest/mch1.bcm" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.refinesMachine#_1IdaQK0bEeSaM9gbVkfl3w"/>
+<org.eventb.core.scInvariant name="'" org.eventb.core.label="i1" org.eventb.core.predicate="a∈ℤ" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.invariant#_sEGd0K0bEeSaM9gbVkfl3w" org.eventb.core.theorem="false"/>
+<org.eventb.core.scInvariant name="(" org.eventb.core.label="i2" org.eventb.core.predicate="b∈ℕ" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.invariant#_sEHE4K0bEeSaM9gbVkfl3w" org.eventb.core.theorem="false"/>
+<org.eventb.core.scVariable name="a" org.eventb.core.abstract="true" org.eventb.core.concrete="true" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.variable#_1IdaQa0bEeSaM9gbVkfl3w" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scVariable name="b" org.eventb.core.abstract="true" org.eventb.core.concrete="true" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.variable#_1IeBUK0bEeSaM9gbVkfl3w" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scEvent name="c" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.event#_1IeBUa0bEeSaM9gbVkfl3w">
+<org.eventb.core.scRefinesEvent name="'" org.eventb.core.scTarget="/StatemachineTest/mch1.bcm|org.eventb.core.scMachineFile#mch1|org.eventb.core.scEvent#c" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.event#_1IeBUa0bEeSaM9gbVkfl3w"/>
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="a :∈ ℤ" org.eventb.core.label="act1" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.event#_sEHr8K0bEeSaM9gbVkfl3w|org.eventb.core.action#_sEITAK0bEeSaM9gbVkfl3w"/>
+<org.eventb.core.scAction name="(" org.eventb.core.assignment="b ≔ 0" org.eventb.core.label="act2" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.event#_sEHr8K0bEeSaM9gbVkfl3w|org.eventb.core.action#_sEI6EK0bEeSaM9gbVkfl3w"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="d" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt1" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.event#_1IeoYK0bEeSaM9gbVkfl3w">
+<org.eventb.core.scRefinesEvent name="'" org.eventb.core.scTarget="/StatemachineTest/mch1.bcm|org.eventb.core.scMachineFile#mch1|org.eventb.core.scEvent#d" org.eventb.core.source="/StatemachineTest/mch1r.bum|org.eventb.core.machineFile#mch1r|org.eventb.core.event#_1IeoYK0bEeSaM9gbVkfl3w|org.eventb.core.refinesEvent#_1IeoYa0bEeSaM9gbVkfl3w"/>
+</org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

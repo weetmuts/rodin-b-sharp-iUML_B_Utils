@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.variable name="_sECzcK0bEeSaM9gbVkfl3w" org.eventb.core.identifier="a"/>
+<org.eventb.core.variable name="_sEF2wK0bEeSaM9gbVkfl3w" org.eventb.core.identifier="b"/>
+<org.eventb.core.invariant name="_sEGd0K0bEeSaM9gbVkfl3w" org.eventb.core.label="i1" org.eventb.core.predicate="a ∈ ℤ"/>
+<org.eventb.core.invariant name="_sEHE4K0bEeSaM9gbVkfl3w" org.eventb.core.label="i2" org.eventb.core.predicate="b ∈ ℕ"/>
+<org.eventb.core.event name="_sEHr8K0bEeSaM9gbVkfl3w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_sEITAK0bEeSaM9gbVkfl3w" org.eventb.core.assignment="a :∈ ℤ" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="_sEI6EK0bEeSaM9gbVkfl3w" org.eventb.core.assignment="b ≔ 0" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_sEI6Ea0bEeSaM9gbVkfl3w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt1"/>
+</org.eventb.core.machineFile>
