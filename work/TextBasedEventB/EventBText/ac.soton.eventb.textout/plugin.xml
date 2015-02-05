@@ -184,5 +184,13 @@
          </menu>
       </menuContribution>
    </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            file-extensions="mch, ctx"
+            id="eventB_DSLText"
+            name="Event-B Text"
+            default-charset="UTF-8"/>
+   </extension>
 
 </plugin>

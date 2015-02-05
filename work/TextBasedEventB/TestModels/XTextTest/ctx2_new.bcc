@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scExtendsContext name="'" org.eventb.core.scTarget="/XTextTest/ctx.bcc|org.eventb.core.scContextFile#ctx" org.eventb.core.source="/XTextTest/ctx2_new.buc|org.eventb.core.contextFile#ctx2_new|org.eventb.core.extendsContext#_FAdgoK0PEeSf_MZBDBbgYA"/>
+<org.eventb.core.scInternalContext name="ctx">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="axm1" org.eventb.core.predicate="cst1⊆A" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#_z4DQAKMPEeSQ66usuQDSTg" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="(" org.eventb.core.label="axm2" org.eventb.core.predicate="cst2∈ℕ" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#_z4D3EKMPEeSQ66usuQDSTg" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name=")" org.eventb.core.label="axm3" org.eventb.core.predicate="cst2≥0" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.axiom#_z4D3EaMPEeSQ66usuQDSTg" org.eventb.core.theorem="true"/>
+<org.eventb.core.scCarrierSet name="A" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.carrierSet#_z4CB4aMPEeSQ66usuQDSTg" org.eventb.core.type="ℙ(A)"/>
+<org.eventb.core.scCarrierSet name="B" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.carrierSet#_z4CB4qMPEeSQ66usuQDSTg" org.eventb.core.type="ℙ(B)"/>
+<org.eventb.core.scConstant name="cst1" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.constant#_z4Co8KMPEeSQ66usuQDSTg" org.eventb.core.type="ℙ(A)"/>
+<org.eventb.core.scConstant name="cst2" org.eventb.core.source="/XTextTest/ctx.buc|org.eventb.core.contextFile#ctx|org.eventb.core.constant#_z4Co8aMPEeSQ66usuQDSTg" org.eventb.core.type="ℤ"/>
+</org.eventb.core.scInternalContext>
+<org.eventb.core.scAxiom name="cty" org.eventb.core.label="axm1" org.eventb.core.predicate="cst3⊆A" org.eventb.core.source="/XTextTest/ctx2_new.buc|org.eventb.core.contextFile#ctx2_new|org.eventb.core.axiom#_FAeHsa0PEeSf_MZBDBbgYA" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="ctz" org.eventb.core.label="axm2" org.eventb.core.predicate="cst1∩cst3=(∅ ⦂ ℙ(A))" org.eventb.core.source="/XTextTest/ctx2_new.buc|org.eventb.core.contextFile#ctx2_new|org.eventb.core.axiom#_FAeHsq0PEeSf_MZBDBbgYA" org.eventb.core.theorem="false"/>
+<org.eventb.core.scConstant name="cst3" org.eventb.core.source="/XTextTest/ctx2_new.buc|org.eventb.core.contextFile#ctx2_new|org.eventb.core.constant#_FAeHsK0PEeSf_MZBDBbgYA" org.eventb.core.type="ℙ(A)"/>
+</org.eventb.core.scContextFile>
