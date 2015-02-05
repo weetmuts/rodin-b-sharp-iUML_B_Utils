@@ -4,8 +4,8 @@ import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/ac/soton/iumlb/xtext/Dsl.xtext"
-var fileExtensions = "smtxt2"
+var grammarURI = "classpath:/ac/soton/iumlb/xtext/StateMachineDsl.xtext"
+var fileExtensions = "stxt"
 var projectName = "ac.soton.iumlb.xtext.dsl"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true

@@ -365,10 +365,16 @@ ruleTransition returns [EObject current=null]
     }
     @after { leaveRule(); }:
 ((
-(
-		lv_extended_0_0=	'extended' 
     {
-        newLeafNode(lv_extended_0_0, grammarAccess.getTransitionAccess().getExtendedExtendedKeyword_0_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getTransitionAccess().getTransitionAction_0(),
+            $current);
+    }
+)(
+(
+		lv_extended_1_0=	'extended' 
+    {
+        newLeafNode(lv_extended_1_0, grammarAccess.getTransitionAccess().getExtendedExtendedKeyword_1_0());
     }
  
 	    {
@@ -379,35 +385,35 @@ ruleTransition returns [EObject current=null]
 	    }
 
 )
-)?	otherlv_1='Transition' 
+)?	otherlv_2='Transition' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getTransitionAccess().getTransitionKeyword_1());
+    	newLeafNode(otherlv_2, grammarAccess.getTransitionAccess().getTransitionKeyword_2());
     }
-(	otherlv_2='comment' 
+(	otherlv_3='comment' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getTransitionAccess().getCommentKeyword_2_0());
+    	newLeafNode(otherlv_3, grammarAccess.getTransitionAccess().getCommentKeyword_3_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getCommentEStringParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getCommentEStringParserRuleCall_3_1_0()); 
 	    }
-		lv_comment_3_0=ruleEString		{
+		lv_comment_4_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTransitionRule());
 	        }
        		set(
        			$current, 
        			"comment",
-        		lv_comment_3_0, 
+        		lv_comment_4_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?(	otherlv_4='elaborates' 
+))?(	otherlv_5='elaborates' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getTransitionAccess().getElaboratesKeyword_3_0());
+    	newLeafNode(otherlv_5, grammarAccess.getTransitionAccess().getElaboratesKeyword_4_0());
     }
 (
 (
@@ -417,16 +423,16 @@ ruleTransition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getElaboratesEventCrossReference_3_1_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getElaboratesEventCrossReference_4_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_6=',' 
+)(	otherlv_7=',' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getTransitionAccess().getCommaKeyword_3_2_0());
+    	newLeafNode(otherlv_7, grammarAccess.getTransitionAccess().getCommaKeyword_4_2_0());
     }
 (
 (
@@ -436,16 +442,16 @@ ruleTransition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getElaboratesEventCrossReference_3_2_1_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getElaboratesEventCrossReference_4_2_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*)?	otherlv_8='target' 
+))*)?(	otherlv_9='target' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getTransitionAccess().getTargetKeyword_4());
+    	newLeafNode(otherlv_9, grammarAccess.getTransitionAccess().getTargetKeyword_5_0());
     }
 (
 (
@@ -455,16 +461,16 @@ ruleTransition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getTargetAbstractNodeCrossReference_5_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getTargetAbstractNodeCrossReference_5_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_10='source' 
+))?(	otherlv_11='source' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getTransitionAccess().getSourceKeyword_6());
+    	newLeafNode(otherlv_11, grammarAccess.getTransitionAccess().getSourceKeyword_6_0());
     }
 (
 (
@@ -474,14 +480,14 @@ ruleTransition returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getTransitionAccess().getSourceAbstractNodeCrossReference_7_0()); 
+	        newCompositeNode(grammarAccess.getTransitionAccess().getSourceAbstractNodeCrossReference_6_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+))?)
 ;
 
 

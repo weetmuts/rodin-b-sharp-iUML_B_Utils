@@ -78,6 +78,7 @@ EString returns ecore::EString:
 //	'DataKind' /* TODO: implement this rule and an appropriate IValueConverter */;
 
 Transition returns Transition:
+	{Transition}
 //	(localGenerated?='localGenerated')?
 	(extended?='extended')?
 	'Transition'
@@ -85,8 +86,8 @@ Transition returns Transition:
 //		('internalId' internalId=EString)?
 		('comment' comment=EString)?
 		('elaborates' /*'('*/ elaborates+=[machine::Event|EString] ( "," elaborates+=[machine::Event|EString])* /*')'*/ )?
-		'target' target=[AbstractNode|EString]
-		'source' source=[AbstractNode|EString]
+		('target' target=[AbstractNode|EString])?
+		('source' source=[AbstractNode|EString])?
 //		('targetContainer' targetContainer=[core::EventBElement|EString])?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?

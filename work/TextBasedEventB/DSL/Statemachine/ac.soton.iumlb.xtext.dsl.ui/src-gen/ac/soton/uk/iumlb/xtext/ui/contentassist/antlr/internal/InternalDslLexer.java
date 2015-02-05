@@ -211,10 +211,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:18:7: ( 'target' )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:18:9: 'target'
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:18:7: ( 'comment' )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:18:9: 'comment'
             {
-            match("target"); 
+            match("comment"); 
 
 
             }
@@ -232,10 +232,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:19:7: ( 'source' )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:19:9: 'source'
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:19:7: ( 'target' )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:19:9: 'target'
             {
-            match("source"); 
+            match("target"); 
 
 
             }
@@ -253,10 +253,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:20:7: ( 'comment' )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:20:9: 'comment'
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:20:7: ( 'source' )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:20:9: 'source'
             {
-            match("comment"); 
+            match("source"); 
 
 
             }
@@ -607,10 +607,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3675:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3675:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3768:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3768:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3675:11: ( '^' )?
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3768:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -619,7 +619,7 @@ public class InternalDslLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3675:11: '^'
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3768:11: '^'
                     {
                     match('^'); 
 
@@ -637,7 +637,7 @@ public class InternalDslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3675:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3768:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -686,10 +686,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3677:10: ( ( '0' .. '9' )+ )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3677:12: ( '0' .. '9' )+
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3770:10: ( ( '0' .. '9' )+ )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3770:12: ( '0' .. '9' )+
             {
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3677:12: ( '0' .. '9' )+
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3770:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -703,7 +703,7 @@ public class InternalDslLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3677:13: '0' .. '9'
+            	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3770:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -735,10 +735,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -756,10 +756,10 @@ public class InternalDslLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -775,7 +775,7 @@ public class InternalDslLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -791,7 +791,7 @@ public class InternalDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -816,10 +816,10 @@ public class InternalDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -835,7 +835,7 @@ public class InternalDslLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -851,7 +851,7 @@ public class InternalDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3679:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3772:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -894,12 +894,12 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3681:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3681:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3774:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3774:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3681:24: ( options {greedy=false; } : . )*
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3774:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -924,7 +924,7 @@ public class InternalDslLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3681:52: .
+            	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3774:52: .
             	    {
             	    matchAny(); 
 
@@ -954,12 +954,12 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -972,7 +972,7 @@ public class InternalDslLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -992,7 +992,7 @@ public class InternalDslLexer extends Lexer {
                 }
             } while (true);
 
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:40: ( ( '\\r' )? '\\n' )?
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1001,9 +1001,9 @@ public class InternalDslLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:41: ( '\\r' )? '\\n'
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:41: ( '\\r' )? '\\n'
                     {
-                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:41: ( '\\r' )?
+                    // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1012,7 +1012,7 @@ public class InternalDslLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3683:41: '\\r'
+                            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3776:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1044,10 +1044,10 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3685:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3685:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3778:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3778:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3685:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3778:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1101,8 +1101,8 @@ public class InternalDslLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3687:16: ( . )
-            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3687:18: .
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3780:16: ( . )
+            // ../ac.soton.iumlb.xtext.dsl.ui/src-gen/ac/soton/uk/iumlb/xtext/ui/contentassist/antlr/internal/InternalDsl.g:3780:18: .
             {
             matchAny(); 
 
@@ -1364,9 +1364,9 @@ public class InternalDslLexer extends Lexer {
         "\3\32\2\uffff\1\34\1\uffff\4\34\1\uffff\7\34\2\uffff\6\34\1\uffff"+
         "\1\34\5\uffff\22\34\1\137\23\34\1\163\1\uffff\2\34\1\167\3\34\1"+
         "\173\13\34\1\u0087\1\uffff\3\34\1\uffff\3\34\1\uffff\1\34\1\u008f"+
-        "\2\34\1\u0092\6\34\1\uffff\5\34\1\u009e\1\34\1\uffff\1\u00a0\1\34"+
-        "\1\uffff\1\34\1\u00a3\2\34\1\u00a6\5\34\1\u00ac\1\uffff\1\34\1\uffff"+
-        "\2\34\1\uffff\2\34\1\uffff\1\34\1\u00b3\3\34\1\uffff\5\34\1\u00bc"+
+        "\3\34\1\u0093\5\34\1\uffff\5\34\1\u009e\1\34\1\uffff\1\u00a0\1\34"+
+        "\1\u00a2\1\uffff\3\34\1\u00a6\5\34\1\u00ac\1\uffff\1\34\1\uffff"+
+        "\1\34\1\uffff\3\34\1\uffff\1\34\1\u00b3\3\34\1\uffff\5\34\1\u00bc"+
         "\1\uffff\1\u00bd\1\34\1\u00bf\1\34\1\u00c1\1\34\1\u00c3\1\u00c4"+
         "\2\uffff\1\34\1\uffff\1\u00c6\1\uffff\1\34\2\uffff\1\u00c8\1\uffff"+
         "\1\34\1\uffff\1\u00ca\1\uffff";
@@ -1376,55 +1376,55 @@ public class InternalDslLexer extends Lexer {
         "\1\0\1\164\1\154\1\145\1\157\1\uffff\1\141\1\162\2\157\2\uffff\2"+
         "\156\1\151\1\156\1\165\1\uffff\1\162\1\101\2\uffff\2\0\1\52\2\uffff"+
         "\1\141\1\uffff\1\141\1\164\1\146\1\144\1\uffff\1\141\1\162\1\145"+
-        "\1\141\1\165\1\141\1\155\2\uffff\1\164\1\151\1\156\1\162\1\171\1"+
+        "\1\141\1\155\1\165\1\141\2\uffff\1\164\1\151\1\156\1\162\1\171\1"+
         "\156\1\uffff\1\145\5\uffff\1\164\1\142\1\145\1\151\1\145\1\156\1"+
-        "\147\1\157\1\156\1\162\1\164\1\155\1\141\1\145\1\164\2\141\1\153"+
-        "\1\60\1\143\1\144\1\145\1\157\2\156\2\163\1\145\1\162\1\163\1\143"+
-        "\2\145\2\162\1\151\1\162\1\154\1\60\1\uffff\1\164\1\151\1\60\1\162"+
-        "\1\144\1\145\1\60\1\151\1\164\1\145\1\151\1\145\1\155\1\156\1\151"+
-        "\1\156\1\141\1\151\1\60\1\uffff\1\151\1\143\1\141\1\uffff\1\141"+
-        "\1\145\1\163\1\uffff\1\164\1\60\1\155\1\164\1\60\1\141\1\164\2\141"+
-        "\1\154\1\141\1\uffff\1\157\1\141\1\143\1\164\1\144\1\60\1\151\1"+
-        "\uffff\1\60\1\151\1\uffff\1\143\1\60\1\156\1\154\1\60\2\156\1\164"+
-        "\1\150\1\145\1\60\1\uffff\1\157\1\uffff\1\157\1\150\1\uffff\1\164"+
-        "\1\111\1\uffff\1\164\1\60\1\145\1\151\1\163\1\uffff\2\156\1\151"+
-        "\1\163\1\144\1\60\1\uffff\1\60\1\156\1\60\1\163\1\60\1\156\2\60"+
-        "\2\uffff\1\145\1\uffff\1\60\1\uffff\1\145\2\uffff\1\60\1\uffff\1"+
-        "\163\1\uffff\1\60\1\uffff";
+        "\147\1\157\1\156\1\155\1\162\1\164\1\141\1\145\1\164\2\141\1\153"+
+        "\1\60\1\143\1\144\1\145\1\157\2\156\2\163\1\145\1\162\1\163\1\145"+
+        "\1\143\1\145\2\162\1\151\1\162\1\154\1\60\1\uffff\1\164\1\151\1"+
+        "\60\1\162\1\144\1\145\1\60\1\151\1\164\1\145\1\151\1\156\1\145\1"+
+        "\155\1\151\1\156\1\141\1\151\1\60\1\uffff\1\151\1\143\1\141\1\uffff"+
+        "\1\141\1\145\1\163\1\uffff\1\164\1\60\1\155\2\164\1\60\3\141\1\154"+
+        "\1\141\1\uffff\1\157\1\141\1\143\1\164\1\144\1\60\1\151\1\uffff"+
+        "\1\60\1\151\1\60\1\uffff\1\143\1\156\1\154\1\60\2\156\1\164\1\150"+
+        "\1\145\1\60\1\uffff\1\157\1\uffff\1\157\1\uffff\1\150\1\164\1\111"+
+        "\1\uffff\1\164\1\60\1\145\1\151\1\163\1\uffff\2\156\1\151\1\163"+
+        "\1\144\1\60\1\uffff\1\60\1\156\1\60\1\163\1\60\1\156\2\60\2\uffff"+
+        "\1\145\1\uffff\1\60\1\uffff\1\145\2\uffff\1\60\1\uffff\1\163\1\uffff"+
+        "\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\164\1\170\1\145\1\157\1\uffff\2\162\1\164\1\157\2\uffff"+
+        "\1\uffff\1\164\1\170\1\145\1\157\1\uffff\2\162\1\157\1\164\2\uffff"+
         "\2\156\1\157\1\156\1\165\1\uffff\1\162\1\172\2\uffff\2\uffff\1\57"+
         "\2\uffff\1\141\1\uffff\1\141\1\164\1\146\1\144\1\uffff\1\141\1\162"+
-        "\1\145\1\141\1\165\1\141\1\155\2\uffff\2\166\1\156\1\162\1\171\1"+
+        "\1\145\1\141\1\155\1\165\1\141\2\uffff\2\166\1\156\1\162\1\171\1"+
         "\156\1\uffff\1\145\5\uffff\1\164\1\142\1\145\1\151\1\145\1\156\1"+
-        "\147\1\157\1\156\1\162\1\164\1\155\1\141\1\145\1\164\2\141\1\153"+
-        "\1\172\1\143\1\144\1\145\1\157\2\156\2\163\1\145\1\162\1\163\1\143"+
-        "\2\145\2\162\1\151\1\162\1\154\1\172\1\uffff\1\164\1\151\1\172\1"+
-        "\162\1\144\1\145\1\172\1\151\1\164\1\145\1\151\1\145\1\155\1\156"+
-        "\1\151\1\156\1\141\1\151\1\172\1\uffff\1\151\1\143\1\141\1\uffff"+
-        "\1\141\1\145\1\163\1\uffff\1\164\1\172\1\155\1\164\1\172\1\141\1"+
-        "\164\2\141\1\154\1\141\1\uffff\1\157\1\141\1\143\1\164\1\144\1\172"+
-        "\1\151\1\uffff\1\172\1\151\1\uffff\1\143\1\172\1\156\1\154\1\172"+
-        "\2\156\1\164\1\150\1\145\1\172\1\uffff\1\157\1\uffff\1\157\1\150"+
-        "\1\uffff\1\164\1\111\1\uffff\1\164\1\172\1\145\1\151\1\163\1\uffff"+
-        "\2\156\1\151\1\163\1\144\1\172\1\uffff\1\172\1\156\1\172\1\163\1"+
-        "\172\1\156\2\172\2\uffff\1\145\1\uffff\1\172\1\uffff\1\145\2\uffff"+
-        "\1\172\1\uffff\1\163\1\uffff\1\172\1\uffff";
+        "\147\1\157\1\156\1\155\1\162\1\164\1\141\1\145\1\164\2\141\1\153"+
+        "\1\172\1\143\1\144\1\145\1\157\2\156\2\163\1\145\1\162\1\163\1\145"+
+        "\1\143\1\145\2\162\1\151\1\162\1\154\1\172\1\uffff\1\164\1\151\1"+
+        "\172\1\162\1\144\1\145\1\172\1\151\1\164\1\145\1\151\1\156\1\145"+
+        "\1\155\1\151\1\156\1\141\1\151\1\172\1\uffff\1\151\1\143\1\141\1"+
+        "\uffff\1\141\1\145\1\163\1\uffff\1\164\1\172\1\155\2\164\1\172\3"+
+        "\141\1\154\1\141\1\uffff\1\157\1\141\1\143\1\164\1\144\1\172\1\151"+
+        "\1\uffff\1\172\1\151\1\172\1\uffff\1\143\1\156\1\154\1\172\2\156"+
+        "\1\164\1\150\1\145\1\172\1\uffff\1\157\1\uffff\1\157\1\uffff\1\150"+
+        "\1\164\1\111\1\uffff\1\164\1\172\1\145\1\151\1\163\1\uffff\2\156"+
+        "\1\151\1\163\1\144\1\172\1\uffff\1\172\1\156\1\172\1\163\1\172\1"+
+        "\156\2\172\2\uffff\1\145\1\uffff\1\172\1\uffff\1\145\2\uffff\1\172"+
+        "\1\uffff\1\163\1\uffff\1\172\1\uffff";
     static final String DFA12_acceptS =
         "\5\uffff\1\5\4\uffff\1\15\1\16\5\uffff\1\27\2\uffff\1\33\1\34\3"+
         "\uffff\1\40\1\41\1\uffff\1\33\4\uffff\1\5\7\uffff\1\15\1\16\6\uffff"+
         "\1\27\1\uffff\1\34\1\35\1\36\1\37\1\40\47\uffff\1\23\23\uffff\1"+
-        "\25\3\uffff\1\13\3\uffff\1\4\13\uffff\1\22\7\uffff\1\10\2\uffff"+
-        "\1\11\13\uffff\1\3\1\uffff\1\32\2\uffff\1\12\2\uffff\1\20\5\uffff"+
+        "\25\3\uffff\1\13\3\uffff\1\4\13\uffff\1\22\7\uffff\1\11\3\uffff"+
+        "\1\12\12\uffff\1\3\1\uffff\1\32\1\uffff\1\10\3\uffff\1\20\5\uffff"+
         "\1\31\6\uffff\1\24\10\uffff\1\26\1\30\1\uffff\1\2\1\uffff\1\7\1"+
         "\uffff\1\17\1\21\1\uffff\1\6\1\uffff\1\1\1\uffff\1\14";
     static final String DFA12_specialS =
-        "\1\2\25\uffff\1\0\1\1\u00b3\uffff}>";
+        "\1\1\25\uffff\1\0\1\2\u00b3\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\32\2\31\2\32\1\31\22\32\1\31\1\32\1\26\4\32\1\27\4\32\1"+
             "\5\2\32\1\30\12\25\6\32\1\21\1\17\4\24\1\16\2\24\1\15\1\20\10"+
-            "\24\1\1\1\7\6\24\3\32\1\23\1\24\1\32\2\24\1\11\1\24\1\2\3\24"+
-            "\1\14\4\24\1\4\1\24\1\22\1\24\1\3\1\10\1\6\6\24\1\12\1\32\1"+
+            "\24\1\1\1\7\6\24\3\32\1\23\1\24\1\32\2\24\1\10\1\24\1\2\3\24"+
+            "\1\14\4\24\1\4\1\24\1\22\1\24\1\3\1\11\1\6\6\24\1\12\1\32\1"+
             "\13\uff82\32",
             "\1\33",
             "\1\35\13\uffff\1\36",
@@ -1433,8 +1433,8 @@ public class InternalDslLexer extends Lexer {
             "",
             "\1\43\6\uffff\1\44\11\uffff\1\42",
             "\1\45",
-            "\1\46\4\uffff\1\47",
-            "\1\50",
+            "\1\46",
+            "\1\47\4\uffff\1\50",
             "",
             "",
             "\1\53",
@@ -1553,8 +1553,8 @@ public class InternalDslLexer extends Lexer {
             "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\u0090",
             "\1\u0091",
+            "\1\u0092",
             "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
-            "\1\u0093",
             "\1\u0094",
             "\1\u0095",
             "\1\u0096",
@@ -1571,9 +1571,9 @@ public class InternalDslLexer extends Lexer {
             "",
             "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\u00a1",
-            "",
-            "\1\u00a2",
             "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "",
+            "\1\u00a3",
             "\1\u00a4",
             "\1\u00a5",
             "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
@@ -1587,8 +1587,8 @@ public class InternalDslLexer extends Lexer {
             "\1\u00ad",
             "",
             "\1\u00ae",
-            "\1\u00af",
             "",
+            "\1\u00af",
             "\1\u00b0",
             "\1\u00b1",
             "",
@@ -1677,16 +1677,6 @@ public class InternalDslLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA12_23 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_23>='\u0000' && LA12_23<='\uFFFF')) ) {s = 52;}
-
-                        else s = 26;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1704,9 +1694,9 @@ public class InternalDslLexer extends Lexer {
 
                         else if ( (LA12_0=='T') ) {s = 7;}
 
-                        else if ( (LA12_0=='s') ) {s = 8;}
+                        else if ( (LA12_0=='c') ) {s = 8;}
 
-                        else if ( (LA12_0=='c') ) {s = 9;}
+                        else if ( (LA12_0=='s') ) {s = 9;}
 
                         else if ( (LA12_0=='{') ) {s = 10;}
 
@@ -1741,6 +1731,16 @@ public class InternalDslLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 25;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='+')||(LA12_0>='-' && LA12_0<='.')||(LA12_0>=':' && LA12_0<='?')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 26;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_23 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_23>='\u0000' && LA12_23<='\uFFFF')) ) {s = 52;}
+
+                        else s = 26;
 
                         if ( s>=0 ) return s;
                         break;

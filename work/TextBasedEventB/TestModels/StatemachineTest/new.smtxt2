@@ -1,5 +1,0 @@
-Statemachine "state_m" 
-nodes Initial , State "one" , State "two" 
-transitions 
-Transition elaborates "mch1.INITIALISATION" target two source one,
-Transition elaborates "mch1r.evt1" target two source one 

@@ -199,8 +199,8 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	 *         extended?='extended'? 
 	 *         comment=EString? 
 	 *         (elaborates+=[Event|EString] elaborates+=[Event|EString]*)? 
-	 *         target=[AbstractNode|EString] 
-	 *         source=[AbstractNode|EString]
+	 *         target=[AbstractNode|EString]? 
+	 *         source=[AbstractNode|EString]?
 	 *     )
 	 */
 	protected void sequence_Transition(EObject context, Transition semanticObject) {

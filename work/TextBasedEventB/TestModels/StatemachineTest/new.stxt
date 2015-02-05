@@ -1,0 +1,9 @@
+Statemachine "state_m" 
+nodes  
+Initial ,
+State "one",
+State "two"
+
+transitions
+Transition elaborates "mch1.INITIALISATION" target one source two,
+Transition elaborates "mch1.evt1" target two source one
