@@ -9,4 +9,5 @@
 <org.eventb.core.scAction name="(" org.eventb.core.assignment="b ≔ 0" org.eventb.core.label="act2" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.event#_sEHr8K0bEeSaM9gbVkfl3w|org.eventb.core.action#_sEI6EK0bEeSaM9gbVkfl3w"/>
 </org.eventb.core.scEvent>
 <org.eventb.core.scEvent name="d" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt1" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.event#_sEI6Ea0bEeSaM9gbVkfl3w"/>
+<org.eventb.core.scEvent name="e" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt2" org.eventb.core.source="/StatemachineTest/mch1.bum|org.eventb.core.machineFile#mch1|org.eventb.core.event#_sEI6Ea0bEeSaM9gbVkfl3x"/>
 </org.eventb.core.scMachineFile>

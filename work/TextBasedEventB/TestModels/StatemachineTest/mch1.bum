@@ -9,4 +9,5 @@
 <org.eventb.core.action name="_sEI6EK0bEeSaM9gbVkfl3w" org.eventb.core.assignment="b ≔ 0" org.eventb.core.label="act2"/>
 </org.eventb.core.event>
 <org.eventb.core.event name="_sEI6Ea0bEeSaM9gbVkfl3w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt1"/>
+<org.eventb.core.event name="_sEI6Ea0bEeSaM9gbVkfl3x" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="evt2"/>
 </org.eventb.core.machineFile>

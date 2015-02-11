@@ -25,8 +25,9 @@ Statemachine returns Statemachine:
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		('nodes' /*'{'*/ nodes+=AbstractNode ( "," nodes+=AbstractNode)* /*'}'*/ )?
-		('transitions' /*'{'*/ transitions+=Transition ( "," transitions+=Transition)* /*'}'*/ )?
+		('transitions' /*'{'*/ transitions+=Transition ( /*","*/ transitions+=Transition)* /*'}'*/ )?
 //	'}'
+	'end'
 	;
 
 
@@ -85,17 +86,22 @@ Transition returns Transition:
 //	'{'
 //		('internalId' internalId=EString)?
 		('>' comment=EString)?
-		('elaborates' /*'('*/ elaborates+=[machine::Event|EString] ( "," elaborates+=[machine::Event|EString])* /*')'*/ )?
+		('elaborates' /*'('*/ elaborates+=[machine::Event|EString] ( /*","*/ elaborates+=[machine::Event|EString])* /*')'*/ )?
 		('target' target=[AbstractNode|EString])?
 		('source' source=[AbstractNode|EString])?
 //		('targetContainer' targetContainer=[core::EventBElement|EString])?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-		('parameters' '{' parameters+=TypedParameter ( "," parameters+=TypedParameter)* '}' )?
-		('guards' '{' guards+=Guard ( "," guards+=Guard)* '}' )?
-		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
-		('witnesses' '{' witnesses+=Witness ( "," witnesses+=Witness)* '}' )?
+
+		('when' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
+
+		('any' /*'{'*/ parameters+=TypedParameter ( /*","*/ parameters+=TypedParameter)* /*'}'*/ 
+		 'where' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
+		
+		('with' /*'{'*/ witnesses+=Witness ( /*","*/ witnesses+=Witness)* /*'}'*/ )?
+		('then' /*'{'*/ actions+=Action ( /*","*/ actions+=Action)* /*'}'*/ )?
+	'end'
 //	'}'
 	;
 
@@ -167,8 +173,8 @@ State returns State:
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-		('statemachines' '{' statemachines+=Statemachine ( "," statemachines+=Statemachine)* '}' )?
-		('invariants' '{' invariants+=Invariant ( "," invariants+=Invariant)* '}' )?
+		('statemachines' /*'{'*/ statemachines+=Statemachine ( /*","*/ statemachines+=Statemachine)* 'end' )?
+		('invariants' /*'{'*/ invariants+=Invariant ( /*","*/ invariants+=Invariant)* /*'}'*/ )?
 //	'}'
 	;
 
@@ -293,7 +299,7 @@ TypedParameter returns coreextension::TypedParameter:
 
 Guard returns machine::Guard:
 //	(localGenerated?='localGenerated')?
-	theorem?='theorem'
+	(theorem?='theorem')?
 //	'Guard'
 	'@'name=EString
 //	'{'
@@ -312,7 +318,7 @@ Action returns machine::Action:
 	'@'name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		'action' action=EString
+		/*'action'*/ action=EString
 		('>' comment=EString)?		
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?

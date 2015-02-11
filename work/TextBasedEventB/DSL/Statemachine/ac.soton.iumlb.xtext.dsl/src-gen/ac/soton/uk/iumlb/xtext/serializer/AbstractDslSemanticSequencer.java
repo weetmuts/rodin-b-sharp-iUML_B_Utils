@@ -184,7 +184,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (theorem?='theorem' name=EString predicate=EString comment=EString?)
+	 *     (theorem?='theorem'? name=EString predicate=EString comment=EString?)
 	 */
 	protected void sequence_Guard(EObject context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -257,10 +257,10 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	 *         (elaborates+=[Event|EString] elaborates+=[Event|EString]*)? 
 	 *         target=[AbstractNode|EString]? 
 	 *         source=[AbstractNode|EString]? 
-	 *         (parameters+=TypedParameter parameters+=TypedParameter*)? 
 	 *         (guards+=Guard guards+=Guard*)? 
-	 *         (actions+=Action actions+=Action*)? 
-	 *         (witnesses+=Witness witnesses+=Witness*)?
+	 *         (parameters+=TypedParameter parameters+=TypedParameter* guards+=Guard guards+=Guard*)? 
+	 *         (witnesses+=Witness witnesses+=Witness*)? 
+	 *         (actions+=Action actions+=Action*)?
 	 *     )
 	 */
 	protected void sequence_Transition(EObject context, Transition semanticObject) {
