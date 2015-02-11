@@ -1,8 +1,4 @@
 machine mch1
-extensions
-{
-	
-} 
 variables 
  a  b 
 invariants 
@@ -18,4 +14,19 @@ events
  end
  event evt2  ordinary 
  end
+ 
+Statemachine "sm1" translation SINGLEVAR
+nodes
+ Initial,
+ State "aa" ,
+ State "bb"
+transitions
+ Transition elaborates "mch1·evt1" source "mch1·sm1·aa" target "mch1·sm1·bb"
+  any p where "p ∈ ℕ"
+  then @a1 "a ≔ p" 
+  end
+ 
+ Transition elaborates "mch1·evt2" source "mch1·sm1·bb" target "mch1·sm1·bb"  end
+end	
+ 
 end

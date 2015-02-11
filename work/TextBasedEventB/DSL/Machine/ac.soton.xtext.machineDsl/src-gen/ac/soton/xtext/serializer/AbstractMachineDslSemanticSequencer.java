@@ -22,8 +22,6 @@ import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequence
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
-import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.Extension;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
@@ -42,16 +40,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	private MachineDslGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == CorePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case CorePackage.EXTENSION:
-				if(context == grammarAccess.getAbstractExtensionRule() ||
-				   context == grammarAccess.getExtensionRule()) {
-					sequence_Extension(context, (Extension) semanticObject); 
-					return; 
-				}
-				else break;
-			}
-		else if(semanticObject.eClass().getEPackage() == CoreextensionPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == CoreextensionPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case CoreextensionPackage.TYPED_PARAMETER:
 				if(context == grammarAccess.getTypedParameterRule()) {
 					sequence_TypedParameter(context, (TypedParameter) semanticObject); 
@@ -159,7 +148,8 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 				}
 				else break;
 			case StatemachinesPackage.STATEMACHINE:
-				if(context == grammarAccess.getStatemachineRule()) {
+				if(context == grammarAccess.getAbstractExtensionRule() ||
+				   context == grammarAccess.getStatemachineRule()) {
 					sequence_Statemachine(context, (Statemachine) semanticObject); 
 					return; 
 				}
@@ -188,15 +178,6 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *     (internalId=EString?)
 	 */
 	protected void sequence_Any(EObject context, Any semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {Extension}
-	 */
-	protected void sequence_Extension(EObject context, Extension semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -262,11 +243,11 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *         comment=EString? 
 	 *         (refines+=[Machine|EString] refines+=[Machine|EString]*)? 
 	 *         (sees+=[Context|EString] sees+=[Context|EString]*)? 
-	 *         (extensions+=AbstractExtension extensions+=AbstractExtension*)? 
 	 *         (variables+=Variable variables+=Variable*)? 
 	 *         (invariants+=Invariant invariants+=Invariant*)? 
 	 *         variant=Variant? 
-	 *         (events+=event events+=event*)?
+	 *         (events+=event events+=event*)? 
+	 *         (extensions+=AbstractExtension extensions+=AbstractExtension*)?
 	 *     )
 	 */
 	protected void sequence_Machine(EObject context, Machine semanticObject) {
@@ -320,10 +301,10 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *         extended?='extended'? 
 	 *         comment=EString? 
 	 *         (elaborates+=[Event|EString] elaborates+=[Event|EString]*)? 
-	 *         target=[AbstractNode|EString]? 
 	 *         source=[AbstractNode|EString]? 
+	 *         target=[AbstractNode|EString]? 
 	 *         (guards+=Guard guards+=Guard*)? 
-	 *         (parameters+=TypedParameter parameters+=TypedParameter* guards+=Guard guards+=Guard*)? 
+	 *         (parameters+=TypedParameter parameters+=TypedParameter*)? 
 	 *         (witnesses+=Witness witnesses+=Witness*)? 
 	 *         (actions+=Action actions+=Action*)?
 	 *     )

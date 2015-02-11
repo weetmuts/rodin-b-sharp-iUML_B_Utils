@@ -127,9 +127,9 @@
 <org.eventb.core.prIdent name="B" org.eventb.core.type="BOOL"/>
 <org.eventb.core.prIdent name="C" org.eventb.core.type="BOOL"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="INITIALISATION/distinct_states_in_st1/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
 <org.eventb.core.lang name="L"/>
@@ -144,8 +144,8 @@
 <org.eventb.core.prPred name="p2" org.eventb.core.predicate="{TRUE}={TRUE}∪({FALSE}∩{TRUE})"/>
 <org.eventb.core.prPred name="p1" org.eventb.core.predicate="TRUE∈{TRUE,FALSE,FALSE}⇒{TRUE}=({TRUE}∩{TRUE})∪({FALSE}∩{TRUE})∪({FALSE}∩{TRUE})∧({TRUE}∩{TRUE})∩({FALSE}∩{TRUE})=(∅ ⦂ ℙ(BOOL))∧({TRUE}∩{TRUE})∩({FALSE}∩{TRUE})=(∅ ⦂ ℙ(BOOL))∧({FALSE}∩{TRUE})∩({FALSE}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
 <org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE∈{TRUE,FALSE,FALSE}⇒partition({TRUE},{TRUE}∩{TRUE},{FALSE}∩{TRUE},{FALSE}∩{TRUE})"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="t1/distinct_states_in_st1/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
 <org.eventb.core.lang name="L"/>
@@ -320,14 +320,14 @@
 <org.eventb.core.prPred name="p17" org.eventb.core.predicate="{B}∩{TRUE}∩{C}=(∅ ⦂ ℙ(BOOL))"/>
 <org.eventb.core.prPred name="p24" org.eventb.core.predicate="{FALSE}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
 <org.eventb.core.prPred name="p13" org.eventb.core.predicate="TRUE∈{TRUE,B,C}⇒{TRUE}=({TRUE}∩{TRUE})∪({B}∩{TRUE})∪({C}∩{TRUE})∧{TRUE}∩{TRUE}∩{B}=(∅ ⦂ ℙ(BOOL))∧{TRUE}∩{TRUE}∩{C}=(∅ ⦂ ℙ(BOOL))∧{B}∩{TRUE}∩{C}=(∅ ⦂ ℙ(BOOL))"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL2"/>
 <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
 <org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="t2/distinct_states_in_st1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
 <org.eventb.core.lang name="L"/>
@@ -1171,11 +1171,11 @@
 <org.eventb.core.prPred name="p20" org.eventb.core.predicate="{FALSE}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
 <org.eventb.core.prPred name="p9" org.eventb.core.predicate="TRUE∈{TRUE,B,C}⇒{TRUE}=({TRUE}∩{TRUE})∪({B}∩{TRUE})∪({C}∩{TRUE})∧{TRUE}∩{TRUE}∩{B}=(∅ ⦂ ℙ(BOOL))∧{TRUE}∩{TRUE}∩{C}=(∅ ⦂ ℙ(BOOL))∧{B}∩{TRUE}∩{C}=(∅ ⦂ ℙ(BOOL))"/>
 <org.eventb.core.prPred name="p0" org.eventb.core.predicate="A=TRUE"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL2"/>
 <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
 </org.eventb.core.prProof>
 </org.eventb.core.prFile>

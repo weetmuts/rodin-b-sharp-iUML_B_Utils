@@ -20,19 +20,19 @@ Machine returns Machine:
 		('refines' /*'('*/ refines+=[Machine|EString] ( /*","*/ refines+=[Machine|EString])* /*')'*/ )?
 		('sees' /*'('*/ sees+=[context::Context|EString] ( /*","*/ sees+=[context::Context|EString])* /*')'*/ )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
-		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		('variables' /*'{'*/ variables+=Variable ( /*","*/ variables+=Variable)* /*'}'*/ )?
 		('invariants' /*'{'*/ invariants+=Invariant ( invariants+=Invariant)* /*'}'*/ )?
 		('variant' variant=Variant)?
 		('events' /*'{'*/ events+=event ( /*","*/ events+=event)* /*'}'*/ )?
+		(/*'extensions'*/ /*'{'*/ extensions+=AbstractExtension ( /*","*/ extensions+=AbstractExtension)* /*'}'*/ )?
 //	'}'
 	'end'
 ;
 
 
 AbstractExtension returns core::AbstractExtension:
-	Extension;
+	Statemachine;
 
 
 //Annotation returns core::Annotation:
@@ -164,8 +164,7 @@ QString returns ecore::EString:
 //	'EObject'
 //	;
 
-Extension returns core::Extension:
-	{core::Extension}
+//Extension returns core::Extension:
 //	(localGenerated?='localGenerated')?
 //	'Extension'
 //	'{'
@@ -175,7 +174,7 @@ Extension returns core::Extension:
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 //	'}'
-	;
+//	;
 
 //Attribute returns core::Attribute:
 //	'Attribute'
@@ -327,8 +326,8 @@ Action returns Action:
 //		('internalId' internalId=EString)?
 		('>' comment=EString)?
 		('elaborates' /*'('*/ elaborates+=[Event|EString] ( /*","*/ elaborates+=[Event|EString])* /*')'*/ )?
-		('target' target=[AbstractNode|EString])?
 		('source' source=[AbstractNode|EString])?
+		('target' target=[AbstractNode|EString])?
 //		('targetContainer' targetContainer=[core::EventBElement|EString])?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
@@ -336,9 +335,8 @@ Action returns Action:
 
 		('when' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
 
-		('any' /*'{'*/ parameters+=TypedParameter ( /*","*/ parameters+=TypedParameter)* /*'}'*/ 
-		 'where' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
-		
+		('any' /*'{'*/ parameters+=TypedParameter ( /*","*/ parameters+=TypedParameter)* /*'}'*/ )?
+				
 		('with' /*'{'*/ witnesses+=Witness ( /*","*/ witnesses+=Witness)* /*'}'*/ )?
 		('then' /*'{'*/ actions+=Action ( /*","*/ actions+=Action)* /*'}'*/ )?
 	'end'
@@ -439,11 +437,11 @@ Fork returns Fork:
 	
 	TypedParameter returns coreextension::TypedParameter:
 //	(localGenerated?='localGenerated')?
-	'TypedParameter'
+	/*'TypedParameter'*/
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		'type' type=EString
+		'where' type=EString
 		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
