@@ -15,6 +15,7 @@ public class AbstractDslValidator extends org.eclipse.xtext.validation.AbstractD
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://soton.ac.uk/models/eventb/statemachines/2014"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/emf/2002/Ecore"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://emf.eventb.org/models/core/machine/2014"));
+	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://soton.ac.uk/models/eventb/coreextension/2014"));
 		return result;
 	}
 }

@@ -1,5 +1,7 @@
 package ac.soton.uk.iumlb.xtext.serializer;
 
+import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
+import ac.soton.eventb.emf.core.extension.coreextension.TypedParameter;
 import ac.soton.eventb.statemachines.Any;
 import ac.soton.eventb.statemachines.Final;
 import ac.soton.eventb.statemachines.Fork;
@@ -21,8 +23,11 @@ import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequence
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
+import org.eventb.emf.core.machine.Action;
+import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.MachinePackage;
+import org.eventb.emf.core.machine.Witness;
 
 @SuppressWarnings("all")
 public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -31,7 +36,15 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	private DslGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == EcorePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == CoreextensionPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case CoreextensionPackage.TYPED_PARAMETER:
+				if(context == grammarAccess.getTypedParameterRule()) {
+					sequence_TypedParameter(context, (TypedParameter) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == EcorePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case EcorePackage.EOBJECT:
 				if(context == grammarAccess.getEObjectRule()) {
 					sequence_EObject(context, (EObject) semanticObject); 
@@ -40,9 +53,27 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 				else break;
 			}
 		else if(semanticObject.eClass().getEPackage() == MachinePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case MachinePackage.ACTION:
+				if(context == grammarAccess.getActionRule()) {
+					sequence_Action(context, (Action) semanticObject); 
+					return; 
+				}
+				else break;
+			case MachinePackage.GUARD:
+				if(context == grammarAccess.getGuardRule()) {
+					sequence_Guard(context, (Guard) semanticObject); 
+					return; 
+				}
+				else break;
 			case MachinePackage.INVARIANT:
 				if(context == grammarAccess.getInvariantRule()) {
 					sequence_Invariant(context, (Invariant) semanticObject); 
+					return; 
+				}
+				else break;
+			case MachinePackage.WITNESS:
+				if(context == grammarAccess.getWitnessRule()) {
+					sequence_Witness(context, (Witness) semanticObject); 
 					return; 
 				}
 				else break;
@@ -108,6 +139,15 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
+	 *     (name=EString action=EString comment=EString?)
+	 */
+	protected void sequence_Action(EObject context, Action semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (internalId=EString?)
 	 */
 	protected void sequence_Any(EObject context, Any semanticObject) {
@@ -144,6 +184,15 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
+	 *     (theorem?='theorem' name=EString predicate=EString comment=EString?)
+	 */
+	protected void sequence_Guard(EObject context, Guard semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (internalId=EString?)
 	 */
 	protected void sequence_Initial(EObject context, Initial semanticObject) {
@@ -153,7 +202,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (name=EString theorem?='theorem'? comment=EString? predicate=EString)
+	 *     (name=EString theorem?='theorem'? predicate=EString comment=EString?)
 	 */
 	protected void sequence_Invariant(EObject context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -171,7 +220,12 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (name=EString (statemachines+=Statemachine statemachines+=Statemachine*)? (invariants+=Invariant invariants+=Invariant*)?)
+	 *     (
+	 *         name=EString 
+	 *         refines=[State|EString]? 
+	 *         (statemachines+=Statemachine statemachines+=Statemachine*)? 
+	 *         (invariants+=Invariant invariants+=Invariant*)?
+	 *     )
 	 */
 	protected void sequence_State(EObject context, State semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -182,6 +236,8 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	 * Constraint:
 	 *     (
 	 *         name=EString 
+	 *         comment=EString? 
+	 *         translation=TranslationKind? 
 	 *         elaborates=[EventBNamed|EString]? 
 	 *         refines=[Statemachine|EString]? 
 	 *         (nodes+=AbstractNode nodes+=AbstractNode*)? 
@@ -200,10 +256,32 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	 *         comment=EString? 
 	 *         (elaborates+=[Event|EString] elaborates+=[Event|EString]*)? 
 	 *         target=[AbstractNode|EString]? 
-	 *         source=[AbstractNode|EString]?
+	 *         source=[AbstractNode|EString]? 
+	 *         (parameters+=TypedParameter parameters+=TypedParameter*)? 
+	 *         (guards+=Guard guards+=Guard*)? 
+	 *         (actions+=Action actions+=Action*)? 
+	 *         (witnesses+=Witness witnesses+=Witness*)?
 	 *     )
 	 */
 	protected void sequence_Transition(EObject context, Transition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=EString type=EString comment=EString?)
+	 */
+	protected void sequence_TypedParameter(EObject context, TypedParameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=EString predicate=EString comment=EString?)
+	 */
+	protected void sequence_Witness(EObject context, Witness semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

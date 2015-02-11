@@ -13,11 +13,11 @@ Statemachine returns Statemachine:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('comment' comment=EString)?
 //		('dataKind' dataKind=DataKind)?
 //		'extensionId' extensionId=EString
 //		('selfName' selfName=EString)?
-//		('translation' translation=TranslationKind)?
+		('>' comment=EString)?
+		('translation' translation=TranslationKind)?
 		('elaborates' elaborates=[core::EventBNamed|EString])?
 		('refines' refines=[Statemachine|EString])?
 //		('instances' instances=[core::EventBNamedCommentedElement|EString])?
@@ -84,7 +84,7 @@ Transition returns Transition:
 	'Transition'
 //	'{'
 //		('internalId' internalId=EString)?
-		('comment' comment=EString)?
+		('>' comment=EString)?
 		('elaborates' /*'('*/ elaborates+=[machine::Event|EString] ( "," elaborates+=[machine::Event|EString])* /*')'*/ )?
 		('target' target=[AbstractNode|EString])?
 		('source' source=[AbstractNode|EString])?
@@ -92,15 +92,15 @@ Transition returns Transition:
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-//		('parameters' '{' parameters+=TypedParameter ( "," parameters+=TypedParameter)* '}' )?
-//		('guards' '{' guards+=Guard ( "," guards+=Guard)* '}' )?
-//		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
-//		('witnesses' '{' witnesses+=Witness ( "," witnesses+=Witness)* '}' )?
+		('parameters' '{' parameters+=TypedParameter ( "," parameters+=TypedParameter)* '}' )?
+		('guards' '{' guards+=Guard ( "," guards+=Guard)* '}' )?
+		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
+		('witnesses' '{' witnesses+=Witness ( "," witnesses+=Witness)* '}' )?
 //	'}'
 	;
 
-//TranslationKind returns TranslationKind:
-//	'TranslationKind' /* TODO: implement this rule and an appropriate IValueConverter */;
+enum TranslationKind returns TranslationKind:
+				MULTIVAR = 'MULTIVAR' | SINGLEVAR = 'SINGLEVAR' | REFINEDVAR = 'REFINEDVAR';
 
 //StringToStringMapEntry returns core::StringToStringMapEntry:
 //	{core::StringToStringMapEntry}
@@ -163,7 +163,7 @@ State returns State:
 //		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-//		('refines' refines=[State|EString])?
+		('refines' refines=[State|EString])?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -249,8 +249,8 @@ Invariant returns machine::Invariant:
 	(theorem?='theorem')?
 //	'{'
 //		('internalId' internalId=EString)?
-		('comment' comment=EString)?
-		'predicate' predicate=EString
+		/*'predicate'*/ predicate=EString
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -277,58 +277,62 @@ Invariant returns machine::Invariant:
 //		('actions' '{' actions+=Action ( "," actions+=Action)* '}' )?
 //	'}';
 
-//TypedParameter returns coreextension::TypedParameter:
+TypedParameter returns coreextension::TypedParameter:
 //	(localGenerated?='localGenerated')?
-//	'TypedParameter'
-//	name=EString
+	'TypedParameter'
+	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('comment' comment=EString)?
-//		'type' type=EString
+		'type' type=EString
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-//	'}';
+//	'}'
+;
 
-//Guard returns machine::Guard:
+Guard returns machine::Guard:
 //	(localGenerated?='localGenerated')?
-//	theorem?='theorem'
+	theorem?='theorem'
 //	'Guard'
-//	name=EString
+	'@'name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('comment' comment=EString)?
-//		'predicate' predicate=EString
+		/*'predicate'*/ predicate=EString
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-//	'}';
-//
-//Action returns machine::Action:
+//	'}'
+;
+
+Action returns machine::Action:
 //	(localGenerated?='localGenerated')?
 //	'Action'
-//	name=EString
+	'@'name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('comment' comment=EString)?
-//		'action' action=EString
+		'action' action=EString
+		('>' comment=EString)?		
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-//	'}';
-//
-//Witness returns machine::Witness:
+//	'}'
+;
+
+Witness returns machine::Witness:
 //	(localGenerated?='localGenerated')?
-//	'Witness'
-//	name=EString
+	'Witness'
+	'@'name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-//		('comment' comment=EString)?
-//		'predicate' predicate=EString
+		/*'predicate'*/ predicate=EString
+		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-//	'}';
+//	'}'
+;
 //
 //Convergence returns machine::Convergence:
 //	'Convergence' /* TODO: implement this rule and an appropriate IValueConverter */;

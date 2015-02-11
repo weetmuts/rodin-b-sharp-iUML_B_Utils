@@ -1,4 +1,4 @@
-Statemachine "state_m" 
+Statemachine "state_m" translation SINGLEVAR
 nodes  
 Initial ,
 State "one",
