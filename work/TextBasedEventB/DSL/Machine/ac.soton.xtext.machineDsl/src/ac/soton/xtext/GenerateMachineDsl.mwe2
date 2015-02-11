@@ -24,6 +24,10 @@ registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
 registerGeneratedEPackage = "org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage"
 registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
 registerGenModelFile = "platform:/resource/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel"
+
+registerGeneratedEPackage = "ac.soton.eventb.statemachines.StatemachinesPackage"
+registerGenModelFile = "platform:/resource/ac.soton.eventb.statemachines/model/statemachines.genmodel"
+
 	}
 
 	component = DirectoryCleaner {

@@ -1,4 +1,8 @@
-machine mch1 
+machine mch1
+extensions
+{
+	
+} 
 variables 
  a  b 
 invariants 
