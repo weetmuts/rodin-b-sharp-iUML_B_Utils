@@ -35,4 +35,330 @@
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
 <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 </org.eventb.core.prProof>
+<org.eventb.core.prProof name="INITIALISATION/distinct_states_in_stm1/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p1">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p1" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p2"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="{TRUE}={TRUE}∪({FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="TRUE∈{TRUE,FALSE}⇒{TRUE}=({TRUE}∩{TRUE})∪({FALSE}∩{TRUE})∧({TRUE}∩{TRUE})∩({FALSE}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE∈{TRUE,FALSE}⇒partition({TRUE},{TRUE}∩{TRUE},{FALSE}∩{TRUE})"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="evt1/distinct_states_in_stm1/INV" org.eventb.core.confidence="0" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition({TRUE},{state1}∩{TRUE},{State2}∩{TRUE}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p3"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with state1=TRUE" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p10" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p11,p12"/>
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="he with FALSE=State2" org.eventb.core.prHyps="p12">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p11" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p11"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="State2" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="state1" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="{TRUE}={TRUE}∪({FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="TRUE∈{state1,State2}⇒partition({TRUE},{state1}∩{TRUE},{State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="TRUE∈{state1,State2}⇒{TRUE}=({state1}∩{TRUE})∪({State2}∩{TRUE})∧({state1}∩{TRUE})∩({State2}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="TRUE∈{TRUE,State2}⇒{TRUE}=({TRUE}∩{TRUE})∪({State2}∩{TRUE})∧{TRUE}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="TRUE∈{state1,State2}⇒{TRUE}=({state1}∩{TRUE})∪({State2}∩{TRUE})∧{state1}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE∈{FALSE,TRUE}⇒partition({TRUE},{FALSE}∩{TRUE},{TRUE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="FALSE=State2"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="{TRUE}=({FALSE}∩{TRUE})∪{TRUE}"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="{TRUE}={TRUE}∪({State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="state1∈BOOL"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="a∈ℤ">
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="TRUE∈{FALSE,TRUE}⇒{TRUE}=({FALSE}∩{TRUE})∪({TRUE}∩{TRUE})∧({FALSE}∩{TRUE})∩({TRUE}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="State2∈BOOL"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="state1=TRUE"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="evt2/distinct_states_in_stm1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition({TRUE},{state1}∩{TRUE},{State2}∩{TRUE}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p3"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p10">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with state1=TRUE" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p14,p15"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="he with FALSE=State2" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p15">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p18">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p10,p14"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p18" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p20">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p16" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊥ hyp" org.eventb.core.prHyps="p19"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p21">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with state1=TRUE" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p14,p15"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="he with FALSE=State2" org.eventb.core.prGoal="p21" org.eventb.core.prHyps="p15">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p22">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p10,p14"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p22" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p23">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p16" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prRule name="r8" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p23" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="State2" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="state1" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="⊥"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="{TRUE}={TRUE}∪({FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="TRUE∈{FALSE,State2}⇒{TRUE}=({FALSE}∩{TRUE})∪({State2}∩{TRUE})∧({FALSE}∩{TRUE})∩({State2}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="TRUE∈{state1,State2}⇒partition({TRUE},{state1}∩{TRUE},{State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="TRUE∈{state1,State2}⇒{TRUE}=({state1}∩{TRUE})∪({State2}∩{TRUE})∧({state1}∩{TRUE})∩({State2}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="{TRUE}=({FALSE}∩{TRUE})∪({State2}∩{TRUE})∧{FALSE}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="TRUE∈{TRUE,State2}⇒{TRUE}=({TRUE}∩{TRUE})∪({State2}∩{TRUE})∧{TRUE}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="TRUE∈{state1,State2}⇒{TRUE}=({state1}∩{TRUE})∪({State2}∩{TRUE})∧{state1}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="{TRUE}=({FALSE}∩{TRUE})∪({State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="TRUE∈{FALSE,State2}⇒{TRUE}=({FALSE}∩{TRUE})∪({State2}∩{TRUE})∧{FALSE}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="{TRUE}=({FALSE}∩{TRUE})∪({FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="TRUE∈{FALSE,FALSE}"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="{TRUE}={FALSE}∩{TRUE}"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="TRUE∈{FALSE,State2}"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="FALSE=State2"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="{TRUE}={TRUE}∪({State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="state1∈BOOL"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="a∈ℤ">
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="State2∈BOOL"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="{FALSE}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE∈{FALSE,State2}⇒partition({TRUE},{FALSE}∩{TRUE},{State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="{FALSE}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="state1=TRUE"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.falseHyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
+<org.eventb.core.prProof name="evt3/distinct_states_in_stm1/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in hyp (partition({TRUE},{state1}∩{TRUE},{State2}∩{TRUE}))" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p1" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p3"/>
+<org.eventb.core.prHypAction name="SELECT1" org.eventb.core.prHyps="p3"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="Partition rewrites in goal" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p4">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p4" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p3" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p5"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p7"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p8"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p9"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="p10">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p12">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with State2=TRUE" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p14,p15"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with state1=FALSE" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p15">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p18">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p10,p14"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p18" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p20">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p16" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊥ hyp" org.eventb.core.prHyps="p19"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p21">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with State2=TRUE" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="DESELECT1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p14,p15"/>
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with state1=FALSE" org.eventb.core.prGoal="p21" org.eventb.core.prHyps="p15">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p22">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p14" org.eventb.core.prInfHyps="p17"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p10,p14"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prGoal="p22" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p23">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p16" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p19"/>
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p23" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="State2" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prIdent name="state1" org.eventb.core.type="BOOL"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="⊥"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="TRUE∈{state1,FALSE}⇒{TRUE}=({state1}∩{TRUE})∪({FALSE}∩{TRUE})∧{state1}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="TRUE∈{state1,FALSE}⇒{TRUE}=({state1}∩{TRUE})∪({FALSE}∩{TRUE})∧({state1}∩{TRUE})∩({FALSE}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="TRUE∈{state1,State2}⇒partition({TRUE},{state1}∩{TRUE},{State2}∩{TRUE})"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="TRUE∈{state1,State2}⇒{TRUE}=({state1}∩{TRUE})∪({State2}∩{TRUE})∧({state1}∩{TRUE})∩({State2}∩{TRUE})=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="TRUE∈{state1,TRUE}⇒{TRUE}=({state1}∩{TRUE})∪({TRUE}∩{TRUE})∧{state1}∩{TRUE}∩{TRUE}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="TRUE∈{state1,State2}⇒{TRUE}=({state1}∩{TRUE})∪({State2}∩{TRUE})∧{state1}∩{TRUE}∩{State2}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="state1=FALSE"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="{TRUE}=({state1}∩{TRUE})∪{TRUE}"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="{TRUE}=({state1}∩{TRUE})∪({FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="{TRUE}=({FALSE}∩{TRUE})∪({FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="TRUE∈{FALSE,FALSE}"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="{TRUE}={FALSE}∩{TRUE}"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="{TRUE}=({state1}∩{TRUE})∪({FALSE}∩{TRUE})∧{state1}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="{TRUE}=({FALSE}∩{TRUE})∪{TRUE}"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="state1∈BOOL"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="State2=TRUE"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="a∈ℤ">
+<org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="TRUE∈{state1,FALSE}"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="{state1}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="State2∈BOOL"/>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="TRUE∈{state1,FALSE}⇒partition({TRUE},{state1}∩{TRUE},{FALSE}∩{TRUE})"/>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="{FALSE}∩{TRUE}∩{FALSE}=(∅ ⦂ ℙ(BOOL))"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.falseHyp"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+</org.eventb.core.prProof>
 </org.eventb.core.prFile>

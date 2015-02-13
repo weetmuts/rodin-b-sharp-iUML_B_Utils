@@ -3,7 +3,6 @@ package ac.soton.eventb.textout.core;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -60,8 +59,10 @@ public class ExportTextManager {
 		if(!emfResource.isLoaded()){
 			emfResource.load(map);
 		}
+		// Get the contents of the resource.
 		EObject element = emfResource.getContents().get(0);
 		List<String> output = new ArrayList<String>();
+		// The start of text conversion is here >>
 		if (element.getClass() == MachineImpl.class) {
 			emfMachine = (MachineImpl) element;			
 			output.addAll(new PrintableMachine(emfMachine).print());

@@ -87,6 +87,12 @@
       </PrintableClass>
    </extension>
    <extension
+         point="ac.soton.eventb.textout.printable">
+      <PrintableClass
+            PrintableClass="ac.soton.eventb.textout.visitor.statemachine.PrintableStatemachine">
+      </PrintableClass>
+   </extension>
+   <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <commonFilter
             activeByDefault="true"

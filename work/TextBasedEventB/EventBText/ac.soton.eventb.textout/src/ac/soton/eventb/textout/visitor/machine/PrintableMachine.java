@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.Variable;
 
 import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.textout.core.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
+import ac.soton.eventb.textout.visitor.statemachine.PrintableStatemachine;
 
 public class PrintableMachine implements IPrintable {
 
@@ -71,6 +75,10 @@ public class PrintableMachine implements IPrintable {
 				}
 			}
 		}
+		
+		// Statemachines
+		output.addAll(doStatemachines());
+		
 		output.add("end");
 
 		// Save and open for editing
@@ -120,5 +128,26 @@ public class PrintableMachine implements IPrintable {
 				output.add(singleLineOut);
 			}
 		}
+	}
+	
+	private List<String> doStatemachines(){
+		List<String> tmpOutput = new ArrayList<String>();
+		List<AbstractExtension> extensionList = machine.getExtensions();
+		List<Statemachine> statemachineList = new ArrayList<Statemachine>();
+		
+		// find the statemachines
+		for(AbstractExtension extension: extensionList){
+			if(extension.eClass() == StatemachinesPackage.Literals.STATEMACHINE){
+				statemachineList.add((Statemachine) extension);
+			}
+		}
+		
+		// append the output string with the statemachine info
+		for(Statemachine statemachine: statemachineList){
+			for (String s : new PrintableStatemachine(statemachine).print()) {
+				tmpOutput.add(indent1 + s);
+			}
+		}
+		return tmpOutput;
 	}
 }
