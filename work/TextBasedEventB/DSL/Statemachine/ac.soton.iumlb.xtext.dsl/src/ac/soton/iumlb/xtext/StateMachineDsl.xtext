@@ -182,8 +182,9 @@ Initial returns Initial:
 	{Initial}
 //	(localGenerated?='localGenerated')?
 	'Initial'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -196,8 +197,9 @@ Final returns Final:
 	{Final}
 //	(localGenerated?='localGenerated')?
 	'Final'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -210,8 +212,9 @@ Any returns Any:
 	{Any}
 //	(localGenerated?='localGenerated')?
 	'Any'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -224,8 +227,9 @@ Junction returns Junction:
 	{Junction}
 //	(localGenerated?='localGenerated')?
 	'Junction'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -238,8 +242,9 @@ Fork returns Fork:
 	{Fork}
 //	(localGenerated?='localGenerated')?
 	'Fork'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
