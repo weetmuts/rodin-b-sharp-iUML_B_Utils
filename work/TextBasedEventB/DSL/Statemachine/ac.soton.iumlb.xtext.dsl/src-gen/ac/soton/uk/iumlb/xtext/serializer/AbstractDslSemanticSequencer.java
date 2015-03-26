@@ -148,7 +148,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Any(EObject context, Any semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -166,7 +166,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Final(EObject context, Final semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -175,7 +175,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Fork(EObject context, Fork semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -193,7 +193,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Initial(EObject context, Initial semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -211,7 +211,7 @@ public abstract class AbstractDslSemanticSequencer extends AbstractDelegatingSem
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Junction(EObject context, Junction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

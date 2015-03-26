@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Statemachine'", "'>'", "'translation'", "'elaborates'", "'refines'", "'nodes'", "','", "'transitions'", "'end'", "'extended'", "'Transition'", "'target'", "'source'", "'when'", "'any'", "'where'", "'with'", "'then'", "'State'", "'statemachines'", "'invariants'", "'Initial'", "'internalId'", "'Final'", "'Any'", "'Junction'", "'Fork'", "'Invariant'", "'@'", "'theorem'", "'TypedParameter'", "'type'", "'Witness'", "'MULTIVAR'", "'SINGLEVAR'", "'REFINEDVAR'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Statemachine'", "'>'", "'translation'", "'elaborates'", "'refines'", "'nodes'", "','", "'transitions'", "'end'", "'extended'", "'Transition'", "'target'", "'source'", "'when'", "'any'", "'where'", "'with'", "'then'", "'State'", "'statemachines'", "'invariants'", "'Initial'", "'Final'", "'Any'", "'Junction'", "'Fork'", "'Invariant'", "'@'", "'theorem'", "'TypedParameter'", "'type'", "'Witness'", "'MULTIVAR'", "'SINGLEVAR'", "'REFINEDVAR'"
     };
     public static final int RULE_ID=5;
     public static final int T__29=29;
@@ -51,7 +51,6 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
     public static final int T__43=43;
     public static final int T__40=40;
     public static final int T__41=41;
-    public static final int T__46=46;
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int RULE_SL_COMMENT=8;
@@ -727,22 +726,22 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                 alt9=2;
                 }
                 break;
-            case 34:
+            case 33:
                 {
                 alt9=3;
                 }
                 break;
-            case 35:
+            case 34:
                 {
                 alt9=4;
                 }
                 break;
-            case 36:
+            case 35:
                 {
                 alt9=5;
                 }
                 break;
-            case 37:
+            case 36:
                 {
                 alt9=6;
                 }
@@ -1426,7 +1425,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                         int alt17=2;
                         int LA17_0 = input.LA(1);
 
-                        if ( ((LA17_0>=39 && LA17_0<=40)) ) {
+                        if ( ((LA17_0>=38 && LA17_0<=39)) ) {
                             alt17=1;
                         }
 
@@ -1527,7 +1526,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                         int alt19=2;
                         int LA19_0 = input.LA(1);
 
-                        if ( (LA19_0==41) ) {
+                        if ( (LA19_0==40) ) {
                             alt19=1;
                         }
 
@@ -1611,7 +1610,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                         int alt20=2;
                         int LA20_0 = input.LA(1);
 
-                        if ( ((LA20_0>=39 && LA20_0<=40)) ) {
+                        if ( ((LA20_0>=38 && LA20_0<=39)) ) {
                             alt20=1;
                         }
 
@@ -1712,7 +1711,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                         int alt22=2;
                         int LA22_0 = input.LA(1);
 
-                        if ( (LA22_0==43) ) {
+                        if ( (LA22_0==42) ) {
                             alt22=1;
                         }
 
@@ -1813,7 +1812,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                         int alt24=2;
                         int LA24_0 = input.LA(1);
 
-                        if ( (LA24_0==39) ) {
+                        if ( (LA24_0==38) ) {
                             alt24=1;
                         }
 
@@ -2204,7 +2203,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                         int alt29=2;
                         int LA29_0 = input.LA(1);
 
-                        if ( (LA29_0==38) ) {
+                        if ( (LA29_0==37) ) {
                             alt29=1;
                         }
 
@@ -2310,23 +2309,22 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInitial"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:906:1: ruleInitial returns [EObject current=null] : ( () otherlv_1= 'Initial' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:906:1: ruleInitial returns [EObject current=null] : ( () otherlv_1= 'Initial' ( (lv_name_2_0= ruleEString ) ) ) ;
     public final EObject ruleInitial() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        AntlrDatatypeRuleToken lv_internalId_3_0 = null;
+        AntlrDatatypeRuleToken lv_name_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:909:28: ( ( () otherlv_1= 'Initial' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:1: ( () otherlv_1= 'Initial' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:909:28: ( ( () otherlv_1= 'Initial' ( (lv_name_2_0= ruleEString ) ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:1: ( () otherlv_1= 'Initial' ( (lv_name_2_0= ruleEString ) ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:1: ( () otherlv_1= 'Initial' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:2: () otherlv_1= 'Initial' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:1: ( () otherlv_1= 'Initial' ( (lv_name_2_0= ruleEString ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:2: () otherlv_1= 'Initial' ( (lv_name_2_0= ruleEString ) )
             {
             // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:910:2: ()
             // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:911:5: 
@@ -2343,55 +2341,34 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_1, grammarAccess.getInitialAccess().getInitialKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:920:1: (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
-            int alt31=2;
-            int LA31_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:920:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:921:1: (lv_name_2_0= ruleEString )
+            {
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:921:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:922:3: lv_name_2_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getInitialAccess().getNameEStringParserRuleCall_2_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInitial1776);
+            lv_name_2_0=ruleEString();
 
-            if ( (LA31_0==33) ) {
-                alt31=1;
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getInitialRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"name",
+                    		lv_name_2_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
             }
-            switch (alt31) {
-                case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:920:3: otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) )
-                    {
-                    otherlv_2=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleInitial1768); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getInitialAccess().getInternalIdKeyword_2_0());
-                        
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:924:1: ( (lv_internalId_3_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:925:1: (lv_internalId_3_0= ruleEString )
-                    {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:925:1: (lv_internalId_3_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:926:3: lv_internalId_3_0= ruleEString
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getInitialAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInitial1789);
-                    lv_internalId_3_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getInitialRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"internalId",
-                            		lv_internalId_3_0, 
-                            		"EString");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2416,7 +2393,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFinal"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:950:1: entryRuleFinal returns [EObject current=null] : iv_ruleFinal= ruleFinal EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:946:1: entryRuleFinal returns [EObject current=null] : iv_ruleFinal= ruleFinal EOF ;
     public final EObject entryRuleFinal() throws RecognitionException {
         EObject current = null;
 
@@ -2424,17 +2401,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:951:2: (iv_ruleFinal= ruleFinal EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:952:2: iv_ruleFinal= ruleFinal EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:947:2: (iv_ruleFinal= ruleFinal EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:948:2: iv_ruleFinal= ruleFinal EOF
             {
              newCompositeNode(grammarAccess.getFinalRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleFinal_in_entryRuleFinal1827);
+            pushFollow(FollowSets000.FOLLOW_ruleFinal_in_entryRuleFinal1812);
             iv_ruleFinal=ruleFinal();
 
             state._fsp--;
 
              current =iv_ruleFinal; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFinal1837); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFinal1822); 
 
             }
 
@@ -2452,26 +2429,25 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFinal"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:959:1: ruleFinal returns [EObject current=null] : ( () otherlv_1= 'Final' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:955:1: ruleFinal returns [EObject current=null] : ( () otherlv_1= 'Final' ( (lv_name_2_0= ruleEString ) ) ) ;
     public final EObject ruleFinal() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        AntlrDatatypeRuleToken lv_internalId_3_0 = null;
+        AntlrDatatypeRuleToken lv_name_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:962:28: ( ( () otherlv_1= 'Final' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:963:1: ( () otherlv_1= 'Final' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:958:28: ( ( () otherlv_1= 'Final' ( (lv_name_2_0= ruleEString ) ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:959:1: ( () otherlv_1= 'Final' ( (lv_name_2_0= ruleEString ) ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:963:1: ( () otherlv_1= 'Final' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:963:2: () otherlv_1= 'Final' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:959:1: ( () otherlv_1= 'Final' ( (lv_name_2_0= ruleEString ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:959:2: () otherlv_1= 'Final' ( (lv_name_2_0= ruleEString ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:963:2: ()
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:964:5: 
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:959:2: ()
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:960:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2481,59 +2457,38 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleFinal1883); 
+            otherlv_1=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleFinal1868); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFinalAccess().getFinalKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:973:1: (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:969:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:970:1: (lv_name_2_0= ruleEString )
+            {
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:970:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:971:3: lv_name_2_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getFinalAccess().getNameEStringParserRuleCall_2_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFinal1889);
+            lv_name_2_0=ruleEString();
 
-            if ( (LA32_0==33) ) {
-                alt32=1;
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getFinalRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"name",
+                    		lv_name_2_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
             }
-            switch (alt32) {
-                case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:973:3: otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) )
-                    {
-                    otherlv_2=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleFinal1896); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getFinalAccess().getInternalIdKeyword_2_0());
-                        
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:977:1: ( (lv_internalId_3_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:978:1: (lv_internalId_3_0= ruleEString )
-                    {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:978:1: (lv_internalId_3_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:979:3: lv_internalId_3_0= ruleEString
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getFinalAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFinal1917);
-                    lv_internalId_3_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getFinalRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"internalId",
-                            		lv_internalId_3_0, 
-                            		"EString");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2558,7 +2513,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAny"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1003:1: entryRuleAny returns [EObject current=null] : iv_ruleAny= ruleAny EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:995:1: entryRuleAny returns [EObject current=null] : iv_ruleAny= ruleAny EOF ;
     public final EObject entryRuleAny() throws RecognitionException {
         EObject current = null;
 
@@ -2566,17 +2521,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1004:2: (iv_ruleAny= ruleAny EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1005:2: iv_ruleAny= ruleAny EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:996:2: (iv_ruleAny= ruleAny EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:997:2: iv_ruleAny= ruleAny EOF
             {
              newCompositeNode(grammarAccess.getAnyRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAny_in_entryRuleAny1955);
+            pushFollow(FollowSets000.FOLLOW_ruleAny_in_entryRuleAny1925);
             iv_ruleAny=ruleAny();
 
             state._fsp--;
 
              current =iv_ruleAny; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAny1965); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAny1935); 
 
             }
 
@@ -2594,26 +2549,25 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAny"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1012:1: ruleAny returns [EObject current=null] : ( () otherlv_1= 'Any' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1004:1: ruleAny returns [EObject current=null] : ( () otherlv_1= 'Any' ( (lv_name_2_0= ruleEString ) ) ) ;
     public final EObject ruleAny() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        AntlrDatatypeRuleToken lv_internalId_3_0 = null;
+        AntlrDatatypeRuleToken lv_name_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1015:28: ( ( () otherlv_1= 'Any' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1016:1: ( () otherlv_1= 'Any' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1007:28: ( ( () otherlv_1= 'Any' ( (lv_name_2_0= ruleEString ) ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1008:1: ( () otherlv_1= 'Any' ( (lv_name_2_0= ruleEString ) ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1016:1: ( () otherlv_1= 'Any' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1016:2: () otherlv_1= 'Any' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1008:1: ( () otherlv_1= 'Any' ( (lv_name_2_0= ruleEString ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1008:2: () otherlv_1= 'Any' ( (lv_name_2_0= ruleEString ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1016:2: ()
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1017:5: 
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1008:2: ()
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1009:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2623,59 +2577,38 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleAny2011); 
+            otherlv_1=(Token)match(input,34,FollowSets000.FOLLOW_34_in_ruleAny1981); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getAnyAccess().getAnyKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1026:1: (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
-            int alt33=2;
-            int LA33_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1018:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1019:1: (lv_name_2_0= ruleEString )
+            {
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1019:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1020:3: lv_name_2_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getAnyAccess().getNameEStringParserRuleCall_2_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAny2002);
+            lv_name_2_0=ruleEString();
 
-            if ( (LA33_0==33) ) {
-                alt33=1;
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getAnyRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"name",
+                    		lv_name_2_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
             }
-            switch (alt33) {
-                case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1026:3: otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) )
-                    {
-                    otherlv_2=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleAny2024); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getAnyAccess().getInternalIdKeyword_2_0());
-                        
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1030:1: ( (lv_internalId_3_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1031:1: (lv_internalId_3_0= ruleEString )
-                    {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1031:1: (lv_internalId_3_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1032:3: lv_internalId_3_0= ruleEString
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getAnyAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAny2045);
-                    lv_internalId_3_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getAnyRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"internalId",
-                            		lv_internalId_3_0, 
-                            		"EString");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2700,7 +2633,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJunction"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1056:1: entryRuleJunction returns [EObject current=null] : iv_ruleJunction= ruleJunction EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1044:1: entryRuleJunction returns [EObject current=null] : iv_ruleJunction= ruleJunction EOF ;
     public final EObject entryRuleJunction() throws RecognitionException {
         EObject current = null;
 
@@ -2708,17 +2641,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1057:2: (iv_ruleJunction= ruleJunction EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1058:2: iv_ruleJunction= ruleJunction EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1045:2: (iv_ruleJunction= ruleJunction EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1046:2: iv_ruleJunction= ruleJunction EOF
             {
              newCompositeNode(grammarAccess.getJunctionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleJunction_in_entryRuleJunction2083);
+            pushFollow(FollowSets000.FOLLOW_ruleJunction_in_entryRuleJunction2038);
             iv_ruleJunction=ruleJunction();
 
             state._fsp--;
 
              current =iv_ruleJunction; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleJunction2093); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleJunction2048); 
 
             }
 
@@ -2736,26 +2669,25 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJunction"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1065:1: ruleJunction returns [EObject current=null] : ( () otherlv_1= 'Junction' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1053:1: ruleJunction returns [EObject current=null] : ( () otherlv_1= 'Junction' ( (lv_name_2_0= ruleEString ) ) ) ;
     public final EObject ruleJunction() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        AntlrDatatypeRuleToken lv_internalId_3_0 = null;
+        AntlrDatatypeRuleToken lv_name_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1068:28: ( ( () otherlv_1= 'Junction' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1069:1: ( () otherlv_1= 'Junction' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1056:28: ( ( () otherlv_1= 'Junction' ( (lv_name_2_0= ruleEString ) ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1057:1: ( () otherlv_1= 'Junction' ( (lv_name_2_0= ruleEString ) ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1069:1: ( () otherlv_1= 'Junction' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1069:2: () otherlv_1= 'Junction' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1057:1: ( () otherlv_1= 'Junction' ( (lv_name_2_0= ruleEString ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1057:2: () otherlv_1= 'Junction' ( (lv_name_2_0= ruleEString ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1069:2: ()
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1070:5: 
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1057:2: ()
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1058:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2765,59 +2697,38 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleJunction2139); 
+            otherlv_1=(Token)match(input,35,FollowSets000.FOLLOW_35_in_ruleJunction2094); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getJunctionAccess().getJunctionKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1079:1: (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1067:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1068:1: (lv_name_2_0= ruleEString )
+            {
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1068:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1069:3: lv_name_2_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getJunctionAccess().getNameEStringParserRuleCall_2_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleJunction2115);
+            lv_name_2_0=ruleEString();
 
-            if ( (LA34_0==33) ) {
-                alt34=1;
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getJunctionRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"name",
+                    		lv_name_2_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
             }
-            switch (alt34) {
-                case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1079:3: otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) )
-                    {
-                    otherlv_2=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleJunction2152); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getJunctionAccess().getInternalIdKeyword_2_0());
-                        
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1083:1: ( (lv_internalId_3_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1084:1: (lv_internalId_3_0= ruleEString )
-                    {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1084:1: (lv_internalId_3_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1085:3: lv_internalId_3_0= ruleEString
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getJunctionAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleJunction2173);
-                    lv_internalId_3_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getJunctionRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"internalId",
-                            		lv_internalId_3_0, 
-                            		"EString");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2842,7 +2753,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFork"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1109:1: entryRuleFork returns [EObject current=null] : iv_ruleFork= ruleFork EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1093:1: entryRuleFork returns [EObject current=null] : iv_ruleFork= ruleFork EOF ;
     public final EObject entryRuleFork() throws RecognitionException {
         EObject current = null;
 
@@ -2850,17 +2761,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1110:2: (iv_ruleFork= ruleFork EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1111:2: iv_ruleFork= ruleFork EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1094:2: (iv_ruleFork= ruleFork EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1095:2: iv_ruleFork= ruleFork EOF
             {
              newCompositeNode(grammarAccess.getForkRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleFork_in_entryRuleFork2211);
+            pushFollow(FollowSets000.FOLLOW_ruleFork_in_entryRuleFork2151);
             iv_ruleFork=ruleFork();
 
             state._fsp--;
 
              current =iv_ruleFork; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFork2221); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFork2161); 
 
             }
 
@@ -2878,26 +2789,25 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFork"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1118:1: ruleFork returns [EObject current=null] : ( () otherlv_1= 'Fork' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1102:1: ruleFork returns [EObject current=null] : ( () otherlv_1= 'Fork' ( (lv_name_2_0= ruleEString ) ) ) ;
     public final EObject ruleFork() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_2=null;
-        AntlrDatatypeRuleToken lv_internalId_3_0 = null;
+        AntlrDatatypeRuleToken lv_name_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1121:28: ( ( () otherlv_1= 'Fork' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1122:1: ( () otherlv_1= 'Fork' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1105:28: ( ( () otherlv_1= 'Fork' ( (lv_name_2_0= ruleEString ) ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1106:1: ( () otherlv_1= 'Fork' ( (lv_name_2_0= ruleEString ) ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1122:1: ( () otherlv_1= 'Fork' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1122:2: () otherlv_1= 'Fork' (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1106:1: ( () otherlv_1= 'Fork' ( (lv_name_2_0= ruleEString ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1106:2: () otherlv_1= 'Fork' ( (lv_name_2_0= ruleEString ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1122:2: ()
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1123:5: 
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1106:2: ()
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1107:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2907,59 +2817,38 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleFork2267); 
+            otherlv_1=(Token)match(input,36,FollowSets000.FOLLOW_36_in_ruleFork2207); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getForkAccess().getForkKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1132:1: (otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) ) )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1116:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1117:1: (lv_name_2_0= ruleEString )
+            {
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1117:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1118:3: lv_name_2_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getForkAccess().getNameEStringParserRuleCall_2_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFork2228);
+            lv_name_2_0=ruleEString();
 
-            if ( (LA35_0==33) ) {
-                alt35=1;
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getForkRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"name",
+                    		lv_name_2_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
             }
-            switch (alt35) {
-                case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1132:3: otherlv_2= 'internalId' ( (lv_internalId_3_0= ruleEString ) )
-                    {
-                    otherlv_2=(Token)match(input,33,FollowSets000.FOLLOW_33_in_ruleFork2280); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getForkAccess().getInternalIdKeyword_2_0());
-                        
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1136:1: ( (lv_internalId_3_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1137:1: (lv_internalId_3_0= ruleEString )
-                    {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1137:1: (lv_internalId_3_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1138:3: lv_internalId_3_0= ruleEString
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getForkAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFork2301);
-                    lv_internalId_3_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getForkRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"internalId",
-                            		lv_internalId_3_0, 
-                            		"EString");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -2984,7 +2873,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInvariant"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1162:1: entryRuleInvariant returns [EObject current=null] : iv_ruleInvariant= ruleInvariant EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1142:1: entryRuleInvariant returns [EObject current=null] : iv_ruleInvariant= ruleInvariant EOF ;
     public final EObject entryRuleInvariant() throws RecognitionException {
         EObject current = null;
 
@@ -2992,17 +2881,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1163:2: (iv_ruleInvariant= ruleInvariant EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1164:2: iv_ruleInvariant= ruleInvariant EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1143:2: (iv_ruleInvariant= ruleInvariant EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1144:2: iv_ruleInvariant= ruleInvariant EOF
             {
              newCompositeNode(grammarAccess.getInvariantRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleInvariant_in_entryRuleInvariant2339);
+            pushFollow(FollowSets000.FOLLOW_ruleInvariant_in_entryRuleInvariant2264);
             iv_ruleInvariant=ruleInvariant();
 
             state._fsp--;
 
              current =iv_ruleInvariant; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInvariant2349); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleInvariant2274); 
 
             }
 
@@ -3020,7 +2909,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInvariant"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1171:1: ruleInvariant returns [EObject current=null] : (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1151:1: ruleInvariant returns [EObject current=null] : (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? ) ;
     public final EObject ruleInvariant() throws RecognitionException {
         EObject current = null;
 
@@ -3038,30 +2927,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1174:28: ( (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1175:1: (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1154:28: ( (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1155:1: (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1175:1: (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1175:3: otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1155:1: (otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1155:3: otherlv_0= 'Invariant' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_predicate_4_0= ruleEString ) ) (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )?
             {
-            otherlv_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleInvariant2386); 
+            otherlv_0=(Token)match(input,37,FollowSets000.FOLLOW_37_in_ruleInvariant2311); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getInvariantAccess().getInvariantKeyword_0());
                 
-            otherlv_1=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleInvariant2398); 
+            otherlv_1=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleInvariant2323); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getInvariantAccess().getCommercialAtKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1183:1: ( (lv_name_2_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1184:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1163:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1164:1: (lv_name_2_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1184:1: (lv_name_2_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1185:3: lv_name_2_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1164:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1165:3: lv_name_2_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getInvariantAccess().getNameEStringParserRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInvariant2419);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInvariant2344);
             lv_name_2_0=ruleEString();
 
             state._fsp--;
@@ -3083,21 +2972,21 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1201:2: ( (lv_theorem_3_0= 'theorem' ) )?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1181:2: ( (lv_theorem_3_0= 'theorem' ) )?
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA36_0==40) ) {
-                alt36=1;
+            if ( (LA31_0==39) ) {
+                alt31=1;
             }
-            switch (alt36) {
+            switch (alt31) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1202:1: (lv_theorem_3_0= 'theorem' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1182:1: (lv_theorem_3_0= 'theorem' )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1202:1: (lv_theorem_3_0= 'theorem' )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1203:3: lv_theorem_3_0= 'theorem'
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1182:1: (lv_theorem_3_0= 'theorem' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1183:3: lv_theorem_3_0= 'theorem'
                     {
-                    lv_theorem_3_0=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleInvariant2437); 
+                    lv_theorem_3_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleInvariant2362); 
 
                             newLeafNode(lv_theorem_3_0, grammarAccess.getInvariantAccess().getTheoremTheoremKeyword_3_0());
                         
@@ -3116,16 +3005,16 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1216:3: ( (lv_predicate_4_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1217:1: (lv_predicate_4_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1196:3: ( (lv_predicate_4_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1197:1: (lv_predicate_4_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1217:1: (lv_predicate_4_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1218:3: lv_predicate_4_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1197:1: (lv_predicate_4_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1198:3: lv_predicate_4_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getInvariantAccess().getPredicateEStringParserRuleCall_4_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInvariant2472);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInvariant2397);
             lv_predicate_4_0=ruleEString();
 
             state._fsp--;
@@ -3147,31 +3036,31 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1234:2: (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )?
-            int alt37=2;
-            int LA37_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1214:2: (otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) ) )?
+            int alt32=2;
+            int LA32_0 = input.LA(1);
 
-            if ( (LA37_0==12) ) {
-                alt37=1;
+            if ( (LA32_0==12) ) {
+                alt32=1;
             }
-            switch (alt37) {
+            switch (alt32) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1234:4: otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1214:4: otherlv_5= '>' ( (lv_comment_6_0= ruleEString ) )
                     {
-                    otherlv_5=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleInvariant2485); 
+                    otherlv_5=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleInvariant2410); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getInvariantAccess().getGreaterThanSignKeyword_5_0());
                         
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1238:1: ( (lv_comment_6_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1239:1: (lv_comment_6_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1218:1: ( (lv_comment_6_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1219:1: (lv_comment_6_0= ruleEString )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1239:1: (lv_comment_6_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1240:3: lv_comment_6_0= ruleEString
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1219:1: (lv_comment_6_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1220:3: lv_comment_6_0= ruleEString
                     {
                      
                     	        newCompositeNode(grammarAccess.getInvariantAccess().getCommentEStringParserRuleCall_5_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInvariant2506);
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleInvariant2431);
                     lv_comment_6_0=ruleEString();
 
                     state._fsp--;
@@ -3220,7 +3109,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypedParameter"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1264:1: entryRuleTypedParameter returns [EObject current=null] : iv_ruleTypedParameter= ruleTypedParameter EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1244:1: entryRuleTypedParameter returns [EObject current=null] : iv_ruleTypedParameter= ruleTypedParameter EOF ;
     public final EObject entryRuleTypedParameter() throws RecognitionException {
         EObject current = null;
 
@@ -3228,17 +3117,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1265:2: (iv_ruleTypedParameter= ruleTypedParameter EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1266:2: iv_ruleTypedParameter= ruleTypedParameter EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1245:2: (iv_ruleTypedParameter= ruleTypedParameter EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1246:2: iv_ruleTypedParameter= ruleTypedParameter EOF
             {
              newCompositeNode(grammarAccess.getTypedParameterRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleTypedParameter_in_entryRuleTypedParameter2544);
+            pushFollow(FollowSets000.FOLLOW_ruleTypedParameter_in_entryRuleTypedParameter2469);
             iv_ruleTypedParameter=ruleTypedParameter();
 
             state._fsp--;
 
              current =iv_ruleTypedParameter; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleTypedParameter2554); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleTypedParameter2479); 
 
             }
 
@@ -3256,7 +3145,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypedParameter"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1273:1: ruleTypedParameter returns [EObject current=null] : (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1253:1: ruleTypedParameter returns [EObject current=null] : (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) ;
     public final EObject ruleTypedParameter() throws RecognitionException {
         EObject current = null;
 
@@ -3273,26 +3162,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1276:28: ( (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1277:1: (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1256:28: ( (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1257:1: (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1277:1: (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1277:3: otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1257:1: (otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1257:3: otherlv_0= 'TypedParameter' ( (lv_name_1_0= ruleEString ) ) otherlv_2= 'type' ( (lv_type_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
             {
-            otherlv_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleTypedParameter2591); 
+            otherlv_0=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleTypedParameter2516); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getTypedParameterAccess().getTypedParameterKeyword_0());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1281:1: ( (lv_name_1_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1282:1: (lv_name_1_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1261:1: ( (lv_name_1_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1262:1: (lv_name_1_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1282:1: (lv_name_1_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1283:3: lv_name_1_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1262:1: (lv_name_1_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1263:3: lv_name_1_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getTypedParameterAccess().getNameEStringParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleTypedParameter2612);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleTypedParameter2537);
             lv_name_1_0=ruleEString();
 
             state._fsp--;
@@ -3314,20 +3203,20 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleTypedParameter2624); 
+            otherlv_2=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleTypedParameter2549); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getTypedParameterAccess().getTypeKeyword_2());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1303:1: ( (lv_type_3_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1304:1: (lv_type_3_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1283:1: ( (lv_type_3_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1284:1: (lv_type_3_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1304:1: (lv_type_3_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1305:3: lv_type_3_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1284:1: (lv_type_3_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1285:3: lv_type_3_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getTypedParameterAccess().getTypeEStringParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleTypedParameter2645);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleTypedParameter2570);
             lv_type_3_0=ruleEString();
 
             state._fsp--;
@@ -3349,31 +3238,31 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1321:2: (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1301:2: (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA38_0==12) ) {
-                alt38=1;
+            if ( (LA33_0==12) ) {
+                alt33=1;
             }
-            switch (alt38) {
+            switch (alt33) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1321:4: otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1301:4: otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) )
                     {
-                    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleTypedParameter2658); 
+                    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleTypedParameter2583); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getTypedParameterAccess().getGreaterThanSignKeyword_4_0());
                         
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1325:1: ( (lv_comment_5_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1326:1: (lv_comment_5_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1305:1: ( (lv_comment_5_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1306:1: (lv_comment_5_0= ruleEString )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1326:1: (lv_comment_5_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1327:3: lv_comment_5_0= ruleEString
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1306:1: (lv_comment_5_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1307:3: lv_comment_5_0= ruleEString
                     {
                      
                     	        newCompositeNode(grammarAccess.getTypedParameterAccess().getCommentEStringParserRuleCall_4_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleTypedParameter2679);
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleTypedParameter2604);
                     lv_comment_5_0=ruleEString();
 
                     state._fsp--;
@@ -3422,7 +3311,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGuard"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1351:1: entryRuleGuard returns [EObject current=null] : iv_ruleGuard= ruleGuard EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1331:1: entryRuleGuard returns [EObject current=null] : iv_ruleGuard= ruleGuard EOF ;
     public final EObject entryRuleGuard() throws RecognitionException {
         EObject current = null;
 
@@ -3430,17 +3319,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1352:2: (iv_ruleGuard= ruleGuard EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1353:2: iv_ruleGuard= ruleGuard EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1332:2: (iv_ruleGuard= ruleGuard EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1333:2: iv_ruleGuard= ruleGuard EOF
             {
              newCompositeNode(grammarAccess.getGuardRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleGuard_in_entryRuleGuard2717);
+            pushFollow(FollowSets000.FOLLOW_ruleGuard_in_entryRuleGuard2642);
             iv_ruleGuard=ruleGuard();
 
             state._fsp--;
 
              current =iv_ruleGuard; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleGuard2727); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleGuard2652); 
 
             }
 
@@ -3458,7 +3347,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGuard"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1360:1: ruleGuard returns [EObject current=null] : ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1340:1: ruleGuard returns [EObject current=null] : ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) ;
     public final EObject ruleGuard() throws RecognitionException {
         EObject current = null;
 
@@ -3475,27 +3364,27 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1363:28: ( ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1364:1: ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1343:28: ( ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1344:1: ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1364:1: ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1364:2: ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1344:1: ( ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1344:2: ( (lv_theorem_0_0= 'theorem' ) )? otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1364:2: ( (lv_theorem_0_0= 'theorem' ) )?
-            int alt39=2;
-            int LA39_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1344:2: ( (lv_theorem_0_0= 'theorem' ) )?
+            int alt34=2;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA39_0==40) ) {
-                alt39=1;
+            if ( (LA34_0==39) ) {
+                alt34=1;
             }
-            switch (alt39) {
+            switch (alt34) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1365:1: (lv_theorem_0_0= 'theorem' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1345:1: (lv_theorem_0_0= 'theorem' )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1365:1: (lv_theorem_0_0= 'theorem' )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1366:3: lv_theorem_0_0= 'theorem'
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1345:1: (lv_theorem_0_0= 'theorem' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1346:3: lv_theorem_0_0= 'theorem'
                     {
-                    lv_theorem_0_0=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleGuard2770); 
+                    lv_theorem_0_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleGuard2695); 
 
                             newLeafNode(lv_theorem_0_0, grammarAccess.getGuardAccess().getTheoremTheoremKeyword_0_0());
                         
@@ -3514,20 +3403,20 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleGuard2796); 
+            otherlv_1=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleGuard2721); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getGuardAccess().getCommercialAtKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1383:1: ( (lv_name_2_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1384:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1363:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1364:1: (lv_name_2_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1384:1: (lv_name_2_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1385:3: lv_name_2_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1364:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1365:3: lv_name_2_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getGuardAccess().getNameEStringParserRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleGuard2817);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleGuard2742);
             lv_name_2_0=ruleEString();
 
             state._fsp--;
@@ -3549,16 +3438,16 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1401:2: ( (lv_predicate_3_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1402:1: (lv_predicate_3_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1381:2: ( (lv_predicate_3_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1382:1: (lv_predicate_3_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1402:1: (lv_predicate_3_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1403:3: lv_predicate_3_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1382:1: (lv_predicate_3_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1383:3: lv_predicate_3_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getGuardAccess().getPredicateEStringParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleGuard2838);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleGuard2763);
             lv_predicate_3_0=ruleEString();
 
             state._fsp--;
@@ -3580,31 +3469,31 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1419:2: (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1399:2: (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( (LA40_0==12) ) {
-                alt40=1;
+            if ( (LA35_0==12) ) {
+                alt35=1;
             }
-            switch (alt40) {
+            switch (alt35) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1419:4: otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1399:4: otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) )
                     {
-                    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleGuard2851); 
+                    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleGuard2776); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getGuardAccess().getGreaterThanSignKeyword_4_0());
                         
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1423:1: ( (lv_comment_5_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1424:1: (lv_comment_5_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1403:1: ( (lv_comment_5_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1404:1: (lv_comment_5_0= ruleEString )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1424:1: (lv_comment_5_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1425:3: lv_comment_5_0= ruleEString
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1404:1: (lv_comment_5_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1405:3: lv_comment_5_0= ruleEString
                     {
                      
                     	        newCompositeNode(grammarAccess.getGuardAccess().getCommentEStringParserRuleCall_4_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleGuard2872);
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleGuard2797);
                     lv_comment_5_0=ruleEString();
 
                     state._fsp--;
@@ -3653,7 +3542,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAction"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1449:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1429:1: entryRuleAction returns [EObject current=null] : iv_ruleAction= ruleAction EOF ;
     public final EObject entryRuleAction() throws RecognitionException {
         EObject current = null;
 
@@ -3661,17 +3550,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1450:2: (iv_ruleAction= ruleAction EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1451:2: iv_ruleAction= ruleAction EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1430:2: (iv_ruleAction= ruleAction EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1431:2: iv_ruleAction= ruleAction EOF
             {
              newCompositeNode(grammarAccess.getActionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAction_in_entryRuleAction2910);
+            pushFollow(FollowSets000.FOLLOW_ruleAction_in_entryRuleAction2835);
             iv_ruleAction=ruleAction();
 
             state._fsp--;
 
              current =iv_ruleAction; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAction2920); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAction2845); 
 
             }
 
@@ -3689,7 +3578,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAction"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1458:1: ruleAction returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1438:1: ruleAction returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? ) ;
     public final EObject ruleAction() throws RecognitionException {
         EObject current = null;
 
@@ -3705,26 +3594,26 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1461:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1462:1: (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1441:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1442:1: (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1462:1: (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1462:3: otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1442:1: (otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1442:3: otherlv_0= '@' ( (lv_name_1_0= ruleEString ) ) ( (lv_action_2_0= ruleEString ) ) (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )?
             {
-            otherlv_0=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleAction2957); 
+            otherlv_0=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleAction2882); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getActionAccess().getCommercialAtKeyword_0());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1466:1: ( (lv_name_1_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1467:1: (lv_name_1_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1446:1: ( (lv_name_1_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1447:1: (lv_name_1_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1467:1: (lv_name_1_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1468:3: lv_name_1_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1447:1: (lv_name_1_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1448:3: lv_name_1_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getActionAccess().getNameEStringParserRuleCall_1_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAction2978);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAction2903);
             lv_name_1_0=ruleEString();
 
             state._fsp--;
@@ -3746,16 +3635,16 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1484:2: ( (lv_action_2_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1485:1: (lv_action_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1464:2: ( (lv_action_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1465:1: (lv_action_2_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1485:1: (lv_action_2_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1486:3: lv_action_2_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1465:1: (lv_action_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1466:3: lv_action_2_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getActionAccess().getActionEStringParserRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAction2999);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAction2924);
             lv_action_2_0=ruleEString();
 
             state._fsp--;
@@ -3777,31 +3666,31 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1502:2: (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )?
-            int alt41=2;
-            int LA41_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1482:2: (otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) ) )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA41_0==12) ) {
-                alt41=1;
+            if ( (LA36_0==12) ) {
+                alt36=1;
             }
-            switch (alt41) {
+            switch (alt36) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1502:4: otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1482:4: otherlv_3= '>' ( (lv_comment_4_0= ruleEString ) )
                     {
-                    otherlv_3=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleAction3012); 
+                    otherlv_3=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleAction2937); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getActionAccess().getGreaterThanSignKeyword_3_0());
                         
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1506:1: ( (lv_comment_4_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1507:1: (lv_comment_4_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1486:1: ( (lv_comment_4_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1487:1: (lv_comment_4_0= ruleEString )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1507:1: (lv_comment_4_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1508:3: lv_comment_4_0= ruleEString
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1487:1: (lv_comment_4_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1488:3: lv_comment_4_0= ruleEString
                     {
                      
                     	        newCompositeNode(grammarAccess.getActionAccess().getCommentEStringParserRuleCall_3_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAction3033);
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAction2958);
                     lv_comment_4_0=ruleEString();
 
                     state._fsp--;
@@ -3850,7 +3739,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleWitness"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1532:1: entryRuleWitness returns [EObject current=null] : iv_ruleWitness= ruleWitness EOF ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1512:1: entryRuleWitness returns [EObject current=null] : iv_ruleWitness= ruleWitness EOF ;
     public final EObject entryRuleWitness() throws RecognitionException {
         EObject current = null;
 
@@ -3858,17 +3747,17 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1533:2: (iv_ruleWitness= ruleWitness EOF )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1534:2: iv_ruleWitness= ruleWitness EOF
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1513:2: (iv_ruleWitness= ruleWitness EOF )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1514:2: iv_ruleWitness= ruleWitness EOF
             {
              newCompositeNode(grammarAccess.getWitnessRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleWitness_in_entryRuleWitness3071);
+            pushFollow(FollowSets000.FOLLOW_ruleWitness_in_entryRuleWitness2996);
             iv_ruleWitness=ruleWitness();
 
             state._fsp--;
 
              current =iv_ruleWitness; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleWitness3081); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleWitness3006); 
 
             }
 
@@ -3886,7 +3775,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWitness"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1541:1: ruleWitness returns [EObject current=null] : (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1521:1: ruleWitness returns [EObject current=null] : (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) ;
     public final EObject ruleWitness() throws RecognitionException {
         EObject current = null;
 
@@ -3903,30 +3792,30 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1544:28: ( (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1545:1: (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1524:28: ( (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1525:1: (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1545:1: (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1545:3: otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1525:1: (otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )? )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1525:3: otherlv_0= 'Witness' otherlv_1= '@' ( (lv_name_2_0= ruleEString ) ) ( (lv_predicate_3_0= ruleEString ) ) (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
             {
-            otherlv_0=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleWitness3118); 
+            otherlv_0=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleWitness3043); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getWitnessAccess().getWitnessKeyword_0());
                 
-            otherlv_1=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleWitness3130); 
+            otherlv_1=(Token)match(input,38,FollowSets000.FOLLOW_38_in_ruleWitness3055); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getWitnessAccess().getCommercialAtKeyword_1());
                 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1553:1: ( (lv_name_2_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1554:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1533:1: ( (lv_name_2_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1534:1: (lv_name_2_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1554:1: (lv_name_2_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1555:3: lv_name_2_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1534:1: (lv_name_2_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1535:3: lv_name_2_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getWitnessAccess().getNameEStringParserRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleWitness3151);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleWitness3076);
             lv_name_2_0=ruleEString();
 
             state._fsp--;
@@ -3948,16 +3837,16 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1571:2: ( (lv_predicate_3_0= ruleEString ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1572:1: (lv_predicate_3_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1551:2: ( (lv_predicate_3_0= ruleEString ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1552:1: (lv_predicate_3_0= ruleEString )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1572:1: (lv_predicate_3_0= ruleEString )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1573:3: lv_predicate_3_0= ruleEString
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1552:1: (lv_predicate_3_0= ruleEString )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1553:3: lv_predicate_3_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getWitnessAccess().getPredicateEStringParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleWitness3172);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleWitness3097);
             lv_predicate_3_0=ruleEString();
 
             state._fsp--;
@@ -3979,31 +3868,31 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1589:2: (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1569:2: (otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) ) )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA42_0==12) ) {
-                alt42=1;
+            if ( (LA37_0==12) ) {
+                alt37=1;
             }
-            switch (alt42) {
+            switch (alt37) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1589:4: otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1569:4: otherlv_4= '>' ( (lv_comment_5_0= ruleEString ) )
                     {
-                    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleWitness3185); 
+                    otherlv_4=(Token)match(input,12,FollowSets000.FOLLOW_12_in_ruleWitness3110); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getWitnessAccess().getGreaterThanSignKeyword_4_0());
                         
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1593:1: ( (lv_comment_5_0= ruleEString ) )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1594:1: (lv_comment_5_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1573:1: ( (lv_comment_5_0= ruleEString ) )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1574:1: (lv_comment_5_0= ruleEString )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1594:1: (lv_comment_5_0= ruleEString )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1595:3: lv_comment_5_0= ruleEString
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1574:1: (lv_comment_5_0= ruleEString )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1575:3: lv_comment_5_0= ruleEString
                     {
                      
                     	        newCompositeNode(grammarAccess.getWitnessAccess().getCommentEStringParserRuleCall_4_1_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleWitness3206);
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleWitness3131);
                     lv_comment_5_0=ruleEString();
 
                     state._fsp--;
@@ -4052,7 +3941,7 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTranslationKind"
-    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1619:1: ruleTranslationKind returns [Enumerator current=null] : ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) ) ;
+    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1599:1: ruleTranslationKind returns [Enumerator current=null] : ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) ) ;
     public final Enumerator ruleTranslationKind() throws RecognitionException {
         Enumerator current = null;
 
@@ -4062,42 +3951,42 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1621:28: ( ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) ) )
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1622:1: ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1601:28: ( ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) ) )
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1602:1: ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) )
             {
-            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1622:1: ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) )
-            int alt43=3;
+            // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1602:1: ( (enumLiteral_0= 'MULTIVAR' ) | (enumLiteral_1= 'SINGLEVAR' ) | (enumLiteral_2= 'REFINEDVAR' ) )
+            int alt38=3;
             switch ( input.LA(1) ) {
+            case 43:
+                {
+                alt38=1;
+                }
+                break;
             case 44:
                 {
-                alt43=1;
+                alt38=2;
                 }
                 break;
             case 45:
                 {
-                alt43=2;
-                }
-                break;
-            case 46:
-                {
-                alt43=3;
+                alt38=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 43, 0, input);
+                    new NoViableAltException("", 38, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt43) {
+            switch (alt38) {
                 case 1 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1622:2: (enumLiteral_0= 'MULTIVAR' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1602:2: (enumLiteral_0= 'MULTIVAR' )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1622:2: (enumLiteral_0= 'MULTIVAR' )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1622:4: enumLiteral_0= 'MULTIVAR'
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1602:2: (enumLiteral_0= 'MULTIVAR' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1602:4: enumLiteral_0= 'MULTIVAR'
                     {
-                    enumLiteral_0=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleTranslationKind3258); 
+                    enumLiteral_0=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleTranslationKind3183); 
 
                             current = grammarAccess.getTranslationKindAccess().getMULTIVAREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getTranslationKindAccess().getMULTIVAREnumLiteralDeclaration_0()); 
@@ -4109,12 +3998,12 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1628:6: (enumLiteral_1= 'SINGLEVAR' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1608:6: (enumLiteral_1= 'SINGLEVAR' )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1628:6: (enumLiteral_1= 'SINGLEVAR' )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1628:8: enumLiteral_1= 'SINGLEVAR'
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1608:6: (enumLiteral_1= 'SINGLEVAR' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1608:8: enumLiteral_1= 'SINGLEVAR'
                     {
-                    enumLiteral_1=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleTranslationKind3275); 
+                    enumLiteral_1=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleTranslationKind3200); 
 
                             current = grammarAccess.getTranslationKindAccess().getSINGLEVAREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getTranslationKindAccess().getSINGLEVAREnumLiteralDeclaration_1()); 
@@ -4126,12 +4015,12 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1634:6: (enumLiteral_2= 'REFINEDVAR' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1614:6: (enumLiteral_2= 'REFINEDVAR' )
                     {
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1634:6: (enumLiteral_2= 'REFINEDVAR' )
-                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1634:8: enumLiteral_2= 'REFINEDVAR'
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1614:6: (enumLiteral_2= 'REFINEDVAR' )
+                    // ../ac.soton.iumlb.xtext.dsl/src-gen/ac/soton/uk/iumlb/xtext/parser/antlr/internal/InternalDsl.g:1614:8: enumLiteral_2= 'REFINEDVAR'
                     {
-                    enumLiteral_2=(Token)match(input,46,FollowSets000.FOLLOW_46_in_ruleTranslationKind3292); 
+                    enumLiteral_2=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleTranslationKind3217); 
 
                             current = grammarAccess.getTranslationKindAccess().getREFINEDVAREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getTranslationKindAccess().getREFINEDVAREnumLiteralDeclaration_2()); 
@@ -4174,15 +4063,15 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleEString_in_ruleStatemachine143 = new BitSet(new long[]{0x00000000000DF000L});
         public static final BitSet FOLLOW_12_in_ruleStatemachine156 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleStatemachine177 = new BitSet(new long[]{0x00000000000DE000L});
-        public static final BitSet FOLLOW_13_in_ruleStatemachine192 = new BitSet(new long[]{0x0000700000000000L});
+        public static final BitSet FOLLOW_13_in_ruleStatemachine192 = new BitSet(new long[]{0x0000380000000000L});
         public static final BitSet FOLLOW_ruleTranslationKind_in_ruleStatemachine213 = new BitSet(new long[]{0x00000000000DC000L});
         public static final BitSet FOLLOW_14_in_ruleStatemachine228 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleStatemachine251 = new BitSet(new long[]{0x00000000000D8000L});
         public static final BitSet FOLLOW_15_in_ruleStatemachine266 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleStatemachine289 = new BitSet(new long[]{0x00000000000D0000L});
-        public static final BitSet FOLLOW_16_in_ruleStatemachine304 = new BitSet(new long[]{0x0000003D20000000L});
+        public static final BitSet FOLLOW_16_in_ruleStatemachine304 = new BitSet(new long[]{0x0000001F20000000L});
         public static final BitSet FOLLOW_ruleAbstractNode_in_ruleStatemachine325 = new BitSet(new long[]{0x00000000000E0000L});
-        public static final BitSet FOLLOW_17_in_ruleStatemachine338 = new BitSet(new long[]{0x0000003D20000000L});
+        public static final BitSet FOLLOW_17_in_ruleStatemachine338 = new BitSet(new long[]{0x0000001F20000000L});
         public static final BitSet FOLLOW_ruleAbstractNode_in_ruleStatemachine359 = new BitSet(new long[]{0x00000000000E0000L});
         public static final BitSet FOLLOW_18_in_ruleStatemachine376 = new BitSet(new long[]{0x0000000000300000L});
         public static final BitSet FOLLOW_ruleTransition_in_ruleStatemachine397 = new BitSet(new long[]{0x0000000000380000L});
@@ -4213,21 +4102,21 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleEString_in_ruleTransition1043 = new BitSet(new long[]{0x000000001B880000L});
         public static final BitSet FOLLOW_23_in_ruleTransition1058 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleTransition1081 = new BitSet(new long[]{0x000000001B080000L});
-        public static final BitSet FOLLOW_24_in_ruleTransition1096 = new BitSet(new long[]{0x0000018000000000L});
-        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1117 = new BitSet(new long[]{0x000001801A080000L});
-        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1138 = new BitSet(new long[]{0x000001801A080000L});
-        public static final BitSet FOLLOW_25_in_ruleTransition1154 = new BitSet(new long[]{0x0000020000000000L});
-        public static final BitSet FOLLOW_ruleTypedParameter_in_ruleTransition1175 = new BitSet(new long[]{0x0000020004000000L});
-        public static final BitSet FOLLOW_ruleTypedParameter_in_ruleTransition1196 = new BitSet(new long[]{0x0000020004000000L});
-        public static final BitSet FOLLOW_26_in_ruleTransition1209 = new BitSet(new long[]{0x0000018000000000L});
-        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1230 = new BitSet(new long[]{0x0000018018080000L});
-        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1251 = new BitSet(new long[]{0x0000018018080000L});
-        public static final BitSet FOLLOW_27_in_ruleTransition1267 = new BitSet(new long[]{0x0000080000000000L});
-        public static final BitSet FOLLOW_ruleWitness_in_ruleTransition1288 = new BitSet(new long[]{0x0000080010080000L});
-        public static final BitSet FOLLOW_ruleWitness_in_ruleTransition1309 = new BitSet(new long[]{0x0000080010080000L});
-        public static final BitSet FOLLOW_28_in_ruleTransition1325 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_ruleAction_in_ruleTransition1346 = new BitSet(new long[]{0x0000008000080000L});
-        public static final BitSet FOLLOW_ruleAction_in_ruleTransition1367 = new BitSet(new long[]{0x0000008000080000L});
+        public static final BitSet FOLLOW_24_in_ruleTransition1096 = new BitSet(new long[]{0x000000C000000000L});
+        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1117 = new BitSet(new long[]{0x000000C01A080000L});
+        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1138 = new BitSet(new long[]{0x000000C01A080000L});
+        public static final BitSet FOLLOW_25_in_ruleTransition1154 = new BitSet(new long[]{0x0000010000000000L});
+        public static final BitSet FOLLOW_ruleTypedParameter_in_ruleTransition1175 = new BitSet(new long[]{0x0000010004000000L});
+        public static final BitSet FOLLOW_ruleTypedParameter_in_ruleTransition1196 = new BitSet(new long[]{0x0000010004000000L});
+        public static final BitSet FOLLOW_26_in_ruleTransition1209 = new BitSet(new long[]{0x000000C000000000L});
+        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1230 = new BitSet(new long[]{0x000000C018080000L});
+        public static final BitSet FOLLOW_ruleGuard_in_ruleTransition1251 = new BitSet(new long[]{0x000000C018080000L});
+        public static final BitSet FOLLOW_27_in_ruleTransition1267 = new BitSet(new long[]{0x0000040000000000L});
+        public static final BitSet FOLLOW_ruleWitness_in_ruleTransition1288 = new BitSet(new long[]{0x0000040010080000L});
+        public static final BitSet FOLLOW_ruleWitness_in_ruleTransition1309 = new BitSet(new long[]{0x0000040010080000L});
+        public static final BitSet FOLLOW_28_in_ruleTransition1325 = new BitSet(new long[]{0x0000004000000000L});
+        public static final BitSet FOLLOW_ruleAction_in_ruleTransition1346 = new BitSet(new long[]{0x0000004000080000L});
+        public static final BitSet FOLLOW_ruleAction_in_ruleTransition1367 = new BitSet(new long[]{0x0000004000080000L});
         public static final BitSet FOLLOW_19_in_ruleTransition1382 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleState_in_entryRuleState1420 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleState1430 = new BitSet(new long[]{0x0000000000000002L});
@@ -4239,77 +4128,72 @@ public class InternalDslParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleStatemachine_in_ruleState1569 = new BitSet(new long[]{0x0000000000080800L});
         public static final BitSet FOLLOW_ruleStatemachine_in_ruleState1590 = new BitSet(new long[]{0x0000000000080800L});
         public static final BitSet FOLLOW_19_in_ruleState1603 = new BitSet(new long[]{0x0000000080000002L});
-        public static final BitSet FOLLOW_31_in_ruleState1618 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_ruleInvariant_in_ruleState1639 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_ruleInvariant_in_ruleState1660 = new BitSet(new long[]{0x0000004000000002L});
+        public static final BitSet FOLLOW_31_in_ruleState1618 = new BitSet(new long[]{0x0000002000000000L});
+        public static final BitSet FOLLOW_ruleInvariant_in_ruleState1639 = new BitSet(new long[]{0x0000002000000002L});
+        public static final BitSet FOLLOW_ruleInvariant_in_ruleState1660 = new BitSet(new long[]{0x0000002000000002L});
         public static final BitSet FOLLOW_ruleInitial_in_entryRuleInitial1699 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInitial1709 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_32_in_ruleInitial1755 = new BitSet(new long[]{0x0000000200000002L});
-        public static final BitSet FOLLOW_33_in_ruleInitial1768 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleInitial1789 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleFinal_in_entryRuleFinal1827 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleFinal1837 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_34_in_ruleFinal1883 = new BitSet(new long[]{0x0000000200000002L});
-        public static final BitSet FOLLOW_33_in_ruleFinal1896 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleFinal1917 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAny_in_entryRuleAny1955 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAny1965 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_35_in_ruleAny2011 = new BitSet(new long[]{0x0000000200000002L});
-        public static final BitSet FOLLOW_33_in_ruleAny2024 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAny2045 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleJunction_in_entryRuleJunction2083 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleJunction2093 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_36_in_ruleJunction2139 = new BitSet(new long[]{0x0000000200000002L});
-        public static final BitSet FOLLOW_33_in_ruleJunction2152 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleJunction2173 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleFork_in_entryRuleFork2211 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleFork2221 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_37_in_ruleFork2267 = new BitSet(new long[]{0x0000000200000002L});
-        public static final BitSet FOLLOW_33_in_ruleFork2280 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleFork2301 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInvariant_in_entryRuleInvariant2339 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleInvariant2349 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_38_in_ruleInvariant2386 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleInvariant2398 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleInvariant2419 = new BitSet(new long[]{0x0000010000000030L});
-        public static final BitSet FOLLOW_40_in_ruleInvariant2437 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleInvariant2472 = new BitSet(new long[]{0x0000000000001002L});
-        public static final BitSet FOLLOW_12_in_ruleInvariant2485 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleInvariant2506 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleTypedParameter_in_entryRuleTypedParameter2544 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleTypedParameter2554 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_41_in_ruleTypedParameter2591 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleTypedParameter2612 = new BitSet(new long[]{0x0000040000000000L});
-        public static final BitSet FOLLOW_42_in_ruleTypedParameter2624 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleTypedParameter2645 = new BitSet(new long[]{0x0000000000001002L});
-        public static final BitSet FOLLOW_12_in_ruleTypedParameter2658 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleTypedParameter2679 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleGuard_in_entryRuleGuard2717 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleGuard2727 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_40_in_ruleGuard2770 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleGuard2796 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleGuard2817 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleGuard2838 = new BitSet(new long[]{0x0000000000001002L});
-        public static final BitSet FOLLOW_12_in_ruleGuard2851 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleGuard2872 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAction_in_entryRuleAction2910 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAction2920 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_39_in_ruleAction2957 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAction2978 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAction2999 = new BitSet(new long[]{0x0000000000001002L});
-        public static final BitSet FOLLOW_12_in_ruleAction3012 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAction3033 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleWitness_in_entryRuleWitness3071 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleWitness3081 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_43_in_ruleWitness3118 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleWitness3130 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleWitness3151 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleWitness3172 = new BitSet(new long[]{0x0000000000001002L});
-        public static final BitSet FOLLOW_12_in_ruleWitness3185 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleWitness3206 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_44_in_ruleTranslationKind3258 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_45_in_ruleTranslationKind3275 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_46_in_ruleTranslationKind3292 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_32_in_ruleInitial1755 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleInitial1776 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleFinal_in_entryRuleFinal1812 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleFinal1822 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_33_in_ruleFinal1868 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleFinal1889 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAny_in_entryRuleAny1925 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAny1935 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_34_in_ruleAny1981 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAny2002 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleJunction_in_entryRuleJunction2038 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleJunction2048 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_35_in_ruleJunction2094 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleJunction2115 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleFork_in_entryRuleFork2151 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleFork2161 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_36_in_ruleFork2207 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleFork2228 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInvariant_in_entryRuleInvariant2264 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleInvariant2274 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_37_in_ruleInvariant2311 = new BitSet(new long[]{0x0000004000000000L});
+        public static final BitSet FOLLOW_38_in_ruleInvariant2323 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleInvariant2344 = new BitSet(new long[]{0x0000008000000030L});
+        public static final BitSet FOLLOW_39_in_ruleInvariant2362 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleInvariant2397 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_12_in_ruleInvariant2410 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleInvariant2431 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleTypedParameter_in_entryRuleTypedParameter2469 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleTypedParameter2479 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_40_in_ruleTypedParameter2516 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleTypedParameter2537 = new BitSet(new long[]{0x0000020000000000L});
+        public static final BitSet FOLLOW_41_in_ruleTypedParameter2549 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleTypedParameter2570 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_12_in_ruleTypedParameter2583 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleTypedParameter2604 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleGuard_in_entryRuleGuard2642 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleGuard2652 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_39_in_ruleGuard2695 = new BitSet(new long[]{0x0000004000000000L});
+        public static final BitSet FOLLOW_38_in_ruleGuard2721 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleGuard2742 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleGuard2763 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_12_in_ruleGuard2776 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleGuard2797 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAction_in_entryRuleAction2835 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAction2845 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_38_in_ruleAction2882 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAction2903 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAction2924 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_12_in_ruleAction2937 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAction2958 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleWitness_in_entryRuleWitness2996 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleWitness3006 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_42_in_ruleWitness3043 = new BitSet(new long[]{0x0000004000000000L});
+        public static final BitSet FOLLOW_38_in_ruleWitness3055 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleWitness3076 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleWitness3097 = new BitSet(new long[]{0x0000000000001002L});
+        public static final BitSet FOLLOW_12_in_ruleWitness3110 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleWitness3131 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_43_in_ruleTranslationKind3183 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_44_in_ruleTranslationKind3200 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_45_in_ruleTranslationKind3217 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

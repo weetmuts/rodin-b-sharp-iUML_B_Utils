@@ -917,29 +917,25 @@ ruleInitial returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getInitialAccess().getInitialKeyword_1());
     }
-(	otherlv_2='internalId' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getInitialAccess().getInternalIdKeyword_2_0());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getInitialAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getInitialAccess().getNameEStringParserRuleCall_2_0()); 
 	    }
-		lv_internalId_3_0=ruleEString		{
+		lv_name_2_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getInitialRule());
 	        }
        		set(
        			$current, 
-       			"internalId",
-        		lv_internalId_3_0, 
+       			"name",
+        		lv_name_2_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?)
+))
 ;
 
 
@@ -970,29 +966,25 @@ ruleFinal returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getFinalAccess().getFinalKeyword_1());
     }
-(	otherlv_2='internalId' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getFinalAccess().getInternalIdKeyword_2_0());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFinalAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getFinalAccess().getNameEStringParserRuleCall_2_0()); 
 	    }
-		lv_internalId_3_0=ruleEString		{
+		lv_name_2_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFinalRule());
 	        }
        		set(
        			$current, 
-       			"internalId",
-        		lv_internalId_3_0, 
+       			"name",
+        		lv_name_2_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?)
+))
 ;
 
 
@@ -1023,29 +1015,25 @@ ruleAny returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getAnyAccess().getAnyKeyword_1());
     }
-(	otherlv_2='internalId' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getAnyAccess().getInternalIdKeyword_2_0());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAnyAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getAnyAccess().getNameEStringParserRuleCall_2_0()); 
 	    }
-		lv_internalId_3_0=ruleEString		{
+		lv_name_2_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getAnyRule());
 	        }
        		set(
        			$current, 
-       			"internalId",
-        		lv_internalId_3_0, 
+       			"name",
+        		lv_name_2_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?)
+))
 ;
 
 
@@ -1076,29 +1064,25 @@ ruleJunction returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getJunctionAccess().getJunctionKeyword_1());
     }
-(	otherlv_2='internalId' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getJunctionAccess().getInternalIdKeyword_2_0());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJunctionAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getJunctionAccess().getNameEStringParserRuleCall_2_0()); 
 	    }
-		lv_internalId_3_0=ruleEString		{
+		lv_name_2_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getJunctionRule());
 	        }
        		set(
        			$current, 
-       			"internalId",
-        		lv_internalId_3_0, 
+       			"name",
+        		lv_name_2_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?)
+))
 ;
 
 
@@ -1129,29 +1113,25 @@ ruleFork returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getForkAccess().getForkKeyword_1());
     }
-(	otherlv_2='internalId' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getForkAccess().getInternalIdKeyword_2_0());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getForkAccess().getInternalIdEStringParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getForkAccess().getNameEStringParserRuleCall_2_0()); 
 	    }
-		lv_internalId_3_0=ruleEString		{
+		lv_name_2_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getForkRule());
 	        }
        		set(
        			$current, 
-       			"internalId",
-        		lv_internalId_3_0, 
+       			"name",
+        		lv_name_2_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?)
+))
 ;
 
 

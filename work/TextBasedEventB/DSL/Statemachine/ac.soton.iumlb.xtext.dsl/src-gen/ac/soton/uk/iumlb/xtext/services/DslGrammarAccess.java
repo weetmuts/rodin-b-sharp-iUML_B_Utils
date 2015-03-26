@@ -751,11 +751,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cInitialAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cInitialKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cInternalIdKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cInternalIdAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cInternalIdEStringParserRuleCall_2_1_0 = (RuleCall)cInternalIdAssignment_2_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
+		////	'{'
+		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -764,13 +764,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Initial:
 		//	{Initial} //	(localGenerated?='localGenerated')?
-		//	"Initial" //	'{'
-		//	("internalId" internalId=EString)?;
+		//	"Initial" name=EString;
 		public ParserRule getRule() { return rule; }
 
 		//{Initial} //	(localGenerated?='localGenerated')?
-		//"Initial" //	'{'
-		//("internalId" internalId=EString)?
+		//"Initial" name=EString
 		public Group getGroup() { return cGroup; }
 
 		//{Initial}
@@ -780,17 +778,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"Initial"
 		public Keyword getInitialKeyword_1() { return cInitialKeyword_1; }
 
-		//("internalId" internalId=EString)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"internalId"
-		public Keyword getInternalIdKeyword_2_0() { return cInternalIdKeyword_2_0; }
-
-		//internalId=EString
-		public Assignment getInternalIdAssignment_2_1() { return cInternalIdAssignment_2_1; }
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//EString
-		public RuleCall getInternalIdEStringParserRuleCall_2_1_0() { return cInternalIdEStringParserRuleCall_2_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 	}
 
 	public class FinalElements extends AbstractParserRuleElementFinder {
@@ -798,11 +790,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cFinalAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cFinalKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cInternalIdKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cInternalIdAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cInternalIdEStringParserRuleCall_2_1_0 = (RuleCall)cInternalIdAssignment_2_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
+		////	'{'
+		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -811,13 +803,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Final:
 		//	{Final} //	(localGenerated?='localGenerated')?
-		//	"Final" //	'{'
-		//	("internalId" internalId=EString)?;
+		//	"Final" name=EString;
 		public ParserRule getRule() { return rule; }
 
 		//{Final} //	(localGenerated?='localGenerated')?
-		//"Final" //	'{'
-		//("internalId" internalId=EString)?
+		//"Final" name=EString
 		public Group getGroup() { return cGroup; }
 
 		//{Final}
@@ -827,17 +817,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"Final"
 		public Keyword getFinalKeyword_1() { return cFinalKeyword_1; }
 
-		//("internalId" internalId=EString)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"internalId"
-		public Keyword getInternalIdKeyword_2_0() { return cInternalIdKeyword_2_0; }
-
-		//internalId=EString
-		public Assignment getInternalIdAssignment_2_1() { return cInternalIdAssignment_2_1; }
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//EString
-		public RuleCall getInternalIdEStringParserRuleCall_2_1_0() { return cInternalIdEStringParserRuleCall_2_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 	}
 
 	public class AnyElements extends AbstractParserRuleElementFinder {
@@ -845,11 +829,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cAnyAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cAnyKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cInternalIdKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cInternalIdAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cInternalIdEStringParserRuleCall_2_1_0 = (RuleCall)cInternalIdAssignment_2_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
+		////	'{'
+		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -858,13 +842,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Any:
 		//	{Any} //	(localGenerated?='localGenerated')?
-		//	"Any" //	'{'
-		//	("internalId" internalId=EString)?;
+		//	"Any" name=EString;
 		public ParserRule getRule() { return rule; }
 
 		//{Any} //	(localGenerated?='localGenerated')?
-		//"Any" //	'{'
-		//("internalId" internalId=EString)?
+		//"Any" name=EString
 		public Group getGroup() { return cGroup; }
 
 		//{Any}
@@ -874,17 +856,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"Any"
 		public Keyword getAnyKeyword_1() { return cAnyKeyword_1; }
 
-		//("internalId" internalId=EString)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"internalId"
-		public Keyword getInternalIdKeyword_2_0() { return cInternalIdKeyword_2_0; }
-
-		//internalId=EString
-		public Assignment getInternalIdAssignment_2_1() { return cInternalIdAssignment_2_1; }
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//EString
-		public RuleCall getInternalIdEStringParserRuleCall_2_1_0() { return cInternalIdEStringParserRuleCall_2_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 	}
 
 	public class JunctionElements extends AbstractParserRuleElementFinder {
@@ -892,11 +868,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cJunctionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cJunctionKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cInternalIdKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cInternalIdAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cInternalIdEStringParserRuleCall_2_1_0 = (RuleCall)cInternalIdAssignment_2_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
+		////	'{'
+		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -905,13 +881,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Junction:
 		//	{Junction} //	(localGenerated?='localGenerated')?
-		//	"Junction" //	'{'
-		//	("internalId" internalId=EString)?;
+		//	"Junction" name=EString;
 		public ParserRule getRule() { return rule; }
 
 		//{Junction} //	(localGenerated?='localGenerated')?
-		//"Junction" //	'{'
-		//("internalId" internalId=EString)?
+		//"Junction" name=EString
 		public Group getGroup() { return cGroup; }
 
 		//{Junction}
@@ -921,17 +895,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"Junction"
 		public Keyword getJunctionKeyword_1() { return cJunctionKeyword_1; }
 
-		//("internalId" internalId=EString)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"internalId"
-		public Keyword getInternalIdKeyword_2_0() { return cInternalIdKeyword_2_0; }
-
-		//internalId=EString
-		public Assignment getInternalIdAssignment_2_1() { return cInternalIdAssignment_2_1; }
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//EString
-		public RuleCall getInternalIdEStringParserRuleCall_2_1_0() { return cInternalIdEStringParserRuleCall_2_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 	}
 
 	public class ForkElements extends AbstractParserRuleElementFinder {
@@ -939,11 +907,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cForkAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cForkKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cInternalIdKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cInternalIdAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cInternalIdEStringParserRuleCall_2_1_0 = (RuleCall)cInternalIdAssignment_2_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
+		////	'{'
+		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -952,13 +920,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		//Fork:
 		//	{Fork} //	(localGenerated?='localGenerated')?
-		//	"Fork" //	'{'
-		//	("internalId" internalId=EString)?;
+		//	"Fork" name=EString;
 		public ParserRule getRule() { return rule; }
 
 		//{Fork} //	(localGenerated?='localGenerated')?
-		//"Fork" //	'{'
-		//("internalId" internalId=EString)?
+		//"Fork" name=EString
 		public Group getGroup() { return cGroup; }
 
 		//{Fork}
@@ -968,17 +934,11 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		//"Fork"
 		public Keyword getForkKeyword_1() { return cForkKeyword_1; }
 
-		//("internalId" internalId=EString)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"internalId"
-		public Keyword getInternalIdKeyword_2_0() { return cInternalIdKeyword_2_0; }
-
-		//internalId=EString
-		public Assignment getInternalIdAssignment_2_1() { return cInternalIdAssignment_2_1; }
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//EString
-		public RuleCall getInternalIdEStringParserRuleCall_2_1_0() { return cInternalIdEStringParserRuleCall_2_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 	}
 
 	public class InvariantElements extends AbstractParserRuleElementFinder {
@@ -1626,6 +1586,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		return getStateAccess().getRule();
 	}
 
+	////	'{'
+	////		('internalId' internalId=EString)?
 	////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 	////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -1634,8 +1596,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Initial:
 	//	{Initial} //	(localGenerated?='localGenerated')?
-	//	"Initial" //	'{'
-	//	("internalId" internalId=EString)?;
+	//	"Initial" name=EString;
 	public InitialElements getInitialAccess() {
 		return (pInitial != null) ? pInitial : (pInitial = new InitialElements());
 	}
@@ -1644,6 +1605,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		return getInitialAccess().getRule();
 	}
 
+	////	'{'
+	////		('internalId' internalId=EString)?
 	////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 	////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -1652,8 +1615,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Final:
 	//	{Final} //	(localGenerated?='localGenerated')?
-	//	"Final" //	'{'
-	//	("internalId" internalId=EString)?;
+	//	"Final" name=EString;
 	public FinalElements getFinalAccess() {
 		return (pFinal != null) ? pFinal : (pFinal = new FinalElements());
 	}
@@ -1662,6 +1624,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		return getFinalAccess().getRule();
 	}
 
+	////	'{'
+	////		('internalId' internalId=EString)?
 	////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 	////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -1670,8 +1634,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Any:
 	//	{Any} //	(localGenerated?='localGenerated')?
-	//	"Any" //	'{'
-	//	("internalId" internalId=EString)?;
+	//	"Any" name=EString;
 	public AnyElements getAnyAccess() {
 		return (pAny != null) ? pAny : (pAny = new AnyElements());
 	}
@@ -1680,6 +1643,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		return getAnyAccess().getRule();
 	}
 
+	////	'{'
+	////		('internalId' internalId=EString)?
 	////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 	////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -1688,8 +1653,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Junction:
 	//	{Junction} //	(localGenerated?='localGenerated')?
-	//	"Junction" //	'{'
-	//	("internalId" internalId=EString)?;
+	//	"Junction" name=EString;
 	public JunctionElements getJunctionAccess() {
 		return (pJunction != null) ? pJunction : (pJunction = new JunctionElements());
 	}
@@ -1698,6 +1662,8 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 		return getJunctionAccess().getRule();
 	}
 
+	////	'{'
+	////		('internalId' internalId=EString)?
 	////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 	////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -1706,8 +1672,7 @@ public class DslGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	//Fork:
 	//	{Fork} //	(localGenerated?='localGenerated')?
-	//	"Fork" //	'{'
-	//	("internalId" internalId=EString)?;
+	//	"Fork" name=EString;
 	public ForkElements getForkAccess() {
 		return (pFork != null) ? pFork : (pFork = new ForkElements());
 	}
