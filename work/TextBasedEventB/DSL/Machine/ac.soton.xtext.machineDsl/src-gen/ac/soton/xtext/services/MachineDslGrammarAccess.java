@@ -537,7 +537,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRefinesEventQStringParserRuleCall_6_1_0_1 = (RuleCall)cRefinesEventCrossReference_6_1_0.eContents().get(1);
 		private final Assignment cRefinesAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
 		private final CrossReference cRefinesEventCrossReference_6_2_0 = (CrossReference)cRefinesAssignment_6_2.eContents().get(0);
-		private final RuleCall cRefinesEventEStringParserRuleCall_6_2_0_1 = (RuleCall)cRefinesEventCrossReference_6_2_0.eContents().get(1);
+		private final RuleCall cRefinesEventQStringParserRuleCall_6_2_0_1 = (RuleCall)cRefinesEventCrossReference_6_2_0.eContents().get(1);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Keyword cWhenKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Assignment cGuardsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
@@ -574,7 +574,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	"event" name=EString extended?="extended"? //	'{'
 		//	//		('internalId' internalId=EString)?
 		//	/ *'convergence'* / convergence=Convergence? (">" comment=EString)? ("refines" / *'('* / refines+=[Event|QString] / *","* /
-		//	refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//	refines+=[Event|QString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)? / *'}'* / ("any" / *'{'* / parameters+=Parameter / *","* /
@@ -588,7 +588,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"event" name=EString extended?="extended"? //	'{'
 		////		('internalId' internalId=EString)?
 		/// *'convergence'* / convergence=Convergence? (">" comment=EString)? ("refines" / *'('* / refines+=[Event|QString] / *","* /
-		//refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//refines+=[Event|QString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)? / *'}'* / ("any" / *'{'* / parameters+=Parameter / *","* /
@@ -635,7 +635,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getCommentEStringParserRuleCall_5_1_0() { return cCommentEStringParserRuleCall_5_1_0; }
 
-		//("refines" / *'('* / refines+=[Event|QString] / *","* / refines+=[Event|EString]*)?
+		//("refines" / *'('* / refines+=[Event|QString] / *","* / refines+=[Event|QString]*)?
 		public Group getGroup_6() { return cGroup_6; }
 
 		//"refines"
@@ -650,14 +650,14 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//QString
 		public RuleCall getRefinesEventQStringParserRuleCall_6_1_0_1() { return cRefinesEventQStringParserRuleCall_6_1_0_1; }
 
-		/// *","* / refines+=[Event|EString]*
+		/// *","* / refines+=[Event|QString]*
 		public Assignment getRefinesAssignment_6_2() { return cRefinesAssignment_6_2; }
 
-		//[Event|EString]
+		//[Event|QString]
 		public CrossReference getRefinesEventCrossReference_6_2_0() { return cRefinesEventCrossReference_6_2_0; }
 
-		//EString
-		public RuleCall getRefinesEventEStringParserRuleCall_6_2_0_1() { return cRefinesEventEStringParserRuleCall_6_2_0_1; }
+		//QString
+		public RuleCall getRefinesEventQStringParserRuleCall_6_2_0_1() { return cRefinesEventQStringParserRuleCall_6_2_0_1; }
 
 		//("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)?
 		public Group getGroup_7() { return cGroup_7; }
@@ -763,25 +763,25 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIDTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
 		
 		//QString returns ecore::EString:
-		//	STRING | ID ("·" ID)*;
+		//	STRING | ID ("?" ID)*;
 		public ParserRule getRule() { return rule; }
 
-		//STRING | ID ("·" ID)*
+		//STRING | ID ("?" ID)*
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
 
-		//ID ("·" ID)*
+		//ID ("?" ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_0() { return cIDTerminalRuleCall_1_0; }
 
-		//("·" ID)*
+		//("?" ID)*
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//"·"
+		//"?"
 		public Keyword getMiddleDotKeyword_1_1_0() { return cMiddleDotKeyword_1_1_0; }
 
 		//ID
@@ -2260,7 +2260,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	"event" name=EString extended?="extended"? //	'{'
 	//	//		('internalId' internalId=EString)?
 	//	/ *'convergence'* / convergence=Convergence? (">" comment=EString)? ("refines" / *'('* / refines+=[Event|QString] / *","* /
-	//	refines+=[Event|EString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+	//	refines+=[Event|QString]*)? / *')'* / //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("when" / *'{'* / guards+=Guard / *","* / guards+=Guard*)? / *'}'* / ("any" / *'{'* / parameters+=Parameter / *","* /
@@ -2277,7 +2277,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QString returns ecore::EString:
-	//	STRING | ID ("·" ID)*;
+	//	STRING | ID ("?" ID)*;
 	public QStringElements getQStringAccess() {
 		return (pQString != null) ? pQString : (pQString = new QStringElements());
 	}

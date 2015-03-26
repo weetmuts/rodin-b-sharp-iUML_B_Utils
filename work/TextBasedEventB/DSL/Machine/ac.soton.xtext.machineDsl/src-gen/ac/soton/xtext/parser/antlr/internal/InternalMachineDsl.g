@@ -817,7 +817,7 @@ ruleevent returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getEventAccess().getRefinesEventCrossReference_6_2_0()); 
 	    }
-		ruleEString		{ 
+		ruleQString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 

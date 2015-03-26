@@ -130,7 +130,7 @@ event returns Event:
 //		('internalId' internalId=EString)?
 		(/*'convergence'*/ convergence=Convergence)?
 		('>' comment=EString)?		
-		('refines' /*'('*/ refines+=[Event|QString] ( /*","*/ refines+=[Event|EString])* /*')'*/ )?
+		('refines' /*'('*/ refines+=[Event|QString] ( /*","*/ refines+=[Event|QString])* /*')'*/ )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?

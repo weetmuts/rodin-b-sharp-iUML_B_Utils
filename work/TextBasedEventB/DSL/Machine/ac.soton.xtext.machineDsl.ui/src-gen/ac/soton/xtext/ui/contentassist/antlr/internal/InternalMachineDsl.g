@@ -8152,8 +8152,8 @@ rule__Event__RefinesAssignment_6_2
 (
 { before(grammarAccess.getEventAccess().getRefinesEventCrossReference_6_2_0()); }
 (
-{ before(grammarAccess.getEventAccess().getRefinesEventEStringParserRuleCall_6_2_0_1()); }
-	ruleEString{ after(grammarAccess.getEventAccess().getRefinesEventEStringParserRuleCall_6_2_0_1()); }
+{ before(grammarAccess.getEventAccess().getRefinesEventQStringParserRuleCall_6_2_0_1()); }
+	ruleQString{ after(grammarAccess.getEventAccess().getRefinesEventQStringParserRuleCall_6_2_0_1()); }
 )
 { after(grammarAccess.getEventAccess().getRefinesEventCrossReference_6_2_0()); }
 )

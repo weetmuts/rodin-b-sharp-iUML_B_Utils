@@ -21952,29 +21952,29 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__RefinesAssignment_6_2"
-    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8147:1: rule__Event__RefinesAssignment_6_2 : ( ( ruleEString ) ) ;
+    // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8147:1: rule__Event__RefinesAssignment_6_2 : ( ( ruleQString ) ) ;
     public final void rule__Event__RefinesAssignment_6_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8151:1: ( ( ( ruleEString ) ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8152:1: ( ( ruleEString ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8151:1: ( ( ( ruleQString ) ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8152:1: ( ( ruleQString ) )
             {
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8152:1: ( ( ruleEString ) )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8153:1: ( ruleEString )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8152:1: ( ( ruleQString ) )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8153:1: ( ruleQString )
             {
              before(grammarAccess.getEventAccess().getRefinesEventCrossReference_6_2_0()); 
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8154:1: ( ruleEString )
-            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8155:1: ruleEString
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8154:1: ( ruleQString )
+            // ../ac.soton.xtext.machineDsl.ui/src-gen/ac/soton/xtext/ui/contentassist/antlr/internal/InternalMachineDsl.g:8155:1: ruleQString
             {
-             before(grammarAccess.getEventAccess().getRefinesEventEStringParserRuleCall_6_2_0_1()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Event__RefinesAssignment_6_216256);
-            ruleEString();
+             before(grammarAccess.getEventAccess().getRefinesEventQStringParserRuleCall_6_2_0_1()); 
+            pushFollow(FollowSets000.FOLLOW_ruleQString_in_rule__Event__RefinesAssignment_6_216256);
+            ruleQString();
 
             state._fsp--;
 
-             after(grammarAccess.getEventAccess().getRefinesEventEStringParserRuleCall_6_2_0_1()); 
+             after(grammarAccess.getEventAccess().getRefinesEventQStringParserRuleCall_6_2_0_1()); 
 
             }
 
@@ -25220,7 +25220,7 @@ public class InternalMachineDslParser extends AbstractInternalContentAssistParse
         public static final BitSet FOLLOW_ruleConvergence_in_rule__Event__ConvergenceAssignment_416151 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__Event__CommentAssignment_5_116182 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleQString_in_rule__Event__RefinesAssignment_6_116217 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Event__RefinesAssignment_6_216256 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleQString_in_rule__Event__RefinesAssignment_6_216256 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleGuard_in_rule__Event__GuardsAssignment_7_116291 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleGuard_in_rule__Event__GuardsAssignment_7_216322 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleParameter_in_rule__Event__ParametersAssignment_8_116353 = new BitSet(new long[]{0x0000000000000002L});
