@@ -45,8 +45,9 @@ public class PrintableEvent implements IPrintable {
 		if (refinesList.size() > 0 && !event.getName().equals("INITIALISATION")) {
 			output.add("refines");
 			// assuming only refines one event
+			//FIXME: should handle refinement of more events
 			Event refinedEvent = refinesList.get(0);
-			output.add(ExportTextManager.getRefinesEmfMachine().get(0).getName() + "·"
+			output.add(ExportTextManager.getRefinesEmfMachine().get(0).getName() + "\u00b7"
 					+ refinedEvent.getName());
 		}
 
