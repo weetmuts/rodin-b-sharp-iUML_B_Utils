@@ -8,7 +8,7 @@ import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
 
-import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 

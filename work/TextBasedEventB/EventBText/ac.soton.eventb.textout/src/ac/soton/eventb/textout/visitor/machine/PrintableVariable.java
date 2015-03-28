@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eventb.emf.core.machine.Variable;
 
-import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 
 public class PrintableVariable implements IPrintable {

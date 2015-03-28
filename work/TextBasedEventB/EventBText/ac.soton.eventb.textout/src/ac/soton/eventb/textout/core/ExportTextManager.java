@@ -6,30 +6,30 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.ui.statushandlers.StatusManager;
-import org.eventb.emf.core.EventBObject;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.impl.MachineImpl;
+import org.eventb.emf.persistence.EMFRodinDB;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
 
+import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.textout.Activator;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 import ac.soton.eventb.textout.visitor.context.PrintableContext;
@@ -44,31 +44,87 @@ public class ExportTextManager {
 	private static Machine emfMachine = null;
 	private static Context emfContext = null;
 	
-	public static void export(IRodinElement rodinElement) throws RodinDBException,
-			Exception {
-		Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
-		map.clear();
-		// Store the rodin project for use when saving
+	// Set this to true to switch from printing the file as an output stream to using the XTEXT serialisation
+	// Currently there are problems getting the XTEXT serialisation to work
+	// 1) For XTEXT serialisation usupported features have to be unset in the model (works but we change the model)
+	// 2) Statemachines have eOpposite incoming-target and outgoing-source which are not supported in XTEXT
+	// 3) XTEXT serialisation fails at the Event sequencer 
+	// 4) The output is unformatted (single line)
+	
+	private static boolean TRY_SERIALISE = false;
+	private static List<EStructuralFeature> unsupportedFeatures = new ArrayList<EStructuralFeature>();
+	static {
+		unsupportedFeatures.add(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS);
+		unsupportedFeatures.add(CorePackage.Literals.EVENT_BELEMENT__INTERNAL_ID);
+		unsupportedFeatures.add(CorePackage.Literals.ABSTRACT_EXTENSION__EXTENSION_ID);
+		unsupportedFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES);
+		unsupportedFeatures.add(CorePackage.Literals.EVENT_BELEMENT__LOCAL_GENERATED);
+		//these should be supported!!
+		unsupportedFeatures.add(StatemachinesPackage.Literals.STATEMACHINE__SELF_NAME);
+	}
+	
+	public static void export(IRodinElement rodinElement) throws RodinDBException,Exception {
+//		Map<IRodinElement, EventBObject> map = new HashMap<IRodinElement, EventBObject>();
+//		map.clear();
+		
+//		// Store the rodin project for use when saving
 		rodinProject = rodinElement.getRodinProject();
 		// Load the EMF model associated with the machine/context
 		IResource rodinResource = rodinElement.getResource();
-		ResourceSet rs = new ResourceSetImpl();	
-		URI uri = URI.createPlatformResourceURI(rodinResource.getFullPath()
-				.toOSString(), true);
-		Resource emfResource = rs.getResource(uri, true);
-		if(!emfResource.isLoaded()){
-			emfResource.load(map);
+		URI uri = URI.createPlatformResourceURI(rodinResource.getFullPath().toOSString(), true);
+		EObject element = EMFRodinDB.INSTANCE.loadEventBComponent(uri);
+		
+//		ResourceSet rs = new ResourceSetImpl();	
+//		URI uri = URI.createPlatformResourceURI(rodinResource.getFullPath()
+//				.toOSString(), true);
+//		Resource emfResource = rs.getResource(uri, true);
+//		if(!emfResource.isLoaded()){
+//			emfResource.load(map);
+//		}
+//		// Get the contents of the resource.
+//		EObject element = emfResource.getContents().get(0);
+		
+		if (element instanceof Machine){
+			uri = uri.trimFileExtension().appendFileExtension("mch");
+		}else if (element instanceof Context){
+			uri = uri.trimFileExtension().appendFileExtension("ctx");
+		}else return;
+		
+		if (TRY_SERIALISE){
+			//Would prefer to make a copy to avoid altering our model, but this might cause problems for XTEXT
+			//Copier copier = new Copier();
+			//EObject result = copier.copy(element);
+			//copier.copyReferences();
+			EObject result = element;
+			if (result instanceof EventBElement){
+				clean(result);  //removes the unsupported features
+				EMFRodinDB.INSTANCE.saveResource(uri, (EventBElement)result);
+			}
+		}else{
+			List<String> output = new ArrayList<String>();
+			// The start of text conversion is here >>
+			if (element.getClass() == MachineImpl.class) {
+				emfMachine = (MachineImpl) element;			
+				output.addAll(new PrintableMachine(emfMachine).print());
+			} else if (element.getClass() == ContextImpl.class) {
+				emfContext = (ContextImpl) element;
+				output.addAll(new PrintableContext(emfContext).print());
+			}
+			ExportTextManager.saveToFile(output, uri.lastSegment());
 		}
-		// Get the contents of the resource.
-		EObject element = emfResource.getContents().get(0);
-		List<String> output = new ArrayList<String>();
-		// The start of text conversion is here >>
-		if (element.getClass() == MachineImpl.class) {
-			emfMachine = (MachineImpl) element;			
-			output.addAll(new PrintableMachine(emfMachine).print());
-		} else if (element.getClass() == ContextImpl.class) {
-			emfContext = (ContextImpl) element;
-			output.addAll(new PrintableContext(emfContext).print());
+		
+		TextOutUtil.openFileForEditing(uri.lastSegment(), rodinProject);	
+	}
+	
+	private static void clean(EObject e){
+		EList<EStructuralFeature> features = e.eClass().getEAllStructuralFeatures();
+		for (EStructuralFeature feature : unsupportedFeatures){
+			if (features.contains(feature)){
+				e.eUnset(feature);
+			}	
+		}		
+		for (EObject c : e.eContents()){
+			clean(c);
 		}
 	}
 

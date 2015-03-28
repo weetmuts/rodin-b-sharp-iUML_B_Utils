@@ -10,7 +10,7 @@ import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.Parameter;
 import org.eventb.emf.core.machine.Witness;
 
-import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 
@@ -93,7 +93,7 @@ public class PrintableEvent implements IPrintable {
 			if (parameterList.size() > 0) {
 				output.add("where ");
 			} else {
-				output.add("when ");
+				output.add("where ");		//stick with where (like Rodin editor)
 			}
 			for (Guard guard : guardList) {
 				List<String> guardStringList = new PrintableGuard(guard)

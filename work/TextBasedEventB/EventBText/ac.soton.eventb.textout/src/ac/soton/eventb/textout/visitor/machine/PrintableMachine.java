@@ -10,9 +10,9 @@ import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.Variable;
 
-import ac.soton.eventb.printable.IPrintable;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 import ac.soton.eventb.textout.visitor.statemachine.PrintableStatemachine;
@@ -82,9 +82,7 @@ public class PrintableMachine implements IPrintable {
 		output.add("end");
 
 		// Save and open for editing
-		String fileName = machine.getName() + ".mch";
-		ExportTextManager.saveToFile(output, fileName);
-		TextOutUtil.openFileForEditing(fileName, ExportTextManager.getRodinProject());
+//		String fileName = machine.getName() + ".mch";
 		
 		return output;
 	}

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eventb.emf.core.machine.Invariant;
 
-import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 
 public class PrintableInvariant implements IPrintable {
@@ -18,6 +18,10 @@ public class PrintableInvariant implements IPrintable {
 
 	@Override
 	public List<String> print() {
+		return print("");
+	}
+
+	public List<String> print(String indent) {
 		List<String> output = new ArrayList<String>();
 		// Add a comment string if necessary
 		String comment = ExportTextManager
@@ -26,7 +30,7 @@ public class PrintableInvariant implements IPrintable {
 		if (invariant.isTheorem()) {
 			theoremString = " theorem";
 		} 
-		output.add("@" + invariant.getName() + " \"" + invariant.getPredicate()
+		output.add(indent+"@" + invariant.getName() + " \"" + invariant.getPredicate()
 				+ "\" " + theoremString + " " + comment);
 		return output;
 	}

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eventb.emf.core.machine.Action;
 
-import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 
 public class PrintableAction implements IPrintable{
@@ -17,9 +17,13 @@ public class PrintableAction implements IPrintable{
 	}
 	
 	public List<String> print() {
+		return print("");
+	}
+
+	public List<String> print(String indent) {
 		List<String> output = new ArrayList<String>();
 		String comment = ExportTextManager.adjustComment(action.getComment());
-		output.add("@" + action.getName() + " \"" + action.getAction()+"\" " + comment);
+		output.add(indent+ "@" + action.getName() + " \"" + action.getAction()+"\" " + comment);
 		return output;
 	}
 

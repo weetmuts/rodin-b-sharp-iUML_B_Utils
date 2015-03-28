@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eventb.emf.core.machine.Guard;
 
-import ac.soton.eventb.printable.IPrintable;
+import ac.soton.eventb.textout.IPrintable;
 import ac.soton.eventb.textout.core.ExportTextManager;
 
 public class PrintableGuard implements IPrintable {
@@ -18,6 +18,10 @@ public class PrintableGuard implements IPrintable {
 
 	@Override
 	public List<String> print() {
+		return print(indent1);
+	}
+
+	public List<String> print(String indent) {
 		List<String> output = new ArrayList<String>();
 		// Add a comment string if necessary
 		String comment = ExportTextManager.adjustComment(guard.getComment());
@@ -25,7 +29,7 @@ public class PrintableGuard implements IPrintable {
 		if(guard.isTheorem()){
 			theoremString = " theorem";
 		}
-		output.add("@" + guard.getName() + " \"" + guard.getPredicate() + "\" " + theoremString + " " + comment);
+		output.add(indent+"@" + guard.getName() + " \"" + guard.getPredicate() + "\" " + theoremString + " " + comment);
 		return output;
 	}
 
