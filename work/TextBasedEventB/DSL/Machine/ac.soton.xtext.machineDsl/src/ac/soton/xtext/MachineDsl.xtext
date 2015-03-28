@@ -124,26 +124,21 @@ event returns Event:
 	{Event}
 //	(localGenerated?='localGenerated')?
 	'event'
-	name=EString
-	(extended?='extended')?
-//	'{'
+		name=EString
+		(extended?='extended')?
 //		('internalId' internalId=EString)?
-		(/*'convergence'*/ convergence=Convergence)?
+		(convergence=Convergence)?
 		('>' comment=EString)?		
-		('refines' /*'('*/ refines+=[Event|QString] ( /*","*/ refines+=[Event|QString])* /*')'*/ )?
+		('refines' refines+=[Event|QString] (refines+=[Event|QString])* )?
+		
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-		
-		('when' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
 
-		('any' /*'{'*/ parameters+=Parameter ( /*","*/ parameters+=Parameter)* /*'}'*/ 
-		 'where' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
-		
-		
-		('with' /*'{'*/ witnesses+=Witness ( /*","*/ witnesses+=Witness)* /*'}'*/ )?
-		('then' /*'{'*/ actions+=Action ( /*","*/ actions+=Action)* /*'}'*/ )?
-//	'}'
+		('any' parameters+=Parameter (parameters+=Parameter)* )?
+		('where' guards+=Guard (guards+=Guard)* )?
+		('with' witnesses+=Witness (witnesses+=Witness)* )?
+		('then' actions+=Action (actions+=Action)* )?
 	'end'
 	;
 
@@ -325,18 +320,15 @@ Action returns Action:
 //	'{'
 //		('internalId' internalId=EString)?
 		('>' comment=EString)?
-		('elaborates' /*'('*/ elaborates+=[Event|EString] ( /*","*/ elaborates+=[Event|EString])* /*')'*/ )?
-		('source' source=[AbstractNode|EString])?
-		('target' target=[AbstractNode|EString])?
+		('elaborates' /*'('*/ elaborates+=[Event|QString] ( /*","*/ elaborates+=[Event|QString])* /*')'*/ )?
+		('source' source=[AbstractNode|QString])?
+		('target' target=[AbstractNode|QString])?
 //		('targetContainer' targetContainer=[core::EventBElement|EString])?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-
-		('when' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
-
-		('any' /*'{'*/ parameters+=TypedParameter ( /*","*/ parameters+=TypedParameter)* /*'}'*/ )?
-				
+		('parameters' /*'{'*/ parameters+=TypedParameter ( /*","*/ parameters+=TypedParameter)* /*'}'*/ )?
+		('where' /*'{'*/ guards+=Guard ( /*","*/ guards+=Guard)* /*'}'*/ )?
 		('with' /*'{'*/ witnesses+=Witness ( /*","*/ witnesses+=Witness)* /*'}'*/ )?
 		('then' /*'{'*/ actions+=Action ( /*","*/ actions+=Action)* /*'}'*/ )?
 	'end'
@@ -360,8 +352,8 @@ Action returns Action:
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
-		('statemachines' /*'{'*/ statemachines+=Statemachine ( /*","*/ statemachines+=Statemachine)* 'end' )?
 		('invariants' /*'{'*/ invariants+=Invariant ( /*","*/ invariants+=Invariant)* /*'}'*/ )?
+		('statemachines' /*'{'*/ statemachines+=Statemachine ( /*","*/ statemachines+=Statemachine)* 'end' )?
 //	'}'
 	;
 	
@@ -369,8 +361,9 @@ Action returns Action:
 	{Initial}
 //	(localGenerated?='localGenerated')?
 	'Initial'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -383,8 +376,9 @@ Final returns Final:
 	{Final}
 //	(localGenerated?='localGenerated')?
 	'Final'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -397,8 +391,9 @@ Any returns Any:
 	{Any}
 //	(localGenerated?='localGenerated')?
 	'Any'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -411,8 +406,9 @@ Junction returns Junction:
 	{Junction}
 //	(localGenerated?='localGenerated')?
 	'Junction'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -425,8 +421,9 @@ Fork returns Fork:
 	{Fork}
 //	(localGenerated?='localGenerated')?
 	'Fork'
+	name=EString
 //	'{'
-		('internalId' internalId=EString)?
+//		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -441,7 +438,7 @@ Fork returns Fork:
 	name=EString
 //	'{'
 //		('internalId' internalId=EString)?
-		'where' type=EString
+		'\u2208' type=EString
 		('>' comment=EString)?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?

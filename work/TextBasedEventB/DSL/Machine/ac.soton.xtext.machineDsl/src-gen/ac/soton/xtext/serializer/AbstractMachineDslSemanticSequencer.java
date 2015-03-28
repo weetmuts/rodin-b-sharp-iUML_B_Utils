@@ -175,7 +175,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Any(EObject context, Any semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -184,7 +184,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Final(EObject context, Final semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -193,7 +193,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Fork(EObject context, Fork semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -211,7 +211,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Initial(EObject context, Initial semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -229,7 +229,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (internalId=EString?)
+	 *     name=EString
 	 */
 	protected void sequence_Junction(EObject context, Junction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -269,8 +269,8 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *     (
 	 *         name=EString 
 	 *         refines=[State|EString]? 
-	 *         (statemachines+=Statemachine statemachines+=Statemachine*)? 
-	 *         (invariants+=Invariant invariants+=Invariant*)?
+	 *         (invariants+=Invariant invariants+=Invariant*)? 
+	 *         (statemachines+=Statemachine statemachines+=Statemachine*)?
 	 *     )
 	 */
 	protected void sequence_State(EObject context, State semanticObject) {
@@ -300,11 +300,11 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *     (
 	 *         extended?='extended'? 
 	 *         comment=EString? 
-	 *         (elaborates+=[Event|EString] elaborates+=[Event|EString]*)? 
-	 *         source=[AbstractNode|EString]? 
-	 *         target=[AbstractNode|EString]? 
-	 *         (guards+=Guard guards+=Guard*)? 
+	 *         (elaborates+=[Event|QString] elaborates+=[Event|QString]*)? 
+	 *         source=[AbstractNode|QString]? 
+	 *         target=[AbstractNode|QString]? 
 	 *         (parameters+=TypedParameter parameters+=TypedParameter*)? 
+	 *         (guards+=Guard guards+=Guard*)? 
 	 *         (witnesses+=Witness witnesses+=Witness*)? 
 	 *         (actions+=Action actions+=Action*)?
 	 *     )
@@ -358,8 +358,8 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *         convergence=Convergence? 
 	 *         comment=EString? 
 	 *         (refines+=[Event|QString] refines+=[Event|QString]*)? 
+	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (guards+=Guard guards+=Guard*)? 
-	 *         (parameters+=Parameter parameters+=Parameter* guards+=Guard guards+=Guard*)? 
 	 *         (witnesses+=Witness witnesses+=Witness*)? 
 	 *         (actions+=Action actions+=Action*)?
 	 *     )
