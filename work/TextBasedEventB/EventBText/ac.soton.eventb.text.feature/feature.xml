@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.text.feature"
       label="%featureName"
-      version="0.0.1.qualifier"
+      version="0.0.2.qualifier"
       provider-name="University of Southampton">
 
    <description>
@@ -22,47 +22,42 @@
    </url>
 
    <requires>
-      <import plugin="org.eventb.emf.persistence" version="3.0.1" match="compatible"/>
-      <import plugin="ac.soton.eventb.printable" version="0.0.1" match="compatible"/>
+      <import plugin="org.eventb.emf.persistence" version="3.3.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui" version="2.6.2" match="equivalent"/>
-      <import plugin="ac.soton.eventb.textout.util" version="0.0.1" match="compatible"/>
-      <import plugin="org.eventb.emf.core" version="4.0.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="4.2.0" match="compatible"/>
       <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
       <import plugin="org.eventb.core" version="3.1.0" match="compatible"/>
+      <import plugin="org.rodinp.keyboard.ui" version="2.0.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.statemachines" version="3.1.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.diagrams" version="4.0.1" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.core.extension" version="4.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="compatible"/>
+      <import plugin="ac.soton.eventb.textout" version="0.0.2" match="compatible"/>
       <import plugin="org.eclipse.xtext" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.xtext.util" version="2.6.2" match="equivalent"/>
       <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.common.types" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.swt" version="3.7.2" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.6.2" match="equivalent"/>
-      <import plugin="com.google.guava"/>
+      <import plugin="com.google.guava" version="15.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.6.2" match="equivalent"/>
-      <import plugin="org.rodinp.keyboard.ui" version="2.0.0" match="compatible"/>
-      <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
-      <import plugin="ac.soton.xtext.contextDsl" version="0.0.1" match="compatible"/>
+      <import plugin="ac.soton.xtext.contextDsl" version="0.0.2" match="compatible"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui.shared" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.builder" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.xtext.common.types.ui" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.compare" version="3.5.202" match="compatible"/>
-      <import plugin="ac.soton.xtext.machineDsl" version="0.0.1" match="compatible"/>
-      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
+      <import plugin="ac.soton.xtext.machineDsl" version="0.0.2" match="compatible"/>
       <import feature="org.eclipse.xtext.runtime" version="2.6.2.v201407030533" match="perfect"/>
-      <import plugin="org.rodinp.core" version="1.6.1" match="compatible"/>
-      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="compatible"/>
    </requires>
 
    <plugin
          id="ac.soton.eventb.textout"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.textout.util"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -98,13 +93,6 @@
 
    <plugin
          id="ac.soton.xtext.machineDsl.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.printable"
          download-size="0"
          install-size="0"
          version="0.0.0"
