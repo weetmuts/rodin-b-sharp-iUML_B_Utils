@@ -1,0 +1,64 @@
+
+		Requirements (ID'd y main variable phenomonon being updated)
+
+Controlled
+
+SAF2 signal setting
+SAF3 point positioning
+FUN6 point positioning
+FUN8 signal setting
+ENV2 point positions
+ENV12 signal protectsRoute
+ENV13 signal redGreen
+ENV14 signal routeSharing
+ENV15 signal blockFreed
+
+Monitored
+
+SAF4 block occupiedFree
+MVT1 block freed
+TRN2 train movedBack
+TRN4 train leaveNetwork
+FLR3 block freed
+FLR4 block occupiedError
+ENV5 block occupiedFree
+
+Mode
+
+-
+
+Commanded
+
+TRN3 train enterNetwork
+FUN1 train routing
+
+other?:
+
+SAF1 block reserved
+MVT2 route formed
+MVT3 route freed
+TRN1 train split
+FLR1 route guarding
+FLR2 train splitting
+FLR5 train derailIgnore
+FUN2 route reserved
+FUN3 block freeOrReserved
+FUN4 block occupied and reserved
+FUN5 route allBlocksReserved
+FUN7 route formedIsReserved
+ENV1 network pointsCrossings
+ENV3 network blocks
+ENV4 block pointCrossing
+ENV6?? network routes
+ENV6?? routes seqBlocks
+ENV7 route pointPositions
+ENV8 route firstConstraint
+ENV9 route lastConstraint
+ENV10 route transitiveClosure
+ENV11 route noCycles
+
+
+
+
+
+
