@@ -15,7 +15,8 @@ import org.eventb.core.basis.MachineRoot;
 import org.rodinp.core.IRodinElement;
 
 import ac.soton.eventb.textout.Activator;
-import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.ExportTextManager;
+import ac.soton.eventb.textout.utils.TextOutUtil;
 
 public class ExportMachineToText implements IObjectActionDelegate {
 
@@ -47,6 +48,9 @@ public class ExportMachineToText implements IObjectActionDelegate {
 			 if (object.getClass() == MachineRoot.class ||
 					 object.getClass() == ContextRoot.class ) {
 				 IRodinElement rodinElement = (IRodinElement) object;
+				 
+				TextOutUtil.addXtextNature(rodinElement.getRodinProject().getProject());
+				
 				 // Export the machine/context RodinElement
 				ExportTextManager.export(rodinElement);
 			}
