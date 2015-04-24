@@ -1,6 +1,9 @@
 package ac.soton.eventb.textout.utils;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.IEditorDescriptor;
@@ -69,5 +72,32 @@ public class TextOutUtil {
 	}
 
 	public static String COMMENT_CHAR = ">";
+	
+
+	private static final String XTEXT_NATURE = "org.eclipse.xtext.ui.shared.xtextNature";
+	
+	public static void addXtextNature(IProject project){
+		// If selected project doesn't have an XText nature add one
+		try {
+			if (!project.hasNature(XTEXT_NATURE)){
+				// add the rodin nature if it isn't already there
+				final IProjectDescription description = project.getDescription();
+				final String[] natures = description.getNatureIds();
+				final String[] newNatures = new String[natures.length + 1];
+				System.arraycopy(natures, 0, newNatures, 0, natures.length);
+				newNatures[natures.length] = XTEXT_NATURE;
+				description.setNatureIds(newNatures);
+				project.setDescription(description, null);			
+			}
+		} catch (CoreException e) {
+			Status status = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID,
+					"Failed TextOut: CoreException while adding XTEXT nature to project: "
+					+ e.getMessage()  , e);
+				StatusManager.getManager().handle(status,
+					StatusManager.SHOW);
+			e.printStackTrace();
+		}
+	}
 
 }
