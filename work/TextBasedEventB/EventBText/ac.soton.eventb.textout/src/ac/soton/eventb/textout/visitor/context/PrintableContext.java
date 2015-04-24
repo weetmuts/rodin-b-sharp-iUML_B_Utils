@@ -9,7 +9,7 @@ import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
 
 import ac.soton.eventb.textout.IPrintable;
-import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 
 public class PrintableContext implements IPrintable {

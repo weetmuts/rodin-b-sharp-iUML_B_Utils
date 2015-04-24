@@ -13,7 +13,7 @@ import org.eventb.emf.core.machine.Variable;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
 import ac.soton.eventb.textout.IPrintable;
-import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 import ac.soton.eventb.textout.visitor.statemachine.PrintableStatemachine;
 

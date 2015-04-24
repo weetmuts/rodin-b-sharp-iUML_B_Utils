@@ -11,7 +11,7 @@ import org.eventb.emf.core.machine.Parameter;
 import org.eventb.emf.core.machine.Witness;
 
 import ac.soton.eventb.textout.IPrintable;
-import ac.soton.eventb.textout.core.ExportTextManager;
+import ac.soton.eventb.textout.utils.ExportTextManager;
 import ac.soton.eventb.textout.utils.TextOutUtil;
 
 public class PrintableEvent implements IPrintable {
