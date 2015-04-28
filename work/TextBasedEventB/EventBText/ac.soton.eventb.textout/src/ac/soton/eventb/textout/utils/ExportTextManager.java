@@ -46,11 +46,12 @@ public class ExportTextManager {
 	// Set this to true to switch from printing the file as an output stream to using the XTEXT serialisation
 	// Currently there are problems getting the XTEXT serialisation to work
 	// 1) For XTEXT serialisation usupported features have to be unset in the model (works but we change the model)
-	// 2) Statemachines have eOpposite incoming-target and outgoing-source which are not supported in XTEXT
+	// 2) (FIXED) Statemachines have eOpposite incoming-target and outgoing-source which are not supported in XTEXT
 	// 3) XTEXT serialisation fails at the Event sequencer 
 	// 4) The output is unformatted (single line)
 	
 	private static boolean TRY_SERIALISE = false;
+	
 	private static List<EStructuralFeature> unsupportedFeatures = new ArrayList<EStructuralFeature>();
 	static {
 		unsupportedFeatures.add(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS);
@@ -62,9 +63,15 @@ public class ExportTextManager {
 		unsupportedFeatures.add(StatemachinesPackage.Literals.STATEMACHINE__SELF_NAME);
 	}
 	
-	public static void export(IRodinElement rodinElement) throws RodinDBException,Exception {
-
-		
+	/**
+	 * Export the rodin Element to text representation
+	 * 
+	 * @param rodinElement
+	 * @return file name of exported text file if successful otherwise null
+	 * @throws RodinDBException
+	 * @throws Exception
+	 */
+	public static String export(IRodinElement rodinElement) throws RodinDBException,Exception {		
 		// cache rodin project for use when saving
 		rodinProject = rodinElement.getRodinProject();
 		// Load the EMF model associated with the machine/context
@@ -76,7 +83,7 @@ public class ExportTextManager {
 			uri = uri.trimFileExtension().appendFileExtension("mch");
 		}else if (element instanceof Context){
 			uri = uri.trimFileExtension().appendFileExtension("ctx");
-		}else return;
+		}else return null;
 		
 		if (TRY_SERIALISE){
 			//Would prefer to make a copy to avoid altering our model, but this might cause problems for XTEXT
@@ -100,8 +107,8 @@ public class ExportTextManager {
 			}
 			ExportTextManager.saveToFile(output, uri.lastSegment());
 		}
-		
-		TextOutUtil.openFileForEditing(uri.lastSegment(), rodinProject);	
+		return uri.lastSegment();
+			
 	}
 	
 	private static void clean(EObject e){

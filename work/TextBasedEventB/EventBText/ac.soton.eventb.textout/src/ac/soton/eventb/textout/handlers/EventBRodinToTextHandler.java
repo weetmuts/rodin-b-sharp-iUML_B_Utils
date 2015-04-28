@@ -68,13 +68,14 @@ public class EventBRodinToTextHandler extends AbstractHandler {
 
 		String elId = elType.getId();
 		// If it's a machine or context then export it
+		String result = null;
 		if (elId.equals(IMachineRoot.ELEMENT_TYPE.getId()) ||
 				elId.equals(IContextRoot.ELEMENT_TYPE.getId())) {
 			
 			IRodinElement rodinEl = (IRodinElement) rodinFile;
 			try {
 				// Call the export method.
-				ExportTextManager.export(rodinEl);
+				result = ExportTextManager.export(rodinEl);
 			} catch (RodinDBException e) {
 				Status status = new Status(IStatus.ERROR,
 						Activator.PLUGIN_ID,
@@ -91,6 +92,9 @@ public class EventBRodinToTextHandler extends AbstractHandler {
 						StatusManager.SHOW);
 			}
 		}
+		
+		TextOutUtil.openFileForEditing(result, rodinProject);
+		
 		return null;
 	}
 }

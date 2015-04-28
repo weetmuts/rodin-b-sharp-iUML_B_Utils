@@ -43,8 +43,7 @@ public class TextOutUtil {
 		IEditorPart editorPart;
 		try {
 			// This is where we open the file for editing
-			editorPart = page.openEditor(new FileEditorInput(file),
-					desc.getId());
+			editorPart = page.openEditor(new FileEditorInput(file), desc.getId());
 			// Add the rodin keyboardListener if working
 			if (editorPart instanceof XtextEditor) {
 				// AddRodinKeyboardListener.setup((XtextEditor) editorPart);
