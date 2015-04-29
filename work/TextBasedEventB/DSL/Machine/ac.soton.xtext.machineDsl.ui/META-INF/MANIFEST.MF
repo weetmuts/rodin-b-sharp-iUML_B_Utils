@@ -26,3 +26,5 @@ Export-Package: ac.soton.xtext.ui,
  ac.soton.xtext.ui.internal,
  ac.soton.xtext.ui.quickfix
 Bundle-Activator: ac.soton.xtext.ui.internal.MachineDslActivator
+Import-Package: org.eclipse.xtext.xbase.lib,
+ org.apache.log4j

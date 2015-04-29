@@ -731,25 +731,25 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIDTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
 		
 		//QString returns ecore::EString:
-		//	STRING | ID ("?" ID)*;
+		//	STRING | ID ("·" ID)*;
 		public ParserRule getRule() { return rule; }
 
-		//STRING | ID ("?" ID)*
+		//STRING | ID ("·" ID)*
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
 
-		//ID ("?" ID)*
+		//ID ("·" ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_0() { return cIDTerminalRuleCall_1_0; }
 
-		//("?" ID)*
+		//("·" ID)*
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//"?"
+		//"·"
 		public Keyword getMiddleDotKeyword_1_1_0() { return cMiddleDotKeyword_1_1_0; }
 
 		//ID
@@ -1023,48 +1023,56 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cGreaterThanSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cCommentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cCommentEStringParserRuleCall_2_1_0 = (RuleCall)cCommentAssignment_2_1.eContents().get(0);
+		private final Keyword cInstancesKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cInstancesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cInstancesEventBNamedCommentedElementCrossReference_2_1_0 = (CrossReference)cInstancesAssignment_2_1.eContents().get(0);
+		private final RuleCall cInstancesEventBNamedCommentedElementQStringParserRuleCall_2_1_0_1 = (RuleCall)cInstancesEventBNamedCommentedElementCrossReference_2_1_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cTranslationKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cTranslationAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cTranslationTranslationKindEnumRuleCall_3_1_0 = (RuleCall)cTranslationAssignment_3_1.eContents().get(0);
+		private final Keyword cSelfNameKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cSelfNameAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cSelfNameEStringParserRuleCall_3_1_0 = (RuleCall)cSelfNameAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cElaboratesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cElaboratesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cElaboratesEventBNamedCrossReference_4_1_0 = (CrossReference)cElaboratesAssignment_4_1.eContents().get(0);
-		private final RuleCall cElaboratesEventBNamedEStringParserRuleCall_4_1_0_1 = (RuleCall)cElaboratesEventBNamedCrossReference_4_1_0.eContents().get(1);
+		private final Keyword cTranslationKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cTranslationAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cTranslationTranslationKindEnumRuleCall_4_1_0 = (RuleCall)cTranslationAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cRefinesKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cRefinesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final CrossReference cRefinesStatemachineCrossReference_5_1_0 = (CrossReference)cRefinesAssignment_5_1.eContents().get(0);
-		private final RuleCall cRefinesStatemachineEStringParserRuleCall_5_1_0_1 = (RuleCall)cRefinesStatemachineCrossReference_5_1_0.eContents().get(1);
+		private final Keyword cElaboratesKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cElaboratesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final CrossReference cElaboratesEventBNamedCrossReference_5_1_0 = (CrossReference)cElaboratesAssignment_5_1.eContents().get(0);
+		private final RuleCall cElaboratesEventBNamedQStringParserRuleCall_5_1_0_1 = (RuleCall)cElaboratesEventBNamedCrossReference_5_1_0.eContents().get(1);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cNodesKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cNodesAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cNodesAbstractNodeParserRuleCall_6_1_0 = (RuleCall)cNodesAssignment_6_1.eContents().get(0);
-		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
-		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
-		private final Assignment cNodesAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
-		private final RuleCall cNodesAbstractNodeParserRuleCall_6_2_1_0 = (RuleCall)cNodesAssignment_6_2_1.eContents().get(0);
+		private final Keyword cRefinesKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cRefinesAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cRefinesStatemachineCrossReference_6_1_0 = (CrossReference)cRefinesAssignment_6_1.eContents().get(0);
+		private final RuleCall cRefinesStatemachineQStringParserRuleCall_6_1_0_1 = (RuleCall)cRefinesStatemachineCrossReference_6_1_0.eContents().get(1);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cTransitionsKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cTransitionsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cTransitionsTransitionParserRuleCall_7_1_0 = (RuleCall)cTransitionsAssignment_7_1.eContents().get(0);
-		private final Assignment cTransitionsAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
-		private final RuleCall cTransitionsTransitionParserRuleCall_7_2_0 = (RuleCall)cTransitionsAssignment_7_2.eContents().get(0);
-		private final Keyword cEndKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cGreaterThanSignKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cCommentAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cCommentEStringParserRuleCall_7_1_0 = (RuleCall)cCommentAssignment_7_1.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cNodesKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cNodesAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cNodesAbstractNodeParserRuleCall_8_1_0 = (RuleCall)cNodesAssignment_8_1.eContents().get(0);
+		private final Group cGroup_8_2 = (Group)cGroup_8.eContents().get(2);
+		private final Keyword cCommaKeyword_8_2_0 = (Keyword)cGroup_8_2.eContents().get(0);
+		private final Assignment cNodesAssignment_8_2_1 = (Assignment)cGroup_8_2.eContents().get(1);
+		private final RuleCall cNodesAbstractNodeParserRuleCall_8_2_1_0 = (RuleCall)cNodesAssignment_8_2_1.eContents().get(0);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cTransitionsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cTransitionsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cTransitionsTransitionParserRuleCall_9_1_0 = (RuleCall)cTransitionsAssignment_9_1.eContents().get(0);
+		private final Assignment cTransitionsAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final RuleCall cTransitionsTransitionParserRuleCall_9_2_0 = (RuleCall)cTransitionsAssignment_9_2.eContents().get(0);
+		private final Keyword cEndKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//Statemachine: //	(localGenerated?='localGenerated')?
 		//	"Statemachine" name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
 		//	//		('dataKind' dataKind=DataKind)?
 		//	//		'extensionId' extensionId=EString
-		//	//		('selfName' selfName=EString)?
-		//	(">" comment=EString)? ("translation" translation=TranslationKind)? ("elaborates"
-		//	elaborates=[core::EventBNamed|EString])? ("refines" refines=[Statemachine|EString])? //		('instances' instances=[core::EventBNamedCommentedElement|EString])?
-		//	//		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//	("instances" instances=[core::EventBNamedCommentedElement|QString])? ("selfName" selfName=EString)? ("translation"
+		//	translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? ("refines"
+		//	refines=[Statemachine|QString])? (">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)? / *'}'* / ("transitions" / *'{'* /
@@ -1077,10 +1085,9 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////		('internalId' internalId=EString)?
 		////		('dataKind' dataKind=DataKind)?
 		////		'extensionId' extensionId=EString
-		////		('selfName' selfName=EString)?
-		//(">" comment=EString)? ("translation" translation=TranslationKind)? ("elaborates"
-		//elaborates=[core::EventBNamed|EString])? ("refines" refines=[Statemachine|EString])? //		('instances' instances=[core::EventBNamedCommentedElement|EString])?
-		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//("instances" instances=[core::EventBNamedCommentedElement|QString])? ("selfName" selfName=EString)? ("translation"
+		//translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? ("refines"
+		//refines=[Statemachine|QString])? (">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)? / *'}'* / ("transitions" / *'{'* / transitions+=Transition
@@ -1098,105 +1105,132 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
-		//(">" comment=EString)?
+		//("instances" instances=[core::EventBNamedCommentedElement|QString])?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//">"
-		public Keyword getGreaterThanSignKeyword_2_0() { return cGreaterThanSignKeyword_2_0; }
+		//"instances"
+		public Keyword getInstancesKeyword_2_0() { return cInstancesKeyword_2_0; }
 
-		//comment=EString
-		public Assignment getCommentAssignment_2_1() { return cCommentAssignment_2_1; }
+		//instances=[core::EventBNamedCommentedElement|QString]
+		public Assignment getInstancesAssignment_2_1() { return cInstancesAssignment_2_1; }
 
-		//EString
-		public RuleCall getCommentEStringParserRuleCall_2_1_0() { return cCommentEStringParserRuleCall_2_1_0; }
+		//[core::EventBNamedCommentedElement|QString]
+		public CrossReference getInstancesEventBNamedCommentedElementCrossReference_2_1_0() { return cInstancesEventBNamedCommentedElementCrossReference_2_1_0; }
 
-		//("translation" translation=TranslationKind)?
+		//QString
+		public RuleCall getInstancesEventBNamedCommentedElementQStringParserRuleCall_2_1_0_1() { return cInstancesEventBNamedCommentedElementQStringParserRuleCall_2_1_0_1; }
+
+		//("selfName" selfName=EString)?
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"translation"
-		public Keyword getTranslationKeyword_3_0() { return cTranslationKeyword_3_0; }
+		//"selfName"
+		public Keyword getSelfNameKeyword_3_0() { return cSelfNameKeyword_3_0; }
 
-		//translation=TranslationKind
-		public Assignment getTranslationAssignment_3_1() { return cTranslationAssignment_3_1; }
+		//selfName=EString
+		public Assignment getSelfNameAssignment_3_1() { return cSelfNameAssignment_3_1; }
 
-		//TranslationKind
-		public RuleCall getTranslationTranslationKindEnumRuleCall_3_1_0() { return cTranslationTranslationKindEnumRuleCall_3_1_0; }
+		//EString
+		public RuleCall getSelfNameEStringParserRuleCall_3_1_0() { return cSelfNameEStringParserRuleCall_3_1_0; }
 
-		//("elaborates" elaborates=[core::EventBNamed|EString])?
+		//("translation" translation=TranslationKind)?
 		public Group getGroup_4() { return cGroup_4; }
 
-		//"elaborates"
-		public Keyword getElaboratesKeyword_4_0() { return cElaboratesKeyword_4_0; }
+		//"translation"
+		public Keyword getTranslationKeyword_4_0() { return cTranslationKeyword_4_0; }
 
-		//elaborates=[core::EventBNamed|EString]
-		public Assignment getElaboratesAssignment_4_1() { return cElaboratesAssignment_4_1; }
+		//translation=TranslationKind
+		public Assignment getTranslationAssignment_4_1() { return cTranslationAssignment_4_1; }
 
-		//[core::EventBNamed|EString]
-		public CrossReference getElaboratesEventBNamedCrossReference_4_1_0() { return cElaboratesEventBNamedCrossReference_4_1_0; }
+		//TranslationKind
+		public RuleCall getTranslationTranslationKindEnumRuleCall_4_1_0() { return cTranslationTranslationKindEnumRuleCall_4_1_0; }
 
-		//EString
-		public RuleCall getElaboratesEventBNamedEStringParserRuleCall_4_1_0_1() { return cElaboratesEventBNamedEStringParserRuleCall_4_1_0_1; }
-
-		//("refines" refines=[Statemachine|EString])?
+		//("elaborates" elaborates=[core::EventBNamed|QString])?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"refines"
-		public Keyword getRefinesKeyword_5_0() { return cRefinesKeyword_5_0; }
+		//"elaborates"
+		public Keyword getElaboratesKeyword_5_0() { return cElaboratesKeyword_5_0; }
 
-		//refines=[Statemachine|EString]
-		public Assignment getRefinesAssignment_5_1() { return cRefinesAssignment_5_1; }
+		//elaborates=[core::EventBNamed|QString]
+		public Assignment getElaboratesAssignment_5_1() { return cElaboratesAssignment_5_1; }
 
-		//[Statemachine|EString]
-		public CrossReference getRefinesStatemachineCrossReference_5_1_0() { return cRefinesStatemachineCrossReference_5_1_0; }
+		//[core::EventBNamed|QString]
+		public CrossReference getElaboratesEventBNamedCrossReference_5_1_0() { return cElaboratesEventBNamedCrossReference_5_1_0; }
 
-		//EString
-		public RuleCall getRefinesStatemachineEStringParserRuleCall_5_1_0_1() { return cRefinesStatemachineEStringParserRuleCall_5_1_0_1; }
+		//QString
+		public RuleCall getElaboratesEventBNamedQStringParserRuleCall_5_1_0_1() { return cElaboratesEventBNamedQStringParserRuleCall_5_1_0_1; }
 
-		//("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)?
+		//("refines" refines=[Statemachine|QString])?
 		public Group getGroup_6() { return cGroup_6; }
 
-		//"nodes"
-		public Keyword getNodesKeyword_6_0() { return cNodesKeyword_6_0; }
+		//"refines"
+		public Keyword getRefinesKeyword_6_0() { return cRefinesKeyword_6_0; }
 
-		/// *'{'* / nodes+=AbstractNode
-		public Assignment getNodesAssignment_6_1() { return cNodesAssignment_6_1; }
+		//refines=[Statemachine|QString]
+		public Assignment getRefinesAssignment_6_1() { return cRefinesAssignment_6_1; }
 
-		//AbstractNode
-		public RuleCall getNodesAbstractNodeParserRuleCall_6_1_0() { return cNodesAbstractNodeParserRuleCall_6_1_0; }
+		//[Statemachine|QString]
+		public CrossReference getRefinesStatemachineCrossReference_6_1_0() { return cRefinesStatemachineCrossReference_6_1_0; }
 
-		//("," nodes+=AbstractNode)*
-		public Group getGroup_6_2() { return cGroup_6_2; }
+		//QString
+		public RuleCall getRefinesStatemachineQStringParserRuleCall_6_1_0_1() { return cRefinesStatemachineQStringParserRuleCall_6_1_0_1; }
 
-		//","
-		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
-
-		//nodes+=AbstractNode
-		public Assignment getNodesAssignment_6_2_1() { return cNodesAssignment_6_2_1; }
-
-		//AbstractNode
-		public RuleCall getNodesAbstractNodeParserRuleCall_6_2_1_0() { return cNodesAbstractNodeParserRuleCall_6_2_1_0; }
-
-		//("transitions" / *'{'* / transitions+=Transition / *","* / transitions+=Transition*)?
+		//(">" comment=EString)?
 		public Group getGroup_7() { return cGroup_7; }
 
+		//">"
+		public Keyword getGreaterThanSignKeyword_7_0() { return cGreaterThanSignKeyword_7_0; }
+
+		//comment=EString
+		public Assignment getCommentAssignment_7_1() { return cCommentAssignment_7_1; }
+
+		//EString
+		public RuleCall getCommentEStringParserRuleCall_7_1_0() { return cCommentEStringParserRuleCall_7_1_0; }
+
+		//("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)?
+		public Group getGroup_8() { return cGroup_8; }
+
+		//"nodes"
+		public Keyword getNodesKeyword_8_0() { return cNodesKeyword_8_0; }
+
+		/// *'{'* / nodes+=AbstractNode
+		public Assignment getNodesAssignment_8_1() { return cNodesAssignment_8_1; }
+
+		//AbstractNode
+		public RuleCall getNodesAbstractNodeParserRuleCall_8_1_0() { return cNodesAbstractNodeParserRuleCall_8_1_0; }
+
+		//("," nodes+=AbstractNode)*
+		public Group getGroup_8_2() { return cGroup_8_2; }
+
+		//","
+		public Keyword getCommaKeyword_8_2_0() { return cCommaKeyword_8_2_0; }
+
+		//nodes+=AbstractNode
+		public Assignment getNodesAssignment_8_2_1() { return cNodesAssignment_8_2_1; }
+
+		//AbstractNode
+		public RuleCall getNodesAbstractNodeParserRuleCall_8_2_1_0() { return cNodesAbstractNodeParserRuleCall_8_2_1_0; }
+
+		//("transitions" / *'{'* / transitions+=Transition / *","* / transitions+=Transition*)?
+		public Group getGroup_9() { return cGroup_9; }
+
 		//"transitions"
-		public Keyword getTransitionsKeyword_7_0() { return cTransitionsKeyword_7_0; }
+		public Keyword getTransitionsKeyword_9_0() { return cTransitionsKeyword_9_0; }
 
 		/// *'{'* / transitions+=Transition
-		public Assignment getTransitionsAssignment_7_1() { return cTransitionsAssignment_7_1; }
+		public Assignment getTransitionsAssignment_9_1() { return cTransitionsAssignment_9_1; }
 
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_7_1_0() { return cTransitionsTransitionParserRuleCall_7_1_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_9_1_0() { return cTransitionsTransitionParserRuleCall_9_1_0; }
 
 		/// *","* / transitions+=Transition*
-		public Assignment getTransitionsAssignment_7_2() { return cTransitionsAssignment_7_2; }
+		public Assignment getTransitionsAssignment_9_2() { return cTransitionsAssignment_9_2; }
 
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_7_2_0() { return cTransitionsTransitionParserRuleCall_7_2_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_9_2_0() { return cTransitionsTransitionParserRuleCall_9_2_0; }
 
 		////	'}'
 		//"end"
-		public Keyword getEndKeyword_8() { return cEndKeyword_8; }
+		public Keyword getEndKeyword_10() { return cEndKeyword_10; }
 	}
 
 	public class TransitionElements extends AbstractParserRuleElementFinder {
@@ -1447,7 +1481,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRefinesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cRefinesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final CrossReference cRefinesStateCrossReference_3_1_0 = (CrossReference)cRefinesAssignment_3_1.eContents().get(0);
-		private final RuleCall cRefinesStateEStringParserRuleCall_3_1_0_1 = (RuleCall)cRefinesStateCrossReference_3_1_0.eContents().get(1);
+		private final RuleCall cRefinesStateQStringParserRuleCall_3_1_0_1 = (RuleCall)cRefinesStateCrossReference_3_1_0.eContents().get(1);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cInvariantsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cInvariantsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -1469,7 +1503,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	//		('internalId' internalId=EString)?
 		//	//		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		//	//		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-		//	("refines" refines=[State|EString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//	("refines" refines=[State|QString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)? / *'}'* / ("statemachines" / *'{'* /
@@ -1481,7 +1515,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-		//("refines" refines=[State|EString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//("refines" refines=[State|QString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)? / *'}'* / ("statemachines" / *'{'* /
@@ -1501,20 +1535,20 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 
-		//("refines" refines=[State|EString])?
+		//("refines" refines=[State|QString])?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"refines"
 		public Keyword getRefinesKeyword_3_0() { return cRefinesKeyword_3_0; }
 
-		//refines=[State|EString]
+		//refines=[State|QString]
 		public Assignment getRefinesAssignment_3_1() { return cRefinesAssignment_3_1; }
 
-		//[State|EString]
+		//[State|QString]
 		public CrossReference getRefinesStateCrossReference_3_1_0() { return cRefinesStateCrossReference_3_1_0; }
 
-		//EString
-		public RuleCall getRefinesStateEStringParserRuleCall_3_1_0_1() { return cRefinesStateEStringParserRuleCall_3_1_0_1; }
+		//QString
+		public RuleCall getRefinesStateQStringParserRuleCall_3_1_0_1() { return cRefinesStateQStringParserRuleCall_3_1_0_1; }
 
 		//("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -1771,13 +1805,13 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//TypedParameter returns coreextension::TypedParameter: //	(localGenerated?='localGenerated')?
 		/// *'TypedParameter'* / name=EString //	'{'
 		//	//		('internalId' internalId=EString)?
-		//	"?" type=EString (">" comment=EString)?;
+		//	"∈" type=EString (">" comment=EString)?;
 		public ParserRule getRule() { return rule; }
 
 		////	(localGenerated?='localGenerated')?
 		/// *'TypedParameter'* / name=EString //	'{'
 		////		('internalId' internalId=EString)?
-		//"?" type=EString (">" comment=EString)?
+		//"∈" type=EString (">" comment=EString)?
 		public Group getGroup() { return cGroup; }
 
 		////	(localGenerated?='localGenerated')?
@@ -1789,7 +1823,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		////	'{'
 		////		('internalId' internalId=EString)?
-		//"?"
+		//"∈"
 		public Keyword getElementOfKeyword_1() { return cElementOfKeyword_1; }
 
 		//type=EString
@@ -2200,7 +2234,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QString returns ecore::EString:
-	//	STRING | ID ("?" ID)*;
+	//	STRING | ID ("·" ID)*;
 	public QStringElements getQStringAccess() {
 		return (pQString != null) ? pQString : (pQString = new QStringElements());
 	}
@@ -2367,10 +2401,9 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		('internalId' internalId=EString)?
 	//	//		('dataKind' dataKind=DataKind)?
 	//	//		'extensionId' extensionId=EString
-	//	//		('selfName' selfName=EString)?
-	//	(">" comment=EString)? ("translation" translation=TranslationKind)? ("elaborates"
-	//	elaborates=[core::EventBNamed|EString])? ("refines" refines=[Statemachine|EString])? //		('instances' instances=[core::EventBNamedCommentedElement|EString])?
-	//	//		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+	//	("instances" instances=[core::EventBNamedCommentedElement|QString])? ("selfName" selfName=EString)? ("translation"
+	//	translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? ("refines"
+	//	refines=[Statemachine|QString])? (">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)? / *'}'* / ("transitions" / *'{'* /
@@ -2422,7 +2455,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		('internalId' internalId=EString)?
 	//	//		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	//	//		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-	//	("refines" refines=[State|EString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+	//	("refines" refines=[State|QString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)? / *'}'* / ("statemachines" / *'{'* /
@@ -2537,7 +2570,7 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//TypedParameter returns coreextension::TypedParameter: //	(localGenerated?='localGenerated')?
 	/// *'TypedParameter'* / name=EString //	'{'
 	//	//		('internalId' internalId=EString)?
-	//	"?" type=EString (">" comment=EString)?;
+	//	"∈" type=EString (">" comment=EString)?;
 	public TypedParameterElements getTypedParameterAccess() {
 		return (pTypedParameter != null) ? pTypedParameter : (pTypedParameter = new TypedParameterElements());
 	}

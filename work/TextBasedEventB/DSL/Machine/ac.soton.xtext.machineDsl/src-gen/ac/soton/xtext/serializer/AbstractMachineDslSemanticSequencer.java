@@ -268,7 +268,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         refines=[State|EString]? 
+	 *         refines=[State|QString]? 
 	 *         (invariants+=Invariant invariants+=Invariant*)? 
 	 *         (statemachines+=Statemachine statemachines+=Statemachine*)?
 	 *     )
@@ -282,10 +282,12 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         comment=EString? 
+	 *         instances=[EventBNamedCommentedElement|QString]? 
+	 *         selfName=EString? 
 	 *         translation=TranslationKind? 
-	 *         elaborates=[EventBNamed|EString]? 
-	 *         refines=[Statemachine|EString]? 
+	 *         elaborates=[EventBNamed|QString]? 
+	 *         refines=[Statemachine|QString]? 
+	 *         comment=EString? 
 	 *         (nodes+=AbstractNode nodes+=AbstractNode*)? 
 	 *         (transitions+=Transition transitions+=Transition*)?
 	 *     )

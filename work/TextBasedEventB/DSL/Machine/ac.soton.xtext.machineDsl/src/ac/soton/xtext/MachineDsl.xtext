@@ -297,12 +297,14 @@ Action returns Action:
 //		('internalId' internalId=EString)?
 //		('dataKind' dataKind=DataKind)?
 //		'extensionId' extensionId=EString
-//		('selfName' selfName=EString)?
-		('>' comment=EString)?
+
+		('instances' instances=[core::EventBNamedCommentedElement|QString])?
+		('selfName' selfName=EString)?
 		('translation' translation=TranslationKind)?
-		('elaborates' elaborates=[core::EventBNamed|EString])?
-		('refines' refines=[Statemachine|EString])?
-//		('instances' instances=[core::EventBNamedCommentedElement|EString])?
+		('elaborates' elaborates=[core::EventBNamed|QString])?
+		('refines' refines=[Statemachine|QString])?
+		('>' comment=EString)?
+		
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
@@ -348,7 +350,7 @@ Action returns Action:
 //		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-		('refines' refines=[State|EString])?
+		('refines' refines=[State|QString])?
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
