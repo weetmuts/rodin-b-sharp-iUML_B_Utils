@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/ac.soton.eventb.text.feature_0.0.2.qualifier.jar" id="ac.soton.eventb.text.feature" version="0.0.2.qualifier">
-      <category name="Text Based EventB"/>
-   </feature>
-   <category-def name="Text Based EventB" label="Text Based EventB"/>
-</site>

@@ -1,0 +1,43 @@
+network
+ a set of points
+ a set of crossings
+ a set of ordinary??
+ a set of blocks "B"
+ a set of routes "R"
+
+ a set of reservedRoutes "resrt"
+ a set of reseverdBlocks "resbl"
+ a set of occupied reserved blocks "OCC"
+
+block 
+ a bool reserved
+ a bool occupied
+
+ can be ordinary?
+ can be point
+ can be crossing
+ 
+ a set of reservedForRoutes "rtbl"
+ a set of reservedRoutes, if block reserved "rsrtbl"
+
+route 
+ a bool formed
+ a bool reserved
+ a bool free
+ a seq reserved blocks "nxt"
+ a set of signal
+ a set of points
+ a firstBlock "fst"
+ a lastBlock "lst"
+
+point
+ a position=left or right
+
+crossing
+ .
+
+signal
+ a colour= red or green
+
+train
+ a route
