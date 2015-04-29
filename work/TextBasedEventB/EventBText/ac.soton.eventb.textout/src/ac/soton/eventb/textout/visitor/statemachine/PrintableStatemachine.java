@@ -16,6 +16,7 @@ import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.Transition;
 import ac.soton.eventb.textout.IPrintable;
+import ac.soton.eventb.textout.utils.ExportTextManager;
 import ac.soton.eventb.textout.visitor.machine.PrintableAction;
 import ac.soton.eventb.textout.visitor.machine.PrintableGuard;
 import ac.soton.eventb.textout.visitor.machine.PrintableInvariant;
@@ -40,9 +41,11 @@ public class PrintableStatemachine implements IPrintable {
 		
 		//construct the Statemachine title line
 		String firstLine = "Statemachine \""+ statemachine.getName()+"\"";
+		if (statemachine.getInstances()!=null) firstLine += " instances "+getQName(statemachine.getInstances());
+		if (statemachine.getSelfName()!=null && statemachine.getSelfName().length()>0) firstLine += " selfName \""+statemachine.getSelfName()+"\"";
 		firstLine += " translation "+statemachine.getTranslation().getLiteral();
 		if (statemachine.getElaborates()!=null) firstLine += " elaborates \""+statemachine.getElaborates().getName()+"\"";
-		if (statemachine.getRefines()!=null) firstLine += " refines \""+statemachine.getRefines().getName()+"\"";
+		if (statemachine.getRefines()!=null) firstLine += " refines "+getQName(statemachine.getRefines());
 		if (statemachine.getComment()!=null && statemachine.getComment().length()>0) 
 			firstLine += " >\""+statemachine.getComment()+"\"";
 		output.add(indent+firstLine);
@@ -83,7 +86,7 @@ public class PrintableStatemachine implements IPrintable {
 		//construct the Node title line
 		String firstLine = node.eClass().getName()+" \"" + node.getName() + "\"";
 		if (node instanceof State && ((State)node).getRefines()!=null ){
-			firstLine += " refines \""+((State)node).getRefines().getName()+"\"";
+			firstLine += " refines "+getQName(((State)node).getRefines());
 		}
 		output.add(indent+firstLine);
 		
