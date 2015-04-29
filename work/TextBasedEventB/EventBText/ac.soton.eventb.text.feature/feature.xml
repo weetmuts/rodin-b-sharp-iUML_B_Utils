@@ -33,7 +33,6 @@
       <import plugin="ac.soton.eventb.emf.diagrams" version="4.0.1" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.core.extension" version="4.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="compatible"/>
-      <import plugin="ac.soton.eventb.textout" version="0.0.2" match="compatible"/>
       <import plugin="org.eclipse.xtext" version="2.6.2" match="equivalent"/>
       <import plugin="org.eclipse.xtext.util" version="2.6.2" match="equivalent"/>
       <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
@@ -58,13 +57,6 @@
 
    <plugin
          id="ac.soton.eventb.textout"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.textToRodin"
          download-size="0"
          install-size="0"
          version="0.0.0"
