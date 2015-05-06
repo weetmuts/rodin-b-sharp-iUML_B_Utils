@@ -1041,29 +1041,24 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cElaboratesEventBNamedCrossReference_5_1_0 = (CrossReference)cElaboratesAssignment_5_1.eContents().get(0);
 		private final RuleCall cElaboratesEventBNamedQStringParserRuleCall_5_1_0_1 = (RuleCall)cElaboratesEventBNamedCrossReference_5_1_0.eContents().get(1);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cRefinesKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cRefinesAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final CrossReference cRefinesStatemachineCrossReference_6_1_0 = (CrossReference)cRefinesAssignment_6_1.eContents().get(0);
-		private final RuleCall cRefinesStatemachineQStringParserRuleCall_6_1_0_1 = (RuleCall)cRefinesStatemachineCrossReference_6_1_0.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cCommentAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cCommentEStringParserRuleCall_6_1_0 = (RuleCall)cCommentAssignment_6_1.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cGreaterThanSignKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cCommentAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cCommentEStringParserRuleCall_7_1_0 = (RuleCall)cCommentAssignment_7_1.eContents().get(0);
+		private final Keyword cNodesKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cNodesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cNodesAbstractNodeParserRuleCall_7_1_0 = (RuleCall)cNodesAssignment_7_1.eContents().get(0);
+		private final Group cGroup_7_2 = (Group)cGroup_7.eContents().get(2);
+		private final Keyword cCommaKeyword_7_2_0 = (Keyword)cGroup_7_2.eContents().get(0);
+		private final Assignment cNodesAssignment_7_2_1 = (Assignment)cGroup_7_2.eContents().get(1);
+		private final RuleCall cNodesAbstractNodeParserRuleCall_7_2_1_0 = (RuleCall)cNodesAssignment_7_2_1.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cNodesKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cNodesAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cNodesAbstractNodeParserRuleCall_8_1_0 = (RuleCall)cNodesAssignment_8_1.eContents().get(0);
-		private final Group cGroup_8_2 = (Group)cGroup_8.eContents().get(2);
-		private final Keyword cCommaKeyword_8_2_0 = (Keyword)cGroup_8_2.eContents().get(0);
-		private final Assignment cNodesAssignment_8_2_1 = (Assignment)cGroup_8_2.eContents().get(1);
-		private final RuleCall cNodesAbstractNodeParserRuleCall_8_2_1_0 = (RuleCall)cNodesAssignment_8_2_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cTransitionsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cTransitionsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cTransitionsTransitionParserRuleCall_9_1_0 = (RuleCall)cTransitionsAssignment_9_1.eContents().get(0);
-		private final Assignment cTransitionsAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
-		private final RuleCall cTransitionsTransitionParserRuleCall_9_2_0 = (RuleCall)cTransitionsAssignment_9_2.eContents().get(0);
-		private final Keyword cEndKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cTransitionsKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cTransitionsAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cTransitionsTransitionParserRuleCall_8_1_0 = (RuleCall)cTransitionsAssignment_8_1.eContents().get(0);
+		private final Assignment cTransitionsAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cTransitionsTransitionParserRuleCall_8_2_0 = (RuleCall)cTransitionsAssignment_8_2.eContents().get(0);
+		private final Keyword cEndKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//Statemachine: //	(localGenerated?='localGenerated')?
 		//	"Statemachine" name=EString //	'{'
@@ -1071,8 +1066,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	//		('dataKind' dataKind=DataKind)?
 		//	//		'extensionId' extensionId=EString
 		//	("instances" instances=[core::EventBNamedCommentedElement|QString])? ("selfName" selfName=EString)? ("translation"
-		//	translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? ("refines"
-		//	refines=[Statemachine|QString])? (">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//	translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? //		('refines' refines=[Statemachine|QString])?  			//cannot support refines due to getName() causing cyclic resolution
+		//	(">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)? / *'}'* / ("transitions" / *'{'* /
@@ -1086,8 +1081,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////		('dataKind' dataKind=DataKind)?
 		////		'extensionId' extensionId=EString
 		//("instances" instances=[core::EventBNamedCommentedElement|QString])? ("selfName" selfName=EString)? ("translation"
-		//translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? ("refines"
-		//refines=[Statemachine|QString])? (">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? //		('refines' refines=[Statemachine|QString])?  			//cannot support refines due to getName() causing cyclic resolution
+		//(">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)? / *'}'* / ("transitions" / *'{'* / transitions+=Transition
@@ -1159,78 +1154,63 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//QString
 		public RuleCall getElaboratesEventBNamedQStringParserRuleCall_5_1_0_1() { return cElaboratesEventBNamedQStringParserRuleCall_5_1_0_1; }
 
-		//("refines" refines=[Statemachine|QString])?
+		//(">" comment=EString)?
 		public Group getGroup_6() { return cGroup_6; }
 
-		//"refines"
-		public Keyword getRefinesKeyword_6_0() { return cRefinesKeyword_6_0; }
-
-		//refines=[Statemachine|QString]
-		public Assignment getRefinesAssignment_6_1() { return cRefinesAssignment_6_1; }
-
-		//[Statemachine|QString]
-		public CrossReference getRefinesStatemachineCrossReference_6_1_0() { return cRefinesStatemachineCrossReference_6_1_0; }
-
-		//QString
-		public RuleCall getRefinesStatemachineQStringParserRuleCall_6_1_0_1() { return cRefinesStatemachineQStringParserRuleCall_6_1_0_1; }
-
-		//(">" comment=EString)?
-		public Group getGroup_7() { return cGroup_7; }
-
 		//">"
-		public Keyword getGreaterThanSignKeyword_7_0() { return cGreaterThanSignKeyword_7_0; }
+		public Keyword getGreaterThanSignKeyword_6_0() { return cGreaterThanSignKeyword_6_0; }
 
 		//comment=EString
-		public Assignment getCommentAssignment_7_1() { return cCommentAssignment_7_1; }
+		public Assignment getCommentAssignment_6_1() { return cCommentAssignment_6_1; }
 
 		//EString
-		public RuleCall getCommentEStringParserRuleCall_7_1_0() { return cCommentEStringParserRuleCall_7_1_0; }
+		public RuleCall getCommentEStringParserRuleCall_6_1_0() { return cCommentEStringParserRuleCall_6_1_0; }
 
 		//("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)?
-		public Group getGroup_8() { return cGroup_8; }
+		public Group getGroup_7() { return cGroup_7; }
 
 		//"nodes"
-		public Keyword getNodesKeyword_8_0() { return cNodesKeyword_8_0; }
+		public Keyword getNodesKeyword_7_0() { return cNodesKeyword_7_0; }
 
 		/// *'{'* / nodes+=AbstractNode
-		public Assignment getNodesAssignment_8_1() { return cNodesAssignment_8_1; }
+		public Assignment getNodesAssignment_7_1() { return cNodesAssignment_7_1; }
 
 		//AbstractNode
-		public RuleCall getNodesAbstractNodeParserRuleCall_8_1_0() { return cNodesAbstractNodeParserRuleCall_8_1_0; }
+		public RuleCall getNodesAbstractNodeParserRuleCall_7_1_0() { return cNodesAbstractNodeParserRuleCall_7_1_0; }
 
 		//("," nodes+=AbstractNode)*
-		public Group getGroup_8_2() { return cGroup_8_2; }
+		public Group getGroup_7_2() { return cGroup_7_2; }
 
 		//","
-		public Keyword getCommaKeyword_8_2_0() { return cCommaKeyword_8_2_0; }
+		public Keyword getCommaKeyword_7_2_0() { return cCommaKeyword_7_2_0; }
 
 		//nodes+=AbstractNode
-		public Assignment getNodesAssignment_8_2_1() { return cNodesAssignment_8_2_1; }
+		public Assignment getNodesAssignment_7_2_1() { return cNodesAssignment_7_2_1; }
 
 		//AbstractNode
-		public RuleCall getNodesAbstractNodeParserRuleCall_8_2_1_0() { return cNodesAbstractNodeParserRuleCall_8_2_1_0; }
+		public RuleCall getNodesAbstractNodeParserRuleCall_7_2_1_0() { return cNodesAbstractNodeParserRuleCall_7_2_1_0; }
 
 		//("transitions" / *'{'* / transitions+=Transition / *","* / transitions+=Transition*)?
-		public Group getGroup_9() { return cGroup_9; }
+		public Group getGroup_8() { return cGroup_8; }
 
 		//"transitions"
-		public Keyword getTransitionsKeyword_9_0() { return cTransitionsKeyword_9_0; }
+		public Keyword getTransitionsKeyword_8_0() { return cTransitionsKeyword_8_0; }
 
 		/// *'{'* / transitions+=Transition
-		public Assignment getTransitionsAssignment_9_1() { return cTransitionsAssignment_9_1; }
+		public Assignment getTransitionsAssignment_8_1() { return cTransitionsAssignment_8_1; }
 
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_9_1_0() { return cTransitionsTransitionParserRuleCall_9_1_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_8_1_0() { return cTransitionsTransitionParserRuleCall_8_1_0; }
 
 		/// *","* / transitions+=Transition*
-		public Assignment getTransitionsAssignment_9_2() { return cTransitionsAssignment_9_2; }
+		public Assignment getTransitionsAssignment_8_2() { return cTransitionsAssignment_8_2; }
 
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_9_2_0() { return cTransitionsTransitionParserRuleCall_9_2_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_8_2_0() { return cTransitionsTransitionParserRuleCall_8_2_0; }
 
 		////	'}'
 		//"end"
-		public Keyword getEndKeyword_10() { return cEndKeyword_10; }
+		public Keyword getEndKeyword_9() { return cEndKeyword_9; }
 	}
 
 	public class TransitionElements extends AbstractParserRuleElementFinder {
@@ -1478,23 +1458,18 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cRefinesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cRefinesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cRefinesStateCrossReference_3_1_0 = (CrossReference)cRefinesAssignment_3_1.eContents().get(0);
-		private final RuleCall cRefinesStateQStringParserRuleCall_3_1_0_1 = (RuleCall)cRefinesStateCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cInvariantsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cInvariantsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cInvariantsInvariantParserRuleCall_3_1_0 = (RuleCall)cInvariantsAssignment_3_1.eContents().get(0);
+		private final Assignment cInvariantsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cInvariantsInvariantParserRuleCall_3_2_0 = (RuleCall)cInvariantsAssignment_3_2.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cInvariantsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cInvariantsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cInvariantsInvariantParserRuleCall_4_1_0 = (RuleCall)cInvariantsAssignment_4_1.eContents().get(0);
-		private final Assignment cInvariantsAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cInvariantsInvariantParserRuleCall_4_2_0 = (RuleCall)cInvariantsAssignment_4_2.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cStatemachinesKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cStatemachinesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cStatemachinesStatemachineParserRuleCall_5_1_0 = (RuleCall)cStatemachinesAssignment_5_1.eContents().get(0);
-		private final Assignment cStatemachinesAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cStatemachinesStatemachineParserRuleCall_5_2_0 = (RuleCall)cStatemachinesAssignment_5_2.eContents().get(0);
-		private final Keyword cEndKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
+		private final Keyword cStatemachinesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cStatemachinesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cStatemachinesStatemachineParserRuleCall_4_1_0 = (RuleCall)cStatemachinesAssignment_4_1.eContents().get(0);
+		private final Assignment cStatemachinesAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cStatemachinesStatemachineParserRuleCall_4_2_0 = (RuleCall)cStatemachinesAssignment_4_2.eContents().get(0);
+		private final Keyword cEndKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		
 		////	'}'
 		//State:
@@ -1503,7 +1478,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	//		('internalId' internalId=EString)?
 		//	//		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		//	//		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-		//	("refines" refines=[State|QString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		//	//		('refines' refines=[State|QString])?		//cannot support refines due to getName() causing cyclic resolution
+		//	//		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//	("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)? / *'}'* / ("statemachines" / *'{'* /
@@ -1515,7 +1491,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		////		('internalId' internalId=EString)?
 		////		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 		////		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-		//("refines" refines=[State|QString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+		////		('refines' refines=[State|QString])?		//cannot support refines due to getName() causing cyclic resolution
+		////		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 		////		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 		////		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 		//("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)? / *'}'* / ("statemachines" / *'{'* /
@@ -1535,59 +1512,44 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 
-		//("refines" refines=[State|QString])?
+		//("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)?
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"refines"
-		public Keyword getRefinesKeyword_3_0() { return cRefinesKeyword_3_0; }
-
-		//refines=[State|QString]
-		public Assignment getRefinesAssignment_3_1() { return cRefinesAssignment_3_1; }
-
-		//[State|QString]
-		public CrossReference getRefinesStateCrossReference_3_1_0() { return cRefinesStateCrossReference_3_1_0; }
-
-		//QString
-		public RuleCall getRefinesStateQStringParserRuleCall_3_1_0_1() { return cRefinesStateQStringParserRuleCall_3_1_0_1; }
-
-		//("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)?
-		public Group getGroup_4() { return cGroup_4; }
-
 		//"invariants"
-		public Keyword getInvariantsKeyword_4_0() { return cInvariantsKeyword_4_0; }
+		public Keyword getInvariantsKeyword_3_0() { return cInvariantsKeyword_3_0; }
 
 		/// *'{'* / invariants+=Invariant
-		public Assignment getInvariantsAssignment_4_1() { return cInvariantsAssignment_4_1; }
+		public Assignment getInvariantsAssignment_3_1() { return cInvariantsAssignment_3_1; }
 
 		//Invariant
-		public RuleCall getInvariantsInvariantParserRuleCall_4_1_0() { return cInvariantsInvariantParserRuleCall_4_1_0; }
+		public RuleCall getInvariantsInvariantParserRuleCall_3_1_0() { return cInvariantsInvariantParserRuleCall_3_1_0; }
 
 		/// *","* / invariants+=Invariant*
-		public Assignment getInvariantsAssignment_4_2() { return cInvariantsAssignment_4_2; }
+		public Assignment getInvariantsAssignment_3_2() { return cInvariantsAssignment_3_2; }
 
 		//Invariant
-		public RuleCall getInvariantsInvariantParserRuleCall_4_2_0() { return cInvariantsInvariantParserRuleCall_4_2_0; }
+		public RuleCall getInvariantsInvariantParserRuleCall_3_2_0() { return cInvariantsInvariantParserRuleCall_3_2_0; }
 
 		//("statemachines" / *'{'* / statemachines+=Statemachine / *","* / statemachines+=Statemachine* "end")?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"statemachines"
-		public Keyword getStatemachinesKeyword_5_0() { return cStatemachinesKeyword_5_0; }
+		public Keyword getStatemachinesKeyword_4_0() { return cStatemachinesKeyword_4_0; }
 
 		/// *'{'* / statemachines+=Statemachine
-		public Assignment getStatemachinesAssignment_5_1() { return cStatemachinesAssignment_5_1; }
+		public Assignment getStatemachinesAssignment_4_1() { return cStatemachinesAssignment_4_1; }
 
 		//Statemachine
-		public RuleCall getStatemachinesStatemachineParserRuleCall_5_1_0() { return cStatemachinesStatemachineParserRuleCall_5_1_0; }
+		public RuleCall getStatemachinesStatemachineParserRuleCall_4_1_0() { return cStatemachinesStatemachineParserRuleCall_4_1_0; }
 
 		/// *","* / statemachines+=Statemachine*
-		public Assignment getStatemachinesAssignment_5_2() { return cStatemachinesAssignment_5_2; }
+		public Assignment getStatemachinesAssignment_4_2() { return cStatemachinesAssignment_4_2; }
 
 		//Statemachine
-		public RuleCall getStatemachinesStatemachineParserRuleCall_5_2_0() { return cStatemachinesStatemachineParserRuleCall_5_2_0; }
+		public RuleCall getStatemachinesStatemachineParserRuleCall_4_2_0() { return cStatemachinesStatemachineParserRuleCall_4_2_0; }
 
 		//"end"
-		public Keyword getEndKeyword_5_3() { return cEndKeyword_5_3; }
+		public Keyword getEndKeyword_4_3() { return cEndKeyword_4_3; }
 	}
 
 	public class InitialElements extends AbstractParserRuleElementFinder {
@@ -2402,8 +2364,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		('dataKind' dataKind=DataKind)?
 	//	//		'extensionId' extensionId=EString
 	//	("instances" instances=[core::EventBNamedCommentedElement|QString])? ("selfName" selfName=EString)? ("translation"
-	//	translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? ("refines"
-	//	refines=[Statemachine|QString])? (">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+	//	translation=TranslationKind)? ("elaborates" elaborates=[core::EventBNamed|QString])? //		('refines' refines=[Statemachine|QString])?  			//cannot support refines due to getName() causing cyclic resolution
+	//	(">" comment=EString)? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("nodes" / *'{'* / nodes+=AbstractNode ("," nodes+=AbstractNode)*)? / *'}'* / ("transitions" / *'{'* /
@@ -2455,7 +2417,8 @@ public class MachineDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	//		('internalId' internalId=EString)?
 	//	//		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 	//	//		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-	//	("refines" refines=[State|QString])? //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
+	//	//		('refines' refines=[State|QString])?		//cannot support refines due to getName() causing cyclic resolution
+	//	//		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 	//	//		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 	//	//		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?
 	//	("invariants" / *'{'* / invariants+=Invariant / *","* / invariants+=Invariant*)? / *'}'* / ("statemachines" / *'{'* /

@@ -2,6 +2,7 @@ package ac.soton.eventb.textout;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eventb.emf.persistence.EMFRodinDB;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -12,6 +13,11 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ac.soton.eventb.textOut"; //$NON-NLS-1$
 
+	/**
+	 * Create an EMFRodinDB for loading/saving components into EMF
+	 */
+	public final static EMFRodinDB emfRodinDB = new EMFRodinDB();
+	
 	// The shared instance
 	private static Activator plugin;
 	

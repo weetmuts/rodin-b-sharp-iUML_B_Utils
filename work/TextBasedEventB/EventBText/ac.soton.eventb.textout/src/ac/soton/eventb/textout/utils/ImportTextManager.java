@@ -14,10 +14,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
+import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.impl.ContextImpl;
+import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.impl.MachineImpl;
-import org.eventb.emf.persistence.EMFRodinDB;
 import org.rodinp.core.IRodinProject;
+
+import ac.soton.eventb.statemachines.State;
+import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.eventb.statemachines.StatemachinesPackage;
+import ac.soton.eventb.textout.Activator;
 
 public class ImportTextManager {
 
@@ -59,12 +65,23 @@ public class ImportTextManager {
 //		c.add(e);
 		// xtext doesn't support bidirectional associations so first we need to fix them up
 		fixEOpposites(e);
+		// some refines references are not supported in xtext so we set them based on name
+		if (e.getClass() == machineClazz && ((Machine)e).getRefines().size()>0){
+			setRefines(e, ((Machine)e).getRefines().get(0) );
+		}
+
 		//save as a Rodin model
-		Resource res = EMFRodinDB.INSTANCE.saveResource(uri2, (EventBElement)e);
+		Resource res = Activator.emfRodinDB.saveResource(uri2, (EventBElement)e);
+		String filename = res==null? null : res.getURI().lastSegment();
 		
-		return res==null? null : res.getURI().lastSegment();
+		res.eSetDeliver(false);
+		res.unload();
+		res.getResourceSet().getResources().remove(res);
+		
+		return filename;
 	}
-	
+
+
 	/**
 	 * This recursively traverses the model finding any reference associations that 
 	 * should be bidirectional (i.e. have an inverse). If the inverse is not set appropriately it is added
@@ -107,5 +124,31 @@ public class ImportTextManager {
 					owner.eSetDeliver(d);
 			}
 		}
+	}
+	
+	
+	private static void setRefines(EObject e, Machine r) {
+		if (e instanceof EventBNamed){
+			String name = ((EventBNamed)e).getName();
+			EClass clazz = e.eClass();
+			if (clazz == StatemachinesPackage.Literals.STATEMACHINE){
+				((Statemachine)e).setRefines((Statemachine)find(r,name,clazz));
+			}else if (clazz == StatemachinesPackage.Literals.STATE){
+				((State)e).setRefines((State)find(r,name,clazz));	
+			}
+			for (EObject c : e.eContents()){
+				setRefines(c, r);
+			}
+		}
+
+	}
+	
+	private static EObject find(EventBObject parent, String name, EClass clazz){
+		for (EObject eo : parent.getAllContained(clazz, false)){
+			if (eo instanceof EventBNamed && name.equals(((EventBNamed)eo).getName())){
+				return eo;
+			}
+		};
+		return null;
 	}
 }

@@ -266,12 +266,7 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         name=EString 
-	 *         refines=[State|QString]? 
-	 *         (invariants+=Invariant invariants+=Invariant*)? 
-	 *         (statemachines+=Statemachine statemachines+=Statemachine*)?
-	 *     )
+	 *     (name=EString (invariants+=Invariant invariants+=Invariant*)? (statemachines+=Statemachine statemachines+=Statemachine*)?)
 	 */
 	protected void sequence_State(EObject context, State semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -286,7 +281,6 @@ public abstract class AbstractMachineDslSemanticSequencer extends AbstractDelega
 	 *         selfName=EString? 
 	 *         translation=TranslationKind? 
 	 *         elaborates=[EventBNamed|QString]? 
-	 *         refines=[Statemachine|QString]? 
 	 *         comment=EString? 
 	 *         (nodes+=AbstractNode nodes+=AbstractNode*)? 
 	 *         (transitions+=Transition transitions+=Transition*)?

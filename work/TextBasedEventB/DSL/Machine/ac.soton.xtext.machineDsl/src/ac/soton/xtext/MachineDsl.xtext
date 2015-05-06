@@ -302,7 +302,7 @@ Action returns Action:
 		('selfName' selfName=EString)?
 		('translation' translation=TranslationKind)?
 		('elaborates' elaborates=[core::EventBNamed|QString])?
-		('refines' refines=[Statemachine|QString])?
+//		('refines' refines=[Statemachine|QString])?  			//cannot support refines due to getName() causing cyclic resolution
 		('>' comment=EString)?
 		
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
@@ -350,7 +350,7 @@ Action returns Action:
 //		('internalId' internalId=EString)?
 //		('incoming' '(' incoming+=[Transition|EString] ( "," incoming+=[Transition|EString])* ')' )?
 //		('outgoing' '(' outgoing+=[Transition|EString] ( "," outgoing+=[Transition|EString])* ')' )?
-		('refines' refines=[State|QString])?
+//		('refines' refines=[State|QString])?		//cannot support refines due to getName() causing cyclic resolution
 //		('annotations' '{' annotations+=Annotation ( "," annotations+=Annotation)* '}' )?
 //		('extensions' '{' extensions+=AbstractExtension ( "," extensions+=AbstractExtension)* '}' )?
 //		('attributes' '{' attributes+=StringToAttributeMapEntry ( "," attributes+=StringToAttributeMapEntry)* '}' )?

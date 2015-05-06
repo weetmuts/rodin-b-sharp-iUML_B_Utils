@@ -16,7 +16,6 @@ import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.Transition;
 import ac.soton.eventb.textout.IPrintable;
-import ac.soton.eventb.textout.utils.ExportTextManager;
 import ac.soton.eventb.textout.visitor.machine.PrintableAction;
 import ac.soton.eventb.textout.visitor.machine.PrintableGuard;
 import ac.soton.eventb.textout.visitor.machine.PrintableInvariant;
@@ -45,7 +44,8 @@ public class PrintableStatemachine implements IPrintable {
 		if (statemachine.getSelfName()!=null && statemachine.getSelfName().length()>0) firstLine += " selfName \""+statemachine.getSelfName()+"\"";
 		firstLine += " translation "+statemachine.getTranslation().getLiteral();
 		if (statemachine.getElaborates()!=null) firstLine += " elaborates \""+statemachine.getElaborates().getName()+"\"";
-		if (statemachine.getRefines()!=null) firstLine += " refines "+getQName(statemachine.getRefines());
+		// we do not support refines in xtext version as getName() with refines set causes cyclic resolution exceptions
+		//if (statemachine.getRefines()!=null) firstLine += " refines "+getQName(statemachine.getRefines());
 		if (statemachine.getComment()!=null && statemachine.getComment().length()>0) 
 			firstLine += " >\""+statemachine.getComment()+"\"";
 		output.add(indent+firstLine);
@@ -86,7 +86,8 @@ public class PrintableStatemachine implements IPrintable {
 		//construct the Node title line
 		String firstLine = node.eClass().getName()+" \"" + node.getName() + "\"";
 		if (node instanceof State && ((State)node).getRefines()!=null ){
-			firstLine += " refines "+getQName(((State)node).getRefines());
+		// we do not support refines in xtext version as getName() with refines set causes cyclic resolution exceptions
+		//	firstLine += " refines "+getQName(((State)node).getRefines());
 		}
 		output.add(indent+firstLine);
 		
@@ -177,6 +178,7 @@ public class PrintableStatemachine implements IPrintable {
 	}
 	
 	private String getQName(EventBElement el){
+		if (el==null) return "<error>";
 		String qn = el.getReference();
 		qn = qn.substring(qn.lastIndexOf("::")+2);
 		qn = qn.replace('.', '\u00b7');

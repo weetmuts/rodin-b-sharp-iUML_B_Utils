@@ -24,7 +24,6 @@ import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.impl.ContextImpl;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.impl.MachineImpl;
-import org.eventb.emf.persistence.EMFRodinDB;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.IRodinProject;
 import org.rodinp.core.RodinDBException;
@@ -59,8 +58,12 @@ public class ExportTextManager {
 		unsupportedFeatures.add(CorePackage.Literals.ABSTRACT_EXTENSION__EXTENSION_ID);
 		unsupportedFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES);
 		unsupportedFeatures.add(CorePackage.Literals.EVENT_BELEMENT__LOCAL_GENERATED);
-		//these should be supported!!
-		unsupportedFeatures.add(StatemachinesPackage.Literals.STATEMACHINE__SELF_NAME);
+		
+		//these cause cyclic resolution exceptions because if not null they are used in getName()
+		// instead we leave them out and populate refines based on name when importing text
+		unsupportedFeatures.add(StatemachinesPackage.Literals.STATEMACHINE__REFINES);
+		unsupportedFeatures.add(StatemachinesPackage.Literals.STATE__REFINES);
+
 	}
 	
 	/**
@@ -77,7 +80,7 @@ public class ExportTextManager {
 		// Load the EMF model associated with the machine/context
 		IResource rodinResource = rodinElement.getResource();
 		URI uri = URI.createPlatformResourceURI(rodinResource.getFullPath().toOSString(), true);
-		EObject element = EMFRodinDB.INSTANCE.loadEventBComponent(uri);
+		EObject element = Activator.emfRodinDB.loadEventBComponent(uri);
 		
 		if (element instanceof Machine){
 			uri = uri.trimFileExtension().appendFileExtension("mch");
@@ -93,7 +96,7 @@ public class ExportTextManager {
 			EObject result = element;
 			if (result instanceof EventBElement){
 				clean(result);  //removes the unsupported features
-				EMFRodinDB.INSTANCE.saveResource(uri, (EventBElement)result);
+				//EMFRodinDB.INSTANCE.saveResource(uri, (EventBElement)result);
 			}
 		}else{
 			List<String> output = new ArrayList<String>();

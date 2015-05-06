@@ -30,5 +30,5 @@ Export-Package: ac.soton.xtext,
  ac.soton.xtext.scoping,
  ac.soton.xtext.generator,
  ac.soton.xtext.formatting
-Import-Package: org.apache.log4j;version="1.2.15",
+Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
