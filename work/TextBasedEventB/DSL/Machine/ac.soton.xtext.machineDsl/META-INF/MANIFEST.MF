@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ac.soton.xtext.machineDsl
-Bundle-Vendor: University of Southampton
-Bundle-Version: 0.0.2.qualifier
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Version: 0.0.3.qualifier
 Bundle-SymbolicName: ac.soton.xtext.machineDsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.6.2,2.7.0)";visibility:=reexport,
