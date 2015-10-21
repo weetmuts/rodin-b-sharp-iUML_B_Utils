@@ -1,2 +1,0 @@
-. Refinement applied to other modelling / higher-level languages
-. Generic instantiation
