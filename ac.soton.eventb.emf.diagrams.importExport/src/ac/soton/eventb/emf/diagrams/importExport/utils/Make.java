@@ -13,17 +13,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.emf.core.AbstractExtension;
 
-import ac.soton.eventb.emf.diagrams.importExport.GenerationDescriptor;
+import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 
 
 /**
- * This is a collection of static convenience methods for making objects that are needed in generator Rules
+ * This is a collection of static convenience methods for making objects that are needed in translator Rules
  * 
  */
 
 public class Make {
 	
-	public static String generatedById(EObject sourceElement){
+	public static String translatedById(EObject sourceElement){
 		if (sourceElement instanceof AbstractExtension){
 			return ((AbstractExtension)sourceElement).getExtensionId();
 		}else{
@@ -31,12 +31,12 @@ public class Make {
 		}
 	}
 	
-	public static GenerationDescriptor descriptor(EObject parent, EStructuralFeature feature, Object value, int priority){
-		return new GenerationDescriptor(parent,feature,value,Integer.valueOf(priority));
+	public static TranslationDescriptor descriptor(EObject parent, EStructuralFeature feature, Object value, int priority){
+		return new TranslationDescriptor(parent,feature,value,Integer.valueOf(priority));
 	}
 	
-	public static GenerationDescriptor descriptor(EObject parent, EStructuralFeature feature, Object value , int priority, Boolean remove) {
-		return new GenerationDescriptor(parent, feature,value,Integer.valueOf(priority), remove);
+	public static TranslationDescriptor descriptor(EObject parent, EStructuralFeature feature, Object value , int priority, Boolean remove) {
+		return new TranslationDescriptor(parent, feature,value,Integer.valueOf(priority), remove);
 	}
 	
 }

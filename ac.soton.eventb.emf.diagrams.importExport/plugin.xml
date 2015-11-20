@@ -42,7 +42,7 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="ac.soton.eventb.emf.diagrams.importExport.actions.ImportAction"
+            class="ac.soton.eventb.emf.diagrams.importExport.actions.TranslateAction"
             commandId="ac.soton.eventb.emf.diagrams.importexport.import2iUMLB">
          <enabledWhen>
             <with

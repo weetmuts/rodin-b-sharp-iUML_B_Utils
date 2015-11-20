@@ -14,29 +14,29 @@ import org.eventb.emf.core.machine.Machine;
 
 import ac.soton.eventb.emf.diagrams.importExport.utils.Is;
 
-public class GeneratedRemover {
+public class Remover {
 
 	private final List<Resource> resources;
-	private String generatedByID;
+	private String translatedByID;
 	private List<Resource> modifiedResources;
 	
-	public GeneratedRemover(final List<Resource> resources, String generatedByID) {
+	public Remover(final List<Resource> resources, String translatedByID) {
 		this.resources = resources;
-		this.generatedByID = generatedByID;
+		this.translatedByID = translatedByID;
 	}
 	
 	public boolean canExecute(){
-		return resources!=null && generatedByID!=null ;
+		return resources!=null && translatedByID!=null ;
 	}	
 	
-	public List<Resource> removeGenerated(){
+	public List<Resource> removeTranslated(){
 		modifiedResources = new ArrayList<Resource>();
 		if (canExecute()){
 			for (Resource res : resources){
 				EObject component = res.getContents().get(0);
 				if (component instanceof EventBNamedCommentedComponentElement){
-					List<EObject> previouslyGeneratedElements = getPreviouslyGeneratedElements((EventBNamedCommentedComponentElement) component);
-					for (EObject eObject : previouslyGeneratedElements){
+					List<EObject> previouslyTranslatedElements = getPreviouslyTranslatedElements((EventBNamedCommentedComponentElement) component);
+					for (EObject eObject : previouslyTranslatedElements){
 						EcoreUtil.delete(eObject, true);	//this deletes the object from its containment and removes all references to it and its content
 					}
 				}
@@ -46,11 +46,11 @@ public class GeneratedRemover {
 	}
 	
 	/*
-	 * finds all elements that have previously been generated with this generators generatorByID
+	 * finds all elements that have previously been translated with this translators translatedByID
 	 * Returns a list of the modified resources
 	 * @return List of elements
 	 */
-	private ArrayList<EObject> getPreviouslyGeneratedElements(final EventBNamedCommentedComponentElement component) {
+	private ArrayList<EObject> getPreviouslyTranslatedElements(final EventBNamedCommentedComponentElement component) {
 		EList<EObject> contents = component.getAllContained(CorePackage.eINSTANCE.getEventBElement(),false);
 		contents.remove(null);
 		contents.add(0,component);
@@ -62,7 +62,7 @@ public class GeneratedRemover {
 //					if(!ctx.getName().equals(((Machine)eObject).getName() + "_implicitContext"))	
 //						continue;
 					for(EObject ieObject : ctx.eContents()){
-						if(Is.generatedBy(ieObject, generatedByID)){
+						if(Is.translatedBy(ieObject, translatedByID)){
 							remove.add(ieObject);
 							if(!modifiedResources.contains(ctx))
 								modifiedResources.add(ctx.eResource());
@@ -74,7 +74,7 @@ public class GeneratedRemover {
 				}
 
 			}
-			if (Is.generatedBy(eObject,generatedByID)){
+			if (Is.translatedBy(eObject,translatedByID)){
 				remove.add(eObject);						
 			}
 			

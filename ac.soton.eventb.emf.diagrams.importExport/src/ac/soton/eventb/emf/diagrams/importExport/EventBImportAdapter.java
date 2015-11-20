@@ -1,4 +1,4 @@
-package ac.soton.iumlb.scxml.importer;
+package ac.soton.eventb.emf.diagrams.importExport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBNamed;
+import org.eventb.emf.core.EventBNamedCommentedActionElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
@@ -21,45 +22,54 @@ import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.persistence.AttributeIdentifiers;
 
-import ac.soton.eventb.emf.diagrams.importExport.GenerationDescriptor;
-import ac.soton.eventb.emf.diagrams.importExport.IPorterAdapter;
+/**
+ * this implementation of IAdapter can be used for importers that target
+ *  the EventB EMF meta-model and its extensions
+ * 
+ * @author cfs
+ *
+ */
 
+public class EventBImportAdapter implements IAdapter {
 
-
-public class IumlbScxmlPorterAdapter implements IPorterAdapter {
-
+	/**
+	 * 
+	 */
 	@Override
-	public URI getComponentURI(GenerationDescriptor generationDescriptor, EObject rootElement) {
-		if (generationDescriptor.remove == false && 
-				generationDescriptor.feature == CorePackage.Literals.PROJECT__COMPONENTS &&
-				generationDescriptor.value instanceof EventBNamedCommentedComponentElement){
+	public URI getComponentURI(TranslationDescriptor translationDescriptor, EObject rootElement) {
+		if (translationDescriptor.remove == false && 
+				translationDescriptor.feature == CorePackage.Literals.PROJECT__COMPONENTS &&
+				translationDescriptor.value instanceof EventBNamedCommentedComponentElement){
 			String projectName = EcoreUtil.getURI(rootElement).segment(1);
 			URI projectUri = URI.createPlatformResourceURI(projectName, true);
-			String fileName = ((EventBNamed)generationDescriptor.value).getName();
-			String ext = generationDescriptor.value instanceof Context? "buc" :  "bum";
+			String fileName = ((EventBNamed)translationDescriptor.value).getName();
+			String ext = translationDescriptor.value instanceof Context? "buc" :  "bum";
 			URI fileUri = projectUri.appendSegment(fileName).appendFileExtension(ext); //$NON-NLS-1$
 			return fileUri;
 		}
 		return null;
 	}
 	
+	/**
+	 * filter
+	 */
 	@Override
-	public boolean filter(GenerationDescriptor generationDescriptor) {
+	public boolean filter(TranslationDescriptor translationDescriptor) {
 		
 		//filter any new elements that are already there 	
-		if (generationDescriptor.parent==null) return false;
-		Object featureValue = generationDescriptor.parent.eGet(generationDescriptor.feature);
+		if (translationDescriptor.parent==null) return false;
+		Object featureValue = translationDescriptor.parent.eGet(translationDescriptor.feature);
 		if (featureValue instanceof EList){
 			EList<?> list = (EList<?>)featureValue;
 			for (Object el : list){
-				if (match(el,generationDescriptor.value)) return true;
+				if (match(el,translationDescriptor.value)) return true;
 			}
 		}
 		
 		// filter any new values which are already present by event extension
-		if (generationDescriptor.parent instanceof Event){
-			for (Object el : getExtendedValues((Event)generationDescriptor.parent,generationDescriptor.feature)){
-				if (match(el,generationDescriptor.value)) return true;
+		if (translationDescriptor.parent instanceof Event){
+			for (Object el : getExtendedValues((Event)translationDescriptor.parent,translationDescriptor.feature)){
+				if (match(el,translationDescriptor.value)) return true;
 			}
 		}
 
@@ -86,9 +96,9 @@ public class IumlbScxmlPorterAdapter implements IPorterAdapter {
 		}
 	}
 ///end of filter
-	
-	///match
-	/*
+
+	/**
+	 * match
 	 * test whether two elements should be considered to be the same in event B terms
 	 */
 	
@@ -99,6 +109,11 @@ public class IumlbScxmlPorterAdapter implements IPorterAdapter {
 			return stringEquivalent(
 					((EventBNamedCommentedPredicateElement)el1).getPredicate(),
 					((EventBNamedCommentedPredicateElement)el2).getPredicate()
+					);
+		}else if (el1 instanceof EventBNamedCommentedActionElement){	
+			return stringEquivalent(
+					((EventBNamedCommentedActionElement)el1).getAction(),
+					((EventBNamedCommentedActionElement)el2).getAction()
 					);
 		} else if (el1 instanceof EventBNamedCommentedElement){
 			String s1 = ((EventBNamedCommentedElement)el1).getName();
@@ -119,6 +134,9 @@ public class IumlbScxmlPorterAdapter implements IPorterAdapter {
 
 	////end of match
 	
+	/**
+	 * get the generator ID from the given EObject
+	 */
 	@Override
 	public Object getGeneratorId(EObject eObject){
 		return eObject instanceof EventBElement ? 
@@ -127,7 +145,7 @@ public class IumlbScxmlPorterAdapter implements IPorterAdapter {
 				null;
 	}
 
-	/*
+	/**
 	 * adds attributes to record:
 	 * a) the id of the extension that generated this element
 	 * b) the fact that this element is generated
@@ -149,7 +167,7 @@ public class IumlbScxmlPorterAdapter implements IPorterAdapter {
 		}
 	}
 	
-	/*
+	/**
 	 * adds attributes to record:
 	 * a) the priority of this element for ordering
 	 * 

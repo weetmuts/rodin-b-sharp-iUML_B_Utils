@@ -8,18 +8,18 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 
-import ac.soton.eventb.emf.diagrams.importExport.IPorterAdapter;
+import ac.soton.eventb.emf.diagrams.importExport.IAdapter;
 import ac.soton.eventb.emf.diagrams.importExport.IRule;
 
-public class ImporterConfig{
-	public String generatorID;
+public class TranslatorConfig{
+	public String translatorID;
 	public EPackage rootSourcePackage;
 	public EClassifier rootSourceClass;
 	public Map<EClassifier, List<IRule>> ruleMapping;
-	public IPorterAdapter adapter;
+	public IAdapter adapter;
 	
-	public ImporterConfig(String generatorID, EPackage rootSourcePackage, EClassifier rootSourceClass, IPorterAdapter adapter){
-		this.generatorID = generatorID;
+	public TranslatorConfig(String translatorID, EPackage rootSourcePackage, EClassifier rootSourceClass, IAdapter adapter){
+		this.translatorID = translatorID;
 		this.rootSourcePackage = rootSourcePackage;
 		this.rootSourceClass = rootSourceClass;
 		this.adapter = adapter;

@@ -21,12 +21,12 @@ import org.rodinp.core.RodinCore;
 import org.rodinp.core.RodinDBException;
 
 import ac.soton.eventb.emf.diagrams.importExport.Activator;
-import ac.soton.eventb.emf.diagrams.importExport.impl.Importer;
-import ac.soton.eventb.emf.diagrams.importExport.impl.ImporterFactory;
+import ac.soton.eventb.emf.diagrams.importExport.impl.Translator;
+import ac.soton.eventb.emf.diagrams.importExport.impl.TranslatorFactory;
 import ac.soton.eventb.emf.diagrams.importExport.impl.Messages;
 
-//////////////////////GENERATE COMMAND//////////////////////////
-public class ImportCommand extends AbstractEMFOperation {
+//////////////////////TRANSLATE COMMAND//////////////////////////
+public class TranslateCommand extends AbstractEMFOperation {
 
 	private EObject element;
 
@@ -35,8 +35,8 @@ public class ImportCommand extends AbstractEMFOperation {
 	 * @param label
 	 * @param affectedFiles
 	 */
-	public ImportCommand(TransactionalEditingDomain editingDomain, EObject rootEl) {
-		super(editingDomain, Messages.GENERATOR_MSG_11, null);
+	public TranslateCommand(TransactionalEditingDomain editingDomain, EObject rootEl) {
+		super(editingDomain, Messages.TRANSLATOR_MSG_11, null);
 		setOptions(Collections.singletonMap(Transaction.OPTION_UNPROTECTED, Boolean.TRUE));
 		if (rootEl.eIsProxy()){
 			this.element = EcoreUtil.resolve(rootEl, editingDomain.getResourceSet());
@@ -73,22 +73,19 @@ public class ImportCommand extends AbstractEMFOperation {
 					TransactionalEditingDomain editingDomain = getEditingDomain();
 					final List<Resource> modifiedResources;
 					
-					monitor.beginTask(Messages.GENERATOR_MSG_12,10);		
-					monitor.setTaskName(Messages.GENERATOR_MSG_13(element)); 
-
-					// flush the command stack as this is unprotected and has no undo/redo
-					//editingDomain.getCommandStack().flush();		//Was causing an exception in Rodin editor - seems ok without this!
+					monitor.beginTask(Messages.TRANSLATOR_MSG_12,10);		
+					monitor.setTaskName(Messages.TRANSLATOR_MSG_13(element)); 
 					
 					monitor.worked(1);
-			        monitor.subTask(Messages.GENERATOR_MSG_14);
-					//try to create an appropriate generator
+			        monitor.subTask(Messages.TRANSLATOR_MSG_14);
 			        
-					Importer importer = ImporterFactory.getFactory().createGenerator(element.eClass());
+					//try to create an appropriate translator
+					Translator translator = TranslatorFactory.getFactory().createTranslator(element.eClass());
 					monitor.worked(2);
-			        monitor.subTask(Messages.GENERATOR_MSG_15);
+			        monitor.subTask(Messages.TRANSLATOR_MSG_15);
 			        
-			        //try to run the generation
-					modifiedResources = importer.generate(editingDomain,element);
+			        //try to run the translation
+					modifiedResources = translator.translate(editingDomain,element);
 					
 					
 					monitor.worked(4);
@@ -96,15 +93,11 @@ public class ImportCommand extends AbstractEMFOperation {
 						
 						//ErrorDialog errorDialog = new ErrorDialog(diagramEditor.getSite().getShell(), label, label, null, 0); 
 						//should display a message here 
-						//"Generation Failed - see error log for details"
+						//"Translation Failed - see error log for details"
 						
 					}else{
-//						if (element.eIsProxy()){
-//							element = EcoreUtil.resolve(element, editingDomain.getResourceSet());
-//						}
-//						modifiedResources.add(element.eResource());
 						//try to save all the modified resources
-				        monitor.subTask(Messages.GENERATOR_MSG_16);
+				        monitor.subTask(Messages.TRANSLATOR_MSG_16);
 				        List<Resource> saved = new ArrayList<Resource>();
 						for (Resource resource : modifiedResources){
 							try {
@@ -116,7 +109,7 @@ public class ImportCommand extends AbstractEMFOperation {
 							} catch (IOException e) {
 								//throw this as a CoreException
 								throw new CoreException(
-										new Status(Status.ERROR, Activator.PLUGIN_ID, Messages.GENERATOR_MSG_18(resource), e));
+										new Status(Status.ERROR, Activator.PLUGIN_ID, Messages.TRANSLATOR_MSG_18(resource), e));
 							}					
 						}
 						
@@ -129,7 +122,7 @@ public class ImportCommand extends AbstractEMFOperation {
 			return Status.OK_STATUS;
 
 		} catch (RodinDBException e) {
-			Activator.logError(Messages.GENERATOR_MSG_19, e);
+			Activator.logError(Messages.TRANSLATOR_MSG_19, e);
 			return e.getStatus();
 			
 		} finally {

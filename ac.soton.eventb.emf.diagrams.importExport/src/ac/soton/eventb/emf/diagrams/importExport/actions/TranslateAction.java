@@ -28,8 +28,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eventb.emf.persistence.EMFRodinDB;
 
 import ac.soton.eventb.emf.diagrams.importExport.Activator;
-import ac.soton.eventb.emf.diagrams.importExport.command.ImportCommand;
-import ac.soton.eventb.emf.diagrams.importExport.impl.ImporterFactory;
+import ac.soton.eventb.emf.diagrams.importExport.command.TranslateCommand;
+import ac.soton.eventb.emf.diagrams.importExport.impl.TranslatorFactory;
 import ac.soton.eventb.emf.diagrams.importExport.impl.Messages;
 
 /**
@@ -38,7 +38,7 @@ import ac.soton.eventb.emf.diagrams.importExport.impl.Messages;
  * @author colin 
  *
  */
-public class ImportAction extends AbstractHandler {
+public class TranslateAction extends AbstractHandler {
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
@@ -57,7 +57,7 @@ public class ImportAction extends AbstractHandler {
 				sourceElement = (EObject)obj;
 			}
 		}
-		if (sourceElement!=null && ImporterFactory.getFactory().canGenerate(sourceElement.eClass())){
+		if (sourceElement!=null && TranslatorFactory.getFactory().canTranslate(sourceElement.eClass())){
 			// save before transformation
 			final IEditorPart editor = HandlerUtil.getActiveEditor(event);
 			if (!(editor instanceof IEditingDomainProvider)) return null;
@@ -69,33 +69,33 @@ public class ImportAction extends AbstractHandler {
 //			}
 			
 			EMFRodinDB erd = new EMFRodinDB();
-			final ImportCommand importCommand = new ImportCommand(erd.getEditingDomain(), sourceElement);
+			final TranslateCommand translateCommand = new TranslateCommand(erd.getEditingDomain(), sourceElement);
 			
-			if (importCommand.canExecute()) {	
+			if (translateCommand.canExecute()) {	
 				// run with progress
 				ProgressMonitorDialog dialog = new ProgressMonitorDialog(editor.getSite().getShell());
 				try {
 					dialog.run(false, true, new IRunnableWithProgress(){
 					     public void run(IProgressMonitor monitor) { 
-					    	 monitor.beginTask(Messages.GENERATOR_MSG_05, IProgressMonitor.UNKNOWN);
+					    	 monitor.beginTask(Messages.TRANSLATOR_MSG_05, IProgressMonitor.UNKNOWN);
 					         try {
-					        	if (!importCommand.execute(monitor, editor).isOK()){
+					        	if (!translateCommand.execute(monitor, editor).isOK()){
 									MessageDialog
 											.openError(editor.getSite().getShell(),
-													Messages.GENERATOR_MSG_09,
-													Messages.GENERATOR_MSG_10);
+													Messages.TRANSLATOR_MSG_09,
+													Messages.TRANSLATOR_MSG_10);
 								}
 					         } catch (ExecutionException e) {
-								Activator.logError(Messages.GENERATOR_MSG_06, e);
+								Activator.logError(Messages.TRANSLATOR_MSG_06, e);
 					         }
 					         monitor.done();
 					     }
 					 });
 				} catch (InvocationTargetException e) {
-					Activator.logError(Messages.GENERATOR_MSG_07, e);
+					Activator.logError(Messages.TRANSLATOR_MSG_07, e);
 					return null;
 				} catch (InterruptedException e) {
-					Activator.logError(Messages.GENERATOR_MSG_08, e);
+					Activator.logError(Messages.TRANSLATOR_MSG_08, e);
 					return null;
 				} 
 

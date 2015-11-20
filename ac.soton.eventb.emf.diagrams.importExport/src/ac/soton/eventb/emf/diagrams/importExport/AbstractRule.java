@@ -20,7 +20,7 @@ import org.eventb.emf.core.machine.MachinePackage;
 
 
 /**
- * a simple abstract version of a rule that is always enabled, dependencies are ok, and adds generated elements to 
+ * a simple abstract version of a rule that is always enabled, dependencies are ok, and adds translated elements to 
  * the target Component. Clients may extend this rule to adopt this default behaviour.
  * 
  * @author cfs
@@ -52,13 +52,13 @@ public abstract class AbstractRule implements IRule {
 	}
 
 	@Override
-	public List<GenerationDescriptor> fire(EObject sourceElement, List<GenerationDescriptor> generatedElements) throws Exception {
+	public List<TranslationDescriptor> fire(EObject sourceElement, List<TranslationDescriptor> translatedElements) throws Exception {
 		assert(enabled(sourceElement));
 		return Collections.emptyList();
 	}
 	
 	@Override
-	public boolean dependenciesOK(EObject sourceElement, final List<GenerationDescriptor> generatedElements) throws Exception  {
+	public boolean dependenciesOK(EObject sourceElement, final List<TranslationDescriptor> translatedElements) throws Exception  {
 		return true;
 	}
 

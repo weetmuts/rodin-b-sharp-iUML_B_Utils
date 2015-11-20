@@ -18,11 +18,11 @@ import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.persistence.AttributeIdentifiers;
 
-import ac.soton.eventb.emf.diagrams.importExport.GenerationDescriptor;
+import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 
 
 /**
- * Convenience methods for testing things in Importer Rules
+ * Convenience methods for testing things in Translator Rules
  * 
  * @author cfs
  *
@@ -30,44 +30,44 @@ import ac.soton.eventb.emf.diagrams.importExport.GenerationDescriptor;
 public class Is {
 	
 	/**
-	 * Convenience method to check whether an element has been generated already in the list of generationDescriptors
+	 * Convenience method to check whether an element has been translated already in the list of translationDescriptors
 	 * (parent and/or feature may be null if not required to be matched)
 	 * 
-	 * @param generatedElements
+	 * @param translatedElements
 	 * @param parent (or null)
 	 * @param feature (or null)
 	 * @param identifier
 	 * @return
 	 */
-	public static boolean generated(List<GenerationDescriptor> generatedElements, EventBElement parent, EStructuralFeature feature, String identifier){
-		return Find.generatedElement(generatedElements, parent, feature, identifier) != null;
+	public static boolean translated(List<TranslationDescriptor> translatedElements, EventBElement parent, EStructuralFeature feature, String identifier){
+		return Find.translatedElement(translatedElements, parent, feature, identifier) != null;
 	}
 	
 
-	public static boolean generatedBy(Object object, Object sourceElement){
+	public static boolean translatedBy(Object object, Object sourceElement){
 		if (sourceElement instanceof EventBObject){
 			AbstractExtension ae = (AbstractExtension) ((EventBObject) sourceElement).getContaining(CorePackage.Literals.ABSTRACT_EXTENSION);
 			if (ae instanceof AbstractExtension){
-				return generatedBy(object, Make.generatedById(ae));
+				return translatedBy(object, Make.translatedById(ae));
 			}
 		}
 		return false;
 	}
 	
-	public static boolean generatedBy(Object object, String id){
+	public static boolean translatedBy(Object object, String id){
 		if (object instanceof EventBElement){
-			Attribute generatedBy = ((EventBElement)object).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY);
-			if (generatedBy!= null && id.equals(generatedBy.getValue()) ){
+			Attribute translatedBy = ((EventBElement)object).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY);
+			if (translatedBy!= null && id.equals(translatedBy.getValue()) ){
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	public static boolean generated(Object object){
+	public static boolean translated(Object object){
 		if (object instanceof EventBElement){
-			Attribute generatedBy = ((EventBElement)object).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY);
-			if (generatedBy!= null){
+			Attribute translatedBy = ((EventBElement)object).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY);
+			if (translatedBy!= null){
 				return true;
 			}
 		}

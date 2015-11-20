@@ -22,11 +22,11 @@ import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.Project;
 
 import ac.soton.eventb.emf.core.extension.coreextension.EventBLabeled;
-import ac.soton.eventb.emf.diagrams.importExport.GenerationDescriptor;
+import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 
 
 /**
- * Convenience methods for finding things needed in Importer Rules
+ * Convenience methods for finding things needed in Translator Rules
  * 
  * @author cfs
  *
@@ -34,28 +34,28 @@ import ac.soton.eventb.emf.diagrams.importExport.GenerationDescriptor;
 public class Find {
 		
 /**
- * Find, by name or label and matching parent and feature, an element in a generation descriptor from the given collection.
- * The element may be the object in value field of a generationDescriptor or any child transitively contained within it.
+ * Find, by name or label and matching parent and feature, an element in a translation descriptor from the given collection.
+ * The element may be the object in value field of a translationDescriptor or any child transitively contained within it.
  * (parent and/or feature may be null if not required to be matched)
  * 
- * @param generatedElements
+ * @param translatedElements
  * @param parent (or null)
  * @param feature (or null)
  * @param eClass (or null)
  * @param identifier
  * @return
  */
-	public static Object generatedElement(List<GenerationDescriptor> generatedElements, EObject parent, EStructuralFeature feature, EClass eClass, String identifier) {
-		for (GenerationDescriptor generatedElement : generatedElements){
-			if ((parent == null || generatedElement.parent == parent) && 
-				(feature == null || generatedElement.feature== feature) &&
-				(eClass == null || (generatedElement.value instanceof EObject  && eClass.isSuperTypeOf(((EObject)generatedElement.value).eClass())))){
-				if (matches(generatedElement.value,identifier)) {
-					return generatedElement.value;
+	public static Object translatedElement(List<TranslationDescriptor> translatedElements, EObject parent, EStructuralFeature feature, EClass eClass, String identifier) {
+		for (TranslationDescriptor translatedElement : translatedElements){
+			if ((parent == null || translatedElement.parent == parent) && 
+				(feature == null || translatedElement.feature== feature) &&
+				(eClass == null || (translatedElement.value instanceof EObject  && eClass.isSuperTypeOf(((EObject)translatedElement.value).eClass())))){
+				if (matches(translatedElement.value,identifier)) {
+					return translatedElement.value;
 				}
 			}
-			if (generatedElement.value instanceof EObject){
-				Object child =  element(((EObject)generatedElement.value), parent, feature, eClass, identifier);
+			if (translatedElement.value instanceof EObject){
+				Object child =  element(((EObject)translatedElement.value), parent, feature, eClass, identifier);
 				if (child!=null) return child;
 			}
 		}
@@ -67,7 +67,7 @@ public class Find {
 	 * (the root object is expected to be an eObject for parent, eClass or feature to be matched and for contents to be matched)
 	 * (parent, eClass and/or feature may be null if not required to be matched)
 	 * 
-	 * @param generatedElements
+	 * @param translatedElements
 	 * @param parent (or null)
 	 * @param feature (or null)
 	 * @param eClass (or null)
@@ -92,17 +92,17 @@ public class Find {
 		return null;
 	}
 	
-////	public static Object generatedElement(List<GenerationDescriptor> generatedElements, EObject parent, EStructuralFeature feature, EClass eClass, String identifier) {
-////		for (GenerationDescriptor generatedElement : generatedElements){
-////			if ((parent == null || generatedElement.parent == parent) && 
-////				(feature == null || generatedElement.feature== feature) &&
-////				(eClass == null || (generatedElement.value instanceof EObject  && eClass.isSuperTypeOf(((EObject)generatedElement.value).eClass())))){
-////				if (matches(generatedElement.value,identifier)) {
-////					return generatedElement.value;
+////	public static Object translatedElement(List<TranslationDescriptor> translatedElements, EObject parent, EStructuralFeature feature, EClass eClass, String identifier) {
+////		for (TranslationDescriptor translatedElement : translatedElements){
+////			if ((parent == null || translatedElement.parent == parent) && 
+////				(feature == null || translatedElement.feature== feature) &&
+////				(eClass == null || (translatedElement.value instanceof EObject  && eClass.isSuperTypeOf(((EObject)translatedElement.value).eClass())))){
+////				if (matches(translatedElement.value,identifier)) {
+////					return translatedElement.value;
 ////				}
 ////			}
-////			if (generatedElement.value instanceof EObject){
-////				Object child =  element(((EObject)generatedElement.value), feature, eClass, identifier);
+////			if (translatedElement.value instanceof EObject){
+////				Object child =  element(((EObject)translatedElement.value), feature, eClass, identifier);
 ////				if (child!=null) return child;
 ////			}
 ////		}
@@ -143,39 +143,39 @@ public class Find {
 	
 	
 	/**
-	 * Find, by name or label and matching parent and feature, a generation descriptor from the given collection
+	 * Find, by name or label and matching parent and feature, a translation descriptor from the given collection
 	 * (parent and/or feature may be null if not required to be matched)
 	 * 
-	 * @param generatedElements
+	 * @param translatedElements
 	 * @param parent
 	 * @param feature
 	 * @param identifier
 	 * @return
 	 */
-	public static Object generatedElement(
-			List<GenerationDescriptor> generatedElements, EventBElement parent,
+	public static Object translatedElement(
+			List<TranslationDescriptor> translatedElements, EventBElement parent,
 			EStructuralFeature feature, String identifier) {
-		return Find.generatedElement(generatedElements, parent, feature, null, identifier);
+		return Find.translatedElement(translatedElements, parent, feature, null, identifier);
 	}
 
 	/**
-	 * Find all generated elements that are being placed in the given feature
-	 * @param generatedElements
+	 * Find all translated elements that are being placed in the given feature
+	 * @param translatedElements
 	 * @param in
 	 * @param elaborates
 	 * @param event
 	 * @return
 	 */
-	public static List<EObject> generatedElements(
-			List<GenerationDescriptor> generatedElements, EventBElement parent,
+	public static List<EObject> translatedElements(
+			List<TranslationDescriptor> translatedElements, EventBElement parent,
 			EStructuralFeature feature, EClass eClass) {
 
 		List<EObject> ret = new ArrayList<EObject>();
-		for (GenerationDescriptor generatedElement : generatedElements){
-			if ((parent == null || generatedElement.parent == parent) && 
-				(feature == null || generatedElement.feature== feature) &&
-				(eClass == null || (generatedElement.value instanceof EObject  && eClass.isSuperTypeOf(((EObject)generatedElement.value).eClass())))){
-				ret.add((EObject) generatedElement.value);
+		for (TranslationDescriptor translatedElement : translatedElements){
+			if ((parent == null || translatedElement.parent == parent) && 
+				(feature == null || translatedElement.feature== feature) &&
+				(eClass == null || (translatedElement.value instanceof EObject  && eClass.isSuperTypeOf(((EObject)translatedElement.value).eClass())))){
+				ret.add((EObject) translatedElement.value);
 			}
 		}	
 		return ret;
