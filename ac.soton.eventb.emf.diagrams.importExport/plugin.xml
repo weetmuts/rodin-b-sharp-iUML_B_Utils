@@ -21,7 +21,7 @@
         locationURI="toolbar:ac.soton.eventb.emf.diagrams.toolbar?after=transformations">
      <command
            commandId="ac.soton.eventb.emf.diagrams.importexport.import2iUMLB"
-           icon="icons/Import.png"
+           icon="icons/import.png"
            label="import"
            style="push">
      </command>
@@ -31,7 +31,7 @@
         locationURI="popup">
      <command
            commandId="ac.soton.eventb.emf.diagrams.importexport.import2iUMLB"
-           icon="icons/Import.png"
+           icon="icons/import.png"
            label="Import SCXML to iUML-B"
            style="push">
      </command>
