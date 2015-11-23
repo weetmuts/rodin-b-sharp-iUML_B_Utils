@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) 2015 - University of Southampton.
+ * All rights reserved. This program and the accompanying materials  are made
+ * available under the terms of the Eclipse Public License v1.0 which accompanies this 
+ * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *
+ * $Id$
+ */
 package ac.soton.eventb.emf.diagrams.importExport;
 
 import java.util.ArrayList;
@@ -23,7 +32,7 @@ import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.persistence.AttributeIdentifiers;
 
 /**
- * this implementation of IAdapter can be used for importers that target
+ * This implementation of IAdapter can be used for importers that target
  *  the EventB EMF meta-model and its extensions
  * 
  * @author cfs
