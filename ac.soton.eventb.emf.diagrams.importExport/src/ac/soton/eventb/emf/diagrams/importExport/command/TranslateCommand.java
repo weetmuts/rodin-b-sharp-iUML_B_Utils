@@ -96,7 +96,6 @@ public class TranslateCommand extends AbstractEMFOperation {
 			        //try to run the translation
 					modifiedResources = translator.translate(editingDomain,element);
 					
-					
 					monitor.worked(4);
 					if (modifiedResources == null){
 						
@@ -121,9 +120,8 @@ public class TranslateCommand extends AbstractEMFOperation {
 										new Status(Status.ERROR, Activator.PLUGIN_ID, Messages.TRANSLATOR_MSG_18(resource), e));
 							}					
 						}
-						
-
 					}
+					
 				monitor.done();
 				}
 			},monitor);
