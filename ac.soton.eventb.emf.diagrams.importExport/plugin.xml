@@ -26,7 +26,7 @@
            style="push">
      </command>
   </menuContribution>
-  <menuContribution
+  <!--menuContribution			DOES NOT WORK
         allPopups="false"
         locationURI="popup">
      <command
@@ -35,7 +35,7 @@
            label="Import SCXML to iUML-B"
            style="push">
      </command>
-  </menuContribution>
+  </menuContribution-->
 
 </extension>
 
