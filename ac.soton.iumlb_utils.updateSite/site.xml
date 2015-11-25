@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/ac.soton.eventb.text.feature_0.0.2.201503290907.jar" id="ac.soton.eventb.text.feature" version="0.0.2.201503290907">
+      <category name="iUML-B XText Editor"/>
+   </feature>
+   <feature url="features/ac.soton.eventb.text.feature_0.0.3.201505061809.jar" id="ac.soton.eventb.text.feature" version="0.0.3.201505061809">
+      <category name="iUML-B XText Editor"/>
+   </feature>
+   <feature url="features/ac.soton.iumlb.scxml.feature_0.0.1.jar" id="ac.soton.iumlb.scxml.feature" version="0.0.1">
+      <category name="iUML-B SCXML"/>
+   </feature>
+   <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
+   <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
+</site>
