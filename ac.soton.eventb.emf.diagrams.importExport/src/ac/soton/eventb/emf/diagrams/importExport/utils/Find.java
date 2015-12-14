@@ -209,6 +209,7 @@ public class Find {
 	
 	/**
 	 * finds nearest container of type or null if none
+	 * 
 	 * @param type
 	 * @param eObject
 	 * @return
@@ -221,6 +222,13 @@ public class Find {
 		return res.eClass().equals(type)? res:null;
 	}
 
+	/**
+	 * returns direct and indirect contents of the source element that are instances of the given filter classifier
+	 * 
+	 * @param source
+	 * @param filter
+	 * @return
+	 */
 	public static List<EObject> eAllContents(EObject source,EClassifier filter){
 		  final TreeIterator<EObject> contentIterator=source.eAllContents();
 		  final List<EObject> result=new ArrayList<EObject>();
@@ -233,4 +241,22 @@ public class Find {
 		  return result;
 		}
 
+	/**
+	 * returns direct contents of the source element that are instances of the given filter classifier
+	 * 
+	 * @param source
+	 * @param filter
+	 * @return
+	 */
+	public static List<EObject> eContents(EObject source, EClassifier filter) {
+		  final List<EObject> contents=source.eContents();
+		  final List<EObject> result=new ArrayList<EObject>();
+		  for (EObject next : contents) {
+		    if (filter == null || filter.isInstance(next)) {
+		      result.add(next);
+		    }
+		  }
+		  return result;
+	}
+		
 }
