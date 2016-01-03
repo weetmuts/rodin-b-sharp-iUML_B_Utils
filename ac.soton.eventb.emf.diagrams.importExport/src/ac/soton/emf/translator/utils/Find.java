@@ -8,9 +8,8 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport.utils;
+package ac.soton.emf.translator.utils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +18,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamed;
-import org.eventb.emf.core.Project;
 
-import ac.soton.eventb.emf.core.extension.coreextension.EventBLabeled;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
+import ac.soton.emf.translator.TranslationDescriptor;
 
 
 /**
@@ -135,11 +130,24 @@ public class Find {
 	}
 	
 	private static boolean matches(EObject object, String identifier){
-		if ((object instanceof EventBNamed && ((EventBNamed)object).getName().equals(identifier))
-		|| (object instanceof EventBLabeled && ((EventBLabeled)object).getLabel().equals(identifier))
-		 ){
+		if (identifier==null) return false;
+		EStructuralFeature nameFeature = object.eClass().getEStructuralFeature("name");
+		if (nameFeature!=null &&
+				identifier.equals(object.eGet(nameFeature))){
+			return true;
+			
+		}
+		EStructuralFeature labelFeature = object.eClass().getEStructuralFeature("label");
+		if (labelFeature!=null &&
+				identifier.equals(object.eGet(labelFeature))){
 			return true;
 		}
+//		
+//		if ((object instanceof EventBNamed && ((EventBNamed)object).getName().equals(identifier))
+//		|| (object instanceof EventBLabeled && ((EventBLabeled)object).getLabel().equals(identifier))
+//		 ){
+//			return true;
+//		}
 		return false;
 	}
 	
@@ -155,7 +163,7 @@ public class Find {
 	 * @return
 	 */
 	public static Object translatedElement(
-			List<TranslationDescriptor> translatedElements, EventBElement parent,
+			List<TranslationDescriptor> translatedElements, EObject parent,
 			EStructuralFeature feature, String identifier) {
 		return Find.translatedElement(translatedElements, parent, feature, null, identifier);
 	}
@@ -169,7 +177,7 @@ public class Find {
 	 * @return
 	 */
 	public static List<EObject> translatedElements(
-			List<TranslationDescriptor> translatedElements, EventBElement parent,
+			List<TranslationDescriptor> translatedElements, EObject parent,
 			EStructuralFeature feature, EClass eClass) {
 
 		List<EObject> ret = new ArrayList<EObject>();
@@ -182,30 +190,7 @@ public class Find {
 		}	
 		return ret;
 	}
-	
-	
-	/**
-	 * find the containing Project for this element
-	 * 
-	 * CURRENTLY RETURNS NULL
-	 * 
-	 * @param machine
-	 * @return
-	 * @throws IOException
-	 */
-	public static Project project(EObject sourceElement) throws IOException {
-//		URI eventBelementUri = eventBelement.getURI();
-//		URI projectUri = eventBelementUri.trimFragment().trimSegments(1);
-//		ProjectResource projectResource = new ProjectResource();
-//		projectResource.setURI(eventBelement.getURI());
-//		projectResource.load(null);
-//		for (EObject eObject : projectResource.getContents()){
-//			if (eObject instanceof Project){
-//				return (Project)eObject;
-//			}
-//		}
-		return null;
-	}
+
 	
 	/**
 	 * finds nearest container of type or null if none

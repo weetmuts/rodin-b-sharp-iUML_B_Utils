@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport.impl;
+package ac.soton.emf.translator.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,10 +25,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
-import ac.soton.eventb.emf.diagrams.importExport.Activator;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.utils.Make;
+import ac.soton.emf.translator.Activator;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 
 /**
  * A generic Translator which is configured from rule classes which have been declared in an extension point.
@@ -44,6 +43,7 @@ public class Translator {
 	
 	//	configuration data for this instance of a translator
 	private TranslatorConfig translatorConfig;
+	private Object sourceID;
 
 	
 	// VARIABLE DATA
@@ -76,7 +76,7 @@ public class Translator {
  * @param sourceElement 
  */
 	public List<Resource> translate (TransactionalEditingDomain editingDomain, final EObject sourceElement){
-		String translatedByID;
+		
 		List<Resource> modifiedResources = new ArrayList<Resource>();
 		try {
 			
@@ -92,9 +92,8 @@ public class Translator {
 				return null;
 			}
 			
-			//Obtain the extension ID from the source element
-			translatedByID = Make.translatedById((sourceElement));
-	//		assert(translatedByID != null && translatedByID.startsWith(translatorConfig.translatorID)) : "source elements translator ID and translator config do not match";
+			//Obtain an ID from the source element
+			sourceID = translatorConfig.adapter.getSourceId(sourceElement);
 			
 			//do the translation
 			doGenerate(sourceElement);
@@ -120,11 +119,11 @@ public class Translator {
 //				Activator.logError(Messages.TRANSLATOR_MSG_03);
 //				return null;
 //			}
-			Remover remover = new Remover(modifiedResources, translatedByID);
+			Remover remover = new Remover(modifiedResources, sourceID, translatorConfig.adapter);
 			modifiedResources.addAll(remover.removeTranslated());
 			
 			//create new EventB components
-			modifiedResources.addAll(createNewComponents(editingDomain, sourceElement, translatedByID));
+			modifiedResources.addAll(createNewComponents(editingDomain, sourceElement));
 			
 		} catch (Exception e) {
 			Activator.logError(e.getMessage(),e);
@@ -136,7 +135,7 @@ public class Translator {
 		// This is so that we do not leave the model in an inconsistent state if the translation fails)
 		try {
 			modifiedResources.addAll(
-					placeGenerated(editingDomain, translatedByID)
+					placeGenerated(editingDomain)
 					);
 			//removeComponents(editingDomain, sourceElement);
 		} catch (Exception e) {
@@ -188,14 +187,14 @@ public class Translator {
  * @param sourceElement
  * @return list of new Resources
  */
-	private Collection<? extends Resource> createNewComponents(TransactionalEditingDomain editingDomain, EObject sourceElement, String translatedByID) throws IOException {
+	private Collection<? extends Resource> createNewComponents(TransactionalEditingDomain editingDomain, EObject sourceElement) throws IOException {
 		List<Resource> newResources = new ArrayList<Resource>();
 
 		for (TranslationDescriptor translationDescriptor : translatedElements){
 			URI fileUri = translatorConfig.adapter.getComponentURI(translationDescriptor, sourceElement);
 			if (fileUri!=null){
-				translatorConfig.adapter.setGeneratedBy(translatedByID, translationDescriptor.value);
-				translatorConfig.adapter.setPriority(0, translationDescriptor.value);
+				translatorConfig.adapter.annotateTarget(sourceID, translationDescriptor.value);
+				//translatorConfig.adapter.setPriority(0, translationDescriptor.value);
 				Resource newResource = editingDomain.createResource(fileUri.toString());
 				newResource.getContents().add((EObject)translationDescriptor.value);
 				newResources.add(newResource);		
@@ -211,7 +210,7 @@ public class Translator {
  * @return modified resources
  */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private Collection<? extends Resource> placeGenerated(EditingDomain editingDomain, String translatedByID) throws Exception {
+	private Collection<? extends Resource> placeGenerated(EditingDomain editingDomain) throws Exception {
 		//arrange the translation descriptors into priority order
 		for (TranslationDescriptor translationDescriptor : translatedElements){
 			Integer pri = translationDescriptor.priority;
@@ -228,7 +227,7 @@ public class Translator {
 			if (priorities.containsKey(pri)){
 				for (TranslationDescriptor translationDescriptor : priorities.get(pri)){
 
-					if (translationDescriptor.remove == false && translatorConfig.adapter.filter(translationDescriptor)){
+					if (!translationDescriptor.remove && !translatorConfig.adapter.outputFilter(translationDescriptor)){
 						continue;								
 					}
 					Resource resource = null;
@@ -241,8 +240,8 @@ public class Translator {
 	
 						if (featureValue instanceof EList){	
 							if(translationDescriptor.remove == false){											
-								translatorConfig.adapter.setGeneratedBy(translatedByID, translationDescriptor.value);
-								translatorConfig.adapter.setPriority(pri, translationDescriptor.value);
+								translatorConfig.adapter.annotateTarget(sourceID, translationDescriptor.value);
+								//translatorConfig.adapter.setPriority(pri, translationDescriptor.value);
 								//add the new value to the list at the correct index - i.e. after any higher priority elements and
 								//after stuff translated by earlier extensions which has the same priority
 								int pos = 0;
@@ -372,7 +371,8 @@ public class Translator {
 	private void traverseModel(final EObject sourceElement) throws Exception {
 		
 		//this ensures that we do not translate from our own translated elements
-		if (translatorConfig.translatorID.equals(translatorConfig.adapter.getGeneratorId(sourceElement)))
+		if (!translatorConfig.adapter.inputFilter(sourceElement, sourceID))
+			//translatorConfig.translatorID.equals(translatorConfig.adapter.getGeneratedById(sourceElement)))
 				return;
 		
 		//try to fire all the rules listed for this kind of source element

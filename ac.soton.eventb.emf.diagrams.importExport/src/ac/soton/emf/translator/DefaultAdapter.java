@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport;
+package ac.soton.emf.translator;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -33,11 +33,21 @@ public class DefaultAdapter implements IAdapter {
 	}
 	
 	/**
+	 * This implementation always returns true (i.e. do not filter)
+	 * 
+	 * @see ac.soton.emf.translator.IAdapter#inputFilter(java.lang.Object)
+	 */
+	@Override
+	public boolean inputFilter(Object object, Object sourceID) {
+		return true;
+	}
+	
+	/**
 	 * filter nothing
 	 */
 	@Override
-	public boolean filter(TranslationDescriptor translationDescriptor) {
-		return false;
+	public boolean outputFilter(TranslationDescriptor translationDescriptor) {
+		return true;
 	}
 
 
@@ -57,7 +67,7 @@ public class DefaultAdapter implements IAdapter {
 	 * returns null
 	 */
 	@Override
-	public Object getGeneratorId(EObject eObject){
+	public Object getSourceId(Object object){
 		return null;
 	}
 
@@ -65,7 +75,15 @@ public class DefaultAdapter implements IAdapter {
 	 * do nothing
 	 */
 	@Override
-	public void setGeneratedBy(String generatedByID, Object object) {
+	public void annotateTarget(Object sourceID, Object object) {
+	}
+	
+	/**
+	 * returns false
+	 */
+	@Override
+	public boolean isAnnotatedWith(Object object, Object sourceID) {
+		return false;
 	}
 	
 	/**

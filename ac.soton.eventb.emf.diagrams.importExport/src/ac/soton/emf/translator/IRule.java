@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport;
+package ac.soton.emf.translator;
 
 import java.util.List;
 

@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport;
+package ac.soton.emf.translator;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -25,17 +25,25 @@ public interface IAdapter {
 	 * @param rootElement
 	 * @return
 	 */
-	
 	URI getComponentURI(TranslationDescriptor translationDescriptor, EObject rootElement);
 
+	/**
+	 * Filters out any source elements that should not be translated.
+	 * @param translatorConfig 
+	 *
+	 * @param element
+	 * @return true if this object should be translated and false if it should be filtered out (ignored)
+	 */
+	boolean inputFilter(Object object, Object sourceID);
+	
 	/**
 	 * Filters out any translationDescriptors that should not be acted upon.
 	 * This may be because a child is already visible via extension of the refined parent
 	 *
 	 * @param translationDescriptor
-	 * @return true if this translation descriptor should be filtered out (ignored)
+	 * @return true if this translation descriptor should be acted upon and false if it should be filtered out (ignored)
 	 */
-	boolean filter(TranslationDescriptor translationDescriptor);
+	boolean outputFilter(TranslationDescriptor translationDescriptor);
 	
 	/**
 	 * whether these two objects are considered to be essentially the same thing
@@ -58,20 +66,29 @@ public interface IAdapter {
 	 * @param rootElement
 	 * @return
 	 */
-	Object getGeneratorId(EObject rootElement);
+	Object getSourceId(Object object);
 
 	/**
 	 * Sets the translatedBy attribute of the given object to the given String value
-	 * In translal the object will be an EObject for this to succeed.
+	 * In translator the object will be an EObject for this to succeed.
 	 * 
 	 * @param translatedByID
 	 * @param object
 	 */
-	void setGeneratedBy(String translatedByID, Object object);
+	void annotateTarget(Object sourceID, Object object);
 
 	/**
+	 * checks whether the given eObject is annotated with the given sourceID object
+	 * 
+	 * @param object
+	 * @param sourceID
+	 * @return
+	 */
+	boolean isAnnotatedWith(Object object, Object sourceID);
+	
+	/**
 	 * Sets the priority attribute of the given object to the given integer value
-	 * In translal the object will be an EObject for this to succeed.
+	 * In translator the object will be an EObject for this to succeed.
 	 * 
 	 * @param translatedByID
 	 * @param object

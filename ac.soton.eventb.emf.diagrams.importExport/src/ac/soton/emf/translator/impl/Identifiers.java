@@ -8,12 +8,12 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport.impl;
+package ac.soton.emf.translator.impl;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Identifiers extends NLS {
-	private static final String BUNDLE_NAME = "ac.soton.eventb.emf.diagrams.importExport.impl.identifiers"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "ac.soton.emf.translator.impl.identifiers"; //$NON-NLS-1$
 
 	public static String EXTPT_RULE_ID;
 	public static String EXTPT_RULE_ROOTSOURCECLASS;

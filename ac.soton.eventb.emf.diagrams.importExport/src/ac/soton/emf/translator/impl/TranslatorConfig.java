@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport.impl;
+package ac.soton.emf.translator.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +18,8 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 
-import ac.soton.eventb.emf.diagrams.importExport.IAdapter;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
+import ac.soton.emf.translator.IAdapter;
+import ac.soton.emf.translator.IRule;
 
 public class TranslatorConfig{
 	public String translatorID;

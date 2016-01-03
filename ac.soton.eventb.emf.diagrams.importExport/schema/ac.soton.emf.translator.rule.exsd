@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="ac.soton.eventb.emf.diagrams.importExport" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="ac.soton.emf.translator" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="ac.soton.eventb.emf.diagrams.importExport" id="ac.soton.eventb.emf.diagrams.importExport" name="translator rule"/>
+         <meta.schema plugin="ac.soton.emf.translator" id="ac.soton.emf.translator" name="translator rule"/>
       </appinfo>
       <documentation>
          This extension point allows contributors to contribute the rules of their inport/export translator
@@ -94,7 +94,7 @@
                   The fully qualified name of a class that implements IAdapter
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":ac.soton.eventb.emf.diagrams.importExport.IAdapter"/>
+                  <meta.attribute kind="java" basedOn=":ac.soton.emf.translator.IAdapter"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -137,7 +137,7 @@ e.g. Invariant
                   The fully qualified name of a class that implements IRule
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="ac.soton.eventb.emf.diagrams.importExport.AbstractRule:ac.soton.eventb.emf.diagrams.importExport.IRule"/>
+                  <meta.attribute kind="java" basedOn="ac.soton.emf.translator.AbstractRule:ac.soton.emf.translator.IRule"/>
                </appinfo>
             </annotation>
          </attribute>

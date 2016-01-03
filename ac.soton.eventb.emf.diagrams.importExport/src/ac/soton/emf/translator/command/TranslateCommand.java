@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport.command;
+package ac.soton.emf.translator.command;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IWorkspaceRunnable;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -27,13 +28,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
-import org.rodinp.core.RodinCore;
-import org.rodinp.core.RodinDBException;
 
-import ac.soton.eventb.emf.diagrams.importExport.Activator;
-import ac.soton.eventb.emf.diagrams.importExport.impl.Translator;
-import ac.soton.eventb.emf.diagrams.importExport.impl.TranslatorFactory;
-import ac.soton.eventb.emf.diagrams.importExport.impl.Messages;
+import ac.soton.emf.translator.Activator;
+import ac.soton.emf.translator.impl.Messages;
+import ac.soton.emf.translator.impl.Translator;
+import ac.soton.emf.translator.impl.TranslatorFactory;
 
 //////////////////////TRANSLATE COMMAND//////////////////////////
 public class TranslateCommand extends AbstractEMFOperation {
@@ -78,14 +77,12 @@ public class TranslateCommand extends AbstractEMFOperation {
 		
 		try {
 			
-			RodinCore.run(new IWorkspaceRunnable() {
+			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
 				public void run(final IProgressMonitor monitor) throws CoreException{
 					TransactionalEditingDomain editingDomain = getEditingDomain();
 					final List<Resource> modifiedResources;
 					
-					monitor.beginTask(Messages.TRANSLATOR_MSG_12,10);		
-					monitor.setTaskName(Messages.TRANSLATOR_MSG_13(element)); 
-					
+					monitor.beginTask(Messages.TRANSLATOR_MSG_13(element.eClass().getName()),10);							
 					monitor.worked(1);
 			        monitor.subTask(Messages.TRANSLATOR_MSG_14);
 			        
@@ -129,7 +126,7 @@ public class TranslateCommand extends AbstractEMFOperation {
 			
 			return Status.OK_STATUS;
 
-		} catch (RodinDBException e) {
+		} catch (CoreException e) {
 			Activator.logError(Messages.TRANSLATOR_MSG_19, e);
 			return e.getStatus();
 			

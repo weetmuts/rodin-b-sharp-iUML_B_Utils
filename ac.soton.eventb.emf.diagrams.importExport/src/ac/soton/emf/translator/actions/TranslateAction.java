@@ -8,7 +8,7 @@
  *  Contributors:
  *  University of Southampton - Initial implementation
  *******************************************************************************/
-package ac.soton.eventb.emf.diagrams.importExport.actions;
+package ac.soton.emf.translator.actions;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -27,12 +28,11 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eventb.emf.persistence.EMFRodinDB;
 
-import ac.soton.eventb.emf.diagrams.importExport.Activator;
-import ac.soton.eventb.emf.diagrams.importExport.command.TranslateCommand;
-import ac.soton.eventb.emf.diagrams.importExport.impl.TranslatorFactory;
-import ac.soton.eventb.emf.diagrams.importExport.impl.Messages;
+import ac.soton.emf.translator.Activator;
+import ac.soton.emf.translator.command.TranslateCommand;
+import ac.soton.emf.translator.impl.Messages;
+import ac.soton.emf.translator.impl.TranslatorFactory;
 
 /**
  * Import action handler.
@@ -65,13 +65,9 @@ public class TranslateAction extends AbstractHandler {
 			if (!(editor instanceof IEditingDomainProvider)) return null;
 			if (editor.isDirty())
 				editor.doSave(new NullProgressMonitor());
-//			EditingDomain editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
-//			if (sourceElement.eIsProxy()){
-//				sourceElement =  (EventBElement) EcoreUtil.resolve(sourceElement, editingDomain.getResourceSet());
-//			}
 			
-			EMFRodinDB erd = new EMFRodinDB();
-			final TranslateCommand translateCommand = new TranslateCommand(erd.getEditingDomain(), sourceElement);
+			TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
+			final TranslateCommand translateCommand = new TranslateCommand(editingDomain, sourceElement);
 			
 			if (translateCommand.canExecute()) {	
 				// run with progress
