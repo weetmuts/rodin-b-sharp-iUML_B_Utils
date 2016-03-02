@@ -3,6 +3,15 @@
    <feature url="features/ac.soton.iumlb.scxml.feature_0.0.2.jar" id="ac.soton.iumlb.scxml.feature" version="0.0.2">
       <category name="iUML-B SCXML"/>
    </feature>
+   <feature url="features/ac.soton.emf.utilities.feature_1.0.0.jar" id="ac.soton.emf.utilities.feature" version="1.0.0">
+      <category name="Generic Utilities"/>
+   </feature>
+   <feature url="features/ac.soton.iumlb.scxml.feature_0.0.3.jar" id="ac.soton.iumlb.scxml.feature" version="0.0.3">
+      <category name="iUML-B SCXML"/>
+   </feature>
+   <feature url="features/ac.soton.iumlb.scxml.feature_1.0.0.jar" id="ac.soton.iumlb.scxml.feature" version="1.0.0">
+      <category name="iUML-B SCXML"/>
+   </feature>
    <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
    <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
    <category-def name="Generic Utilities" label="Generic Utilities">
