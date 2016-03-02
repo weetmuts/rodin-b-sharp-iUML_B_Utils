@@ -5,4 +5,9 @@
    </feature>
    <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
    <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
+   <category-def name="Generic Utilities" label="Generic Utilities">
+      <description>
+         Generic Utilities needed by other features (these will be installed automatically as needed)
+      </description>
+   </category-def>
 </site>
