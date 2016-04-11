@@ -12,11 +12,22 @@
    <feature url="features/ac.soton.iumlb.scxml.feature_1.0.0.jar" id="ac.soton.iumlb.scxml.feature" version="1.0.0">
       <category name="iUML-B SCXML"/>
    </feature>
+   <feature url="features/ac.soton.eventb.emf.decomposition_0.0.1.qualifier.jar" id="ac.soton.eventb.emf.decomposition" version="0.0.1.qualifier">
+      <category name="iUML-B Decomposition"/>
+   </feature>
+   <feature url="features/ac.soton.emf.utilities.feature_1.1.0.jar" id="ac.soton.emf.utilities.feature" version="1.1.0">
+      <category name="Generic Utilities"/>
+   </feature>
    <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
    <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
    <category-def name="Generic Utilities" label="Generic Utilities">
       <description>
          Generic Utilities needed by other features (these will be installed automatically as needed)
+      </description>
+   </category-def>
+   <category-def name="iUML-B Decomposition" label="iUML-B Decomposition">
+      <description>
+         Shared-event decomposition with support for allocating diagrams (as well as variables) to regions. (Use the Rose editor to add regions to define the decomposition).
       </description>
    </category-def>
 </site>
