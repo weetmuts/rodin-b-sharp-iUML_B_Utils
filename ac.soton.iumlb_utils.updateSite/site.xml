@@ -18,6 +18,9 @@
    <feature url="features/ac.soton.emf.utilities.feature_1.1.0.jar" id="ac.soton.emf.utilities.feature" version="1.1.0">
       <category name="Generic Utilities"/>
    </feature>
+   <feature url="features/ac.soton.iumlb.scxml.feature_1.1.0.jar" id="ac.soton.iumlb.scxml.feature" version="1.1.0">
+      <category name="iUML-B SCXML"/>
+   </feature>
    <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
    <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
    <category-def name="Generic Utilities" label="Generic Utilities">
