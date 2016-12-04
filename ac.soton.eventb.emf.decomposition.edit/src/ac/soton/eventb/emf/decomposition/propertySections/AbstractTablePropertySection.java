@@ -264,7 +264,7 @@ public abstract class AbstractTablePropertySection extends AbstractEventBPropert
 		EList<EObject> possibles = new BasicEList<EObject>();
 		while (content.hasNext()){
 			EObject eo = content.next();
-			if (eo.eClass() == eClass && (exclusions==null || !exclusions.contains(eo))){
+			if (eClass.isSuperTypeOf(eo.eClass()) && (exclusions==null || !exclusions.contains(eo))){
 				possibles.add(eo);
 			}
 		}
