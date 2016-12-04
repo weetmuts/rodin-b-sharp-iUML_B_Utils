@@ -73,9 +73,11 @@ public class AllocatedVariablesPropertySection extends AbstractTablePropertySect
 	/**
 	 * generated variables rows are read only - i.e. cannot be removed from Region
 	 * - user should remove the extension instead 
+	 * BUT FOR NOW USER MUST EDIT THEM
 	 */
 	protected boolean isReadOnly(final Object object){
-		return getGeneratedBy(object)!=null;
+		//TODO: change back when generated vars are automatically added/removed
+		return false; //getGeneratedBy(object)!=null;
 	}
 
 	/**
