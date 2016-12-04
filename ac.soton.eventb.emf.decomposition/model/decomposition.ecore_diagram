@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_02nooMtKEeWtkZzwi7Rrzw" type="Ecore" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_06W5IMtKEeWtkZzwi7Rrzw" type="2001" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_06W5IstKEeWtkZzwi7Rrzw" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_06W5I8tKEeWtkZzwi7Rrzw" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_s5lEIMtLEeWtkZzwi7Rrzw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="decomposition.ecore#//Region/ready"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_s5lEIctLEeWtkZzwi7Rrzw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6ejPkMtMEeWtkZzwi7Rrzw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="decomposition.ecore#//Region/projectName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6ejPkctMEeWtkZzwi7Rrzw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_B8HNUMtNEeWtkZzwi7Rrzw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="decomposition.ecore#//Region/contextName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_B8HNUctNEeWtkZzwi7Rrzw"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_06W5JMtKEeWtkZzwi7Rrzw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_06W5JctKEeWtkZzwi7Rrzw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_06W5JstKEeWtkZzwi7Rrzw" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_06W5J8tKEeWtkZzwi7Rrzw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_06W5KMtKEeWtkZzwi7Rrzw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_06W5KctKEeWtkZzwi7Rrzw" type="7003">
+      <children xmi:type="notation:Node" xmi:id="_lWjQMMtOEeWtkZzwi7Rrzw" type="3003">
+        <element xmi:type="ecore:EAnnotation" href="decomposition.ecore#//Region/%org.eventb.emf.core.extendedMetaClasses%"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_lWjQMctOEeWtkZzwi7Rrzw"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_06W5KstKEeWtkZzwi7Rrzw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_06W5K8tKEeWtkZzwi7Rrzw"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="decomposition.ecore#//Region"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_06W5IctKEeWtkZzwi7Rrzw" x="27" y="27"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_02nooctKEeWtkZzwi7Rrzw"/>
+  <element xmi:type="ecore:EPackage" href="decomposition.ecore#/"/>
+</notation:Diagram>
