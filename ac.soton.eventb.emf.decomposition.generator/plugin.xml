@@ -63,7 +63,7 @@
          point="ac.soton.emf.translators">
       <translator
             adapter_class="ac.soton.eventb.emf.decomposition.generator.DecompositionAdaptor"
-            command_id="ac.soton.eventb.emf.decomposition.generator.translator1"
+            command_id="ac.soton.eventb.emf.decomposition.commands.decompose"
             name="Decomposition"
             root_source_class="Machine"
             source_package="http://emf.eventb.org/models/core/machine/2014"
