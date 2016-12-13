@@ -119,25 +119,36 @@ public class Regionrule extends AbstractRule implements IRule {
 					newEvent.getActions().add(clone);
 				}
 			}
-			nextP: for (Parameter p : getExtendedParameters(sourceMachine, event.getName())){
-				Parameter newP = (Parameter)Make.parameter(p.getName());
-				newEvent.getParameters().add(newP);
-//				for (Action act : newEvent.getActions()){
-//					if (refers(act.getAction(), p.getName())){
-//						Parameter newP = (Parameter)Make.parameter(p.getName());
-//						newEvent.getParameters().add(newP);
-//						continue nextP;
-//					}
-//				}
-//				for (Guard gd : newEvent.getGuards()){
-//					if (refers(gd.getPredicate(), p.getName())){
-//						Parameter newP = (Parameter)Make.parameter(p.getName());
-//						newEvent.getParameters().add(newP);
-//						continue nextP;
-//					}
-//				}
-			}
+			
 			if (newEvent.getGuards().size()>0 || newEvent.getActions().size()>0 ){
+				
+				//Add parameters and relevant parameter guards (only if guards or actions already added)
+				List<Guard> guardsToClone = new ArrayList<Guard>();
+				//nextP: 
+				for (Parameter p : getExtendedParameters(sourceMachine, event.getName())){
+					Parameter newP = (Parameter)Make.parameter(p.getName());
+					newEvent.getParameters().add(newP);
+
+					for (Guard gd : getExtendedGuards(sourceMachine, event.getName())){
+						if (!guardsToClone.contains(gd) && 
+								refers(gd.getPredicate(), p.getName()) && 
+								neutral(sourceMachine, region, gd.getPredicate())){	
+							if (gd.getName().contains("type")){
+								guardsToClone.add(gd);	//order will reverse again below
+							}else{
+								guardsToClone.add(0, gd);	//order will reverse again below
+							}
+						}
+					}
+				}
+				for (Guard gd : guardsToClone){
+					AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(gd);
+					Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(gd, decomposedMachine,null);
+					Guard clone = (Guard) copy.get(gd);
+					newEvent.getGuards().add(0,clone); 	//add these at front as they tend to be type
+				}
+
+				//add the event
 				events.add(newEvent);
 			}
 		}
@@ -161,23 +172,23 @@ public class Regionrule extends AbstractRule implements IRule {
 		return ret;
 	}
 	
-//	/*
-//	 * checks whether the given string contains the target identifier as a
-//	 * delimited whole word
-//	 * 
-//	 * @param string
-//	 * @param target
-//	 * @return
-//	 */
-//	private boolean refers(String string, String target) {
-//		String[] tokens = string.split("\\W");
-//		for (String tok : tokens){
-//			if (tok.equals(target)){
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
+	/*
+	 * checks whether the given string contains the target identifier as a
+	 * delimited whole word
+	 * 
+	 * @param string
+	 * @param target
+	 * @return
+	 */
+	private boolean refers(String string, String target) {
+		String[] tokens = string.split("\\W");
+		for (String tok : tokens){
+			if (tok.equals(target)){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/*
 	 * gets the parameters from the named event in the source machine
@@ -319,6 +330,24 @@ public class Regionrule extends AbstractRule implements IRule {
 		}
 		return relevant;
 	}
+	
+	/*
+	 * returns true if string contains no references to variables
+	 * @param predicate
+	 * @return
+	 */
+	private boolean neutral(Machine sourceMachine, Region region, String string) {
+		String[] tokens = string.split("\\W");
+		for (String tok : tokens){
+			for (Variable v : sourceMachine.getVariables()){
+				if (tok.equals(v.getName())){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
 
 	/*
 	 * returns true if string contains at least one variable allocated to the region and none that are not
