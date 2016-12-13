@@ -78,10 +78,12 @@ public class Regionrule extends AbstractRule implements IRule {
 		}
 		
 		for (Invariant inv : getAllInvariants(sourceMachine) ){
-			if (relevant(sourceMachine, region, inv.getPredicate())){
+			if (relevantInvariant(sourceMachine, region, inv.getPredicate())){
 				AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(inv);
 				Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(inv, decomposedMachine,null);
 				Invariant clone = (Invariant) copy.get(inv);
+				String containingMachineName = ((Machine)inv.getContaining(MachinePackage.Literals.MACHINE)).getName();
+				clone.setName(containingMachineName+"_"+clone.getName());
 				decomposedMachine.getInvariants().add(clone);
 			}
 		}
@@ -117,23 +119,25 @@ public class Regionrule extends AbstractRule implements IRule {
 					newEvent.getActions().add(clone);
 				}
 			}
-			nextP: for (Parameter p : event.getParameters()){
-				for (Action act : newEvent.getActions()){
-					if (refers(act.getAction(), p.getName())){
-						Parameter newP = (Parameter)Make.parameter(p.getName());
-						newEvent.getParameters().add(newP);
-						continue nextP;
-					}
-				}
-				for (Guard gd : newEvent.getGuards()){
-					if (refers(gd.getPredicate(), p.getName())){
-						Parameter newP = (Parameter)Make.parameter(p.getName());
-						newEvent.getParameters().add(newP);
-						continue nextP;
-					}
-				}
+			nextP: for (Parameter p : getExtendedParameters(sourceMachine, event.getName())){
+				Parameter newP = (Parameter)Make.parameter(p.getName());
+				newEvent.getParameters().add(newP);
+//				for (Action act : newEvent.getActions()){
+//					if (refers(act.getAction(), p.getName())){
+//						Parameter newP = (Parameter)Make.parameter(p.getName());
+//						newEvent.getParameters().add(newP);
+//						continue nextP;
+//					}
+//				}
+//				for (Guard gd : newEvent.getGuards()){
+//					if (refers(gd.getPredicate(), p.getName())){
+//						Parameter newP = (Parameter)Make.parameter(p.getName());
+//						newEvent.getParameters().add(newP);
+//						continue nextP;
+//					}
+//				}
 			}
-			if (newEvent.eAllContents().hasNext()){
+			if (newEvent.getGuards().size()>0 || newEvent.getActions().size()>0 ){
 				events.add(newEvent);
 			}
 		}
@@ -157,24 +161,44 @@ public class Regionrule extends AbstractRule implements IRule {
 		return ret;
 	}
 	
+//	/*
+//	 * checks whether the given string contains the target identifier as a
+//	 * delimited whole word
+//	 * 
+//	 * @param string
+//	 * @param target
+//	 * @return
+//	 */
+//	private boolean refers(String string, String target) {
+//		String[] tokens = string.split("\\W");
+//		for (String tok : tokens){
+//			if (tok.equals(target)){
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+
 	/*
-	 * checks whether the given string contains the target identifier as a
-	 * delimited whole word
-	 * 
-	 * @param string
-	 * @param target
+	 * gets the parameters from the named event in the source machine
+	 * including those from extended abstract events
+	 * @param sourceMachine
 	 * @return
 	 */
-	private boolean refers(String string, String target) {
-		String[] tokens = string.split("\\W");
-		for (String tok : tokens){
-			if (tok.equals(target)){
-				return true;
+	private List<Parameter> getExtendedParameters(Machine machine, String eventName) {
+		if (machine==null) return Collections.emptyList();
+		List<Parameter> ret = new ArrayList<Parameter>();
+		for (Event event : machine.getEvents()){
+			if  (eventName.equals(event.getName())){
+				ret.addAll(event.getParameters());
+				if (event.isExtended() && machine.getRefines().size()>0){
+					ret.addAll(getExtendedParameters(machine.getRefines().get(0), eventName));
+				}
 			}
 		}
-		return false;
+		return ret;
 	}
-
+	
 	/*
 	 * gets the guards from the named event in the source machine
 	 * including those from extended abstract events
@@ -228,36 +252,103 @@ public class Regionrule extends AbstractRule implements IRule {
 		}
 		return ret;
 	}
-
-	/*
-	 * checks whether the string refers to any variables in the given region and
-	 *  no other variables in other regions
-	 */
-	private boolean relevant (Machine sourceMachine, Region region, String string) {
-		for (AbstractExtension ext : sourceMachine.getExtensions()){
-			if (ext instanceof Region && (
-					ext == region && !relevant(region, string) || ext != region && relevant((Region)ext, string)
-				)) 
-			{
-				return false;
-			}
-		}
-		return true;
-	}
 	
 	/*
-	 * checks whether the string refers to any variables in the given region
+	 * @param sourceMachine
+	 * @return
+	 */
+	private List<Variable> getAllVariables(Machine machine) {
+		if (machine==null) return Collections.emptyList();
+		List<Variable> ret = new ArrayList<Variable>();
+		ret.addAll(machine.getVariables());
+		if (machine.getRefines().size()>0){
+			ret.addAll(getAllVariables(machine.getRefines().get(0)));
+		}
+		return ret;
+	}
+
+//	/*
+//	 * checks whether the string refers to any variables in the given region and
+//	 *  no variables that are not in the given region
+//	 */
+//	private boolean relevant (Machine sourceMachine, Region region, String string) {
+//		for (AbstractExtension ext : sourceMachine.getExtensions()){
+//			if (ext instanceof Region && relevant2(sourceMachine,region,string))
+//				//	(ext == region && !relevant(region, string) || ext != region && relevant((Region)ext, string)) 
+//			{
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+	
+//	/*
+//	 * checks whether the string refers to any variables in the given region
+//	 * @param predicate
+//	 * @return
+//	 */
+//	private boolean relevant(Region region, String string) {
+//		String[] tokens = string.split("\\W");
+//		for (String tok : tokens){
+//			for (Variable v : region.getAllocatedVariables()){
+//				if (tok.equals(v.getName())){
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+
+	/*
+	 * returns true if string contains at least one variable allocated to the region and none that are not
 	 * @param predicate
 	 * @return
 	 */
-	private boolean relevant(Region region, String string) {
+	private boolean relevant(Machine sourceMachine, Region region, String string) {
 		String[] tokens = string.split("\\W");
+		boolean relevant = false;
 		for (String tok : tokens){
-			for (Variable v : region.getAllocatedVariables()){
+			for (Variable v : sourceMachine.getVariables()){
 				if (tok.equals(v.getName())){
-					return true;
+					if (region.getAllocatedVariables().contains(v))
+						relevant = true;
+					else
+						return false;
 				}
 			}
+		}
+		return relevant;
+	}
+
+	/*
+	 * returns true if string contains at least one variable allocated to the region and none that are not
+	 * @param predicate
+	 * @return
+	 */
+	private boolean relevantInvariant(Machine sourceMachine, Region region, String string) {
+		String[] tokens = string.split("\\W");
+		boolean relevant = false;
+		for (String tok : tokens){
+			for (Variable v : getAllVariables(sourceMachine)){
+				if (tok.equals(v.getName())){	//token refers to a variable of the source machine
+					if (isAllocatedVariable(tok, region))
+						relevant = true;
+					else
+						return false;
+				}
+			}
+		}
+		return relevant;
+	}
+	
+	/**
+	 * @param tok
+	 * @param region 
+	 * @return
+	 */
+	private boolean isAllocatedVariable(String varName, Region region) {
+		for (Variable av : region.getAllocatedVariables()){
+			if (varName.equals(av.getName())) return true;
 		}
 		return false;
 	}
