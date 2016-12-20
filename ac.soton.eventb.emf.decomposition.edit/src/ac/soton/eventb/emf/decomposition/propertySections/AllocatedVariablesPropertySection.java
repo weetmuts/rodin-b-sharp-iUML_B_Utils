@@ -10,6 +10,7 @@ package ac.soton.eventb.emf.decomposition.propertySections;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.IFilter;
@@ -128,17 +129,10 @@ public class AllocatedVariablesPropertySection extends AbstractTablePropertySect
 				String id = (String)genId.getValue();
 				if (id!= null && id.length()>0){
 					Machine m = (Machine) ((Variable)object).getContaining(MachinePackage.Literals.MACHINE);
-					EList<AbstractExtension> extensions = m.getExtensions();
-					for (AbstractExtension ext : extensions){
-						String extId = ext.getExtensionId();
-						if (id.equals(extId)){
-							Object name = ext.eGet(ext.eClass().getEStructuralFeature("name"));
-							if (name instanceof String){
-								return ext.eClass().getName()+": "+(String)name;
-							}else{
-								return id;
-							}
-						}
+					EList<EObject> contents = m.eContents();
+					String found =  checkExtensions(id, contents);
+					if (found!= null){
+						return  found;
 					}
 				}
 				return "<EXTENSION NOT FOUND!> :- "+id;
@@ -146,6 +140,34 @@ public class AllocatedVariablesPropertySection extends AbstractTablePropertySect
 		}
 		return null;
 	}
+
+	/**
+	 * @param id
+	 * @param extensions
+	 * @return
+	 */
+	private String checkExtensions(String id, EList<EObject> eObjects) {
+		for (EObject eObject : eObjects){
+			if (eObject instanceof AbstractExtension) {
+				String extId = ((AbstractExtension)eObject).getExtensionId();
+				if (id.equals(extId)){
+					Object name = eObject .eGet(eObject.eClass().getEStructuralFeature("name"));
+					if (name instanceof String){
+						return eObject.eClass().getName()+": "+(String)name;
+					}else{
+						return id;
+					}
+				}else{
+					String found = checkExtensions(id, eObject.eContents());
+					if (found != null){
+						return found;
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
 	
 	
 }
