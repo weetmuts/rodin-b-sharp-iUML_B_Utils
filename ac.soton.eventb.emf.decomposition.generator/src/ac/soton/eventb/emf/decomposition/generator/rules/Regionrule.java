@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.IMachineRoot;
 import org.eventb.core.ast.Type;
 import org.eventb.emf.core.AbstractExtension;
@@ -87,6 +89,7 @@ public class Regionrule extends AbstractRule implements IRule {
 			}
 		}
 		
+		List<Event> elaboratedSourceEvents = getElaboratedEvents(sourceMachine,region.getAllocatedExtensions());
 		EList<Event> events = decomposedMachine.getEvents();
 		
 //		Event initEvent = (Event)Make.event("INITIALISATION");
@@ -119,7 +122,8 @@ public class Regionrule extends AbstractRule implements IRule {
 				}
 			}
 			
-			if (newEvent.getGuards().size()>0 || newEvent.getActions().size()>0 ){
+			if (newEvent.getGuards().size()>0 || newEvent.getActions().size()>0 || 
+					elaboratedSourceEvents.contains(event) ){
 				
 				//Add parameters and relevant parameter guards (only if guards or actions already added)
 				List<Guard> guardsToClone = new ArrayList<Guard>();
@@ -183,6 +187,39 @@ public class Regionrule extends AbstractRule implements IRule {
 		return ret;
 	}
 	
+	/**
+	 * gets a list of the events in the source machine that are elaborated by the given extension
+	 * (i.e. appear in a
+	 * @param sourceMachine 
+	 * @param allocatedExtensions
+	 * @return
+	 */
+	private List<Event> getElaboratedEvents(
+			Machine sourceMachine, EList<AbstractExtension> allocatedExtensions) {
+		List<Event> events = new ArrayList<Event>();
+
+
+			for (AbstractExtension ext : allocatedExtensions){
+				TreeIterator<EObject> it = ext.eAllContents();
+				while (it.hasNext()){
+					EObject eo = it.next();
+					EStructuralFeature elaborates = eo.eClass().getEStructuralFeature("elaborates");
+
+					if (elaborates!=null){
+						Object el = eo.eGet(elaborates);
+						for (Event ev : sourceMachine.getEvents()){
+							if (!events.contains(ev)){
+								if (el==ev || (el instanceof List && ((List<?>)el).contains(ev))){
+									events.add(ev);
+								}
+							}
+						}
+					}
+				}
+			}
+		return events;
+	}
+
 	/*
 	 * checks whether the given string contains the target identifier as a
 	 * delimited whole word
