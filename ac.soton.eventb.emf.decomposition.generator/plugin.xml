@@ -77,8 +77,8 @@
             translator_id="ac.soton.eventb.emf.decomposition.translator">
          <rule
                name="RegionRule"
-               rule_class="ac.soton.eventb.emf.decomposition.generator.rules.Regionrule"
-               source_class="Region"
+               rule_class="ac.soton.eventb.emf.decomposition.generator.rules.RegionRule"
+               source_class="AbstractRegion"
                source_package="http://soton.ac.uk/models/eventb/decomposition/2016">
          </rule>
       </ruleset>
