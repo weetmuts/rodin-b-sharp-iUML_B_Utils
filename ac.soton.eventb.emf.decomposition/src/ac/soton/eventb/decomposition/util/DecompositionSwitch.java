@@ -94,10 +94,19 @@ public class DecompositionSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case DecompositionPackage.ABSTRACT_REGION: {
+				AbstractRegion abstractRegion = (AbstractRegion)theEObject;
+				T result = caseAbstractRegion(abstractRegion);
+				if (result == null) result = caseEventBElement(abstractRegion);
+				if (result == null) result = caseEventBObject(abstractRegion);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DecompositionPackage.REGION: {
 				Region region = (Region)theEObject;
 				T result = caseRegion(region);
 				if (result == null) result = caseEventBNamedCommentedElement(region);
+				if (result == null) result = caseAbstractRegion(region);
 				if (result == null) result = caseAbstractExtension(region);
 				if (result == null) result = caseEventBCommentedElement(region);
 				if (result == null) result = caseEventBNamed(region);
@@ -109,6 +118,21 @@ public class DecompositionSwitch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Region</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Region</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractRegion(AbstractRegion object) {
+		return null;
 	}
 
 	/**

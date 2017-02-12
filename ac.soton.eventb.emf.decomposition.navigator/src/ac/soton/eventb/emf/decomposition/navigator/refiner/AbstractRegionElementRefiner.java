@@ -22,7 +22,7 @@ import ac.soton.eventb.emf.core.extension.navigator.refiner.CoreextensionElement
  * @author cfsnook
  *
  */
-public class RegionElementRefiner extends CoreextensionElementRefiner {
+public class AbstractRegionElementRefiner extends CoreextensionElementRefiner {
 
 	/**
 	 * populate the given list with the meta-classes that the refiner needs to filter out
@@ -43,8 +43,8 @@ public class RegionElementRefiner extends CoreextensionElementRefiner {
 	@Override
 	protected void populateReferenceMap(final Map<EReference,RefHandling> referencemap){
 		super.populateReferenceMap(referencemap);
-		referencemap.put(DecompositionPackage.Literals.REGION__ALLOCATED_EXTENSIONS, RefHandling.EQUIV);
-		referencemap.put(DecompositionPackage.Literals.REGION__ALLOCATED_VARIABLES, RefHandling.EQUIV);;
+		referencemap.put(DecompositionPackage.Literals.ABSTRACT_REGION__ALLOCATED_EXTENSIONS, RefHandling.EQUIV);
+		referencemap.put(DecompositionPackage.Literals.ABSTRACT_REGION__ALLOCATED_VARIABLES, RefHandling.EQUIV);;
 	}
 	
 	/**

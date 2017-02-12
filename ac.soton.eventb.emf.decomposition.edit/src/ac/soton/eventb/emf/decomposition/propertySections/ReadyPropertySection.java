@@ -10,8 +10,8 @@ package ac.soton.eventb.emf.decomposition.propertySections;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.jface.viewers.IFilter;
 
+import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.decomposition.DecompositionPackage;
-import ac.soton.eventb.decomposition.Region;
 
 /**
  * Ready property section for Region.
@@ -25,12 +25,12 @@ public class ReadyPropertySection extends AbstractEnumerationPropertySection imp
 	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 	 */
 	public boolean select(final Object selected) {
-		return selected instanceof Region;
+		return selected instanceof AbstractRegion;
 	}
 
 	@Override
 	protected EAttribute getFeature() {
-		return DecompositionPackage.Literals.REGION__READY;
+		return DecompositionPackage.Literals.ABSTRACT_REGION__READY;
 	}
 	
 }

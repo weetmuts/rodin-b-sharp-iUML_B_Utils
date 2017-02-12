@@ -2,6 +2,7 @@
  */
 package ac.soton.eventb.decomposition.impl;
 
+import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.decomposition.DecompositionFactory;
 import ac.soton.eventb.decomposition.DecompositionPackage;
 import ac.soton.eventb.decomposition.Region;
@@ -32,6 +33,12 @@ public class DecompositionPackageImpl extends EPackageImpl implements Decomposit
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2016\rUniversity of Southampton.\rAll rights reserved. This program and the accompanying materials  are made\ravailable under the terms of the Eclipse Public License v1.0 which accompanies this \rdistribution, and is available at http://www.eclipse.org/legal/epl-v10.html\n";
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractRegionEClass = null;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,53 +115,71 @@ public class DecompositionPackageImpl extends EPackageImpl implements Decomposit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAbstractRegion() {
+		return abstractRegionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractRegion_Ready() {
+		return (EAttribute)abstractRegionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractRegion_ProjectName() {
+		return (EAttribute)abstractRegionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractRegion_ContextName() {
+		return (EAttribute)abstractRegionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractRegion_AllocatedVariables() {
+		return (EReference)abstractRegionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractRegion_AllocatedExtensions() {
+		return (EReference)abstractRegionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractRegion_MachineName() {
+		return (EAttribute)abstractRegionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRegion() {
 		return regionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRegion_Ready() {
-		return (EAttribute)regionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRegion_ProjectName() {
-		return (EAttribute)regionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRegion_ContextName() {
-		return (EAttribute)regionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRegion_AllocatedVariables() {
-		return (EReference)regionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRegion_AllocatedExtensions() {
-		return (EReference)regionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -185,12 +210,15 @@ public class DecompositionPackageImpl extends EPackageImpl implements Decomposit
 		isCreated = true;
 
 		// Create classes and their features
+		abstractRegionEClass = createEClass(ABSTRACT_REGION);
+		createEAttribute(abstractRegionEClass, ABSTRACT_REGION__READY);
+		createEAttribute(abstractRegionEClass, ABSTRACT_REGION__PROJECT_NAME);
+		createEAttribute(abstractRegionEClass, ABSTRACT_REGION__CONTEXT_NAME);
+		createEReference(abstractRegionEClass, ABSTRACT_REGION__ALLOCATED_VARIABLES);
+		createEReference(abstractRegionEClass, ABSTRACT_REGION__ALLOCATED_EXTENSIONS);
+		createEAttribute(abstractRegionEClass, ABSTRACT_REGION__MACHINE_NAME);
+
 		regionEClass = createEClass(REGION);
-		createEAttribute(regionEClass, REGION__READY);
-		createEAttribute(regionEClass, REGION__PROJECT_NAME);
-		createEAttribute(regionEClass, REGION__CONTEXT_NAME);
-		createEReference(regionEClass, REGION__ALLOCATED_VARIABLES);
-		createEReference(regionEClass, REGION__ALLOCATED_EXTENSIONS);
 	}
 
 	/**
@@ -225,16 +253,21 @@ public class DecompositionPackageImpl extends EPackageImpl implements Decomposit
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		abstractRegionEClass.getESuperTypes().add(theCorePackage.getEventBElement());
 		regionEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedElement());
+		regionEClass.getESuperTypes().add(this.getAbstractRegion());
 		regionEClass.getESuperTypes().add(theCorePackage.getAbstractExtension());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(abstractRegionEClass, AbstractRegion.class, "AbstractRegion", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractRegion_Ready(), ecorePackage.getEBoolean(), "ready", null, 0, 1, AbstractRegion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractRegion_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, AbstractRegion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractRegion_ContextName(), ecorePackage.getEString(), "contextName", null, 0, 1, AbstractRegion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractRegion_AllocatedVariables(), theMachinePackage.getVariable(), null, "allocatedVariables", null, 0, -1, AbstractRegion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractRegion_AllocatedExtensions(), theCorePackage.getAbstractExtension(), null, "allocatedExtensions", null, 0, -1, AbstractRegion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractRegion_MachineName(), ecorePackage.getEString(), "machineName", null, 0, 1, AbstractRegion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(regionEClass, Region.class, "Region", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRegion_Ready(), ecorePackage.getEBoolean(), "ready", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRegion_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRegion_ContextName(), ecorePackage.getEString(), "contextName", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRegion_AllocatedVariables(), theMachinePackage.getVariable(), null, "allocatedVariables", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRegion_AllocatedExtensions(), theCorePackage.getAbstractExtension(), null, "allocatedExtensions", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

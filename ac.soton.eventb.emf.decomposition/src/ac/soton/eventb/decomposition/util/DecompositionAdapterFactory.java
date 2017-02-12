@@ -82,6 +82,10 @@ public class DecompositionAdapterFactory extends AdapterFactoryImpl {
 	protected DecompositionSwitch<Adapter> modelSwitch =
 		new DecompositionSwitch<Adapter>() {
 			@Override
+			public Adapter caseAbstractRegion(AbstractRegion object) {
+				return createAbstractRegionAdapter();
+			}
+			@Override
 			public Adapter caseRegion(Region object) {
 				return createRegionAdapter();
 			}
@@ -132,6 +136,20 @@ public class DecompositionAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ac.soton.eventb.decomposition.AbstractRegion <em>Abstract Region</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion
+	 * @generated
+	 */
+	public Adapter createAbstractRegionAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link ac.soton.eventb.decomposition.Region <em>Region</em>}'.

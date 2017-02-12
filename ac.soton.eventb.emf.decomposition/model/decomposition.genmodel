@@ -9,12 +9,14 @@
   <foreignModel>decomposition.ecore</foreignModel>
   <genPackages prefix="Decomposition" basePackage="ac.soton.eventb" disposableProviderFactory="true"
       extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="decomposition.ecore#/">
-    <genClasses ecoreClass="decomposition.ecore#//Region">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//Region/ready"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//Region/projectName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//Region/contextName"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decomposition.ecore#//Region/allocatedVariables"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decomposition.ecore#//Region/allocatedExtensions"/>
+    <genClasses image="false" ecoreClass="decomposition.ecore#//AbstractRegion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//AbstractRegion/ready"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//AbstractRegion/projectName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//AbstractRegion/contextName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decomposition.ecore#//AbstractRegion/allocatedVariables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decomposition.ecore#//AbstractRegion/allocatedExtensions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute decomposition.ecore#//AbstractRegion/machineName"/>
     </genClasses>
+    <genClasses ecoreClass="decomposition.ecore#//Region"/>
   </genPackages>
 </genmodel:GenModel>

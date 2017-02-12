@@ -1,42 +1,46 @@
 /**
+ * Copyright (c) 2016
+ * University of Southampton.
+ * All rights reserved. This program and the accompanying materials  are made
+ * available under the terms of the Eclipse Public License v1.0 which accompanies this 
+ * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *
+ * $Id$
  */
 package ac.soton.eventb.decomposition.impl;
 
 import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.decomposition.DecompositionPackage;
-import ac.soton.eventb.decomposition.Region;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.emf.core.AbstractExtension;
-import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.impl.EventBNamedCommentedElementImpl;
+import org.eventb.emf.core.impl.EventBElementImpl;
 import org.eventb.emf.core.machine.Variable;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Region</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Region</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#isReady <em>Ready</em>}</li>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#getProjectName <em>Project Name</em>}</li>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#getContextName <em>Context Name</em>}</li>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#getAllocatedVariables <em>Allocated Variables</em>}</li>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#getAllocatedExtensions <em>Allocated Extensions</em>}</li>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#getMachineName <em>Machine Name</em>}</li>
- *   <li>{@link ac.soton.eventb.decomposition.impl.RegionImpl#getExtensionId <em>Extension Id</em>}</li>
+ *   <li>{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl#isReady <em>Ready</em>}</li>
+ *   <li>{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl#getProjectName <em>Project Name</em>}</li>
+ *   <li>{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl#getContextName <em>Context Name</em>}</li>
+ *   <li>{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl#getAllocatedVariables <em>Allocated Variables</em>}</li>
+ *   <li>{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl#getAllocatedExtensions <em>Allocated Extensions</em>}</li>
+ *   <li>{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl#getMachineName <em>Machine Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RegionImpl extends EventBNamedCommentedElementImpl implements Region {
+public abstract class AbstractRegionImpl extends EventBElementImpl implements AbstractRegion {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -145,31 +149,11 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	protected String machineName = MACHINE_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensionId()
-	 * @generated NOT
-	 * @ordered
-	 */
-	protected static final String EXTENSION_ID_EDEFAULT = DecompositionPackage.DECOMPOSITION_REGION_EXTENSION_ID;
-
-	/**
-	 * The cached value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensionId()
-	 * @generated NOT
-	 * @ordered
-	 */
-	protected String extensionId = EXTENSION_ID_EDEFAULT+"."+EcoreUtil.generateUUID();
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RegionImpl() {
+	protected AbstractRegionImpl() {
 		super();
 	}
 
@@ -180,7 +164,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DecompositionPackage.Literals.REGION;
+		return DecompositionPackage.Literals.ABSTRACT_REGION;
 	}
 
 	/**
@@ -201,7 +185,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 		boolean oldReady = ready;
 		ready = newReady;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.REGION__READY, oldReady, ready));
+			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.ABSTRACT_REGION__READY, oldReady, ready));
 	}
 
 	/**
@@ -222,7 +206,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 		String oldProjectName = projectName;
 		projectName = newProjectName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.REGION__PROJECT_NAME, oldProjectName, projectName));
+			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME, oldProjectName, projectName));
 	}
 
 	/**
@@ -243,7 +227,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 		String oldContextName = contextName;
 		contextName = newContextName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.REGION__CONTEXT_NAME, oldContextName, contextName));
+			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME, oldContextName, contextName));
 	}
 
 	/**
@@ -253,7 +237,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	 */
 	public EList<Variable> getAllocatedVariables() {
 		if (allocatedVariables == null) {
-			allocatedVariables = new EObjectResolvingEList<Variable>(Variable.class, this, DecompositionPackage.REGION__ALLOCATED_VARIABLES);
+			allocatedVariables = new EObjectResolvingEList<Variable>(Variable.class, this, DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES);
 		}
 		return allocatedVariables;
 	}
@@ -265,7 +249,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	 */
 	public EList<AbstractExtension> getAllocatedExtensions() {
 		if (allocatedExtensions == null) {
-			allocatedExtensions = new EObjectResolvingEList<AbstractExtension>(AbstractExtension.class, this, DecompositionPackage.REGION__ALLOCATED_EXTENSIONS);
+			allocatedExtensions = new EObjectResolvingEList<AbstractExtension>(AbstractExtension.class, this, DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS);
 		}
 		return allocatedExtensions;
 	}
@@ -288,28 +272,7 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 		String oldMachineName = machineName;
 		machineName = newMachineName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.REGION__MACHINE_NAME, oldMachineName, machineName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getExtensionId() {
-		return extensionId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExtensionId(String newExtensionId) {
-		String oldExtensionId = extensionId;
-		extensionId = newExtensionId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.REGION__EXTENSION_ID, oldExtensionId, extensionId));
+			eNotify(new ENotificationImpl(this, Notification.SET, DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME, oldMachineName, machineName));
 	}
 
 	/**
@@ -320,20 +283,18 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DecompositionPackage.REGION__READY:
+			case DecompositionPackage.ABSTRACT_REGION__READY:
 				return isReady();
-			case DecompositionPackage.REGION__PROJECT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME:
 				return getProjectName();
-			case DecompositionPackage.REGION__CONTEXT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME:
 				return getContextName();
-			case DecompositionPackage.REGION__ALLOCATED_VARIABLES:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES:
 				return getAllocatedVariables();
-			case DecompositionPackage.REGION__ALLOCATED_EXTENSIONS:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS:
 				return getAllocatedExtensions();
-			case DecompositionPackage.REGION__MACHINE_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME:
 				return getMachineName();
-			case DecompositionPackage.REGION__EXTENSION_ID:
-				return getExtensionId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -347,28 +308,25 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DecompositionPackage.REGION__READY:
+			case DecompositionPackage.ABSTRACT_REGION__READY:
 				setReady((Boolean)newValue);
 				return;
-			case DecompositionPackage.REGION__PROJECT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME:
 				setProjectName((String)newValue);
 				return;
-			case DecompositionPackage.REGION__CONTEXT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME:
 				setContextName((String)newValue);
 				return;
-			case DecompositionPackage.REGION__ALLOCATED_VARIABLES:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES:
 				getAllocatedVariables().clear();
 				getAllocatedVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
-			case DecompositionPackage.REGION__ALLOCATED_EXTENSIONS:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS:
 				getAllocatedExtensions().clear();
 				getAllocatedExtensions().addAll((Collection<? extends AbstractExtension>)newValue);
 				return;
-			case DecompositionPackage.REGION__MACHINE_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME:
 				setMachineName((String)newValue);
-				return;
-			case DecompositionPackage.REGION__EXTENSION_ID:
-				setExtensionId((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -382,26 +340,23 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DecompositionPackage.REGION__READY:
+			case DecompositionPackage.ABSTRACT_REGION__READY:
 				setReady(READY_EDEFAULT);
 				return;
-			case DecompositionPackage.REGION__PROJECT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME:
 				setProjectName(PROJECT_NAME_EDEFAULT);
 				return;
-			case DecompositionPackage.REGION__CONTEXT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME:
 				setContextName(CONTEXT_NAME_EDEFAULT);
 				return;
-			case DecompositionPackage.REGION__ALLOCATED_VARIABLES:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES:
 				getAllocatedVariables().clear();
 				return;
-			case DecompositionPackage.REGION__ALLOCATED_EXTENSIONS:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS:
 				getAllocatedExtensions().clear();
 				return;
-			case DecompositionPackage.REGION__MACHINE_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME:
 				setMachineName(MACHINE_NAME_EDEFAULT);
-				return;
-			case DecompositionPackage.REGION__EXTENSION_ID:
-				setExtensionId(EXTENSION_ID_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -415,76 +370,20 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DecompositionPackage.REGION__READY:
+			case DecompositionPackage.ABSTRACT_REGION__READY:
 				return ready != READY_EDEFAULT;
-			case DecompositionPackage.REGION__PROJECT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME:
 				return PROJECT_NAME_EDEFAULT == null ? projectName != null : !PROJECT_NAME_EDEFAULT.equals(projectName);
-			case DecompositionPackage.REGION__CONTEXT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME:
 				return CONTEXT_NAME_EDEFAULT == null ? contextName != null : !CONTEXT_NAME_EDEFAULT.equals(contextName);
-			case DecompositionPackage.REGION__ALLOCATED_VARIABLES:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES:
 				return allocatedVariables != null && !allocatedVariables.isEmpty();
-			case DecompositionPackage.REGION__ALLOCATED_EXTENSIONS:
+			case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS:
 				return allocatedExtensions != null && !allocatedExtensions.isEmpty();
-			case DecompositionPackage.REGION__MACHINE_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME:
 				return MACHINE_NAME_EDEFAULT == null ? machineName != null : !MACHINE_NAME_EDEFAULT.equals(machineName);
-			case DecompositionPackage.REGION__EXTENSION_ID:
-				return EXTENSION_ID_EDEFAULT == null ? extensionId != null : !EXTENSION_ID_EDEFAULT.equals(extensionId);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractRegion.class) {
-			switch (derivedFeatureID) {
-				case DecompositionPackage.REGION__READY: return DecompositionPackage.ABSTRACT_REGION__READY;
-				case DecompositionPackage.REGION__PROJECT_NAME: return DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME;
-				case DecompositionPackage.REGION__CONTEXT_NAME: return DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME;
-				case DecompositionPackage.REGION__ALLOCATED_VARIABLES: return DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES;
-				case DecompositionPackage.REGION__ALLOCATED_EXTENSIONS: return DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS;
-				case DecompositionPackage.REGION__MACHINE_NAME: return DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractExtension.class) {
-			switch (derivedFeatureID) {
-				case DecompositionPackage.REGION__EXTENSION_ID: return CorePackage.ABSTRACT_EXTENSION__EXTENSION_ID;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractRegion.class) {
-			switch (baseFeatureID) {
-				case DecompositionPackage.ABSTRACT_REGION__READY: return DecompositionPackage.REGION__READY;
-				case DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME: return DecompositionPackage.REGION__PROJECT_NAME;
-				case DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME: return DecompositionPackage.REGION__CONTEXT_NAME;
-				case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_VARIABLES: return DecompositionPackage.REGION__ALLOCATED_VARIABLES;
-				case DecompositionPackage.ABSTRACT_REGION__ALLOCATED_EXTENSIONS: return DecompositionPackage.REGION__ALLOCATED_EXTENSIONS;
-				case DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME: return DecompositionPackage.REGION__MACHINE_NAME;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractExtension.class) {
-			switch (baseFeatureID) {
-				case CorePackage.ABSTRACT_EXTENSION__EXTENSION_ID: return DecompositionPackage.REGION__EXTENSION_ID;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -505,10 +404,8 @@ public class RegionImpl extends EventBNamedCommentedElementImpl implements Regio
 		result.append(contextName);
 		result.append(", machineName: ");
 		result.append(machineName);
-		result.append(", extensionId: ");
-		result.append(extensionId);
 		result.append(')');
 		return result.toString();
 	}
 
-} //RegionImpl
+} //AbstractRegionImpl

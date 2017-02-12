@@ -16,7 +16,7 @@
    <extension
          point="ac.soton.eventb.emf.core.extension.navigator.elementRefinement">
       <refinementDefinition
-            refiner_class="ac.soton.eventb.emf.decomposition.navigator.refiner.RegionElementRefiner"
+            refiner_class="ac.soton.eventb.emf.decomposition.navigator.refiner.AbstractRegionElementRefiner"
             ePackage="http://soton.ac.uk/models/eventb/decomposition/2016">
       </refinementDefinition>
    </extension>

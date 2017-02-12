@@ -11,9 +11,9 @@
 package ac.soton.eventb.decomposition.provider;
 
 
+import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.decomposition.DecompositionFactory;
 import ac.soton.eventb.decomposition.DecompositionPackage;
-import ac.soton.eventb.decomposition.Region;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -29,16 +29,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.provider.EventBNamedCommentedElementItemProvider;
+import org.eventb.emf.core.provider.EventBElementItemProvider;
 
 /**
- * This is the item provider adapter for a {@link ac.soton.eventb.decomposition.Region} object.
+ * This is the item provider adapter for a {@link ac.soton.eventb.decomposition.AbstractRegion} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RegionItemProvider
-	extends EventBNamedCommentedElementItemProvider
+public class AbstractRegionItemProvider
+	extends EventBElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -59,7 +59,7 @@ public class RegionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RegionItemProvider(AdapterFactory adapterFactory) {
+	public AbstractRegionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -80,7 +80,6 @@ public class RegionItemProvider
 			addAllocatedVariablesPropertyDescriptor(object);
 			addAllocatedExtensionsPropertyDescriptor(object);
 			addMachineNamePropertyDescriptor(object);
-			addExtensionIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -218,39 +217,6 @@ public class RegionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Extension Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addExtensionIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractExtension_extensionId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractExtension_extensionId_feature", "_UI_AbstractExtension_type"),
-				 CorePackage.Literals.ABSTRACT_EXTENSION__EXTENSION_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns Region.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Region"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,10 +224,10 @@ public class RegionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Region)object).getName();
+		String label = ((AbstractRegion)object).getProjectName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Region_type") :
-			getString("_UI_Region_type") + " " + label;
+			getString("_UI_AbstractRegion_type") :
+			getString("_UI_AbstractRegion_type") + " " + label;
 	}
 
 	/**
@@ -275,12 +241,11 @@ public class RegionItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Region.class)) {
-			case DecompositionPackage.REGION__READY:
-			case DecompositionPackage.REGION__PROJECT_NAME:
-			case DecompositionPackage.REGION__CONTEXT_NAME:
-			case DecompositionPackage.REGION__MACHINE_NAME:
-			case DecompositionPackage.REGION__EXTENSION_ID:
+		switch (notification.getFeatureID(AbstractRegion.class)) {
+			case DecompositionPackage.ABSTRACT_REGION__READY:
+			case DecompositionPackage.ABSTRACT_REGION__PROJECT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__CONTEXT_NAME:
+			case DecompositionPackage.ABSTRACT_REGION__MACHINE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

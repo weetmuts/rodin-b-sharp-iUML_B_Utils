@@ -39,8 +39,8 @@ public class RegionRefiner extends AbstractExtensionRefiner {
 	@Override
 	protected void populateReferenceMap(final Map<EReference,RefHandling> referencemap){
 		super.populateReferenceMap(referencemap);
-		referencemap.put(DecompositionPackage.Literals.REGION__ALLOCATED_EXTENSIONS, RefHandling.EQUIV);
-		referencemap.put(DecompositionPackage.Literals.REGION__ALLOCATED_VARIABLES, RefHandling.EQUIV);;
+		referencemap.put(DecompositionPackage.Literals.ABSTRACT_REGION__ALLOCATED_EXTENSIONS, RefHandling.EQUIV);
+		referencemap.put(DecompositionPackage.Literals.ABSTRACT_REGION__ALLOCATED_VARIABLES, RefHandling.EQUIV);;
 	}
 
 /**

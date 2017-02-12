@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.IFilter;
 import org.eventb.emf.core.CorePackage;
 
+import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.decomposition.DecompositionPackage;
-import ac.soton.eventb.decomposition.Region;
 
 
 
@@ -31,12 +31,12 @@ public class AllocatedExtensionsPropertySection extends AbstractTablePropertySec
 	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 	 */
 	public boolean select(final Object selected) {
-			return selected instanceof Region;
+			return selected instanceof AbstractRegion;
 	}
 
 	@Override
 	protected EReference getFeature() {
-		return DecompositionPackage.Literals.REGION__ALLOCATED_EXTENSIONS;
+		return DecompositionPackage.Literals.ABSTRACT_REGION__ALLOCATED_EXTENSIONS;
 	}
 
 	@Override

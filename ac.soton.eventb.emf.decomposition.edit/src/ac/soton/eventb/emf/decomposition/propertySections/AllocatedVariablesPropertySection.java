@@ -21,8 +21,8 @@ import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Variable;
 
+import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.decomposition.DecompositionPackage;
-import ac.soton.eventb.decomposition.Region;
 
 
 
@@ -38,12 +38,12 @@ public class AllocatedVariablesPropertySection extends AbstractTablePropertySect
 	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
 	 */
 	public boolean select(final Object selected) {
-			return selected instanceof Region;
+			return selected instanceof AbstractRegion;
 	}
 
 	@Override
 	protected EReference getFeature() {
-		return DecompositionPackage.Literals.REGION__ALLOCATED_VARIABLES;
+		return DecompositionPackage.Literals.ABSTRACT_REGION__ALLOCATED_VARIABLES;
 	}
 
 	@Override

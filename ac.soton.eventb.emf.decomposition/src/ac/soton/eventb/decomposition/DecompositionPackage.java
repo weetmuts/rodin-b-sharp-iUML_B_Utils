@@ -71,6 +71,142 @@ public interface DecompositionPackage extends EPackage {
 	DecompositionPackage eINSTANCE = ac.soton.eventb.decomposition.impl.DecompositionPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl <em>Abstract Region</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ac.soton.eventb.decomposition.impl.AbstractRegionImpl
+	 * @see ac.soton.eventb.decomposition.impl.DecompositionPackageImpl#getAbstractRegion()
+	 * @generated
+	 */
+	int ABSTRACT_REGION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__ANNOTATIONS = CorePackage.EVENT_BELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__EXTENSIONS = CorePackage.EVENT_BELEMENT__EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__ATTRIBUTES = CorePackage.EVENT_BELEMENT__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__REFERENCE = CorePackage.EVENT_BELEMENT__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__GENERATED = CorePackage.EVENT_BELEMENT__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__LOCAL_GENERATED = CorePackage.EVENT_BELEMENT__LOCAL_GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__INTERNAL_ID = CorePackage.EVENT_BELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ready</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__READY = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__PROJECT_NAME = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Context Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__CONTEXT_NAME = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Allocated Variables</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__ALLOCATED_VARIABLES = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Allocated Extensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__ALLOCATED_EXTENSIONS = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Machine Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION__MACHINE_NAME = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Region</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_REGION_FEATURE_COUNT = CorePackage.EVENT_BELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The meta object id for the '{@link ac.soton.eventb.decomposition.impl.RegionImpl <em>Region</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,7 +214,7 @@ public interface DecompositionPackage extends EPackage {
 	 * @see ac.soton.eventb.decomposition.impl.DecompositionPackageImpl#getRegion()
 	 * @generated
 	 */
-	int REGION = 0;
+	int REGION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -162,22 +298,13 @@ public interface DecompositionPackage extends EPackage {
 	int REGION__NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REGION__EXTENSION_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Ready</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REGION__READY = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+	int REGION__READY = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -186,7 +313,7 @@ public interface DecompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REGION__PROJECT_NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
+	int REGION__PROJECT_NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Context Name</b></em>' attribute.
@@ -195,7 +322,7 @@ public interface DecompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REGION__CONTEXT_NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
+	int REGION__CONTEXT_NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Allocated Variables</b></em>' reference list.
@@ -204,7 +331,7 @@ public interface DecompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REGION__ALLOCATED_VARIABLES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 4;
+	int REGION__ALLOCATED_VARIABLES = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Allocated Extensions</b></em>' reference list.
@@ -213,7 +340,25 @@ public interface DecompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REGION__ALLOCATED_EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 5;
+	int REGION__ALLOCATED_EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Machine Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGION__MACHINE_NAME = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGION__EXTENSION_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Region</em>' class.
@@ -222,7 +367,83 @@ public interface DecompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REGION_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 6;
+	int REGION_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
+	 * Returns the meta object for class '{@link ac.soton.eventb.decomposition.AbstractRegion <em>Abstract Region</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Region</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion
+	 * @generated
+	 */
+	EClass getAbstractRegion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.AbstractRegion#isReady <em>Ready</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ready</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion#isReady()
+	 * @see #getAbstractRegion()
+	 * @generated
+	 */
+	EAttribute getAbstractRegion_Ready();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.AbstractRegion#getProjectName <em>Project Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Project Name</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion#getProjectName()
+	 * @see #getAbstractRegion()
+	 * @generated
+	 */
+	EAttribute getAbstractRegion_ProjectName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.AbstractRegion#getContextName <em>Context Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Context Name</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion#getContextName()
+	 * @see #getAbstractRegion()
+	 * @generated
+	 */
+	EAttribute getAbstractRegion_ContextName();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ac.soton.eventb.decomposition.AbstractRegion#getAllocatedVariables <em>Allocated Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Allocated Variables</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion#getAllocatedVariables()
+	 * @see #getAbstractRegion()
+	 * @generated
+	 */
+	EReference getAbstractRegion_AllocatedVariables();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ac.soton.eventb.decomposition.AbstractRegion#getAllocatedExtensions <em>Allocated Extensions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Allocated Extensions</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion#getAllocatedExtensions()
+	 * @see #getAbstractRegion()
+	 * @generated
+	 */
+	EReference getAbstractRegion_AllocatedExtensions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.AbstractRegion#getMachineName <em>Machine Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Machine Name</em>'.
+	 * @see ac.soton.eventb.decomposition.AbstractRegion#getMachineName()
+	 * @see #getAbstractRegion()
+	 * @generated
+	 */
+	EAttribute getAbstractRegion_MachineName();
 
 	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.decomposition.Region <em>Region</em>}'.
@@ -233,61 +454,6 @@ public interface DecompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRegion();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.Region#isReady <em>Ready</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ready</em>'.
-	 * @see ac.soton.eventb.decomposition.Region#isReady()
-	 * @see #getRegion()
-	 * @generated
-	 */
-	EAttribute getRegion_Ready();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.Region#getProjectName <em>Project Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Project Name</em>'.
-	 * @see ac.soton.eventb.decomposition.Region#getProjectName()
-	 * @see #getRegion()
-	 * @generated
-	 */
-	EAttribute getRegion_ProjectName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ac.soton.eventb.decomposition.Region#getContextName <em>Context Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Context Name</em>'.
-	 * @see ac.soton.eventb.decomposition.Region#getContextName()
-	 * @see #getRegion()
-	 * @generated
-	 */
-	EAttribute getRegion_ContextName();
-
-	/**
-	 * Returns the meta object for the reference list '{@link ac.soton.eventb.decomposition.Region#getAllocatedVariables <em>Allocated Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Allocated Variables</em>'.
-	 * @see ac.soton.eventb.decomposition.Region#getAllocatedVariables()
-	 * @see #getRegion()
-	 * @generated
-	 */
-	EReference getRegion_AllocatedVariables();
-
-	/**
-	 * Returns the meta object for the reference list '{@link ac.soton.eventb.decomposition.Region#getAllocatedExtensions <em>Allocated Extensions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Allocated Extensions</em>'.
-	 * @see ac.soton.eventb.decomposition.Region#getAllocatedExtensions()
-	 * @see #getRegion()
-	 * @generated
-	 */
-	EReference getRegion_AllocatedExtensions();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -313,6 +479,64 @@ public interface DecompositionPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link ac.soton.eventb.decomposition.impl.AbstractRegionImpl <em>Abstract Region</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ac.soton.eventb.decomposition.impl.AbstractRegionImpl
+		 * @see ac.soton.eventb.decomposition.impl.DecompositionPackageImpl#getAbstractRegion()
+		 * @generated
+		 */
+		EClass ABSTRACT_REGION = eINSTANCE.getAbstractRegion();
+
+		/**
+		 * The meta object literal for the '<em><b>Ready</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_REGION__READY = eINSTANCE.getAbstractRegion_Ready();
+
+		/**
+		 * The meta object literal for the '<em><b>Project Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_REGION__PROJECT_NAME = eINSTANCE.getAbstractRegion_ProjectName();
+
+		/**
+		 * The meta object literal for the '<em><b>Context Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_REGION__CONTEXT_NAME = eINSTANCE.getAbstractRegion_ContextName();
+
+		/**
+		 * The meta object literal for the '<em><b>Allocated Variables</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_REGION__ALLOCATED_VARIABLES = eINSTANCE.getAbstractRegion_AllocatedVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Allocated Extensions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_REGION__ALLOCATED_EXTENSIONS = eINSTANCE.getAbstractRegion_AllocatedExtensions();
+
+		/**
+		 * The meta object literal for the '<em><b>Machine Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_REGION__MACHINE_NAME = eINSTANCE.getAbstractRegion_MachineName();
+
+		/**
 		 * The meta object literal for the '{@link ac.soton.eventb.decomposition.impl.RegionImpl <em>Region</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -321,46 +545,6 @@ public interface DecompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass REGION = eINSTANCE.getRegion();
-
-		/**
-		 * The meta object literal for the '<em><b>Ready</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REGION__READY = eINSTANCE.getRegion_Ready();
-
-		/**
-		 * The meta object literal for the '<em><b>Project Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REGION__PROJECT_NAME = eINSTANCE.getRegion_ProjectName();
-
-		/**
-		 * The meta object literal for the '<em><b>Context Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REGION__CONTEXT_NAME = eINSTANCE.getRegion_ContextName();
-
-		/**
-		 * The meta object literal for the '<em><b>Allocated Variables</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REGION__ALLOCATED_VARIABLES = eINSTANCE.getRegion_AllocatedVariables();
-
-		/**
-		 * The meta object literal for the '<em><b>Allocated Extensions</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REGION__ALLOCATED_EXTENSIONS = eINSTANCE.getRegion_AllocatedExtensions();
 
 	}
 
