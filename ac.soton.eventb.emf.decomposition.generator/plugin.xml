@@ -81,7 +81,29 @@
                source_class="AbstractRegion"
                source_package="http://soton.ac.uk/models/eventb/decomposition/2016">
          </rule>
+         <rule
+               name="RootRegionRule"
+               rule_class="ac.soton.eventb.emf.decomposition.generator.rules.RootRegionRule"
+               source_class="AbstractRegion"
+               source_package="http://soton.ac.uk/models/eventb/decomposition/2016">
+         </rule>
       </ruleset>
+   </extension>
+   <extension
+         point="org.rodinp.core.attributeTypes">
+      <attributeType
+            id="universalVariable"
+            kind="string"
+            name="Universal Variable">
+      </attributeType>
+   </extension>
+   <extension
+         point="org.rodinp.core.itemRelations">
+      <ubiquitous>
+         <attributeType
+               typeId="ac.soton.eventb.emf.decomposition.generator.universalVariable">
+         </attributeType>
+      </ubiquitous>
    </extension>
 
 </plugin>

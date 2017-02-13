@@ -9,6 +9,7 @@ import java.util.Map;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -49,6 +50,7 @@ import ch.ethz.eventb.utils.EventBSCUtils;
 abstract class AbstractRegionRule extends AbstractRule implements IRule {
 
 	protected static final EReference components = CorePackage.Literals.PROJECT__COMPONENTS;
+	protected static final EClass machine = MachinePackage.Literals.MACHINE;
 
 
 

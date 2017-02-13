@@ -8,6 +8,8 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 
+	public static final String UNIVERSAL_VARIABLE_ATTRIBUTE_ID = "ac.soton.eventb.emf.decomposition.generator.universalVariable"; //$NON-NLS-1$
+
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ac.soton.eventb.emf.decomposition.generator"; //$NON-NLS-1$
 
