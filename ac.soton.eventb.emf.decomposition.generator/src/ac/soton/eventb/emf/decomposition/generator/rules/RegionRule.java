@@ -63,7 +63,7 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 	 */
 	@Override
 	public boolean dependenciesOK(EObject sourceElement,List<TranslationDescriptor> translatedElements){
-		String composedMachineName = ((AbstractRegion)sourceElement.eContainer()).getMachineName();
+		String composedMachineName = ((AbstractRegion)sourceElement.eContainer()).getMachineName()+"_cmp";
 		compositionMachine = (Machine) Find.translatedElement(translatedElements, null, components, machine, composedMachineName);
 		return compositionMachine!=null;
 		

@@ -48,6 +48,10 @@ import ac.soton.emf.translator.configuration.IAdapter;
 public class DecompositionAdaptor implements IAdapter {
 
 	/**
+	 * returns a URI for..
+	 *  a Rodin machine (.bum) or..
+	 *  a Rodin context (.buc) or..
+	 *  , for the composition machine, an EMF serialisation of the machine (.xmb)
 	 * 
 	 */
 	@Override
@@ -58,7 +62,10 @@ public class DecompositionAdaptor implements IAdapter {
 			String projectName = EcoreUtil.getURI(rootElement).segment(1);
 			URI projectUri = URI.createPlatformResourceURI(projectName, true);
 			String fileName = ((EventBNamed)translationDescriptor.value).getName();
-			String ext = translationDescriptor.value instanceof Context? "buc" :  "bum";
+			String ext = 
+				fileName.endsWith("_cmp") ? "xmb" :
+				translationDescriptor.value instanceof Context ? "buc" :
+					"bum";
 			URI fileUri = projectUri.appendSegment(fileName).appendFileExtension(ext); //$NON-NLS-1$
 			return fileUri;
 		}
