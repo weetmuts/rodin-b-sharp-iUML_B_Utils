@@ -30,6 +30,7 @@ import org.eventb.emf.core.machine.Variable;
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.AbstractRule;
 import ac.soton.emf.translator.configuration.IRule;
+import ac.soton.emf.translator.utils.Find;
 import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractElementRefiner;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.ElementRefinerRegistry;
@@ -64,9 +65,13 @@ abstract class AbstractRegionRule extends AbstractRule implements IRule {
 	protected void processAllocation(AbstractRegion region, Machine sourceMachine, Machine decomposedMachine, IMachineRoot sourceMachineRoot) throws CoreException {
 		
 		for (Variable v : region.getAllocatedVariables()){
+			Variable clone;
+			if ((clone= (Variable) 
+				Find.element(decomposedMachine, decomposedMachine, MachinePackage.Literals.MACHINE__VARIABLES, MachinePackage.Literals.VARIABLE, v.getName()))!=null)
+				continue;
 			AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(v);
 			Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(v, decomposedMachine, null);
-			Variable clone = (Variable) copy.get(v);
+			clone = (Variable) copy.get(v);
 			decomposedMachine.getVariables().add(clone);
 
 			//make sure there is a typing theorem for each variable
@@ -78,11 +83,15 @@ abstract class AbstractRegionRule extends AbstractRule implements IRule {
 		
 		for (Invariant inv : getAllInvariants(sourceMachine) ){
 			if (relevantInvariant(sourceMachine, region, inv.getPredicate())){
+				String clonedName = ((Machine)inv.getContaining(MachinePackage.Literals.MACHINE)).getName()+"_"+inv.getName();
+				Invariant clone;
+				if ((clone= (Invariant) 
+					Find.element(decomposedMachine, decomposedMachine, MachinePackage.Literals.MACHINE__INVARIANTS, MachinePackage.Literals.INVARIANT, clonedName))!=null)
+					continue;
 				AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(inv);
 				Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(inv, decomposedMachine,null);
-				Invariant clone = (Invariant) copy.get(inv);
-				String containingMachineName = ((Machine)inv.getContaining(MachinePackage.Literals.MACHINE)).getName();
-				clone.setName(containingMachineName+"_"+clone.getName());
+				clone = (Invariant) copy.get(inv);
+				clone.setName(clonedName);
 				decomposedMachine.getInvariants().add(clone);
 			}
 		}
@@ -102,20 +111,29 @@ abstract class AbstractRegionRule extends AbstractRule implements IRule {
 //		}
 		
 		for (Event event : sourceMachine.getEvents()) {
-			Event newEvent = (Event)Make.event(event.getName());
+			Event newEvent = (Event) Find.element(decomposedMachine, decomposedMachine, MachinePackage.Literals.MACHINE__EVENTS, MachinePackage.Literals.EVENT, event.getName());
+			if (newEvent==null)	newEvent =	(Event)Make.event(event.getName());
 			for (Guard gd : getExtendedGuards(sourceMachine, event.getName())){
 				if (relevant(sourceMachine, region, gd.getPredicate())){
+					Guard clone = (Guard) Find.element(decomposedMachine, newEvent, MachinePackage.Literals.EVENT__GUARDS, MachinePackage.Literals.GUARD, gd.getName());
+					if (clone!=null) {
+						continue;
+					}
 					AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(gd);
 					Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(gd, decomposedMachine,null);
-					Guard clone = (Guard) copy.get(gd);
+					clone = (Guard) copy.get(gd);
 					newEvent.getGuards().add(clone);
 				}
 			}
 			for (Action act :  getExtendedActions(sourceMachine, event.getName())){
 				if (relevant(sourceMachine, region, act.getAction())){
+					Action clone = (Action) Find.element(decomposedMachine, newEvent, MachinePackage.Literals.EVENT__ACTIONS, MachinePackage.Literals.ACTION, act.getName());
+					if (clone!=null) {
+						continue;
+					}
 					AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(act);
 					Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(act, decomposedMachine, null);
-					Action clone = (Action) copy.get(act);
+					clone = (Action) copy.get(act);
 					newEvent.getActions().add(clone);
 				}
 			}
@@ -127,7 +145,11 @@ abstract class AbstractRegionRule extends AbstractRule implements IRule {
 				List<Guard> guardsToClone = new ArrayList<Guard>();
 				//nextP: 
 				for (Parameter p : getExtendedParameters(sourceMachine, event.getName())){
-					Parameter newP = (Parameter)Make.parameter(p.getName());
+					Parameter newP = (Parameter) Find.element(decomposedMachine, newEvent, MachinePackage.Literals.EVENT__PARAMETERS, MachinePackage.Literals.PARAMETER, p.getName());
+					if (newP!=null) {
+						continue;
+					}
+					newP = (Parameter)Make.parameter(p.getName());
 					newEvent.getParameters().add(newP);
 
 					for (Guard gd : getExtendedGuards(sourceMachine, event.getName())){
@@ -145,9 +167,13 @@ abstract class AbstractRegionRule extends AbstractRule implements IRule {
 					
 				}
 				for (Guard gd : guardsToClone){
+					Guard clone = (Guard) Find.element(decomposedMachine, newEvent, MachinePackage.Literals.EVENT__GUARDS, MachinePackage.Literals.GUARD, gd.getName());
+					if (clone!=null) {
+						continue;
+					}
 					AbstractElementRefiner refiner = ElementRefinerRegistry.getRegistry().getRefiner(gd);
 					Map<EObject,EObject> copy = refiner.cloneAndExtractFromRefinementChain(gd, decomposedMachine,null);
-					Guard clone = (Guard) copy.get(gd);
+					clone = (Guard) copy.get(gd);
 					newEvent.getGuards().add(0,clone); 	//add these at front as they tend to be type
 				}
 				
@@ -155,8 +181,13 @@ abstract class AbstractRegionRule extends AbstractRule implements IRule {
 				for (Parameter p : getExtendedParameters(sourceMachine, event.getName())){
 					Type ptype = SCUtils.getParameterType(sourceMachineRoot, event.getName(), p.getName());
 					if (ptype!=null){
+						String typeGdName = "typing_"+p.getName();
+						Guard typeGd = (Guard) Find.element(decomposedMachine, newEvent, MachinePackage.Literals.EVENT__GUARDS, MachinePackage.Literals.GUARD, "typing_"+p.getName());
+						if (typeGd!=null) {
+							continue;
+						}
 						String predicate = p.getName()+" \u2208 "+ptype.toString();
-						Guard typeGd = (Guard) Make.guard("typing_"+p.getName(), true, predicate, "generated by decomposition");
+						typeGd = (Guard) Make.guard(typeGdName, true, predicate, "generated by decomposition");
 						newEvent.getGuards().add(0,typeGd);
 					}
 				}
