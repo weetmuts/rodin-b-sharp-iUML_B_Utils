@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eventb.core.IMachineRoot;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.Project;
+import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.persistence.EventBEMFUtils;
@@ -20,6 +21,7 @@ import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractElementRefiner;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.ElementRefinerRegistry;
 import ac.soton.eventb.emf.decomposition.generator.Make;
+import ac.soton.eventb.featureinclusion.EventSynchronisation;
 import ac.soton.eventb.featureinclusion.FeatureinclusionFactory;
 import ac.soton.eventb.featureinclusion.MachineInclusion;
 
@@ -114,12 +116,23 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 				}
 			}
 			
-			//add includes to composition machine
+			//add machine includes to composition machine
 			MachineInclusion inclusion = FeatureinclusionFactory.eINSTANCE.createMachineInclusion();
 			inclusion.setAbstractMachine(decomposedMachine);
 			inclusion.getPrefixes().add(region.getMachineName());
 			//TODO:add event syncs
 			compositionMachine.getExtensions().add(inclusion);
+			
+			for (Event event : decomposedMachine.getEvents()){
+				EventSynchronisation synch = FeatureinclusionFactory.eINSTANCE.createEventSynchronisation();
+				synch.setSynchronisedEvent(event);
+				synch.setPrefix(region.getMachineName());
+				//compositionMachine
+				Event compositionEvent = (Event)Find.element(compositionMachine, compositionMachine, MachinePackage.Literals.MACHINE__EVENTS, MachinePackage.Literals.EVENT, event.getName());
+				if (compositionEvent != null){
+					compositionEvent.getExtensions().add(synch);
+				}
+			}
 			
 		}else{
 			//when region is not ready its allocation is added to the compositionMachine
@@ -129,5 +142,4 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 		return ret;
 	}
 
-		
 }
