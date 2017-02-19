@@ -14,20 +14,20 @@ import org.eventb.core.IMachineRoot;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.Project;
+import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachineFactory;
 import org.eventb.emf.core.machine.MachinePackage;
-import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.persistence.EventBEMFUtils;
 
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.IRule;
+import ac.soton.emf.translator.utils.Find;
 import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractElementRefiner;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.ElementRefinerRegistry;
 import ac.soton.eventb.emf.decomposition.generator.Make;
-import ac.soton.eventb.featureinclusion.FeatureinclusionFactory;
-import ac.soton.eventb.featureinclusion.MachineInclusion;
+
 
 public class RootRegionRule extends AbstractRegionRule implements IRule {
 
@@ -66,6 +66,14 @@ public class RootRegionRule extends AbstractRegionRule implements IRule {
 		targetMachine.getRefinesNames().add(sourceMachine.getName());
 		
 		processAllocation(region, sourceMachine, targetMachine, sourceMachineRoot);
+		
+		for (Event event : targetMachine.getEvents()){
+			if (!"INITIALISATION".equals(event.getName())){
+				event.getRefines().add(
+						(Event)Find.element(sourceMachine, sourceMachine, MachinePackage.Literals.MACHINE__EVENTS, MachinePackage.Literals.EVENT, event.getName())
+						);
+			}
+		}
 	
 // Now done by sub regions
 //		for (EObject ae : region.eContents()){
@@ -113,7 +121,7 @@ public class RootRegionRule extends AbstractRegionRule implements IRule {
 	 * already be linked to a resource in the workspace
 	 * 
 	 * @param machine (must be in a resource so that it has a full URI to its final resource)
-	 * @param variableName - the name of a variable that will reside in the variables collection of the machine
+	 * @param machineName - the name of a machine that will reside in the same project as the given machine
 	 * @return
 	 */
 	public static Machine machineProxyReference(Machine sourceMachine, String machineName) {
