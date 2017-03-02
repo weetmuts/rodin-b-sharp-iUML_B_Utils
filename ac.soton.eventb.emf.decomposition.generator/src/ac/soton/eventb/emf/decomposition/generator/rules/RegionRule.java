@@ -1,6 +1,7 @@
 package ac.soton.eventb.emf.decomposition.generator.rules;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eventb.core.IMachineRoot;
 import org.eventb.emf.core.AbstractExtension;
+import org.eventb.emf.core.Attribute;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.Project;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
@@ -44,6 +48,7 @@ import ac.soton.eventb.featureinclusion.MachineInclusion;
  */
 public class RegionRule extends AbstractRegionRule implements IRule {
 
+	private static String generatorIDKey = "org.eventb.emf.persistence.generator_ID";
 	private Machine compositionMachine = null;
 	
 	/**
@@ -99,6 +104,22 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 			
 			processAllocation(region, sourceMachine, decomposedMachine, sourceMachineRoot);
 	
+			//update all generator IDs to the new root of the Extension
+			Map<String,String> gIDMap = new HashMap<String,String>();
+			for (AbstractExtension ae : region.getAllocatedExtensions()){
+				AbstractExtension rootAe = getRootExtension(ae);
+				if (rootAe != null){
+					gIDMap.put(rootAe.getExtensionId(), ae.getExtensionId());
+				}
+			}
+			for (EObject eObject : decomposedMachine.getAllContained(CorePackage.Literals.EVENT_BOBJECT, true)){
+				if (eObject instanceof EventBElement && ((EventBElement)eObject).isLocalGenerated()) {
+						Attribute gIDAtt = ((EventBElement)eObject).getAttributes().get(generatorIDKey);
+						if (gIDAtt != null && gIDMap.containsKey(gIDAtt.getValue())){
+							gIDAtt.setValue(gIDMap.get(gIDAtt.getValue()));
+						};
+				}
+			}
 			
 			//get any allocated extensions
 			EList<AbstractExtension> extensions = region.getAllocatedExtensions();
@@ -120,7 +141,6 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 			MachineInclusion inclusion = FeatureinclusionFactory.eINSTANCE.createMachineInclusion();
 			inclusion.setAbstractMachine(decomposedMachine);
 			inclusion.getPrefixes().add(region.getMachineName());
-			//TODO:add event syncs
 			compositionMachine.getExtensions().add(inclusion);
 			
 			for (Event event : decomposedMachine.getEvents()){
@@ -140,6 +160,16 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 		}
 
 		return ret;
+	}
+
+	/**
+	 * @param ae
+	 * @return
+	 */
+	private AbstractExtension getRootExtension(AbstractExtension ae) {
+		if (ae==null || ae.eContainer() == null || !(ae.eContainer() instanceof EventBElement)) return null;
+		if (ae.eContainer() instanceof Machine) return ae;
+		return getRootExtension((AbstractExtension) ((EventBElement)ae.eContainer()).getContaining(CorePackage.Literals.ABSTRACT_EXTENSION));
 	}
 
 }
