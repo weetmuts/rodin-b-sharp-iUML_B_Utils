@@ -49,8 +49,8 @@
       </category>
       <command
             categoryId="ac.soton.eventb.emf.diagrams.iUMLB"
-            defaultHandler="ac.soton.emf.translator.handler.TranslateHandler"
-            description="Decompose into several machines as defined in the machine's regions"
+            defaultHandler="ac.soton.eventb.emf.decomposition.generator.handlers.DecompositionHandler"
+            description="Decompose into several machines as defined in the machine&apos;s regions"
             id="ac.soton.eventb.emf.decomposition.commands.decompose"
             name="Decompose Regions">
       </command>
