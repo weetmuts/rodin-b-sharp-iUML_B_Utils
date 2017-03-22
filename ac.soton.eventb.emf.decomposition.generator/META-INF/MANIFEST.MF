@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.106.1,4.0.0)",
  ch.ethz.eventb.utils;bundle-version="[0.2.3,1.0.0)",
  org.eventb.core.ast;bundle-version="[3.2.0,4.0.0)",
  org.rodinp.core;bundle-version="[1.7.0,2.0.0)",
- ac.soton.eventb.inclusionfeature;bundle-version="[0.0.0,1.0.0)",
- ac.soton.eventb.emf.decomposition;bundle-version="[0.0.1,1.0.0)"
+ ac.soton.eventb.emf.decomposition;bundle-version="[0.0.1,1.0.0)",
+ ac.soton.eventb.emf.inclusion;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

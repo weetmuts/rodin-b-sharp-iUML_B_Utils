@@ -25,9 +25,9 @@ import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractElementRefiner;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.ElementRefinerRegistry;
 import ac.soton.eventb.emf.decomposition.generator.Make;
-import ac.soton.eventb.featureinclusion.EventSynchronisation;
-import ac.soton.eventb.featureinclusion.FeatureinclusionFactory;
-import ac.soton.eventb.featureinclusion.MachineInclusion;
+import ac.soton.eventb.emf.inclusion.EventSynchronisation;
+import ac.soton.eventb.emf.inclusion.InclusionFactory;
+import ac.soton.eventb.emf.inclusion.MachineInclusion;
 
 /**
  * Rule for level 1 regions... ready or not.
@@ -138,13 +138,13 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 			}
 			
 			//add machine includes to composition machine
-			MachineInclusion inclusion = FeatureinclusionFactory.eINSTANCE.createMachineInclusion();
+			MachineInclusion inclusion = InclusionFactory.eINSTANCE.createMachineInclusion();
 			inclusion.setAbstractMachine(decomposedMachine);
 			inclusion.getPrefixes().add(region.getMachineName());
 			compositionMachine.getExtensions().add(inclusion);
 			
 			for (Event event : decomposedMachine.getEvents()){
-				EventSynchronisation synch = FeatureinclusionFactory.eINSTANCE.createEventSynchronisation();
+				EventSynchronisation synch = InclusionFactory.eINSTANCE.createEventSynchronisation();
 				synch.setSynchronisedEvent(event);
 				synch.setPrefix(region.getMachineName());
 				//compositionMachine
