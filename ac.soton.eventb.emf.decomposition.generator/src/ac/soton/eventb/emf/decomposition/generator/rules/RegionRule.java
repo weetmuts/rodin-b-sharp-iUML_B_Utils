@@ -49,7 +49,7 @@ import ac.soton.eventb.emf.inclusion.MachineInclusion;
 public class RegionRule extends AbstractRegionRule implements IRule {
 
 	private static String generatorIDKey = "org.eventb.emf.persistence.generator_ID";
-	private Machine compositionMachine = null;
+
 	
 	/**
 	 * the region must be contained in a root region
