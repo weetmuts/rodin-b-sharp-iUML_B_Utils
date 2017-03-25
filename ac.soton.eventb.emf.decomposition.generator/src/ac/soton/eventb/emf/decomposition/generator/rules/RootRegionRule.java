@@ -26,6 +26,7 @@ import ac.soton.emf.translator.utils.Find;
 import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractElementRefiner;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.ElementRefinerRegistry;
+import ac.soton.eventb.emf.decomposition.generator.Activator;
 import ac.soton.eventb.emf.decomposition.generator.Make;
 
 
@@ -47,7 +48,8 @@ public class RootRegionRule extends AbstractRegionRule implements IRule {
 		AbstractRegion region = (AbstractRegion)sourceElement;
 		String projectName = region.getProjectName();
 		Machine sourceMachine = (Machine) region.getContaining(MachinePackage.Literals.MACHINE);
-		compositionMachine = Make.machine(region.getMachineName()+"_cmp", "composition machine from region: "+region.getMachineName());
+		compositionMachine = Make.machine(region.getMachineName()+Activator.compositionMachinePostfix
+				, "composition machine from region: "+region.getMachineName());
 		IMachineRoot sourceMachineRoot = EventBEMFUtils.getRoot(sourceMachine);
 		
 		if (projectName != null && projectName.length()>0){
@@ -74,18 +76,6 @@ public class RootRegionRule extends AbstractRegionRule implements IRule {
 						);
 			}
 		}
-	
-// Now done by sub regions
-//		for (EObject ae : region.eContents()){
-//			if (ae instanceof AbstractRegion){
-//				if (((AbstractRegion)ae).isReady()){
-//					MachineInclusion inclusion = machineInclusion((AbstractRegion)ae, sourceMachine);
-//					targetMachine.getExtensions().add(inclusion);
-//				}else{
-//					processAllocation((AbstractRegion)ae, sourceMachine, targetMachine, sourceMachineRoot);
-//				}
-//			}
-//		}
 
 		//get possible extensions
 		EList<AbstractExtension> extensions = sourceMachine.getExtensions();
@@ -103,17 +93,6 @@ public class RootRegionRule extends AbstractRegionRule implements IRule {
 		return ret;
 	}
 
-//	/**
-//	 * @param ae 
-//	 * @param sourceMachine 
-//	 * @return
-//	 */
-//	private MachineInclusion machineInclusion(AbstractRegion ae, Machine sourceMachine) {
-//		MachineInclusion  mchInc =  FeatureinclusionFactory.eINSTANCE.createMachineInclusion();
-//		mchInc.setAbstractMachine(machineProxyReference(sourceMachine,ae.getMachineName()));
-//		mchInc.getPrefixes().add(ae.getMachineName());
-//		return mchInc;
-//	}
 		
 	/**
 	 * Constructs a reference to a machine that will exist in the future. 

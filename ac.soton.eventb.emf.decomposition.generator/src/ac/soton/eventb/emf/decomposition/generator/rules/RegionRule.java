@@ -24,6 +24,7 @@ import ac.soton.emf.translator.utils.Find;
 import ac.soton.eventb.decomposition.AbstractRegion;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.AbstractElementRefiner;
 import ac.soton.eventb.emf.core.extension.navigator.refiner.ElementRefinerRegistry;
+import ac.soton.eventb.emf.decomposition.generator.Activator;
 import ac.soton.eventb.emf.decomposition.generator.Make;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.InclusionFactory;
@@ -47,9 +48,6 @@ import ac.soton.eventb.emf.inclusion.MachineInclusion;
  * @since
  */
 public class RegionRule extends AbstractRegionRule implements IRule {
-
-	private static String generatorIDKey = "org.eventb.emf.persistence.generator_ID";
-
 	
 	/**
 	 * the region must be contained in a root region
@@ -70,7 +68,7 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 	 */
 	@Override
 	public boolean dependenciesOK(EObject sourceElement,List<TranslationDescriptor> translatedElements){
-		String composedMachineName = ((AbstractRegion)sourceElement.eContainer()).getMachineName()+"_cmp";
+		String composedMachineName = ((AbstractRegion)sourceElement.eContainer()).getMachineName()+Activator.compositionMachinePostfix;
 		compositionMachine = (Machine) Find.translatedElement(translatedElements, null, components, machine, composedMachineName);
 		return compositionMachine!=null;
 		
@@ -114,7 +112,7 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 			}
 			for (EObject eObject : decomposedMachine.getAllContained(CorePackage.Literals.EVENT_BOBJECT, true)){
 				if (eObject instanceof EventBElement && ((EventBElement)eObject).isLocalGenerated()) {
-						Attribute gIDAtt = ((EventBElement)eObject).getAttributes().get(generatorIDKey);
+						Attribute gIDAtt = ((EventBElement)eObject).getAttributes().get(Activator.generatorIDKey);
 						if (gIDAtt != null && gIDMap.containsKey(gIDAtt.getValue())){
 							gIDAtt.setValue(gIDMap.get(gIDAtt.getValue()));
 						};

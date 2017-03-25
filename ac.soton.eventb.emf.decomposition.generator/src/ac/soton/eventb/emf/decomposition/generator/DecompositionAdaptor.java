@@ -31,10 +31,13 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
+import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.AttributeIdentifiers;
 
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.IAdapter;
+import ac.soton.eventb.emf.inclusion.InclusionPackage;
+import ac.soton.eventb.emf.inclusion.MachineInclusion;
 
 
 /**
@@ -63,15 +66,33 @@ public class DecompositionAdaptor implements IAdapter {
 			URI projectUri = URI.createPlatformResourceURI(projectName, true);
 			String fileName = ((EventBNamed)translationDescriptor.value).getName();
 			String ext = 
-				fileName.endsWith("_cmp") ? "xmb" :
-				translationDescriptor.value instanceof Context ? "buc" :
-					"bum";
+				isCompositionMachine(translationDescriptor.value) ? Activator.compositionMachineExtension :
+				translationDescriptor.value instanceof Context ? Activator.contextExtension :
+				translationDescriptor.value instanceof Machine ? Activator.machineExtension:
+					Activator.defaultExtension;
 			URI fileUri = projectUri.appendSegment(fileName).appendFileExtension(ext); //$NON-NLS-1$
 			return fileUri;
 		}
 		return null;
 	}
 	
+	/**
+	 * determines whether this value is a composition machine
+	 * (i.e. a machine with includes clauses)
+	 * @param value
+	 * @return
+	 */
+	private boolean isCompositionMachine(Object value) {
+		if (value instanceof Machine){
+			for (EObject mi : ((Machine)value).getAllContained(InclusionPackage.Literals.MACHINE_INCLUSION,false)){
+				if (mi instanceof MachineInclusion){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	/* (non-Javadoc)
 	 * @see ac.soton.emf.translator.IAdapter#inputFilter(java.lang.Object)
 	 */

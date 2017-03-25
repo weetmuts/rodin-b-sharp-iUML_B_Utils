@@ -13,6 +13,15 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ac.soton.eventb.emf.decomposition.generator"; //$NON-NLS-1$
 
+	//some string constants used in this plug-in
+	public static final String generatorIDKey = "org.eventb.emf.persistence.generator_ID";
+	public static final String flattenCommandId = "ac.soton.eventb.emf.inclusion.commands.include";
+	public static final String compositionMachinePostfix = "";	
+	public static final String compositionMachineExtension = "xmc";
+	public static final String defaultExtension = "xmi";
+	public static final String machineExtension = "bum";
+	public static final String contextExtension = "buc";
+	
 	// The shared instance
 	private static Activator plugin;
 	

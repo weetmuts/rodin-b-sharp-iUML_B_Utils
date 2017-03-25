@@ -13,12 +13,10 @@ import org.eventb.emf.persistence.EMFRodinDB;
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.emf.translator.handler.TranslateHandler;
 import ac.soton.eventb.decomposition.AbstractRegion;
+import ac.soton.eventb.emf.decomposition.generator.Activator;
 
 public class DecompositionHandler extends TranslateHandler {
 
-	private static final String flattenCommandId = "ac.soton.eventb.emf.inclusion.commands.include";
-	private static final String compositionMachinePostfix = "_cmp";	
-	private static final String compositionMachineExtension = "bum";
 
 	/**
 	 * after doing the decomposition translation, we need to call the flatten translation
@@ -40,17 +38,17 @@ public class DecompositionHandler extends TranslateHandler {
 				if (ext instanceof AbstractRegion){
 					String compositionMachineName = ((AbstractRegion)ext).getMachineName();
 					if (compositionMachineName == null) continue;
-					compositionMachineName = compositionMachineName+compositionMachinePostfix;
+					compositionMachineName = compositionMachineName+Activator.compositionMachinePostfix;
 					URI fileURI = ((Machine)sourceElement).getURI();
-					fileURI = fileURI.trimFileExtension().trimSegments(1).appendSegment(compositionMachineName).appendFileExtension(compositionMachineExtension);
+					fileURI = fileURI.trimFileExtension().trimSegments(1).appendSegment(compositionMachineName).appendFileExtension(Activator.compositionMachineExtension);
 					String fragment = fileURI.fragment();
 					int x = fragment.lastIndexOf("::")+2;
 					fragment = fragment.substring(0, x) + compositionMachineName;
 					fileURI = fileURI.trimFragment().appendFragment(fragment);
 					EventBElement compositionMachine = emfRodinDB.loadEventBComponent(fileURI);
 							
-					if (factory != null && compositionMachine!=null && factory.canTranslate(flattenCommandId, compositionMachine.eClass())){
-						factory.translate(compositionMachine, flattenCommandId, monitor);
+					if (factory != null && compositionMachine!=null && factory.canTranslate(Activator.flattenCommandId, compositionMachine.eClass())){
+						factory.translate(compositionMachine, Activator.flattenCommandId, monitor);
 					}
 				}
 			}
