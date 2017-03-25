@@ -21,4 +21,18 @@
       </refinementDefinition>
    </extension>
 
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="true"
+            extensions="xmc"
+            icon="icons/decomposition_icon.png"
+            id="ac.soton.eventb.emf.editors.composition"
+            name="Composition Editor">
+         <!--contentTypeBinding
+               contentTypeId="ch.ethz.eventb.decomposition.core.dcpFile">
+         </contentTypeBinding-->
+      </editor>
+   </extension>
+   
 </plugin>
