@@ -12,6 +12,7 @@ import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.Attribute;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.Project;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
@@ -100,7 +101,7 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 				decomposedMachine.getSeesNames().add(seesName);
 			}
 			
-			processAllocation(region, sourceMachine, decomposedMachine, sourceMachineRoot);
+			ret.addAll(processAllocation(region, sourceMachine, decomposedMachine, sourceMachineRoot, translatedElements));
 	
 			//update all generator IDs to the new root of the Extension
 			Map<String,String> gIDMap = new HashMap<String,String>();
@@ -110,12 +111,18 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 					gIDMap.put(rootAe.getExtensionId(), ae.getExtensionId());
 				}
 			}
-			for (EObject eObject : decomposedMachine.getAllContained(CorePackage.Literals.EVENT_BOBJECT, true)){
-				if (eObject instanceof EventBElement && ((EventBElement)eObject).isLocalGenerated()) {
-						Attribute gIDAtt = ((EventBElement)eObject).getAttributes().get(Activator.generatorIDKey);
-						if (gIDAtt != null && gIDMap.containsKey(gIDAtt.getValue())){
-							gIDAtt.setValue(gIDMap.get(gIDAtt.getValue()));
-						};
+			for (TranslationDescriptor i : ret){
+				if (i.value instanceof EventBObject){
+					EList<EObject> elements = ((EventBObject)i.value).getAllContained(CorePackage.Literals.EVENT_BOBJECT, true);
+					elements.add((EventBObject)i.value);
+					for (EObject eObject : elements){
+						if (eObject instanceof EventBElement && ((EventBElement)eObject).isLocalGenerated()) {
+							Attribute gIDAtt = ((EventBElement)eObject).getAttributes().get(Activator.generatorIDKey);
+							if (gIDAtt != null && gIDMap.containsKey(gIDAtt.getValue())){
+								gIDAtt.setValue(gIDMap.get(gIDAtt.getValue()));
+							};
+						}
+					}
 				}
 			}
 			
@@ -154,7 +161,7 @@ public class RegionRule extends AbstractRegionRule implements IRule {
 			
 		}else{
 			//when region is not ready its allocation is added to the compositionMachine
-			processAllocation(region, sourceMachine, compositionMachine, sourceMachineRoot);
+			ret.addAll(processAllocation(region, sourceMachine, compositionMachine, sourceMachineRoot, translatedElements));
 		}
 
 		return ret;

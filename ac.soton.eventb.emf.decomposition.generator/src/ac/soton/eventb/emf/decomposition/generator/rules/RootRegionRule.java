@@ -67,7 +67,7 @@ public class RootRegionRule extends AbstractRegionRule implements IRule {
 		
 		compositionMachine.getRefinesNames().add(sourceMachine.getName());
 		
-		processAllocation(region, sourceMachine, compositionMachine, sourceMachineRoot);
+		ret.addAll(processAllocation(region, sourceMachine, compositionMachine, sourceMachineRoot, translatedElements));
 		
 		for (Event event : compositionMachine.getEvents()){
 			if (!"INITIALISATION".equals(event.getName())){
