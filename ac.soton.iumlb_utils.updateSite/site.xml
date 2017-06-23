@@ -33,6 +33,12 @@
    <feature url="features/ac.soton.emf.utilities.feature_2.1.0.release.jar" id="ac.soton.emf.utilities.feature" version="2.1.0.release">
       <category name="Generic Utilities"/>
    </feature>
+   <feature url="features/ac.soton.emf.utilities.feature_2.1.1.release.jar" id="ac.soton.emf.utilities.feature" version="2.1.1.release">
+      <category name="Generic Utilities"/>
+   </feature>
+   <feature url="features/ac.soton.iumlb.scxml.feature_1.1.2.release.jar" id="ac.soton.iumlb.scxml.feature" version="1.1.2.release">
+      <category name="iUML-B SCXML"/>
+   </feature>
    <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
    <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
    <category-def name="Generic Utilities" label="Generic Utilities">
