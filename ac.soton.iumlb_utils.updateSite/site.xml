@@ -30,6 +30,9 @@
    <feature url="features/ac.soton.eventb.emf.decomposition_0.0.1.released.jar" id="ac.soton.eventb.emf.decomposition" version="0.0.1.released">
       <category name="iUML-B Decomposition"/>
    </feature>
+   <feature url="features/ac.soton.emf.utilities.feature_2.1.0.release.jar" id="ac.soton.emf.utilities.feature" version="2.1.0.release">
+      <category name="Generic Utilities"/>
+   </feature>
    <category-def name="iUML-B XText Editor" label="iUML-B XText Editor"/>
    <category-def name="iUML-B SCXML" label="iUML-B SCXML"/>
    <category-def name="Generic Utilities" label="Generic Utilities">
