@@ -2,6 +2,33 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:fr.systerel.explorer.navigator.view">
+         <command
+               commandId="ac.soton.eventb.emf.inclusion.commands.include"
+               icon="icons/flatten.gif"
+               label="Flatten Composite Machine"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.emf.ecore.EObject">
+                           <instanceof
+                                 value="org.eventb.emf.core.machine.Machine">
+                           </instanceof>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
          point="org.rodinp.core.refinements">
       <Participant
             class="ac.soton.eventb.emf.decomposition.navigator.refiner.RegionRefiner"
@@ -33,6 +60,13 @@
                contentTypeId="ch.ethz.eventb.decomposition.core.dcpFile">
          </contentTypeBinding-->
       </editor>
+   </extension>
+   
+  <extension
+         point="ac.soton.eventb.emf.core.extension.navigator.emfFileExtensions">
+      <model
+            extension="xmc">
+      </model>
    </extension>
    
 </plugin>
