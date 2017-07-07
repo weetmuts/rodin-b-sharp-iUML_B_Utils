@@ -7,20 +7,20 @@
             locationURI="popup:fr.systerel.explorer.navigator.view">
          <command
                commandId="ac.soton.eventb.emf.inclusion.commands.include"
-               icon="icons/flatten.gif"
+               icon="icons/flatten_icon.png"
                label="Flatten Composite Machine"
                style="push">
             <visibleWhen
                   checkEnabled="false">
                <with
-                     variable="selection">
+                     variable="activeMenuSelection">
                   <iterate
                         ifEmpty="false">
                      <adapt
                            type="org.eclipse.emf.ecore.EObject">
-                           <instanceof
-                                 value="org.eventb.emf.core.machine.Machine">
-                           </instanceof>
+                           <test property="ac.soton.eventb.emf.decomposition.navigator.isCompositeMachine"
+                           			forcePluginActivation="true"
+                           />
                      </adapt>
                   </iterate>
                </with>
@@ -48,19 +48,6 @@
       </refinementDefinition>
    </extension>
 
-   <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            default="true"
-            extensions="xmc"
-            icon="icons/decomposition_icon.png"
-            id="ac.soton.eventb.emf.editors.composition"
-            name="Composition Editor">
-         <!--contentTypeBinding
-               contentTypeId="ch.ethz.eventb.decomposition.core.dcpFile">
-         </contentTypeBinding-->
-      </editor>
-   </extension>
    
   <extension
          point="ac.soton.eventb.emf.core.extension.navigator.emfFileExtensions">
@@ -69,4 +56,28 @@
       </model>
    </extension>
    
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eventb.emf.xmb"
+            file-extensions="xmc"
+            id="ac.soton.eventb.emf.decomposition.compositeMachine"
+            name="Event-B Composite Machine"
+            priority="normal">
+      </content-type>
+  </extension>
+  
+  <extension
+        point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+         namespace="ac.soton.eventb.emf.decomposition.navigator"
+       id="ac.soton.eventb.emf.decomposition.navigator.CompositeMachineTester"
+       properties="isCompositeMachine"
+       type="org.eclipse.emf.ecore.EObject"
+       class="ac.soton.eventb.emf.decomposition.navigator.CompositeMachineTester">
+    </propertyTester>
+  </extension>
+   
+
+     
 </plugin>

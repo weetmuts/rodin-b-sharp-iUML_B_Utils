@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.emf.workspace;bundle-version="[1.5.1,2.0.0)",
  ac.soton.eventb.emf.core.extension.persistence;bundle-version="[2.1.2,3.0.0)",
  ac.soton.eventb.emf.core.extension.navigator;bundle-version="[4.3.0,5.0.0)",
  ac.soton.eventb.emf.decomposition;bundle-version="[0.0.1,1.0.0)",
- ac.soton.eventb.emf.decomposition.edit;bundle-version="[0.0.1,1.0.0)"
+ ac.soton.eventb.emf.decomposition.edit;bundle-version="[0.0.1,1.0.0)",
+ org.eclipse.core.expressions;bundle-version="[3.5.0,4.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %Bundle-Vendor
 Bundle-ActivationPolicy: lazy
